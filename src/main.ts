@@ -1,11 +1,11 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
 import helmet from 'helmet';
 import { ValidationPipe } from '@nestjs/common';
 import * as crypto from 'node:crypto';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { WinstonModule } from 'nest-winston';
-import { winstonConfig } from './config/winston.config';
+import { AppModule } from './app.module.js';
+import { winstonConfig } from './config/winston.config.js';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {

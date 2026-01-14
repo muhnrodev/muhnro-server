@@ -1,8 +1,12 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { ThrottlerModule } from '@nestjs/throttler';
 import { ConfigModule } from '@nestjs/config';
+import { AppService } from './app.service.js';
+import { AppController } from './app.controller.js';
+import { PrismaModule } from './prisma/prisma.module.js';
+import { AuthModule } from './modules/auth/auth.module.js';
+import { GeneratorModule } from './common/generator/generator.module.js';
+import { UserModule } from './modules/user/user.module.js';
 
 @Module({
   imports: [
@@ -17,6 +21,13 @@ import { ConfigModule } from '@nestjs/config';
         },
       ],
     }),
+
+    PrismaModule,
+    GeneratorModule,
+
+    AuthModule,
+
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
