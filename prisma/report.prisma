@@ -1,0 +1,45 @@
+model Report {
+    reportId        String   @id @default(dbgenerated("gen_random_uuid()"))
+    slug            String   @unique
+    title           String
+    abstract        String
+    status          ReportStatus
+    publishedAt     DateTime?
+    coverImageId    String?
+    createdAt       DateTime @default(now())
+    updatedAt       DateTime @updatedAt
+
+    files                ReportFile[]
+    industries          ReportIndustry[]
+    topics              ReportTopic[]
+    serviceActivities   ReportServiceActivity[]
+    authors             ReportAuthor[]
+}
+
+
+model ReportIndustry {
+    id          String   @id @default(dbgenerated("gen_random_uuid()"))
+    reportId    String
+    industryId  String
+
+    report      Report   @relation(fields: [reportId], references: [reportId])
+    industry    Industry @relation(fields: [industryId], references: [industryId])
+}
+
+model ReportTopic {
+    id        String   @id @default(dbgenerated("gen_random_uuid()"))
+    reportId  String
+    topicId   String
+
+    report    Report @relation(fields: [reportId], references: [reportId])
+    topic     Topic  @relation(fields: [topicId], references: [topicId])
+}
+
+model ReportServiceActivity {
+    id         String   @id @default(dbgenerated("gen_random_uuid()"))
+    reportId   String
+    activityId String
+
+    report         Report         @relation(fields: [reportId], references: [reportId])
+    serviceActivity ServiceActivity @relation(fields: [activityId], references: [activityId])
+}

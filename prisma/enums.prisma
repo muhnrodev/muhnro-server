@@ -1,0 +1,59 @@
+enum MFAMethod {
+    SMS
+    EMAIL
+    TOTP
+    WEBAUTHN
+}
+
+enum AuthEventType {
+    LOGIN
+    LOGOUT
+    PASSWORD_RESET
+    EMAIL_VERIFICATION
+}
+
+enum IdentityProviderCode {
+    GOOGLE
+    FACEBOOK
+    GITHUB
+    TWITTER
+}
+
+enum ProjectStatus {
+    ACTIVE
+    INACTIVE
+    ARCHIVED
+}
+
+enum ArticleStatus {
+    DRAFT
+    PUBLISHED
+    ARCHIVED
+}
+
+enum EmploymentType {
+    FULL_TIME
+    PART_TIME
+    CONTRACTOR
+    INTERN
+}
+
+enum NoteType {
+    GENERAL
+    TECHNICAL
+    MANAGEMENT
+    OTHER
+}
+
+enum CommentStatus {
+    PENDING
+    APPROVED
+    REJECTED
+}
+
+enum ReportStatus {
+    DRAFT
+    REVIEW
+    PUBLISHED
+    ARCHIVED
+}

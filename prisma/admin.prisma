@@ -1,0 +1,62 @@
+model Location {
+    locationId  String   @id @default(dbgenerated("gen_random_uuid()"))
+    country     String
+    region      String
+    city        String
+    addressLine String
+    postalCode  String
+    gpsLat      Float
+    gpsLong     Float
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+
+    projects    Project[]
+}
+
+model Industry {
+    industryId          String   @id @default(dbgenerated("gen_random_uuid()"))
+    industryCode        String
+    industryName        String
+    description         String
+    createdAt           DateTime @default(now())
+    updatedAt           DateTime @updatedAt
+
+    projects            Project[]
+    articles            ArticleIndustry[]
+    reports             ReportIndustry[]
+}
+
+model ServiceActivity {
+    activityId        String   @id @default(dbgenerated("gen_random_uuid()"))
+    activityCode      String
+    activityName      String
+    description       String
+    createdAt         DateTime @default(now())
+    updatedAt         DateTime @updatedAt
+
+    projectActivities   ProjectServiceActivity[]
+    articleActivities   ArticleServiceActivity[]
+    reportActivities    ReportServiceActivity[]
+}
+
+model IdentityProvider {
+    id          Int                    @id @default(autoincrement())
+    code        IdentityProviderCode   @unique
+    displayName String
+    createdAt   DateTime               @default(now())
+    updatedAt   DateTime               @updatedAt
+
+
+    identities UserIdentity[]
+}
+
+model Topic {
+    topicId     String   @id @default(dbgenerated("gen_random_uuid()"))
+    name        String   @unique
+    description String?
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+
+    articles    ArticleTopic[]
+    reports     ReportTopic[]
+}

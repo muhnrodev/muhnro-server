@@ -1,0 +1,86 @@
+model TeamMember {
+    memberId    String   @id @default(dbgenerated("gen_random_uuid()"))
+    fullName    String
+    email       String   @unique
+    phone       String?
+    department  String?
+    employmentType EmploymentType
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+
+    projectMembers ProjectTeamMember[]
+    projectNotes   ProjectNote[]
+    projects       Project[]
+}
+
+
+model TeamRole {
+    roleId         String   @id @default(dbgenerated("gen_random_uuid()"))
+    roleName       String   @unique
+    description    String
+    createdAt      DateTime @default(now())
+    
+    projectMembers ProjectTeamMember[]
+}
+
+model Client {
+    id             String   @id @default(dbgenerated("gen_random_uuid()"))
+    name           String
+    contactName    String
+    contactEmail   String
+    contactPhone   String
+    billingAddress String
+    notes          String?
+    createdAt      DateTime @default(now())
+    updatedAt      DateTime @updatedAt
+
+    projects       Project[]
+}
+
+model Author {
+    authorId            String   @id @default(dbgenerated("gen_random_uuid()"))
+    fullName            String
+    email               String   @unique
+    bio                 String?
+    organizationId      String?
+    avatarImageId       String?
+    createdAt           DateTime @default(now())
+    updatedAt           DateTime @updatedAt
+
+    organization        Organization? @relation(fields: [organizationId], references: [organizationId])
+    avatarImage         AvatarImage?  @relation(fields: [avatarImageId], references: [imageId])
+
+    articles            ArticleAuthor[]
+
+    reportAuthors ReportAuthor[]
+}
+
+model Organization {
+    organizationId String   @id @default(dbgenerated("gen_random_uuid()"))
+    name           String
+    type           String
+    websiteURL     String
+    createdAt      DateTime @default(now())
+
+    authors        Author[]
+}
+
+model ArticleAuthor {
+    id        String   @id @default(dbgenerated("gen_random_uuid()"))
+    articleId String
+    authorId  String
+    role      String
+
+    article   Article @relation(fields: [articleId], references: [articleId])
+    author    Author  @relation(fields: [authorId], references: [authorId])
+}
+
+model ReportAuthor {
+    id        String   @id @default(dbgenerated("gen_random_uuid()"))
+    reportId  String
+    authorId  String
+    role      String
+
+    report    Report @relation(fields: [reportId], references: [reportId])
+    author    Author @relation(fields: [authorId], references: [authorId])
+}

@@ -1,0 +1,68 @@
+model AvatarImage {
+    imageId     String   @id @default(dbgenerated("gen_random_uuid()"))
+    url         String
+    path        String
+    size        Int
+    mimeType    String
+    caption     String?
+    altText     String?
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+
+    authors     Author[]
+}
+
+model HeroImage {
+    imageId     String   @id @default(dbgenerated("gen_random_uuid()"))
+    url         String
+    path        String
+    size        Int
+    mimeType    String
+    caption     String?
+    altText     String?
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+
+
+    articles Article[]
+}
+
+model CoverImage {
+    imageId     String   @id @default(dbgenerated("gen_random_uuid()"))
+    url         String
+    path        String
+    size        Int
+    mimeType    String
+    caption     String?
+    altText     String?
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+}
+
+model ArticleImage {
+    imageId      String   @id @default(dbgenerated("gen_random_uuid()"))
+    articleId    String
+    url          String
+    path         String
+    size         Int
+    mimeType     String
+    caption      String?
+    altText      String?
+    sequence     Int
+
+    article      Article   @relation(fields: [articleId], references: [articleId])
+}
+
+model ReportFile{
+    fileId      String   @id @default(dbgenerated("gen_random_uuid()"))
+    reportId    String
+    fileName    String
+    url         String
+    path        String
+    mimeType    String
+    size        Int
+    hash        String?
+    createdAt   DateTime @default(now())
+
+    report      Report   @relation(fields: [reportId], references: [reportId])
+}

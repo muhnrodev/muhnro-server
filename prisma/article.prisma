@@ -1,0 +1,102 @@
+model Article {
+    articleId           String   @id @default(dbgenerated("gen_random_uuid()"))
+    slug                String   @unique
+    title               String
+    subtitle            String
+    summary             String
+    body                String   @db.Text
+    status              ArticleStatus
+    scheduledPublish    DateTime?
+    publishedAt         DateTime?
+    unpublishedAt       DateTime?
+    readingTime         Int
+    wordCount           Int
+    heroImageId         String?  @unique
+    projectId           String?
+    createdAt           DateTime @default(now())
+    updatedAt           DateTime @updatedAt
+
+    project             Project? @relation(fields: [projectId], references: [id])
+    heroImage           HeroImage? @relation(fields: [heroImageId], references: [imageId])
+
+    industries          ArticleIndustry[]
+    topics              ArticleTopic[]
+    serviceActivities   ArticleServiceActivity[]
+    tags                ArticleTag[]
+    authors             ArticleAuthor[]
+    images              ArticleImage[]
+    references          ArticleReference[]
+    versions            ArticleVersion[]
+    comments            ArticleComment[]
+}
+
+model ArticleIndustry {
+    id         String   @id @default(dbgenerated("gen_random_uuid()"))
+    articleId  String
+    industryId String
+
+    article    Article  @relation(fields: [articleId], references: [articleId])
+    industry   Industry @relation(fields: [industryId], references: [industryId])
+}
+
+model ArticleTopic {
+    id        String   @id @default(dbgenerated("gen_random_uuid()"))
+    articleId String
+    topicId   String
+
+    article   Article @relation(fields: [articleId], references: [articleId])
+    topic     Topic   @relation(fields: [topicId], references: [topicId])
+}
+
+model ArticleServiceActivity {
+    id         String   @id @default(dbgenerated("gen_random_uuid()"))
+    articleId  String
+    activityId String
+
+    article         Article         @relation(fields: [articleId], references: [articleId])
+    serviceActivity ServiceActivity @relation(fields: [activityId], references: [activityId])
+}
+
+model ArticleTag {
+    id        String   @id @default(dbgenerated("gen_random_uuid()"))
+    articleId String
+    tagId     String
+
+    article   Article @relation(fields: [articleId], references: [articleId])
+}
+
+model ArticleReference {
+    referenceId     String   @id @default(dbgenerated("gen_random_uuid()"))
+    articleId       String
+    title           String
+    url             String
+    publisher       String
+    publishedAt     DateTime?
+    accessedAt      DateTime?
+
+    article         Article @relation(fields: [articleId], references: [articleId])
+}
+
+model ArticleVersion {
+    versionId       String   @id @default(dbgenerated("gen_random_uuid()"))
+    articleId       String
+    versionNumber   Int
+    body            String   @db.Text
+    changeLog       String?
+    createdBy       String
+    createdAt       DateTime @default(now())
+
+
+    article         Article @relation(fields: [articleId], references: [articleId])
+}
+
+model ArticleComment {
+    commentId       String   @id @default(dbgenerated("gen_random_uuid()"))
+    articleId       String
+    author          String
+    body            String   @db.Text
+    status          CommentStatus
+    createdAt       DateTime @default(now())
+
+    article         Article @relation(fields: [articleId], references: [articleId])
+}
