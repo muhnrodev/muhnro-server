@@ -9,15 +9,24 @@ import { LocalStrategy } from './strategies/local.strategy.js';
 import { JwtModule } from '@nestjs/jwt';
 import jwtConfig from './config/jwt.config.js';
 import { JwtStrategy } from './strategies/jwt.strategy.js';
+import refreshJwtConfig from './config/refresh-jwt.config.js';
+import { RefreshJwtStrategy } from './strategies/refresh.strategy.js';
 
 @Module({
   imports: [
     ConfigModule.forFeature(jwtConfig),
+    ConfigModule.forFeature(refreshJwtConfig),
     ConfigModule.forFeature(googleOauthConfig),
     JwtModule.registerAsync(jwtConfig.asProvider()),
     UserModule,
   ],
   controllers: [AuthController],
-  providers: [AuthService, LocalStrategy, JwtStrategy, GoogleStrategy],
+  providers: [
+    AuthService,
+    LocalStrategy,
+    JwtStrategy,
+    RefreshJwtStrategy,
+    GoogleStrategy,
+  ],
 })
 export class AuthModule {}
