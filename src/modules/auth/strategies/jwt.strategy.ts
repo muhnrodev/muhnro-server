@@ -11,7 +11,7 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
     @Inject(jwtConfig.KEY) private config: ConfigType<typeof jwtConfig>,
   ) {
     super({
-      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+      jwtFromRequest: ExtractJwt.fromExtractors([JwtStrategy.cookieExtractor]),
       secretOrKey: config.secret as string,
       ignoreExpiration: false,
     });
@@ -20,4 +20,8 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
   validate(payload: AuthJwtPayload) {
     return { id: payload.sub };
   }
+
+  static cookieExtractor = (req: any): string | null => {
+    return req?.cookies?.access_token || null;
+  };
 }

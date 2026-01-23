@@ -6,7 +6,9 @@ import {
   Request,
   HttpStatus,
   HttpCode,
+  Res,
 } from '@nestjs/common';
+import type { Response } from 'express';
 import { GoogleAuthGuard } from './guards/google-auth/google-auth.guard.js';
 import { LocalAuthGuard } from './guards/local-auth/local-auth.guard.js';
 import { AuthService } from './auth.service.js';
@@ -19,8 +21,32 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   @Post('login')
   @UseGuards(LocalAuthGuard)
-  async login(@Request() req) {
-    return this.authService.login(req.user.id);
+  async login(@Request() req, @Res({ passthrough: true }) res: Response) {
+    const result = this.authService.login(req.user.id);
+    if (!result) {
+      throw new Error('Login failed');
+    }
+    const { id, token, refreshToken } = result;
+
+    const isProd = process.env.NODE_ENV === 'production';
+
+    res.cookie('access_token', token, {
+      domain: isProd ? '.muhnro.com' : undefined,
+      httpOnly: true,
+      secure: isProd,
+      sameSite: 'lax',
+      path: '/',
+    });
+
+    res.cookie('refresh_token', refreshToken, {
+      domain: isProd ? '.muhnro.com' : undefined,
+      httpOnly: true,
+      secure: isProd,
+      sameSite: 'lax',
+      path: '/',
+    });
+
+    return { id, token, refreshToken, success: true };
   }
 
   @UseGuards(RefreshAuthGuard)
