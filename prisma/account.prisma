@@ -16,6 +16,7 @@ model User {
     credential   UserCredential?
     userMFAs     UserMFA[]
     notification  NotificationPreference?
+    privacy      PrivacySettings?
 }
 
 model UserIdentity {
@@ -123,4 +124,19 @@ model NotificationPreference {
     subscriptionReminders Boolean  @default(true)
 
     user                  User           @relation(fields: [userId], references: [id])
+}
+
+model PrivacySettings {
+    id                   String   @id @default(dbgenerated("gen_random_uuid()"))
+    userId               String   @unique
+    trackUserBehavior    Boolean 
+    essentialCookies     Boolean
+    performanceCookies   Boolean
+    functionalCookies    Boolean
+    advertisingCookies   Boolean
+    thirdPartyCookies    Boolean
+    socialMediaCookies   Boolean
+    preferenceCookies    Boolean
+
+    user              User     @relation(fields: [userId], references: [id])
 }

@@ -10,6 +10,7 @@ import { UserService } from './user.service.js';
 import { CreateUserDto } from './dto/create-user.dto.js';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth/jwt-auth.guard.js';
 import { NotificationPreferenceDto } from './dto/notification_preference.dto.js';
+import { PrivacySettingsDto } from './dto/privacy_settings.dto.js';
 
 @Controller('user')
 export class UserController {
@@ -35,6 +36,18 @@ export class UserController {
     return this.userService.updateNotificationPreferences(
       req.user.id,
       notificationPreferenceDto,
+    );
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post('privacy')
+  async updatePrivacySettings(
+    @Request() req,
+    @Body() privacySettingsDto: PrivacySettingsDto,
+  ) {
+    return this.userService.updatePrivacySettings(
+      req.user.id,
+      privacySettingsDto,
     );
   }
 }

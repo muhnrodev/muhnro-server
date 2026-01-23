@@ -61,6 +61,7 @@ export const ModelName = {
   PasswordReset: 'PasswordReset',
   AuthEvent: 'AuthEvent',
   NotificationPreference: 'NotificationPreference',
+  PrivacySettings: 'PrivacySettings',
   Location: 'Location',
   Industry: 'Industry',
   ServiceActivity: 'ServiceActivity',
@@ -251,6 +252,22 @@ export const NotificationPreferenceScalarFieldEnum = {
 } as const
 
 export type NotificationPreferenceScalarFieldEnum = (typeof NotificationPreferenceScalarFieldEnum)[keyof typeof NotificationPreferenceScalarFieldEnum]
+
+
+export const PrivacySettingsScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  trackUserBehavior: 'trackUserBehavior',
+  essentialCookies: 'essentialCookies',
+  performanceCookies: 'performanceCookies',
+  functionalCookies: 'functionalCookies',
+  advertisingCookies: 'advertisingCookies',
+  thirdPartyCookies: 'thirdPartyCookies',
+  socialMediaCookies: 'socialMediaCookies',
+  preferenceCookies: 'preferenceCookies'
+} as const
+
+export type PrivacySettingsScalarFieldEnum = (typeof PrivacySettingsScalarFieldEnum)[keyof typeof PrivacySettingsScalarFieldEnum]
 
 
 export const LocationScalarFieldEnum = {

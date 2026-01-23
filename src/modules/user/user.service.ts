@@ -4,6 +4,7 @@ import { CreateUserDto } from './dto/create-user.dto.js';
 import { GeneratorService } from '../../common/generator/generator.service.js';
 import * as bcrypt from 'bcrypt';
 import { NotificationPreferenceDto } from './dto/notification_preference.dto.js';
+import { PrivacySettingsDto } from './dto/privacy_settings.dto.js';
 
 @Injectable()
 export class UserService {
@@ -19,6 +20,7 @@ export class UserService {
       where: { id: userId },
       include: {
         notification: true,
+        privacy: true,
       },
     });
   }
@@ -107,6 +109,44 @@ export class UserService {
         user: user,
       };
     } catch (error) {}
+  }
+
+  async updatePrivacySettings(userId: string, data: PrivacySettingsDto) {
+    try {
+      await this.prisma.privacySettings.upsert({
+        where: { userId },
+        update: {
+          trackUserBehavior: data.trackUserBehavior,
+          essentialCookies: data.essentialCookies,
+          performanceCookies: data.performanceCookies,
+          functionalCookies: data.functionalCookies,
+          advertisingCookies: data.advertisingCookies,
+          thirdPartyCookies: data.thirdPartyCookies,
+          socialMediaCookies: data.socialMediaCookies,
+          preferenceCookies: data.preferenceCookies,
+        },
+        create: {
+          id: data.id,
+          userId,
+          trackUserBehavior: data.trackUserBehavior,
+          essentialCookies: data.essentialCookies,
+          performanceCookies: data.performanceCookies,
+          functionalCookies: data.functionalCookies,
+          advertisingCookies: data.advertisingCookies,
+          thirdPartyCookies: data.thirdPartyCookies,
+          socialMediaCookies: data.socialMediaCookies,
+          preferenceCookies: data.preferenceCookies,
+        },
+      });
+
+      const user = await this.getUserById(userId);
+      return {
+        message: 'Privacy Settings updated successfully',
+        user: user,
+      };
+    } catch (error) {
+      throw new Error('Failed to update privacy settings');
+    }
   }
 
   async createUserCredentials(userId: string, password: string) {

@@ -394,6 +394,7 @@ export const ModelName = {
   PasswordReset: 'PasswordReset',
   AuthEvent: 'AuthEvent',
   NotificationPreference: 'NotificationPreference',
+  PrivacySettings: 'PrivacySettings',
   Location: 'Location',
   Industry: 'Industry',
   ServiceActivity: 'ServiceActivity',
@@ -443,7 +444,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "userIdentity" | "userCredential" | "userCredentialWebAuthn" | "userMFA" | "oAuthToken" | "emailVerification" | "passwordReset" | "authEvent" | "notificationPreference" | "location" | "industry" | "serviceActivity" | "identityProvider" | "topic" | "article" | "articleIndustry" | "articleTopic" | "articleServiceActivity" | "articleTag" | "articleReference" | "articleVersion" | "articleComment" | "avatarImage" | "heroImage" | "coverImage" | "articleImage" | "reportFile" | "teamMember" | "teamRole" | "client" | "author" | "organization" | "articleAuthor" | "reportAuthor" | "project" | "projectServiceActivity" | "projectTeamMember" | "projectImage" | "projectNote" | "report" | "reportIndustry" | "reportTopic" | "reportServiceActivity"
+    modelProps: "user" | "userIdentity" | "userCredential" | "userCredentialWebAuthn" | "userMFA" | "oAuthToken" | "emailVerification" | "passwordReset" | "authEvent" | "notificationPreference" | "privacySettings" | "location" | "industry" | "serviceActivity" | "identityProvider" | "topic" | "article" | "articleIndustry" | "articleTopic" | "articleServiceActivity" | "articleTag" | "articleReference" | "articleVersion" | "articleComment" | "avatarImage" | "heroImage" | "coverImage" | "articleImage" | "reportFile" | "teamMember" | "teamRole" | "client" | "author" | "organization" | "articleAuthor" | "reportAuthor" | "project" | "projectServiceActivity" | "projectTeamMember" | "projectImage" | "projectNote" | "report" | "reportIndustry" | "reportTopic" | "reportServiceActivity"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1184,6 +1185,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.NotificationPreferenceCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.NotificationPreferenceCountAggregateOutputType> | number
+        }
+      }
+    }
+    PrivacySettings: {
+      payload: Prisma.$PrivacySettingsPayload<ExtArgs>
+      fields: Prisma.PrivacySettingsFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PrivacySettingsFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrivacySettingsPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PrivacySettingsFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrivacySettingsPayload>
+        }
+        findFirst: {
+          args: Prisma.PrivacySettingsFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrivacySettingsPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PrivacySettingsFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrivacySettingsPayload>
+        }
+        findMany: {
+          args: Prisma.PrivacySettingsFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrivacySettingsPayload>[]
+        }
+        create: {
+          args: Prisma.PrivacySettingsCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrivacySettingsPayload>
+        }
+        createMany: {
+          args: Prisma.PrivacySettingsCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PrivacySettingsCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrivacySettingsPayload>[]
+        }
+        delete: {
+          args: Prisma.PrivacySettingsDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrivacySettingsPayload>
+        }
+        update: {
+          args: Prisma.PrivacySettingsUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrivacySettingsPayload>
+        }
+        deleteMany: {
+          args: Prisma.PrivacySettingsDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PrivacySettingsUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PrivacySettingsUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrivacySettingsPayload>[]
+        }
+        upsert: {
+          args: Prisma.PrivacySettingsUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrivacySettingsPayload>
+        }
+        aggregate: {
+          args: Prisma.PrivacySettingsAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePrivacySettings>
+        }
+        groupBy: {
+          args: Prisma.PrivacySettingsGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PrivacySettingsGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PrivacySettingsCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PrivacySettingsCountAggregateOutputType> | number
         }
       }
     }
@@ -3882,6 +3957,22 @@ export const NotificationPreferenceScalarFieldEnum = {
 export type NotificationPreferenceScalarFieldEnum = (typeof NotificationPreferenceScalarFieldEnum)[keyof typeof NotificationPreferenceScalarFieldEnum]
 
 
+export const PrivacySettingsScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  trackUserBehavior: 'trackUserBehavior',
+  essentialCookies: 'essentialCookies',
+  performanceCookies: 'performanceCookies',
+  functionalCookies: 'functionalCookies',
+  advertisingCookies: 'advertisingCookies',
+  thirdPartyCookies: 'thirdPartyCookies',
+  socialMediaCookies: 'socialMediaCookies',
+  preferenceCookies: 'preferenceCookies'
+} as const
+
+export type PrivacySettingsScalarFieldEnum = (typeof PrivacySettingsScalarFieldEnum)[keyof typeof PrivacySettingsScalarFieldEnum]
+
+
 export const LocationScalarFieldEnum = {
   locationId: 'locationId',
   country: 'country',
@@ -4680,6 +4771,7 @@ export type GlobalOmitConfig = {
   passwordReset?: Prisma.PasswordResetOmit
   authEvent?: Prisma.AuthEventOmit
   notificationPreference?: Prisma.NotificationPreferenceOmit
+  privacySettings?: Prisma.PrivacySettingsOmit
   location?: Prisma.LocationOmit
   industry?: Prisma.IndustryOmit
   serviceActivity?: Prisma.ServiceActivityOmit

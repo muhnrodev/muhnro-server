@@ -68,6 +68,11 @@ export type AuthEvent = Prisma.AuthEventModel
  */
 export type NotificationPreference = Prisma.NotificationPreferenceModel
 /**
+ * Model PrivacySettings
+ * 
+ */
+export type PrivacySettings = Prisma.PrivacySettingsModel
+/**
  * Model Location
  * 
  */
