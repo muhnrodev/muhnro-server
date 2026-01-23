@@ -51,6 +51,7 @@ export class AuthService {
 
   login(userId: string) {
     try {
+      const user = this.userService.getUserById(userId);
       const payload: AuthJwtPayload = { sub: userId };
       const token = this.jwtService.sign(payload);
       const refreshToken = this.jwtService.sign(
@@ -62,6 +63,7 @@ export class AuthService {
         id: userId,
         token,
         refreshToken,
+        user,
       };
     } catch (error) {}
   }

@@ -393,6 +393,7 @@ export const ModelName = {
   EmailVerification: 'EmailVerification',
   PasswordReset: 'PasswordReset',
   AuthEvent: 'AuthEvent',
+  NotificationPreference: 'NotificationPreference',
   Location: 'Location',
   Industry: 'Industry',
   ServiceActivity: 'ServiceActivity',
@@ -442,7 +443,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "userIdentity" | "userCredential" | "userCredentialWebAuthn" | "userMFA" | "oAuthToken" | "emailVerification" | "passwordReset" | "authEvent" | "location" | "industry" | "serviceActivity" | "identityProvider" | "topic" | "article" | "articleIndustry" | "articleTopic" | "articleServiceActivity" | "articleTag" | "articleReference" | "articleVersion" | "articleComment" | "avatarImage" | "heroImage" | "coverImage" | "articleImage" | "reportFile" | "teamMember" | "teamRole" | "client" | "author" | "organization" | "articleAuthor" | "reportAuthor" | "project" | "projectServiceActivity" | "projectTeamMember" | "projectImage" | "projectNote" | "report" | "reportIndustry" | "reportTopic" | "reportServiceActivity"
+    modelProps: "user" | "userIdentity" | "userCredential" | "userCredentialWebAuthn" | "userMFA" | "oAuthToken" | "emailVerification" | "passwordReset" | "authEvent" | "notificationPreference" | "location" | "industry" | "serviceActivity" | "identityProvider" | "topic" | "article" | "articleIndustry" | "articleTopic" | "articleServiceActivity" | "articleTag" | "articleReference" | "articleVersion" | "articleComment" | "avatarImage" | "heroImage" | "coverImage" | "articleImage" | "reportFile" | "teamMember" | "teamRole" | "client" | "author" | "organization" | "articleAuthor" | "reportAuthor" | "project" | "projectServiceActivity" | "projectTeamMember" | "projectImage" | "projectNote" | "report" | "reportIndustry" | "reportTopic" | "reportServiceActivity"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1109,6 +1110,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.AuthEventCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.AuthEventCountAggregateOutputType> | number
+        }
+      }
+    }
+    NotificationPreference: {
+      payload: Prisma.$NotificationPreferencePayload<ExtArgs>
+      fields: Prisma.NotificationPreferenceFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.NotificationPreferenceFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificationPreferencePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.NotificationPreferenceFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificationPreferencePayload>
+        }
+        findFirst: {
+          args: Prisma.NotificationPreferenceFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificationPreferencePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.NotificationPreferenceFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificationPreferencePayload>
+        }
+        findMany: {
+          args: Prisma.NotificationPreferenceFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificationPreferencePayload>[]
+        }
+        create: {
+          args: Prisma.NotificationPreferenceCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificationPreferencePayload>
+        }
+        createMany: {
+          args: Prisma.NotificationPreferenceCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.NotificationPreferenceCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificationPreferencePayload>[]
+        }
+        delete: {
+          args: Prisma.NotificationPreferenceDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificationPreferencePayload>
+        }
+        update: {
+          args: Prisma.NotificationPreferenceUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificationPreferencePayload>
+        }
+        deleteMany: {
+          args: Prisma.NotificationPreferenceDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.NotificationPreferenceUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.NotificationPreferenceUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificationPreferencePayload>[]
+        }
+        upsert: {
+          args: Prisma.NotificationPreferenceUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificationPreferencePayload>
+        }
+        aggregate: {
+          args: Prisma.NotificationPreferenceAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateNotificationPreference>
+        }
+        groupBy: {
+          args: Prisma.NotificationPreferenceGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.NotificationPreferenceGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.NotificationPreferenceCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.NotificationPreferenceCountAggregateOutputType> | number
         }
       }
     }
@@ -3790,6 +3865,23 @@ export const AuthEventScalarFieldEnum = {
 export type AuthEventScalarFieldEnum = (typeof AuthEventScalarFieldEnum)[keyof typeof AuthEventScalarFieldEnum]
 
 
+export const NotificationPreferenceScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  pushNotifications: 'pushNotifications',
+  monthlyNewsletter: 'monthlyNewsletter',
+  vacancies: 'vacancies',
+  dataInsights: 'dataInsights',
+  productAnnouncements: 'productAnnouncements',
+  specialOffers: 'specialOffers',
+  eventInvitations: 'eventInvitations',
+  projectUpdates: 'projectUpdates',
+  subscriptionReminders: 'subscriptionReminders'
+} as const
+
+export type NotificationPreferenceScalarFieldEnum = (typeof NotificationPreferenceScalarFieldEnum)[keyof typeof NotificationPreferenceScalarFieldEnum]
+
+
 export const LocationScalarFieldEnum = {
   locationId: 'locationId',
   country: 'country',
@@ -4587,6 +4679,7 @@ export type GlobalOmitConfig = {
   emailVerification?: Prisma.EmailVerificationOmit
   passwordReset?: Prisma.PasswordResetOmit
   authEvent?: Prisma.AuthEventOmit
+  notificationPreference?: Prisma.NotificationPreferenceOmit
   location?: Prisma.LocationOmit
   industry?: Prisma.IndustryOmit
   serviceActivity?: Prisma.ServiceActivityOmit

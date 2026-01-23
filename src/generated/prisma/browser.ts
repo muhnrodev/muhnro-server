@@ -63,6 +63,11 @@ export type PasswordReset = Prisma.PasswordResetModel
  */
 export type AuthEvent = Prisma.AuthEventModel
 /**
+ * Model NotificationPreference
+ * 
+ */
+export type NotificationPreference = Prisma.NotificationPreferenceModel
+/**
  * Model Location
  * 
  */

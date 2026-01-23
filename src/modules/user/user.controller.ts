@@ -9,6 +9,7 @@ import {
 import { UserService } from './user.service.js';
 import { CreateUserDto } from './dto/create-user.dto.js';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth/jwt-auth.guard.js';
+import { NotificationPreferenceDto } from './dto/notification_preference.dto.js';
 
 @Controller('user')
 export class UserController {
@@ -23,5 +24,17 @@ export class UserController {
   @Get('me')
   async getProfile(@Request() req) {
     return this.userService.getUserById(req.user.id);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post('notifications')
+  async updateNotifications(
+    @Request() req,
+    @Body() notificationPreferenceDto: NotificationPreferenceDto,
+  ) {
+    return this.userService.updateNotificationPreferences(
+      req.user.id,
+      notificationPreferenceDto,
+    );
   }
 }

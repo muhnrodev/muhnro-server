@@ -60,6 +60,7 @@ export const ModelName = {
   EmailVerification: 'EmailVerification',
   PasswordReset: 'PasswordReset',
   AuthEvent: 'AuthEvent',
+  NotificationPreference: 'NotificationPreference',
   Location: 'Location',
   Industry: 'Industry',
   ServiceActivity: 'ServiceActivity',
@@ -233,6 +234,23 @@ export const AuthEventScalarFieldEnum = {
 } as const
 
 export type AuthEventScalarFieldEnum = (typeof AuthEventScalarFieldEnum)[keyof typeof AuthEventScalarFieldEnum]
+
+
+export const NotificationPreferenceScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  pushNotifications: 'pushNotifications',
+  monthlyNewsletter: 'monthlyNewsletter',
+  vacancies: 'vacancies',
+  dataInsights: 'dataInsights',
+  productAnnouncements: 'productAnnouncements',
+  specialOffers: 'specialOffers',
+  eventInvitations: 'eventInvitations',
+  projectUpdates: 'projectUpdates',
+  subscriptionReminders: 'subscriptionReminders'
+} as const
+
+export type NotificationPreferenceScalarFieldEnum = (typeof NotificationPreferenceScalarFieldEnum)[keyof typeof NotificationPreferenceScalarFieldEnum]
 
 
 export const LocationScalarFieldEnum = {

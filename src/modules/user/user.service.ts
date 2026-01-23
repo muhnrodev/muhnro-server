@@ -3,6 +3,7 @@ import { PrismaService } from '../../prisma/prisma.service.js';
 import { CreateUserDto } from './dto/create-user.dto.js';
 import { GeneratorService } from '../../common/generator/generator.service.js';
 import * as bcrypt from 'bcrypt';
+import { NotificationPreferenceDto } from './dto/notification_preference.dto.js';
 
 @Injectable()
 export class UserService {
@@ -16,6 +17,9 @@ export class UserService {
   async getUserById(userId: string) {
     return this.prisma.user.findUnique({
       where: { id: userId },
+      include: {
+        notification: true,
+      },
     });
   }
 
@@ -30,8 +34,6 @@ export class UserService {
       where: { userId },
     });
   }
-
-  async;
 
   async createUser(data: CreateUserDto) {
     try {
@@ -64,6 +66,47 @@ export class UserService {
       this.logger.error('Failed to create user', error.stack);
       throw error;
     }
+  }
+
+  async updateNotificationPreferences(
+    userId: string,
+    data: NotificationPreferenceDto,
+  ) {
+    try {
+      await this.prisma.notificationPreference.upsert({
+        where: { userId },
+        update: {
+          pushNotifications: data.pushNotifications,
+          monthlyNewsletter: data.monthlyNewsletter,
+          vacancies: data.vacancies,
+          dataInsights: data.dataInsights,
+          productAnnouncements: data.productAnnouncements,
+          specialOffers: data.specialOffers,
+          eventInvitations: data.eventInvitations,
+          projectUpdates: data.projectUpdates,
+          subscriptionReminders: data.subscriptionReminders,
+        },
+        create: {
+          id: data.id,
+          userId,
+          pushNotifications: data.pushNotifications,
+          monthlyNewsletter: data.monthlyNewsletter,
+          vacancies: data.vacancies,
+          dataInsights: data.dataInsights,
+          productAnnouncements: data.productAnnouncements,
+          specialOffers: data.specialOffers,
+          eventInvitations: data.eventInvitations,
+          projectUpdates: data.projectUpdates,
+          subscriptionReminders: data.subscriptionReminders,
+        },
+      });
+
+      const user = await this.getUserById(userId);
+      return {
+        message: 'Notification preferences updated successfully',
+        user: user,
+      };
+    } catch (error) {}
   }
 
   async createUserCredentials(userId: string, password: string) {

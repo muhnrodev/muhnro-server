@@ -26,7 +26,7 @@ export class AuthController {
     if (!result) {
       throw new Error('Login failed');
     }
-    const { id, token, refreshToken } = result;
+    const { id, token, refreshToken, user } = result;
 
     const isProd = process.env.NODE_ENV === 'production';
 
@@ -46,7 +46,7 @@ export class AuthController {
       path: '/',
     });
 
-    return { id, token, refreshToken, success: true };
+    return { id, token, refreshToken, user, success: true };
   }
 
   @UseGuards(RefreshAuthGuard)

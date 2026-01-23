@@ -12,9 +12,10 @@ model User {
     timezone    String   @default("UTC")
     deletedAt   DateTime?
 
-    identities  UserIdentity[]
-    credential  UserCredential?
-    userMFAs    UserMFA[]
+    identities   UserIdentity[]
+    credential   UserCredential?
+    userMFAs     UserMFA[]
+    notification  NotificationPreference?
 }
 
 model UserIdentity {
@@ -106,4 +107,20 @@ model AuthEvent {
     userAgent   String
     occurredAt  DateTime @default(now())
     metadata    Json?
+}
+
+model NotificationPreference {
+    id                    String   @id @default(dbgenerated("gen_random_uuid()"))
+    userId                String   @unique
+    pushNotifications      Boolean  @default(true)
+    monthlyNewsletter     Boolean  @default(true)
+    vacancies             Boolean  @default(true)
+    dataInsights          Boolean  @default(true)
+    productAnnouncements  Boolean  @default(true)
+    specialOffers         Boolean  @default(true)
+    eventInvitations      Boolean  @default(true)
+    projectUpdates        Boolean  @default(true)
+    subscriptionReminders Boolean  @default(true)
+
+    user                  User           @relation(fields: [userId], references: [id])
 }

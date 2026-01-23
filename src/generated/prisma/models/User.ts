@@ -241,6 +241,7 @@ export type UserWhereInput = {
   identities?: Prisma.UserIdentityListRelationFilter
   credential?: Prisma.XOR<Prisma.UserCredentialNullableScalarRelationFilter, Prisma.UserCredentialWhereInput> | null
   userMFAs?: Prisma.UserMFAListRelationFilter
+  notification?: Prisma.XOR<Prisma.NotificationPreferenceNullableScalarRelationFilter, Prisma.NotificationPreferenceWhereInput> | null
 }
 
 export type UserOrderByWithRelationInput = {
@@ -259,6 +260,7 @@ export type UserOrderByWithRelationInput = {
   identities?: Prisma.UserIdentityOrderByRelationAggregateInput
   credential?: Prisma.UserCredentialOrderByWithRelationInput
   userMFAs?: Prisma.UserMFAOrderByRelationAggregateInput
+  notification?: Prisma.NotificationPreferenceOrderByWithRelationInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -280,6 +282,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   identities?: Prisma.UserIdentityListRelationFilter
   credential?: Prisma.XOR<Prisma.UserCredentialNullableScalarRelationFilter, Prisma.UserCredentialWhereInput> | null
   userMFAs?: Prisma.UserMFAListRelationFilter
+  notification?: Prisma.XOR<Prisma.NotificationPreferenceNullableScalarRelationFilter, Prisma.NotificationPreferenceWhereInput> | null
 }, "id" | "email" | "username">
 
 export type UserOrderByWithAggregationInput = {
@@ -334,6 +337,7 @@ export type UserCreateInput = {
   identities?: Prisma.UserIdentityCreateNestedManyWithoutUserInput
   credential?: Prisma.UserCredentialCreateNestedOneWithoutUserInput
   userMFAs?: Prisma.UserMFACreateNestedManyWithoutUserInput
+  notification?: Prisma.NotificationPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -352,6 +356,7 @@ export type UserUncheckedCreateInput = {
   identities?: Prisma.UserIdentityUncheckedCreateNestedManyWithoutUserInput
   credential?: Prisma.UserCredentialUncheckedCreateNestedOneWithoutUserInput
   userMFAs?: Prisma.UserMFAUncheckedCreateNestedManyWithoutUserInput
+  notification?: Prisma.NotificationPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -370,6 +375,7 @@ export type UserUpdateInput = {
   identities?: Prisma.UserIdentityUpdateManyWithoutUserNestedInput
   credential?: Prisma.UserCredentialUpdateOneWithoutUserNestedInput
   userMFAs?: Prisma.UserMFAUpdateManyWithoutUserNestedInput
+  notification?: Prisma.NotificationPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -388,6 +394,7 @@ export type UserUncheckedUpdateInput = {
   identities?: Prisma.UserIdentityUncheckedUpdateManyWithoutUserNestedInput
   credential?: Prisma.UserCredentialUncheckedUpdateOneWithoutUserNestedInput
   userMFAs?: Prisma.UserMFAUncheckedUpdateManyWithoutUserNestedInput
+  notification?: Prisma.NotificationPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -543,6 +550,20 @@ export type UserUpdateOneRequiredWithoutUserMFAsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutUserMFAsInput, Prisma.UserUpdateWithoutUserMFAsInput>, Prisma.UserUncheckedUpdateWithoutUserMFAsInput>
 }
 
+export type UserCreateNestedOneWithoutNotificationInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutNotificationInput, Prisma.UserUncheckedCreateWithoutNotificationInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutNotificationInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutNotificationNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutNotificationInput, Prisma.UserUncheckedCreateWithoutNotificationInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutNotificationInput
+  upsert?: Prisma.UserUpsertWithoutNotificationInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutNotificationInput, Prisma.UserUpdateWithoutNotificationInput>, Prisma.UserUncheckedUpdateWithoutNotificationInput>
+}
+
 export type UserCreateWithoutIdentitiesInput = {
   id?: string
   email: string
@@ -558,6 +579,7 @@ export type UserCreateWithoutIdentitiesInput = {
   deletedAt?: Date | string | null
   credential?: Prisma.UserCredentialCreateNestedOneWithoutUserInput
   userMFAs?: Prisma.UserMFACreateNestedManyWithoutUserInput
+  notification?: Prisma.NotificationPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutIdentitiesInput = {
@@ -575,6 +597,7 @@ export type UserUncheckedCreateWithoutIdentitiesInput = {
   deletedAt?: Date | string | null
   credential?: Prisma.UserCredentialUncheckedCreateNestedOneWithoutUserInput
   userMFAs?: Prisma.UserMFAUncheckedCreateNestedManyWithoutUserInput
+  notification?: Prisma.NotificationPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutIdentitiesInput = {
@@ -608,6 +631,7 @@ export type UserUpdateWithoutIdentitiesInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   credential?: Prisma.UserCredentialUpdateOneWithoutUserNestedInput
   userMFAs?: Prisma.UserMFAUpdateManyWithoutUserNestedInput
+  notification?: Prisma.NotificationPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutIdentitiesInput = {
@@ -625,6 +649,7 @@ export type UserUncheckedUpdateWithoutIdentitiesInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   credential?: Prisma.UserCredentialUncheckedUpdateOneWithoutUserNestedInput
   userMFAs?: Prisma.UserMFAUncheckedUpdateManyWithoutUserNestedInput
+  notification?: Prisma.NotificationPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutCredentialInput = {
@@ -642,6 +667,7 @@ export type UserCreateWithoutCredentialInput = {
   deletedAt?: Date | string | null
   identities?: Prisma.UserIdentityCreateNestedManyWithoutUserInput
   userMFAs?: Prisma.UserMFACreateNestedManyWithoutUserInput
+  notification?: Prisma.NotificationPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutCredentialInput = {
@@ -659,6 +685,7 @@ export type UserUncheckedCreateWithoutCredentialInput = {
   deletedAt?: Date | string | null
   identities?: Prisma.UserIdentityUncheckedCreateNestedManyWithoutUserInput
   userMFAs?: Prisma.UserMFAUncheckedCreateNestedManyWithoutUserInput
+  notification?: Prisma.NotificationPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCredentialInput = {
@@ -692,6 +719,7 @@ export type UserUpdateWithoutCredentialInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   identities?: Prisma.UserIdentityUpdateManyWithoutUserNestedInput
   userMFAs?: Prisma.UserMFAUpdateManyWithoutUserNestedInput
+  notification?: Prisma.NotificationPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCredentialInput = {
@@ -709,6 +737,7 @@ export type UserUncheckedUpdateWithoutCredentialInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   identities?: Prisma.UserIdentityUncheckedUpdateManyWithoutUserNestedInput
   userMFAs?: Prisma.UserMFAUncheckedUpdateManyWithoutUserNestedInput
+  notification?: Prisma.NotificationPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutUserMFAsInput = {
@@ -726,6 +755,7 @@ export type UserCreateWithoutUserMFAsInput = {
   deletedAt?: Date | string | null
   identities?: Prisma.UserIdentityCreateNestedManyWithoutUserInput
   credential?: Prisma.UserCredentialCreateNestedOneWithoutUserInput
+  notification?: Prisma.NotificationPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutUserMFAsInput = {
@@ -743,6 +773,7 @@ export type UserUncheckedCreateWithoutUserMFAsInput = {
   deletedAt?: Date | string | null
   identities?: Prisma.UserIdentityUncheckedCreateNestedManyWithoutUserInput
   credential?: Prisma.UserCredentialUncheckedCreateNestedOneWithoutUserInput
+  notification?: Prisma.NotificationPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutUserMFAsInput = {
@@ -776,6 +807,7 @@ export type UserUpdateWithoutUserMFAsInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   identities?: Prisma.UserIdentityUpdateManyWithoutUserNestedInput
   credential?: Prisma.UserCredentialUpdateOneWithoutUserNestedInput
+  notification?: Prisma.NotificationPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUserMFAsInput = {
@@ -793,6 +825,95 @@ export type UserUncheckedUpdateWithoutUserMFAsInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   identities?: Prisma.UserIdentityUncheckedUpdateManyWithoutUserNestedInput
   credential?: Prisma.UserCredentialUncheckedUpdateOneWithoutUserNestedInput
+  notification?: Prisma.NotificationPreferenceUncheckedUpdateOneWithoutUserNestedInput
+}
+
+export type UserCreateWithoutNotificationInput = {
+  id?: string
+  email: string
+  username: string
+  displayName: string
+  isActive?: boolean
+  isLocked?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  lastLoginAt?: Date | string | null
+  locale?: string
+  timezone?: string
+  deletedAt?: Date | string | null
+  identities?: Prisma.UserIdentityCreateNestedManyWithoutUserInput
+  credential?: Prisma.UserCredentialCreateNestedOneWithoutUserInput
+  userMFAs?: Prisma.UserMFACreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutNotificationInput = {
+  id?: string
+  email: string
+  username: string
+  displayName: string
+  isActive?: boolean
+  isLocked?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  lastLoginAt?: Date | string | null
+  locale?: string
+  timezone?: string
+  deletedAt?: Date | string | null
+  identities?: Prisma.UserIdentityUncheckedCreateNestedManyWithoutUserInput
+  credential?: Prisma.UserCredentialUncheckedCreateNestedOneWithoutUserInput
+  userMFAs?: Prisma.UserMFAUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutNotificationInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutNotificationInput, Prisma.UserUncheckedCreateWithoutNotificationInput>
+}
+
+export type UserUpsertWithoutNotificationInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutNotificationInput, Prisma.UserUncheckedUpdateWithoutNotificationInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutNotificationInput, Prisma.UserUncheckedCreateWithoutNotificationInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutNotificationInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutNotificationInput, Prisma.UserUncheckedUpdateWithoutNotificationInput>
+}
+
+export type UserUpdateWithoutNotificationInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  displayName?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isLocked?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  identities?: Prisma.UserIdentityUpdateManyWithoutUserNestedInput
+  credential?: Prisma.UserCredentialUpdateOneWithoutUserNestedInput
+  userMFAs?: Prisma.UserMFAUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutNotificationInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  displayName?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isLocked?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  identities?: Prisma.UserIdentityUncheckedUpdateManyWithoutUserNestedInput
+  credential?: Prisma.UserCredentialUncheckedUpdateOneWithoutUserNestedInput
+  userMFAs?: Prisma.UserMFAUncheckedUpdateManyWithoutUserNestedInput
 }
 
 
@@ -851,6 +972,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   identities?: boolean | Prisma.User$identitiesArgs<ExtArgs>
   credential?: boolean | Prisma.User$credentialArgs<ExtArgs>
   userMFAs?: boolean | Prisma.User$userMFAsArgs<ExtArgs>
+  notification?: boolean | Prisma.User$notificationArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -904,6 +1026,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   identities?: boolean | Prisma.User$identitiesArgs<ExtArgs>
   credential?: boolean | Prisma.User$credentialArgs<ExtArgs>
   userMFAs?: boolean | Prisma.User$userMFAsArgs<ExtArgs>
+  notification?: boolean | Prisma.User$notificationArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -915,6 +1038,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     identities: Prisma.$UserIdentityPayload<ExtArgs>[]
     credential: Prisma.$UserCredentialPayload<ExtArgs> | null
     userMFAs: Prisma.$UserMFAPayload<ExtArgs>[]
+    notification: Prisma.$NotificationPreferencePayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1326,6 +1450,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   identities<T extends Prisma.User$identitiesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$identitiesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserIdentityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   credential<T extends Prisma.User$credentialArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$credentialArgs<ExtArgs>>): Prisma.Prisma__UserCredentialClient<runtime.Types.Result.GetResult<Prisma.$UserCredentialPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   userMFAs<T extends Prisma.User$userMFAsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$userMFAsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserMFAPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  notification<T extends Prisma.User$notificationArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$notificationArgs<ExtArgs>>): Prisma.Prisma__NotificationPreferenceClient<runtime.Types.Result.GetResult<Prisma.$NotificationPreferencePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1819,6 +1944,25 @@ export type User$userMFAsArgs<ExtArgs extends runtime.Types.Extensions.InternalA
   take?: number
   skip?: number
   distinct?: Prisma.UserMFAScalarFieldEnum | Prisma.UserMFAScalarFieldEnum[]
+}
+
+/**
+ * User.notification
+ */
+export type User$notificationArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the NotificationPreference
+   */
+  select?: Prisma.NotificationPreferenceSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the NotificationPreference
+   */
+  omit?: Prisma.NotificationPreferenceOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.NotificationPreferenceInclude<ExtArgs> | null
+  where?: Prisma.NotificationPreferenceWhereInput
 }
 
 /**
