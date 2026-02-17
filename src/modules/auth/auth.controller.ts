@@ -28,6 +28,8 @@ export class AuthController {
     }
     const { id, token, refreshToken, user } = result;
 
+    await this.authService.createAuthEvent(id, 'LOGIN', req);
+
     const isProd = process.env.NODE_ENV === 'production';
 
     res.cookie('access_token', token, {
@@ -61,5 +63,37 @@ export class AuthController {
 
   @Get('google/callback')
   @UseGuards(GoogleAuthGuard)
-  async googleCallback() {}
+  async googleCallback(
+    @Request() req,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    const result = this.authService.login(req.user.id);
+    if (!result) {
+      throw new Error('Login failed');
+    }
+    const { id, token, refreshToken, user } = result;
+
+    await this.authService.createAuthEvent(id, 'LOGIN', req);
+
+    const isProd = process.env.NODE_ENV === 'production';
+
+    res.cookie('access_token', token, {
+      domain: isProd ? '.muhnro.com' : undefined,
+      httpOnly: true,
+      secure: isProd,
+      sameSite: 'lax',
+      path: '/',
+    });
+
+    res.cookie('refresh_token', refreshToken, {
+      domain: isProd ? '.muhnro.com' : undefined,
+      httpOnly: true,
+      secure: isProd,
+      sameSite: 'lax',
+      path: '/',
+    });
+
+    const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
+    return res.redirect(frontendUrl);
+  }
 }

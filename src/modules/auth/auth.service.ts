@@ -3,6 +3,7 @@ import {
   Injectable,
   Logger,
   UnauthorizedException,
+  Request as NestRequest,
 } from '@nestjs/common';
 import { CreateUserDto } from '../user/dto/create-user.dto.js';
 import { UserService } from '../user/user.service.js';
@@ -11,6 +12,8 @@ import { JwtService } from '@nestjs/jwt';
 import { AuthJwtPayload } from './types/auth-jwtPayload.js';
 import refreshJwtConfig from './config/refresh-jwt.config.js';
 import * as config from '@nestjs/config';
+import { AuthEventType } from '../../generated/prisma/enums.js';
+import { PrismaService } from '../../prisma/prisma.service.js';
 
 @Injectable()
 export class AuthService {
@@ -19,6 +22,7 @@ export class AuthService {
   constructor(
     private readonly userService: UserService,
     private readonly jwtService: JwtService,
+    private readonly prisma: PrismaService,
     @Inject(refreshJwtConfig.KEY)
     private refreshTokenConfig: config.ConfigType<typeof refreshJwtConfig>,
   ) {}
@@ -86,5 +90,32 @@ export class AuthService {
     }
 
     return this.userService.createUser(googleUser);
+  }
+
+  async createAuthEvent(
+    userId: string,
+    eventType: AuthEventType,
+    request: any,
+  ) {
+    try {
+      const ipAddress =
+        request.ip || request.socket?.remoteAddress || 'Unknown';
+      const userAgent = request.headers['user-agent'] || 'Unknown';
+      const metadata = request.headers;
+
+      await this.prisma.authEvent.create({
+        data: {
+          userId,
+          eventType: eventType,
+          ipAddress,
+          occurredAt: new Date(),
+          userAgent,
+          metadata,
+        },
+      });
+    } catch (error) {
+      this.logger.error('Failed to create auth event', error.stack);
+      throw error;
+    }
   }
 }

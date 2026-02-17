@@ -40,14 +40,15 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, documentFactory);
 
   app.enableCors({
-    origin: (origin, callback) => {
+    origin: (
+      origin: string | undefined,
+      callback: (err: Error | null, allow?: boolean) => void,
+    ) => {
       if (!origin) return callback(null, true);
-
-      const allowedDomains = ['localhost:3000', 'localhost:5173'];
-
-      const isAllowed = allowedDomains.some((domain) =>
-        origin.endsWith(domain),
-      );
+      const isAllowed =
+        origin.endsWith('muhnro.com') ||
+        origin === 'http://localhost:5173' ||
+        origin === 'http://localhost:3000';
 
       callback(null, isAllowed);
     },

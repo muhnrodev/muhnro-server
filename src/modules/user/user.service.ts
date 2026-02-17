@@ -61,7 +61,10 @@ export class UserService {
         },
       });
 
-      await this.createUserCredentials(user.id, data.password);
+      console.log('Created user:', user);
+
+      if (data.password)
+        await this.createUserCredentials(user.id, data.password);
 
       return user;
     } catch (error) {
