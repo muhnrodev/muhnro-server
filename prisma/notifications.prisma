@@ -1,0 +1,36 @@
+model NotificationPreference {
+    id                    String   @id @default(dbgenerated("gen_random_uuid()"))
+    userId                String   @unique
+    pushNotifications      Boolean  @default(true)
+    emailNotifications     Boolean  @default(true)
+    smsNotifications       Boolean  @default(false)
+
+    user                  User           @relation(fields: [userId], references: [id])
+}
+
+model PromotionalPreference {
+    id                    Int      @id @default(autoincrement())
+    userId                String   @unique
+    monthlyNewsletter     Boolean  @default(true)
+    vacanciesUpdates      Boolean  @default(true)
+    productAnnouncements  Boolean  @default(true)
+    specialOffers         Boolean  @default(true)
+    eventInvitations      Boolean  @default(true)
+    projectUpdates        Boolean  @default(true)
+    subscriptionReminders Boolean  @default(true)
+
+    user        User     @relation(fields: [userId], references: [id])
+}
+
+model InsightsPreference {
+    id                     Int      @id @default(autoincrement())
+    userId                 String   @unique
+    monthlyInsights        Boolean  @default(true)
+    suggestedReports       Boolean  @default(true)
+    suggestedArticles      Boolean  @default(true)
+    followedAuthors        Boolean  @default(true)
+    followedTags           Boolean  @default(true)
+    followedIndustries     Boolean  @default(true)
+
+    user        User     @relation(fields: [userId], references: [id])
+}

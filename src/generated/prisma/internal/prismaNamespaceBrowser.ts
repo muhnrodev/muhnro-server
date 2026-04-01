@@ -60,7 +60,6 @@ export const ModelName = {
   EmailVerification: 'EmailVerification',
   PasswordReset: 'PasswordReset',
   AuthEvent: 'AuthEvent',
-  NotificationPreference: 'NotificationPreference',
   PrivacySettings: 'PrivacySettings',
   Location: 'Location',
   Industry: 'Industry',
@@ -80,6 +79,9 @@ export const ModelName = {
   CoverImage: 'CoverImage',
   ArticleImage: 'ArticleImage',
   ReportFile: 'ReportFile',
+  NotificationPreference: 'NotificationPreference',
+  PromotionalPreference: 'PromotionalPreference',
+  InsightsPreference: 'InsightsPreference',
   TeamMember: 'TeamMember',
   TeamRole: 'TeamRole',
   Client: 'Client',
@@ -235,23 +237,6 @@ export const AuthEventScalarFieldEnum = {
 } as const
 
 export type AuthEventScalarFieldEnum = (typeof AuthEventScalarFieldEnum)[keyof typeof AuthEventScalarFieldEnum]
-
-
-export const NotificationPreferenceScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  pushNotifications: 'pushNotifications',
-  monthlyNewsletter: 'monthlyNewsletter',
-  vacancies: 'vacancies',
-  dataInsights: 'dataInsights',
-  productAnnouncements: 'productAnnouncements',
-  specialOffers: 'specialOffers',
-  eventInvitations: 'eventInvitations',
-  projectUpdates: 'projectUpdates',
-  subscriptionReminders: 'subscriptionReminders'
-} as const
-
-export type NotificationPreferenceScalarFieldEnum = (typeof NotificationPreferenceScalarFieldEnum)[keyof typeof NotificationPreferenceScalarFieldEnum]
 
 
 export const PrivacySettingsScalarFieldEnum = {
@@ -501,6 +486,46 @@ export const ReportFileScalarFieldEnum = {
 } as const
 
 export type ReportFileScalarFieldEnum = (typeof ReportFileScalarFieldEnum)[keyof typeof ReportFileScalarFieldEnum]
+
+
+export const NotificationPreferenceScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  pushNotifications: 'pushNotifications',
+  emailNotifications: 'emailNotifications',
+  smsNotifications: 'smsNotifications'
+} as const
+
+export type NotificationPreferenceScalarFieldEnum = (typeof NotificationPreferenceScalarFieldEnum)[keyof typeof NotificationPreferenceScalarFieldEnum]
+
+
+export const PromotionalPreferenceScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  monthlyNewsletter: 'monthlyNewsletter',
+  vacanciesUpdates: 'vacanciesUpdates',
+  productAnnouncements: 'productAnnouncements',
+  specialOffers: 'specialOffers',
+  eventInvitations: 'eventInvitations',
+  projectUpdates: 'projectUpdates',
+  subscriptionReminders: 'subscriptionReminders'
+} as const
+
+export type PromotionalPreferenceScalarFieldEnum = (typeof PromotionalPreferenceScalarFieldEnum)[keyof typeof PromotionalPreferenceScalarFieldEnum]
+
+
+export const InsightsPreferenceScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  monthlyInsights: 'monthlyInsights',
+  suggestedReports: 'suggestedReports',
+  suggestedArticles: 'suggestedArticles',
+  followedAuthors: 'followedAuthors',
+  followedTags: 'followedTags',
+  followedIndustries: 'followedIndustries'
+} as const
+
+export type InsightsPreferenceScalarFieldEnum = (typeof InsightsPreferenceScalarFieldEnum)[keyof typeof InsightsPreferenceScalarFieldEnum]
 
 
 export const TeamMemberScalarFieldEnum = {

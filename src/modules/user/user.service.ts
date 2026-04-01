@@ -21,6 +21,8 @@ export class UserService {
       include: {
         notification: true,
         privacy: true,
+        promotionalNotification: true,
+        insightsNotification: true,
       },
     });
   }
@@ -78,33 +80,33 @@ export class UserService {
     data: NotificationPreferenceDto,
   ) {
     try {
-      await this.prisma.notificationPreference.upsert({
-        where: { userId },
-        update: {
-          pushNotifications: data.pushNotifications,
-          monthlyNewsletter: data.monthlyNewsletter,
-          vacancies: data.vacancies,
-          dataInsights: data.dataInsights,
-          productAnnouncements: data.productAnnouncements,
-          specialOffers: data.specialOffers,
-          eventInvitations: data.eventInvitations,
-          projectUpdates: data.projectUpdates,
-          subscriptionReminders: data.subscriptionReminders,
-        },
-        create: {
-          id: data.id,
-          userId,
-          pushNotifications: data.pushNotifications,
-          monthlyNewsletter: data.monthlyNewsletter,
-          vacancies: data.vacancies,
-          dataInsights: data.dataInsights,
-          productAnnouncements: data.productAnnouncements,
-          specialOffers: data.specialOffers,
-          eventInvitations: data.eventInvitations,
-          projectUpdates: data.projectUpdates,
-          subscriptionReminders: data.subscriptionReminders,
-        },
-      });
+      // await this.prisma.notificationPreference.upsert({
+      //   where: { userId },
+      //   update: {
+      //     pushNotifications: data.pushNotifications,
+      //     monthlyNewsletter: data.monthlyNewsletter,
+      //     vacancies: data.vacancies,
+      //     dataInsights: data.dataInsights,
+      //     productAnnouncements: data.productAnnouncements,
+      //     specialOffers: data.specialOffers,
+      //     eventInvitations: data.eventInvitations,
+      //     projectUpdates: data.projectUpdates,
+      //     subscriptionReminders: data.subscriptionReminders,
+      //   },
+      //   create: {
+      //     id: data.id,
+      //     userId,
+      //     pushNotifications: data.pushNotifications,
+      //     monthlyNewsletter: data.monthlyNewsletter,
+      //     vacancies: data.vacancies,
+      //     dataInsights: data.dataInsights,
+      //     productAnnouncements: data.productAnnouncements,
+      //     specialOffers: data.specialOffers,
+      //     eventInvitations: data.eventInvitations,
+      //     projectUpdates: data.projectUpdates,
+      //     subscriptionReminders: data.subscriptionReminders,
+      //   },
+      // });
 
       const user = await this.getUserById(userId);
       return {

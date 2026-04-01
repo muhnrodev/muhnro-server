@@ -85,11 +85,6 @@ export type PasswordReset = Prisma.PasswordResetModel
  */
 export type AuthEvent = Prisma.AuthEventModel
 /**
- * Model NotificationPreference
- * 
- */
-export type NotificationPreference = Prisma.NotificationPreferenceModel
-/**
  * Model PrivacySettings
  * 
  */
@@ -184,6 +179,21 @@ export type ArticleImage = Prisma.ArticleImageModel
  * 
  */
 export type ReportFile = Prisma.ReportFileModel
+/**
+ * Model NotificationPreference
+ * 
+ */
+export type NotificationPreference = Prisma.NotificationPreferenceModel
+/**
+ * Model PromotionalPreference
+ * 
+ */
+export type PromotionalPreference = Prisma.PromotionalPreferenceModel
+/**
+ * Model InsightsPreference
+ * 
+ */
+export type InsightsPreference = Prisma.InsightsPreferenceModel
 /**
  * Model TeamMember
  * 

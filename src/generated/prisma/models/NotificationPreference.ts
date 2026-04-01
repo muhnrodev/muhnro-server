@@ -28,42 +28,24 @@ export type NotificationPreferenceMinAggregateOutputType = {
   id: string | null
   userId: string | null
   pushNotifications: boolean | null
-  monthlyNewsletter: boolean | null
-  vacancies: boolean | null
-  dataInsights: boolean | null
-  productAnnouncements: boolean | null
-  specialOffers: boolean | null
-  eventInvitations: boolean | null
-  projectUpdates: boolean | null
-  subscriptionReminders: boolean | null
+  emailNotifications: boolean | null
+  smsNotifications: boolean | null
 }
 
 export type NotificationPreferenceMaxAggregateOutputType = {
   id: string | null
   userId: string | null
   pushNotifications: boolean | null
-  monthlyNewsletter: boolean | null
-  vacancies: boolean | null
-  dataInsights: boolean | null
-  productAnnouncements: boolean | null
-  specialOffers: boolean | null
-  eventInvitations: boolean | null
-  projectUpdates: boolean | null
-  subscriptionReminders: boolean | null
+  emailNotifications: boolean | null
+  smsNotifications: boolean | null
 }
 
 export type NotificationPreferenceCountAggregateOutputType = {
   id: number
   userId: number
   pushNotifications: number
-  monthlyNewsletter: number
-  vacancies: number
-  dataInsights: number
-  productAnnouncements: number
-  specialOffers: number
-  eventInvitations: number
-  projectUpdates: number
-  subscriptionReminders: number
+  emailNotifications: number
+  smsNotifications: number
   _all: number
 }
 
@@ -72,42 +54,24 @@ export type NotificationPreferenceMinAggregateInputType = {
   id?: true
   userId?: true
   pushNotifications?: true
-  monthlyNewsletter?: true
-  vacancies?: true
-  dataInsights?: true
-  productAnnouncements?: true
-  specialOffers?: true
-  eventInvitations?: true
-  projectUpdates?: true
-  subscriptionReminders?: true
+  emailNotifications?: true
+  smsNotifications?: true
 }
 
 export type NotificationPreferenceMaxAggregateInputType = {
   id?: true
   userId?: true
   pushNotifications?: true
-  monthlyNewsletter?: true
-  vacancies?: true
-  dataInsights?: true
-  productAnnouncements?: true
-  specialOffers?: true
-  eventInvitations?: true
-  projectUpdates?: true
-  subscriptionReminders?: true
+  emailNotifications?: true
+  smsNotifications?: true
 }
 
 export type NotificationPreferenceCountAggregateInputType = {
   id?: true
   userId?: true
   pushNotifications?: true
-  monthlyNewsletter?: true
-  vacancies?: true
-  dataInsights?: true
-  productAnnouncements?: true
-  specialOffers?: true
-  eventInvitations?: true
-  projectUpdates?: true
-  subscriptionReminders?: true
+  emailNotifications?: true
+  smsNotifications?: true
   _all?: true
 }
 
@@ -187,14 +151,8 @@ export type NotificationPreferenceGroupByOutputType = {
   id: string
   userId: string
   pushNotifications: boolean
-  monthlyNewsletter: boolean
-  vacancies: boolean
-  dataInsights: boolean
-  productAnnouncements: boolean
-  specialOffers: boolean
-  eventInvitations: boolean
-  projectUpdates: boolean
-  subscriptionReminders: boolean
+  emailNotifications: boolean
+  smsNotifications: boolean
   _count: NotificationPreferenceCountAggregateOutputType | null
   _min: NotificationPreferenceMinAggregateOutputType | null
   _max: NotificationPreferenceMaxAggregateOutputType | null
@@ -222,14 +180,8 @@ export type NotificationPreferenceWhereInput = {
   id?: Prisma.StringFilter<"NotificationPreference"> | string
   userId?: Prisma.StringFilter<"NotificationPreference"> | string
   pushNotifications?: Prisma.BoolFilter<"NotificationPreference"> | boolean
-  monthlyNewsletter?: Prisma.BoolFilter<"NotificationPreference"> | boolean
-  vacancies?: Prisma.BoolFilter<"NotificationPreference"> | boolean
-  dataInsights?: Prisma.BoolFilter<"NotificationPreference"> | boolean
-  productAnnouncements?: Prisma.BoolFilter<"NotificationPreference"> | boolean
-  specialOffers?: Prisma.BoolFilter<"NotificationPreference"> | boolean
-  eventInvitations?: Prisma.BoolFilter<"NotificationPreference"> | boolean
-  projectUpdates?: Prisma.BoolFilter<"NotificationPreference"> | boolean
-  subscriptionReminders?: Prisma.BoolFilter<"NotificationPreference"> | boolean
+  emailNotifications?: Prisma.BoolFilter<"NotificationPreference"> | boolean
+  smsNotifications?: Prisma.BoolFilter<"NotificationPreference"> | boolean
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
 
@@ -237,14 +189,8 @@ export type NotificationPreferenceOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   pushNotifications?: Prisma.SortOrder
-  monthlyNewsletter?: Prisma.SortOrder
-  vacancies?: Prisma.SortOrder
-  dataInsights?: Prisma.SortOrder
-  productAnnouncements?: Prisma.SortOrder
-  specialOffers?: Prisma.SortOrder
-  eventInvitations?: Prisma.SortOrder
-  projectUpdates?: Prisma.SortOrder
-  subscriptionReminders?: Prisma.SortOrder
+  emailNotifications?: Prisma.SortOrder
+  smsNotifications?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
 }
 
@@ -255,14 +201,8 @@ export type NotificationPreferenceWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.NotificationPreferenceWhereInput[]
   NOT?: Prisma.NotificationPreferenceWhereInput | Prisma.NotificationPreferenceWhereInput[]
   pushNotifications?: Prisma.BoolFilter<"NotificationPreference"> | boolean
-  monthlyNewsletter?: Prisma.BoolFilter<"NotificationPreference"> | boolean
-  vacancies?: Prisma.BoolFilter<"NotificationPreference"> | boolean
-  dataInsights?: Prisma.BoolFilter<"NotificationPreference"> | boolean
-  productAnnouncements?: Prisma.BoolFilter<"NotificationPreference"> | boolean
-  specialOffers?: Prisma.BoolFilter<"NotificationPreference"> | boolean
-  eventInvitations?: Prisma.BoolFilter<"NotificationPreference"> | boolean
-  projectUpdates?: Prisma.BoolFilter<"NotificationPreference"> | boolean
-  subscriptionReminders?: Prisma.BoolFilter<"NotificationPreference"> | boolean
+  emailNotifications?: Prisma.BoolFilter<"NotificationPreference"> | boolean
+  smsNotifications?: Prisma.BoolFilter<"NotificationPreference"> | boolean
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }, "id" | "userId">
 
@@ -270,14 +210,8 @@ export type NotificationPreferenceOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   pushNotifications?: Prisma.SortOrder
-  monthlyNewsletter?: Prisma.SortOrder
-  vacancies?: Prisma.SortOrder
-  dataInsights?: Prisma.SortOrder
-  productAnnouncements?: Prisma.SortOrder
-  specialOffers?: Prisma.SortOrder
-  eventInvitations?: Prisma.SortOrder
-  projectUpdates?: Prisma.SortOrder
-  subscriptionReminders?: Prisma.SortOrder
+  emailNotifications?: Prisma.SortOrder
+  smsNotifications?: Prisma.SortOrder
   _count?: Prisma.NotificationPreferenceCountOrderByAggregateInput
   _max?: Prisma.NotificationPreferenceMaxOrderByAggregateInput
   _min?: Prisma.NotificationPreferenceMinOrderByAggregateInput
@@ -290,27 +224,15 @@ export type NotificationPreferenceScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"NotificationPreference"> | string
   userId?: Prisma.StringWithAggregatesFilter<"NotificationPreference"> | string
   pushNotifications?: Prisma.BoolWithAggregatesFilter<"NotificationPreference"> | boolean
-  monthlyNewsletter?: Prisma.BoolWithAggregatesFilter<"NotificationPreference"> | boolean
-  vacancies?: Prisma.BoolWithAggregatesFilter<"NotificationPreference"> | boolean
-  dataInsights?: Prisma.BoolWithAggregatesFilter<"NotificationPreference"> | boolean
-  productAnnouncements?: Prisma.BoolWithAggregatesFilter<"NotificationPreference"> | boolean
-  specialOffers?: Prisma.BoolWithAggregatesFilter<"NotificationPreference"> | boolean
-  eventInvitations?: Prisma.BoolWithAggregatesFilter<"NotificationPreference"> | boolean
-  projectUpdates?: Prisma.BoolWithAggregatesFilter<"NotificationPreference"> | boolean
-  subscriptionReminders?: Prisma.BoolWithAggregatesFilter<"NotificationPreference"> | boolean
+  emailNotifications?: Prisma.BoolWithAggregatesFilter<"NotificationPreference"> | boolean
+  smsNotifications?: Prisma.BoolWithAggregatesFilter<"NotificationPreference"> | boolean
 }
 
 export type NotificationPreferenceCreateInput = {
   id?: string
   pushNotifications?: boolean
-  monthlyNewsletter?: boolean
-  vacancies?: boolean
-  dataInsights?: boolean
-  productAnnouncements?: boolean
-  specialOffers?: boolean
-  eventInvitations?: boolean
-  projectUpdates?: boolean
-  subscriptionReminders?: boolean
+  emailNotifications?: boolean
+  smsNotifications?: boolean
   user: Prisma.UserCreateNestedOneWithoutNotificationInput
 }
 
@@ -318,27 +240,15 @@ export type NotificationPreferenceUncheckedCreateInput = {
   id?: string
   userId: string
   pushNotifications?: boolean
-  monthlyNewsletter?: boolean
-  vacancies?: boolean
-  dataInsights?: boolean
-  productAnnouncements?: boolean
-  specialOffers?: boolean
-  eventInvitations?: boolean
-  projectUpdates?: boolean
-  subscriptionReminders?: boolean
+  emailNotifications?: boolean
+  smsNotifications?: boolean
 }
 
 export type NotificationPreferenceUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   pushNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  monthlyNewsletter?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  vacancies?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  dataInsights?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  productAnnouncements?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  specialOffers?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  eventInvitations?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  projectUpdates?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  subscriptionReminders?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  smsNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   user?: Prisma.UserUpdateOneRequiredWithoutNotificationNestedInput
 }
 
@@ -346,55 +256,31 @@ export type NotificationPreferenceUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   pushNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  monthlyNewsletter?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  vacancies?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  dataInsights?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  productAnnouncements?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  specialOffers?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  eventInvitations?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  projectUpdates?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  subscriptionReminders?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  smsNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type NotificationPreferenceCreateManyInput = {
   id?: string
   userId: string
   pushNotifications?: boolean
-  monthlyNewsletter?: boolean
-  vacancies?: boolean
-  dataInsights?: boolean
-  productAnnouncements?: boolean
-  specialOffers?: boolean
-  eventInvitations?: boolean
-  projectUpdates?: boolean
-  subscriptionReminders?: boolean
+  emailNotifications?: boolean
+  smsNotifications?: boolean
 }
 
 export type NotificationPreferenceUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   pushNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  monthlyNewsletter?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  vacancies?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  dataInsights?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  productAnnouncements?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  specialOffers?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  eventInvitations?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  projectUpdates?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  subscriptionReminders?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  smsNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type NotificationPreferenceUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   pushNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  monthlyNewsletter?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  vacancies?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  dataInsights?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  productAnnouncements?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  specialOffers?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  eventInvitations?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  projectUpdates?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  subscriptionReminders?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  smsNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type NotificationPreferenceNullableScalarRelationFilter = {
@@ -406,42 +292,24 @@ export type NotificationPreferenceCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   pushNotifications?: Prisma.SortOrder
-  monthlyNewsletter?: Prisma.SortOrder
-  vacancies?: Prisma.SortOrder
-  dataInsights?: Prisma.SortOrder
-  productAnnouncements?: Prisma.SortOrder
-  specialOffers?: Prisma.SortOrder
-  eventInvitations?: Prisma.SortOrder
-  projectUpdates?: Prisma.SortOrder
-  subscriptionReminders?: Prisma.SortOrder
+  emailNotifications?: Prisma.SortOrder
+  smsNotifications?: Prisma.SortOrder
 }
 
 export type NotificationPreferenceMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   pushNotifications?: Prisma.SortOrder
-  monthlyNewsletter?: Prisma.SortOrder
-  vacancies?: Prisma.SortOrder
-  dataInsights?: Prisma.SortOrder
-  productAnnouncements?: Prisma.SortOrder
-  specialOffers?: Prisma.SortOrder
-  eventInvitations?: Prisma.SortOrder
-  projectUpdates?: Prisma.SortOrder
-  subscriptionReminders?: Prisma.SortOrder
+  emailNotifications?: Prisma.SortOrder
+  smsNotifications?: Prisma.SortOrder
 }
 
 export type NotificationPreferenceMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   pushNotifications?: Prisma.SortOrder
-  monthlyNewsletter?: Prisma.SortOrder
-  vacancies?: Prisma.SortOrder
-  dataInsights?: Prisma.SortOrder
-  productAnnouncements?: Prisma.SortOrder
-  specialOffers?: Prisma.SortOrder
-  eventInvitations?: Prisma.SortOrder
-  projectUpdates?: Prisma.SortOrder
-  subscriptionReminders?: Prisma.SortOrder
+  emailNotifications?: Prisma.SortOrder
+  smsNotifications?: Prisma.SortOrder
 }
 
 export type NotificationPreferenceCreateNestedOneWithoutUserInput = {
@@ -479,27 +347,15 @@ export type NotificationPreferenceUncheckedUpdateOneWithoutUserNestedInput = {
 export type NotificationPreferenceCreateWithoutUserInput = {
   id?: string
   pushNotifications?: boolean
-  monthlyNewsletter?: boolean
-  vacancies?: boolean
-  dataInsights?: boolean
-  productAnnouncements?: boolean
-  specialOffers?: boolean
-  eventInvitations?: boolean
-  projectUpdates?: boolean
-  subscriptionReminders?: boolean
+  emailNotifications?: boolean
+  smsNotifications?: boolean
 }
 
 export type NotificationPreferenceUncheckedCreateWithoutUserInput = {
   id?: string
   pushNotifications?: boolean
-  monthlyNewsletter?: boolean
-  vacancies?: boolean
-  dataInsights?: boolean
-  productAnnouncements?: boolean
-  specialOffers?: boolean
-  eventInvitations?: boolean
-  projectUpdates?: boolean
-  subscriptionReminders?: boolean
+  emailNotifications?: boolean
+  smsNotifications?: boolean
 }
 
 export type NotificationPreferenceCreateOrConnectWithoutUserInput = {
@@ -521,27 +377,15 @@ export type NotificationPreferenceUpdateToOneWithWhereWithoutUserInput = {
 export type NotificationPreferenceUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   pushNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  monthlyNewsletter?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  vacancies?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  dataInsights?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  productAnnouncements?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  specialOffers?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  eventInvitations?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  projectUpdates?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  subscriptionReminders?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  smsNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type NotificationPreferenceUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   pushNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  monthlyNewsletter?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  vacancies?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  dataInsights?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  productAnnouncements?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  specialOffers?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  eventInvitations?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  projectUpdates?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  subscriptionReminders?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  smsNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 
@@ -550,14 +394,8 @@ export type NotificationPreferenceSelect<ExtArgs extends runtime.Types.Extension
   id?: boolean
   userId?: boolean
   pushNotifications?: boolean
-  monthlyNewsletter?: boolean
-  vacancies?: boolean
-  dataInsights?: boolean
-  productAnnouncements?: boolean
-  specialOffers?: boolean
-  eventInvitations?: boolean
-  projectUpdates?: boolean
-  subscriptionReminders?: boolean
+  emailNotifications?: boolean
+  smsNotifications?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["notificationPreference"]>
 
@@ -565,14 +403,8 @@ export type NotificationPreferenceSelectCreateManyAndReturn<ExtArgs extends runt
   id?: boolean
   userId?: boolean
   pushNotifications?: boolean
-  monthlyNewsletter?: boolean
-  vacancies?: boolean
-  dataInsights?: boolean
-  productAnnouncements?: boolean
-  specialOffers?: boolean
-  eventInvitations?: boolean
-  projectUpdates?: boolean
-  subscriptionReminders?: boolean
+  emailNotifications?: boolean
+  smsNotifications?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["notificationPreference"]>
 
@@ -580,14 +412,8 @@ export type NotificationPreferenceSelectUpdateManyAndReturn<ExtArgs extends runt
   id?: boolean
   userId?: boolean
   pushNotifications?: boolean
-  monthlyNewsletter?: boolean
-  vacancies?: boolean
-  dataInsights?: boolean
-  productAnnouncements?: boolean
-  specialOffers?: boolean
-  eventInvitations?: boolean
-  projectUpdates?: boolean
-  subscriptionReminders?: boolean
+  emailNotifications?: boolean
+  smsNotifications?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["notificationPreference"]>
 
@@ -595,17 +421,11 @@ export type NotificationPreferenceSelectScalar = {
   id?: boolean
   userId?: boolean
   pushNotifications?: boolean
-  monthlyNewsletter?: boolean
-  vacancies?: boolean
-  dataInsights?: boolean
-  productAnnouncements?: boolean
-  specialOffers?: boolean
-  eventInvitations?: boolean
-  projectUpdates?: boolean
-  subscriptionReminders?: boolean
+  emailNotifications?: boolean
+  smsNotifications?: boolean
 }
 
-export type NotificationPreferenceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "pushNotifications" | "monthlyNewsletter" | "vacancies" | "dataInsights" | "productAnnouncements" | "specialOffers" | "eventInvitations" | "projectUpdates" | "subscriptionReminders", ExtArgs["result"]["notificationPreference"]>
+export type NotificationPreferenceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "pushNotifications" | "emailNotifications" | "smsNotifications", ExtArgs["result"]["notificationPreference"]>
 export type NotificationPreferenceInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
@@ -625,14 +445,8 @@ export type $NotificationPreferencePayload<ExtArgs extends runtime.Types.Extensi
     id: string
     userId: string
     pushNotifications: boolean
-    monthlyNewsletter: boolean
-    vacancies: boolean
-    dataInsights: boolean
-    productAnnouncements: boolean
-    specialOffers: boolean
-    eventInvitations: boolean
-    projectUpdates: boolean
-    subscriptionReminders: boolean
+    emailNotifications: boolean
+    smsNotifications: boolean
   }, ExtArgs["result"]["notificationPreference"]>
   composites: {}
 }
@@ -1060,14 +874,8 @@ export interface NotificationPreferenceFieldRefs {
   readonly id: Prisma.FieldRef<"NotificationPreference", 'String'>
   readonly userId: Prisma.FieldRef<"NotificationPreference", 'String'>
   readonly pushNotifications: Prisma.FieldRef<"NotificationPreference", 'Boolean'>
-  readonly monthlyNewsletter: Prisma.FieldRef<"NotificationPreference", 'Boolean'>
-  readonly vacancies: Prisma.FieldRef<"NotificationPreference", 'Boolean'>
-  readonly dataInsights: Prisma.FieldRef<"NotificationPreference", 'Boolean'>
-  readonly productAnnouncements: Prisma.FieldRef<"NotificationPreference", 'Boolean'>
-  readonly specialOffers: Prisma.FieldRef<"NotificationPreference", 'Boolean'>
-  readonly eventInvitations: Prisma.FieldRef<"NotificationPreference", 'Boolean'>
-  readonly projectUpdates: Prisma.FieldRef<"NotificationPreference", 'Boolean'>
-  readonly subscriptionReminders: Prisma.FieldRef<"NotificationPreference", 'Boolean'>
+  readonly emailNotifications: Prisma.FieldRef<"NotificationPreference", 'Boolean'>
+  readonly smsNotifications: Prisma.FieldRef<"NotificationPreference", 'Boolean'>
 }
     
 

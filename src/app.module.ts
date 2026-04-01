@@ -7,6 +7,7 @@ import { PrismaModule } from './prisma/prisma.module.js';
 import { AuthModule } from './modules/auth/auth.module.js';
 import { GeneratorModule } from './common/generator/generator.module.js';
 import { UserModule } from './modules/user/user.module.js';
+import { NotificationModule } from './modules/notification/notification.module.js';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { UserModule } from './modules/user/user.module.js';
     AuthModule,
 
     UserModule,
+    NotificationModule,
   ],
   controllers: [AppController],
   providers: [AppService],

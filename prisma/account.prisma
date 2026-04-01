@@ -15,8 +15,11 @@ model User {
     identities   UserIdentity[]
     credential   UserCredential?
     userMFAs     UserMFA[]
-    notification  NotificationPreference?
     privacy      PrivacySettings?
+
+    notification            NotificationPreference?
+    promotionalNotification PromotionalPreference?
+    insightsNotification    InsightsPreference?
 }
 
 model UserIdentity {
@@ -110,21 +113,6 @@ model AuthEvent {
     metadata    Json?
 }
 
-model NotificationPreference {
-    id                    String   @id @default(dbgenerated("gen_random_uuid()"))
-    userId                String   @unique
-    pushNotifications      Boolean  @default(true)
-    monthlyNewsletter     Boolean  @default(true)
-    vacancies             Boolean  @default(true)
-    dataInsights          Boolean  @default(true)
-    productAnnouncements  Boolean  @default(true)
-    specialOffers         Boolean  @default(true)
-    eventInvitations      Boolean  @default(true)
-    projectUpdates        Boolean  @default(true)
-    subscriptionReminders Boolean  @default(true)
-
-    user                  User           @relation(fields: [userId], references: [id])
-}
 
 model PrivacySettings {
     id                   String   @id @default(dbgenerated("gen_random_uuid()"))
