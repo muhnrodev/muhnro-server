@@ -446,14 +446,6 @@ export type UserIdentityUncheckedUpdateManyWithoutUserNestedInput = {
   deleteMany?: Prisma.UserIdentityScalarWhereInput | Prisma.UserIdentityScalarWhereInput[]
 }
 
-export type IntFieldUpdateOperationsInput = {
-  set?: number
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
-}
-
 export type UserIdentityCreateNestedManyWithoutProviderInput = {
   create?: Prisma.XOR<Prisma.UserIdentityCreateWithoutProviderInput, Prisma.UserIdentityUncheckedCreateWithoutProviderInput> | Prisma.UserIdentityCreateWithoutProviderInput[] | Prisma.UserIdentityUncheckedCreateWithoutProviderInput[]
   connectOrCreate?: Prisma.UserIdentityCreateOrConnectWithoutProviderInput | Prisma.UserIdentityCreateOrConnectWithoutProviderInput[]

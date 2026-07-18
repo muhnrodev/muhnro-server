@@ -52,8 +52,6 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   User: 'User',
-  UserIdentity: 'UserIdentity',
-  UserCredential: 'UserCredential',
   UserCredentialWebAuthn: 'UserCredentialWebAuthn',
   UserMFA: 'UserMFA',
   OAuthToken: 'OAuthToken',
@@ -74,6 +72,9 @@ export const ModelName = {
   ArticleReference: 'ArticleReference',
   ArticleVersion: 'ArticleVersion',
   ArticleComment: 'ArticleComment',
+  Session: 'Session',
+  UserIdentity: 'UserIdentity',
+  UserCredential: 'UserCredential',
   Website: 'Website',
   Webpage: 'Webpage',
   PageComponent: 'PageComponent',
@@ -139,31 +140,6 @@ export const UserScalarFieldEnum = {
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
-
-
-export const UserIdentityScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  providerId: 'providerId',
-  providerUserId: 'providerUserId',
-  emailAtProvider: 'emailAtProvider',
-  profileJson: 'profileJson',
-  createdAt: 'createdAt'
-} as const
-
-export type UserIdentityScalarFieldEnum = (typeof UserIdentityScalarFieldEnum)[keyof typeof UserIdentityScalarFieldEnum]
-
-
-export const UserCredentialScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  passwordHash: 'passwordHash',
-  passwordAlgo: 'passwordAlgo',
-  passwordUpdatedAt: 'passwordUpdatedAt',
-  passwordVersion: 'passwordVersion'
-} as const
-
-export type UserCredentialScalarFieldEnum = (typeof UserCredentialScalarFieldEnum)[keyof typeof UserCredentialScalarFieldEnum]
 
 
 export const UserCredentialWebAuthnScalarFieldEnum = {
@@ -418,6 +394,42 @@ export const ArticleCommentScalarFieldEnum = {
 } as const
 
 export type ArticleCommentScalarFieldEnum = (typeof ArticleCommentScalarFieldEnum)[keyof typeof ArticleCommentScalarFieldEnum]
+
+
+export const SessionScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  tokenHash: 'tokenHash',
+  expiresAt: 'expiresAt',
+  createdAt: 'createdAt'
+} as const
+
+export type SessionScalarFieldEnum = (typeof SessionScalarFieldEnum)[keyof typeof SessionScalarFieldEnum]
+
+
+export const UserIdentityScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  providerId: 'providerId',
+  providerUserId: 'providerUserId',
+  emailAtProvider: 'emailAtProvider',
+  profileJson: 'profileJson',
+  createdAt: 'createdAt'
+} as const
+
+export type UserIdentityScalarFieldEnum = (typeof UserIdentityScalarFieldEnum)[keyof typeof UserIdentityScalarFieldEnum]
+
+
+export const UserCredentialScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  passwordHash: 'passwordHash',
+  passwordAlgo: 'passwordAlgo',
+  passwordUpdatedAt: 'passwordUpdatedAt',
+  passwordVersion: 'passwordVersion'
+} as const
+
+export type UserCredentialScalarFieldEnum = (typeof UserCredentialScalarFieldEnum)[keyof typeof UserCredentialScalarFieldEnum]
 
 
 export const WebsiteScalarFieldEnum = {
@@ -815,19 +827,19 @@ export const SortOrder = {
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
-export const JsonNullValueInput = {
-  JsonNull: 'JsonNull'
-} as const
-
-export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
-
-
 export const NullableJsonNullValueInput = {
   DbNull: 'DbNull',
   JsonNull: 'JsonNull'
 } as const
 
 export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
+
+
+export const JsonNullValueInput = {
+  JsonNull: 'JsonNull'
+} as const
+
+export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
 export const QueryMode = {

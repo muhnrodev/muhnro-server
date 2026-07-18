@@ -9,8 +9,6 @@
  * 🟢 You can import this file directly.
  */
 export type * from './models/User.js'
-export type * from './models/UserIdentity.js'
-export type * from './models/UserCredential.js'
 export type * from './models/UserCredentialWebAuthn.js'
 export type * from './models/UserMFA.js'
 export type * from './models/OAuthToken.js'
@@ -31,6 +29,9 @@ export type * from './models/ArticleTag.js'
 export type * from './models/ArticleReference.js'
 export type * from './models/ArticleVersion.js'
 export type * from './models/ArticleComment.js'
+export type * from './models/Session.js'
+export type * from './models/UserIdentity.js'
+export type * from './models/UserCredential.js'
 export type * from './models/Website.js'
 export type * from './models/Webpage.js'
 export type * from './models/PageComponent.js'

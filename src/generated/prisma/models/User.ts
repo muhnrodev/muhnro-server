@@ -253,6 +253,7 @@ export type UserWhereInput = {
   notification?: Prisma.XOR<Prisma.NotificationPreferenceNullableScalarRelationFilter, Prisma.NotificationPreferenceWhereInput> | null
   promotionalNotification?: Prisma.XOR<Prisma.PromotionalPreferenceNullableScalarRelationFilter, Prisma.PromotionalPreferenceWhereInput> | null
   insightsNotification?: Prisma.XOR<Prisma.InsightsPreferenceNullableScalarRelationFilter, Prisma.InsightsPreferenceWhereInput> | null
+  sessions?: Prisma.SessionListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -276,6 +277,7 @@ export type UserOrderByWithRelationInput = {
   notification?: Prisma.NotificationPreferenceOrderByWithRelationInput
   promotionalNotification?: Prisma.PromotionalPreferenceOrderByWithRelationInput
   insightsNotification?: Prisma.InsightsPreferenceOrderByWithRelationInput
+  sessions?: Prisma.SessionOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -302,6 +304,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   notification?: Prisma.XOR<Prisma.NotificationPreferenceNullableScalarRelationFilter, Prisma.NotificationPreferenceWhereInput> | null
   promotionalNotification?: Prisma.XOR<Prisma.PromotionalPreferenceNullableScalarRelationFilter, Prisma.PromotionalPreferenceWhereInput> | null
   insightsNotification?: Prisma.XOR<Prisma.InsightsPreferenceNullableScalarRelationFilter, Prisma.InsightsPreferenceWhereInput> | null
+  sessions?: Prisma.SessionListRelationFilter
 }, "id" | "email" | "username">
 
 export type UserOrderByWithAggregationInput = {
@@ -363,6 +366,7 @@ export type UserCreateInput = {
   notification?: Prisma.NotificationPreferenceCreateNestedOneWithoutUserInput
   promotionalNotification?: Prisma.PromotionalPreferenceCreateNestedOneWithoutUserInput
   insightsNotification?: Prisma.InsightsPreferenceCreateNestedOneWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -386,6 +390,7 @@ export type UserUncheckedCreateInput = {
   notification?: Prisma.NotificationPreferenceUncheckedCreateNestedOneWithoutUserInput
   promotionalNotification?: Prisma.PromotionalPreferenceUncheckedCreateNestedOneWithoutUserInput
   insightsNotification?: Prisma.InsightsPreferenceUncheckedCreateNestedOneWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -409,6 +414,7 @@ export type UserUpdateInput = {
   notification?: Prisma.NotificationPreferenceUpdateOneWithoutUserNestedInput
   promotionalNotification?: Prisma.PromotionalPreferenceUpdateOneWithoutUserNestedInput
   insightsNotification?: Prisma.InsightsPreferenceUpdateOneWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -432,6 +438,7 @@ export type UserUncheckedUpdateInput = {
   notification?: Prisma.NotificationPreferenceUncheckedUpdateOneWithoutUserNestedInput
   promotionalNotification?: Prisma.PromotionalPreferenceUncheckedUpdateOneWithoutUserNestedInput
   insightsNotification?: Prisma.InsightsPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -555,34 +562,6 @@ export type EnumUserRoleFieldUpdateOperationsInput = {
   set?: $Enums.UserRole
 }
 
-export type UserCreateNestedOneWithoutIdentitiesInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutIdentitiesInput, Prisma.UserUncheckedCreateWithoutIdentitiesInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutIdentitiesInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneRequiredWithoutIdentitiesNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutIdentitiesInput, Prisma.UserUncheckedCreateWithoutIdentitiesInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutIdentitiesInput
-  upsert?: Prisma.UserUpsertWithoutIdentitiesInput
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutIdentitiesInput, Prisma.UserUpdateWithoutIdentitiesInput>, Prisma.UserUncheckedUpdateWithoutIdentitiesInput>
-}
-
-export type UserCreateNestedOneWithoutCredentialInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutCredentialInput, Prisma.UserUncheckedCreateWithoutCredentialInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCredentialInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneRequiredWithoutCredentialNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutCredentialInput, Prisma.UserUncheckedCreateWithoutCredentialInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCredentialInput
-  upsert?: Prisma.UserUpsertWithoutCredentialInput
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCredentialInput, Prisma.UserUpdateWithoutCredentialInput>, Prisma.UserUncheckedUpdateWithoutCredentialInput>
-}
-
 export type UserCreateNestedOneWithoutUserMFAsInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutUserMFAsInput, Prisma.UserUncheckedCreateWithoutUserMFAsInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutUserMFAsInput
@@ -609,6 +588,48 @@ export type UserUpdateOneRequiredWithoutPrivacyNestedInput = {
   upsert?: Prisma.UserUpsertWithoutPrivacyInput
   connect?: Prisma.UserWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutPrivacyInput, Prisma.UserUpdateWithoutPrivacyInput>, Prisma.UserUncheckedUpdateWithoutPrivacyInput>
+}
+
+export type UserCreateNestedOneWithoutSessionsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSessionsInput, Prisma.UserUncheckedCreateWithoutSessionsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSessionsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutSessionsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSessionsInput, Prisma.UserUncheckedCreateWithoutSessionsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSessionsInput
+  upsert?: Prisma.UserUpsertWithoutSessionsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSessionsInput, Prisma.UserUpdateWithoutSessionsInput>, Prisma.UserUncheckedUpdateWithoutSessionsInput>
+}
+
+export type UserCreateNestedOneWithoutIdentitiesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutIdentitiesInput, Prisma.UserUncheckedCreateWithoutIdentitiesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutIdentitiesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutIdentitiesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutIdentitiesInput, Prisma.UserUncheckedCreateWithoutIdentitiesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutIdentitiesInput
+  upsert?: Prisma.UserUpsertWithoutIdentitiesInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutIdentitiesInput, Prisma.UserUpdateWithoutIdentitiesInput>, Prisma.UserUncheckedUpdateWithoutIdentitiesInput>
+}
+
+export type UserCreateNestedOneWithoutCredentialInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCredentialInput, Prisma.UserUncheckedCreateWithoutCredentialInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCredentialInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutCredentialNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCredentialInput, Prisma.UserUncheckedCreateWithoutCredentialInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCredentialInput
+  upsert?: Prisma.UserUpsertWithoutCredentialInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCredentialInput, Prisma.UserUpdateWithoutCredentialInput>, Prisma.UserUncheckedUpdateWithoutCredentialInput>
 }
 
 export type UserCreateNestedOneWithoutNotificationInput = {
@@ -653,214 +674,6 @@ export type UserUpdateOneRequiredWithoutInsightsNotificationNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutInsightsNotificationInput, Prisma.UserUpdateWithoutInsightsNotificationInput>, Prisma.UserUncheckedUpdateWithoutInsightsNotificationInput>
 }
 
-export type UserCreateWithoutIdentitiesInput = {
-  id?: string
-  email: string
-  username: string
-  displayName: string
-  isActive?: boolean
-  isLocked?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  lastLoginAt?: Date | string | null
-  locale?: string
-  timezone?: string
-  deletedAt?: Date | string | null
-  role?: $Enums.UserRole
-  credential?: Prisma.UserCredentialCreateNestedOneWithoutUserInput
-  userMFAs?: Prisma.UserMFACreateNestedManyWithoutUserInput
-  privacy?: Prisma.PrivacySettingsCreateNestedOneWithoutUserInput
-  notification?: Prisma.NotificationPreferenceCreateNestedOneWithoutUserInput
-  promotionalNotification?: Prisma.PromotionalPreferenceCreateNestedOneWithoutUserInput
-  insightsNotification?: Prisma.InsightsPreferenceCreateNestedOneWithoutUserInput
-}
-
-export type UserUncheckedCreateWithoutIdentitiesInput = {
-  id?: string
-  email: string
-  username: string
-  displayName: string
-  isActive?: boolean
-  isLocked?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  lastLoginAt?: Date | string | null
-  locale?: string
-  timezone?: string
-  deletedAt?: Date | string | null
-  role?: $Enums.UserRole
-  credential?: Prisma.UserCredentialUncheckedCreateNestedOneWithoutUserInput
-  userMFAs?: Prisma.UserMFAUncheckedCreateNestedManyWithoutUserInput
-  privacy?: Prisma.PrivacySettingsUncheckedCreateNestedOneWithoutUserInput
-  notification?: Prisma.NotificationPreferenceUncheckedCreateNestedOneWithoutUserInput
-  promotionalNotification?: Prisma.PromotionalPreferenceUncheckedCreateNestedOneWithoutUserInput
-  insightsNotification?: Prisma.InsightsPreferenceUncheckedCreateNestedOneWithoutUserInput
-}
-
-export type UserCreateOrConnectWithoutIdentitiesInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutIdentitiesInput, Prisma.UserUncheckedCreateWithoutIdentitiesInput>
-}
-
-export type UserUpsertWithoutIdentitiesInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutIdentitiesInput, Prisma.UserUncheckedUpdateWithoutIdentitiesInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutIdentitiesInput, Prisma.UserUncheckedCreateWithoutIdentitiesInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutIdentitiesInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutIdentitiesInput, Prisma.UserUncheckedUpdateWithoutIdentitiesInput>
-}
-
-export type UserUpdateWithoutIdentitiesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  username?: Prisma.StringFieldUpdateOperationsInput | string
-  displayName?: Prisma.StringFieldUpdateOperationsInput | string
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isLocked?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  locale?: Prisma.StringFieldUpdateOperationsInput | string
-  timezone?: Prisma.StringFieldUpdateOperationsInput | string
-  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-  credential?: Prisma.UserCredentialUpdateOneWithoutUserNestedInput
-  userMFAs?: Prisma.UserMFAUpdateManyWithoutUserNestedInput
-  privacy?: Prisma.PrivacySettingsUpdateOneWithoutUserNestedInput
-  notification?: Prisma.NotificationPreferenceUpdateOneWithoutUserNestedInput
-  promotionalNotification?: Prisma.PromotionalPreferenceUpdateOneWithoutUserNestedInput
-  insightsNotification?: Prisma.InsightsPreferenceUpdateOneWithoutUserNestedInput
-}
-
-export type UserUncheckedUpdateWithoutIdentitiesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  username?: Prisma.StringFieldUpdateOperationsInput | string
-  displayName?: Prisma.StringFieldUpdateOperationsInput | string
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isLocked?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  locale?: Prisma.StringFieldUpdateOperationsInput | string
-  timezone?: Prisma.StringFieldUpdateOperationsInput | string
-  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-  credential?: Prisma.UserCredentialUncheckedUpdateOneWithoutUserNestedInput
-  userMFAs?: Prisma.UserMFAUncheckedUpdateManyWithoutUserNestedInput
-  privacy?: Prisma.PrivacySettingsUncheckedUpdateOneWithoutUserNestedInput
-  notification?: Prisma.NotificationPreferenceUncheckedUpdateOneWithoutUserNestedInput
-  promotionalNotification?: Prisma.PromotionalPreferenceUncheckedUpdateOneWithoutUserNestedInput
-  insightsNotification?: Prisma.InsightsPreferenceUncheckedUpdateOneWithoutUserNestedInput
-}
-
-export type UserCreateWithoutCredentialInput = {
-  id?: string
-  email: string
-  username: string
-  displayName: string
-  isActive?: boolean
-  isLocked?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  lastLoginAt?: Date | string | null
-  locale?: string
-  timezone?: string
-  deletedAt?: Date | string | null
-  role?: $Enums.UserRole
-  identities?: Prisma.UserIdentityCreateNestedManyWithoutUserInput
-  userMFAs?: Prisma.UserMFACreateNestedManyWithoutUserInput
-  privacy?: Prisma.PrivacySettingsCreateNestedOneWithoutUserInput
-  notification?: Prisma.NotificationPreferenceCreateNestedOneWithoutUserInput
-  promotionalNotification?: Prisma.PromotionalPreferenceCreateNestedOneWithoutUserInput
-  insightsNotification?: Prisma.InsightsPreferenceCreateNestedOneWithoutUserInput
-}
-
-export type UserUncheckedCreateWithoutCredentialInput = {
-  id?: string
-  email: string
-  username: string
-  displayName: string
-  isActive?: boolean
-  isLocked?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  lastLoginAt?: Date | string | null
-  locale?: string
-  timezone?: string
-  deletedAt?: Date | string | null
-  role?: $Enums.UserRole
-  identities?: Prisma.UserIdentityUncheckedCreateNestedManyWithoutUserInput
-  userMFAs?: Prisma.UserMFAUncheckedCreateNestedManyWithoutUserInput
-  privacy?: Prisma.PrivacySettingsUncheckedCreateNestedOneWithoutUserInput
-  notification?: Prisma.NotificationPreferenceUncheckedCreateNestedOneWithoutUserInput
-  promotionalNotification?: Prisma.PromotionalPreferenceUncheckedCreateNestedOneWithoutUserInput
-  insightsNotification?: Prisma.InsightsPreferenceUncheckedCreateNestedOneWithoutUserInput
-}
-
-export type UserCreateOrConnectWithoutCredentialInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutCredentialInput, Prisma.UserUncheckedCreateWithoutCredentialInput>
-}
-
-export type UserUpsertWithoutCredentialInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutCredentialInput, Prisma.UserUncheckedUpdateWithoutCredentialInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutCredentialInput, Prisma.UserUncheckedCreateWithoutCredentialInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutCredentialInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutCredentialInput, Prisma.UserUncheckedUpdateWithoutCredentialInput>
-}
-
-export type UserUpdateWithoutCredentialInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  username?: Prisma.StringFieldUpdateOperationsInput | string
-  displayName?: Prisma.StringFieldUpdateOperationsInput | string
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isLocked?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  locale?: Prisma.StringFieldUpdateOperationsInput | string
-  timezone?: Prisma.StringFieldUpdateOperationsInput | string
-  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-  identities?: Prisma.UserIdentityUpdateManyWithoutUserNestedInput
-  userMFAs?: Prisma.UserMFAUpdateManyWithoutUserNestedInput
-  privacy?: Prisma.PrivacySettingsUpdateOneWithoutUserNestedInput
-  notification?: Prisma.NotificationPreferenceUpdateOneWithoutUserNestedInput
-  promotionalNotification?: Prisma.PromotionalPreferenceUpdateOneWithoutUserNestedInput
-  insightsNotification?: Prisma.InsightsPreferenceUpdateOneWithoutUserNestedInput
-}
-
-export type UserUncheckedUpdateWithoutCredentialInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  username?: Prisma.StringFieldUpdateOperationsInput | string
-  displayName?: Prisma.StringFieldUpdateOperationsInput | string
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isLocked?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  locale?: Prisma.StringFieldUpdateOperationsInput | string
-  timezone?: Prisma.StringFieldUpdateOperationsInput | string
-  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-  identities?: Prisma.UserIdentityUncheckedUpdateManyWithoutUserNestedInput
-  userMFAs?: Prisma.UserMFAUncheckedUpdateManyWithoutUserNestedInput
-  privacy?: Prisma.PrivacySettingsUncheckedUpdateOneWithoutUserNestedInput
-  notification?: Prisma.NotificationPreferenceUncheckedUpdateOneWithoutUserNestedInput
-  promotionalNotification?: Prisma.PromotionalPreferenceUncheckedUpdateOneWithoutUserNestedInput
-  insightsNotification?: Prisma.InsightsPreferenceUncheckedUpdateOneWithoutUserNestedInput
-}
-
 export type UserCreateWithoutUserMFAsInput = {
   id?: string
   email: string
@@ -881,6 +694,7 @@ export type UserCreateWithoutUserMFAsInput = {
   notification?: Prisma.NotificationPreferenceCreateNestedOneWithoutUserInput
   promotionalNotification?: Prisma.PromotionalPreferenceCreateNestedOneWithoutUserInput
   insightsNotification?: Prisma.InsightsPreferenceCreateNestedOneWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutUserMFAsInput = {
@@ -903,6 +717,7 @@ export type UserUncheckedCreateWithoutUserMFAsInput = {
   notification?: Prisma.NotificationPreferenceUncheckedCreateNestedOneWithoutUserInput
   promotionalNotification?: Prisma.PromotionalPreferenceUncheckedCreateNestedOneWithoutUserInput
   insightsNotification?: Prisma.InsightsPreferenceUncheckedCreateNestedOneWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutUserMFAsInput = {
@@ -941,6 +756,7 @@ export type UserUpdateWithoutUserMFAsInput = {
   notification?: Prisma.NotificationPreferenceUpdateOneWithoutUserNestedInput
   promotionalNotification?: Prisma.PromotionalPreferenceUpdateOneWithoutUserNestedInput
   insightsNotification?: Prisma.InsightsPreferenceUpdateOneWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUserMFAsInput = {
@@ -963,6 +779,7 @@ export type UserUncheckedUpdateWithoutUserMFAsInput = {
   notification?: Prisma.NotificationPreferenceUncheckedUpdateOneWithoutUserNestedInput
   promotionalNotification?: Prisma.PromotionalPreferenceUncheckedUpdateOneWithoutUserNestedInput
   insightsNotification?: Prisma.InsightsPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutPrivacyInput = {
@@ -985,6 +802,7 @@ export type UserCreateWithoutPrivacyInput = {
   notification?: Prisma.NotificationPreferenceCreateNestedOneWithoutUserInput
   promotionalNotification?: Prisma.PromotionalPreferenceCreateNestedOneWithoutUserInput
   insightsNotification?: Prisma.InsightsPreferenceCreateNestedOneWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutPrivacyInput = {
@@ -1007,6 +825,7 @@ export type UserUncheckedCreateWithoutPrivacyInput = {
   notification?: Prisma.NotificationPreferenceUncheckedCreateNestedOneWithoutUserInput
   promotionalNotification?: Prisma.PromotionalPreferenceUncheckedCreateNestedOneWithoutUserInput
   insightsNotification?: Prisma.InsightsPreferenceUncheckedCreateNestedOneWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutPrivacyInput = {
@@ -1045,6 +864,7 @@ export type UserUpdateWithoutPrivacyInput = {
   notification?: Prisma.NotificationPreferenceUpdateOneWithoutUserNestedInput
   promotionalNotification?: Prisma.PromotionalPreferenceUpdateOneWithoutUserNestedInput
   insightsNotification?: Prisma.InsightsPreferenceUpdateOneWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPrivacyInput = {
@@ -1067,6 +887,331 @@ export type UserUncheckedUpdateWithoutPrivacyInput = {
   notification?: Prisma.NotificationPreferenceUncheckedUpdateOneWithoutUserNestedInput
   promotionalNotification?: Prisma.PromotionalPreferenceUncheckedUpdateOneWithoutUserNestedInput
   insightsNotification?: Prisma.InsightsPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutSessionsInput = {
+  id?: string
+  email: string
+  username: string
+  displayName: string
+  isActive?: boolean
+  isLocked?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  lastLoginAt?: Date | string | null
+  locale?: string
+  timezone?: string
+  deletedAt?: Date | string | null
+  role?: $Enums.UserRole
+  identities?: Prisma.UserIdentityCreateNestedManyWithoutUserInput
+  credential?: Prisma.UserCredentialCreateNestedOneWithoutUserInput
+  userMFAs?: Prisma.UserMFACreateNestedManyWithoutUserInput
+  privacy?: Prisma.PrivacySettingsCreateNestedOneWithoutUserInput
+  notification?: Prisma.NotificationPreferenceCreateNestedOneWithoutUserInput
+  promotionalNotification?: Prisma.PromotionalPreferenceCreateNestedOneWithoutUserInput
+  insightsNotification?: Prisma.InsightsPreferenceCreateNestedOneWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutSessionsInput = {
+  id?: string
+  email: string
+  username: string
+  displayName: string
+  isActive?: boolean
+  isLocked?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  lastLoginAt?: Date | string | null
+  locale?: string
+  timezone?: string
+  deletedAt?: Date | string | null
+  role?: $Enums.UserRole
+  identities?: Prisma.UserIdentityUncheckedCreateNestedManyWithoutUserInput
+  credential?: Prisma.UserCredentialUncheckedCreateNestedOneWithoutUserInput
+  userMFAs?: Prisma.UserMFAUncheckedCreateNestedManyWithoutUserInput
+  privacy?: Prisma.PrivacySettingsUncheckedCreateNestedOneWithoutUserInput
+  notification?: Prisma.NotificationPreferenceUncheckedCreateNestedOneWithoutUserInput
+  promotionalNotification?: Prisma.PromotionalPreferenceUncheckedCreateNestedOneWithoutUserInput
+  insightsNotification?: Prisma.InsightsPreferenceUncheckedCreateNestedOneWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutSessionsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutSessionsInput, Prisma.UserUncheckedCreateWithoutSessionsInput>
+}
+
+export type UserUpsertWithoutSessionsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutSessionsInput, Prisma.UserUncheckedUpdateWithoutSessionsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutSessionsInput, Prisma.UserUncheckedCreateWithoutSessionsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutSessionsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutSessionsInput, Prisma.UserUncheckedUpdateWithoutSessionsInput>
+}
+
+export type UserUpdateWithoutSessionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  displayName?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isLocked?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  identities?: Prisma.UserIdentityUpdateManyWithoutUserNestedInput
+  credential?: Prisma.UserCredentialUpdateOneWithoutUserNestedInput
+  userMFAs?: Prisma.UserMFAUpdateManyWithoutUserNestedInput
+  privacy?: Prisma.PrivacySettingsUpdateOneWithoutUserNestedInput
+  notification?: Prisma.NotificationPreferenceUpdateOneWithoutUserNestedInput
+  promotionalNotification?: Prisma.PromotionalPreferenceUpdateOneWithoutUserNestedInput
+  insightsNotification?: Prisma.InsightsPreferenceUpdateOneWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutSessionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  displayName?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isLocked?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  identities?: Prisma.UserIdentityUncheckedUpdateManyWithoutUserNestedInput
+  credential?: Prisma.UserCredentialUncheckedUpdateOneWithoutUserNestedInput
+  userMFAs?: Prisma.UserMFAUncheckedUpdateManyWithoutUserNestedInput
+  privacy?: Prisma.PrivacySettingsUncheckedUpdateOneWithoutUserNestedInput
+  notification?: Prisma.NotificationPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  promotionalNotification?: Prisma.PromotionalPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  insightsNotification?: Prisma.InsightsPreferenceUncheckedUpdateOneWithoutUserNestedInput
+}
+
+export type UserCreateWithoutIdentitiesInput = {
+  id?: string
+  email: string
+  username: string
+  displayName: string
+  isActive?: boolean
+  isLocked?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  lastLoginAt?: Date | string | null
+  locale?: string
+  timezone?: string
+  deletedAt?: Date | string | null
+  role?: $Enums.UserRole
+  credential?: Prisma.UserCredentialCreateNestedOneWithoutUserInput
+  userMFAs?: Prisma.UserMFACreateNestedManyWithoutUserInput
+  privacy?: Prisma.PrivacySettingsCreateNestedOneWithoutUserInput
+  notification?: Prisma.NotificationPreferenceCreateNestedOneWithoutUserInput
+  promotionalNotification?: Prisma.PromotionalPreferenceCreateNestedOneWithoutUserInput
+  insightsNotification?: Prisma.InsightsPreferenceCreateNestedOneWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutIdentitiesInput = {
+  id?: string
+  email: string
+  username: string
+  displayName: string
+  isActive?: boolean
+  isLocked?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  lastLoginAt?: Date | string | null
+  locale?: string
+  timezone?: string
+  deletedAt?: Date | string | null
+  role?: $Enums.UserRole
+  credential?: Prisma.UserCredentialUncheckedCreateNestedOneWithoutUserInput
+  userMFAs?: Prisma.UserMFAUncheckedCreateNestedManyWithoutUserInput
+  privacy?: Prisma.PrivacySettingsUncheckedCreateNestedOneWithoutUserInput
+  notification?: Prisma.NotificationPreferenceUncheckedCreateNestedOneWithoutUserInput
+  promotionalNotification?: Prisma.PromotionalPreferenceUncheckedCreateNestedOneWithoutUserInput
+  insightsNotification?: Prisma.InsightsPreferenceUncheckedCreateNestedOneWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutIdentitiesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutIdentitiesInput, Prisma.UserUncheckedCreateWithoutIdentitiesInput>
+}
+
+export type UserUpsertWithoutIdentitiesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutIdentitiesInput, Prisma.UserUncheckedUpdateWithoutIdentitiesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutIdentitiesInput, Prisma.UserUncheckedCreateWithoutIdentitiesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutIdentitiesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutIdentitiesInput, Prisma.UserUncheckedUpdateWithoutIdentitiesInput>
+}
+
+export type UserUpdateWithoutIdentitiesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  displayName?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isLocked?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  credential?: Prisma.UserCredentialUpdateOneWithoutUserNestedInput
+  userMFAs?: Prisma.UserMFAUpdateManyWithoutUserNestedInput
+  privacy?: Prisma.PrivacySettingsUpdateOneWithoutUserNestedInput
+  notification?: Prisma.NotificationPreferenceUpdateOneWithoutUserNestedInput
+  promotionalNotification?: Prisma.PromotionalPreferenceUpdateOneWithoutUserNestedInput
+  insightsNotification?: Prisma.InsightsPreferenceUpdateOneWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutIdentitiesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  displayName?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isLocked?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  credential?: Prisma.UserCredentialUncheckedUpdateOneWithoutUserNestedInput
+  userMFAs?: Prisma.UserMFAUncheckedUpdateManyWithoutUserNestedInput
+  privacy?: Prisma.PrivacySettingsUncheckedUpdateOneWithoutUserNestedInput
+  notification?: Prisma.NotificationPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  promotionalNotification?: Prisma.PromotionalPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  insightsNotification?: Prisma.InsightsPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutCredentialInput = {
+  id?: string
+  email: string
+  username: string
+  displayName: string
+  isActive?: boolean
+  isLocked?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  lastLoginAt?: Date | string | null
+  locale?: string
+  timezone?: string
+  deletedAt?: Date | string | null
+  role?: $Enums.UserRole
+  identities?: Prisma.UserIdentityCreateNestedManyWithoutUserInput
+  userMFAs?: Prisma.UserMFACreateNestedManyWithoutUserInput
+  privacy?: Prisma.PrivacySettingsCreateNestedOneWithoutUserInput
+  notification?: Prisma.NotificationPreferenceCreateNestedOneWithoutUserInput
+  promotionalNotification?: Prisma.PromotionalPreferenceCreateNestedOneWithoutUserInput
+  insightsNotification?: Prisma.InsightsPreferenceCreateNestedOneWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutCredentialInput = {
+  id?: string
+  email: string
+  username: string
+  displayName: string
+  isActive?: boolean
+  isLocked?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  lastLoginAt?: Date | string | null
+  locale?: string
+  timezone?: string
+  deletedAt?: Date | string | null
+  role?: $Enums.UserRole
+  identities?: Prisma.UserIdentityUncheckedCreateNestedManyWithoutUserInput
+  userMFAs?: Prisma.UserMFAUncheckedCreateNestedManyWithoutUserInput
+  privacy?: Prisma.PrivacySettingsUncheckedCreateNestedOneWithoutUserInput
+  notification?: Prisma.NotificationPreferenceUncheckedCreateNestedOneWithoutUserInput
+  promotionalNotification?: Prisma.PromotionalPreferenceUncheckedCreateNestedOneWithoutUserInput
+  insightsNotification?: Prisma.InsightsPreferenceUncheckedCreateNestedOneWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutCredentialInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutCredentialInput, Prisma.UserUncheckedCreateWithoutCredentialInput>
+}
+
+export type UserUpsertWithoutCredentialInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutCredentialInput, Prisma.UserUncheckedUpdateWithoutCredentialInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutCredentialInput, Prisma.UserUncheckedCreateWithoutCredentialInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutCredentialInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutCredentialInput, Prisma.UserUncheckedUpdateWithoutCredentialInput>
+}
+
+export type UserUpdateWithoutCredentialInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  displayName?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isLocked?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  identities?: Prisma.UserIdentityUpdateManyWithoutUserNestedInput
+  userMFAs?: Prisma.UserMFAUpdateManyWithoutUserNestedInput
+  privacy?: Prisma.PrivacySettingsUpdateOneWithoutUserNestedInput
+  notification?: Prisma.NotificationPreferenceUpdateOneWithoutUserNestedInput
+  promotionalNotification?: Prisma.PromotionalPreferenceUpdateOneWithoutUserNestedInput
+  insightsNotification?: Prisma.InsightsPreferenceUpdateOneWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutCredentialInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  displayName?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isLocked?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  identities?: Prisma.UserIdentityUncheckedUpdateManyWithoutUserNestedInput
+  userMFAs?: Prisma.UserMFAUncheckedUpdateManyWithoutUserNestedInput
+  privacy?: Prisma.PrivacySettingsUncheckedUpdateOneWithoutUserNestedInput
+  notification?: Prisma.NotificationPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  promotionalNotification?: Prisma.PromotionalPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  insightsNotification?: Prisma.InsightsPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutNotificationInput = {
@@ -1089,6 +1234,7 @@ export type UserCreateWithoutNotificationInput = {
   privacy?: Prisma.PrivacySettingsCreateNestedOneWithoutUserInput
   promotionalNotification?: Prisma.PromotionalPreferenceCreateNestedOneWithoutUserInput
   insightsNotification?: Prisma.InsightsPreferenceCreateNestedOneWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutNotificationInput = {
@@ -1111,6 +1257,7 @@ export type UserUncheckedCreateWithoutNotificationInput = {
   privacy?: Prisma.PrivacySettingsUncheckedCreateNestedOneWithoutUserInput
   promotionalNotification?: Prisma.PromotionalPreferenceUncheckedCreateNestedOneWithoutUserInput
   insightsNotification?: Prisma.InsightsPreferenceUncheckedCreateNestedOneWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutNotificationInput = {
@@ -1149,6 +1296,7 @@ export type UserUpdateWithoutNotificationInput = {
   privacy?: Prisma.PrivacySettingsUpdateOneWithoutUserNestedInput
   promotionalNotification?: Prisma.PromotionalPreferenceUpdateOneWithoutUserNestedInput
   insightsNotification?: Prisma.InsightsPreferenceUpdateOneWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNotificationInput = {
@@ -1171,6 +1319,7 @@ export type UserUncheckedUpdateWithoutNotificationInput = {
   privacy?: Prisma.PrivacySettingsUncheckedUpdateOneWithoutUserNestedInput
   promotionalNotification?: Prisma.PromotionalPreferenceUncheckedUpdateOneWithoutUserNestedInput
   insightsNotification?: Prisma.InsightsPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutPromotionalNotificationInput = {
@@ -1193,6 +1342,7 @@ export type UserCreateWithoutPromotionalNotificationInput = {
   privacy?: Prisma.PrivacySettingsCreateNestedOneWithoutUserInput
   notification?: Prisma.NotificationPreferenceCreateNestedOneWithoutUserInput
   insightsNotification?: Prisma.InsightsPreferenceCreateNestedOneWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutPromotionalNotificationInput = {
@@ -1215,6 +1365,7 @@ export type UserUncheckedCreateWithoutPromotionalNotificationInput = {
   privacy?: Prisma.PrivacySettingsUncheckedCreateNestedOneWithoutUserInput
   notification?: Prisma.NotificationPreferenceUncheckedCreateNestedOneWithoutUserInput
   insightsNotification?: Prisma.InsightsPreferenceUncheckedCreateNestedOneWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutPromotionalNotificationInput = {
@@ -1253,6 +1404,7 @@ export type UserUpdateWithoutPromotionalNotificationInput = {
   privacy?: Prisma.PrivacySettingsUpdateOneWithoutUserNestedInput
   notification?: Prisma.NotificationPreferenceUpdateOneWithoutUserNestedInput
   insightsNotification?: Prisma.InsightsPreferenceUpdateOneWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPromotionalNotificationInput = {
@@ -1275,6 +1427,7 @@ export type UserUncheckedUpdateWithoutPromotionalNotificationInput = {
   privacy?: Prisma.PrivacySettingsUncheckedUpdateOneWithoutUserNestedInput
   notification?: Prisma.NotificationPreferenceUncheckedUpdateOneWithoutUserNestedInput
   insightsNotification?: Prisma.InsightsPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutInsightsNotificationInput = {
@@ -1297,6 +1450,7 @@ export type UserCreateWithoutInsightsNotificationInput = {
   privacy?: Prisma.PrivacySettingsCreateNestedOneWithoutUserInput
   notification?: Prisma.NotificationPreferenceCreateNestedOneWithoutUserInput
   promotionalNotification?: Prisma.PromotionalPreferenceCreateNestedOneWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutInsightsNotificationInput = {
@@ -1319,6 +1473,7 @@ export type UserUncheckedCreateWithoutInsightsNotificationInput = {
   privacy?: Prisma.PrivacySettingsUncheckedCreateNestedOneWithoutUserInput
   notification?: Prisma.NotificationPreferenceUncheckedCreateNestedOneWithoutUserInput
   promotionalNotification?: Prisma.PromotionalPreferenceUncheckedCreateNestedOneWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutInsightsNotificationInput = {
@@ -1357,6 +1512,7 @@ export type UserUpdateWithoutInsightsNotificationInput = {
   privacy?: Prisma.PrivacySettingsUpdateOneWithoutUserNestedInput
   notification?: Prisma.NotificationPreferenceUpdateOneWithoutUserNestedInput
   promotionalNotification?: Prisma.PromotionalPreferenceUpdateOneWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutInsightsNotificationInput = {
@@ -1379,6 +1535,7 @@ export type UserUncheckedUpdateWithoutInsightsNotificationInput = {
   privacy?: Prisma.PrivacySettingsUncheckedUpdateOneWithoutUserNestedInput
   notification?: Prisma.NotificationPreferenceUncheckedUpdateOneWithoutUserNestedInput
   promotionalNotification?: Prisma.PromotionalPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 
@@ -1389,11 +1546,13 @@ export type UserUncheckedUpdateWithoutInsightsNotificationInput = {
 export type UserCountOutputType = {
   identities: number
   userMFAs: number
+  sessions: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   identities?: boolean | UserCountOutputTypeCountIdentitiesArgs
   userMFAs?: boolean | UserCountOutputTypeCountUserMFAsArgs
+  sessions?: boolean | UserCountOutputTypeCountSessionsArgs
 }
 
 /**
@@ -1420,6 +1579,13 @@ export type UserCountOutputTypeCountUserMFAsArgs<ExtArgs extends runtime.Types.E
   where?: Prisma.UserMFAWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountSessionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SessionWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1442,6 +1608,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   notification?: boolean | Prisma.User$notificationArgs<ExtArgs>
   promotionalNotification?: boolean | Prisma.User$promotionalNotificationArgs<ExtArgs>
   insightsNotification?: boolean | Prisma.User$insightsNotificationArgs<ExtArgs>
+  sessions?: boolean | Prisma.User$sessionsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -1502,6 +1669,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   notification?: boolean | Prisma.User$notificationArgs<ExtArgs>
   promotionalNotification?: boolean | Prisma.User$promotionalNotificationArgs<ExtArgs>
   insightsNotification?: boolean | Prisma.User$insightsNotificationArgs<ExtArgs>
+  sessions?: boolean | Prisma.User$sessionsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -1517,6 +1685,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     notification: Prisma.$NotificationPreferencePayload<ExtArgs> | null
     promotionalNotification: Prisma.$PromotionalPreferencePayload<ExtArgs> | null
     insightsNotification: Prisma.$InsightsPreferencePayload<ExtArgs> | null
+    sessions: Prisma.$SessionPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1933,6 +2102,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   notification<T extends Prisma.User$notificationArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$notificationArgs<ExtArgs>>): Prisma.Prisma__NotificationPreferenceClient<runtime.Types.Result.GetResult<Prisma.$NotificationPreferencePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   promotionalNotification<T extends Prisma.User$promotionalNotificationArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$promotionalNotificationArgs<ExtArgs>>): Prisma.Prisma__PromotionalPreferenceClient<runtime.Types.Result.GetResult<Prisma.$PromotionalPreferencePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   insightsNotification<T extends Prisma.User$insightsNotificationArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$insightsNotificationArgs<ExtArgs>>): Prisma.Prisma__InsightsPreferenceClient<runtime.Types.Result.GetResult<Prisma.$InsightsPreferencePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  sessions<T extends Prisma.User$sessionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2503,6 +2673,30 @@ export type User$insightsNotificationArgs<ExtArgs extends runtime.Types.Extensio
    */
   include?: Prisma.InsightsPreferenceInclude<ExtArgs> | null
   where?: Prisma.InsightsPreferenceWhereInput
+}
+
+/**
+ * User.sessions
+ */
+export type User$sessionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Session
+   */
+  select?: Prisma.SessionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Session
+   */
+  omit?: Prisma.SessionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SessionInclude<ExtArgs> | null
+  where?: Prisma.SessionWhereInput
+  orderBy?: Prisma.SessionOrderByWithRelationInput | Prisma.SessionOrderByWithRelationInput[]
+  cursor?: Prisma.SessionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SessionScalarFieldEnum | Prisma.SessionScalarFieldEnum[]
 }
 
 /**

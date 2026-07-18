@@ -11,6 +11,8 @@ import jwtConfig from './config/jwt.config.js';
 import { JwtStrategy } from './strategies/jwt.strategy.js';
 import refreshJwtConfig from './config/refresh-jwt.config.js';
 import { RefreshJwtStrategy } from './strategies/refresh.strategy.js';
+import { EventService } from './services/event.service.js';
+import { SessionService } from './services/session.service.js';
 
 @Module({
   imports: [
@@ -23,6 +25,8 @@ import { RefreshJwtStrategy } from './strategies/refresh.strategy.js';
   controllers: [AuthController],
   providers: [
     AuthService,
+    EventService,
+    SessionService,
     LocalStrategy,
     JwtStrategy,
     RefreshJwtStrategy,

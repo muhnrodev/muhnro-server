@@ -1,0 +1,33 @@
+model Session {
+  id                String   @id @default(dbgenerated("gen_random_uuid()"))
+  userId            String
+  tokenHash         String
+  expiresAt         DateTime
+  createdAt         DateTime @default(now())
+  
+  user              User     @relation(fields: [userId], references: [id])
+}
+
+model UserIdentity {
+    id              Int      @id @default(autoincrement())
+    userId          String
+    providerId      Int
+    providerUserId  String
+    emailAtProvider String
+    profileJson      Json
+    createdAt       DateTime @default(now())
+
+    user          User             @relation(fields: [userId], references: [id])
+    provider      IdentityProvider @relation(fields: [providerId], references: [id])
+}
+
+model UserCredential {
+    id                  String   @id @default(dbgenerated("gen_random_uuid()"))
+    userId              String   @unique
+    passwordHash        String
+    passwordAlgo        String
+    passwordUpdatedAt   DateTime @default(now())
+    passwordVersion     Int      @default(1)
+
+    user                User     @relation(fields: [userId], references: [id])
+}

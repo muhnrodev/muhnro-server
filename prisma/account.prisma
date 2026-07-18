@@ -1,51 +1,29 @@
 model User {
-    id          String   @id @default(dbgenerated("gen_random_uuid()"))
-    email       String   @unique
-    username    String   @unique
-    displayName String
-    isActive    Boolean  @default(true)
-    isLocked    Boolean  @default(false)
-    createdAt   DateTime @default(now())
-    updatedAt   DateTime @updatedAt
-    lastLoginAt DateTime?
-    locale      String   @default("en-US")
-    timezone    String   @default("UTC")
-    deletedAt   DateTime?
-    role        UserRole @default(USER)
+    id                     String   @id @default(dbgenerated("gen_random_uuid()"))
+    email                  String   @unique
+    username               String   @unique
+    displayName            String
+    isActive               Boolean  @default(true)
+    isLocked               Boolean  @default(false)
+    createdAt              DateTime @default(now())
+    updatedAt              DateTime @updatedAt
+    lastLoginAt            DateTime?
+    locale                 String   @default("en-US")
+    timezone               String   @default("UTC")
+    deletedAt              DateTime?
+    role                   UserRole @default(USER)
 
-    identities   UserIdentity[]
-    credential   UserCredential?
-    userMFAs     UserMFA[]
-    privacy      PrivacySettings?
-
+    identities             UserIdentity[]
+    credential             UserCredential?
+    userMFAs               UserMFA[]
+    privacy                PrivacySettings?
     notification            NotificationPreference?
     promotionalNotification PromotionalPreference?
     insightsNotification    InsightsPreference?
+    sessions               Session[]
 }
 
-model UserIdentity {
-    id              Int      @id @default(autoincrement())
-    userId          String
-    providerId      Int
-    providerUserId  String
-    emailAtProvider String
-    profileJson      Json
-    createdAt       DateTime @default(now())
 
-    user          User             @relation(fields: [userId], references: [id])
-    provider      IdentityProvider @relation(fields: [providerId], references: [id])
-}
-
-model UserCredential {
-    id                  String   @id @default(dbgenerated("gen_random_uuid()"))
-    userId              String   @unique
-    passwordHash        String
-    passwordAlgo        String
-    passwordUpdatedAt   DateTime @default(now())
-    passwordVersion     Int      @default(1)
-
-    user                User     @relation(fields: [userId], references: [id])
-}
 
 model UserCredentialWebAuthn {
     id              Int      @id @default(autoincrement())

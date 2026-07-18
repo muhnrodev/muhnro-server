@@ -321,11 +321,6 @@ export type IdentityProviderUncheckedUpdateManyInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type IdentityProviderScalarRelationFilter = {
-  is?: Prisma.IdentityProviderWhereInput
-  isNot?: Prisma.IdentityProviderWhereInput
-}
-
 export type IdentityProviderCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   code?: Prisma.SortOrder
@@ -358,6 +353,15 @@ export type IdentityProviderSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
 }
 
+export type IdentityProviderScalarRelationFilter = {
+  is?: Prisma.IdentityProviderWhereInput
+  isNot?: Prisma.IdentityProviderWhereInput
+}
+
+export type EnumIdentityProviderCodeFieldUpdateOperationsInput = {
+  set?: $Enums.IdentityProviderCode
+}
+
 export type IdentityProviderCreateNestedOneWithoutIdentitiesInput = {
   create?: Prisma.XOR<Prisma.IdentityProviderCreateWithoutIdentitiesInput, Prisma.IdentityProviderUncheckedCreateWithoutIdentitiesInput>
   connectOrCreate?: Prisma.IdentityProviderCreateOrConnectWithoutIdentitiesInput
@@ -370,10 +374,6 @@ export type IdentityProviderUpdateOneRequiredWithoutIdentitiesNestedInput = {
   upsert?: Prisma.IdentityProviderUpsertWithoutIdentitiesInput
   connect?: Prisma.IdentityProviderWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.IdentityProviderUpdateToOneWithWhereWithoutIdentitiesInput, Prisma.IdentityProviderUpdateWithoutIdentitiesInput>, Prisma.IdentityProviderUncheckedUpdateWithoutIdentitiesInput>
-}
-
-export type EnumIdentityProviderCodeFieldUpdateOperationsInput = {
-  set?: $Enums.IdentityProviderCode
 }
 
 export type IdentityProviderCreateWithoutIdentitiesInput = {

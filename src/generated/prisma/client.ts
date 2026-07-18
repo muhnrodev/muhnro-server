@@ -45,16 +45,6 @@ export { Prisma }
  */
 export type User = Prisma.UserModel
 /**
- * Model UserIdentity
- * 
- */
-export type UserIdentity = Prisma.UserIdentityModel
-/**
- * Model UserCredential
- * 
- */
-export type UserCredential = Prisma.UserCredentialModel
-/**
  * Model UserCredentialWebAuthn
  * 
  */
@@ -154,6 +144,21 @@ export type ArticleVersion = Prisma.ArticleVersionModel
  * 
  */
 export type ArticleComment = Prisma.ArticleCommentModel
+/**
+ * Model Session
+ * 
+ */
+export type Session = Prisma.SessionModel
+/**
+ * Model UserIdentity
+ * 
+ */
+export type UserIdentity = Prisma.UserIdentityModel
+/**
+ * Model UserCredential
+ * 
+ */
+export type UserCredential = Prisma.UserCredentialModel
 /**
  * Model Website
  * 

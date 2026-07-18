@@ -14,6 +14,7 @@ import * as config from '@nestjs/config';
 import { AuthEventType, UserRole } from '../../generated/prisma/enums.js';
 import { PrismaService } from '../../prisma/prisma.service.js';
 import { AuthJwtPayload } from './types/auth-jwtPayload.js';
+import { EventService } from './services/event.service.js';
 
 @Injectable()
 export class AuthService {
@@ -23,6 +24,7 @@ export class AuthService {
     private readonly userService: UserService,
     private readonly jwtService: JwtService,
     private readonly prisma: PrismaService,
+    private readonly eventService: EventService,
     @Inject(refreshJwtConfig.KEY)
     private refreshTokenConfig: config.ConfigType<typeof refreshJwtConfig>,
   ) {}
@@ -62,7 +64,7 @@ export class AuthService {
       );
 
       if (!isPasswordValid) {
-        await this.createAuthEvent(
+        await this.eventService.createAuthEvent(
           user.id,
           AuthEventType.LOGIN_FAILED,
           ip,
@@ -128,29 +130,5 @@ export class AuthService {
     }
 
     return this.userService.createUser(googleUser);
-  }
-
-  async createAuthEvent(
-    userId: string,
-    eventType: AuthEventType,
-    ipAddress?: string,
-    userAgent?: string,
-    metadata?: Record<string, any>,
-  ) {
-    try {
-      await this.prisma.authEvent.create({
-        data: {
-          userId,
-          eventType: eventType,
-          ipAddress: ipAddress || 'Unknown',
-          occurredAt: new Date(),
-          userAgent: userAgent || 'Unknown',
-          metadata,
-        },
-      });
-    } catch (error) {
-      this.logger.error('Failed to create auth event');
-      throw error;
-    }
   }
 }
