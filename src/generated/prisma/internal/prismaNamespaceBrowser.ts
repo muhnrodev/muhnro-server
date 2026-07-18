@@ -437,7 +437,11 @@ export const WebsiteScalarFieldEnum = {
   name: 'name',
   description: 'description',
   domain: 'domain',
-  version: 'version'
+  version: 'version',
+  createdAt: 'createdAt',
+  createdBy: 'createdBy',
+  updatedAt: 'updatedAt',
+  updatedBy: 'updatedBy'
 } as const
 
 export type WebsiteScalarFieldEnum = (typeof WebsiteScalarFieldEnum)[keyof typeof WebsiteScalarFieldEnum]
@@ -446,7 +450,11 @@ export type WebsiteScalarFieldEnum = (typeof WebsiteScalarFieldEnum)[keyof typeo
 export const WebpageScalarFieldEnum = {
   id: 'id',
   websiteId: 'websiteId',
-  slug: 'slug'
+  slug: 'slug',
+  createdAt: 'createdAt',
+  createdBy: 'createdBy',
+  updatedAt: 'updatedAt',
+  updatedBy: 'updatedBy'
 } as const
 
 export type WebpageScalarFieldEnum = (typeof WebpageScalarFieldEnum)[keyof typeof WebpageScalarFieldEnum]

@@ -10,6 +10,8 @@ import { UserModule } from './modules/user/user.module.js';
 import { NotificationModule } from './modules/notification/notification.module.js';
 import { APP_GUARD } from '@nestjs/core';
 import { RolesGuard } from './modules/auth/guards/roles.guard.js';
+import { WebsiteModule } from './modules/website/website.module.js';
+import { ComponentModule } from './modules/component/component.module';
 
 @Module({
   imports: [
@@ -32,6 +34,8 @@ import { RolesGuard } from './modules/auth/guards/roles.guard.js';
 
     UserModule,
     NotificationModule,
+    WebsiteModule,
+    ComponentModule,
   ],
   controllers: [AppController],
   providers: [

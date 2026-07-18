@@ -4,6 +4,10 @@ model Website {
     description         String
     domain              String
     version             Int      @default(1)
+    createdAt           DateTime @default(now())
+    createdBy           String
+    updatedAt           DateTime @updatedAt
+    updatedBy           String
 
     pages               Webpage[]
 }
@@ -12,6 +16,11 @@ model Webpage {
     id                  String   @id @default(dbgenerated("gen_random_uuid()"))
     websiteId           String
     slug                String
+    
+    createdAt           DateTime @default(now())
+    createdBy           String
+    updatedAt           DateTime @updatedAt
+    updatedBy           String
 
     website             Website @relation(fields: [websiteId], references: [id])
     components          PageComponent[]

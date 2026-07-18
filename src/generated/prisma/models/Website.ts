@@ -40,6 +40,10 @@ export type WebsiteMinAggregateOutputType = {
   description: string | null
   domain: string | null
   version: number | null
+  createdAt: Date | null
+  createdBy: string | null
+  updatedAt: Date | null
+  updatedBy: string | null
 }
 
 export type WebsiteMaxAggregateOutputType = {
@@ -48,6 +52,10 @@ export type WebsiteMaxAggregateOutputType = {
   description: string | null
   domain: string | null
   version: number | null
+  createdAt: Date | null
+  createdBy: string | null
+  updatedAt: Date | null
+  updatedBy: string | null
 }
 
 export type WebsiteCountAggregateOutputType = {
@@ -56,6 +64,10 @@ export type WebsiteCountAggregateOutputType = {
   description: number
   domain: number
   version: number
+  createdAt: number
+  createdBy: number
+  updatedAt: number
+  updatedBy: number
   _all: number
 }
 
@@ -74,6 +86,10 @@ export type WebsiteMinAggregateInputType = {
   description?: true
   domain?: true
   version?: true
+  createdAt?: true
+  createdBy?: true
+  updatedAt?: true
+  updatedBy?: true
 }
 
 export type WebsiteMaxAggregateInputType = {
@@ -82,6 +98,10 @@ export type WebsiteMaxAggregateInputType = {
   description?: true
   domain?: true
   version?: true
+  createdAt?: true
+  createdBy?: true
+  updatedAt?: true
+  updatedBy?: true
 }
 
 export type WebsiteCountAggregateInputType = {
@@ -90,6 +110,10 @@ export type WebsiteCountAggregateInputType = {
   description?: true
   domain?: true
   version?: true
+  createdAt?: true
+  createdBy?: true
+  updatedAt?: true
+  updatedBy?: true
   _all?: true
 }
 
@@ -185,6 +209,10 @@ export type WebsiteGroupByOutputType = {
   description: string
   domain: string
   version: number
+  createdAt: Date
+  createdBy: string
+  updatedAt: Date
+  updatedBy: string
   _count: WebsiteCountAggregateOutputType | null
   _avg: WebsiteAvgAggregateOutputType | null
   _sum: WebsiteSumAggregateOutputType | null
@@ -216,6 +244,10 @@ export type WebsiteWhereInput = {
   description?: Prisma.StringFilter<"Website"> | string
   domain?: Prisma.StringFilter<"Website"> | string
   version?: Prisma.IntFilter<"Website"> | number
+  createdAt?: Prisma.DateTimeFilter<"Website"> | Date | string
+  createdBy?: Prisma.StringFilter<"Website"> | string
+  updatedAt?: Prisma.DateTimeFilter<"Website"> | Date | string
+  updatedBy?: Prisma.StringFilter<"Website"> | string
   pages?: Prisma.WebpageListRelationFilter
 }
 
@@ -225,6 +257,10 @@ export type WebsiteOrderByWithRelationInput = {
   description?: Prisma.SortOrder
   domain?: Prisma.SortOrder
   version?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  createdBy?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  updatedBy?: Prisma.SortOrder
   pages?: Prisma.WebpageOrderByRelationAggregateInput
 }
 
@@ -237,6 +273,10 @@ export type WebsiteWhereUniqueInput = Prisma.AtLeast<{
   description?: Prisma.StringFilter<"Website"> | string
   domain?: Prisma.StringFilter<"Website"> | string
   version?: Prisma.IntFilter<"Website"> | number
+  createdAt?: Prisma.DateTimeFilter<"Website"> | Date | string
+  createdBy?: Prisma.StringFilter<"Website"> | string
+  updatedAt?: Prisma.DateTimeFilter<"Website"> | Date | string
+  updatedBy?: Prisma.StringFilter<"Website"> | string
   pages?: Prisma.WebpageListRelationFilter
 }, "id">
 
@@ -246,6 +286,10 @@ export type WebsiteOrderByWithAggregationInput = {
   description?: Prisma.SortOrder
   domain?: Prisma.SortOrder
   version?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  createdBy?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  updatedBy?: Prisma.SortOrder
   _count?: Prisma.WebsiteCountOrderByAggregateInput
   _avg?: Prisma.WebsiteAvgOrderByAggregateInput
   _max?: Prisma.WebsiteMaxOrderByAggregateInput
@@ -262,6 +306,10 @@ export type WebsiteScalarWhereWithAggregatesInput = {
   description?: Prisma.StringWithAggregatesFilter<"Website"> | string
   domain?: Prisma.StringWithAggregatesFilter<"Website"> | string
   version?: Prisma.IntWithAggregatesFilter<"Website"> | number
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"Website"> | Date | string
+  createdBy?: Prisma.StringWithAggregatesFilter<"Website"> | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Website"> | Date | string
+  updatedBy?: Prisma.StringWithAggregatesFilter<"Website"> | string
 }
 
 export type WebsiteCreateInput = {
@@ -270,6 +318,10 @@ export type WebsiteCreateInput = {
   description: string
   domain: string
   version?: number
+  createdAt?: Date | string
+  createdBy: string
+  updatedAt?: Date | string
+  updatedBy: string
   pages?: Prisma.WebpageCreateNestedManyWithoutWebsiteInput
 }
 
@@ -279,6 +331,10 @@ export type WebsiteUncheckedCreateInput = {
   description: string
   domain: string
   version?: number
+  createdAt?: Date | string
+  createdBy: string
+  updatedAt?: Date | string
+  updatedBy: string
   pages?: Prisma.WebpageUncheckedCreateNestedManyWithoutWebsiteInput
 }
 
@@ -288,6 +344,10 @@ export type WebsiteUpdateInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   domain?: Prisma.StringFieldUpdateOperationsInput | string
   version?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.StringFieldUpdateOperationsInput | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedBy?: Prisma.StringFieldUpdateOperationsInput | string
   pages?: Prisma.WebpageUpdateManyWithoutWebsiteNestedInput
 }
 
@@ -297,6 +357,10 @@ export type WebsiteUncheckedUpdateInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   domain?: Prisma.StringFieldUpdateOperationsInput | string
   version?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.StringFieldUpdateOperationsInput | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedBy?: Prisma.StringFieldUpdateOperationsInput | string
   pages?: Prisma.WebpageUncheckedUpdateManyWithoutWebsiteNestedInput
 }
 
@@ -306,6 +370,10 @@ export type WebsiteCreateManyInput = {
   description: string
   domain: string
   version?: number
+  createdAt?: Date | string
+  createdBy: string
+  updatedAt?: Date | string
+  updatedBy: string
 }
 
 export type WebsiteUpdateManyMutationInput = {
@@ -314,6 +382,10 @@ export type WebsiteUpdateManyMutationInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   domain?: Prisma.StringFieldUpdateOperationsInput | string
   version?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.StringFieldUpdateOperationsInput | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedBy?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type WebsiteUncheckedUpdateManyInput = {
@@ -322,6 +394,10 @@ export type WebsiteUncheckedUpdateManyInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   domain?: Prisma.StringFieldUpdateOperationsInput | string
   version?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.StringFieldUpdateOperationsInput | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedBy?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type WebsiteCountOrderByAggregateInput = {
@@ -330,6 +406,10 @@ export type WebsiteCountOrderByAggregateInput = {
   description?: Prisma.SortOrder
   domain?: Prisma.SortOrder
   version?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  createdBy?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  updatedBy?: Prisma.SortOrder
 }
 
 export type WebsiteAvgOrderByAggregateInput = {
@@ -342,6 +422,10 @@ export type WebsiteMaxOrderByAggregateInput = {
   description?: Prisma.SortOrder
   domain?: Prisma.SortOrder
   version?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  createdBy?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  updatedBy?: Prisma.SortOrder
 }
 
 export type WebsiteMinOrderByAggregateInput = {
@@ -350,6 +434,10 @@ export type WebsiteMinOrderByAggregateInput = {
   description?: Prisma.SortOrder
   domain?: Prisma.SortOrder
   version?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  createdBy?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  updatedBy?: Prisma.SortOrder
 }
 
 export type WebsiteSumOrderByAggregateInput = {
@@ -381,6 +469,10 @@ export type WebsiteCreateWithoutPagesInput = {
   description: string
   domain: string
   version?: number
+  createdAt?: Date | string
+  createdBy: string
+  updatedAt?: Date | string
+  updatedBy: string
 }
 
 export type WebsiteUncheckedCreateWithoutPagesInput = {
@@ -389,6 +481,10 @@ export type WebsiteUncheckedCreateWithoutPagesInput = {
   description: string
   domain: string
   version?: number
+  createdAt?: Date | string
+  createdBy: string
+  updatedAt?: Date | string
+  updatedBy: string
 }
 
 export type WebsiteCreateOrConnectWithoutPagesInput = {
@@ -413,6 +509,10 @@ export type WebsiteUpdateWithoutPagesInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   domain?: Prisma.StringFieldUpdateOperationsInput | string
   version?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.StringFieldUpdateOperationsInput | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedBy?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type WebsiteUncheckedUpdateWithoutPagesInput = {
@@ -421,6 +521,10 @@ export type WebsiteUncheckedUpdateWithoutPagesInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   domain?: Prisma.StringFieldUpdateOperationsInput | string
   version?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.StringFieldUpdateOperationsInput | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedBy?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 
@@ -460,6 +564,10 @@ export type WebsiteSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   description?: boolean
   domain?: boolean
   version?: boolean
+  createdAt?: boolean
+  createdBy?: boolean
+  updatedAt?: boolean
+  updatedBy?: boolean
   pages?: boolean | Prisma.Website$pagesArgs<ExtArgs>
   _count?: boolean | Prisma.WebsiteCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["website"]>
@@ -470,6 +578,10 @@ export type WebsiteSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   description?: boolean
   domain?: boolean
   version?: boolean
+  createdAt?: boolean
+  createdBy?: boolean
+  updatedAt?: boolean
+  updatedBy?: boolean
 }, ExtArgs["result"]["website"]>
 
 export type WebsiteSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -478,6 +590,10 @@ export type WebsiteSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   description?: boolean
   domain?: boolean
   version?: boolean
+  createdAt?: boolean
+  createdBy?: boolean
+  updatedAt?: boolean
+  updatedBy?: boolean
 }, ExtArgs["result"]["website"]>
 
 export type WebsiteSelectScalar = {
@@ -486,9 +602,13 @@ export type WebsiteSelectScalar = {
   description?: boolean
   domain?: boolean
   version?: boolean
+  createdAt?: boolean
+  createdBy?: boolean
+  updatedAt?: boolean
+  updatedBy?: boolean
 }
 
-export type WebsiteOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "description" | "domain" | "version", ExtArgs["result"]["website"]>
+export type WebsiteOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "description" | "domain" | "version" | "createdAt" | "createdBy" | "updatedAt" | "updatedBy", ExtArgs["result"]["website"]>
 export type WebsiteInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   pages?: boolean | Prisma.Website$pagesArgs<ExtArgs>
   _count?: boolean | Prisma.WebsiteCountOutputTypeDefaultArgs<ExtArgs>
@@ -507,6 +627,10 @@ export type $WebsitePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     description: string
     domain: string
     version: number
+    createdAt: Date
+    createdBy: string
+    updatedAt: Date
+    updatedBy: string
   }, ExtArgs["result"]["website"]>
   composites: {}
 }
@@ -936,6 +1060,10 @@ export interface WebsiteFieldRefs {
   readonly description: Prisma.FieldRef<"Website", 'String'>
   readonly domain: Prisma.FieldRef<"Website", 'String'>
   readonly version: Prisma.FieldRef<"Website", 'Int'>
+  readonly createdAt: Prisma.FieldRef<"Website", 'DateTime'>
+  readonly createdBy: Prisma.FieldRef<"Website", 'String'>
+  readonly updatedAt: Prisma.FieldRef<"Website", 'DateTime'>
+  readonly updatedBy: Prisma.FieldRef<"Website", 'String'>
 }
     
 
