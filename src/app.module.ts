@@ -11,7 +11,7 @@ import { NotificationModule } from './modules/notification/notification.module.j
 import { APP_GUARD } from '@nestjs/core';
 import { RolesGuard } from './modules/auth/guards/roles.guard.js';
 import { WebsiteModule } from './modules/website/website.module.js';
-import { ComponentModule } from './modules/component/component.module';
+import { ComponentModule } from './modules/component/component.module.js';
 
 @Module({
   imports: [

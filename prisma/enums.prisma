@@ -94,11 +94,13 @@ enum FieldType {
     TEXT
     RICHTEXT
     MARKDOWN
-
     IMAGE
     VIDEO
+    AUDIO
     FILE
-
+    DATE
+    TIME
+    DATETIME
     NUMBER
     BOOLEAN
 
