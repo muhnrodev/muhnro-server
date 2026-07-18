@@ -36,6 +36,7 @@ export type PageComponentSumAggregateOutputType = {
 
 export type PageComponentMinAggregateOutputType = {
   id: string | null
+  key: string | null
   webpageId: string | null
   componentId: string | null
   order: number | null
@@ -43,6 +44,7 @@ export type PageComponentMinAggregateOutputType = {
 
 export type PageComponentMaxAggregateOutputType = {
   id: string | null
+  key: string | null
   webpageId: string | null
   componentId: string | null
   order: number | null
@@ -50,6 +52,7 @@ export type PageComponentMaxAggregateOutputType = {
 
 export type PageComponentCountAggregateOutputType = {
   id: number
+  key: number
   webpageId: number
   componentId: number
   order: number
@@ -67,6 +70,7 @@ export type PageComponentSumAggregateInputType = {
 
 export type PageComponentMinAggregateInputType = {
   id?: true
+  key?: true
   webpageId?: true
   componentId?: true
   order?: true
@@ -74,6 +78,7 @@ export type PageComponentMinAggregateInputType = {
 
 export type PageComponentMaxAggregateInputType = {
   id?: true
+  key?: true
   webpageId?: true
   componentId?: true
   order?: true
@@ -81,6 +86,7 @@ export type PageComponentMaxAggregateInputType = {
 
 export type PageComponentCountAggregateInputType = {
   id?: true
+  key?: true
   webpageId?: true
   componentId?: true
   order?: true
@@ -175,6 +181,7 @@ export type PageComponentGroupByArgs<ExtArgs extends runtime.Types.Extensions.In
 
 export type PageComponentGroupByOutputType = {
   id: string
+  key: string
   webpageId: string
   componentId: string
   order: number
@@ -205,6 +212,7 @@ export type PageComponentWhereInput = {
   OR?: Prisma.PageComponentWhereInput[]
   NOT?: Prisma.PageComponentWhereInput | Prisma.PageComponentWhereInput[]
   id?: Prisma.StringFilter<"PageComponent"> | string
+  key?: Prisma.StringFilter<"PageComponent"> | string
   webpageId?: Prisma.StringFilter<"PageComponent"> | string
   componentId?: Prisma.StringFilter<"PageComponent"> | string
   order?: Prisma.IntFilter<"PageComponent"> | number
@@ -215,6 +223,7 @@ export type PageComponentWhereInput = {
 
 export type PageComponentOrderByWithRelationInput = {
   id?: Prisma.SortOrder
+  key?: Prisma.SortOrder
   webpageId?: Prisma.SortOrder
   componentId?: Prisma.SortOrder
   order?: Prisma.SortOrder
@@ -225,6 +234,7 @@ export type PageComponentOrderByWithRelationInput = {
 
 export type PageComponentWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  key?: string
   AND?: Prisma.PageComponentWhereInput | Prisma.PageComponentWhereInput[]
   OR?: Prisma.PageComponentWhereInput[]
   NOT?: Prisma.PageComponentWhereInput | Prisma.PageComponentWhereInput[]
@@ -234,10 +244,11 @@ export type PageComponentWhereUniqueInput = Prisma.AtLeast<{
   webpage?: Prisma.XOR<Prisma.WebpageScalarRelationFilter, Prisma.WebpageWhereInput>
   component?: Prisma.XOR<Prisma.ComponentScalarRelationFilter, Prisma.ComponentWhereInput>
   values?: Prisma.ComponentFieldValueListRelationFilter
-}, "id">
+}, "id" | "key">
 
 export type PageComponentOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
+  key?: Prisma.SortOrder
   webpageId?: Prisma.SortOrder
   componentId?: Prisma.SortOrder
   order?: Prisma.SortOrder
@@ -253,6 +264,7 @@ export type PageComponentScalarWhereWithAggregatesInput = {
   OR?: Prisma.PageComponentScalarWhereWithAggregatesInput[]
   NOT?: Prisma.PageComponentScalarWhereWithAggregatesInput | Prisma.PageComponentScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"PageComponent"> | string
+  key?: Prisma.StringWithAggregatesFilter<"PageComponent"> | string
   webpageId?: Prisma.StringWithAggregatesFilter<"PageComponent"> | string
   componentId?: Prisma.StringWithAggregatesFilter<"PageComponent"> | string
   order?: Prisma.IntWithAggregatesFilter<"PageComponent"> | number
@@ -260,6 +272,7 @@ export type PageComponentScalarWhereWithAggregatesInput = {
 
 export type PageComponentCreateInput = {
   id?: string
+  key: string
   order: number
   webpage: Prisma.WebpageCreateNestedOneWithoutComponentsInput
   component: Prisma.ComponentCreateNestedOneWithoutPagesInput
@@ -268,6 +281,7 @@ export type PageComponentCreateInput = {
 
 export type PageComponentUncheckedCreateInput = {
   id?: string
+  key: string
   webpageId: string
   componentId: string
   order: number
@@ -276,6 +290,7 @@ export type PageComponentUncheckedCreateInput = {
 
 export type PageComponentUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  key?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
   webpage?: Prisma.WebpageUpdateOneRequiredWithoutComponentsNestedInput
   component?: Prisma.ComponentUpdateOneRequiredWithoutPagesNestedInput
@@ -284,6 +299,7 @@ export type PageComponentUpdateInput = {
 
 export type PageComponentUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  key?: Prisma.StringFieldUpdateOperationsInput | string
   webpageId?: Prisma.StringFieldUpdateOperationsInput | string
   componentId?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
@@ -292,6 +308,7 @@ export type PageComponentUncheckedUpdateInput = {
 
 export type PageComponentCreateManyInput = {
   id?: string
+  key: string
   webpageId: string
   componentId: string
   order: number
@@ -299,11 +316,13 @@ export type PageComponentCreateManyInput = {
 
 export type PageComponentUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  key?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type PageComponentUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  key?: Prisma.StringFieldUpdateOperationsInput | string
   webpageId?: Prisma.StringFieldUpdateOperationsInput | string
   componentId?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
@@ -321,6 +340,7 @@ export type PageComponentOrderByRelationAggregateInput = {
 
 export type PageComponentCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  key?: Prisma.SortOrder
   webpageId?: Prisma.SortOrder
   componentId?: Prisma.SortOrder
   order?: Prisma.SortOrder
@@ -332,6 +352,7 @@ export type PageComponentAvgOrderByAggregateInput = {
 
 export type PageComponentMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  key?: Prisma.SortOrder
   webpageId?: Prisma.SortOrder
   componentId?: Prisma.SortOrder
   order?: Prisma.SortOrder
@@ -339,6 +360,7 @@ export type PageComponentMaxOrderByAggregateInput = {
 
 export type PageComponentMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  key?: Prisma.SortOrder
   webpageId?: Prisma.SortOrder
   componentId?: Prisma.SortOrder
   order?: Prisma.SortOrder
@@ -453,6 +475,7 @@ export type PageComponentUpdateOneRequiredWithoutValuesNestedInput = {
 
 export type PageComponentCreateWithoutWebpageInput = {
   id?: string
+  key: string
   order: number
   component: Prisma.ComponentCreateNestedOneWithoutPagesInput
   values?: Prisma.ComponentFieldValueCreateNestedManyWithoutPageComponentInput
@@ -460,6 +483,7 @@ export type PageComponentCreateWithoutWebpageInput = {
 
 export type PageComponentUncheckedCreateWithoutWebpageInput = {
   id?: string
+  key: string
   componentId: string
   order: number
   values?: Prisma.ComponentFieldValueUncheckedCreateNestedManyWithoutPageComponentInput
@@ -496,6 +520,7 @@ export type PageComponentScalarWhereInput = {
   OR?: Prisma.PageComponentScalarWhereInput[]
   NOT?: Prisma.PageComponentScalarWhereInput | Prisma.PageComponentScalarWhereInput[]
   id?: Prisma.StringFilter<"PageComponent"> | string
+  key?: Prisma.StringFilter<"PageComponent"> | string
   webpageId?: Prisma.StringFilter<"PageComponent"> | string
   componentId?: Prisma.StringFilter<"PageComponent"> | string
   order?: Prisma.IntFilter<"PageComponent"> | number
@@ -503,6 +528,7 @@ export type PageComponentScalarWhereInput = {
 
 export type PageComponentCreateWithoutComponentInput = {
   id?: string
+  key: string
   order: number
   webpage: Prisma.WebpageCreateNestedOneWithoutComponentsInput
   values?: Prisma.ComponentFieldValueCreateNestedManyWithoutPageComponentInput
@@ -510,6 +536,7 @@ export type PageComponentCreateWithoutComponentInput = {
 
 export type PageComponentUncheckedCreateWithoutComponentInput = {
   id?: string
+  key: string
   webpageId: string
   order: number
   values?: Prisma.ComponentFieldValueUncheckedCreateNestedManyWithoutPageComponentInput
@@ -543,6 +570,7 @@ export type PageComponentUpdateManyWithWhereWithoutComponentInput = {
 
 export type PageComponentCreateWithoutValuesInput = {
   id?: string
+  key: string
   order: number
   webpage: Prisma.WebpageCreateNestedOneWithoutComponentsInput
   component: Prisma.ComponentCreateNestedOneWithoutPagesInput
@@ -550,6 +578,7 @@ export type PageComponentCreateWithoutValuesInput = {
 
 export type PageComponentUncheckedCreateWithoutValuesInput = {
   id?: string
+  key: string
   webpageId: string
   componentId: string
   order: number
@@ -573,6 +602,7 @@ export type PageComponentUpdateToOneWithWhereWithoutValuesInput = {
 
 export type PageComponentUpdateWithoutValuesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  key?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
   webpage?: Prisma.WebpageUpdateOneRequiredWithoutComponentsNestedInput
   component?: Prisma.ComponentUpdateOneRequiredWithoutPagesNestedInput
@@ -580,6 +610,7 @@ export type PageComponentUpdateWithoutValuesInput = {
 
 export type PageComponentUncheckedUpdateWithoutValuesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  key?: Prisma.StringFieldUpdateOperationsInput | string
   webpageId?: Prisma.StringFieldUpdateOperationsInput | string
   componentId?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
@@ -587,12 +618,14 @@ export type PageComponentUncheckedUpdateWithoutValuesInput = {
 
 export type PageComponentCreateManyWebpageInput = {
   id?: string
+  key: string
   componentId: string
   order: number
 }
 
 export type PageComponentUpdateWithoutWebpageInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  key?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
   component?: Prisma.ComponentUpdateOneRequiredWithoutPagesNestedInput
   values?: Prisma.ComponentFieldValueUpdateManyWithoutPageComponentNestedInput
@@ -600,6 +633,7 @@ export type PageComponentUpdateWithoutWebpageInput = {
 
 export type PageComponentUncheckedUpdateWithoutWebpageInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  key?: Prisma.StringFieldUpdateOperationsInput | string
   componentId?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
   values?: Prisma.ComponentFieldValueUncheckedUpdateManyWithoutPageComponentNestedInput
@@ -607,18 +641,21 @@ export type PageComponentUncheckedUpdateWithoutWebpageInput = {
 
 export type PageComponentUncheckedUpdateManyWithoutWebpageInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  key?: Prisma.StringFieldUpdateOperationsInput | string
   componentId?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type PageComponentCreateManyComponentInput = {
   id?: string
+  key: string
   webpageId: string
   order: number
 }
 
 export type PageComponentUpdateWithoutComponentInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  key?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
   webpage?: Prisma.WebpageUpdateOneRequiredWithoutComponentsNestedInput
   values?: Prisma.ComponentFieldValueUpdateManyWithoutPageComponentNestedInput
@@ -626,6 +663,7 @@ export type PageComponentUpdateWithoutComponentInput = {
 
 export type PageComponentUncheckedUpdateWithoutComponentInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  key?: Prisma.StringFieldUpdateOperationsInput | string
   webpageId?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
   values?: Prisma.ComponentFieldValueUncheckedUpdateManyWithoutPageComponentNestedInput
@@ -633,6 +671,7 @@ export type PageComponentUncheckedUpdateWithoutComponentInput = {
 
 export type PageComponentUncheckedUpdateManyWithoutComponentInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  key?: Prisma.StringFieldUpdateOperationsInput | string
   webpageId?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
 }
@@ -670,6 +709,7 @@ export type PageComponentCountOutputTypeCountValuesArgs<ExtArgs extends runtime.
 
 export type PageComponentSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  key?: boolean
   webpageId?: boolean
   componentId?: boolean
   order?: boolean
@@ -681,6 +721,7 @@ export type PageComponentSelect<ExtArgs extends runtime.Types.Extensions.Interna
 
 export type PageComponentSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  key?: boolean
   webpageId?: boolean
   componentId?: boolean
   order?: boolean
@@ -690,6 +731,7 @@ export type PageComponentSelectCreateManyAndReturn<ExtArgs extends runtime.Types
 
 export type PageComponentSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  key?: boolean
   webpageId?: boolean
   componentId?: boolean
   order?: boolean
@@ -699,12 +741,13 @@ export type PageComponentSelectUpdateManyAndReturn<ExtArgs extends runtime.Types
 
 export type PageComponentSelectScalar = {
   id?: boolean
+  key?: boolean
   webpageId?: boolean
   componentId?: boolean
   order?: boolean
 }
 
-export type PageComponentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "webpageId" | "componentId" | "order", ExtArgs["result"]["pageComponent"]>
+export type PageComponentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "key" | "webpageId" | "componentId" | "order", ExtArgs["result"]["pageComponent"]>
 export type PageComponentInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   webpage?: boolean | Prisma.WebpageDefaultArgs<ExtArgs>
   component?: boolean | Prisma.ComponentDefaultArgs<ExtArgs>
@@ -729,6 +772,7 @@ export type $PageComponentPayload<ExtArgs extends runtime.Types.Extensions.Inter
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
+    key: string
     webpageId: string
     componentId: string
     order: number
@@ -1159,6 +1203,7 @@ export interface Prisma__PageComponentClient<T, Null = never, ExtArgs extends ru
  */
 export interface PageComponentFieldRefs {
   readonly id: Prisma.FieldRef<"PageComponent", 'String'>
+  readonly key: Prisma.FieldRef<"PageComponent", 'String'>
   readonly webpageId: Prisma.FieldRef<"PageComponent", 'String'>
   readonly componentId: Prisma.FieldRef<"PageComponent", 'String'>
   readonly order: Prisma.FieldRef<"PageComponent", 'Int'>

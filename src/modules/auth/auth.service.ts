@@ -9,11 +9,11 @@ import { CreateUserDto } from '../user/dto/create-user.dto.js';
 import { UserService } from '../user/user.service.js';
 import { compare } from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
-import { AuthJwtPayload } from './types/auth-jwtPayload.js';
 import refreshJwtConfig from './config/refresh-jwt.config.js';
 import * as config from '@nestjs/config';
-import { AuthEventType } from '../../generated/prisma/enums.js';
+import { AuthEventType, UserRole } from '../../generated/prisma/enums.js';
 import { PrismaService } from '../../prisma/prisma.service.js';
+import { AuthJwtPayload } from './types/auth-jwtPayload.js';
 
 @Injectable()
 export class AuthService {
@@ -27,36 +27,71 @@ export class AuthService {
     private refreshTokenConfig: config.ConfigType<typeof refreshJwtConfig>,
   ) {}
 
-  async validateUser(email: string, password: string) {
+  async validateUser(
+    email: string,
+    password: string,
+    role: UserRole,
+    ip?: string,
+    userAgent?: string,
+  ) {
     try {
       const user = await this.userService.findByEmail(email);
 
-      if (!user) throw new UnauthorizedException('Invalid credentials');
+      if (!user) {
+        this.logger.warn(`User not found for email: ${email}`);
+        throw new UnauthorizedException('Invalid credentials');
+      }
+
+      if (user.role !== role) {
+        this.logger.warn(
+          `User role mismatch for email: ${email}. Expected: ${role}, Found: ${user.role}`,
+        );
+        throw new UnauthorizedException('Invalid credentials');
+      }
 
       const userCredential = await this.userService.getUserCredentials(user.id);
 
-      if (!userCredential)
+      if (!userCredential) {
+        this.logger.warn(`User credentials not found for userId: ${user.id}`);
         throw new UnauthorizedException('Invalid credentials');
+      }
 
       const isPasswordValid = await compare(
         password,
         userCredential.passwordHash,
       );
 
-      if (!isPasswordValid)
-        throw new UnauthorizedException('Invalid credentials');
+      if (!isPasswordValid) {
+        await this.createAuthEvent(
+          user.id,
+          AuthEventType.LOGIN_FAILED,
+          ip,
+          userAgent,
+        );
 
-      return { id: user.id, email: user.email, username: user.username };
+        this.logger.warn(`Invalid password for userId: ${user.id}`);
+        throw new UnauthorizedException('Invalid credentials');
+      }
+
+      return {
+        id: user.id,
+        role: user.role,
+        email: user.email,
+        username: user.username,
+      };
     } catch (error) {
-      this.logger.error('Failed to validate user', error.stack);
+      this.logger.error('Failed to validate user', error);
       throw error;
     }
   }
 
-  login(userId: string) {
+  async login(userId: string) {
     try {
-      const user = this.userService.getUserById(userId);
-      const payload: AuthJwtPayload = { sub: userId };
+      const user = await this.userService.getUserById(userId);
+
+      if (!user) throw new UnauthorizedException('User not found');
+
+      const payload: AuthJwtPayload = { sub: userId, role: user.role };
       const token = this.jwtService.sign(payload);
       const refreshToken = this.jwtService.sign(
         payload,
@@ -69,11 +104,14 @@ export class AuthService {
         refreshToken,
         user,
       };
-    } catch (error) {}
+    } catch (error) {
+      this.logger.error('Failed to login user', error);
+      throw error;
+    }
   }
 
-  refreshToken(userId: string) {
-    const payload: AuthJwtPayload = { sub: userId };
+  refreshToken(userId: string, role: UserRole) {
+    const payload: AuthJwtPayload = { sub: userId, role };
     const token = this.jwtService.sign(payload);
 
     return {
@@ -95,26 +133,23 @@ export class AuthService {
   async createAuthEvent(
     userId: string,
     eventType: AuthEventType,
-    request: any,
+    ipAddress?: string,
+    userAgent?: string,
+    metadata?: Record<string, any>,
   ) {
     try {
-      const ipAddress =
-        request.ip || request.socket?.remoteAddress || 'Unknown';
-      const userAgent = request.headers['user-agent'] || 'Unknown';
-      const metadata = request.headers;
-
       await this.prisma.authEvent.create({
         data: {
           userId,
           eventType: eventType,
-          ipAddress,
+          ipAddress: ipAddress || 'Unknown',
           occurredAt: new Date(),
-          userAgent,
+          userAgent: userAgent || 'Unknown',
           metadata,
         },
       });
     } catch (error) {
-      this.logger.error('Failed to create auth event', error.stack);
+      this.logger.error('Failed to create auth event');
       throw error;
     }
   }

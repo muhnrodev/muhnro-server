@@ -1,0 +1,14 @@
+/*
+  Warnings:
+
+  - The values [LOGIN,PASSWORD_RESET,EMAIL_VERIFICATION] on the enum `AuthEventType` will be removed. If these variants are still used in the database, this will fail.
+
+*/
+-- AlterEnum
+BEGIN;
+CREATE TYPE "AuthEventType_new" AS ENUM ('ACCOUNT_CREATED', 'ACCOUNT_VERIFIED', 'LOGIN_SUCCESS', 'LOGIN_FAILED', 'LOGIN_2FA_REQUIRED', 'LOGIN_2FA_SUCCESS', 'LOGIN_2FA_FAILED', 'LOGOUT', 'SESSION_EXPIRED', 'TOKEN_REFRESHED', 'PASSWORD_CHANGED', 'PASSWORD_RESET_REQUESTED', 'PASSWORD_RESET_COMPLETED', 'ACCOUNT_LOCKED', 'ACCOUNT_UNLOCKED', 'ACCOUNT_DISABLED', 'ACCOUNT_ENABLED', 'EMAIL_VERIFICATION_SENT', 'EMAIL_VERIFIED', 'EMAIL_CHANGED', 'MFA_ENABLED', 'MFA_DISABLED', 'RECOVERY_CODE_USED');
+ALTER TABLE "AuthEvent" ALTER COLUMN "eventType" TYPE "AuthEventType_new" USING ("eventType"::text::"AuthEventType_new");
+ALTER TYPE "AuthEventType" RENAME TO "AuthEventType_old";
+ALTER TYPE "AuthEventType_new" RENAME TO "AuthEventType";
+DROP TYPE "public"."AuthEventType_old";
+COMMIT;

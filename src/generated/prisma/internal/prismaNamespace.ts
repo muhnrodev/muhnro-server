@@ -4429,7 +4429,8 @@ export const UserScalarFieldEnum = {
   lastLoginAt: 'lastLoginAt',
   locale: 'locale',
   timezone: 'timezone',
-  deletedAt: 'deletedAt'
+  deletedAt: 'deletedAt',
+  role: 'role'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -4718,7 +4719,8 @@ export const WebsiteScalarFieldEnum = {
   id: 'id',
   name: 'name',
   description: 'description',
-  domain: 'domain'
+  domain: 'domain',
+  version: 'version'
 } as const
 
 export type WebsiteScalarFieldEnum = (typeof WebsiteScalarFieldEnum)[keyof typeof WebsiteScalarFieldEnum]
@@ -4735,6 +4737,7 @@ export type WebpageScalarFieldEnum = (typeof WebpageScalarFieldEnum)[keyof typeo
 
 export const PageComponentScalarFieldEnum = {
   id: 'id',
+  key: 'key',
   webpageId: 'webpageId',
   componentId: 'componentId',
   order: 'order'
@@ -5185,6 +5188,20 @@ export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel
  * Reference to a field of type 'DateTime[]'
  */
 export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+/**
+ * Reference to a field of type 'UserRole'
+ */
+export type EnumUserRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UserRole'>
+    
+
+
+/**
+ * Reference to a field of type 'UserRole[]'
+ */
+export type ListEnumUserRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UserRole[]'>
     
 
 

@@ -9,10 +9,10 @@ import {
   Res,
 } from '@nestjs/common';
 import type { Response } from 'express';
-import { GoogleAuthGuard } from './guards/google-auth/google-auth.guard.js';
-import { LocalAuthGuard } from './guards/local-auth/local-auth.guard.js';
+import { GoogleAuthGuard } from './guards/google-auth.guard.js';
+import { LocalAuthGuard } from './guards/local-auth.guard.js';
 import { AuthService } from './auth.service.js';
-import { RefreshAuthGuard } from './guards/refresh-auth/refresh-auth.guard.js';
+import { RefreshAuthGuard } from './guards/refresh-auth.guard.js';
 
 @Controller('auth')
 export class AuthController {
@@ -22,13 +22,13 @@ export class AuthController {
   @Post('login')
   @UseGuards(LocalAuthGuard)
   async login(@Request() req, @Res({ passthrough: true }) res: Response) {
-    const result = this.authService.login(req.user.id);
+    const result = await this.authService.login(req.user.id);
     if (!result) {
       throw new Error('Login failed');
     }
     const { id, token, refreshToken, user } = result;
 
-    await this.authService.createAuthEvent(id, 'LOGIN', req);
+    // await this.authService.createAuthEvent(id, 'LOGIN', req);
 
     const isProd = process.env.NODE_ENV === 'production';
 
@@ -54,7 +54,8 @@ export class AuthController {
   @UseGuards(RefreshAuthGuard)
   @Post('refresh')
   async refreshToken(@Request() req) {
-    return this.authService.refreshToken(req.user.id);
+    const { id, role } = req.user;
+    return this.authService.refreshToken(id, role);
   }
 
   @Get('google/login')
@@ -67,13 +68,13 @@ export class AuthController {
     @Request() req,
     @Res({ passthrough: true }) res: Response,
   ) {
-    const result = this.authService.login(req.user.id);
+    const result = await this.authService.login(req.user.id);
     if (!result) {
       throw new Error('Login failed');
     }
     const { id, token, refreshToken, user } = result;
 
-    await this.authService.createAuthEvent(id, 'LOGIN', req);
+    // await this.authService.createAuthEvent(id, 'LOGIN', req);
 
     const isProd = process.env.NODE_ENV === 'production';
 

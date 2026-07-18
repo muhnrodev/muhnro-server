@@ -1,5 +1,5 @@
 import { Controller, Post, UseGuards, Request, Body } from '@nestjs/common';
-import { JwtAuthGuard } from '../auth/guards/jwt-auth/jwt-auth.guard.js';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard.js';
 import { PromotionalPreferenceDto } from './dto/promotional.dto.js';
 import { NotificationService } from './notification.service.js';
 import { InsightPreferenceDto } from './dto/insight.dto.js';

@@ -8,6 +8,8 @@ import { AuthModule } from './modules/auth/auth.module.js';
 import { GeneratorModule } from './common/generator/generator.module.js';
 import { UserModule } from './modules/user/user.module.js';
 import { NotificationModule } from './modules/notification/notification.module.js';
+import { APP_GUARD } from '@nestjs/core';
+import { RolesGuard } from './modules/auth/guards/roles.guard.js';
 
 @Module({
   imports: [
@@ -32,6 +34,12 @@ import { NotificationModule } from './modules/notification/notification.module.j
     NotificationModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: APP_GUARD,
+      useClass: RolesGuard,
+    },
+  ],
 })
 export class AppModule {}

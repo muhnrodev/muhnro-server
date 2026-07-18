@@ -8,7 +8,7 @@ import {
 } from '@nestjs/common';
 import { UserService } from './user.service.js';
 import { CreateUserDto } from './dto/create-user.dto.js';
-import { JwtAuthGuard } from '../auth/guards/jwt-auth/jwt-auth.guard.js';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard.js';
 import { NotificationPreferenceDto } from './dto/notification_preference.dto.js';
 import { PrivacySettingsDto } from './dto/privacy_settings.dto.js';
 

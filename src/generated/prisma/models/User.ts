@@ -37,6 +37,7 @@ export type UserMinAggregateOutputType = {
   locale: string | null
   timezone: string | null
   deletedAt: Date | null
+  role: $Enums.UserRole | null
 }
 
 export type UserMaxAggregateOutputType = {
@@ -52,6 +53,7 @@ export type UserMaxAggregateOutputType = {
   locale: string | null
   timezone: string | null
   deletedAt: Date | null
+  role: $Enums.UserRole | null
 }
 
 export type UserCountAggregateOutputType = {
@@ -67,6 +69,7 @@ export type UserCountAggregateOutputType = {
   locale: number
   timezone: number
   deletedAt: number
+  role: number
   _all: number
 }
 
@@ -84,6 +87,7 @@ export type UserMinAggregateInputType = {
   locale?: true
   timezone?: true
   deletedAt?: true
+  role?: true
 }
 
 export type UserMaxAggregateInputType = {
@@ -99,6 +103,7 @@ export type UserMaxAggregateInputType = {
   locale?: true
   timezone?: true
   deletedAt?: true
+  role?: true
 }
 
 export type UserCountAggregateInputType = {
@@ -114,6 +119,7 @@ export type UserCountAggregateInputType = {
   locale?: true
   timezone?: true
   deletedAt?: true
+  role?: true
   _all?: true
 }
 
@@ -202,6 +208,7 @@ export type UserGroupByOutputType = {
   locale: string
   timezone: string
   deletedAt: Date | null
+  role: $Enums.UserRole
   _count: UserCountAggregateOutputType | null
   _min: UserMinAggregateOutputType | null
   _max: UserMaxAggregateOutputType | null
@@ -238,6 +245,7 @@ export type UserWhereInput = {
   locale?: Prisma.StringFilter<"User"> | string
   timezone?: Prisma.StringFilter<"User"> | string
   deletedAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  role?: Prisma.EnumUserRoleFilter<"User"> | $Enums.UserRole
   identities?: Prisma.UserIdentityListRelationFilter
   credential?: Prisma.XOR<Prisma.UserCredentialNullableScalarRelationFilter, Prisma.UserCredentialWhereInput> | null
   userMFAs?: Prisma.UserMFAListRelationFilter
@@ -260,6 +268,7 @@ export type UserOrderByWithRelationInput = {
   locale?: Prisma.SortOrder
   timezone?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  role?: Prisma.SortOrder
   identities?: Prisma.UserIdentityOrderByRelationAggregateInput
   credential?: Prisma.UserCredentialOrderByWithRelationInput
   userMFAs?: Prisma.UserMFAOrderByRelationAggregateInput
@@ -285,6 +294,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   locale?: Prisma.StringFilter<"User"> | string
   timezone?: Prisma.StringFilter<"User"> | string
   deletedAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  role?: Prisma.EnumUserRoleFilter<"User"> | $Enums.UserRole
   identities?: Prisma.UserIdentityListRelationFilter
   credential?: Prisma.XOR<Prisma.UserCredentialNullableScalarRelationFilter, Prisma.UserCredentialWhereInput> | null
   userMFAs?: Prisma.UserMFAListRelationFilter
@@ -307,6 +317,7 @@ export type UserOrderByWithAggregationInput = {
   locale?: Prisma.SortOrder
   timezone?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  role?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
   _max?: Prisma.UserMaxOrderByAggregateInput
   _min?: Prisma.UserMinOrderByAggregateInput
@@ -328,6 +339,7 @@ export type UserScalarWhereWithAggregatesInput = {
   locale?: Prisma.StringWithAggregatesFilter<"User"> | string
   timezone?: Prisma.StringWithAggregatesFilter<"User"> | string
   deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+  role?: Prisma.EnumUserRoleWithAggregatesFilter<"User"> | $Enums.UserRole
 }
 
 export type UserCreateInput = {
@@ -343,6 +355,7 @@ export type UserCreateInput = {
   locale?: string
   timezone?: string
   deletedAt?: Date | string | null
+  role?: $Enums.UserRole
   identities?: Prisma.UserIdentityCreateNestedManyWithoutUserInput
   credential?: Prisma.UserCredentialCreateNestedOneWithoutUserInput
   userMFAs?: Prisma.UserMFACreateNestedManyWithoutUserInput
@@ -365,6 +378,7 @@ export type UserUncheckedCreateInput = {
   locale?: string
   timezone?: string
   deletedAt?: Date | string | null
+  role?: $Enums.UserRole
   identities?: Prisma.UserIdentityUncheckedCreateNestedManyWithoutUserInput
   credential?: Prisma.UserCredentialUncheckedCreateNestedOneWithoutUserInput
   userMFAs?: Prisma.UserMFAUncheckedCreateNestedManyWithoutUserInput
@@ -387,6 +401,7 @@ export type UserUpdateInput = {
   locale?: Prisma.StringFieldUpdateOperationsInput | string
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   identities?: Prisma.UserIdentityUpdateManyWithoutUserNestedInput
   credential?: Prisma.UserCredentialUpdateOneWithoutUserNestedInput
   userMFAs?: Prisma.UserMFAUpdateManyWithoutUserNestedInput
@@ -409,6 +424,7 @@ export type UserUncheckedUpdateInput = {
   locale?: Prisma.StringFieldUpdateOperationsInput | string
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   identities?: Prisma.UserIdentityUncheckedUpdateManyWithoutUserNestedInput
   credential?: Prisma.UserCredentialUncheckedUpdateOneWithoutUserNestedInput
   userMFAs?: Prisma.UserMFAUncheckedUpdateManyWithoutUserNestedInput
@@ -431,6 +447,7 @@ export type UserCreateManyInput = {
   locale?: string
   timezone?: string
   deletedAt?: Date | string | null
+  role?: $Enums.UserRole
 }
 
 export type UserUpdateManyMutationInput = {
@@ -446,6 +463,7 @@ export type UserUpdateManyMutationInput = {
   locale?: Prisma.StringFieldUpdateOperationsInput | string
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
 }
 
 export type UserUncheckedUpdateManyInput = {
@@ -461,6 +479,7 @@ export type UserUncheckedUpdateManyInput = {
   locale?: Prisma.StringFieldUpdateOperationsInput | string
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
 }
 
 export type UserCountOrderByAggregateInput = {
@@ -476,6 +495,7 @@ export type UserCountOrderByAggregateInput = {
   locale?: Prisma.SortOrder
   timezone?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
+  role?: Prisma.SortOrder
 }
 
 export type UserMaxOrderByAggregateInput = {
@@ -491,6 +511,7 @@ export type UserMaxOrderByAggregateInput = {
   locale?: Prisma.SortOrder
   timezone?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
+  role?: Prisma.SortOrder
 }
 
 export type UserMinOrderByAggregateInput = {
@@ -506,6 +527,7 @@ export type UserMinOrderByAggregateInput = {
   locale?: Prisma.SortOrder
   timezone?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
+  role?: Prisma.SortOrder
 }
 
 export type UserScalarRelationFilter = {
@@ -527,6 +549,10 @@ export type DateTimeFieldUpdateOperationsInput = {
 
 export type NullableDateTimeFieldUpdateOperationsInput = {
   set?: Date | string | null
+}
+
+export type EnumUserRoleFieldUpdateOperationsInput = {
+  set?: $Enums.UserRole
 }
 
 export type UserCreateNestedOneWithoutIdentitiesInput = {
@@ -640,6 +666,7 @@ export type UserCreateWithoutIdentitiesInput = {
   locale?: string
   timezone?: string
   deletedAt?: Date | string | null
+  role?: $Enums.UserRole
   credential?: Prisma.UserCredentialCreateNestedOneWithoutUserInput
   userMFAs?: Prisma.UserMFACreateNestedManyWithoutUserInput
   privacy?: Prisma.PrivacySettingsCreateNestedOneWithoutUserInput
@@ -661,6 +688,7 @@ export type UserUncheckedCreateWithoutIdentitiesInput = {
   locale?: string
   timezone?: string
   deletedAt?: Date | string | null
+  role?: $Enums.UserRole
   credential?: Prisma.UserCredentialUncheckedCreateNestedOneWithoutUserInput
   userMFAs?: Prisma.UserMFAUncheckedCreateNestedManyWithoutUserInput
   privacy?: Prisma.PrivacySettingsUncheckedCreateNestedOneWithoutUserInput
@@ -698,6 +726,7 @@ export type UserUpdateWithoutIdentitiesInput = {
   locale?: Prisma.StringFieldUpdateOperationsInput | string
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   credential?: Prisma.UserCredentialUpdateOneWithoutUserNestedInput
   userMFAs?: Prisma.UserMFAUpdateManyWithoutUserNestedInput
   privacy?: Prisma.PrivacySettingsUpdateOneWithoutUserNestedInput
@@ -719,6 +748,7 @@ export type UserUncheckedUpdateWithoutIdentitiesInput = {
   locale?: Prisma.StringFieldUpdateOperationsInput | string
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   credential?: Prisma.UserCredentialUncheckedUpdateOneWithoutUserNestedInput
   userMFAs?: Prisma.UserMFAUncheckedUpdateManyWithoutUserNestedInput
   privacy?: Prisma.PrivacySettingsUncheckedUpdateOneWithoutUserNestedInput
@@ -740,6 +770,7 @@ export type UserCreateWithoutCredentialInput = {
   locale?: string
   timezone?: string
   deletedAt?: Date | string | null
+  role?: $Enums.UserRole
   identities?: Prisma.UserIdentityCreateNestedManyWithoutUserInput
   userMFAs?: Prisma.UserMFACreateNestedManyWithoutUserInput
   privacy?: Prisma.PrivacySettingsCreateNestedOneWithoutUserInput
@@ -761,6 +792,7 @@ export type UserUncheckedCreateWithoutCredentialInput = {
   locale?: string
   timezone?: string
   deletedAt?: Date | string | null
+  role?: $Enums.UserRole
   identities?: Prisma.UserIdentityUncheckedCreateNestedManyWithoutUserInput
   userMFAs?: Prisma.UserMFAUncheckedCreateNestedManyWithoutUserInput
   privacy?: Prisma.PrivacySettingsUncheckedCreateNestedOneWithoutUserInput
@@ -798,6 +830,7 @@ export type UserUpdateWithoutCredentialInput = {
   locale?: Prisma.StringFieldUpdateOperationsInput | string
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   identities?: Prisma.UserIdentityUpdateManyWithoutUserNestedInput
   userMFAs?: Prisma.UserMFAUpdateManyWithoutUserNestedInput
   privacy?: Prisma.PrivacySettingsUpdateOneWithoutUserNestedInput
@@ -819,6 +852,7 @@ export type UserUncheckedUpdateWithoutCredentialInput = {
   locale?: Prisma.StringFieldUpdateOperationsInput | string
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   identities?: Prisma.UserIdentityUncheckedUpdateManyWithoutUserNestedInput
   userMFAs?: Prisma.UserMFAUncheckedUpdateManyWithoutUserNestedInput
   privacy?: Prisma.PrivacySettingsUncheckedUpdateOneWithoutUserNestedInput
@@ -840,6 +874,7 @@ export type UserCreateWithoutUserMFAsInput = {
   locale?: string
   timezone?: string
   deletedAt?: Date | string | null
+  role?: $Enums.UserRole
   identities?: Prisma.UserIdentityCreateNestedManyWithoutUserInput
   credential?: Prisma.UserCredentialCreateNestedOneWithoutUserInput
   privacy?: Prisma.PrivacySettingsCreateNestedOneWithoutUserInput
@@ -861,6 +896,7 @@ export type UserUncheckedCreateWithoutUserMFAsInput = {
   locale?: string
   timezone?: string
   deletedAt?: Date | string | null
+  role?: $Enums.UserRole
   identities?: Prisma.UserIdentityUncheckedCreateNestedManyWithoutUserInput
   credential?: Prisma.UserCredentialUncheckedCreateNestedOneWithoutUserInput
   privacy?: Prisma.PrivacySettingsUncheckedCreateNestedOneWithoutUserInput
@@ -898,6 +934,7 @@ export type UserUpdateWithoutUserMFAsInput = {
   locale?: Prisma.StringFieldUpdateOperationsInput | string
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   identities?: Prisma.UserIdentityUpdateManyWithoutUserNestedInput
   credential?: Prisma.UserCredentialUpdateOneWithoutUserNestedInput
   privacy?: Prisma.PrivacySettingsUpdateOneWithoutUserNestedInput
@@ -919,6 +956,7 @@ export type UserUncheckedUpdateWithoutUserMFAsInput = {
   locale?: Prisma.StringFieldUpdateOperationsInput | string
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   identities?: Prisma.UserIdentityUncheckedUpdateManyWithoutUserNestedInput
   credential?: Prisma.UserCredentialUncheckedUpdateOneWithoutUserNestedInput
   privacy?: Prisma.PrivacySettingsUncheckedUpdateOneWithoutUserNestedInput
@@ -940,6 +978,7 @@ export type UserCreateWithoutPrivacyInput = {
   locale?: string
   timezone?: string
   deletedAt?: Date | string | null
+  role?: $Enums.UserRole
   identities?: Prisma.UserIdentityCreateNestedManyWithoutUserInput
   credential?: Prisma.UserCredentialCreateNestedOneWithoutUserInput
   userMFAs?: Prisma.UserMFACreateNestedManyWithoutUserInput
@@ -961,6 +1000,7 @@ export type UserUncheckedCreateWithoutPrivacyInput = {
   locale?: string
   timezone?: string
   deletedAt?: Date | string | null
+  role?: $Enums.UserRole
   identities?: Prisma.UserIdentityUncheckedCreateNestedManyWithoutUserInput
   credential?: Prisma.UserCredentialUncheckedCreateNestedOneWithoutUserInput
   userMFAs?: Prisma.UserMFAUncheckedCreateNestedManyWithoutUserInput
@@ -998,6 +1038,7 @@ export type UserUpdateWithoutPrivacyInput = {
   locale?: Prisma.StringFieldUpdateOperationsInput | string
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   identities?: Prisma.UserIdentityUpdateManyWithoutUserNestedInput
   credential?: Prisma.UserCredentialUpdateOneWithoutUserNestedInput
   userMFAs?: Prisma.UserMFAUpdateManyWithoutUserNestedInput
@@ -1019,6 +1060,7 @@ export type UserUncheckedUpdateWithoutPrivacyInput = {
   locale?: Prisma.StringFieldUpdateOperationsInput | string
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   identities?: Prisma.UserIdentityUncheckedUpdateManyWithoutUserNestedInput
   credential?: Prisma.UserCredentialUncheckedUpdateOneWithoutUserNestedInput
   userMFAs?: Prisma.UserMFAUncheckedUpdateManyWithoutUserNestedInput
@@ -1040,6 +1082,7 @@ export type UserCreateWithoutNotificationInput = {
   locale?: string
   timezone?: string
   deletedAt?: Date | string | null
+  role?: $Enums.UserRole
   identities?: Prisma.UserIdentityCreateNestedManyWithoutUserInput
   credential?: Prisma.UserCredentialCreateNestedOneWithoutUserInput
   userMFAs?: Prisma.UserMFACreateNestedManyWithoutUserInput
@@ -1061,6 +1104,7 @@ export type UserUncheckedCreateWithoutNotificationInput = {
   locale?: string
   timezone?: string
   deletedAt?: Date | string | null
+  role?: $Enums.UserRole
   identities?: Prisma.UserIdentityUncheckedCreateNestedManyWithoutUserInput
   credential?: Prisma.UserCredentialUncheckedCreateNestedOneWithoutUserInput
   userMFAs?: Prisma.UserMFAUncheckedCreateNestedManyWithoutUserInput
@@ -1098,6 +1142,7 @@ export type UserUpdateWithoutNotificationInput = {
   locale?: Prisma.StringFieldUpdateOperationsInput | string
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   identities?: Prisma.UserIdentityUpdateManyWithoutUserNestedInput
   credential?: Prisma.UserCredentialUpdateOneWithoutUserNestedInput
   userMFAs?: Prisma.UserMFAUpdateManyWithoutUserNestedInput
@@ -1119,6 +1164,7 @@ export type UserUncheckedUpdateWithoutNotificationInput = {
   locale?: Prisma.StringFieldUpdateOperationsInput | string
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   identities?: Prisma.UserIdentityUncheckedUpdateManyWithoutUserNestedInput
   credential?: Prisma.UserCredentialUncheckedUpdateOneWithoutUserNestedInput
   userMFAs?: Prisma.UserMFAUncheckedUpdateManyWithoutUserNestedInput
@@ -1140,6 +1186,7 @@ export type UserCreateWithoutPromotionalNotificationInput = {
   locale?: string
   timezone?: string
   deletedAt?: Date | string | null
+  role?: $Enums.UserRole
   identities?: Prisma.UserIdentityCreateNestedManyWithoutUserInput
   credential?: Prisma.UserCredentialCreateNestedOneWithoutUserInput
   userMFAs?: Prisma.UserMFACreateNestedManyWithoutUserInput
@@ -1161,6 +1208,7 @@ export type UserUncheckedCreateWithoutPromotionalNotificationInput = {
   locale?: string
   timezone?: string
   deletedAt?: Date | string | null
+  role?: $Enums.UserRole
   identities?: Prisma.UserIdentityUncheckedCreateNestedManyWithoutUserInput
   credential?: Prisma.UserCredentialUncheckedCreateNestedOneWithoutUserInput
   userMFAs?: Prisma.UserMFAUncheckedCreateNestedManyWithoutUserInput
@@ -1198,6 +1246,7 @@ export type UserUpdateWithoutPromotionalNotificationInput = {
   locale?: Prisma.StringFieldUpdateOperationsInput | string
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   identities?: Prisma.UserIdentityUpdateManyWithoutUserNestedInput
   credential?: Prisma.UserCredentialUpdateOneWithoutUserNestedInput
   userMFAs?: Prisma.UserMFAUpdateManyWithoutUserNestedInput
@@ -1219,6 +1268,7 @@ export type UserUncheckedUpdateWithoutPromotionalNotificationInput = {
   locale?: Prisma.StringFieldUpdateOperationsInput | string
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   identities?: Prisma.UserIdentityUncheckedUpdateManyWithoutUserNestedInput
   credential?: Prisma.UserCredentialUncheckedUpdateOneWithoutUserNestedInput
   userMFAs?: Prisma.UserMFAUncheckedUpdateManyWithoutUserNestedInput
@@ -1240,6 +1290,7 @@ export type UserCreateWithoutInsightsNotificationInput = {
   locale?: string
   timezone?: string
   deletedAt?: Date | string | null
+  role?: $Enums.UserRole
   identities?: Prisma.UserIdentityCreateNestedManyWithoutUserInput
   credential?: Prisma.UserCredentialCreateNestedOneWithoutUserInput
   userMFAs?: Prisma.UserMFACreateNestedManyWithoutUserInput
@@ -1261,6 +1312,7 @@ export type UserUncheckedCreateWithoutInsightsNotificationInput = {
   locale?: string
   timezone?: string
   deletedAt?: Date | string | null
+  role?: $Enums.UserRole
   identities?: Prisma.UserIdentityUncheckedCreateNestedManyWithoutUserInput
   credential?: Prisma.UserCredentialUncheckedCreateNestedOneWithoutUserInput
   userMFAs?: Prisma.UserMFAUncheckedCreateNestedManyWithoutUserInput
@@ -1298,6 +1350,7 @@ export type UserUpdateWithoutInsightsNotificationInput = {
   locale?: Prisma.StringFieldUpdateOperationsInput | string
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   identities?: Prisma.UserIdentityUpdateManyWithoutUserNestedInput
   credential?: Prisma.UserCredentialUpdateOneWithoutUserNestedInput
   userMFAs?: Prisma.UserMFAUpdateManyWithoutUserNestedInput
@@ -1319,6 +1372,7 @@ export type UserUncheckedUpdateWithoutInsightsNotificationInput = {
   locale?: Prisma.StringFieldUpdateOperationsInput | string
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   identities?: Prisma.UserIdentityUncheckedUpdateManyWithoutUserNestedInput
   credential?: Prisma.UserCredentialUncheckedUpdateOneWithoutUserNestedInput
   userMFAs?: Prisma.UserMFAUncheckedUpdateManyWithoutUserNestedInput
@@ -1380,6 +1434,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   locale?: boolean
   timezone?: boolean
   deletedAt?: boolean
+  role?: boolean
   identities?: boolean | Prisma.User$identitiesArgs<ExtArgs>
   credential?: boolean | Prisma.User$credentialArgs<ExtArgs>
   userMFAs?: boolean | Prisma.User$userMFAsArgs<ExtArgs>
@@ -1403,6 +1458,7 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   locale?: boolean
   timezone?: boolean
   deletedAt?: boolean
+  role?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1418,6 +1474,7 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   locale?: boolean
   timezone?: boolean
   deletedAt?: boolean
+  role?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectScalar = {
@@ -1433,9 +1490,10 @@ export type UserSelectScalar = {
   locale?: boolean
   timezone?: boolean
   deletedAt?: boolean
+  role?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "username" | "displayName" | "isActive" | "isLocked" | "createdAt" | "updatedAt" | "lastLoginAt" | "locale" | "timezone" | "deletedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "username" | "displayName" | "isActive" | "isLocked" | "createdAt" | "updatedAt" | "lastLoginAt" | "locale" | "timezone" | "deletedAt" | "role", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   identities?: boolean | Prisma.User$identitiesArgs<ExtArgs>
   credential?: boolean | Prisma.User$credentialArgs<ExtArgs>
@@ -1473,6 +1531,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     locale: string
     timezone: string
     deletedAt: Date | null
+    role: $Enums.UserRole
   }, ExtArgs["result"]["user"]>
   composites: {}
 }
@@ -1915,6 +1974,7 @@ export interface UserFieldRefs {
   readonly locale: Prisma.FieldRef<"User", 'String'>
   readonly timezone: Prisma.FieldRef<"User", 'String'>
   readonly deletedAt: Prisma.FieldRef<"User", 'DateTime'>
+  readonly role: Prisma.FieldRef<"User", 'UserRole'>
 }
     
 

@@ -20,8 +20,18 @@ export type WebsiteModel = runtime.Types.Result.DefaultSelection<Prisma.$Website
 
 export type AggregateWebsite = {
   _count: WebsiteCountAggregateOutputType | null
+  _avg: WebsiteAvgAggregateOutputType | null
+  _sum: WebsiteSumAggregateOutputType | null
   _min: WebsiteMinAggregateOutputType | null
   _max: WebsiteMaxAggregateOutputType | null
+}
+
+export type WebsiteAvgAggregateOutputType = {
+  version: number | null
+}
+
+export type WebsiteSumAggregateOutputType = {
+  version: number | null
 }
 
 export type WebsiteMinAggregateOutputType = {
@@ -29,6 +39,7 @@ export type WebsiteMinAggregateOutputType = {
   name: string | null
   description: string | null
   domain: string | null
+  version: number | null
 }
 
 export type WebsiteMaxAggregateOutputType = {
@@ -36,6 +47,7 @@ export type WebsiteMaxAggregateOutputType = {
   name: string | null
   description: string | null
   domain: string | null
+  version: number | null
 }
 
 export type WebsiteCountAggregateOutputType = {
@@ -43,15 +55,25 @@ export type WebsiteCountAggregateOutputType = {
   name: number
   description: number
   domain: number
+  version: number
   _all: number
 }
 
+
+export type WebsiteAvgAggregateInputType = {
+  version?: true
+}
+
+export type WebsiteSumAggregateInputType = {
+  version?: true
+}
 
 export type WebsiteMinAggregateInputType = {
   id?: true
   name?: true
   description?: true
   domain?: true
+  version?: true
 }
 
 export type WebsiteMaxAggregateInputType = {
@@ -59,6 +81,7 @@ export type WebsiteMaxAggregateInputType = {
   name?: true
   description?: true
   domain?: true
+  version?: true
 }
 
 export type WebsiteCountAggregateInputType = {
@@ -66,6 +89,7 @@ export type WebsiteCountAggregateInputType = {
   name?: true
   description?: true
   domain?: true
+  version?: true
   _all?: true
 }
 
@@ -107,6 +131,18 @@ export type WebsiteAggregateArgs<ExtArgs extends runtime.Types.Extensions.Intern
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
+   * Select which fields to average
+  **/
+  _avg?: WebsiteAvgAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
+   * Select which fields to sum
+  **/
+  _sum?: WebsiteSumAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
    * Select which fields to find the minimum value
   **/
   _min?: WebsiteMinAggregateInputType
@@ -137,6 +173,8 @@ export type WebsiteGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
   take?: number
   skip?: number
   _count?: WebsiteCountAggregateInputType | true
+  _avg?: WebsiteAvgAggregateInputType
+  _sum?: WebsiteSumAggregateInputType
   _min?: WebsiteMinAggregateInputType
   _max?: WebsiteMaxAggregateInputType
 }
@@ -146,7 +184,10 @@ export type WebsiteGroupByOutputType = {
   name: string
   description: string
   domain: string
+  version: number
   _count: WebsiteCountAggregateOutputType | null
+  _avg: WebsiteAvgAggregateOutputType | null
+  _sum: WebsiteSumAggregateOutputType | null
   _min: WebsiteMinAggregateOutputType | null
   _max: WebsiteMaxAggregateOutputType | null
 }
@@ -174,6 +215,7 @@ export type WebsiteWhereInput = {
   name?: Prisma.StringFilter<"Website"> | string
   description?: Prisma.StringFilter<"Website"> | string
   domain?: Prisma.StringFilter<"Website"> | string
+  version?: Prisma.IntFilter<"Website"> | number
   pages?: Prisma.WebpageListRelationFilter
 }
 
@@ -182,6 +224,7 @@ export type WebsiteOrderByWithRelationInput = {
   name?: Prisma.SortOrder
   description?: Prisma.SortOrder
   domain?: Prisma.SortOrder
+  version?: Prisma.SortOrder
   pages?: Prisma.WebpageOrderByRelationAggregateInput
 }
 
@@ -193,6 +236,7 @@ export type WebsiteWhereUniqueInput = Prisma.AtLeast<{
   name?: Prisma.StringFilter<"Website"> | string
   description?: Prisma.StringFilter<"Website"> | string
   domain?: Prisma.StringFilter<"Website"> | string
+  version?: Prisma.IntFilter<"Website"> | number
   pages?: Prisma.WebpageListRelationFilter
 }, "id">
 
@@ -201,9 +245,12 @@ export type WebsiteOrderByWithAggregationInput = {
   name?: Prisma.SortOrder
   description?: Prisma.SortOrder
   domain?: Prisma.SortOrder
+  version?: Prisma.SortOrder
   _count?: Prisma.WebsiteCountOrderByAggregateInput
+  _avg?: Prisma.WebsiteAvgOrderByAggregateInput
   _max?: Prisma.WebsiteMaxOrderByAggregateInput
   _min?: Prisma.WebsiteMinOrderByAggregateInput
+  _sum?: Prisma.WebsiteSumOrderByAggregateInput
 }
 
 export type WebsiteScalarWhereWithAggregatesInput = {
@@ -214,6 +261,7 @@ export type WebsiteScalarWhereWithAggregatesInput = {
   name?: Prisma.StringWithAggregatesFilter<"Website"> | string
   description?: Prisma.StringWithAggregatesFilter<"Website"> | string
   domain?: Prisma.StringWithAggregatesFilter<"Website"> | string
+  version?: Prisma.IntWithAggregatesFilter<"Website"> | number
 }
 
 export type WebsiteCreateInput = {
@@ -221,6 +269,7 @@ export type WebsiteCreateInput = {
   name: string
   description: string
   domain: string
+  version?: number
   pages?: Prisma.WebpageCreateNestedManyWithoutWebsiteInput
 }
 
@@ -229,6 +278,7 @@ export type WebsiteUncheckedCreateInput = {
   name: string
   description: string
   domain: string
+  version?: number
   pages?: Prisma.WebpageUncheckedCreateNestedManyWithoutWebsiteInput
 }
 
@@ -237,6 +287,7 @@ export type WebsiteUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   domain?: Prisma.StringFieldUpdateOperationsInput | string
+  version?: Prisma.IntFieldUpdateOperationsInput | number
   pages?: Prisma.WebpageUpdateManyWithoutWebsiteNestedInput
 }
 
@@ -245,6 +296,7 @@ export type WebsiteUncheckedUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   domain?: Prisma.StringFieldUpdateOperationsInput | string
+  version?: Prisma.IntFieldUpdateOperationsInput | number
   pages?: Prisma.WebpageUncheckedUpdateManyWithoutWebsiteNestedInput
 }
 
@@ -253,6 +305,7 @@ export type WebsiteCreateManyInput = {
   name: string
   description: string
   domain: string
+  version?: number
 }
 
 export type WebsiteUpdateManyMutationInput = {
@@ -260,6 +313,7 @@ export type WebsiteUpdateManyMutationInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   domain?: Prisma.StringFieldUpdateOperationsInput | string
+  version?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type WebsiteUncheckedUpdateManyInput = {
@@ -267,6 +321,7 @@ export type WebsiteUncheckedUpdateManyInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   domain?: Prisma.StringFieldUpdateOperationsInput | string
+  version?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type WebsiteCountOrderByAggregateInput = {
@@ -274,6 +329,11 @@ export type WebsiteCountOrderByAggregateInput = {
   name?: Prisma.SortOrder
   description?: Prisma.SortOrder
   domain?: Prisma.SortOrder
+  version?: Prisma.SortOrder
+}
+
+export type WebsiteAvgOrderByAggregateInput = {
+  version?: Prisma.SortOrder
 }
 
 export type WebsiteMaxOrderByAggregateInput = {
@@ -281,6 +341,7 @@ export type WebsiteMaxOrderByAggregateInput = {
   name?: Prisma.SortOrder
   description?: Prisma.SortOrder
   domain?: Prisma.SortOrder
+  version?: Prisma.SortOrder
 }
 
 export type WebsiteMinOrderByAggregateInput = {
@@ -288,6 +349,11 @@ export type WebsiteMinOrderByAggregateInput = {
   name?: Prisma.SortOrder
   description?: Prisma.SortOrder
   domain?: Prisma.SortOrder
+  version?: Prisma.SortOrder
+}
+
+export type WebsiteSumOrderByAggregateInput = {
+  version?: Prisma.SortOrder
 }
 
 export type WebsiteScalarRelationFilter = {
@@ -314,6 +380,7 @@ export type WebsiteCreateWithoutPagesInput = {
   name: string
   description: string
   domain: string
+  version?: number
 }
 
 export type WebsiteUncheckedCreateWithoutPagesInput = {
@@ -321,6 +388,7 @@ export type WebsiteUncheckedCreateWithoutPagesInput = {
   name: string
   description: string
   domain: string
+  version?: number
 }
 
 export type WebsiteCreateOrConnectWithoutPagesInput = {
@@ -344,6 +412,7 @@ export type WebsiteUpdateWithoutPagesInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   domain?: Prisma.StringFieldUpdateOperationsInput | string
+  version?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type WebsiteUncheckedUpdateWithoutPagesInput = {
@@ -351,6 +420,7 @@ export type WebsiteUncheckedUpdateWithoutPagesInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   domain?: Prisma.StringFieldUpdateOperationsInput | string
+  version?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 
@@ -389,6 +459,7 @@ export type WebsiteSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   name?: boolean
   description?: boolean
   domain?: boolean
+  version?: boolean
   pages?: boolean | Prisma.Website$pagesArgs<ExtArgs>
   _count?: boolean | Prisma.WebsiteCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["website"]>
@@ -398,6 +469,7 @@ export type WebsiteSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   name?: boolean
   description?: boolean
   domain?: boolean
+  version?: boolean
 }, ExtArgs["result"]["website"]>
 
 export type WebsiteSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -405,6 +477,7 @@ export type WebsiteSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   name?: boolean
   description?: boolean
   domain?: boolean
+  version?: boolean
 }, ExtArgs["result"]["website"]>
 
 export type WebsiteSelectScalar = {
@@ -412,9 +485,10 @@ export type WebsiteSelectScalar = {
   name?: boolean
   description?: boolean
   domain?: boolean
+  version?: boolean
 }
 
-export type WebsiteOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "description" | "domain", ExtArgs["result"]["website"]>
+export type WebsiteOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "description" | "domain" | "version", ExtArgs["result"]["website"]>
 export type WebsiteInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   pages?: boolean | Prisma.Website$pagesArgs<ExtArgs>
   _count?: boolean | Prisma.WebsiteCountOutputTypeDefaultArgs<ExtArgs>
@@ -432,6 +506,7 @@ export type $WebsitePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     name: string
     description: string
     domain: string
+    version: number
   }, ExtArgs["result"]["website"]>
   composites: {}
 }
@@ -860,6 +935,7 @@ export interface WebsiteFieldRefs {
   readonly name: Prisma.FieldRef<"Website", 'String'>
   readonly description: Prisma.FieldRef<"Website", 'String'>
   readonly domain: Prisma.FieldRef<"Website", 'String'>
+  readonly version: Prisma.FieldRef<"Website", 'Int'>
 }
     
 
