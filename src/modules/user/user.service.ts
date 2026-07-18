@@ -5,6 +5,7 @@ import { GeneratorService } from '../../common/generator/generator.service.js';
 import * as bcrypt from 'bcrypt';
 import { NotificationPreferenceDto } from './dto/notification_preference.dto.js';
 import { PrivacySettingsDto } from './dto/privacy_settings.dto.js';
+import { EventService } from '../auth/services/event.service.js';
 
 @Injectable()
 export class UserService {
@@ -13,6 +14,7 @@ export class UserService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly generator: GeneratorService,
+    private readonly eventService: EventService,
   ) {}
 
   async getUserById(userId: string) {
@@ -39,7 +41,7 @@ export class UserService {
     });
   }
 
-  async createUser(data: CreateUserDto) {
+  async createUser(data: CreateUserDto, req?: any) {
     try {
       const existingUser = await this.findByEmail(data.email);
 
@@ -60,17 +62,29 @@ export class UserService {
           email: data.email,
           displayName: `${data.firstName} ${data.lastName}`,
           username,
+          role: data.role,
         },
       });
 
-      console.log('Created user:', user);
+      const ipAddress = req?.ip || req?.headers['x-forwarded-for'] || 'unknown';
+      const userAgent = req?.headers['user-agent'] || 'unknown';
+      const metadata = { email: data.email, role: data.role };
 
-      if (data.password)
-        await this.createUserCredentials(user.id, data.password);
+      await this.eventService.createAuthEvent(
+        user.id,
+        'ACCOUNT_CREATED',
+        ipAddress,
+        userAgent,
+        metadata,
+      );
 
-      return user;
+      await this.createUserCredentials(user.id, data.password);
+
+      return {
+        message: 'User created successfully',
+      };
     } catch (error) {
-      this.logger.error('Failed to create user', error.stack);
+      this.logger.error('Failed to create user', error);
       throw error;
     }
   }
