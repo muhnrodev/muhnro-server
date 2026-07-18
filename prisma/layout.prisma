@@ -1,0 +1,75 @@
+model Website {
+    id                  String   @id @default(dbgenerated("gen_random_uuid()"))
+    name                String
+    description         String
+    domain              String
+    version             Int      @default(1)
+
+    pages               Webpage[]
+}
+
+model Webpage {
+    id                  String   @id @default(dbgenerated("gen_random_uuid()"))
+    websiteId           String
+    slug                String
+
+    website             Website @relation(fields: [websiteId], references: [id])
+    components          PageComponent[]
+
+    @@unique([websiteId, slug])
+}
+
+model PageComponent {
+    id                 String   @id @default(dbgenerated("gen_random_uuid()"))
+    key                String   @unique
+    webpageId          String
+    componentId        String
+    order              Int
+    
+    webpage            Webpage   @relation(fields: [webpageId], references: [id])
+    component          Component @relation(fields: [componentId], references: [id])
+    
+    values             ComponentFieldValue[]
+}
+
+model Component {
+    id                 String   @id @default(dbgenerated("gen_random_uuid()"))
+    key                String   @unique
+    name               String
+    description        String
+
+    fields              ComponentField[]
+    pages              PageComponent[]
+}
+
+model ComponentField {
+    id                 String   @id @default(dbgenerated("gen_random_uuid()"))
+    componentId        String
+    key                String   
+    label              String
+    type               FieldType
+    required           Boolean @default(false)
+    minLength          Int?
+    maxLength          Int?
+    minValue           Float?
+    maxValue           Float?
+    regex              String?
+    component          Component @relation(fields: [componentId], references: [id])
+
+    fieldValues         ComponentFieldValue[]
+
+
+    @@unique([componentId, key])
+}
+
+model ComponentFieldValue {
+    id                 String   @id @default(dbgenerated("gen_random_uuid()"))
+    pageComponentId    String
+    fieldId             String
+    value              Json
+
+    pageComponent      PageComponent @relation(fields: [pageComponentId], references: [id])
+    field               ComponentField @relation(fields: [fieldId], references: [id])
+
+    @@unique([pageComponentId, fieldId])
+}

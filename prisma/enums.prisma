@@ -57,3 +57,24 @@ enum ReportStatus {
     PUBLISHED
     ARCHIVED
 }
+
+enum FieldType {
+    STRING
+    TEXT
+    RICHTEXT
+    MARKDOWN
+
+    IMAGE
+    VIDEO
+    FILE
+
+    NUMBER
+    BOOLEAN
+
+    COLOR
+    URL
+    EMAIL
+
+    ARRAY
+    OBJECT
+}

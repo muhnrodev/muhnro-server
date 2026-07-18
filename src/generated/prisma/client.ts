@@ -155,6 +155,36 @@ export type ArticleVersion = Prisma.ArticleVersionModel
  */
 export type ArticleComment = Prisma.ArticleCommentModel
 /**
+ * Model Website
+ * 
+ */
+export type Website = Prisma.WebsiteModel
+/**
+ * Model Webpage
+ * 
+ */
+export type Webpage = Prisma.WebpageModel
+/**
+ * Model PageComponent
+ * 
+ */
+export type PageComponent = Prisma.PageComponentModel
+/**
+ * Model Component
+ * 
+ */
+export type Component = Prisma.ComponentModel
+/**
+ * Model ComponentField
+ * 
+ */
+export type ComponentField = Prisma.ComponentFieldModel
+/**
+ * Model ComponentFieldValue
+ * 
+ */
+export type ComponentFieldValue = Prisma.ComponentFieldValueModel
+/**
  * Model AvatarImage
  * 
  */

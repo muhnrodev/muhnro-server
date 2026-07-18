@@ -94,3 +94,23 @@ export const ReportStatus = {
 } as const
 
 export type ReportStatus = (typeof ReportStatus)[keyof typeof ReportStatus]
+
+
+export const FieldType = {
+  STRING: 'STRING',
+  TEXT: 'TEXT',
+  RICHTEXT: 'RICHTEXT',
+  MARKDOWN: 'MARKDOWN',
+  IMAGE: 'IMAGE',
+  VIDEO: 'VIDEO',
+  FILE: 'FILE',
+  NUMBER: 'NUMBER',
+  BOOLEAN: 'BOOLEAN',
+  COLOR: 'COLOR',
+  URL: 'URL',
+  EMAIL: 'EMAIL',
+  ARRAY: 'ARRAY',
+  OBJECT: 'OBJECT'
+} as const
+
+export type FieldType = (typeof FieldType)[keyof typeof FieldType]

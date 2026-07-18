@@ -591,14 +591,6 @@ export type ProjectImageUncheckedUpdateManyWithoutProjectNestedInput = {
   deleteMany?: Prisma.ProjectImageScalarWhereInput | Prisma.ProjectImageScalarWhereInput[]
 }
 
-export type NullableFloatFieldUpdateOperationsInput = {
-  set?: number | null
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
-}
-
 export type ProjectImageCreateWithoutProjectInput = {
   imageId?: string
   fileName: string
