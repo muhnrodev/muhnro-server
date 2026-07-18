@@ -46,12 +46,12 @@ export class AuthService {
         throw new UnauthorizedException('Invalid credentials');
       }
 
-      if (user.role !== role) {
-        this.logger.warn(
-          `User role mismatch for email: ${email}. Expected: ${role}, Found: ${user.role}`,
-        );
-        throw new UnauthorizedException('Invalid credentials');
-      }
+      // if (user.role !== role) {
+      //   this.logger.warn(
+      //     `User role mismatch for email: ${email}. Expected: ${role}, Found: ${user.role}`,
+      //   );
+      //   throw new UnauthorizedException('Invalid credentials');
+      // }
 
       const userCredential = await this.userService.getUserCredentials(user.id);
 
