@@ -22,17 +22,12 @@ export class AuthController {
   @Post('login')
   @UseGuards(LocalAuthGuard)
   async login(@Request() req, @Res({ passthrough: true }) res: Response) {
-    const result = await this.authService.login(req.user.id);
-    if (!result) {
-      throw new Error('Login failed');
-    }
-    const { id, token, refreshToken, user } = result;
-
-    // await this.authService.createAuthEvent(id, 'LOGIN', req);
+    const { id, accessToken, refreshToken, user } =
+      await this.authService.login(req.user.id);
 
     const isProd = process.env.NODE_ENV === 'production';
 
-    res.cookie('access_token', token, {
+    res.cookie('access_token', accessToken, {
       domain: isProd ? '.muhnro.com' : undefined,
       httpOnly: true,
       secure: isProd,
@@ -48,14 +43,14 @@ export class AuthController {
       path: '/',
     });
 
-    return { id, token, refreshToken, user, success: true };
+    return { id, accessToken, refreshToken, user, success: true };
   }
 
   @UseGuards(RefreshAuthGuard)
   @Post('refresh')
   async refreshToken(@Request() req) {
-    const { id, role } = req.user;
-    return this.authService.refreshToken(id, role);
+    const { id, role, sessionId } = req.user;
+    return await this.authService.refreshToken(id, role, sessionId);
   }
 
   @Get('google/login')
@@ -68,17 +63,13 @@ export class AuthController {
     @Request() req,
     @Res({ passthrough: true }) res: Response,
   ) {
-    const result = await this.authService.login(req.user.id);
-    if (!result) {
-      throw new Error('Login failed');
-    }
-    const { id, token, refreshToken, user } = result;
-
-    // await this.authService.createAuthEvent(id, 'LOGIN', req);
+    const { accessToken, refreshToken } = await this.authService.login(
+      req.user.id,
+    );
 
     const isProd = process.env.NODE_ENV === 'production';
 
-    res.cookie('access_token', token, {
+    res.cookie('access_token', accessToken, {
       domain: isProd ? '.muhnro.com' : undefined,
       httpOnly: true,
       secure: isProd,

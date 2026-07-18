@@ -15,6 +15,7 @@ import { AuthEventType, UserRole } from '../../generated/prisma/enums.js';
 import { PrismaService } from '../../prisma/prisma.service.js';
 import { AuthJwtPayload } from './types/auth-jwtPayload.js';
 import { EventService } from './services/event.service.js';
+import { SessionService } from './services/session.service.js';
 
 @Injectable()
 export class AuthService {
@@ -24,6 +25,7 @@ export class AuthService {
     private readonly userService: UserService,
     private readonly jwtService: JwtService,
     private readonly prisma: PrismaService,
+    private readonly sessionService: SessionService,
     private readonly eventService: EventService,
     @Inject(refreshJwtConfig.KEY)
     private refreshTokenConfig: config.ConfigType<typeof refreshJwtConfig>,
@@ -91,20 +93,22 @@ export class AuthService {
     try {
       const user = await this.userService.getUserById(userId);
 
-      if (!user) throw new UnauthorizedException('User not found');
+      if (!user) {
+        this.logger.warn(`User not found for userId: ${userId}`);
+        throw new UnauthorizedException('Invalid credentials');
+      }
 
-      const payload: AuthJwtPayload = { sub: userId, role: user.role };
-      const token = this.jwtService.sign(payload);
-      const refreshToken = this.jwtService.sign(
-        payload,
-        this.refreshTokenConfig,
+      const session = await this.sessionService.createLoginSession(
+        userId,
+        user.role,
       );
 
       return {
         id: userId,
-        token,
-        refreshToken,
+        accessToken: session.accessToken,
+        refreshToken: session.refreshToken,
         user,
+        role: user.role,
       };
     } catch (error) {
       this.logger.error('Failed to login user', error);
@@ -112,14 +116,37 @@ export class AuthService {
     }
   }
 
-  refreshToken(userId: string, role: UserRole) {
-    const payload: AuthJwtPayload = { sub: userId, role };
-    const token = this.jwtService.sign(payload);
+  async refreshToken(userId: string, role: UserRole, sessionId: string) {
+    try {
+      const isValidSession = await this.sessionService.validateSession(
+        userId,
+        sessionId,
+      );
 
-    return {
-      id: userId,
-      token,
-    };
+      if (!isValidSession) {
+        this.logger.warn(
+          `Invalid session for userId: ${userId}, sessionId: ${sessionId}`,
+        );
+        throw new UnauthorizedException('Invalid session');
+      }
+
+      const newAccessToken = this.jwtService.sign({
+        sub: userId,
+        role,
+        sessionId,
+      });
+
+      await this.eventService.createAuthEvent(
+        userId,
+        AuthEventType.TOKEN_REFRESHED,
+        undefined,
+        undefined,
+      );
+
+      return {
+        accessToken: newAccessToken,
+      };
+    } catch (error) {}
   }
 
   async validateGoogleUser(googleUser: CreateUserDto) {
