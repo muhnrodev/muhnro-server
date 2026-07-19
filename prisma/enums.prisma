@@ -110,4 +110,18 @@ enum FieldType {
 
     ARRAY
     OBJECT
+
+    REFERENCE
+    REFERENCE_ARRAY
+}
+
+enum ReferenceType {
+    ARTICLE
+    NEWS
+    PROJECT
+    REPORT
+    PODCAST
+    PRODUCT
+    PARTNER
+    PERSON
 }

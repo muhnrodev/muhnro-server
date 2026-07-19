@@ -67,13 +67,14 @@ model ComponentField {
     key                String   
     label              String
     type               FieldType
+    referenceType      ReferenceType?
     required           Boolean @default(false)
     minLength          Int?
     maxLength          Int?
     minValue           Float?
     maxValue           Float?
     regex              String?
-    component          Component @relation(fields: [componentId], references: [id], onDelete: Cascade)
+    schemaId           String?
 
     createdAt          DateTime? @default(now())
     createdBy          String?
@@ -82,6 +83,8 @@ model ComponentField {
 
     fieldValues         ComponentFieldValue[]
     itemSchema         ItemSchema[]
+
+    component          Component @relation(fields: [componentId], references: [id], onDelete: Cascade)
 
     @@unique([componentId, key])
 }
@@ -93,13 +96,63 @@ model ItemSchema {
     key                String
     type               FieldType
     required           Boolean @default(false)
+    parentId           String?
 
     createdAt          DateTime @default(now())
     createdBy          String?
     updatedAt          DateTime @updatedAt
     updatedBy          String?
     
-    componentField     ComponentField @relation(fields: [componentFieldId], references: [id], onDelete: Cascade)
+    componentField    ComponentField @relation(fields: [componentFieldId], references: [id], onDelete: Cascade)
+    parent            ItemSchema? @relation("ItemSchemaChildren", fields: [parentId], references: [id], onDelete: Cascade)
+    children          ItemSchema[] @relation("ItemSchemaChildren")
+}
+
+model ObjectSchema {
+    id          String   @id @default(dbgenerated("gen_random_uuid()"))
+    key         String   @unique
+    name        String
+    description String?
+
+    createdAt   DateTime @default(now())
+    createdBy   String?
+    updatedAt   DateTime @updatedAt
+    updatedBy   String?
+
+    fields      ObjectSchemaField[]
+
+    objectSchemaFields ObjectSchemaField[] @relation("NestedSchema")
+}
+
+model ObjectSchemaField {
+    id              String   @id @default(dbgenerated("gen_random_uuid()"))
+
+    objectSchemaId  String
+
+    key             String
+    label           String
+
+    type            FieldType
+    required        Boolean @default(false)
+
+    referenceType   ReferenceType?
+
+    schemaId        String?
+
+    minLength       Int?
+    maxLength       Int?
+    minValue        Float?
+    maxValue        Float?
+    regex           String?
+
+    objectSchema    ObjectSchema @relation(fields: [objectSchemaId], references: [id], onDelete: Cascade)
+    objectSchemaFields ObjectSchemaField[] @relation("NestedSchema")
+
+
+    nestedSchema    ObjectSchema? @relation("NestedSchema", fields: [schemaId], references: [id])
+    usedBy          ObjectSchemaField[] @relation("NestedSchema")
+
+    @@unique([objectSchemaId, key])
 }
 
 model ComponentFieldValue {
