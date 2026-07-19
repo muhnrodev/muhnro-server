@@ -80,6 +80,7 @@ export const ModelName = {
   PageComponent: 'PageComponent',
   Component: 'Component',
   ComponentField: 'ComponentField',
+  ItemSchema: 'ItemSchema',
   ComponentFieldValue: 'ComponentFieldValue',
   AvatarImage: 'AvatarImage',
   HeroImage: 'HeroImage',
@@ -465,7 +466,11 @@ export const PageComponentScalarFieldEnum = {
   key: 'key',
   webpageId: 'webpageId',
   componentId: 'componentId',
-  order: 'order'
+  order: 'order',
+  createdAt: 'createdAt',
+  createdBy: 'createdBy',
+  updatedAt: 'updatedAt',
+  updatedBy: 'updatedBy'
 } as const
 
 export type PageComponentScalarFieldEnum = (typeof PageComponentScalarFieldEnum)[keyof typeof PageComponentScalarFieldEnum]
@@ -475,7 +480,11 @@ export const ComponentScalarFieldEnum = {
   id: 'id',
   key: 'key',
   name: 'name',
-  description: 'description'
+  description: 'description',
+  createdAt: 'createdAt',
+  createdBy: 'createdBy',
+  updatedAt: 'updatedAt',
+  updatedBy: 'updatedBy'
 } as const
 
 export type ComponentScalarFieldEnum = (typeof ComponentScalarFieldEnum)[keyof typeof ComponentScalarFieldEnum]
@@ -492,17 +501,41 @@ export const ComponentFieldScalarFieldEnum = {
   maxLength: 'maxLength',
   minValue: 'minValue',
   maxValue: 'maxValue',
-  regex: 'regex'
+  regex: 'regex',
+  createdAt: 'createdAt',
+  createdBy: 'createdBy',
+  updatedAt: 'updatedAt',
+  updatedBy: 'updatedBy'
 } as const
 
 export type ComponentFieldScalarFieldEnum = (typeof ComponentFieldScalarFieldEnum)[keyof typeof ComponentFieldScalarFieldEnum]
+
+
+export const ItemSchemaScalarFieldEnum = {
+  id: 'id',
+  componentFieldId: 'componentFieldId',
+  label: 'label',
+  key: 'key',
+  type: 'type',
+  required: 'required',
+  createdAt: 'createdAt',
+  createdBy: 'createdBy',
+  updatedAt: 'updatedAt',
+  updatedBy: 'updatedBy'
+} as const
+
+export type ItemSchemaScalarFieldEnum = (typeof ItemSchemaScalarFieldEnum)[keyof typeof ItemSchemaScalarFieldEnum]
 
 
 export const ComponentFieldValueScalarFieldEnum = {
   id: 'id',
   pageComponentId: 'pageComponentId',
   fieldId: 'fieldId',
-  value: 'value'
+  value: 'value',
+  createdAt: 'createdAt',
+  createdBy: 'createdBy',
+  updatedAt: 'updatedAt',
+  updatedBy: 'updatedBy'
 } as const
 
 export type ComponentFieldValueScalarFieldEnum = (typeof ComponentFieldValueScalarFieldEnum)[keyof typeof ComponentFieldValueScalarFieldEnum]

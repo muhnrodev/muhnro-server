@@ -28,12 +28,20 @@ export type ComponentFieldValueMinAggregateOutputType = {
   id: string | null
   pageComponentId: string | null
   fieldId: string | null
+  createdAt: Date | null
+  createdBy: string | null
+  updatedAt: Date | null
+  updatedBy: string | null
 }
 
 export type ComponentFieldValueMaxAggregateOutputType = {
   id: string | null
   pageComponentId: string | null
   fieldId: string | null
+  createdAt: Date | null
+  createdBy: string | null
+  updatedAt: Date | null
+  updatedBy: string | null
 }
 
 export type ComponentFieldValueCountAggregateOutputType = {
@@ -41,6 +49,10 @@ export type ComponentFieldValueCountAggregateOutputType = {
   pageComponentId: number
   fieldId: number
   value: number
+  createdAt: number
+  createdBy: number
+  updatedAt: number
+  updatedBy: number
   _all: number
 }
 
@@ -49,12 +61,20 @@ export type ComponentFieldValueMinAggregateInputType = {
   id?: true
   pageComponentId?: true
   fieldId?: true
+  createdAt?: true
+  createdBy?: true
+  updatedAt?: true
+  updatedBy?: true
 }
 
 export type ComponentFieldValueMaxAggregateInputType = {
   id?: true
   pageComponentId?: true
   fieldId?: true
+  createdAt?: true
+  createdBy?: true
+  updatedAt?: true
+  updatedBy?: true
 }
 
 export type ComponentFieldValueCountAggregateInputType = {
@@ -62,6 +82,10 @@ export type ComponentFieldValueCountAggregateInputType = {
   pageComponentId?: true
   fieldId?: true
   value?: true
+  createdAt?: true
+  createdBy?: true
+  updatedAt?: true
+  updatedBy?: true
   _all?: true
 }
 
@@ -142,6 +166,10 @@ export type ComponentFieldValueGroupByOutputType = {
   pageComponentId: string
   fieldId: string
   value: runtime.JsonValue
+  createdAt: Date
+  createdBy: string | null
+  updatedAt: Date
+  updatedBy: string | null
   _count: ComponentFieldValueCountAggregateOutputType | null
   _min: ComponentFieldValueMinAggregateOutputType | null
   _max: ComponentFieldValueMaxAggregateOutputType | null
@@ -170,6 +198,10 @@ export type ComponentFieldValueWhereInput = {
   pageComponentId?: Prisma.StringFilter<"ComponentFieldValue"> | string
   fieldId?: Prisma.StringFilter<"ComponentFieldValue"> | string
   value?: Prisma.JsonFilter<"ComponentFieldValue">
+  createdAt?: Prisma.DateTimeFilter<"ComponentFieldValue"> | Date | string
+  createdBy?: Prisma.StringNullableFilter<"ComponentFieldValue"> | string | null
+  updatedAt?: Prisma.DateTimeFilter<"ComponentFieldValue"> | Date | string
+  updatedBy?: Prisma.StringNullableFilter<"ComponentFieldValue"> | string | null
   pageComponent?: Prisma.XOR<Prisma.PageComponentScalarRelationFilter, Prisma.PageComponentWhereInput>
   field?: Prisma.XOR<Prisma.ComponentFieldScalarRelationFilter, Prisma.ComponentFieldWhereInput>
 }
@@ -179,6 +211,10 @@ export type ComponentFieldValueOrderByWithRelationInput = {
   pageComponentId?: Prisma.SortOrder
   fieldId?: Prisma.SortOrder
   value?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  createdBy?: Prisma.SortOrderInput | Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  updatedBy?: Prisma.SortOrderInput | Prisma.SortOrder
   pageComponent?: Prisma.PageComponentOrderByWithRelationInput
   field?: Prisma.ComponentFieldOrderByWithRelationInput
 }
@@ -192,6 +228,10 @@ export type ComponentFieldValueWhereUniqueInput = Prisma.AtLeast<{
   pageComponentId?: Prisma.StringFilter<"ComponentFieldValue"> | string
   fieldId?: Prisma.StringFilter<"ComponentFieldValue"> | string
   value?: Prisma.JsonFilter<"ComponentFieldValue">
+  createdAt?: Prisma.DateTimeFilter<"ComponentFieldValue"> | Date | string
+  createdBy?: Prisma.StringNullableFilter<"ComponentFieldValue"> | string | null
+  updatedAt?: Prisma.DateTimeFilter<"ComponentFieldValue"> | Date | string
+  updatedBy?: Prisma.StringNullableFilter<"ComponentFieldValue"> | string | null
   pageComponent?: Prisma.XOR<Prisma.PageComponentScalarRelationFilter, Prisma.PageComponentWhereInput>
   field?: Prisma.XOR<Prisma.ComponentFieldScalarRelationFilter, Prisma.ComponentFieldWhereInput>
 }, "id" | "pageComponentId_fieldId">
@@ -201,6 +241,10 @@ export type ComponentFieldValueOrderByWithAggregationInput = {
   pageComponentId?: Prisma.SortOrder
   fieldId?: Prisma.SortOrder
   value?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  createdBy?: Prisma.SortOrderInput | Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  updatedBy?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.ComponentFieldValueCountOrderByAggregateInput
   _max?: Prisma.ComponentFieldValueMaxOrderByAggregateInput
   _min?: Prisma.ComponentFieldValueMinOrderByAggregateInput
@@ -214,11 +258,19 @@ export type ComponentFieldValueScalarWhereWithAggregatesInput = {
   pageComponentId?: Prisma.StringWithAggregatesFilter<"ComponentFieldValue"> | string
   fieldId?: Prisma.StringWithAggregatesFilter<"ComponentFieldValue"> | string
   value?: Prisma.JsonWithAggregatesFilter<"ComponentFieldValue">
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"ComponentFieldValue"> | Date | string
+  createdBy?: Prisma.StringNullableWithAggregatesFilter<"ComponentFieldValue"> | string | null
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"ComponentFieldValue"> | Date | string
+  updatedBy?: Prisma.StringNullableWithAggregatesFilter<"ComponentFieldValue"> | string | null
 }
 
 export type ComponentFieldValueCreateInput = {
   id?: string
   value: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  createdBy?: string | null
+  updatedAt?: Date | string
+  updatedBy?: string | null
   pageComponent: Prisma.PageComponentCreateNestedOneWithoutValuesInput
   field: Prisma.ComponentFieldCreateNestedOneWithoutFieldValuesInput
 }
@@ -228,11 +280,19 @@ export type ComponentFieldValueUncheckedCreateInput = {
   pageComponentId: string
   fieldId: string
   value: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  createdBy?: string | null
+  updatedAt?: Date | string
+  updatedBy?: string | null
 }
 
 export type ComponentFieldValueUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   value?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pageComponent?: Prisma.PageComponentUpdateOneRequiredWithoutValuesNestedInput
   field?: Prisma.ComponentFieldUpdateOneRequiredWithoutFieldValuesNestedInput
 }
@@ -242,6 +302,10 @@ export type ComponentFieldValueUncheckedUpdateInput = {
   pageComponentId?: Prisma.StringFieldUpdateOperationsInput | string
   fieldId?: Prisma.StringFieldUpdateOperationsInput | string
   value?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type ComponentFieldValueCreateManyInput = {
@@ -249,11 +313,19 @@ export type ComponentFieldValueCreateManyInput = {
   pageComponentId: string
   fieldId: string
   value: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  createdBy?: string | null
+  updatedAt?: Date | string
+  updatedBy?: string | null
 }
 
 export type ComponentFieldValueUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   value?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type ComponentFieldValueUncheckedUpdateManyInput = {
@@ -261,6 +333,10 @@ export type ComponentFieldValueUncheckedUpdateManyInput = {
   pageComponentId?: Prisma.StringFieldUpdateOperationsInput | string
   fieldId?: Prisma.StringFieldUpdateOperationsInput | string
   value?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type ComponentFieldValueListRelationFilter = {
@@ -283,18 +359,30 @@ export type ComponentFieldValueCountOrderByAggregateInput = {
   pageComponentId?: Prisma.SortOrder
   fieldId?: Prisma.SortOrder
   value?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  createdBy?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  updatedBy?: Prisma.SortOrder
 }
 
 export type ComponentFieldValueMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   pageComponentId?: Prisma.SortOrder
   fieldId?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  createdBy?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  updatedBy?: Prisma.SortOrder
 }
 
 export type ComponentFieldValueMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   pageComponentId?: Prisma.SortOrder
   fieldId?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  createdBy?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  updatedBy?: Prisma.SortOrder
 }
 
 export type ComponentFieldValueCreateNestedManyWithoutPageComponentInput = {
@@ -384,6 +472,10 @@ export type ComponentFieldValueUncheckedUpdateManyWithoutFieldNestedInput = {
 export type ComponentFieldValueCreateWithoutPageComponentInput = {
   id?: string
   value: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  createdBy?: string | null
+  updatedAt?: Date | string
+  updatedBy?: string | null
   field: Prisma.ComponentFieldCreateNestedOneWithoutFieldValuesInput
 }
 
@@ -391,6 +483,10 @@ export type ComponentFieldValueUncheckedCreateWithoutPageComponentInput = {
   id?: string
   fieldId: string
   value: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  createdBy?: string | null
+  updatedAt?: Date | string
+  updatedBy?: string | null
 }
 
 export type ComponentFieldValueCreateOrConnectWithoutPageComponentInput = {
@@ -427,11 +523,19 @@ export type ComponentFieldValueScalarWhereInput = {
   pageComponentId?: Prisma.StringFilter<"ComponentFieldValue"> | string
   fieldId?: Prisma.StringFilter<"ComponentFieldValue"> | string
   value?: Prisma.JsonFilter<"ComponentFieldValue">
+  createdAt?: Prisma.DateTimeFilter<"ComponentFieldValue"> | Date | string
+  createdBy?: Prisma.StringNullableFilter<"ComponentFieldValue"> | string | null
+  updatedAt?: Prisma.DateTimeFilter<"ComponentFieldValue"> | Date | string
+  updatedBy?: Prisma.StringNullableFilter<"ComponentFieldValue"> | string | null
 }
 
 export type ComponentFieldValueCreateWithoutFieldInput = {
   id?: string
   value: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  createdBy?: string | null
+  updatedAt?: Date | string
+  updatedBy?: string | null
   pageComponent: Prisma.PageComponentCreateNestedOneWithoutValuesInput
 }
 
@@ -439,6 +543,10 @@ export type ComponentFieldValueUncheckedCreateWithoutFieldInput = {
   id?: string
   pageComponentId: string
   value: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  createdBy?: string | null
+  updatedAt?: Date | string
+  updatedBy?: string | null
 }
 
 export type ComponentFieldValueCreateOrConnectWithoutFieldInput = {
@@ -471,11 +579,19 @@ export type ComponentFieldValueCreateManyPageComponentInput = {
   id?: string
   fieldId: string
   value: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  createdBy?: string | null
+  updatedAt?: Date | string
+  updatedBy?: string | null
 }
 
 export type ComponentFieldValueUpdateWithoutPageComponentInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   value?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   field?: Prisma.ComponentFieldUpdateOneRequiredWithoutFieldValuesNestedInput
 }
 
@@ -483,23 +599,39 @@ export type ComponentFieldValueUncheckedUpdateWithoutPageComponentInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   fieldId?: Prisma.StringFieldUpdateOperationsInput | string
   value?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type ComponentFieldValueUncheckedUpdateManyWithoutPageComponentInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   fieldId?: Prisma.StringFieldUpdateOperationsInput | string
   value?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type ComponentFieldValueCreateManyFieldInput = {
   id?: string
   pageComponentId: string
   value: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  createdBy?: string | null
+  updatedAt?: Date | string
+  updatedBy?: string | null
 }
 
 export type ComponentFieldValueUpdateWithoutFieldInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   value?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pageComponent?: Prisma.PageComponentUpdateOneRequiredWithoutValuesNestedInput
 }
 
@@ -507,12 +639,20 @@ export type ComponentFieldValueUncheckedUpdateWithoutFieldInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   pageComponentId?: Prisma.StringFieldUpdateOperationsInput | string
   value?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type ComponentFieldValueUncheckedUpdateManyWithoutFieldInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   pageComponentId?: Prisma.StringFieldUpdateOperationsInput | string
   value?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 
@@ -522,6 +662,10 @@ export type ComponentFieldValueSelect<ExtArgs extends runtime.Types.Extensions.I
   pageComponentId?: boolean
   fieldId?: boolean
   value?: boolean
+  createdAt?: boolean
+  createdBy?: boolean
+  updatedAt?: boolean
+  updatedBy?: boolean
   pageComponent?: boolean | Prisma.PageComponentDefaultArgs<ExtArgs>
   field?: boolean | Prisma.ComponentFieldDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["componentFieldValue"]>
@@ -531,6 +675,10 @@ export type ComponentFieldValueSelectCreateManyAndReturn<ExtArgs extends runtime
   pageComponentId?: boolean
   fieldId?: boolean
   value?: boolean
+  createdAt?: boolean
+  createdBy?: boolean
+  updatedAt?: boolean
+  updatedBy?: boolean
   pageComponent?: boolean | Prisma.PageComponentDefaultArgs<ExtArgs>
   field?: boolean | Prisma.ComponentFieldDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["componentFieldValue"]>
@@ -540,6 +688,10 @@ export type ComponentFieldValueSelectUpdateManyAndReturn<ExtArgs extends runtime
   pageComponentId?: boolean
   fieldId?: boolean
   value?: boolean
+  createdAt?: boolean
+  createdBy?: boolean
+  updatedAt?: boolean
+  updatedBy?: boolean
   pageComponent?: boolean | Prisma.PageComponentDefaultArgs<ExtArgs>
   field?: boolean | Prisma.ComponentFieldDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["componentFieldValue"]>
@@ -549,9 +701,13 @@ export type ComponentFieldValueSelectScalar = {
   pageComponentId?: boolean
   fieldId?: boolean
   value?: boolean
+  createdAt?: boolean
+  createdBy?: boolean
+  updatedAt?: boolean
+  updatedBy?: boolean
 }
 
-export type ComponentFieldValueOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "pageComponentId" | "fieldId" | "value", ExtArgs["result"]["componentFieldValue"]>
+export type ComponentFieldValueOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "pageComponentId" | "fieldId" | "value" | "createdAt" | "createdBy" | "updatedAt" | "updatedBy", ExtArgs["result"]["componentFieldValue"]>
 export type ComponentFieldValueInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   pageComponent?: boolean | Prisma.PageComponentDefaultArgs<ExtArgs>
   field?: boolean | Prisma.ComponentFieldDefaultArgs<ExtArgs>
@@ -576,6 +732,10 @@ export type $ComponentFieldValuePayload<ExtArgs extends runtime.Types.Extensions
     pageComponentId: string
     fieldId: string
     value: runtime.JsonValue
+    createdAt: Date
+    createdBy: string | null
+    updatedAt: Date
+    updatedBy: string | null
   }, ExtArgs["result"]["componentFieldValue"]>
   composites: {}
 }
@@ -1005,6 +1165,10 @@ export interface ComponentFieldValueFieldRefs {
   readonly pageComponentId: Prisma.FieldRef<"ComponentFieldValue", 'String'>
   readonly fieldId: Prisma.FieldRef<"ComponentFieldValue", 'String'>
   readonly value: Prisma.FieldRef<"ComponentFieldValue", 'Json'>
+  readonly createdAt: Prisma.FieldRef<"ComponentFieldValue", 'DateTime'>
+  readonly createdBy: Prisma.FieldRef<"ComponentFieldValue", 'String'>
+  readonly updatedAt: Prisma.FieldRef<"ComponentFieldValue", 'DateTime'>
+  readonly updatedBy: Prisma.FieldRef<"ComponentFieldValue", 'String'>
 }
     
 

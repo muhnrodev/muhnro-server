@@ -18,11 +18,11 @@ model Webpage {
     slug                String
     
     createdAt           DateTime @default(now())
-    createdBy           String
+    createdBy           String?
     updatedAt           DateTime @updatedAt
-    updatedBy           String
+    updatedBy           String?
 
-    website             Website @relation(fields: [websiteId], references: [id])
+    website             Website @relation(fields: [websiteId], references: [id], onDelete: Cascade)
     components          PageComponent[]
 
     @@unique([websiteId, slug])
@@ -34,9 +34,14 @@ model PageComponent {
     webpageId          String
     componentId        String
     order              Int
+
+    createdAt          DateTime @default(now())
+    createdBy          String?
+    updatedAt          DateTime @updatedAt
+    updatedBy          String?
     
-    webpage            Webpage   @relation(fields: [webpageId], references: [id])
-    component          Component @relation(fields: [componentId], references: [id])
+    webpage            Webpage   @relation(fields: [webpageId], references: [id], onDelete: Cascade)
+    component          Component @relation(fields: [componentId], references: [id], onDelete: Cascade)
     
     values             ComponentFieldValue[]
 }
@@ -46,6 +51,11 @@ model Component {
     key                String   @unique
     name               String
     description        String
+
+    createdAt          DateTime? @default(now())
+    createdBy          String?
+    updatedAt          DateTime? @updatedAt
+    updatedBy          String?
 
     fields              ComponentField[]
     pages              PageComponent[]
@@ -63,12 +73,33 @@ model ComponentField {
     minValue           Float?
     maxValue           Float?
     regex              String?
-    component          Component @relation(fields: [componentId], references: [id])
+    component          Component @relation(fields: [componentId], references: [id], onDelete: Cascade)
+
+    createdAt          DateTime? @default(now())
+    createdBy          String?
+    updatedAt          DateTime? @updatedAt
+    updatedBy          String?
 
     fieldValues         ComponentFieldValue[]
-
+    itemSchema         ItemSchema[]
 
     @@unique([componentId, key])
+}
+
+model ItemSchema {
+    id                 String   @id @default(dbgenerated("gen_random_uuid()"))
+    componentFieldId   String
+    label              String
+    key                String
+    type               FieldType
+    required           Boolean @default(false)
+
+    createdAt          DateTime @default(now())
+    createdBy          String?
+    updatedAt          DateTime @updatedAt
+    updatedBy          String?
+    
+    componentField     ComponentField @relation(fields: [componentFieldId], references: [id], onDelete: Cascade)
 }
 
 model ComponentFieldValue {
@@ -77,8 +108,13 @@ model ComponentFieldValue {
     fieldId             String
     value              Json
 
-    pageComponent      PageComponent @relation(fields: [pageComponentId], references: [id])
-    field               ComponentField @relation(fields: [fieldId], references: [id])
+    createdAt          DateTime @default(now())
+    createdBy          String?
+    updatedAt          DateTime @updatedAt
+    updatedBy          String?
+
+    pageComponent      PageComponent @relation(fields: [pageComponentId], references: [id], onDelete: Cascade)
+    field               ComponentField @relation(fields: [fieldId], references: [id], onDelete: Cascade)
 
     @@unique([pageComponentId, fieldId])
 }

@@ -413,6 +413,7 @@ export const ModelName = {
   PageComponent: 'PageComponent',
   Component: 'Component',
   ComponentField: 'ComponentField',
+  ItemSchema: 'ItemSchema',
   ComponentFieldValue: 'ComponentFieldValue',
   AvatarImage: 'AvatarImage',
   HeroImage: 'HeroImage',
@@ -453,7 +454,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "userCredentialWebAuthn" | "userMFA" | "oAuthToken" | "emailVerification" | "passwordReset" | "authEvent" | "privacySettings" | "location" | "industry" | "serviceActivity" | "identityProvider" | "topic" | "article" | "articleIndustry" | "articleTopic" | "articleServiceActivity" | "articleTag" | "articleReference" | "articleVersion" | "articleComment" | "session" | "userIdentity" | "userCredential" | "website" | "webpage" | "pageComponent" | "component" | "componentField" | "componentFieldValue" | "avatarImage" | "heroImage" | "coverImage" | "articleImage" | "reportFile" | "notificationPreference" | "promotionalPreference" | "insightsPreference" | "teamMember" | "teamRole" | "client" | "author" | "organization" | "articleAuthor" | "reportAuthor" | "project" | "projectServiceActivity" | "projectTeamMember" | "projectImage" | "projectNote" | "report" | "reportIndustry" | "reportTopic" | "reportServiceActivity"
+    modelProps: "user" | "userCredentialWebAuthn" | "userMFA" | "oAuthToken" | "emailVerification" | "passwordReset" | "authEvent" | "privacySettings" | "location" | "industry" | "serviceActivity" | "identityProvider" | "topic" | "article" | "articleIndustry" | "articleTopic" | "articleServiceActivity" | "articleTag" | "articleReference" | "articleVersion" | "articleComment" | "session" | "userIdentity" | "userCredential" | "website" | "webpage" | "pageComponent" | "component" | "componentField" | "itemSchema" | "componentFieldValue" | "avatarImage" | "heroImage" | "coverImage" | "articleImage" | "reportFile" | "notificationPreference" | "promotionalPreference" | "insightsPreference" | "teamMember" | "teamRole" | "client" | "author" | "organization" | "articleAuthor" | "reportAuthor" | "project" | "projectServiceActivity" | "projectTeamMember" | "projectImage" | "projectNote" | "report" | "reportIndustry" | "reportTopic" | "reportServiceActivity"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -2600,6 +2601,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.ComponentFieldCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.ComponentFieldCountAggregateOutputType> | number
+        }
+      }
+    }
+    ItemSchema: {
+      payload: Prisma.$ItemSchemaPayload<ExtArgs>
+      fields: Prisma.ItemSchemaFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ItemSchemaFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ItemSchemaPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ItemSchemaFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ItemSchemaPayload>
+        }
+        findFirst: {
+          args: Prisma.ItemSchemaFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ItemSchemaPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ItemSchemaFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ItemSchemaPayload>
+        }
+        findMany: {
+          args: Prisma.ItemSchemaFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ItemSchemaPayload>[]
+        }
+        create: {
+          args: Prisma.ItemSchemaCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ItemSchemaPayload>
+        }
+        createMany: {
+          args: Prisma.ItemSchemaCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ItemSchemaCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ItemSchemaPayload>[]
+        }
+        delete: {
+          args: Prisma.ItemSchemaDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ItemSchemaPayload>
+        }
+        update: {
+          args: Prisma.ItemSchemaUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ItemSchemaPayload>
+        }
+        deleteMany: {
+          args: Prisma.ItemSchemaDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ItemSchemaUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ItemSchemaUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ItemSchemaPayload>[]
+        }
+        upsert: {
+          args: Prisma.ItemSchemaUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ItemSchemaPayload>
+        }
+        aggregate: {
+          args: Prisma.ItemSchemaAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateItemSchema>
+        }
+        groupBy: {
+          args: Prisma.ItemSchemaGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ItemSchemaGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ItemSchemaCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ItemSchemaCountAggregateOutputType> | number
         }
       }
     }
@@ -4834,7 +4909,11 @@ export const PageComponentScalarFieldEnum = {
   key: 'key',
   webpageId: 'webpageId',
   componentId: 'componentId',
-  order: 'order'
+  order: 'order',
+  createdAt: 'createdAt',
+  createdBy: 'createdBy',
+  updatedAt: 'updatedAt',
+  updatedBy: 'updatedBy'
 } as const
 
 export type PageComponentScalarFieldEnum = (typeof PageComponentScalarFieldEnum)[keyof typeof PageComponentScalarFieldEnum]
@@ -4844,7 +4923,11 @@ export const ComponentScalarFieldEnum = {
   id: 'id',
   key: 'key',
   name: 'name',
-  description: 'description'
+  description: 'description',
+  createdAt: 'createdAt',
+  createdBy: 'createdBy',
+  updatedAt: 'updatedAt',
+  updatedBy: 'updatedBy'
 } as const
 
 export type ComponentScalarFieldEnum = (typeof ComponentScalarFieldEnum)[keyof typeof ComponentScalarFieldEnum]
@@ -4861,17 +4944,41 @@ export const ComponentFieldScalarFieldEnum = {
   maxLength: 'maxLength',
   minValue: 'minValue',
   maxValue: 'maxValue',
-  regex: 'regex'
+  regex: 'regex',
+  createdAt: 'createdAt',
+  createdBy: 'createdBy',
+  updatedAt: 'updatedAt',
+  updatedBy: 'updatedBy'
 } as const
 
 export type ComponentFieldScalarFieldEnum = (typeof ComponentFieldScalarFieldEnum)[keyof typeof ComponentFieldScalarFieldEnum]
+
+
+export const ItemSchemaScalarFieldEnum = {
+  id: 'id',
+  componentFieldId: 'componentFieldId',
+  label: 'label',
+  key: 'key',
+  type: 'type',
+  required: 'required',
+  createdAt: 'createdAt',
+  createdBy: 'createdBy',
+  updatedAt: 'updatedAt',
+  updatedBy: 'updatedBy'
+} as const
+
+export type ItemSchemaScalarFieldEnum = (typeof ItemSchemaScalarFieldEnum)[keyof typeof ItemSchemaScalarFieldEnum]
 
 
 export const ComponentFieldValueScalarFieldEnum = {
   id: 'id',
   pageComponentId: 'pageComponentId',
   fieldId: 'fieldId',
-  value: 'value'
+  value: 'value',
+  createdAt: 'createdAt',
+  createdBy: 'createdBy',
+  updatedAt: 'updatedAt',
+  updatedBy: 'updatedBy'
 } as const
 
 export type ComponentFieldValueScalarFieldEnum = (typeof ComponentFieldValueScalarFieldEnum)[keyof typeof ComponentFieldValueScalarFieldEnum]
@@ -5604,6 +5711,7 @@ export type GlobalOmitConfig = {
   pageComponent?: Prisma.PageComponentOmit
   component?: Prisma.ComponentOmit
   componentField?: Prisma.ComponentFieldOmit
+  itemSchema?: Prisma.ItemSchemaOmit
   componentFieldValue?: Prisma.ComponentFieldValueOmit
   avatarImage?: Prisma.AvatarImageOmit
   heroImage?: Prisma.HeroImageOmit

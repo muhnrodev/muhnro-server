@@ -164,9 +164,9 @@ export type WebpageGroupByOutputType = {
   websiteId: string
   slug: string
   createdAt: Date
-  createdBy: string
+  createdBy: string | null
   updatedAt: Date
-  updatedBy: string
+  updatedBy: string | null
   _count: WebpageCountAggregateOutputType | null
   _min: WebpageMinAggregateOutputType | null
   _max: WebpageMaxAggregateOutputType | null
@@ -195,9 +195,9 @@ export type WebpageWhereInput = {
   websiteId?: Prisma.StringFilter<"Webpage"> | string
   slug?: Prisma.StringFilter<"Webpage"> | string
   createdAt?: Prisma.DateTimeFilter<"Webpage"> | Date | string
-  createdBy?: Prisma.StringFilter<"Webpage"> | string
+  createdBy?: Prisma.StringNullableFilter<"Webpage"> | string | null
   updatedAt?: Prisma.DateTimeFilter<"Webpage"> | Date | string
-  updatedBy?: Prisma.StringFilter<"Webpage"> | string
+  updatedBy?: Prisma.StringNullableFilter<"Webpage"> | string | null
   website?: Prisma.XOR<Prisma.WebsiteScalarRelationFilter, Prisma.WebsiteWhereInput>
   components?: Prisma.PageComponentListRelationFilter
 }
@@ -207,9 +207,9 @@ export type WebpageOrderByWithRelationInput = {
   websiteId?: Prisma.SortOrder
   slug?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
-  createdBy?: Prisma.SortOrder
+  createdBy?: Prisma.SortOrderInput | Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  updatedBy?: Prisma.SortOrder
+  updatedBy?: Prisma.SortOrderInput | Prisma.SortOrder
   website?: Prisma.WebsiteOrderByWithRelationInput
   components?: Prisma.PageComponentOrderByRelationAggregateInput
 }
@@ -223,9 +223,9 @@ export type WebpageWhereUniqueInput = Prisma.AtLeast<{
   websiteId?: Prisma.StringFilter<"Webpage"> | string
   slug?: Prisma.StringFilter<"Webpage"> | string
   createdAt?: Prisma.DateTimeFilter<"Webpage"> | Date | string
-  createdBy?: Prisma.StringFilter<"Webpage"> | string
+  createdBy?: Prisma.StringNullableFilter<"Webpage"> | string | null
   updatedAt?: Prisma.DateTimeFilter<"Webpage"> | Date | string
-  updatedBy?: Prisma.StringFilter<"Webpage"> | string
+  updatedBy?: Prisma.StringNullableFilter<"Webpage"> | string | null
   website?: Prisma.XOR<Prisma.WebsiteScalarRelationFilter, Prisma.WebsiteWhereInput>
   components?: Prisma.PageComponentListRelationFilter
 }, "id" | "websiteId_slug">
@@ -235,9 +235,9 @@ export type WebpageOrderByWithAggregationInput = {
   websiteId?: Prisma.SortOrder
   slug?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
-  createdBy?: Prisma.SortOrder
+  createdBy?: Prisma.SortOrderInput | Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  updatedBy?: Prisma.SortOrder
+  updatedBy?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.WebpageCountOrderByAggregateInput
   _max?: Prisma.WebpageMaxOrderByAggregateInput
   _min?: Prisma.WebpageMinOrderByAggregateInput
@@ -251,18 +251,18 @@ export type WebpageScalarWhereWithAggregatesInput = {
   websiteId?: Prisma.StringWithAggregatesFilter<"Webpage"> | string
   slug?: Prisma.StringWithAggregatesFilter<"Webpage"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Webpage"> | Date | string
-  createdBy?: Prisma.StringWithAggregatesFilter<"Webpage"> | string
+  createdBy?: Prisma.StringNullableWithAggregatesFilter<"Webpage"> | string | null
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Webpage"> | Date | string
-  updatedBy?: Prisma.StringWithAggregatesFilter<"Webpage"> | string
+  updatedBy?: Prisma.StringNullableWithAggregatesFilter<"Webpage"> | string | null
 }
 
 export type WebpageCreateInput = {
   id?: string
   slug: string
   createdAt?: Date | string
-  createdBy: string
+  createdBy?: string | null
   updatedAt?: Date | string
-  updatedBy: string
+  updatedBy?: string | null
   website: Prisma.WebsiteCreateNestedOneWithoutPagesInput
   components?: Prisma.PageComponentCreateNestedManyWithoutWebpageInput
 }
@@ -272,9 +272,9 @@ export type WebpageUncheckedCreateInput = {
   websiteId: string
   slug: string
   createdAt?: Date | string
-  createdBy: string
+  createdBy?: string | null
   updatedAt?: Date | string
-  updatedBy: string
+  updatedBy?: string | null
   components?: Prisma.PageComponentUncheckedCreateNestedManyWithoutWebpageInput
 }
 
@@ -282,9 +282,9 @@ export type WebpageUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.StringFieldUpdateOperationsInput | string
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   website?: Prisma.WebsiteUpdateOneRequiredWithoutPagesNestedInput
   components?: Prisma.PageComponentUpdateManyWithoutWebpageNestedInput
 }
@@ -294,9 +294,9 @@ export type WebpageUncheckedUpdateInput = {
   websiteId?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.StringFieldUpdateOperationsInput | string
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   components?: Prisma.PageComponentUncheckedUpdateManyWithoutWebpageNestedInput
 }
 
@@ -305,18 +305,18 @@ export type WebpageCreateManyInput = {
   websiteId: string
   slug: string
   createdAt?: Date | string
-  createdBy: string
+  createdBy?: string | null
   updatedAt?: Date | string
-  updatedBy: string
+  updatedBy?: string | null
 }
 
 export type WebpageUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.StringFieldUpdateOperationsInput | string
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type WebpageUncheckedUpdateManyInput = {
@@ -324,9 +324,9 @@ export type WebpageUncheckedUpdateManyInput = {
   websiteId?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.StringFieldUpdateOperationsInput | string
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type WebpageListRelationFilter = {
@@ -439,9 +439,9 @@ export type WebpageCreateWithoutWebsiteInput = {
   id?: string
   slug: string
   createdAt?: Date | string
-  createdBy: string
+  createdBy?: string | null
   updatedAt?: Date | string
-  updatedBy: string
+  updatedBy?: string | null
   components?: Prisma.PageComponentCreateNestedManyWithoutWebpageInput
 }
 
@@ -449,9 +449,9 @@ export type WebpageUncheckedCreateWithoutWebsiteInput = {
   id?: string
   slug: string
   createdAt?: Date | string
-  createdBy: string
+  createdBy?: string | null
   updatedAt?: Date | string
-  updatedBy: string
+  updatedBy?: string | null
   components?: Prisma.PageComponentUncheckedCreateNestedManyWithoutWebpageInput
 }
 
@@ -489,18 +489,18 @@ export type WebpageScalarWhereInput = {
   websiteId?: Prisma.StringFilter<"Webpage"> | string
   slug?: Prisma.StringFilter<"Webpage"> | string
   createdAt?: Prisma.DateTimeFilter<"Webpage"> | Date | string
-  createdBy?: Prisma.StringFilter<"Webpage"> | string
+  createdBy?: Prisma.StringNullableFilter<"Webpage"> | string | null
   updatedAt?: Prisma.DateTimeFilter<"Webpage"> | Date | string
-  updatedBy?: Prisma.StringFilter<"Webpage"> | string
+  updatedBy?: Prisma.StringNullableFilter<"Webpage"> | string | null
 }
 
 export type WebpageCreateWithoutComponentsInput = {
   id?: string
   slug: string
   createdAt?: Date | string
-  createdBy: string
+  createdBy?: string | null
   updatedAt?: Date | string
-  updatedBy: string
+  updatedBy?: string | null
   website: Prisma.WebsiteCreateNestedOneWithoutPagesInput
 }
 
@@ -509,9 +509,9 @@ export type WebpageUncheckedCreateWithoutComponentsInput = {
   websiteId: string
   slug: string
   createdAt?: Date | string
-  createdBy: string
+  createdBy?: string | null
   updatedAt?: Date | string
-  updatedBy: string
+  updatedBy?: string | null
 }
 
 export type WebpageCreateOrConnectWithoutComponentsInput = {
@@ -534,9 +534,9 @@ export type WebpageUpdateWithoutComponentsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.StringFieldUpdateOperationsInput | string
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   website?: Prisma.WebsiteUpdateOneRequiredWithoutPagesNestedInput
 }
 
@@ -545,27 +545,27 @@ export type WebpageUncheckedUpdateWithoutComponentsInput = {
   websiteId?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.StringFieldUpdateOperationsInput | string
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type WebpageCreateManyWebsiteInput = {
   id?: string
   slug: string
   createdAt?: Date | string
-  createdBy: string
+  createdBy?: string | null
   updatedAt?: Date | string
-  updatedBy: string
+  updatedBy?: string | null
 }
 
 export type WebpageUpdateWithoutWebsiteInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.StringFieldUpdateOperationsInput | string
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   components?: Prisma.PageComponentUpdateManyWithoutWebpageNestedInput
 }
 
@@ -573,9 +573,9 @@ export type WebpageUncheckedUpdateWithoutWebsiteInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.StringFieldUpdateOperationsInput | string
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   components?: Prisma.PageComponentUncheckedUpdateManyWithoutWebpageNestedInput
 }
 
@@ -583,9 +583,9 @@ export type WebpageUncheckedUpdateManyWithoutWebsiteInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.StringFieldUpdateOperationsInput | string
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 
@@ -688,9 +688,9 @@ export type $WebpagePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     websiteId: string
     slug: string
     createdAt: Date
-    createdBy: string
+    createdBy: string | null
     updatedAt: Date
-    updatedBy: string
+    updatedBy: string | null
   }, ExtArgs["result"]["webpage"]>
   composites: {}
 }

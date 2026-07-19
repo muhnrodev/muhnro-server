@@ -1,16 +1,35 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service.js';
-import { CreateComponentDto } from './component.dto.js';
+import {
+  CreateComponentDto,
+  CreateComponentFieldDto,
+  ItemSchemaDto,
+  UpdateComponentDto,
+  UpdateComponentFieldDto,
+} from './component.dto.js';
+import { GeneratorService } from '../../common/generator/generator.service.js';
 
 @Injectable()
 export class ComponentService {
   private readonly logger = new Logger(ComponentService.name);
 
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly generator: GeneratorService,
+  ) {}
 
   async getAllComponents() {
     try {
-      const components = await this.prisma.component.findMany();
+      const components = await this.prisma.component.findMany({
+        include: {
+          fields: {
+            include: {
+              itemSchema: true,
+            },
+          },
+        },
+      });
+
       return components;
     } catch (error) {
       this.logger.error('Error fetching components', error);
@@ -22,6 +41,13 @@ export class ComponentService {
     try {
       const component = await this.prisma.component.findUnique({
         where: { id },
+        include: {
+          fields: {
+            include: {
+              itemSchema: true,
+            },
+          },
+        },
       });
 
       if (!component) {
@@ -41,7 +67,11 @@ export class ComponentService {
       const component = await this.prisma.component.findUnique({
         where: { key },
         include: {
-          fields: true,
+          fields: {
+            include: {
+              itemSchema: true,
+            },
+          },
         },
       });
 
@@ -59,7 +89,7 @@ export class ComponentService {
 
   async createComponent(data: CreateComponentDto, createdBy: string) {
     try {
-      const componentKey = await this.generateComponentKey(data.name);
+      const componentKey = await this.generator.generateComponentKey(data.name);
 
       await this.prisma.component.create({
         data: {
@@ -81,25 +111,235 @@ export class ComponentService {
     }
   }
 
-  async generateComponentKey(name: string): Promise<string> {
-    const slug = name
-      .toLowerCase()
-      .trim()
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-+|-+$/g, '')
-      .replace(/-{2,}/g, '-');
+  async updateComponent(data: UpdateComponentDto) {
+    try {
+      const component = await this.prisma.component.findUnique({
+        where: { id: data.id },
+      });
 
-    const exists = await this.prisma.component.findUnique({
-      where: { key: slug },
-    });
+      if (!component) {
+        this.logger.warn(`Component with ID ${data.id} not found`);
+        throw new Error(`Component with ID ${data.id} not found`);
+      }
 
-    if (exists) {
-      const randomSuffix = Math.random().toString(36).substring(2, 8);
-      return `${slug}-${randomSuffix}`;
+      const componentKey = await this.generator.generateComponentKey(data.name);
+
+      await this.prisma.component.update({
+        where: { id: data.id },
+        data: {
+          name: data.name,
+          description: data.description,
+          key: componentKey,
+        },
+      });
+
+      const updatedComponent = await this.getComponentById(data.id);
+      const components = await this.getAllComponents();
+
+      return {
+        message: 'Component updated successfully',
+        component: updatedComponent,
+        components,
+      };
+    } catch (error) {
+      this.logger.error('Error updating component', error);
+      throw error;
     }
+  }
 
-    return slug;
+  async deleteComponent(id: string) {
+    try {
+      const component = await this.prisma.component.findUnique({
+        where: { id },
+      });
+
+      if (!component) {
+        this.logger.warn(`Component with ID ${id} not found`);
+        throw new Error(`Component with ID ${id} not found`);
+      }
+
+      await this.prisma.component.delete({
+        where: { id },
+      });
+
+      const components = await this.getAllComponents();
+
+      return {
+        message: 'Component deleted successfully',
+        components,
+      };
+    } catch (error) {
+      this.logger.error('Error deleting component', error);
+      throw error;
+    }
+  }
+
+  async createComponentField(data: CreateComponentFieldDto) {
+    try {
+      const component = await this.prisma.component.findUnique({
+        where: { id: data.componentId },
+      });
+
+      if (!component) {
+        this.logger.warn(`Component with ID ${data.componentId} not found`);
+        throw new Error(`Component with ID ${data.componentId} not found`);
+      }
+
+      const fieldKey = await this.generator.generateComponentFieldKey(
+        data.label,
+        data.componentId,
+      );
+
+      const newField = await this.prisma.componentField.create({
+        data: {
+          componentId: data.componentId,
+          label: data.label,
+          type: data.type,
+          required: data.required,
+          minLength: data.minLength,
+          maxLength: data.maxLength,
+          minValue: data.minValue,
+          maxValue: data.maxValue,
+          regex: data.regex,
+          key: fieldKey,
+        },
+      });
+
+      await this.updateFieldSchema(newField.id, data.itemSchema || []);
+
+      const updatedComponent = await this.getComponentById(data.componentId);
+      const components = await this.getAllComponents();
+
+      return {
+        message: 'Component field created successfully',
+        component: updatedComponent,
+        components,
+      };
+    } catch (error) {
+      this.logger.error('Error creating component field', error);
+      throw error;
+    }
+  }
+
+  async updateComponentField(data: UpdateComponentFieldDto) {
+    try {
+      const field = await this.prisma.componentField.findUnique({
+        where: { id: data.id },
+      });
+
+      if (!field) {
+        this.logger.warn(`Component field with ID ${data.id} not found`);
+        throw new Error(`Component field with ID ${data.id} not found`);
+      }
+
+      const fieldKey = await this.generator.generateComponentFieldKey(
+        data.label,
+        field.componentId,
+      );
+
+      await this.prisma.componentField.update({
+        where: { id: data.id },
+        data: {
+          label: data.label,
+          type: data.type,
+          required: data.required,
+          minLength: data.minLength,
+          maxLength: data.maxLength,
+          minValue: data.minValue,
+          maxValue: data.maxValue,
+          regex: data.regex,
+          key: fieldKey,
+        },
+      });
+
+      await this.updateFieldSchema(field.id, data.itemSchema || []);
+
+      const updatedComponent = await this.getComponentById(field.componentId);
+      const components = await this.getAllComponents();
+
+      return {
+        message: 'Component field updated successfully',
+        component: updatedComponent,
+        components,
+      };
+    } catch (error) {
+      this.logger.error('Error updating component field', error);
+      throw error;
+    }
+  }
+
+  async deleteComponentField(fieldId: string) {
+    try {
+      const field = await this.prisma.componentField.findUnique({
+        where: { id: fieldId },
+      });
+
+      if (!field) {
+        this.logger.warn(`Component field with ID ${fieldId} not found`);
+        throw new Error(`Component field with ID ${fieldId} not found`);
+      }
+
+      await this.prisma.componentField.delete({
+        where: { id: fieldId },
+      });
+
+      const updatedComponent = await this.getComponentById(field.componentId);
+      const components = await this.getAllComponents();
+
+      return {
+        message: 'Component field deleted successfully',
+        component: updatedComponent,
+        components,
+      };
+    } catch (error) {
+      this.logger.error('Error deleting component field', error);
+      throw error;
+    }
+  }
+
+  async updateFieldSchema(fieldId: string, itemSchema: ItemSchemaDto[]) {
+    try {
+      const field = await this.prisma.componentField.findUnique({
+        where: { id: fieldId },
+      });
+
+      if (!field) {
+        this.logger.warn(`Component field with ID ${fieldId} not found`);
+        throw new Error(`Component field with ID ${fieldId} not found`);
+      }
+
+      await this.prisma.itemSchema.deleteMany({
+        where: { componentFieldId: fieldId },
+      });
+
+      const schemaKey = await this.generator.generateFieldSchemaKey(
+        field.label,
+        fieldId,
+      );
+
+      for (const item of itemSchema) {
+        await this.prisma.itemSchema.create({
+          data: {
+            componentFieldId: fieldId,
+            label: item.label,
+            type: item.type,
+            key: schemaKey,
+            required: item.required,
+          },
+        });
+      }
+
+      const updatedComponent = await this.getComponentById(field.componentId);
+      const components = await this.getAllComponents();
+
+      return {
+        message: 'Component field schema updated successfully',
+        component: updatedComponent,
+        components,
+      };
+    } catch (error) {
+      this.logger.error('Error updating component field schema', error);
+      throw error;
+    }
   }
 }

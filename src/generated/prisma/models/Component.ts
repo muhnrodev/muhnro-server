@@ -29,6 +29,10 @@ export type ComponentMinAggregateOutputType = {
   key: string | null
   name: string | null
   description: string | null
+  createdAt: Date | null
+  createdBy: string | null
+  updatedAt: Date | null
+  updatedBy: string | null
 }
 
 export type ComponentMaxAggregateOutputType = {
@@ -36,6 +40,10 @@ export type ComponentMaxAggregateOutputType = {
   key: string | null
   name: string | null
   description: string | null
+  createdAt: Date | null
+  createdBy: string | null
+  updatedAt: Date | null
+  updatedBy: string | null
 }
 
 export type ComponentCountAggregateOutputType = {
@@ -43,6 +51,10 @@ export type ComponentCountAggregateOutputType = {
   key: number
   name: number
   description: number
+  createdAt: number
+  createdBy: number
+  updatedAt: number
+  updatedBy: number
   _all: number
 }
 
@@ -52,6 +64,10 @@ export type ComponentMinAggregateInputType = {
   key?: true
   name?: true
   description?: true
+  createdAt?: true
+  createdBy?: true
+  updatedAt?: true
+  updatedBy?: true
 }
 
 export type ComponentMaxAggregateInputType = {
@@ -59,6 +75,10 @@ export type ComponentMaxAggregateInputType = {
   key?: true
   name?: true
   description?: true
+  createdAt?: true
+  createdBy?: true
+  updatedAt?: true
+  updatedBy?: true
 }
 
 export type ComponentCountAggregateInputType = {
@@ -66,6 +86,10 @@ export type ComponentCountAggregateInputType = {
   key?: true
   name?: true
   description?: true
+  createdAt?: true
+  createdBy?: true
+  updatedAt?: true
+  updatedBy?: true
   _all?: true
 }
 
@@ -146,6 +170,10 @@ export type ComponentGroupByOutputType = {
   key: string
   name: string
   description: string
+  createdAt: Date | null
+  createdBy: string | null
+  updatedAt: Date | null
+  updatedBy: string | null
   _count: ComponentCountAggregateOutputType | null
   _min: ComponentMinAggregateOutputType | null
   _max: ComponentMaxAggregateOutputType | null
@@ -174,6 +202,10 @@ export type ComponentWhereInput = {
   key?: Prisma.StringFilter<"Component"> | string
   name?: Prisma.StringFilter<"Component"> | string
   description?: Prisma.StringFilter<"Component"> | string
+  createdAt?: Prisma.DateTimeNullableFilter<"Component"> | Date | string | null
+  createdBy?: Prisma.StringNullableFilter<"Component"> | string | null
+  updatedAt?: Prisma.DateTimeNullableFilter<"Component"> | Date | string | null
+  updatedBy?: Prisma.StringNullableFilter<"Component"> | string | null
   fields?: Prisma.ComponentFieldListRelationFilter
   pages?: Prisma.PageComponentListRelationFilter
 }
@@ -183,6 +215,10 @@ export type ComponentOrderByWithRelationInput = {
   key?: Prisma.SortOrder
   name?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  createdBy?: Prisma.SortOrderInput | Prisma.SortOrder
+  updatedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  updatedBy?: Prisma.SortOrderInput | Prisma.SortOrder
   fields?: Prisma.ComponentFieldOrderByRelationAggregateInput
   pages?: Prisma.PageComponentOrderByRelationAggregateInput
 }
@@ -195,6 +231,10 @@ export type ComponentWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.ComponentWhereInput | Prisma.ComponentWhereInput[]
   name?: Prisma.StringFilter<"Component"> | string
   description?: Prisma.StringFilter<"Component"> | string
+  createdAt?: Prisma.DateTimeNullableFilter<"Component"> | Date | string | null
+  createdBy?: Prisma.StringNullableFilter<"Component"> | string | null
+  updatedAt?: Prisma.DateTimeNullableFilter<"Component"> | Date | string | null
+  updatedBy?: Prisma.StringNullableFilter<"Component"> | string | null
   fields?: Prisma.ComponentFieldListRelationFilter
   pages?: Prisma.PageComponentListRelationFilter
 }, "id" | "key">
@@ -204,6 +244,10 @@ export type ComponentOrderByWithAggregationInput = {
   key?: Prisma.SortOrder
   name?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  createdBy?: Prisma.SortOrderInput | Prisma.SortOrder
+  updatedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  updatedBy?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.ComponentCountOrderByAggregateInput
   _max?: Prisma.ComponentMaxOrderByAggregateInput
   _min?: Prisma.ComponentMinOrderByAggregateInput
@@ -217,6 +261,10 @@ export type ComponentScalarWhereWithAggregatesInput = {
   key?: Prisma.StringWithAggregatesFilter<"Component"> | string
   name?: Prisma.StringWithAggregatesFilter<"Component"> | string
   description?: Prisma.StringWithAggregatesFilter<"Component"> | string
+  createdAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Component"> | Date | string | null
+  createdBy?: Prisma.StringNullableWithAggregatesFilter<"Component"> | string | null
+  updatedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Component"> | Date | string | null
+  updatedBy?: Prisma.StringNullableWithAggregatesFilter<"Component"> | string | null
 }
 
 export type ComponentCreateInput = {
@@ -224,6 +272,10 @@ export type ComponentCreateInput = {
   key: string
   name: string
   description: string
+  createdAt?: Date | string | null
+  createdBy?: string | null
+  updatedAt?: Date | string | null
+  updatedBy?: string | null
   fields?: Prisma.ComponentFieldCreateNestedManyWithoutComponentInput
   pages?: Prisma.PageComponentCreateNestedManyWithoutComponentInput
 }
@@ -233,6 +285,10 @@ export type ComponentUncheckedCreateInput = {
   key: string
   name: string
   description: string
+  createdAt?: Date | string | null
+  createdBy?: string | null
+  updatedAt?: Date | string | null
+  updatedBy?: string | null
   fields?: Prisma.ComponentFieldUncheckedCreateNestedManyWithoutComponentInput
   pages?: Prisma.PageComponentUncheckedCreateNestedManyWithoutComponentInput
 }
@@ -242,6 +298,10 @@ export type ComponentUpdateInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fields?: Prisma.ComponentFieldUpdateManyWithoutComponentNestedInput
   pages?: Prisma.PageComponentUpdateManyWithoutComponentNestedInput
 }
@@ -251,6 +311,10 @@ export type ComponentUncheckedUpdateInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fields?: Prisma.ComponentFieldUncheckedUpdateManyWithoutComponentNestedInput
   pages?: Prisma.PageComponentUncheckedUpdateManyWithoutComponentNestedInput
 }
@@ -260,6 +324,10 @@ export type ComponentCreateManyInput = {
   key: string
   name: string
   description: string
+  createdAt?: Date | string | null
+  createdBy?: string | null
+  updatedAt?: Date | string | null
+  updatedBy?: string | null
 }
 
 export type ComponentUpdateManyMutationInput = {
@@ -267,6 +335,10 @@ export type ComponentUpdateManyMutationInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type ComponentUncheckedUpdateManyInput = {
@@ -274,6 +346,10 @@ export type ComponentUncheckedUpdateManyInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type ComponentScalarRelationFilter = {
@@ -286,6 +362,10 @@ export type ComponentCountOrderByAggregateInput = {
   key?: Prisma.SortOrder
   name?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  createdBy?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  updatedBy?: Prisma.SortOrder
 }
 
 export type ComponentMaxOrderByAggregateInput = {
@@ -293,6 +373,10 @@ export type ComponentMaxOrderByAggregateInput = {
   key?: Prisma.SortOrder
   name?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  createdBy?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  updatedBy?: Prisma.SortOrder
 }
 
 export type ComponentMinOrderByAggregateInput = {
@@ -300,6 +384,10 @@ export type ComponentMinOrderByAggregateInput = {
   key?: Prisma.SortOrder
   name?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  createdBy?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  updatedBy?: Prisma.SortOrder
 }
 
 export type ComponentCreateNestedOneWithoutPagesInput = {
@@ -335,6 +423,10 @@ export type ComponentCreateWithoutPagesInput = {
   key: string
   name: string
   description: string
+  createdAt?: Date | string | null
+  createdBy?: string | null
+  updatedAt?: Date | string | null
+  updatedBy?: string | null
   fields?: Prisma.ComponentFieldCreateNestedManyWithoutComponentInput
 }
 
@@ -343,6 +435,10 @@ export type ComponentUncheckedCreateWithoutPagesInput = {
   key: string
   name: string
   description: string
+  createdAt?: Date | string | null
+  createdBy?: string | null
+  updatedAt?: Date | string | null
+  updatedBy?: string | null
   fields?: Prisma.ComponentFieldUncheckedCreateNestedManyWithoutComponentInput
 }
 
@@ -367,6 +463,10 @@ export type ComponentUpdateWithoutPagesInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fields?: Prisma.ComponentFieldUpdateManyWithoutComponentNestedInput
 }
 
@@ -375,6 +475,10 @@ export type ComponentUncheckedUpdateWithoutPagesInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fields?: Prisma.ComponentFieldUncheckedUpdateManyWithoutComponentNestedInput
 }
 
@@ -383,6 +487,10 @@ export type ComponentCreateWithoutFieldsInput = {
   key: string
   name: string
   description: string
+  createdAt?: Date | string | null
+  createdBy?: string | null
+  updatedAt?: Date | string | null
+  updatedBy?: string | null
   pages?: Prisma.PageComponentCreateNestedManyWithoutComponentInput
 }
 
@@ -391,6 +499,10 @@ export type ComponentUncheckedCreateWithoutFieldsInput = {
   key: string
   name: string
   description: string
+  createdAt?: Date | string | null
+  createdBy?: string | null
+  updatedAt?: Date | string | null
+  updatedBy?: string | null
   pages?: Prisma.PageComponentUncheckedCreateNestedManyWithoutComponentInput
 }
 
@@ -415,6 +527,10 @@ export type ComponentUpdateWithoutFieldsInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pages?: Prisma.PageComponentUpdateManyWithoutComponentNestedInput
 }
 
@@ -423,6 +539,10 @@ export type ComponentUncheckedUpdateWithoutFieldsInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pages?: Prisma.PageComponentUncheckedUpdateManyWithoutComponentNestedInput
 }
 
@@ -471,6 +591,10 @@ export type ComponentSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   key?: boolean
   name?: boolean
   description?: boolean
+  createdAt?: boolean
+  createdBy?: boolean
+  updatedAt?: boolean
+  updatedBy?: boolean
   fields?: boolean | Prisma.Component$fieldsArgs<ExtArgs>
   pages?: boolean | Prisma.Component$pagesArgs<ExtArgs>
   _count?: boolean | Prisma.ComponentCountOutputTypeDefaultArgs<ExtArgs>
@@ -481,6 +605,10 @@ export type ComponentSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
   key?: boolean
   name?: boolean
   description?: boolean
+  createdAt?: boolean
+  createdBy?: boolean
+  updatedAt?: boolean
+  updatedBy?: boolean
 }, ExtArgs["result"]["component"]>
 
 export type ComponentSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -488,6 +616,10 @@ export type ComponentSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
   key?: boolean
   name?: boolean
   description?: boolean
+  createdAt?: boolean
+  createdBy?: boolean
+  updatedAt?: boolean
+  updatedBy?: boolean
 }, ExtArgs["result"]["component"]>
 
 export type ComponentSelectScalar = {
@@ -495,9 +627,13 @@ export type ComponentSelectScalar = {
   key?: boolean
   name?: boolean
   description?: boolean
+  createdAt?: boolean
+  createdBy?: boolean
+  updatedAt?: boolean
+  updatedBy?: boolean
 }
 
-export type ComponentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "key" | "name" | "description", ExtArgs["result"]["component"]>
+export type ComponentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "key" | "name" | "description" | "createdAt" | "createdBy" | "updatedAt" | "updatedBy", ExtArgs["result"]["component"]>
 export type ComponentInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   fields?: boolean | Prisma.Component$fieldsArgs<ExtArgs>
   pages?: boolean | Prisma.Component$pagesArgs<ExtArgs>
@@ -517,6 +653,10 @@ export type $ComponentPayload<ExtArgs extends runtime.Types.Extensions.InternalA
     key: string
     name: string
     description: string
+    createdAt: Date | null
+    createdBy: string | null
+    updatedAt: Date | null
+    updatedBy: string | null
   }, ExtArgs["result"]["component"]>
   composites: {}
 }
@@ -946,6 +1086,10 @@ export interface ComponentFieldRefs {
   readonly key: Prisma.FieldRef<"Component", 'String'>
   readonly name: Prisma.FieldRef<"Component", 'String'>
   readonly description: Prisma.FieldRef<"Component", 'String'>
+  readonly createdAt: Prisma.FieldRef<"Component", 'DateTime'>
+  readonly createdBy: Prisma.FieldRef<"Component", 'String'>
+  readonly updatedAt: Prisma.FieldRef<"Component", 'DateTime'>
+  readonly updatedBy: Prisma.FieldRef<"Component", 'String'>
 }
     
 

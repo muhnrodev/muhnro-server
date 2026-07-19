@@ -40,6 +40,10 @@ export type PageComponentMinAggregateOutputType = {
   webpageId: string | null
   componentId: string | null
   order: number | null
+  createdAt: Date | null
+  createdBy: string | null
+  updatedAt: Date | null
+  updatedBy: string | null
 }
 
 export type PageComponentMaxAggregateOutputType = {
@@ -48,6 +52,10 @@ export type PageComponentMaxAggregateOutputType = {
   webpageId: string | null
   componentId: string | null
   order: number | null
+  createdAt: Date | null
+  createdBy: string | null
+  updatedAt: Date | null
+  updatedBy: string | null
 }
 
 export type PageComponentCountAggregateOutputType = {
@@ -56,6 +64,10 @@ export type PageComponentCountAggregateOutputType = {
   webpageId: number
   componentId: number
   order: number
+  createdAt: number
+  createdBy: number
+  updatedAt: number
+  updatedBy: number
   _all: number
 }
 
@@ -74,6 +86,10 @@ export type PageComponentMinAggregateInputType = {
   webpageId?: true
   componentId?: true
   order?: true
+  createdAt?: true
+  createdBy?: true
+  updatedAt?: true
+  updatedBy?: true
 }
 
 export type PageComponentMaxAggregateInputType = {
@@ -82,6 +98,10 @@ export type PageComponentMaxAggregateInputType = {
   webpageId?: true
   componentId?: true
   order?: true
+  createdAt?: true
+  createdBy?: true
+  updatedAt?: true
+  updatedBy?: true
 }
 
 export type PageComponentCountAggregateInputType = {
@@ -90,6 +110,10 @@ export type PageComponentCountAggregateInputType = {
   webpageId?: true
   componentId?: true
   order?: true
+  createdAt?: true
+  createdBy?: true
+  updatedAt?: true
+  updatedBy?: true
   _all?: true
 }
 
@@ -185,6 +209,10 @@ export type PageComponentGroupByOutputType = {
   webpageId: string
   componentId: string
   order: number
+  createdAt: Date
+  createdBy: string | null
+  updatedAt: Date
+  updatedBy: string | null
   _count: PageComponentCountAggregateOutputType | null
   _avg: PageComponentAvgAggregateOutputType | null
   _sum: PageComponentSumAggregateOutputType | null
@@ -216,6 +244,10 @@ export type PageComponentWhereInput = {
   webpageId?: Prisma.StringFilter<"PageComponent"> | string
   componentId?: Prisma.StringFilter<"PageComponent"> | string
   order?: Prisma.IntFilter<"PageComponent"> | number
+  createdAt?: Prisma.DateTimeFilter<"PageComponent"> | Date | string
+  createdBy?: Prisma.StringNullableFilter<"PageComponent"> | string | null
+  updatedAt?: Prisma.DateTimeFilter<"PageComponent"> | Date | string
+  updatedBy?: Prisma.StringNullableFilter<"PageComponent"> | string | null
   webpage?: Prisma.XOR<Prisma.WebpageScalarRelationFilter, Prisma.WebpageWhereInput>
   component?: Prisma.XOR<Prisma.ComponentScalarRelationFilter, Prisma.ComponentWhereInput>
   values?: Prisma.ComponentFieldValueListRelationFilter
@@ -227,6 +259,10 @@ export type PageComponentOrderByWithRelationInput = {
   webpageId?: Prisma.SortOrder
   componentId?: Prisma.SortOrder
   order?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  createdBy?: Prisma.SortOrderInput | Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  updatedBy?: Prisma.SortOrderInput | Prisma.SortOrder
   webpage?: Prisma.WebpageOrderByWithRelationInput
   component?: Prisma.ComponentOrderByWithRelationInput
   values?: Prisma.ComponentFieldValueOrderByRelationAggregateInput
@@ -241,6 +277,10 @@ export type PageComponentWhereUniqueInput = Prisma.AtLeast<{
   webpageId?: Prisma.StringFilter<"PageComponent"> | string
   componentId?: Prisma.StringFilter<"PageComponent"> | string
   order?: Prisma.IntFilter<"PageComponent"> | number
+  createdAt?: Prisma.DateTimeFilter<"PageComponent"> | Date | string
+  createdBy?: Prisma.StringNullableFilter<"PageComponent"> | string | null
+  updatedAt?: Prisma.DateTimeFilter<"PageComponent"> | Date | string
+  updatedBy?: Prisma.StringNullableFilter<"PageComponent"> | string | null
   webpage?: Prisma.XOR<Prisma.WebpageScalarRelationFilter, Prisma.WebpageWhereInput>
   component?: Prisma.XOR<Prisma.ComponentScalarRelationFilter, Prisma.ComponentWhereInput>
   values?: Prisma.ComponentFieldValueListRelationFilter
@@ -252,6 +292,10 @@ export type PageComponentOrderByWithAggregationInput = {
   webpageId?: Prisma.SortOrder
   componentId?: Prisma.SortOrder
   order?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  createdBy?: Prisma.SortOrderInput | Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  updatedBy?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.PageComponentCountOrderByAggregateInput
   _avg?: Prisma.PageComponentAvgOrderByAggregateInput
   _max?: Prisma.PageComponentMaxOrderByAggregateInput
@@ -268,12 +312,20 @@ export type PageComponentScalarWhereWithAggregatesInput = {
   webpageId?: Prisma.StringWithAggregatesFilter<"PageComponent"> | string
   componentId?: Prisma.StringWithAggregatesFilter<"PageComponent"> | string
   order?: Prisma.IntWithAggregatesFilter<"PageComponent"> | number
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"PageComponent"> | Date | string
+  createdBy?: Prisma.StringNullableWithAggregatesFilter<"PageComponent"> | string | null
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"PageComponent"> | Date | string
+  updatedBy?: Prisma.StringNullableWithAggregatesFilter<"PageComponent"> | string | null
 }
 
 export type PageComponentCreateInput = {
   id?: string
   key: string
   order: number
+  createdAt?: Date | string
+  createdBy?: string | null
+  updatedAt?: Date | string
+  updatedBy?: string | null
   webpage: Prisma.WebpageCreateNestedOneWithoutComponentsInput
   component: Prisma.ComponentCreateNestedOneWithoutPagesInput
   values?: Prisma.ComponentFieldValueCreateNestedManyWithoutPageComponentInput
@@ -285,6 +337,10 @@ export type PageComponentUncheckedCreateInput = {
   webpageId: string
   componentId: string
   order: number
+  createdAt?: Date | string
+  createdBy?: string | null
+  updatedAt?: Date | string
+  updatedBy?: string | null
   values?: Prisma.ComponentFieldValueUncheckedCreateNestedManyWithoutPageComponentInput
 }
 
@@ -292,6 +348,10 @@ export type PageComponentUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   key?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   webpage?: Prisma.WebpageUpdateOneRequiredWithoutComponentsNestedInput
   component?: Prisma.ComponentUpdateOneRequiredWithoutPagesNestedInput
   values?: Prisma.ComponentFieldValueUpdateManyWithoutPageComponentNestedInput
@@ -303,6 +363,10 @@ export type PageComponentUncheckedUpdateInput = {
   webpageId?: Prisma.StringFieldUpdateOperationsInput | string
   componentId?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   values?: Prisma.ComponentFieldValueUncheckedUpdateManyWithoutPageComponentNestedInput
 }
 
@@ -312,12 +376,20 @@ export type PageComponentCreateManyInput = {
   webpageId: string
   componentId: string
   order: number
+  createdAt?: Date | string
+  createdBy?: string | null
+  updatedAt?: Date | string
+  updatedBy?: string | null
 }
 
 export type PageComponentUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   key?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type PageComponentUncheckedUpdateManyInput = {
@@ -326,6 +398,10 @@ export type PageComponentUncheckedUpdateManyInput = {
   webpageId?: Prisma.StringFieldUpdateOperationsInput | string
   componentId?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type PageComponentListRelationFilter = {
@@ -344,6 +420,10 @@ export type PageComponentCountOrderByAggregateInput = {
   webpageId?: Prisma.SortOrder
   componentId?: Prisma.SortOrder
   order?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  createdBy?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  updatedBy?: Prisma.SortOrder
 }
 
 export type PageComponentAvgOrderByAggregateInput = {
@@ -356,6 +436,10 @@ export type PageComponentMaxOrderByAggregateInput = {
   webpageId?: Prisma.SortOrder
   componentId?: Prisma.SortOrder
   order?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  createdBy?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  updatedBy?: Prisma.SortOrder
 }
 
 export type PageComponentMinOrderByAggregateInput = {
@@ -364,6 +448,10 @@ export type PageComponentMinOrderByAggregateInput = {
   webpageId?: Prisma.SortOrder
   componentId?: Prisma.SortOrder
   order?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  createdBy?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  updatedBy?: Prisma.SortOrder
 }
 
 export type PageComponentSumOrderByAggregateInput = {
@@ -477,6 +565,10 @@ export type PageComponentCreateWithoutWebpageInput = {
   id?: string
   key: string
   order: number
+  createdAt?: Date | string
+  createdBy?: string | null
+  updatedAt?: Date | string
+  updatedBy?: string | null
   component: Prisma.ComponentCreateNestedOneWithoutPagesInput
   values?: Prisma.ComponentFieldValueCreateNestedManyWithoutPageComponentInput
 }
@@ -486,6 +578,10 @@ export type PageComponentUncheckedCreateWithoutWebpageInput = {
   key: string
   componentId: string
   order: number
+  createdAt?: Date | string
+  createdBy?: string | null
+  updatedAt?: Date | string
+  updatedBy?: string | null
   values?: Prisma.ComponentFieldValueUncheckedCreateNestedManyWithoutPageComponentInput
 }
 
@@ -524,12 +620,20 @@ export type PageComponentScalarWhereInput = {
   webpageId?: Prisma.StringFilter<"PageComponent"> | string
   componentId?: Prisma.StringFilter<"PageComponent"> | string
   order?: Prisma.IntFilter<"PageComponent"> | number
+  createdAt?: Prisma.DateTimeFilter<"PageComponent"> | Date | string
+  createdBy?: Prisma.StringNullableFilter<"PageComponent"> | string | null
+  updatedAt?: Prisma.DateTimeFilter<"PageComponent"> | Date | string
+  updatedBy?: Prisma.StringNullableFilter<"PageComponent"> | string | null
 }
 
 export type PageComponentCreateWithoutComponentInput = {
   id?: string
   key: string
   order: number
+  createdAt?: Date | string
+  createdBy?: string | null
+  updatedAt?: Date | string
+  updatedBy?: string | null
   webpage: Prisma.WebpageCreateNestedOneWithoutComponentsInput
   values?: Prisma.ComponentFieldValueCreateNestedManyWithoutPageComponentInput
 }
@@ -539,6 +643,10 @@ export type PageComponentUncheckedCreateWithoutComponentInput = {
   key: string
   webpageId: string
   order: number
+  createdAt?: Date | string
+  createdBy?: string | null
+  updatedAt?: Date | string
+  updatedBy?: string | null
   values?: Prisma.ComponentFieldValueUncheckedCreateNestedManyWithoutPageComponentInput
 }
 
@@ -572,6 +680,10 @@ export type PageComponentCreateWithoutValuesInput = {
   id?: string
   key: string
   order: number
+  createdAt?: Date | string
+  createdBy?: string | null
+  updatedAt?: Date | string
+  updatedBy?: string | null
   webpage: Prisma.WebpageCreateNestedOneWithoutComponentsInput
   component: Prisma.ComponentCreateNestedOneWithoutPagesInput
 }
@@ -582,6 +694,10 @@ export type PageComponentUncheckedCreateWithoutValuesInput = {
   webpageId: string
   componentId: string
   order: number
+  createdAt?: Date | string
+  createdBy?: string | null
+  updatedAt?: Date | string
+  updatedBy?: string | null
 }
 
 export type PageComponentCreateOrConnectWithoutValuesInput = {
@@ -604,6 +720,10 @@ export type PageComponentUpdateWithoutValuesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   key?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   webpage?: Prisma.WebpageUpdateOneRequiredWithoutComponentsNestedInput
   component?: Prisma.ComponentUpdateOneRequiredWithoutPagesNestedInput
 }
@@ -614,6 +734,10 @@ export type PageComponentUncheckedUpdateWithoutValuesInput = {
   webpageId?: Prisma.StringFieldUpdateOperationsInput | string
   componentId?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type PageComponentCreateManyWebpageInput = {
@@ -621,12 +745,20 @@ export type PageComponentCreateManyWebpageInput = {
   key: string
   componentId: string
   order: number
+  createdAt?: Date | string
+  createdBy?: string | null
+  updatedAt?: Date | string
+  updatedBy?: string | null
 }
 
 export type PageComponentUpdateWithoutWebpageInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   key?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   component?: Prisma.ComponentUpdateOneRequiredWithoutPagesNestedInput
   values?: Prisma.ComponentFieldValueUpdateManyWithoutPageComponentNestedInput
 }
@@ -636,6 +768,10 @@ export type PageComponentUncheckedUpdateWithoutWebpageInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   componentId?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   values?: Prisma.ComponentFieldValueUncheckedUpdateManyWithoutPageComponentNestedInput
 }
 
@@ -644,6 +780,10 @@ export type PageComponentUncheckedUpdateManyWithoutWebpageInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   componentId?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type PageComponentCreateManyComponentInput = {
@@ -651,12 +791,20 @@ export type PageComponentCreateManyComponentInput = {
   key: string
   webpageId: string
   order: number
+  createdAt?: Date | string
+  createdBy?: string | null
+  updatedAt?: Date | string
+  updatedBy?: string | null
 }
 
 export type PageComponentUpdateWithoutComponentInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   key?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   webpage?: Prisma.WebpageUpdateOneRequiredWithoutComponentsNestedInput
   values?: Prisma.ComponentFieldValueUpdateManyWithoutPageComponentNestedInput
 }
@@ -666,6 +814,10 @@ export type PageComponentUncheckedUpdateWithoutComponentInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   webpageId?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   values?: Prisma.ComponentFieldValueUncheckedUpdateManyWithoutPageComponentNestedInput
 }
 
@@ -674,6 +826,10 @@ export type PageComponentUncheckedUpdateManyWithoutComponentInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   webpageId?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 
@@ -713,6 +869,10 @@ export type PageComponentSelect<ExtArgs extends runtime.Types.Extensions.Interna
   webpageId?: boolean
   componentId?: boolean
   order?: boolean
+  createdAt?: boolean
+  createdBy?: boolean
+  updatedAt?: boolean
+  updatedBy?: boolean
   webpage?: boolean | Prisma.WebpageDefaultArgs<ExtArgs>
   component?: boolean | Prisma.ComponentDefaultArgs<ExtArgs>
   values?: boolean | Prisma.PageComponent$valuesArgs<ExtArgs>
@@ -725,6 +885,10 @@ export type PageComponentSelectCreateManyAndReturn<ExtArgs extends runtime.Types
   webpageId?: boolean
   componentId?: boolean
   order?: boolean
+  createdAt?: boolean
+  createdBy?: boolean
+  updatedAt?: boolean
+  updatedBy?: boolean
   webpage?: boolean | Prisma.WebpageDefaultArgs<ExtArgs>
   component?: boolean | Prisma.ComponentDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["pageComponent"]>
@@ -735,6 +899,10 @@ export type PageComponentSelectUpdateManyAndReturn<ExtArgs extends runtime.Types
   webpageId?: boolean
   componentId?: boolean
   order?: boolean
+  createdAt?: boolean
+  createdBy?: boolean
+  updatedAt?: boolean
+  updatedBy?: boolean
   webpage?: boolean | Prisma.WebpageDefaultArgs<ExtArgs>
   component?: boolean | Prisma.ComponentDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["pageComponent"]>
@@ -745,9 +913,13 @@ export type PageComponentSelectScalar = {
   webpageId?: boolean
   componentId?: boolean
   order?: boolean
+  createdAt?: boolean
+  createdBy?: boolean
+  updatedAt?: boolean
+  updatedBy?: boolean
 }
 
-export type PageComponentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "key" | "webpageId" | "componentId" | "order", ExtArgs["result"]["pageComponent"]>
+export type PageComponentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "key" | "webpageId" | "componentId" | "order" | "createdAt" | "createdBy" | "updatedAt" | "updatedBy", ExtArgs["result"]["pageComponent"]>
 export type PageComponentInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   webpage?: boolean | Prisma.WebpageDefaultArgs<ExtArgs>
   component?: boolean | Prisma.ComponentDefaultArgs<ExtArgs>
@@ -776,6 +948,10 @@ export type $PageComponentPayload<ExtArgs extends runtime.Types.Extensions.Inter
     webpageId: string
     componentId: string
     order: number
+    createdAt: Date
+    createdBy: string | null
+    updatedAt: Date
+    updatedBy: string | null
   }, ExtArgs["result"]["pageComponent"]>
   composites: {}
 }
@@ -1207,6 +1383,10 @@ export interface PageComponentFieldRefs {
   readonly webpageId: Prisma.FieldRef<"PageComponent", 'String'>
   readonly componentId: Prisma.FieldRef<"PageComponent", 'String'>
   readonly order: Prisma.FieldRef<"PageComponent", 'Int'>
+  readonly createdAt: Prisma.FieldRef<"PageComponent", 'DateTime'>
+  readonly createdBy: Prisma.FieldRef<"PageComponent", 'String'>
+  readonly updatedAt: Prisma.FieldRef<"PageComponent", 'DateTime'>
+  readonly updatedBy: Prisma.FieldRef<"PageComponent", 'String'>
 }
     
 

@@ -1,5 +1,6 @@
 import { Global, Injectable, Logger } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service.js';
+import slugify from 'slugify';
 
 @Global()
 @Injectable()
@@ -40,5 +41,64 @@ export class GeneratorService {
       this.logger.error('Failed to generate username', error);
       throw error;
     }
+  }
+
+  async generateComponentKey(name: string): Promise<string> {
+    const slug = slugify(name, { lower: true, strict: true });
+
+    const exists = await this.prisma.component.findUnique({
+      where: { key: slug },
+    });
+
+    if (exists) {
+      const randomSuffix = Math.random().toString(36).substring(2, 8);
+      return `${slug}-${randomSuffix}`;
+    }
+
+    return slug;
+  }
+
+  async generateComponentFieldKey(
+    name: string,
+    componentId: string,
+  ): Promise<string> {
+    const slug = slugify(name, { lower: true, strict: true });
+
+    const exists = await this.prisma.componentField.findUnique({
+      where: {
+        componentId_key: {
+          componentId,
+          key: slug,
+        },
+      },
+    });
+
+    if (exists) {
+      const randomSuffix = Math.random().toString(36).substring(2, 8);
+      return `${slug}-${randomSuffix}`;
+    }
+
+    return slug;
+  }
+
+  async generateFieldSchemaKey(
+    label: string,
+    componentFieldId: string,
+  ): Promise<string> {
+    const slug = slugify(label, { lower: true, strict: true });
+
+    const exists = await this.prisma.itemSchema.findFirst({
+      where: {
+        componentFieldId,
+        key: slug,
+      },
+    });
+
+    if (exists) {
+      const randomSuffix = Math.random().toString(36).substring(2, 8);
+      return `${slug}-${randomSuffix}`;
+    }
+
+    return slug;
   }
 }

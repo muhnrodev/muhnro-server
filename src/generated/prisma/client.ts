@@ -185,6 +185,11 @@ export type Component = Prisma.ComponentModel
  */
 export type ComponentField = Prisma.ComponentFieldModel
 /**
+ * Model ItemSchema
+ * 
+ */
+export type ItemSchema = Prisma.ItemSchemaModel
+/**
  * Model ComponentFieldValue
  * 
  */
