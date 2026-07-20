@@ -83,7 +83,7 @@ model ComponentField {
 
     fieldValues         ComponentFieldValue[]
 
-    component          Component @relation(fields: [componentId], references: [id], onDelete: Cascade)
+    component           Component @relation(fields: [componentId], references: [id], onDelete: Cascade)
     objectSchema        ObjectSchema? @relation(fields: [objectSchemaId], references: [id], onDelete: Cascade)
 
     @@unique([componentId, key])

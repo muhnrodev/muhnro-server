@@ -183,7 +183,7 @@ export class ComponentService {
         data.componentId,
       );
 
-      const newField = await this.prisma.componentField.create({
+      await this.prisma.componentField.create({
         data: {
           componentId: data.componentId,
           label: data.label,
@@ -195,6 +195,8 @@ export class ComponentService {
           maxValue: data.maxValue,
           regex: data.regex,
           key: fieldKey,
+          arrayType: data.arrayType,
+          objectSchemaId: data.objectSchemaId,
         },
       });
 
@@ -223,11 +225,6 @@ export class ComponentService {
         throw new Error(`Component field with ID ${data.id} not found`);
       }
 
-      const fieldKey = await this.generator.generateComponentFieldKey(
-        data.label,
-        field.componentId,
-      );
-
       await this.prisma.componentField.update({
         where: { id: data.id },
         data: {
@@ -239,7 +236,8 @@ export class ComponentService {
           minValue: data.minValue,
           maxValue: data.maxValue,
           regex: data.regex,
-          key: fieldKey,
+          arrayType: data.arrayType,
+          objectSchemaId: data.objectSchemaId,
         },
       });
 

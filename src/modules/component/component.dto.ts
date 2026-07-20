@@ -57,6 +57,14 @@ export class CreateComponentFieldDto {
   @IsString()
   @IsOptional()
   regex?: string;
+
+  @IsEnum(FieldType)
+  @IsOptional()
+  arrayType?: FieldType;
+
+  @IsString()
+  @IsOptional()
+  objectSchemaId?: string;
 }
 
 export class UpdateComponentFieldDto extends CreateComponentFieldDto {
