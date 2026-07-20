@@ -12,6 +12,7 @@ import { APP_GUARD } from '@nestjs/core';
 import { RolesGuard } from './modules/auth/guards/roles.guard.js';
 import { WebsiteModule } from './modules/website/website.module.js';
 import { ComponentModule } from './modules/component/component.module.js';
+import { ObjectModule } from './modules/object/object.module.js';
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import { ComponentModule } from './modules/component/component.module.js';
     NotificationModule,
     WebsiteModule,
     ComponentModule,
+    ObjectModule,
   ],
   controllers: [AppController],
   providers: [

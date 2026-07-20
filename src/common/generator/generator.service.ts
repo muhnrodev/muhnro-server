@@ -81,17 +81,34 @@ export class GeneratorService {
     return slug;
   }
 
-  async generateFieldSchemaKey(
-    label: string,
-    componentFieldId: string,
+  async generateObjectFieldKey(
+    name: string,
+    objectSchemaId: string,
   ): Promise<string> {
-    const slug = slugify(label, { lower: true, strict: true });
+    const slug = slugify(name, { lower: true, strict: true });
 
-    const exists = await this.prisma.itemSchema.findFirst({
+    const exists = await this.prisma.objectSchemaField.findUnique({
       where: {
-        componentFieldId,
-        key: slug,
+        objectSchemaId_key: {
+          objectSchemaId,
+          key: slug,
+        },
       },
+    });
+
+    if (exists) {
+      const randomSuffix = Math.random().toString(36).substring(2, 8);
+      return `${slug}-${randomSuffix}`;
+    }
+
+    return slug;
+  }
+
+  async generateObjectSchemaKey(name: string): Promise<string> {
+    const slug = slugify(name, { lower: true, strict: true });
+
+    const exists = await this.prisma.objectSchema.findUnique({
+      where: { key: slug },
     });
 
     if (exists) {

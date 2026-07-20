@@ -5052,7 +5052,7 @@ export const ObjectSchemaFieldScalarFieldEnum = {
   label: 'label',
   type: 'type',
   objectSchemaRefId: 'objectSchemaRefId',
-  schemaId: 'schemaId',
+  required: 'required',
   minLength: 'minLength',
   maxLength: 'maxLength',
   minValue: 'minValue',

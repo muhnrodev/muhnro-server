@@ -7,9 +7,8 @@ import {
   IsString,
 } from 'class-validator';
 import { FieldType } from '../../generated/prisma/enums.js';
-import { PartialType } from '@nestjs/mapped-types';
 
-export class CreateComponentDto {
+export class CreateObjectDto {
   @IsString()
   name: string;
 
@@ -17,7 +16,7 @@ export class CreateComponentDto {
   description: string;
 }
 
-export class UpdateComponentDto extends CreateComponentDto {
+export class UpdateObjectDto extends CreateObjectDto {
   @IsString()
   id: string;
 
@@ -25,9 +24,9 @@ export class UpdateComponentDto extends CreateComponentDto {
   key: string;
 }
 
-export class CreateComponentFieldDto {
+export class CreateObjectFieldDto {
   @IsString()
-  componentId: string;
+  objectSchemaId: string;
 
   @IsString()
   label: string;
@@ -35,8 +34,17 @@ export class CreateComponentFieldDto {
   @IsEnum(FieldType)
   type: FieldType;
 
+  @IsString()
+  @IsOptional()
+  objectSchemaRefId?: string;
+
   @IsBoolean()
-  required: boolean;
+  @IsOptional()
+  required?: boolean;
+
+  @IsEnum(FieldType)
+  @IsOptional()
+  arrayType?: FieldType;
 
   @IsNumber()
   @IsOptional()
@@ -59,7 +67,7 @@ export class CreateComponentFieldDto {
   regex?: string;
 }
 
-export class UpdateComponentFieldDto extends CreateComponentFieldDto {
+export class UpdateObjectFieldDto extends CreateObjectFieldDto {
   @IsString()
   id: string;
 

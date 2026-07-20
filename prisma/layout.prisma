@@ -114,7 +114,7 @@ model ObjectSchemaField {
     label               String
     type                FieldType
     objectSchemaRefId   String?
-    schemaId            String?
+    required            Boolean @default(false)
     minLength           Int?
     maxLength           Int?
     minValue            Float?
@@ -124,7 +124,7 @@ model ObjectSchemaField {
 
 
     objectSchema       ObjectSchema @relation(fields: [objectSchemaId], references: [id], onDelete: Cascade)
-    objectSchemaRef    ObjectSchema? @relation("ObjectSchemaFieldReference", fields: [schemaId], references: [id], onDelete: Cascade)
+    objectSchemaRef    ObjectSchema? @relation("ObjectSchemaFieldReference", fields: [objectSchemaRefId], references: [id], onDelete: Cascade)
 
     @@unique([objectSchemaId, key])
 }

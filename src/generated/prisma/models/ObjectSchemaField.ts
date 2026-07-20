@@ -47,7 +47,7 @@ export type ObjectSchemaFieldMinAggregateOutputType = {
   label: string | null
   type: $Enums.FieldType | null
   objectSchemaRefId: string | null
-  schemaId: string | null
+  required: boolean | null
   minLength: number | null
   maxLength: number | null
   minValue: number | null
@@ -63,7 +63,7 @@ export type ObjectSchemaFieldMaxAggregateOutputType = {
   label: string | null
   type: $Enums.FieldType | null
   objectSchemaRefId: string | null
-  schemaId: string | null
+  required: boolean | null
   minLength: number | null
   maxLength: number | null
   minValue: number | null
@@ -79,7 +79,7 @@ export type ObjectSchemaFieldCountAggregateOutputType = {
   label: number
   type: number
   objectSchemaRefId: number
-  schemaId: number
+  required: number
   minLength: number
   maxLength: number
   minValue: number
@@ -111,7 +111,7 @@ export type ObjectSchemaFieldMinAggregateInputType = {
   label?: true
   type?: true
   objectSchemaRefId?: true
-  schemaId?: true
+  required?: true
   minLength?: true
   maxLength?: true
   minValue?: true
@@ -127,7 +127,7 @@ export type ObjectSchemaFieldMaxAggregateInputType = {
   label?: true
   type?: true
   objectSchemaRefId?: true
-  schemaId?: true
+  required?: true
   minLength?: true
   maxLength?: true
   minValue?: true
@@ -143,7 +143,7 @@ export type ObjectSchemaFieldCountAggregateInputType = {
   label?: true
   type?: true
   objectSchemaRefId?: true
-  schemaId?: true
+  required?: true
   minLength?: true
   maxLength?: true
   minValue?: true
@@ -246,7 +246,7 @@ export type ObjectSchemaFieldGroupByOutputType = {
   label: string
   type: $Enums.FieldType
   objectSchemaRefId: string | null
-  schemaId: string | null
+  required: boolean
   minLength: number | null
   maxLength: number | null
   minValue: number | null
@@ -285,7 +285,7 @@ export type ObjectSchemaFieldWhereInput = {
   label?: Prisma.StringFilter<"ObjectSchemaField"> | string
   type?: Prisma.EnumFieldTypeFilter<"ObjectSchemaField"> | $Enums.FieldType
   objectSchemaRefId?: Prisma.StringNullableFilter<"ObjectSchemaField"> | string | null
-  schemaId?: Prisma.StringNullableFilter<"ObjectSchemaField"> | string | null
+  required?: Prisma.BoolFilter<"ObjectSchemaField"> | boolean
   minLength?: Prisma.IntNullableFilter<"ObjectSchemaField"> | number | null
   maxLength?: Prisma.IntNullableFilter<"ObjectSchemaField"> | number | null
   minValue?: Prisma.FloatNullableFilter<"ObjectSchemaField"> | number | null
@@ -303,7 +303,7 @@ export type ObjectSchemaFieldOrderByWithRelationInput = {
   label?: Prisma.SortOrder
   type?: Prisma.SortOrder
   objectSchemaRefId?: Prisma.SortOrderInput | Prisma.SortOrder
-  schemaId?: Prisma.SortOrderInput | Prisma.SortOrder
+  required?: Prisma.SortOrder
   minLength?: Prisma.SortOrderInput | Prisma.SortOrder
   maxLength?: Prisma.SortOrderInput | Prisma.SortOrder
   minValue?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -325,7 +325,7 @@ export type ObjectSchemaFieldWhereUniqueInput = Prisma.AtLeast<{
   label?: Prisma.StringFilter<"ObjectSchemaField"> | string
   type?: Prisma.EnumFieldTypeFilter<"ObjectSchemaField"> | $Enums.FieldType
   objectSchemaRefId?: Prisma.StringNullableFilter<"ObjectSchemaField"> | string | null
-  schemaId?: Prisma.StringNullableFilter<"ObjectSchemaField"> | string | null
+  required?: Prisma.BoolFilter<"ObjectSchemaField"> | boolean
   minLength?: Prisma.IntNullableFilter<"ObjectSchemaField"> | number | null
   maxLength?: Prisma.IntNullableFilter<"ObjectSchemaField"> | number | null
   minValue?: Prisma.FloatNullableFilter<"ObjectSchemaField"> | number | null
@@ -343,7 +343,7 @@ export type ObjectSchemaFieldOrderByWithAggregationInput = {
   label?: Prisma.SortOrder
   type?: Prisma.SortOrder
   objectSchemaRefId?: Prisma.SortOrderInput | Prisma.SortOrder
-  schemaId?: Prisma.SortOrderInput | Prisma.SortOrder
+  required?: Prisma.SortOrder
   minLength?: Prisma.SortOrderInput | Prisma.SortOrder
   maxLength?: Prisma.SortOrderInput | Prisma.SortOrder
   minValue?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -367,7 +367,7 @@ export type ObjectSchemaFieldScalarWhereWithAggregatesInput = {
   label?: Prisma.StringWithAggregatesFilter<"ObjectSchemaField"> | string
   type?: Prisma.EnumFieldTypeWithAggregatesFilter<"ObjectSchemaField"> | $Enums.FieldType
   objectSchemaRefId?: Prisma.StringNullableWithAggregatesFilter<"ObjectSchemaField"> | string | null
-  schemaId?: Prisma.StringNullableWithAggregatesFilter<"ObjectSchemaField"> | string | null
+  required?: Prisma.BoolWithAggregatesFilter<"ObjectSchemaField"> | boolean
   minLength?: Prisma.IntNullableWithAggregatesFilter<"ObjectSchemaField"> | number | null
   maxLength?: Prisma.IntNullableWithAggregatesFilter<"ObjectSchemaField"> | number | null
   minValue?: Prisma.FloatNullableWithAggregatesFilter<"ObjectSchemaField"> | number | null
@@ -381,7 +381,7 @@ export type ObjectSchemaFieldCreateInput = {
   key: string
   label: string
   type: $Enums.FieldType
-  objectSchemaRefId?: string | null
+  required?: boolean
   minLength?: number | null
   maxLength?: number | null
   minValue?: number | null
@@ -399,7 +399,7 @@ export type ObjectSchemaFieldUncheckedCreateInput = {
   label: string
   type: $Enums.FieldType
   objectSchemaRefId?: string | null
-  schemaId?: string | null
+  required?: boolean
   minLength?: number | null
   maxLength?: number | null
   minValue?: number | null
@@ -413,7 +413,7 @@ export type ObjectSchemaFieldUpdateInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   label?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumFieldTypeFieldUpdateOperationsInput | $Enums.FieldType
-  objectSchemaRefId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  required?: Prisma.BoolFieldUpdateOperationsInput | boolean
   minLength?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   maxLength?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   minValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -431,7 +431,7 @@ export type ObjectSchemaFieldUncheckedUpdateInput = {
   label?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumFieldTypeFieldUpdateOperationsInput | $Enums.FieldType
   objectSchemaRefId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  schemaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  required?: Prisma.BoolFieldUpdateOperationsInput | boolean
   minLength?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   maxLength?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   minValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -447,7 +447,7 @@ export type ObjectSchemaFieldCreateManyInput = {
   label: string
   type: $Enums.FieldType
   objectSchemaRefId?: string | null
-  schemaId?: string | null
+  required?: boolean
   minLength?: number | null
   maxLength?: number | null
   minValue?: number | null
@@ -461,7 +461,7 @@ export type ObjectSchemaFieldUpdateManyMutationInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   label?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumFieldTypeFieldUpdateOperationsInput | $Enums.FieldType
-  objectSchemaRefId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  required?: Prisma.BoolFieldUpdateOperationsInput | boolean
   minLength?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   maxLength?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   minValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -477,7 +477,7 @@ export type ObjectSchemaFieldUncheckedUpdateManyInput = {
   label?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumFieldTypeFieldUpdateOperationsInput | $Enums.FieldType
   objectSchemaRefId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  schemaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  required?: Prisma.BoolFieldUpdateOperationsInput | boolean
   minLength?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   maxLength?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   minValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -508,7 +508,7 @@ export type ObjectSchemaFieldCountOrderByAggregateInput = {
   label?: Prisma.SortOrder
   type?: Prisma.SortOrder
   objectSchemaRefId?: Prisma.SortOrder
-  schemaId?: Prisma.SortOrder
+  required?: Prisma.SortOrder
   minLength?: Prisma.SortOrder
   maxLength?: Prisma.SortOrder
   minValue?: Prisma.SortOrder
@@ -531,7 +531,7 @@ export type ObjectSchemaFieldMaxOrderByAggregateInput = {
   label?: Prisma.SortOrder
   type?: Prisma.SortOrder
   objectSchemaRefId?: Prisma.SortOrder
-  schemaId?: Prisma.SortOrder
+  required?: Prisma.SortOrder
   minLength?: Prisma.SortOrder
   maxLength?: Prisma.SortOrder
   minValue?: Prisma.SortOrder
@@ -547,7 +547,7 @@ export type ObjectSchemaFieldMinOrderByAggregateInput = {
   label?: Prisma.SortOrder
   type?: Prisma.SortOrder
   objectSchemaRefId?: Prisma.SortOrder
-  schemaId?: Prisma.SortOrder
+  required?: Prisma.SortOrder
   minLength?: Prisma.SortOrder
   maxLength?: Prisma.SortOrder
   minValue?: Prisma.SortOrder
@@ -652,7 +652,7 @@ export type ObjectSchemaFieldCreateWithoutObjectSchemaInput = {
   key: string
   label: string
   type: $Enums.FieldType
-  objectSchemaRefId?: string | null
+  required?: boolean
   minLength?: number | null
   maxLength?: number | null
   minValue?: number | null
@@ -668,7 +668,7 @@ export type ObjectSchemaFieldUncheckedCreateWithoutObjectSchemaInput = {
   label: string
   type: $Enums.FieldType
   objectSchemaRefId?: string | null
-  schemaId?: string | null
+  required?: boolean
   minLength?: number | null
   maxLength?: number | null
   minValue?: number | null
@@ -692,7 +692,7 @@ export type ObjectSchemaFieldCreateWithoutObjectSchemaRefInput = {
   key: string
   label: string
   type: $Enums.FieldType
-  objectSchemaRefId?: string | null
+  required?: boolean
   minLength?: number | null
   maxLength?: number | null
   minValue?: number | null
@@ -708,7 +708,7 @@ export type ObjectSchemaFieldUncheckedCreateWithoutObjectSchemaRefInput = {
   key: string
   label: string
   type: $Enums.FieldType
-  objectSchemaRefId?: string | null
+  required?: boolean
   minLength?: number | null
   maxLength?: number | null
   minValue?: number | null
@@ -753,7 +753,7 @@ export type ObjectSchemaFieldScalarWhereInput = {
   label?: Prisma.StringFilter<"ObjectSchemaField"> | string
   type?: Prisma.EnumFieldTypeFilter<"ObjectSchemaField"> | $Enums.FieldType
   objectSchemaRefId?: Prisma.StringNullableFilter<"ObjectSchemaField"> | string | null
-  schemaId?: Prisma.StringNullableFilter<"ObjectSchemaField"> | string | null
+  required?: Prisma.BoolFilter<"ObjectSchemaField"> | boolean
   minLength?: Prisma.IntNullableFilter<"ObjectSchemaField"> | number | null
   maxLength?: Prisma.IntNullableFilter<"ObjectSchemaField"> | number | null
   minValue?: Prisma.FloatNullableFilter<"ObjectSchemaField"> | number | null
@@ -784,7 +784,7 @@ export type ObjectSchemaFieldCreateManyObjectSchemaInput = {
   label: string
   type: $Enums.FieldType
   objectSchemaRefId?: string | null
-  schemaId?: string | null
+  required?: boolean
   minLength?: number | null
   maxLength?: number | null
   minValue?: number | null
@@ -799,7 +799,7 @@ export type ObjectSchemaFieldCreateManyObjectSchemaRefInput = {
   key: string
   label: string
   type: $Enums.FieldType
-  objectSchemaRefId?: string | null
+  required?: boolean
   minLength?: number | null
   maxLength?: number | null
   minValue?: number | null
@@ -813,7 +813,7 @@ export type ObjectSchemaFieldUpdateWithoutObjectSchemaInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   label?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumFieldTypeFieldUpdateOperationsInput | $Enums.FieldType
-  objectSchemaRefId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  required?: Prisma.BoolFieldUpdateOperationsInput | boolean
   minLength?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   maxLength?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   minValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -829,7 +829,7 @@ export type ObjectSchemaFieldUncheckedUpdateWithoutObjectSchemaInput = {
   label?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumFieldTypeFieldUpdateOperationsInput | $Enums.FieldType
   objectSchemaRefId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  schemaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  required?: Prisma.BoolFieldUpdateOperationsInput | boolean
   minLength?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   maxLength?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   minValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -844,7 +844,7 @@ export type ObjectSchemaFieldUncheckedUpdateManyWithoutObjectSchemaInput = {
   label?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumFieldTypeFieldUpdateOperationsInput | $Enums.FieldType
   objectSchemaRefId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  schemaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  required?: Prisma.BoolFieldUpdateOperationsInput | boolean
   minLength?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   maxLength?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   minValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -858,7 +858,7 @@ export type ObjectSchemaFieldUpdateWithoutObjectSchemaRefInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   label?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumFieldTypeFieldUpdateOperationsInput | $Enums.FieldType
-  objectSchemaRefId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  required?: Prisma.BoolFieldUpdateOperationsInput | boolean
   minLength?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   maxLength?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   minValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -874,7 +874,7 @@ export type ObjectSchemaFieldUncheckedUpdateWithoutObjectSchemaRefInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   label?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumFieldTypeFieldUpdateOperationsInput | $Enums.FieldType
-  objectSchemaRefId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  required?: Prisma.BoolFieldUpdateOperationsInput | boolean
   minLength?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   maxLength?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   minValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -889,7 +889,7 @@ export type ObjectSchemaFieldUncheckedUpdateManyWithoutObjectSchemaRefInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   label?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumFieldTypeFieldUpdateOperationsInput | $Enums.FieldType
-  objectSchemaRefId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  required?: Prisma.BoolFieldUpdateOperationsInput | boolean
   minLength?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   maxLength?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   minValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -907,7 +907,7 @@ export type ObjectSchemaFieldSelect<ExtArgs extends runtime.Types.Extensions.Int
   label?: boolean
   type?: boolean
   objectSchemaRefId?: boolean
-  schemaId?: boolean
+  required?: boolean
   minLength?: boolean
   maxLength?: boolean
   minValue?: boolean
@@ -925,7 +925,7 @@ export type ObjectSchemaFieldSelectCreateManyAndReturn<ExtArgs extends runtime.T
   label?: boolean
   type?: boolean
   objectSchemaRefId?: boolean
-  schemaId?: boolean
+  required?: boolean
   minLength?: boolean
   maxLength?: boolean
   minValue?: boolean
@@ -943,7 +943,7 @@ export type ObjectSchemaFieldSelectUpdateManyAndReturn<ExtArgs extends runtime.T
   label?: boolean
   type?: boolean
   objectSchemaRefId?: boolean
-  schemaId?: boolean
+  required?: boolean
   minLength?: boolean
   maxLength?: boolean
   minValue?: boolean
@@ -961,7 +961,7 @@ export type ObjectSchemaFieldSelectScalar = {
   label?: boolean
   type?: boolean
   objectSchemaRefId?: boolean
-  schemaId?: boolean
+  required?: boolean
   minLength?: boolean
   maxLength?: boolean
   minValue?: boolean
@@ -970,7 +970,7 @@ export type ObjectSchemaFieldSelectScalar = {
   arrayType?: boolean
 }
 
-export type ObjectSchemaFieldOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "objectSchemaId" | "key" | "label" | "type" | "objectSchemaRefId" | "schemaId" | "minLength" | "maxLength" | "minValue" | "maxValue" | "regex" | "arrayType", ExtArgs["result"]["objectSchemaField"]>
+export type ObjectSchemaFieldOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "objectSchemaId" | "key" | "label" | "type" | "objectSchemaRefId" | "required" | "minLength" | "maxLength" | "minValue" | "maxValue" | "regex" | "arrayType", ExtArgs["result"]["objectSchemaField"]>
 export type ObjectSchemaFieldInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   objectSchema?: boolean | Prisma.ObjectSchemaDefaultArgs<ExtArgs>
   objectSchemaRef?: boolean | Prisma.ObjectSchemaField$objectSchemaRefArgs<ExtArgs>
@@ -997,7 +997,7 @@ export type $ObjectSchemaFieldPayload<ExtArgs extends runtime.Types.Extensions.I
     label: string
     type: $Enums.FieldType
     objectSchemaRefId: string | null
-    schemaId: string | null
+    required: boolean
     minLength: number | null
     maxLength: number | null
     minValue: number | null
@@ -1435,7 +1435,7 @@ export interface ObjectSchemaFieldFieldRefs {
   readonly label: Prisma.FieldRef<"ObjectSchemaField", 'String'>
   readonly type: Prisma.FieldRef<"ObjectSchemaField", 'FieldType'>
   readonly objectSchemaRefId: Prisma.FieldRef<"ObjectSchemaField", 'String'>
-  readonly schemaId: Prisma.FieldRef<"ObjectSchemaField", 'String'>
+  readonly required: Prisma.FieldRef<"ObjectSchemaField", 'Boolean'>
   readonly minLength: Prisma.FieldRef<"ObjectSchemaField", 'Int'>
   readonly maxLength: Prisma.FieldRef<"ObjectSchemaField", 'Int'>
   readonly minValue: Prisma.FieldRef<"ObjectSchemaField", 'Float'>

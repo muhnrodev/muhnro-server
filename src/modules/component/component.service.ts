@@ -3,7 +3,6 @@ import { PrismaService } from '../../prisma/prisma.service.js';
 import {
   CreateComponentDto,
   CreateComponentFieldDto,
-  ItemSchemaDto,
   UpdateComponentDto,
   UpdateComponentFieldDto,
 } from './component.dto.js';
@@ -23,9 +22,7 @@ export class ComponentService {
       const components = await this.prisma.component.findMany({
         include: {
           fields: {
-            include: {
-              itemSchema: true,
-            },
+            include: {},
           },
         },
       });
@@ -43,9 +40,7 @@ export class ComponentService {
         where: { id },
         include: {
           fields: {
-            include: {
-              itemSchema: true,
-            },
+            include: {},
           },
         },
       });
@@ -68,9 +63,7 @@ export class ComponentService {
         where: { key },
         include: {
           fields: {
-            include: {
-              itemSchema: true,
-            },
+            include: {},
           },
         },
       });
@@ -205,8 +198,6 @@ export class ComponentService {
         },
       });
 
-      await this.updateFieldSchema(newField.id, data.itemSchema || []);
-
       const updatedComponent = await this.getComponentById(data.componentId);
       const components = await this.getAllComponents();
 
@@ -252,8 +243,6 @@ export class ComponentService {
         },
       });
 
-      await this.updateFieldSchema(field.id, data.itemSchema || []);
-
       const updatedComponent = await this.getComponentById(field.componentId);
       const components = await this.getAllComponents();
 
@@ -293,52 +282,6 @@ export class ComponentService {
       };
     } catch (error) {
       this.logger.error('Error deleting component field', error);
-      throw error;
-    }
-  }
-
-  async updateFieldSchema(fieldId: string, itemSchema: ItemSchemaDto[]) {
-    try {
-      const field = await this.prisma.componentField.findUnique({
-        where: { id: fieldId },
-      });
-
-      if (!field) {
-        this.logger.warn(`Component field with ID ${fieldId} not found`);
-        throw new Error(`Component field with ID ${fieldId} not found`);
-      }
-
-      await this.prisma.itemSchema.deleteMany({
-        where: { componentFieldId: fieldId },
-      });
-
-      const schemaKey = await this.generator.generateFieldSchemaKey(
-        field.label,
-        fieldId,
-      );
-
-      for (const item of itemSchema) {
-        await this.prisma.itemSchema.create({
-          data: {
-            componentFieldId: fieldId,
-            label: item.label,
-            type: item.type,
-            key: schemaKey,
-            required: item.required,
-          },
-        });
-      }
-
-      const updatedComponent = await this.getComponentById(field.componentId);
-      const components = await this.getAllComponents();
-
-      return {
-        message: 'Component field schema updated successfully',
-        component: updatedComponent,
-        components,
-      };
-    } catch (error) {
-      this.logger.error('Error updating component field schema', error);
       throw error;
     }
   }
