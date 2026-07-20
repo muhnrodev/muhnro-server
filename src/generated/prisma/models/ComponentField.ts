@@ -52,6 +52,8 @@ export type ComponentFieldMinAggregateOutputType = {
   minValue: number | null
   maxValue: number | null
   regex: string | null
+  objectSchemaId: string | null
+  arrayType: $Enums.FieldType | null
   createdAt: Date | null
   createdBy: string | null
   updatedAt: Date | null
@@ -70,6 +72,8 @@ export type ComponentFieldMaxAggregateOutputType = {
   minValue: number | null
   maxValue: number | null
   regex: string | null
+  objectSchemaId: string | null
+  arrayType: $Enums.FieldType | null
   createdAt: Date | null
   createdBy: string | null
   updatedAt: Date | null
@@ -88,6 +92,8 @@ export type ComponentFieldCountAggregateOutputType = {
   minValue: number
   maxValue: number
   regex: number
+  objectSchemaId: number
+  arrayType: number
   createdAt: number
   createdBy: number
   updatedAt: number
@@ -122,6 +128,8 @@ export type ComponentFieldMinAggregateInputType = {
   minValue?: true
   maxValue?: true
   regex?: true
+  objectSchemaId?: true
+  arrayType?: true
   createdAt?: true
   createdBy?: true
   updatedAt?: true
@@ -140,6 +148,8 @@ export type ComponentFieldMaxAggregateInputType = {
   minValue?: true
   maxValue?: true
   regex?: true
+  objectSchemaId?: true
+  arrayType?: true
   createdAt?: true
   createdBy?: true
   updatedAt?: true
@@ -158,6 +168,8 @@ export type ComponentFieldCountAggregateInputType = {
   minValue?: true
   maxValue?: true
   regex?: true
+  objectSchemaId?: true
+  arrayType?: true
   createdAt?: true
   createdBy?: true
   updatedAt?: true
@@ -263,6 +275,8 @@ export type ComponentFieldGroupByOutputType = {
   minValue: number | null
   maxValue: number | null
   regex: string | null
+  objectSchemaId: string | null
+  arrayType: $Enums.FieldType | null
   createdAt: Date | null
   createdBy: string | null
   updatedAt: Date | null
@@ -304,13 +318,15 @@ export type ComponentFieldWhereInput = {
   minValue?: Prisma.FloatNullableFilter<"ComponentField"> | number | null
   maxValue?: Prisma.FloatNullableFilter<"ComponentField"> | number | null
   regex?: Prisma.StringNullableFilter<"ComponentField"> | string | null
+  objectSchemaId?: Prisma.StringNullableFilter<"ComponentField"> | string | null
+  arrayType?: Prisma.EnumFieldTypeNullableFilter<"ComponentField"> | $Enums.FieldType | null
   createdAt?: Prisma.DateTimeNullableFilter<"ComponentField"> | Date | string | null
   createdBy?: Prisma.StringNullableFilter<"ComponentField"> | string | null
   updatedAt?: Prisma.DateTimeNullableFilter<"ComponentField"> | Date | string | null
   updatedBy?: Prisma.StringNullableFilter<"ComponentField"> | string | null
-  component?: Prisma.XOR<Prisma.ComponentScalarRelationFilter, Prisma.ComponentWhereInput>
   fieldValues?: Prisma.ComponentFieldValueListRelationFilter
-  itemSchema?: Prisma.ItemSchemaListRelationFilter
+  component?: Prisma.XOR<Prisma.ComponentScalarRelationFilter, Prisma.ComponentWhereInput>
+  objectSchema?: Prisma.XOR<Prisma.ObjectSchemaNullableScalarRelationFilter, Prisma.ObjectSchemaWhereInput> | null
 }
 
 export type ComponentFieldOrderByWithRelationInput = {
@@ -325,13 +341,15 @@ export type ComponentFieldOrderByWithRelationInput = {
   minValue?: Prisma.SortOrderInput | Prisma.SortOrder
   maxValue?: Prisma.SortOrderInput | Prisma.SortOrder
   regex?: Prisma.SortOrderInput | Prisma.SortOrder
+  objectSchemaId?: Prisma.SortOrderInput | Prisma.SortOrder
+  arrayType?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdBy?: Prisma.SortOrderInput | Prisma.SortOrder
   updatedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   updatedBy?: Prisma.SortOrderInput | Prisma.SortOrder
-  component?: Prisma.ComponentOrderByWithRelationInput
   fieldValues?: Prisma.ComponentFieldValueOrderByRelationAggregateInput
-  itemSchema?: Prisma.ItemSchemaOrderByRelationAggregateInput
+  component?: Prisma.ComponentOrderByWithRelationInput
+  objectSchema?: Prisma.ObjectSchemaOrderByWithRelationInput
 }
 
 export type ComponentFieldWhereUniqueInput = Prisma.AtLeast<{
@@ -350,13 +368,15 @@ export type ComponentFieldWhereUniqueInput = Prisma.AtLeast<{
   minValue?: Prisma.FloatNullableFilter<"ComponentField"> | number | null
   maxValue?: Prisma.FloatNullableFilter<"ComponentField"> | number | null
   regex?: Prisma.StringNullableFilter<"ComponentField"> | string | null
+  objectSchemaId?: Prisma.StringNullableFilter<"ComponentField"> | string | null
+  arrayType?: Prisma.EnumFieldTypeNullableFilter<"ComponentField"> | $Enums.FieldType | null
   createdAt?: Prisma.DateTimeNullableFilter<"ComponentField"> | Date | string | null
   createdBy?: Prisma.StringNullableFilter<"ComponentField"> | string | null
   updatedAt?: Prisma.DateTimeNullableFilter<"ComponentField"> | Date | string | null
   updatedBy?: Prisma.StringNullableFilter<"ComponentField"> | string | null
-  component?: Prisma.XOR<Prisma.ComponentScalarRelationFilter, Prisma.ComponentWhereInput>
   fieldValues?: Prisma.ComponentFieldValueListRelationFilter
-  itemSchema?: Prisma.ItemSchemaListRelationFilter
+  component?: Prisma.XOR<Prisma.ComponentScalarRelationFilter, Prisma.ComponentWhereInput>
+  objectSchema?: Prisma.XOR<Prisma.ObjectSchemaNullableScalarRelationFilter, Prisma.ObjectSchemaWhereInput> | null
 }, "id" | "componentId_key">
 
 export type ComponentFieldOrderByWithAggregationInput = {
@@ -371,6 +391,8 @@ export type ComponentFieldOrderByWithAggregationInput = {
   minValue?: Prisma.SortOrderInput | Prisma.SortOrder
   maxValue?: Prisma.SortOrderInput | Prisma.SortOrder
   regex?: Prisma.SortOrderInput | Prisma.SortOrder
+  objectSchemaId?: Prisma.SortOrderInput | Prisma.SortOrder
+  arrayType?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdBy?: Prisma.SortOrderInput | Prisma.SortOrder
   updatedAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -397,6 +419,8 @@ export type ComponentFieldScalarWhereWithAggregatesInput = {
   minValue?: Prisma.FloatNullableWithAggregatesFilter<"ComponentField"> | number | null
   maxValue?: Prisma.FloatNullableWithAggregatesFilter<"ComponentField"> | number | null
   regex?: Prisma.StringNullableWithAggregatesFilter<"ComponentField"> | string | null
+  objectSchemaId?: Prisma.StringNullableWithAggregatesFilter<"ComponentField"> | string | null
+  arrayType?: Prisma.EnumFieldTypeNullableWithAggregatesFilter<"ComponentField"> | $Enums.FieldType | null
   createdAt?: Prisma.DateTimeNullableWithAggregatesFilter<"ComponentField"> | Date | string | null
   createdBy?: Prisma.StringNullableWithAggregatesFilter<"ComponentField"> | string | null
   updatedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"ComponentField"> | Date | string | null
@@ -414,13 +438,14 @@ export type ComponentFieldCreateInput = {
   minValue?: number | null
   maxValue?: number | null
   regex?: string | null
+  arrayType?: $Enums.FieldType | null
   createdAt?: Date | string | null
   createdBy?: string | null
   updatedAt?: Date | string | null
   updatedBy?: string | null
-  component: Prisma.ComponentCreateNestedOneWithoutFieldsInput
   fieldValues?: Prisma.ComponentFieldValueCreateNestedManyWithoutFieldInput
-  itemSchema?: Prisma.ItemSchemaCreateNestedManyWithoutComponentFieldInput
+  component: Prisma.ComponentCreateNestedOneWithoutFieldsInput
+  objectSchema?: Prisma.ObjectSchemaCreateNestedOneWithoutComponentFieldsInput
 }
 
 export type ComponentFieldUncheckedCreateInput = {
@@ -435,12 +460,13 @@ export type ComponentFieldUncheckedCreateInput = {
   minValue?: number | null
   maxValue?: number | null
   regex?: string | null
+  objectSchemaId?: string | null
+  arrayType?: $Enums.FieldType | null
   createdAt?: Date | string | null
   createdBy?: string | null
   updatedAt?: Date | string | null
   updatedBy?: string | null
   fieldValues?: Prisma.ComponentFieldValueUncheckedCreateNestedManyWithoutFieldInput
-  itemSchema?: Prisma.ItemSchemaUncheckedCreateNestedManyWithoutComponentFieldInput
 }
 
 export type ComponentFieldUpdateInput = {
@@ -454,13 +480,14 @@ export type ComponentFieldUpdateInput = {
   minValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   maxValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   regex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  arrayType?: Prisma.NullableEnumFieldTypeFieldUpdateOperationsInput | $Enums.FieldType | null
   createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  component?: Prisma.ComponentUpdateOneRequiredWithoutFieldsNestedInput
   fieldValues?: Prisma.ComponentFieldValueUpdateManyWithoutFieldNestedInput
-  itemSchema?: Prisma.ItemSchemaUpdateManyWithoutComponentFieldNestedInput
+  component?: Prisma.ComponentUpdateOneRequiredWithoutFieldsNestedInput
+  objectSchema?: Prisma.ObjectSchemaUpdateOneWithoutComponentFieldsNestedInput
 }
 
 export type ComponentFieldUncheckedUpdateInput = {
@@ -475,12 +502,13 @@ export type ComponentFieldUncheckedUpdateInput = {
   minValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   maxValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   regex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  objectSchemaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  arrayType?: Prisma.NullableEnumFieldTypeFieldUpdateOperationsInput | $Enums.FieldType | null
   createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fieldValues?: Prisma.ComponentFieldValueUncheckedUpdateManyWithoutFieldNestedInput
-  itemSchema?: Prisma.ItemSchemaUncheckedUpdateManyWithoutComponentFieldNestedInput
 }
 
 export type ComponentFieldCreateManyInput = {
@@ -495,6 +523,8 @@ export type ComponentFieldCreateManyInput = {
   minValue?: number | null
   maxValue?: number | null
   regex?: string | null
+  objectSchemaId?: string | null
+  arrayType?: $Enums.FieldType | null
   createdAt?: Date | string | null
   createdBy?: string | null
   updatedAt?: Date | string | null
@@ -512,6 +542,7 @@ export type ComponentFieldUpdateManyMutationInput = {
   minValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   maxValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   regex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  arrayType?: Prisma.NullableEnumFieldTypeFieldUpdateOperationsInput | $Enums.FieldType | null
   createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -530,6 +561,8 @@ export type ComponentFieldUncheckedUpdateManyInput = {
   minValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   maxValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   regex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  objectSchemaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  arrayType?: Prisma.NullableEnumFieldTypeFieldUpdateOperationsInput | $Enums.FieldType | null
   createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -563,6 +596,8 @@ export type ComponentFieldCountOrderByAggregateInput = {
   minValue?: Prisma.SortOrder
   maxValue?: Prisma.SortOrder
   regex?: Prisma.SortOrder
+  objectSchemaId?: Prisma.SortOrder
+  arrayType?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   createdBy?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -588,6 +623,8 @@ export type ComponentFieldMaxOrderByAggregateInput = {
   minValue?: Prisma.SortOrder
   maxValue?: Prisma.SortOrder
   regex?: Prisma.SortOrder
+  objectSchemaId?: Prisma.SortOrder
+  arrayType?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   createdBy?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -606,6 +643,8 @@ export type ComponentFieldMinOrderByAggregateInput = {
   minValue?: Prisma.SortOrder
   maxValue?: Prisma.SortOrder
   regex?: Prisma.SortOrder
+  objectSchemaId?: Prisma.SortOrder
+  arrayType?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   createdBy?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -686,18 +725,50 @@ export type NullableFloatFieldUpdateOperationsInput = {
   divide?: number
 }
 
-export type ComponentFieldCreateNestedOneWithoutItemSchemaInput = {
-  create?: Prisma.XOR<Prisma.ComponentFieldCreateWithoutItemSchemaInput, Prisma.ComponentFieldUncheckedCreateWithoutItemSchemaInput>
-  connectOrCreate?: Prisma.ComponentFieldCreateOrConnectWithoutItemSchemaInput
-  connect?: Prisma.ComponentFieldWhereUniqueInput
+export type NullableEnumFieldTypeFieldUpdateOperationsInput = {
+  set?: $Enums.FieldType | null
 }
 
-export type ComponentFieldUpdateOneRequiredWithoutItemSchemaNestedInput = {
-  create?: Prisma.XOR<Prisma.ComponentFieldCreateWithoutItemSchemaInput, Prisma.ComponentFieldUncheckedCreateWithoutItemSchemaInput>
-  connectOrCreate?: Prisma.ComponentFieldCreateOrConnectWithoutItemSchemaInput
-  upsert?: Prisma.ComponentFieldUpsertWithoutItemSchemaInput
-  connect?: Prisma.ComponentFieldWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.ComponentFieldUpdateToOneWithWhereWithoutItemSchemaInput, Prisma.ComponentFieldUpdateWithoutItemSchemaInput>, Prisma.ComponentFieldUncheckedUpdateWithoutItemSchemaInput>
+export type ComponentFieldCreateNestedManyWithoutObjectSchemaInput = {
+  create?: Prisma.XOR<Prisma.ComponentFieldCreateWithoutObjectSchemaInput, Prisma.ComponentFieldUncheckedCreateWithoutObjectSchemaInput> | Prisma.ComponentFieldCreateWithoutObjectSchemaInput[] | Prisma.ComponentFieldUncheckedCreateWithoutObjectSchemaInput[]
+  connectOrCreate?: Prisma.ComponentFieldCreateOrConnectWithoutObjectSchemaInput | Prisma.ComponentFieldCreateOrConnectWithoutObjectSchemaInput[]
+  createMany?: Prisma.ComponentFieldCreateManyObjectSchemaInputEnvelope
+  connect?: Prisma.ComponentFieldWhereUniqueInput | Prisma.ComponentFieldWhereUniqueInput[]
+}
+
+export type ComponentFieldUncheckedCreateNestedManyWithoutObjectSchemaInput = {
+  create?: Prisma.XOR<Prisma.ComponentFieldCreateWithoutObjectSchemaInput, Prisma.ComponentFieldUncheckedCreateWithoutObjectSchemaInput> | Prisma.ComponentFieldCreateWithoutObjectSchemaInput[] | Prisma.ComponentFieldUncheckedCreateWithoutObjectSchemaInput[]
+  connectOrCreate?: Prisma.ComponentFieldCreateOrConnectWithoutObjectSchemaInput | Prisma.ComponentFieldCreateOrConnectWithoutObjectSchemaInput[]
+  createMany?: Prisma.ComponentFieldCreateManyObjectSchemaInputEnvelope
+  connect?: Prisma.ComponentFieldWhereUniqueInput | Prisma.ComponentFieldWhereUniqueInput[]
+}
+
+export type ComponentFieldUpdateManyWithoutObjectSchemaNestedInput = {
+  create?: Prisma.XOR<Prisma.ComponentFieldCreateWithoutObjectSchemaInput, Prisma.ComponentFieldUncheckedCreateWithoutObjectSchemaInput> | Prisma.ComponentFieldCreateWithoutObjectSchemaInput[] | Prisma.ComponentFieldUncheckedCreateWithoutObjectSchemaInput[]
+  connectOrCreate?: Prisma.ComponentFieldCreateOrConnectWithoutObjectSchemaInput | Prisma.ComponentFieldCreateOrConnectWithoutObjectSchemaInput[]
+  upsert?: Prisma.ComponentFieldUpsertWithWhereUniqueWithoutObjectSchemaInput | Prisma.ComponentFieldUpsertWithWhereUniqueWithoutObjectSchemaInput[]
+  createMany?: Prisma.ComponentFieldCreateManyObjectSchemaInputEnvelope
+  set?: Prisma.ComponentFieldWhereUniqueInput | Prisma.ComponentFieldWhereUniqueInput[]
+  disconnect?: Prisma.ComponentFieldWhereUniqueInput | Prisma.ComponentFieldWhereUniqueInput[]
+  delete?: Prisma.ComponentFieldWhereUniqueInput | Prisma.ComponentFieldWhereUniqueInput[]
+  connect?: Prisma.ComponentFieldWhereUniqueInput | Prisma.ComponentFieldWhereUniqueInput[]
+  update?: Prisma.ComponentFieldUpdateWithWhereUniqueWithoutObjectSchemaInput | Prisma.ComponentFieldUpdateWithWhereUniqueWithoutObjectSchemaInput[]
+  updateMany?: Prisma.ComponentFieldUpdateManyWithWhereWithoutObjectSchemaInput | Prisma.ComponentFieldUpdateManyWithWhereWithoutObjectSchemaInput[]
+  deleteMany?: Prisma.ComponentFieldScalarWhereInput | Prisma.ComponentFieldScalarWhereInput[]
+}
+
+export type ComponentFieldUncheckedUpdateManyWithoutObjectSchemaNestedInput = {
+  create?: Prisma.XOR<Prisma.ComponentFieldCreateWithoutObjectSchemaInput, Prisma.ComponentFieldUncheckedCreateWithoutObjectSchemaInput> | Prisma.ComponentFieldCreateWithoutObjectSchemaInput[] | Prisma.ComponentFieldUncheckedCreateWithoutObjectSchemaInput[]
+  connectOrCreate?: Prisma.ComponentFieldCreateOrConnectWithoutObjectSchemaInput | Prisma.ComponentFieldCreateOrConnectWithoutObjectSchemaInput[]
+  upsert?: Prisma.ComponentFieldUpsertWithWhereUniqueWithoutObjectSchemaInput | Prisma.ComponentFieldUpsertWithWhereUniqueWithoutObjectSchemaInput[]
+  createMany?: Prisma.ComponentFieldCreateManyObjectSchemaInputEnvelope
+  set?: Prisma.ComponentFieldWhereUniqueInput | Prisma.ComponentFieldWhereUniqueInput[]
+  disconnect?: Prisma.ComponentFieldWhereUniqueInput | Prisma.ComponentFieldWhereUniqueInput[]
+  delete?: Prisma.ComponentFieldWhereUniqueInput | Prisma.ComponentFieldWhereUniqueInput[]
+  connect?: Prisma.ComponentFieldWhereUniqueInput | Prisma.ComponentFieldWhereUniqueInput[]
+  update?: Prisma.ComponentFieldUpdateWithWhereUniqueWithoutObjectSchemaInput | Prisma.ComponentFieldUpdateWithWhereUniqueWithoutObjectSchemaInput[]
+  updateMany?: Prisma.ComponentFieldUpdateManyWithWhereWithoutObjectSchemaInput | Prisma.ComponentFieldUpdateManyWithWhereWithoutObjectSchemaInput[]
+  deleteMany?: Prisma.ComponentFieldScalarWhereInput | Prisma.ComponentFieldScalarWhereInput[]
 }
 
 export type ComponentFieldCreateNestedOneWithoutFieldValuesInput = {
@@ -725,12 +796,13 @@ export type ComponentFieldCreateWithoutComponentInput = {
   minValue?: number | null
   maxValue?: number | null
   regex?: string | null
+  arrayType?: $Enums.FieldType | null
   createdAt?: Date | string | null
   createdBy?: string | null
   updatedAt?: Date | string | null
   updatedBy?: string | null
   fieldValues?: Prisma.ComponentFieldValueCreateNestedManyWithoutFieldInput
-  itemSchema?: Prisma.ItemSchemaCreateNestedManyWithoutComponentFieldInput
+  objectSchema?: Prisma.ObjectSchemaCreateNestedOneWithoutComponentFieldsInput
 }
 
 export type ComponentFieldUncheckedCreateWithoutComponentInput = {
@@ -744,12 +816,13 @@ export type ComponentFieldUncheckedCreateWithoutComponentInput = {
   minValue?: number | null
   maxValue?: number | null
   regex?: string | null
+  objectSchemaId?: string | null
+  arrayType?: $Enums.FieldType | null
   createdAt?: Date | string | null
   createdBy?: string | null
   updatedAt?: Date | string | null
   updatedBy?: string | null
   fieldValues?: Prisma.ComponentFieldValueUncheckedCreateNestedManyWithoutFieldInput
-  itemSchema?: Prisma.ItemSchemaUncheckedCreateNestedManyWithoutComponentFieldInput
 }
 
 export type ComponentFieldCreateOrConnectWithoutComponentInput = {
@@ -793,13 +866,15 @@ export type ComponentFieldScalarWhereInput = {
   minValue?: Prisma.FloatNullableFilter<"ComponentField"> | number | null
   maxValue?: Prisma.FloatNullableFilter<"ComponentField"> | number | null
   regex?: Prisma.StringNullableFilter<"ComponentField"> | string | null
+  objectSchemaId?: Prisma.StringNullableFilter<"ComponentField"> | string | null
+  arrayType?: Prisma.EnumFieldTypeNullableFilter<"ComponentField"> | $Enums.FieldType | null
   createdAt?: Prisma.DateTimeNullableFilter<"ComponentField"> | Date | string | null
   createdBy?: Prisma.StringNullableFilter<"ComponentField"> | string | null
   updatedAt?: Prisma.DateTimeNullableFilter<"ComponentField"> | Date | string | null
   updatedBy?: Prisma.StringNullableFilter<"ComponentField"> | string | null
 }
 
-export type ComponentFieldCreateWithoutItemSchemaInput = {
+export type ComponentFieldCreateWithoutObjectSchemaInput = {
   id?: string
   key: string
   label: string
@@ -810,15 +885,16 @@ export type ComponentFieldCreateWithoutItemSchemaInput = {
   minValue?: number | null
   maxValue?: number | null
   regex?: string | null
+  arrayType?: $Enums.FieldType | null
   createdAt?: Date | string | null
   createdBy?: string | null
   updatedAt?: Date | string | null
   updatedBy?: string | null
-  component: Prisma.ComponentCreateNestedOneWithoutFieldsInput
   fieldValues?: Prisma.ComponentFieldValueCreateNestedManyWithoutFieldInput
+  component: Prisma.ComponentCreateNestedOneWithoutFieldsInput
 }
 
-export type ComponentFieldUncheckedCreateWithoutItemSchemaInput = {
+export type ComponentFieldUncheckedCreateWithoutObjectSchemaInput = {
   id?: string
   componentId: string
   key: string
@@ -830,6 +906,7 @@ export type ComponentFieldUncheckedCreateWithoutItemSchemaInput = {
   minValue?: number | null
   maxValue?: number | null
   regex?: string | null
+  arrayType?: $Enums.FieldType | null
   createdAt?: Date | string | null
   createdBy?: string | null
   updatedAt?: Date | string | null
@@ -837,58 +914,30 @@ export type ComponentFieldUncheckedCreateWithoutItemSchemaInput = {
   fieldValues?: Prisma.ComponentFieldValueUncheckedCreateNestedManyWithoutFieldInput
 }
 
-export type ComponentFieldCreateOrConnectWithoutItemSchemaInput = {
+export type ComponentFieldCreateOrConnectWithoutObjectSchemaInput = {
   where: Prisma.ComponentFieldWhereUniqueInput
-  create: Prisma.XOR<Prisma.ComponentFieldCreateWithoutItemSchemaInput, Prisma.ComponentFieldUncheckedCreateWithoutItemSchemaInput>
+  create: Prisma.XOR<Prisma.ComponentFieldCreateWithoutObjectSchemaInput, Prisma.ComponentFieldUncheckedCreateWithoutObjectSchemaInput>
 }
 
-export type ComponentFieldUpsertWithoutItemSchemaInput = {
-  update: Prisma.XOR<Prisma.ComponentFieldUpdateWithoutItemSchemaInput, Prisma.ComponentFieldUncheckedUpdateWithoutItemSchemaInput>
-  create: Prisma.XOR<Prisma.ComponentFieldCreateWithoutItemSchemaInput, Prisma.ComponentFieldUncheckedCreateWithoutItemSchemaInput>
-  where?: Prisma.ComponentFieldWhereInput
+export type ComponentFieldCreateManyObjectSchemaInputEnvelope = {
+  data: Prisma.ComponentFieldCreateManyObjectSchemaInput | Prisma.ComponentFieldCreateManyObjectSchemaInput[]
+  skipDuplicates?: boolean
 }
 
-export type ComponentFieldUpdateToOneWithWhereWithoutItemSchemaInput = {
-  where?: Prisma.ComponentFieldWhereInput
-  data: Prisma.XOR<Prisma.ComponentFieldUpdateWithoutItemSchemaInput, Prisma.ComponentFieldUncheckedUpdateWithoutItemSchemaInput>
+export type ComponentFieldUpsertWithWhereUniqueWithoutObjectSchemaInput = {
+  where: Prisma.ComponentFieldWhereUniqueInput
+  update: Prisma.XOR<Prisma.ComponentFieldUpdateWithoutObjectSchemaInput, Prisma.ComponentFieldUncheckedUpdateWithoutObjectSchemaInput>
+  create: Prisma.XOR<Prisma.ComponentFieldCreateWithoutObjectSchemaInput, Prisma.ComponentFieldUncheckedCreateWithoutObjectSchemaInput>
 }
 
-export type ComponentFieldUpdateWithoutItemSchemaInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  key?: Prisma.StringFieldUpdateOperationsInput | string
-  label?: Prisma.StringFieldUpdateOperationsInput | string
-  type?: Prisma.EnumFieldTypeFieldUpdateOperationsInput | $Enums.FieldType
-  required?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  minLength?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  maxLength?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  minValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  maxValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  regex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  component?: Prisma.ComponentUpdateOneRequiredWithoutFieldsNestedInput
-  fieldValues?: Prisma.ComponentFieldValueUpdateManyWithoutFieldNestedInput
+export type ComponentFieldUpdateWithWhereUniqueWithoutObjectSchemaInput = {
+  where: Prisma.ComponentFieldWhereUniqueInput
+  data: Prisma.XOR<Prisma.ComponentFieldUpdateWithoutObjectSchemaInput, Prisma.ComponentFieldUncheckedUpdateWithoutObjectSchemaInput>
 }
 
-export type ComponentFieldUncheckedUpdateWithoutItemSchemaInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  componentId?: Prisma.StringFieldUpdateOperationsInput | string
-  key?: Prisma.StringFieldUpdateOperationsInput | string
-  label?: Prisma.StringFieldUpdateOperationsInput | string
-  type?: Prisma.EnumFieldTypeFieldUpdateOperationsInput | $Enums.FieldType
-  required?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  minLength?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  maxLength?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  minValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  maxValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  regex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  fieldValues?: Prisma.ComponentFieldValueUncheckedUpdateManyWithoutFieldNestedInput
+export type ComponentFieldUpdateManyWithWhereWithoutObjectSchemaInput = {
+  where: Prisma.ComponentFieldScalarWhereInput
+  data: Prisma.XOR<Prisma.ComponentFieldUpdateManyMutationInput, Prisma.ComponentFieldUncheckedUpdateManyWithoutObjectSchemaInput>
 }
 
 export type ComponentFieldCreateWithoutFieldValuesInput = {
@@ -902,12 +951,13 @@ export type ComponentFieldCreateWithoutFieldValuesInput = {
   minValue?: number | null
   maxValue?: number | null
   regex?: string | null
+  arrayType?: $Enums.FieldType | null
   createdAt?: Date | string | null
   createdBy?: string | null
   updatedAt?: Date | string | null
   updatedBy?: string | null
   component: Prisma.ComponentCreateNestedOneWithoutFieldsInput
-  itemSchema?: Prisma.ItemSchemaCreateNestedManyWithoutComponentFieldInput
+  objectSchema?: Prisma.ObjectSchemaCreateNestedOneWithoutComponentFieldsInput
 }
 
 export type ComponentFieldUncheckedCreateWithoutFieldValuesInput = {
@@ -922,11 +972,12 @@ export type ComponentFieldUncheckedCreateWithoutFieldValuesInput = {
   minValue?: number | null
   maxValue?: number | null
   regex?: string | null
+  objectSchemaId?: string | null
+  arrayType?: $Enums.FieldType | null
   createdAt?: Date | string | null
   createdBy?: string | null
   updatedAt?: Date | string | null
   updatedBy?: string | null
-  itemSchema?: Prisma.ItemSchemaUncheckedCreateNestedManyWithoutComponentFieldInput
 }
 
 export type ComponentFieldCreateOrConnectWithoutFieldValuesInput = {
@@ -956,12 +1007,13 @@ export type ComponentFieldUpdateWithoutFieldValuesInput = {
   minValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   maxValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   regex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  arrayType?: Prisma.NullableEnumFieldTypeFieldUpdateOperationsInput | $Enums.FieldType | null
   createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   component?: Prisma.ComponentUpdateOneRequiredWithoutFieldsNestedInput
-  itemSchema?: Prisma.ItemSchemaUpdateManyWithoutComponentFieldNestedInput
+  objectSchema?: Prisma.ObjectSchemaUpdateOneWithoutComponentFieldsNestedInput
 }
 
 export type ComponentFieldUncheckedUpdateWithoutFieldValuesInput = {
@@ -976,11 +1028,12 @@ export type ComponentFieldUncheckedUpdateWithoutFieldValuesInput = {
   minValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   maxValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   regex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  objectSchemaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  arrayType?: Prisma.NullableEnumFieldTypeFieldUpdateOperationsInput | $Enums.FieldType | null
   createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  itemSchema?: Prisma.ItemSchemaUncheckedUpdateManyWithoutComponentFieldNestedInput
 }
 
 export type ComponentFieldCreateManyComponentInput = {
@@ -994,6 +1047,8 @@ export type ComponentFieldCreateManyComponentInput = {
   minValue?: number | null
   maxValue?: number | null
   regex?: string | null
+  objectSchemaId?: string | null
+  arrayType?: $Enums.FieldType | null
   createdAt?: Date | string | null
   createdBy?: string | null
   updatedAt?: Date | string | null
@@ -1011,12 +1066,13 @@ export type ComponentFieldUpdateWithoutComponentInput = {
   minValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   maxValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   regex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  arrayType?: Prisma.NullableEnumFieldTypeFieldUpdateOperationsInput | $Enums.FieldType | null
   createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fieldValues?: Prisma.ComponentFieldValueUpdateManyWithoutFieldNestedInput
-  itemSchema?: Prisma.ItemSchemaUpdateManyWithoutComponentFieldNestedInput
+  objectSchema?: Prisma.ObjectSchemaUpdateOneWithoutComponentFieldsNestedInput
 }
 
 export type ComponentFieldUncheckedUpdateWithoutComponentInput = {
@@ -1030,12 +1086,13 @@ export type ComponentFieldUncheckedUpdateWithoutComponentInput = {
   minValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   maxValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   regex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  objectSchemaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  arrayType?: Prisma.NullableEnumFieldTypeFieldUpdateOperationsInput | $Enums.FieldType | null
   createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fieldValues?: Prisma.ComponentFieldValueUncheckedUpdateManyWithoutFieldNestedInput
-  itemSchema?: Prisma.ItemSchemaUncheckedUpdateManyWithoutComponentFieldNestedInput
 }
 
 export type ComponentFieldUncheckedUpdateManyWithoutComponentInput = {
@@ -1049,6 +1106,86 @@ export type ComponentFieldUncheckedUpdateManyWithoutComponentInput = {
   minValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   maxValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   regex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  objectSchemaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  arrayType?: Prisma.NullableEnumFieldTypeFieldUpdateOperationsInput | $Enums.FieldType | null
+  createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+}
+
+export type ComponentFieldCreateManyObjectSchemaInput = {
+  id?: string
+  componentId: string
+  key: string
+  label: string
+  type: $Enums.FieldType
+  required?: boolean
+  minLength?: number | null
+  maxLength?: number | null
+  minValue?: number | null
+  maxValue?: number | null
+  regex?: string | null
+  arrayType?: $Enums.FieldType | null
+  createdAt?: Date | string | null
+  createdBy?: string | null
+  updatedAt?: Date | string | null
+  updatedBy?: string | null
+}
+
+export type ComponentFieldUpdateWithoutObjectSchemaInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  key?: Prisma.StringFieldUpdateOperationsInput | string
+  label?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumFieldTypeFieldUpdateOperationsInput | $Enums.FieldType
+  required?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  minLength?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  maxLength?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  minValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  maxValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  regex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  arrayType?: Prisma.NullableEnumFieldTypeFieldUpdateOperationsInput | $Enums.FieldType | null
+  createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fieldValues?: Prisma.ComponentFieldValueUpdateManyWithoutFieldNestedInput
+  component?: Prisma.ComponentUpdateOneRequiredWithoutFieldsNestedInput
+}
+
+export type ComponentFieldUncheckedUpdateWithoutObjectSchemaInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  componentId?: Prisma.StringFieldUpdateOperationsInput | string
+  key?: Prisma.StringFieldUpdateOperationsInput | string
+  label?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumFieldTypeFieldUpdateOperationsInput | $Enums.FieldType
+  required?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  minLength?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  maxLength?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  minValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  maxValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  regex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  arrayType?: Prisma.NullableEnumFieldTypeFieldUpdateOperationsInput | $Enums.FieldType | null
+  createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fieldValues?: Prisma.ComponentFieldValueUncheckedUpdateManyWithoutFieldNestedInput
+}
+
+export type ComponentFieldUncheckedUpdateManyWithoutObjectSchemaInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  componentId?: Prisma.StringFieldUpdateOperationsInput | string
+  key?: Prisma.StringFieldUpdateOperationsInput | string
+  label?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumFieldTypeFieldUpdateOperationsInput | $Enums.FieldType
+  required?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  minLength?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  maxLength?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  minValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  maxValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  regex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  arrayType?: Prisma.NullableEnumFieldTypeFieldUpdateOperationsInput | $Enums.FieldType | null
   createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1062,12 +1199,10 @@ export type ComponentFieldUncheckedUpdateManyWithoutComponentInput = {
 
 export type ComponentFieldCountOutputType = {
   fieldValues: number
-  itemSchema: number
 }
 
 export type ComponentFieldCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   fieldValues?: boolean | ComponentFieldCountOutputTypeCountFieldValuesArgs
-  itemSchema?: boolean | ComponentFieldCountOutputTypeCountItemSchemaArgs
 }
 
 /**
@@ -1087,13 +1222,6 @@ export type ComponentFieldCountOutputTypeCountFieldValuesArgs<ExtArgs extends ru
   where?: Prisma.ComponentFieldValueWhereInput
 }
 
-/**
- * ComponentFieldCountOutputType without action
- */
-export type ComponentFieldCountOutputTypeCountItemSchemaArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.ItemSchemaWhereInput
-}
-
 
 export type ComponentFieldSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1107,13 +1235,15 @@ export type ComponentFieldSelect<ExtArgs extends runtime.Types.Extensions.Intern
   minValue?: boolean
   maxValue?: boolean
   regex?: boolean
+  objectSchemaId?: boolean
+  arrayType?: boolean
   createdAt?: boolean
   createdBy?: boolean
   updatedAt?: boolean
   updatedBy?: boolean
-  component?: boolean | Prisma.ComponentDefaultArgs<ExtArgs>
   fieldValues?: boolean | Prisma.ComponentField$fieldValuesArgs<ExtArgs>
-  itemSchema?: boolean | Prisma.ComponentField$itemSchemaArgs<ExtArgs>
+  component?: boolean | Prisma.ComponentDefaultArgs<ExtArgs>
+  objectSchema?: boolean | Prisma.ComponentField$objectSchemaArgs<ExtArgs>
   _count?: boolean | Prisma.ComponentFieldCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["componentField"]>
 
@@ -1129,11 +1259,14 @@ export type ComponentFieldSelectCreateManyAndReturn<ExtArgs extends runtime.Type
   minValue?: boolean
   maxValue?: boolean
   regex?: boolean
+  objectSchemaId?: boolean
+  arrayType?: boolean
   createdAt?: boolean
   createdBy?: boolean
   updatedAt?: boolean
   updatedBy?: boolean
   component?: boolean | Prisma.ComponentDefaultArgs<ExtArgs>
+  objectSchema?: boolean | Prisma.ComponentField$objectSchemaArgs<ExtArgs>
 }, ExtArgs["result"]["componentField"]>
 
 export type ComponentFieldSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1148,11 +1281,14 @@ export type ComponentFieldSelectUpdateManyAndReturn<ExtArgs extends runtime.Type
   minValue?: boolean
   maxValue?: boolean
   regex?: boolean
+  objectSchemaId?: boolean
+  arrayType?: boolean
   createdAt?: boolean
   createdBy?: boolean
   updatedAt?: boolean
   updatedBy?: boolean
   component?: boolean | Prisma.ComponentDefaultArgs<ExtArgs>
+  objectSchema?: boolean | Prisma.ComponentField$objectSchemaArgs<ExtArgs>
 }, ExtArgs["result"]["componentField"]>
 
 export type ComponentFieldSelectScalar = {
@@ -1167,32 +1303,36 @@ export type ComponentFieldSelectScalar = {
   minValue?: boolean
   maxValue?: boolean
   regex?: boolean
+  objectSchemaId?: boolean
+  arrayType?: boolean
   createdAt?: boolean
   createdBy?: boolean
   updatedAt?: boolean
   updatedBy?: boolean
 }
 
-export type ComponentFieldOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "componentId" | "key" | "label" | "type" | "required" | "minLength" | "maxLength" | "minValue" | "maxValue" | "regex" | "createdAt" | "createdBy" | "updatedAt" | "updatedBy", ExtArgs["result"]["componentField"]>
+export type ComponentFieldOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "componentId" | "key" | "label" | "type" | "required" | "minLength" | "maxLength" | "minValue" | "maxValue" | "regex" | "objectSchemaId" | "arrayType" | "createdAt" | "createdBy" | "updatedAt" | "updatedBy", ExtArgs["result"]["componentField"]>
 export type ComponentFieldInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  component?: boolean | Prisma.ComponentDefaultArgs<ExtArgs>
   fieldValues?: boolean | Prisma.ComponentField$fieldValuesArgs<ExtArgs>
-  itemSchema?: boolean | Prisma.ComponentField$itemSchemaArgs<ExtArgs>
+  component?: boolean | Prisma.ComponentDefaultArgs<ExtArgs>
+  objectSchema?: boolean | Prisma.ComponentField$objectSchemaArgs<ExtArgs>
   _count?: boolean | Prisma.ComponentFieldCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ComponentFieldIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   component?: boolean | Prisma.ComponentDefaultArgs<ExtArgs>
+  objectSchema?: boolean | Prisma.ComponentField$objectSchemaArgs<ExtArgs>
 }
 export type ComponentFieldIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   component?: boolean | Prisma.ComponentDefaultArgs<ExtArgs>
+  objectSchema?: boolean | Prisma.ComponentField$objectSchemaArgs<ExtArgs>
 }
 
 export type $ComponentFieldPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "ComponentField"
   objects: {
-    component: Prisma.$ComponentPayload<ExtArgs>
     fieldValues: Prisma.$ComponentFieldValuePayload<ExtArgs>[]
-    itemSchema: Prisma.$ItemSchemaPayload<ExtArgs>[]
+    component: Prisma.$ComponentPayload<ExtArgs>
+    objectSchema: Prisma.$ObjectSchemaPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1206,6 +1346,8 @@ export type $ComponentFieldPayload<ExtArgs extends runtime.Types.Extensions.Inte
     minValue: number | null
     maxValue: number | null
     regex: string | null
+    objectSchemaId: string | null
+    arrayType: $Enums.FieldType | null
     createdAt: Date | null
     createdBy: string | null
     updatedAt: Date | null
@@ -1604,9 +1746,9 @@ readonly fields: ComponentFieldFieldRefs;
  */
 export interface Prisma__ComponentFieldClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  component<T extends Prisma.ComponentDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ComponentDefaultArgs<ExtArgs>>): Prisma.Prisma__ComponentClient<runtime.Types.Result.GetResult<Prisma.$ComponentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   fieldValues<T extends Prisma.ComponentField$fieldValuesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ComponentField$fieldValuesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ComponentFieldValuePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  itemSchema<T extends Prisma.ComponentField$itemSchemaArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ComponentField$itemSchemaArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ItemSchemaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  component<T extends Prisma.ComponentDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ComponentDefaultArgs<ExtArgs>>): Prisma.Prisma__ComponentClient<runtime.Types.Result.GetResult<Prisma.$ComponentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  objectSchema<T extends Prisma.ComponentField$objectSchemaArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ComponentField$objectSchemaArgs<ExtArgs>>): Prisma.Prisma__ObjectSchemaClient<runtime.Types.Result.GetResult<Prisma.$ObjectSchemaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1647,6 +1789,8 @@ export interface ComponentFieldFieldRefs {
   readonly minValue: Prisma.FieldRef<"ComponentField", 'Float'>
   readonly maxValue: Prisma.FieldRef<"ComponentField", 'Float'>
   readonly regex: Prisma.FieldRef<"ComponentField", 'String'>
+  readonly objectSchemaId: Prisma.FieldRef<"ComponentField", 'String'>
+  readonly arrayType: Prisma.FieldRef<"ComponentField", 'FieldType'>
   readonly createdAt: Prisma.FieldRef<"ComponentField", 'DateTime'>
   readonly createdBy: Prisma.FieldRef<"ComponentField", 'String'>
   readonly updatedAt: Prisma.FieldRef<"ComponentField", 'DateTime'>
@@ -2071,27 +2215,22 @@ export type ComponentField$fieldValuesArgs<ExtArgs extends runtime.Types.Extensi
 }
 
 /**
- * ComponentField.itemSchema
+ * ComponentField.objectSchema
  */
-export type ComponentField$itemSchemaArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type ComponentField$objectSchemaArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the ItemSchema
+   * Select specific fields to fetch from the ObjectSchema
    */
-  select?: Prisma.ItemSchemaSelect<ExtArgs> | null
+  select?: Prisma.ObjectSchemaSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the ItemSchema
+   * Omit specific fields from the ObjectSchema
    */
-  omit?: Prisma.ItemSchemaOmit<ExtArgs> | null
+  omit?: Prisma.ObjectSchemaOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.ItemSchemaInclude<ExtArgs> | null
-  where?: Prisma.ItemSchemaWhereInput
-  orderBy?: Prisma.ItemSchemaOrderByWithRelationInput | Prisma.ItemSchemaOrderByWithRelationInput[]
-  cursor?: Prisma.ItemSchemaWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.ItemSchemaScalarFieldEnum | Prisma.ItemSchemaScalarFieldEnum[]
+  include?: Prisma.ObjectSchemaInclude<ExtArgs> | null
+  where?: Prisma.ObjectSchemaWhereInput
 }
 
 /**

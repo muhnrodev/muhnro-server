@@ -142,7 +142,23 @@ export const FieldType = {
   URL: 'URL',
   EMAIL: 'EMAIL',
   ARRAY: 'ARRAY',
-  OBJECT: 'OBJECT'
+  OBJECT: 'OBJECT',
+  REFERENCE: 'REFERENCE',
+  REFERENCE_ARRAY: 'REFERENCE_ARRAY'
 } as const
 
 export type FieldType = (typeof FieldType)[keyof typeof FieldType]
+
+
+export const ReferenceType = {
+  ARTICLE: 'ARTICLE',
+  NEWS: 'NEWS',
+  PROJECT: 'PROJECT',
+  REPORT: 'REPORT',
+  PODCAST: 'PODCAST',
+  PRODUCT: 'PRODUCT',
+  PARTNER: 'PARTNER',
+  PERSON: 'PERSON'
+} as const
+
+export type ReferenceType = (typeof ReferenceType)[keyof typeof ReferenceType]

@@ -413,7 +413,8 @@ export const ModelName = {
   PageComponent: 'PageComponent',
   Component: 'Component',
   ComponentField: 'ComponentField',
-  ItemSchema: 'ItemSchema',
+  ObjectSchema: 'ObjectSchema',
+  ObjectSchemaField: 'ObjectSchemaField',
   ComponentFieldValue: 'ComponentFieldValue',
   AvatarImage: 'AvatarImage',
   HeroImage: 'HeroImage',
@@ -454,7 +455,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "userCredentialWebAuthn" | "userMFA" | "oAuthToken" | "emailVerification" | "passwordReset" | "authEvent" | "privacySettings" | "location" | "industry" | "serviceActivity" | "identityProvider" | "topic" | "article" | "articleIndustry" | "articleTopic" | "articleServiceActivity" | "articleTag" | "articleReference" | "articleVersion" | "articleComment" | "session" | "userIdentity" | "userCredential" | "website" | "webpage" | "pageComponent" | "component" | "componentField" | "itemSchema" | "componentFieldValue" | "avatarImage" | "heroImage" | "coverImage" | "articleImage" | "reportFile" | "notificationPreference" | "promotionalPreference" | "insightsPreference" | "teamMember" | "teamRole" | "client" | "author" | "organization" | "articleAuthor" | "reportAuthor" | "project" | "projectServiceActivity" | "projectTeamMember" | "projectImage" | "projectNote" | "report" | "reportIndustry" | "reportTopic" | "reportServiceActivity"
+    modelProps: "user" | "userCredentialWebAuthn" | "userMFA" | "oAuthToken" | "emailVerification" | "passwordReset" | "authEvent" | "privacySettings" | "location" | "industry" | "serviceActivity" | "identityProvider" | "topic" | "article" | "articleIndustry" | "articleTopic" | "articleServiceActivity" | "articleTag" | "articleReference" | "articleVersion" | "articleComment" | "session" | "userIdentity" | "userCredential" | "website" | "webpage" | "pageComponent" | "component" | "componentField" | "objectSchema" | "objectSchemaField" | "componentFieldValue" | "avatarImage" | "heroImage" | "coverImage" | "articleImage" | "reportFile" | "notificationPreference" | "promotionalPreference" | "insightsPreference" | "teamMember" | "teamRole" | "client" | "author" | "organization" | "articleAuthor" | "reportAuthor" | "project" | "projectServiceActivity" | "projectTeamMember" | "projectImage" | "projectNote" | "report" | "reportIndustry" | "reportTopic" | "reportServiceActivity"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -2604,77 +2605,151 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    ItemSchema: {
-      payload: Prisma.$ItemSchemaPayload<ExtArgs>
-      fields: Prisma.ItemSchemaFieldRefs
+    ObjectSchema: {
+      payload: Prisma.$ObjectSchemaPayload<ExtArgs>
+      fields: Prisma.ObjectSchemaFieldRefs
       operations: {
         findUnique: {
-          args: Prisma.ItemSchemaFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ItemSchemaPayload> | null
+          args: Prisma.ObjectSchemaFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ObjectSchemaPayload> | null
         }
         findUniqueOrThrow: {
-          args: Prisma.ItemSchemaFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ItemSchemaPayload>
+          args: Prisma.ObjectSchemaFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ObjectSchemaPayload>
         }
         findFirst: {
-          args: Prisma.ItemSchemaFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ItemSchemaPayload> | null
+          args: Prisma.ObjectSchemaFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ObjectSchemaPayload> | null
         }
         findFirstOrThrow: {
-          args: Prisma.ItemSchemaFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ItemSchemaPayload>
+          args: Prisma.ObjectSchemaFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ObjectSchemaPayload>
         }
         findMany: {
-          args: Prisma.ItemSchemaFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ItemSchemaPayload>[]
+          args: Prisma.ObjectSchemaFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ObjectSchemaPayload>[]
         }
         create: {
-          args: Prisma.ItemSchemaCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ItemSchemaPayload>
+          args: Prisma.ObjectSchemaCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ObjectSchemaPayload>
         }
         createMany: {
-          args: Prisma.ItemSchemaCreateManyArgs<ExtArgs>
+          args: Prisma.ObjectSchemaCreateManyArgs<ExtArgs>
           result: BatchPayload
         }
         createManyAndReturn: {
-          args: Prisma.ItemSchemaCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ItemSchemaPayload>[]
+          args: Prisma.ObjectSchemaCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ObjectSchemaPayload>[]
         }
         delete: {
-          args: Prisma.ItemSchemaDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ItemSchemaPayload>
+          args: Prisma.ObjectSchemaDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ObjectSchemaPayload>
         }
         update: {
-          args: Prisma.ItemSchemaUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ItemSchemaPayload>
+          args: Prisma.ObjectSchemaUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ObjectSchemaPayload>
         }
         deleteMany: {
-          args: Prisma.ItemSchemaDeleteManyArgs<ExtArgs>
+          args: Prisma.ObjectSchemaDeleteManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateMany: {
-          args: Prisma.ItemSchemaUpdateManyArgs<ExtArgs>
+          args: Prisma.ObjectSchemaUpdateManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateManyAndReturn: {
-          args: Prisma.ItemSchemaUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ItemSchemaPayload>[]
+          args: Prisma.ObjectSchemaUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ObjectSchemaPayload>[]
         }
         upsert: {
-          args: Prisma.ItemSchemaUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ItemSchemaPayload>
+          args: Prisma.ObjectSchemaUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ObjectSchemaPayload>
         }
         aggregate: {
-          args: Prisma.ItemSchemaAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateItemSchema>
+          args: Prisma.ObjectSchemaAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateObjectSchema>
         }
         groupBy: {
-          args: Prisma.ItemSchemaGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.ItemSchemaGroupByOutputType>[]
+          args: Prisma.ObjectSchemaGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ObjectSchemaGroupByOutputType>[]
         }
         count: {
-          args: Prisma.ItemSchemaCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.ItemSchemaCountAggregateOutputType> | number
+          args: Prisma.ObjectSchemaCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ObjectSchemaCountAggregateOutputType> | number
+        }
+      }
+    }
+    ObjectSchemaField: {
+      payload: Prisma.$ObjectSchemaFieldPayload<ExtArgs>
+      fields: Prisma.ObjectSchemaFieldFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ObjectSchemaFieldFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ObjectSchemaFieldPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ObjectSchemaFieldFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ObjectSchemaFieldPayload>
+        }
+        findFirst: {
+          args: Prisma.ObjectSchemaFieldFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ObjectSchemaFieldPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ObjectSchemaFieldFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ObjectSchemaFieldPayload>
+        }
+        findMany: {
+          args: Prisma.ObjectSchemaFieldFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ObjectSchemaFieldPayload>[]
+        }
+        create: {
+          args: Prisma.ObjectSchemaFieldCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ObjectSchemaFieldPayload>
+        }
+        createMany: {
+          args: Prisma.ObjectSchemaFieldCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ObjectSchemaFieldCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ObjectSchemaFieldPayload>[]
+        }
+        delete: {
+          args: Prisma.ObjectSchemaFieldDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ObjectSchemaFieldPayload>
+        }
+        update: {
+          args: Prisma.ObjectSchemaFieldUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ObjectSchemaFieldPayload>
+        }
+        deleteMany: {
+          args: Prisma.ObjectSchemaFieldDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ObjectSchemaFieldUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ObjectSchemaFieldUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ObjectSchemaFieldPayload>[]
+        }
+        upsert: {
+          args: Prisma.ObjectSchemaFieldUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ObjectSchemaFieldPayload>
+        }
+        aggregate: {
+          args: Prisma.ObjectSchemaFieldAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateObjectSchemaField>
+        }
+        groupBy: {
+          args: Prisma.ObjectSchemaFieldGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ObjectSchemaFieldGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ObjectSchemaFieldCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ObjectSchemaFieldCountAggregateOutputType> | number
         }
       }
     }
@@ -4945,6 +5020,8 @@ export const ComponentFieldScalarFieldEnum = {
   minValue: 'minValue',
   maxValue: 'maxValue',
   regex: 'regex',
+  objectSchemaId: 'objectSchemaId',
+  arrayType: 'arrayType',
   createdAt: 'createdAt',
   createdBy: 'createdBy',
   updatedAt: 'updatedAt',
@@ -4954,20 +5031,37 @@ export const ComponentFieldScalarFieldEnum = {
 export type ComponentFieldScalarFieldEnum = (typeof ComponentFieldScalarFieldEnum)[keyof typeof ComponentFieldScalarFieldEnum]
 
 
-export const ItemSchemaScalarFieldEnum = {
+export const ObjectSchemaScalarFieldEnum = {
   id: 'id',
-  componentFieldId: 'componentFieldId',
-  label: 'label',
   key: 'key',
-  type: 'type',
-  required: 'required',
+  name: 'name',
+  description: 'description',
   createdAt: 'createdAt',
   createdBy: 'createdBy',
   updatedAt: 'updatedAt',
   updatedBy: 'updatedBy'
 } as const
 
-export type ItemSchemaScalarFieldEnum = (typeof ItemSchemaScalarFieldEnum)[keyof typeof ItemSchemaScalarFieldEnum]
+export type ObjectSchemaScalarFieldEnum = (typeof ObjectSchemaScalarFieldEnum)[keyof typeof ObjectSchemaScalarFieldEnum]
+
+
+export const ObjectSchemaFieldScalarFieldEnum = {
+  id: 'id',
+  objectSchemaId: 'objectSchemaId',
+  key: 'key',
+  label: 'label',
+  type: 'type',
+  objectSchemaRefId: 'objectSchemaRefId',
+  schemaId: 'schemaId',
+  minLength: 'minLength',
+  maxLength: 'maxLength',
+  minValue: 'minValue',
+  maxValue: 'maxValue',
+  regex: 'regex',
+  arrayType: 'arrayType'
+} as const
+
+export type ObjectSchemaFieldScalarFieldEnum = (typeof ObjectSchemaFieldScalarFieldEnum)[keyof typeof ObjectSchemaFieldScalarFieldEnum]
 
 
 export const ComponentFieldValueScalarFieldEnum = {
@@ -5711,7 +5805,8 @@ export type GlobalOmitConfig = {
   pageComponent?: Prisma.PageComponentOmit
   component?: Prisma.ComponentOmit
   componentField?: Prisma.ComponentFieldOmit
-  itemSchema?: Prisma.ItemSchemaOmit
+  objectSchema?: Prisma.ObjectSchemaOmit
+  objectSchemaField?: Prisma.ObjectSchemaFieldOmit
   componentFieldValue?: Prisma.ComponentFieldValueOmit
   avatarImage?: Prisma.AvatarImageOmit
   heroImage?: Prisma.HeroImageOmit

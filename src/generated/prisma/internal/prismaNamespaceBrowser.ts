@@ -80,7 +80,8 @@ export const ModelName = {
   PageComponent: 'PageComponent',
   Component: 'Component',
   ComponentField: 'ComponentField',
-  ItemSchema: 'ItemSchema',
+  ObjectSchema: 'ObjectSchema',
+  ObjectSchemaField: 'ObjectSchemaField',
   ComponentFieldValue: 'ComponentFieldValue',
   AvatarImage: 'AvatarImage',
   HeroImage: 'HeroImage',
@@ -502,6 +503,8 @@ export const ComponentFieldScalarFieldEnum = {
   minValue: 'minValue',
   maxValue: 'maxValue',
   regex: 'regex',
+  objectSchemaId: 'objectSchemaId',
+  arrayType: 'arrayType',
   createdAt: 'createdAt',
   createdBy: 'createdBy',
   updatedAt: 'updatedAt',
@@ -511,20 +514,37 @@ export const ComponentFieldScalarFieldEnum = {
 export type ComponentFieldScalarFieldEnum = (typeof ComponentFieldScalarFieldEnum)[keyof typeof ComponentFieldScalarFieldEnum]
 
 
-export const ItemSchemaScalarFieldEnum = {
+export const ObjectSchemaScalarFieldEnum = {
   id: 'id',
-  componentFieldId: 'componentFieldId',
-  label: 'label',
   key: 'key',
-  type: 'type',
-  required: 'required',
+  name: 'name',
+  description: 'description',
   createdAt: 'createdAt',
   createdBy: 'createdBy',
   updatedAt: 'updatedAt',
   updatedBy: 'updatedBy'
 } as const
 
-export type ItemSchemaScalarFieldEnum = (typeof ItemSchemaScalarFieldEnum)[keyof typeof ItemSchemaScalarFieldEnum]
+export type ObjectSchemaScalarFieldEnum = (typeof ObjectSchemaScalarFieldEnum)[keyof typeof ObjectSchemaScalarFieldEnum]
+
+
+export const ObjectSchemaFieldScalarFieldEnum = {
+  id: 'id',
+  objectSchemaId: 'objectSchemaId',
+  key: 'key',
+  label: 'label',
+  type: 'type',
+  objectSchemaRefId: 'objectSchemaRefId',
+  schemaId: 'schemaId',
+  minLength: 'minLength',
+  maxLength: 'maxLength',
+  minValue: 'minValue',
+  maxValue: 'maxValue',
+  regex: 'regex',
+  arrayType: 'arrayType'
+} as const
+
+export type ObjectSchemaFieldScalarFieldEnum = (typeof ObjectSchemaFieldScalarFieldEnum)[keyof typeof ObjectSchemaFieldScalarFieldEnum]
 
 
 export const ComponentFieldValueScalarFieldEnum = {

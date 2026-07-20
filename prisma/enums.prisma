@@ -103,14 +103,11 @@ enum FieldType {
     DATETIME
     NUMBER
     BOOLEAN
-
     COLOR
     URL
     EMAIL
-
     ARRAY
     OBJECT
-
     REFERENCE
     REFERENCE_ARRAY
 }
