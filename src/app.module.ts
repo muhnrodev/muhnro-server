@@ -13,6 +13,7 @@ import { RolesGuard } from './modules/auth/guards/roles.guard.js';
 import { WebsiteModule } from './modules/website/website.module.js';
 import { ComponentModule } from './modules/component/component.module.js';
 import { ObjectModule } from './modules/object/object.module.js';
+import { HealthModule } from './modules/health/health.module.js';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { ObjectModule } from './modules/object/object.module.js';
 
     PrismaModule,
     GeneratorModule,
+    HealthModule,
 
     AuthModule,
 
