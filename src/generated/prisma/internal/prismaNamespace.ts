@@ -4969,6 +4969,7 @@ export type WebsiteScalarFieldEnum = (typeof WebsiteScalarFieldEnum)[keyof typeo
 export const WebpageScalarFieldEnum = {
   id: 'id',
   websiteId: 'websiteId',
+  name: 'name',
   slug: 'slug',
   createdAt: 'createdAt',
   createdBy: 'createdBy',

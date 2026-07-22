@@ -10,7 +10,11 @@ export class WebsiteService {
 
   async getAllWebsites() {
     try {
-      const websites = await this.prisma.website.findMany();
+      const websites = await this.prisma.website.findMany({
+        include: {
+          pages: true,
+        },
+      });
       return websites;
     } catch (error) {
       this.logger.error('Error fetching websites', error);
@@ -22,6 +26,9 @@ export class WebsiteService {
     try {
       const website = await this.prisma.website.findUnique({
         where: { id },
+        include: {
+          pages: true,
+        },
       });
 
       if (!website) {

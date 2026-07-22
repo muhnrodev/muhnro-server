@@ -118,4 +118,41 @@ export class GeneratorService {
 
     return slug;
   }
+
+  async generatePageComponentKey(
+    webpageId: string,
+    componentId: string,
+  ): Promise<string> {
+    const webpage = await this.prisma.webpage.findUnique({
+      where: { id: webpageId },
+    });
+
+    if (!webpage) {
+      throw new Error(`Webpage with ID ${webpageId} not found`);
+    }
+
+    const component = await this.prisma.component.findUnique({
+      where: { id: componentId },
+    });
+
+    if (!component) {
+      throw new Error(`Component with ID ${componentId} not found`);
+    }
+
+    const slug = slugify(`${webpage.name}-${component.key}`, {
+      lower: true,
+      strict: true,
+    });
+
+    const exists = await this.prisma.pageComponent.findUnique({
+      where: { key: slug },
+    });
+
+    if (exists) {
+      const randomSuffix = Math.random().toString(36).substring(2, 8);
+      return `${slug}-${randomSuffix}`;
+    }
+
+    return slug;
+  }
 }

@@ -14,6 +14,8 @@ import { WebsiteModule } from './modules/website/website.module.js';
 import { ComponentModule } from './modules/component/component.module.js';
 import { ObjectModule } from './modules/object/object.module.js';
 import { HealthModule } from './modules/health/health.module.js';
+import { WebpageModule } from './modules/webpage/webpage.module.js';
+import { DataModule } from './modules/data/data.module.js';
 
 @Module({
   imports: [
@@ -40,6 +42,8 @@ import { HealthModule } from './modules/health/health.module.js';
     WebsiteModule,
     ComponentModule,
     ObjectModule,
+    WebpageModule,
+    DataModule,
   ],
   controllers: [AppController],
   providers: [

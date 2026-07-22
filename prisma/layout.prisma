@@ -15,7 +15,8 @@ model Website {
 model Webpage {
     id                  String   @id @default(dbgenerated("gen_random_uuid()"))
     websiteId           String
-    slug                String
+    name                String
+    slug                String?
     
     createdAt           DateTime @default(now())
     createdBy           String?
