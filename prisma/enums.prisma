@@ -92,6 +92,8 @@ enum ReportStatus {
 enum FieldType {
     STRING
     TEXT
+    LONGTEXT
+    IDENTITY
     RICHTEXT
     MARKDOWN
     IMAGE

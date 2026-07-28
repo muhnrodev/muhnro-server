@@ -63,4 +63,89 @@ export class WebsiteService {
       throw error;
     }
   }
+
+  async getWebsiteContentById(id: string) {
+    try {
+      const website = await this.prisma.website.findUnique({
+        where: { id },
+        include: {
+          pages: {
+            include: {
+              components: {
+                include: {
+                  component: true,
+                  values: {
+                    include: {
+                      field: true,
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      });
+
+      if (!website) {
+        this.logger.warn(`Website with ID ${id} not found`);
+        throw new NotFoundException(`Website with ID ${id} not found`);
+      }
+
+      const data = {
+        name: website.name,
+        domain: website.domain,
+        id: website.id,
+        version: website.version,
+        pages: website.pages.map((page) => ({
+          id: page.id,
+          name: page.name,
+          slug: page.slug,
+          components: page.components.map((component) => ({
+            id: component.id,
+            key: component.key,
+            active: component.active,
+            componentId: component.componentId,
+            fields: component.values.map((value) => ({
+              fieldId: value.fieldId,
+              label: value.field.label,
+              value: value.value,
+            })),
+          })),
+        })),
+      };
+
+      return data;
+    } catch (error) {
+      this.logger.error(`Error fetching website content with ID ${id}`, error);
+      throw error;
+    }
+  }
+
+  async incrementWebsiteVersion(id: string) {
+    try {
+      const website = await this.prisma.website.findUnique({
+        where: { id },
+      });
+
+      if (!website) {
+        this.logger.warn(`Website with ID ${id} not found`);
+        throw new NotFoundException(`Website with ID ${id} not found`);
+      }
+
+      const updatedWebsite = await this.prisma.website.update({
+        where: { id },
+        data: {
+          version: website.version + 1,
+        },
+      });
+
+      return updatedWebsite;
+    } catch (error) {
+      this.logger.error(
+        `Error incrementing version for website with ID ${id}`,
+        error,
+      );
+      throw error;
+    }
+  }
 }

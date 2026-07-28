@@ -53,7 +53,7 @@ export class WebpageService {
 
       if (!webpage) {
         this.logger.warn(`Webpage with ID ${id} not found`);
-        throw new Error(`Webpage with ID ${id} not found`);
+        throw new NotFoundException(`Webpage with ID ${id} not found`);
       }
 
       return webpage;
@@ -75,6 +75,8 @@ export class WebpageService {
         },
       });
 
+      await this.websiteService.incrementWebsiteVersion(data.websiteId);
+
       const website = await this.websiteService.getWebsiteById(data.websiteId);
 
       return { message: 'Webpage created successfully', webpage, website };
@@ -95,6 +97,8 @@ export class WebpageService {
           updatedBy,
         },
       });
+
+      await this.websiteService.incrementWebsiteVersion(data.websiteId);
 
       const website = await this.websiteService.getWebsiteById(data.websiteId);
 
@@ -153,7 +157,6 @@ export class WebpageService {
             webpageId: data.webpageId,
             componentId: data.componentId,
             key: webPageComponentKey,
-            order: 0,
           },
         });
 
@@ -169,6 +172,10 @@ export class WebpageService {
       });
 
       const updatedWebpage = await this.getWebpageById(data.webpageId);
+
+      await this.websiteService.incrementWebsiteVersion(
+        updatedWebpage.websiteId,
+      );
 
       return {
         message: 'Webpage component created successfully',

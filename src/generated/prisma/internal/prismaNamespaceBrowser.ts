@@ -468,7 +468,7 @@ export const PageComponentScalarFieldEnum = {
   key: 'key',
   webpageId: 'webpageId',
   componentId: 'componentId',
-  order: 'order',
+  active: 'active',
   createdAt: 'createdAt',
   createdBy: 'createdBy',
   updatedAt: 'updatedAt',

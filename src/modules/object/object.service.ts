@@ -21,7 +21,15 @@ export class ObjectService {
     try {
       const objects = await this.prisma.objectSchema.findMany({
         include: {
-          fields: true,
+          fields: {
+            include: {
+              objectSchemaRef: {
+                include: {
+                  fields: true,
+                },
+              },
+            },
+          },
         },
       });
       return objects;
@@ -36,7 +44,15 @@ export class ObjectService {
       const object = await this.prisma.objectSchema.findUnique({
         where: { id },
         include: {
-          fields: true,
+          fields: {
+            include: {
+              objectSchemaRef: {
+                include: {
+                  fields: true,
+                },
+              },
+            },
+          },
         },
       });
       return object;
@@ -51,7 +67,15 @@ export class ObjectService {
       const object = await this.prisma.objectSchema.findUnique({
         where: { key },
         include: {
-          fields: true,
+          fields: {
+            include: {
+              objectSchemaRef: {
+                include: {
+                  fields: true,
+                },
+              },
+            },
+          },
         },
       });
       return object;

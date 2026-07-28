@@ -22,7 +22,21 @@ export class ComponentService {
       const components = await this.prisma.component.findMany({
         include: {
           fields: {
-            include: {},
+            include: {
+              objectSchema: {
+                include: {
+                  fields: {
+                    include: {
+                      objectSchemaRef: {
+                        include: {
+                          fields: true,
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
           },
         },
       });
@@ -40,7 +54,21 @@ export class ComponentService {
         where: { id },
         include: {
           fields: {
-            include: {},
+            include: {
+              objectSchema: {
+                include: {
+                  fields: {
+                    include: {
+                      objectSchemaRef: {
+                        include: {
+                          fields: true,
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
           },
         },
       });
@@ -63,7 +91,21 @@ export class ComponentService {
         where: { key },
         include: {
           fields: {
-            include: {},
+            include: {
+              objectSchema: {
+                include: {
+                  fields: {
+                    include: {
+                      objectSchemaRef: {
+                        include: {
+                          fields: true,
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
           },
         },
       });

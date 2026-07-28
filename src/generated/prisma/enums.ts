@@ -127,6 +127,7 @@ export type ReportStatus = (typeof ReportStatus)[keyof typeof ReportStatus]
 export const FieldType = {
   STRING: 'STRING',
   TEXT: 'TEXT',
+  LONGTEXT: 'LONGTEXT',
   RICHTEXT: 'RICHTEXT',
   MARKDOWN: 'MARKDOWN',
   IMAGE: 'IMAGE',

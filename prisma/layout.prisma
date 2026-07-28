@@ -34,7 +34,7 @@ model PageComponent {
     key                String   @unique
     webpageId          String
     componentId        String
-    order              Int
+    active             Boolean  @default(true)
 
     createdAt          DateTime @default(now())
     createdBy          String?
@@ -104,8 +104,7 @@ model ObjectSchema {
 
     fields              ObjectSchemaField[]
     objectSchemaFields ObjectSchemaField[] @relation("ObjectSchemaFieldReference")
-
-    componentFields ComponentField[]
+    componentFields    ComponentField[]
 }
 
 model ObjectSchemaField {

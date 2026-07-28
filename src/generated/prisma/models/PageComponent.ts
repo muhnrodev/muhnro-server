@@ -20,18 +20,8 @@ export type PageComponentModel = runtime.Types.Result.DefaultSelection<Prisma.$P
 
 export type AggregatePageComponent = {
   _count: PageComponentCountAggregateOutputType | null
-  _avg: PageComponentAvgAggregateOutputType | null
-  _sum: PageComponentSumAggregateOutputType | null
   _min: PageComponentMinAggregateOutputType | null
   _max: PageComponentMaxAggregateOutputType | null
-}
-
-export type PageComponentAvgAggregateOutputType = {
-  order: number | null
-}
-
-export type PageComponentSumAggregateOutputType = {
-  order: number | null
 }
 
 export type PageComponentMinAggregateOutputType = {
@@ -39,7 +29,7 @@ export type PageComponentMinAggregateOutputType = {
   key: string | null
   webpageId: string | null
   componentId: string | null
-  order: number | null
+  active: boolean | null
   createdAt: Date | null
   createdBy: string | null
   updatedAt: Date | null
@@ -51,7 +41,7 @@ export type PageComponentMaxAggregateOutputType = {
   key: string | null
   webpageId: string | null
   componentId: string | null
-  order: number | null
+  active: boolean | null
   createdAt: Date | null
   createdBy: string | null
   updatedAt: Date | null
@@ -63,7 +53,7 @@ export type PageComponentCountAggregateOutputType = {
   key: number
   webpageId: number
   componentId: number
-  order: number
+  active: number
   createdAt: number
   createdBy: number
   updatedAt: number
@@ -72,20 +62,12 @@ export type PageComponentCountAggregateOutputType = {
 }
 
 
-export type PageComponentAvgAggregateInputType = {
-  order?: true
-}
-
-export type PageComponentSumAggregateInputType = {
-  order?: true
-}
-
 export type PageComponentMinAggregateInputType = {
   id?: true
   key?: true
   webpageId?: true
   componentId?: true
-  order?: true
+  active?: true
   createdAt?: true
   createdBy?: true
   updatedAt?: true
@@ -97,7 +79,7 @@ export type PageComponentMaxAggregateInputType = {
   key?: true
   webpageId?: true
   componentId?: true
-  order?: true
+  active?: true
   createdAt?: true
   createdBy?: true
   updatedAt?: true
@@ -109,7 +91,7 @@ export type PageComponentCountAggregateInputType = {
   key?: true
   webpageId?: true
   componentId?: true
-  order?: true
+  active?: true
   createdAt?: true
   createdBy?: true
   updatedAt?: true
@@ -155,18 +137,6 @@ export type PageComponentAggregateArgs<ExtArgs extends runtime.Types.Extensions.
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
-   * Select which fields to average
-  **/
-  _avg?: PageComponentAvgAggregateInputType
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   * 
-   * Select which fields to sum
-  **/
-  _sum?: PageComponentSumAggregateInputType
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   * 
    * Select which fields to find the minimum value
   **/
   _min?: PageComponentMinAggregateInputType
@@ -197,8 +167,6 @@ export type PageComponentGroupByArgs<ExtArgs extends runtime.Types.Extensions.In
   take?: number
   skip?: number
   _count?: PageComponentCountAggregateInputType | true
-  _avg?: PageComponentAvgAggregateInputType
-  _sum?: PageComponentSumAggregateInputType
   _min?: PageComponentMinAggregateInputType
   _max?: PageComponentMaxAggregateInputType
 }
@@ -208,14 +176,12 @@ export type PageComponentGroupByOutputType = {
   key: string
   webpageId: string
   componentId: string
-  order: number
+  active: boolean
   createdAt: Date
   createdBy: string | null
   updatedAt: Date
   updatedBy: string | null
   _count: PageComponentCountAggregateOutputType | null
-  _avg: PageComponentAvgAggregateOutputType | null
-  _sum: PageComponentSumAggregateOutputType | null
   _min: PageComponentMinAggregateOutputType | null
   _max: PageComponentMaxAggregateOutputType | null
 }
@@ -243,7 +209,7 @@ export type PageComponentWhereInput = {
   key?: Prisma.StringFilter<"PageComponent"> | string
   webpageId?: Prisma.StringFilter<"PageComponent"> | string
   componentId?: Prisma.StringFilter<"PageComponent"> | string
-  order?: Prisma.IntFilter<"PageComponent"> | number
+  active?: Prisma.BoolFilter<"PageComponent"> | boolean
   createdAt?: Prisma.DateTimeFilter<"PageComponent"> | Date | string
   createdBy?: Prisma.StringNullableFilter<"PageComponent"> | string | null
   updatedAt?: Prisma.DateTimeFilter<"PageComponent"> | Date | string
@@ -258,7 +224,7 @@ export type PageComponentOrderByWithRelationInput = {
   key?: Prisma.SortOrder
   webpageId?: Prisma.SortOrder
   componentId?: Prisma.SortOrder
-  order?: Prisma.SortOrder
+  active?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   createdBy?: Prisma.SortOrderInput | Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -276,7 +242,7 @@ export type PageComponentWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.PageComponentWhereInput | Prisma.PageComponentWhereInput[]
   webpageId?: Prisma.StringFilter<"PageComponent"> | string
   componentId?: Prisma.StringFilter<"PageComponent"> | string
-  order?: Prisma.IntFilter<"PageComponent"> | number
+  active?: Prisma.BoolFilter<"PageComponent"> | boolean
   createdAt?: Prisma.DateTimeFilter<"PageComponent"> | Date | string
   createdBy?: Prisma.StringNullableFilter<"PageComponent"> | string | null
   updatedAt?: Prisma.DateTimeFilter<"PageComponent"> | Date | string
@@ -291,16 +257,14 @@ export type PageComponentOrderByWithAggregationInput = {
   key?: Prisma.SortOrder
   webpageId?: Prisma.SortOrder
   componentId?: Prisma.SortOrder
-  order?: Prisma.SortOrder
+  active?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   createdBy?: Prisma.SortOrderInput | Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   updatedBy?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.PageComponentCountOrderByAggregateInput
-  _avg?: Prisma.PageComponentAvgOrderByAggregateInput
   _max?: Prisma.PageComponentMaxOrderByAggregateInput
   _min?: Prisma.PageComponentMinOrderByAggregateInput
-  _sum?: Prisma.PageComponentSumOrderByAggregateInput
 }
 
 export type PageComponentScalarWhereWithAggregatesInput = {
@@ -311,7 +275,7 @@ export type PageComponentScalarWhereWithAggregatesInput = {
   key?: Prisma.StringWithAggregatesFilter<"PageComponent"> | string
   webpageId?: Prisma.StringWithAggregatesFilter<"PageComponent"> | string
   componentId?: Prisma.StringWithAggregatesFilter<"PageComponent"> | string
-  order?: Prisma.IntWithAggregatesFilter<"PageComponent"> | number
+  active?: Prisma.BoolWithAggregatesFilter<"PageComponent"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"PageComponent"> | Date | string
   createdBy?: Prisma.StringNullableWithAggregatesFilter<"PageComponent"> | string | null
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"PageComponent"> | Date | string
@@ -321,7 +285,7 @@ export type PageComponentScalarWhereWithAggregatesInput = {
 export type PageComponentCreateInput = {
   id?: string
   key: string
-  order: number
+  active?: boolean
   createdAt?: Date | string
   createdBy?: string | null
   updatedAt?: Date | string
@@ -336,7 +300,7 @@ export type PageComponentUncheckedCreateInput = {
   key: string
   webpageId: string
   componentId: string
-  order: number
+  active?: boolean
   createdAt?: Date | string
   createdBy?: string | null
   updatedAt?: Date | string
@@ -347,7 +311,7 @@ export type PageComponentUncheckedCreateInput = {
 export type PageComponentUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   key?: Prisma.StringFieldUpdateOperationsInput | string
-  order?: Prisma.IntFieldUpdateOperationsInput | number
+  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -362,7 +326,7 @@ export type PageComponentUncheckedUpdateInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   webpageId?: Prisma.StringFieldUpdateOperationsInput | string
   componentId?: Prisma.StringFieldUpdateOperationsInput | string
-  order?: Prisma.IntFieldUpdateOperationsInput | number
+  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -375,7 +339,7 @@ export type PageComponentCreateManyInput = {
   key: string
   webpageId: string
   componentId: string
-  order: number
+  active?: boolean
   createdAt?: Date | string
   createdBy?: string | null
   updatedAt?: Date | string
@@ -385,7 +349,7 @@ export type PageComponentCreateManyInput = {
 export type PageComponentUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   key?: Prisma.StringFieldUpdateOperationsInput | string
-  order?: Prisma.IntFieldUpdateOperationsInput | number
+  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -397,7 +361,7 @@ export type PageComponentUncheckedUpdateManyInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   webpageId?: Prisma.StringFieldUpdateOperationsInput | string
   componentId?: Prisma.StringFieldUpdateOperationsInput | string
-  order?: Prisma.IntFieldUpdateOperationsInput | number
+  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -419,15 +383,11 @@ export type PageComponentCountOrderByAggregateInput = {
   key?: Prisma.SortOrder
   webpageId?: Prisma.SortOrder
   componentId?: Prisma.SortOrder
-  order?: Prisma.SortOrder
+  active?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   createdBy?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   updatedBy?: Prisma.SortOrder
-}
-
-export type PageComponentAvgOrderByAggregateInput = {
-  order?: Prisma.SortOrder
 }
 
 export type PageComponentMaxOrderByAggregateInput = {
@@ -435,7 +395,7 @@ export type PageComponentMaxOrderByAggregateInput = {
   key?: Prisma.SortOrder
   webpageId?: Prisma.SortOrder
   componentId?: Prisma.SortOrder
-  order?: Prisma.SortOrder
+  active?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   createdBy?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -447,15 +407,11 @@ export type PageComponentMinOrderByAggregateInput = {
   key?: Prisma.SortOrder
   webpageId?: Prisma.SortOrder
   componentId?: Prisma.SortOrder
-  order?: Prisma.SortOrder
+  active?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   createdBy?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   updatedBy?: Prisma.SortOrder
-}
-
-export type PageComponentSumOrderByAggregateInput = {
-  order?: Prisma.SortOrder
 }
 
 export type PageComponentScalarRelationFilter = {
@@ -564,7 +520,7 @@ export type PageComponentUpdateOneRequiredWithoutValuesNestedInput = {
 export type PageComponentCreateWithoutWebpageInput = {
   id?: string
   key: string
-  order: number
+  active?: boolean
   createdAt?: Date | string
   createdBy?: string | null
   updatedAt?: Date | string
@@ -577,7 +533,7 @@ export type PageComponentUncheckedCreateWithoutWebpageInput = {
   id?: string
   key: string
   componentId: string
-  order: number
+  active?: boolean
   createdAt?: Date | string
   createdBy?: string | null
   updatedAt?: Date | string
@@ -619,7 +575,7 @@ export type PageComponentScalarWhereInput = {
   key?: Prisma.StringFilter<"PageComponent"> | string
   webpageId?: Prisma.StringFilter<"PageComponent"> | string
   componentId?: Prisma.StringFilter<"PageComponent"> | string
-  order?: Prisma.IntFilter<"PageComponent"> | number
+  active?: Prisma.BoolFilter<"PageComponent"> | boolean
   createdAt?: Prisma.DateTimeFilter<"PageComponent"> | Date | string
   createdBy?: Prisma.StringNullableFilter<"PageComponent"> | string | null
   updatedAt?: Prisma.DateTimeFilter<"PageComponent"> | Date | string
@@ -629,7 +585,7 @@ export type PageComponentScalarWhereInput = {
 export type PageComponentCreateWithoutComponentInput = {
   id?: string
   key: string
-  order: number
+  active?: boolean
   createdAt?: Date | string
   createdBy?: string | null
   updatedAt?: Date | string
@@ -642,7 +598,7 @@ export type PageComponentUncheckedCreateWithoutComponentInput = {
   id?: string
   key: string
   webpageId: string
-  order: number
+  active?: boolean
   createdAt?: Date | string
   createdBy?: string | null
   updatedAt?: Date | string
@@ -679,7 +635,7 @@ export type PageComponentUpdateManyWithWhereWithoutComponentInput = {
 export type PageComponentCreateWithoutValuesInput = {
   id?: string
   key: string
-  order: number
+  active?: boolean
   createdAt?: Date | string
   createdBy?: string | null
   updatedAt?: Date | string
@@ -693,7 +649,7 @@ export type PageComponentUncheckedCreateWithoutValuesInput = {
   key: string
   webpageId: string
   componentId: string
-  order: number
+  active?: boolean
   createdAt?: Date | string
   createdBy?: string | null
   updatedAt?: Date | string
@@ -719,7 +675,7 @@ export type PageComponentUpdateToOneWithWhereWithoutValuesInput = {
 export type PageComponentUpdateWithoutValuesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   key?: Prisma.StringFieldUpdateOperationsInput | string
-  order?: Prisma.IntFieldUpdateOperationsInput | number
+  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -733,7 +689,7 @@ export type PageComponentUncheckedUpdateWithoutValuesInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   webpageId?: Prisma.StringFieldUpdateOperationsInput | string
   componentId?: Prisma.StringFieldUpdateOperationsInput | string
-  order?: Prisma.IntFieldUpdateOperationsInput | number
+  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -744,7 +700,7 @@ export type PageComponentCreateManyWebpageInput = {
   id?: string
   key: string
   componentId: string
-  order: number
+  active?: boolean
   createdAt?: Date | string
   createdBy?: string | null
   updatedAt?: Date | string
@@ -754,7 +710,7 @@ export type PageComponentCreateManyWebpageInput = {
 export type PageComponentUpdateWithoutWebpageInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   key?: Prisma.StringFieldUpdateOperationsInput | string
-  order?: Prisma.IntFieldUpdateOperationsInput | number
+  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -767,7 +723,7 @@ export type PageComponentUncheckedUpdateWithoutWebpageInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   key?: Prisma.StringFieldUpdateOperationsInput | string
   componentId?: Prisma.StringFieldUpdateOperationsInput | string
-  order?: Prisma.IntFieldUpdateOperationsInput | number
+  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -779,7 +735,7 @@ export type PageComponentUncheckedUpdateManyWithoutWebpageInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   key?: Prisma.StringFieldUpdateOperationsInput | string
   componentId?: Prisma.StringFieldUpdateOperationsInput | string
-  order?: Prisma.IntFieldUpdateOperationsInput | number
+  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -790,7 +746,7 @@ export type PageComponentCreateManyComponentInput = {
   id?: string
   key: string
   webpageId: string
-  order: number
+  active?: boolean
   createdAt?: Date | string
   createdBy?: string | null
   updatedAt?: Date | string
@@ -800,7 +756,7 @@ export type PageComponentCreateManyComponentInput = {
 export type PageComponentUpdateWithoutComponentInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   key?: Prisma.StringFieldUpdateOperationsInput | string
-  order?: Prisma.IntFieldUpdateOperationsInput | number
+  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -813,7 +769,7 @@ export type PageComponentUncheckedUpdateWithoutComponentInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   key?: Prisma.StringFieldUpdateOperationsInput | string
   webpageId?: Prisma.StringFieldUpdateOperationsInput | string
-  order?: Prisma.IntFieldUpdateOperationsInput | number
+  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -825,7 +781,7 @@ export type PageComponentUncheckedUpdateManyWithoutComponentInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   key?: Prisma.StringFieldUpdateOperationsInput | string
   webpageId?: Prisma.StringFieldUpdateOperationsInput | string
-  order?: Prisma.IntFieldUpdateOperationsInput | number
+  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -868,7 +824,7 @@ export type PageComponentSelect<ExtArgs extends runtime.Types.Extensions.Interna
   key?: boolean
   webpageId?: boolean
   componentId?: boolean
-  order?: boolean
+  active?: boolean
   createdAt?: boolean
   createdBy?: boolean
   updatedAt?: boolean
@@ -884,7 +840,7 @@ export type PageComponentSelectCreateManyAndReturn<ExtArgs extends runtime.Types
   key?: boolean
   webpageId?: boolean
   componentId?: boolean
-  order?: boolean
+  active?: boolean
   createdAt?: boolean
   createdBy?: boolean
   updatedAt?: boolean
@@ -898,7 +854,7 @@ export type PageComponentSelectUpdateManyAndReturn<ExtArgs extends runtime.Types
   key?: boolean
   webpageId?: boolean
   componentId?: boolean
-  order?: boolean
+  active?: boolean
   createdAt?: boolean
   createdBy?: boolean
   updatedAt?: boolean
@@ -912,14 +868,14 @@ export type PageComponentSelectScalar = {
   key?: boolean
   webpageId?: boolean
   componentId?: boolean
-  order?: boolean
+  active?: boolean
   createdAt?: boolean
   createdBy?: boolean
   updatedAt?: boolean
   updatedBy?: boolean
 }
 
-export type PageComponentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "key" | "webpageId" | "componentId" | "order" | "createdAt" | "createdBy" | "updatedAt" | "updatedBy", ExtArgs["result"]["pageComponent"]>
+export type PageComponentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "key" | "webpageId" | "componentId" | "active" | "createdAt" | "createdBy" | "updatedAt" | "updatedBy", ExtArgs["result"]["pageComponent"]>
 export type PageComponentInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   webpage?: boolean | Prisma.WebpageDefaultArgs<ExtArgs>
   component?: boolean | Prisma.ComponentDefaultArgs<ExtArgs>
@@ -947,7 +903,7 @@ export type $PageComponentPayload<ExtArgs extends runtime.Types.Extensions.Inter
     key: string
     webpageId: string
     componentId: string
-    order: number
+    active: boolean
     createdAt: Date
     createdBy: string | null
     updatedAt: Date
@@ -1382,7 +1338,7 @@ export interface PageComponentFieldRefs {
   readonly key: Prisma.FieldRef<"PageComponent", 'String'>
   readonly webpageId: Prisma.FieldRef<"PageComponent", 'String'>
   readonly componentId: Prisma.FieldRef<"PageComponent", 'String'>
-  readonly order: Prisma.FieldRef<"PageComponent", 'Int'>
+  readonly active: Prisma.FieldRef<"PageComponent", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"PageComponent", 'DateTime'>
   readonly createdBy: Prisma.FieldRef<"PageComponent", 'String'>
   readonly updatedAt: Prisma.FieldRef<"PageComponent", 'DateTime'>

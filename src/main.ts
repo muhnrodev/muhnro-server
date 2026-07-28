@@ -48,7 +48,8 @@ async function bootstrap() {
       const isAllowed =
         origin.endsWith('muhnro.com') ||
         origin === 'http://localhost:5173' ||
-        origin === 'http://localhost:3000';
+        origin === 'http://localhost:3000' ||
+        origin === 'http://localhost:3001';
 
       callback(null, isAllowed);
     },
