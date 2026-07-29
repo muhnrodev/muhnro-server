@@ -26,27 +26,30 @@ export type AggregateIndustry = {
 
 export type IndustryMinAggregateOutputType = {
   industryId: string | null
-  industryCode: string | null
-  industryName: string | null
+  code: string | null
+  name: string | null
   description: string | null
+  updatedBy: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
 
 export type IndustryMaxAggregateOutputType = {
   industryId: string | null
-  industryCode: string | null
-  industryName: string | null
+  code: string | null
+  name: string | null
   description: string | null
+  updatedBy: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
 
 export type IndustryCountAggregateOutputType = {
   industryId: number
-  industryCode: number
-  industryName: number
+  code: number
+  name: number
   description: number
+  updatedBy: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -55,27 +58,30 @@ export type IndustryCountAggregateOutputType = {
 
 export type IndustryMinAggregateInputType = {
   industryId?: true
-  industryCode?: true
-  industryName?: true
+  code?: true
+  name?: true
   description?: true
+  updatedBy?: true
   createdAt?: true
   updatedAt?: true
 }
 
 export type IndustryMaxAggregateInputType = {
   industryId?: true
-  industryCode?: true
-  industryName?: true
+  code?: true
+  name?: true
   description?: true
+  updatedBy?: true
   createdAt?: true
   updatedAt?: true
 }
 
 export type IndustryCountAggregateInputType = {
   industryId?: true
-  industryCode?: true
-  industryName?: true
+  code?: true
+  name?: true
   description?: true
+  updatedBy?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -155,9 +161,10 @@ export type IndustryGroupByArgs<ExtArgs extends runtime.Types.Extensions.Interna
 
 export type IndustryGroupByOutputType = {
   industryId: string
-  industryCode: string
-  industryName: string
-  description: string
+  code: string
+  name: string
+  description: string | null
+  updatedBy: string
   createdAt: Date
   updatedAt: Date
   _count: IndustryCountAggregateOutputType | null
@@ -185,9 +192,10 @@ export type IndustryWhereInput = {
   OR?: Prisma.IndustryWhereInput[]
   NOT?: Prisma.IndustryWhereInput | Prisma.IndustryWhereInput[]
   industryId?: Prisma.StringFilter<"Industry"> | string
-  industryCode?: Prisma.StringFilter<"Industry"> | string
-  industryName?: Prisma.StringFilter<"Industry"> | string
-  description?: Prisma.StringFilter<"Industry"> | string
+  code?: Prisma.StringFilter<"Industry"> | string
+  name?: Prisma.StringFilter<"Industry"> | string
+  description?: Prisma.StringNullableFilter<"Industry"> | string | null
+  updatedBy?: Prisma.StringFilter<"Industry"> | string
   createdAt?: Prisma.DateTimeFilter<"Industry"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Industry"> | Date | string
   projects?: Prisma.ProjectListRelationFilter
@@ -197,9 +205,10 @@ export type IndustryWhereInput = {
 
 export type IndustryOrderByWithRelationInput = {
   industryId?: Prisma.SortOrder
-  industryCode?: Prisma.SortOrder
-  industryName?: Prisma.SortOrder
-  description?: Prisma.SortOrder
+  code?: Prisma.SortOrder
+  name?: Prisma.SortOrder
+  description?: Prisma.SortOrderInput | Prisma.SortOrder
+  updatedBy?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   projects?: Prisma.ProjectOrderByRelationAggregateInput
@@ -209,24 +218,26 @@ export type IndustryOrderByWithRelationInput = {
 
 export type IndustryWhereUniqueInput = Prisma.AtLeast<{
   industryId?: string
+  name?: string
   AND?: Prisma.IndustryWhereInput | Prisma.IndustryWhereInput[]
   OR?: Prisma.IndustryWhereInput[]
   NOT?: Prisma.IndustryWhereInput | Prisma.IndustryWhereInput[]
-  industryCode?: Prisma.StringFilter<"Industry"> | string
-  industryName?: Prisma.StringFilter<"Industry"> | string
-  description?: Prisma.StringFilter<"Industry"> | string
+  code?: Prisma.StringFilter<"Industry"> | string
+  description?: Prisma.StringNullableFilter<"Industry"> | string | null
+  updatedBy?: Prisma.StringFilter<"Industry"> | string
   createdAt?: Prisma.DateTimeFilter<"Industry"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Industry"> | Date | string
   projects?: Prisma.ProjectListRelationFilter
   articles?: Prisma.ArticleIndustryListRelationFilter
   reports?: Prisma.ReportIndustryListRelationFilter
-}, "industryId">
+}, "industryId" | "name">
 
 export type IndustryOrderByWithAggregationInput = {
   industryId?: Prisma.SortOrder
-  industryCode?: Prisma.SortOrder
-  industryName?: Prisma.SortOrder
-  description?: Prisma.SortOrder
+  code?: Prisma.SortOrder
+  name?: Prisma.SortOrder
+  description?: Prisma.SortOrderInput | Prisma.SortOrder
+  updatedBy?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.IndustryCountOrderByAggregateInput
@@ -239,18 +250,20 @@ export type IndustryScalarWhereWithAggregatesInput = {
   OR?: Prisma.IndustryScalarWhereWithAggregatesInput[]
   NOT?: Prisma.IndustryScalarWhereWithAggregatesInput | Prisma.IndustryScalarWhereWithAggregatesInput[]
   industryId?: Prisma.StringWithAggregatesFilter<"Industry"> | string
-  industryCode?: Prisma.StringWithAggregatesFilter<"Industry"> | string
-  industryName?: Prisma.StringWithAggregatesFilter<"Industry"> | string
-  description?: Prisma.StringWithAggregatesFilter<"Industry"> | string
+  code?: Prisma.StringWithAggregatesFilter<"Industry"> | string
+  name?: Prisma.StringWithAggregatesFilter<"Industry"> | string
+  description?: Prisma.StringNullableWithAggregatesFilter<"Industry"> | string | null
+  updatedBy?: Prisma.StringWithAggregatesFilter<"Industry"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Industry"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Industry"> | Date | string
 }
 
 export type IndustryCreateInput = {
   industryId?: string
-  industryCode: string
-  industryName: string
-  description: string
+  code: string
+  name: string
+  description?: string | null
+  updatedBy: string
   createdAt?: Date | string
   updatedAt?: Date | string
   projects?: Prisma.ProjectCreateNestedManyWithoutIndustryInput
@@ -260,9 +273,10 @@ export type IndustryCreateInput = {
 
 export type IndustryUncheckedCreateInput = {
   industryId?: string
-  industryCode: string
-  industryName: string
-  description: string
+  code: string
+  name: string
+  description?: string | null
+  updatedBy: string
   createdAt?: Date | string
   updatedAt?: Date | string
   projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutIndustryInput
@@ -272,9 +286,10 @@ export type IndustryUncheckedCreateInput = {
 
 export type IndustryUpdateInput = {
   industryId?: Prisma.StringFieldUpdateOperationsInput | string
-  industryCode?: Prisma.StringFieldUpdateOperationsInput | string
-  industryName?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedBy?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   projects?: Prisma.ProjectUpdateManyWithoutIndustryNestedInput
@@ -284,9 +299,10 @@ export type IndustryUpdateInput = {
 
 export type IndustryUncheckedUpdateInput = {
   industryId?: Prisma.StringFieldUpdateOperationsInput | string
-  industryCode?: Prisma.StringFieldUpdateOperationsInput | string
-  industryName?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedBy?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   projects?: Prisma.ProjectUncheckedUpdateManyWithoutIndustryNestedInput
@@ -296,54 +312,60 @@ export type IndustryUncheckedUpdateInput = {
 
 export type IndustryCreateManyInput = {
   industryId?: string
-  industryCode: string
-  industryName: string
-  description: string
+  code: string
+  name: string
+  description?: string | null
+  updatedBy: string
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
 export type IndustryUpdateManyMutationInput = {
   industryId?: Prisma.StringFieldUpdateOperationsInput | string
-  industryCode?: Prisma.StringFieldUpdateOperationsInput | string
-  industryName?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedBy?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type IndustryUncheckedUpdateManyInput = {
   industryId?: Prisma.StringFieldUpdateOperationsInput | string
-  industryCode?: Prisma.StringFieldUpdateOperationsInput | string
-  industryName?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedBy?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type IndustryCountOrderByAggregateInput = {
   industryId?: Prisma.SortOrder
-  industryCode?: Prisma.SortOrder
-  industryName?: Prisma.SortOrder
+  code?: Prisma.SortOrder
+  name?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  updatedBy?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type IndustryMaxOrderByAggregateInput = {
   industryId?: Prisma.SortOrder
-  industryCode?: Prisma.SortOrder
-  industryName?: Prisma.SortOrder
+  code?: Prisma.SortOrder
+  name?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  updatedBy?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type IndustryMinOrderByAggregateInput = {
   industryId?: Prisma.SortOrder
-  industryCode?: Prisma.SortOrder
-  industryName?: Prisma.SortOrder
+  code?: Prisma.SortOrder
+  name?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  updatedBy?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -397,9 +419,10 @@ export type IndustryUpdateOneRequiredWithoutReportsNestedInput = {
 
 export type IndustryCreateWithoutArticlesInput = {
   industryId?: string
-  industryCode: string
-  industryName: string
-  description: string
+  code: string
+  name: string
+  description?: string | null
+  updatedBy: string
   createdAt?: Date | string
   updatedAt?: Date | string
   projects?: Prisma.ProjectCreateNestedManyWithoutIndustryInput
@@ -408,9 +431,10 @@ export type IndustryCreateWithoutArticlesInput = {
 
 export type IndustryUncheckedCreateWithoutArticlesInput = {
   industryId?: string
-  industryCode: string
-  industryName: string
-  description: string
+  code: string
+  name: string
+  description?: string | null
+  updatedBy: string
   createdAt?: Date | string
   updatedAt?: Date | string
   projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutIndustryInput
@@ -435,9 +459,10 @@ export type IndustryUpdateToOneWithWhereWithoutArticlesInput = {
 
 export type IndustryUpdateWithoutArticlesInput = {
   industryId?: Prisma.StringFieldUpdateOperationsInput | string
-  industryCode?: Prisma.StringFieldUpdateOperationsInput | string
-  industryName?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedBy?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   projects?: Prisma.ProjectUpdateManyWithoutIndustryNestedInput
@@ -446,9 +471,10 @@ export type IndustryUpdateWithoutArticlesInput = {
 
 export type IndustryUncheckedUpdateWithoutArticlesInput = {
   industryId?: Prisma.StringFieldUpdateOperationsInput | string
-  industryCode?: Prisma.StringFieldUpdateOperationsInput | string
-  industryName?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedBy?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   projects?: Prisma.ProjectUncheckedUpdateManyWithoutIndustryNestedInput
@@ -457,9 +483,10 @@ export type IndustryUncheckedUpdateWithoutArticlesInput = {
 
 export type IndustryCreateWithoutProjectsInput = {
   industryId?: string
-  industryCode: string
-  industryName: string
-  description: string
+  code: string
+  name: string
+  description?: string | null
+  updatedBy: string
   createdAt?: Date | string
   updatedAt?: Date | string
   articles?: Prisma.ArticleIndustryCreateNestedManyWithoutIndustryInput
@@ -468,9 +495,10 @@ export type IndustryCreateWithoutProjectsInput = {
 
 export type IndustryUncheckedCreateWithoutProjectsInput = {
   industryId?: string
-  industryCode: string
-  industryName: string
-  description: string
+  code: string
+  name: string
+  description?: string | null
+  updatedBy: string
   createdAt?: Date | string
   updatedAt?: Date | string
   articles?: Prisma.ArticleIndustryUncheckedCreateNestedManyWithoutIndustryInput
@@ -495,9 +523,10 @@ export type IndustryUpdateToOneWithWhereWithoutProjectsInput = {
 
 export type IndustryUpdateWithoutProjectsInput = {
   industryId?: Prisma.StringFieldUpdateOperationsInput | string
-  industryCode?: Prisma.StringFieldUpdateOperationsInput | string
-  industryName?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedBy?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   articles?: Prisma.ArticleIndustryUpdateManyWithoutIndustryNestedInput
@@ -506,9 +535,10 @@ export type IndustryUpdateWithoutProjectsInput = {
 
 export type IndustryUncheckedUpdateWithoutProjectsInput = {
   industryId?: Prisma.StringFieldUpdateOperationsInput | string
-  industryCode?: Prisma.StringFieldUpdateOperationsInput | string
-  industryName?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedBy?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   articles?: Prisma.ArticleIndustryUncheckedUpdateManyWithoutIndustryNestedInput
@@ -517,9 +547,10 @@ export type IndustryUncheckedUpdateWithoutProjectsInput = {
 
 export type IndustryCreateWithoutReportsInput = {
   industryId?: string
-  industryCode: string
-  industryName: string
-  description: string
+  code: string
+  name: string
+  description?: string | null
+  updatedBy: string
   createdAt?: Date | string
   updatedAt?: Date | string
   projects?: Prisma.ProjectCreateNestedManyWithoutIndustryInput
@@ -528,9 +559,10 @@ export type IndustryCreateWithoutReportsInput = {
 
 export type IndustryUncheckedCreateWithoutReportsInput = {
   industryId?: string
-  industryCode: string
-  industryName: string
-  description: string
+  code: string
+  name: string
+  description?: string | null
+  updatedBy: string
   createdAt?: Date | string
   updatedAt?: Date | string
   projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutIndustryInput
@@ -555,9 +587,10 @@ export type IndustryUpdateToOneWithWhereWithoutReportsInput = {
 
 export type IndustryUpdateWithoutReportsInput = {
   industryId?: Prisma.StringFieldUpdateOperationsInput | string
-  industryCode?: Prisma.StringFieldUpdateOperationsInput | string
-  industryName?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedBy?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   projects?: Prisma.ProjectUpdateManyWithoutIndustryNestedInput
@@ -566,9 +599,10 @@ export type IndustryUpdateWithoutReportsInput = {
 
 export type IndustryUncheckedUpdateWithoutReportsInput = {
   industryId?: Prisma.StringFieldUpdateOperationsInput | string
-  industryCode?: Prisma.StringFieldUpdateOperationsInput | string
-  industryName?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedBy?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   projects?: Prisma.ProjectUncheckedUpdateManyWithoutIndustryNestedInput
@@ -626,9 +660,10 @@ export type IndustryCountOutputTypeCountReportsArgs<ExtArgs extends runtime.Type
 
 export type IndustrySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   industryId?: boolean
-  industryCode?: boolean
-  industryName?: boolean
+  code?: boolean
+  name?: boolean
   description?: boolean
+  updatedBy?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   projects?: boolean | Prisma.Industry$projectsArgs<ExtArgs>
@@ -639,32 +674,35 @@ export type IndustrySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
 
 export type IndustrySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   industryId?: boolean
-  industryCode?: boolean
-  industryName?: boolean
+  code?: boolean
+  name?: boolean
   description?: boolean
+  updatedBy?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["industry"]>
 
 export type IndustrySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   industryId?: boolean
-  industryCode?: boolean
-  industryName?: boolean
+  code?: boolean
+  name?: boolean
   description?: boolean
+  updatedBy?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["industry"]>
 
 export type IndustrySelectScalar = {
   industryId?: boolean
-  industryCode?: boolean
-  industryName?: boolean
+  code?: boolean
+  name?: boolean
   description?: boolean
+  updatedBy?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type IndustryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"industryId" | "industryCode" | "industryName" | "description" | "createdAt" | "updatedAt", ExtArgs["result"]["industry"]>
+export type IndustryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"industryId" | "code" | "name" | "description" | "updatedBy" | "createdAt" | "updatedAt", ExtArgs["result"]["industry"]>
 export type IndustryInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   projects?: boolean | Prisma.Industry$projectsArgs<ExtArgs>
   articles?: boolean | Prisma.Industry$articlesArgs<ExtArgs>
@@ -683,9 +721,10 @@ export type $IndustryPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     industryId: string
-    industryCode: string
-    industryName: string
-    description: string
+    code: string
+    name: string
+    description: string | null
+    updatedBy: string
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["industry"]>
@@ -1115,9 +1154,10 @@ export interface Prisma__IndustryClient<T, Null = never, ExtArgs extends runtime
  */
 export interface IndustryFieldRefs {
   readonly industryId: Prisma.FieldRef<"Industry", 'String'>
-  readonly industryCode: Prisma.FieldRef<"Industry", 'String'>
-  readonly industryName: Prisma.FieldRef<"Industry", 'String'>
+  readonly code: Prisma.FieldRef<"Industry", 'String'>
+  readonly name: Prisma.FieldRef<"Industry", 'String'>
   readonly description: Prisma.FieldRef<"Industry", 'String'>
+  readonly updatedBy: Prisma.FieldRef<"Industry", 'String'>
   readonly createdAt: Prisma.FieldRef<"Industry", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Industry", 'DateTime'>
 }

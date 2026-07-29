@@ -58,11 +58,12 @@ model ArticleServiceActivity {
 }
 
 model ArticleTag {
-    id        String   @id @default(dbgenerated("gen_random_uuid()"))
-    articleId String
-    tagId     String
+    id              String   @id @default(dbgenerated("gen_random_uuid()"))
+    articleId       String
+    tagId           String
 
-    article   Article @relation(fields: [articleId], references: [articleId])
+    tag             Tag     @relation(fields: [tagId], references: [tagId])
+    article         Article @relation(fields: [articleId], references: [articleId])
 }
 
 model ArticleReference {

@@ -60,10 +60,11 @@ export const ModelName = {
   AuthEvent: 'AuthEvent',
   PrivacySettings: 'PrivacySettings',
   Location: 'Location',
-  Industry: 'Industry',
   ServiceActivity: 'ServiceActivity',
   IdentityProvider: 'IdentityProvider',
   Topic: 'Topic',
+  Tag: 'Tag',
+  Industry: 'Industry',
   Article: 'Article',
   ArticleIndustry: 'ArticleIndustry',
   ArticleTopic: 'ArticleTopic',
@@ -256,18 +257,6 @@ export const LocationScalarFieldEnum = {
 export type LocationScalarFieldEnum = (typeof LocationScalarFieldEnum)[keyof typeof LocationScalarFieldEnum]
 
 
-export const IndustryScalarFieldEnum = {
-  industryId: 'industryId',
-  industryCode: 'industryCode',
-  industryName: 'industryName',
-  description: 'description',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type IndustryScalarFieldEnum = (typeof IndustryScalarFieldEnum)[keyof typeof IndustryScalarFieldEnum]
-
-
 export const ServiceActivityScalarFieldEnum = {
   activityId: 'activityId',
   activityCode: 'activityCode',
@@ -300,6 +289,31 @@ export const TopicScalarFieldEnum = {
 } as const
 
 export type TopicScalarFieldEnum = (typeof TopicScalarFieldEnum)[keyof typeof TopicScalarFieldEnum]
+
+
+export const TagScalarFieldEnum = {
+  tagId: 'tagId',
+  name: 'name',
+  description: 'description',
+  updatedBy: 'updatedBy',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TagScalarFieldEnum = (typeof TagScalarFieldEnum)[keyof typeof TagScalarFieldEnum]
+
+
+export const IndustryScalarFieldEnum = {
+  industryId: 'industryId',
+  code: 'code',
+  name: 'name',
+  description: 'description',
+  updatedBy: 'updatedBy',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type IndustryScalarFieldEnum = (typeof IndustryScalarFieldEnum)[keyof typeof IndustryScalarFieldEnum]
 
 
 export const ArticleScalarFieldEnum = {

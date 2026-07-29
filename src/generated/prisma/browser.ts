@@ -63,11 +63,6 @@ export type PrivacySettings = Prisma.PrivacySettingsModel
  */
 export type Location = Prisma.LocationModel
 /**
- * Model Industry
- * 
- */
-export type Industry = Prisma.IndustryModel
-/**
  * Model ServiceActivity
  * 
  */
@@ -82,6 +77,16 @@ export type IdentityProvider = Prisma.IdentityProviderModel
  * 
  */
 export type Topic = Prisma.TopicModel
+/**
+ * Model Tag
+ * 
+ */
+export type Tag = Prisma.TagModel
+/**
+ * Model Industry
+ * 
+ */
+export type Industry = Prisma.IndustryModel
 /**
  * Model Article
  * 

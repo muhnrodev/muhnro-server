@@ -393,10 +393,11 @@ export const ModelName = {
   AuthEvent: 'AuthEvent',
   PrivacySettings: 'PrivacySettings',
   Location: 'Location',
-  Industry: 'Industry',
   ServiceActivity: 'ServiceActivity',
   IdentityProvider: 'IdentityProvider',
   Topic: 'Topic',
+  Tag: 'Tag',
+  Industry: 'Industry',
   Article: 'Article',
   ArticleIndustry: 'ArticleIndustry',
   ArticleTopic: 'ArticleTopic',
@@ -455,7 +456,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "userCredentialWebAuthn" | "userMFA" | "oAuthToken" | "emailVerification" | "passwordReset" | "authEvent" | "privacySettings" | "location" | "industry" | "serviceActivity" | "identityProvider" | "topic" | "article" | "articleIndustry" | "articleTopic" | "articleServiceActivity" | "articleTag" | "articleReference" | "articleVersion" | "articleComment" | "session" | "userIdentity" | "userCredential" | "website" | "webpage" | "pageComponent" | "component" | "componentField" | "objectSchema" | "objectSchemaField" | "componentFieldValue" | "avatarImage" | "heroImage" | "coverImage" | "articleImage" | "reportFile" | "notificationPreference" | "promotionalPreference" | "insightsPreference" | "teamMember" | "teamRole" | "client" | "author" | "organization" | "articleAuthor" | "reportAuthor" | "project" | "projectServiceActivity" | "projectTeamMember" | "projectImage" | "projectNote" | "report" | "reportIndustry" | "reportTopic" | "reportServiceActivity"
+    modelProps: "user" | "userCredentialWebAuthn" | "userMFA" | "oAuthToken" | "emailVerification" | "passwordReset" | "authEvent" | "privacySettings" | "location" | "serviceActivity" | "identityProvider" | "topic" | "tag" | "industry" | "article" | "articleIndustry" | "articleTopic" | "articleServiceActivity" | "articleTag" | "articleReference" | "articleVersion" | "articleComment" | "session" | "userIdentity" | "userCredential" | "website" | "webpage" | "pageComponent" | "component" | "componentField" | "objectSchema" | "objectSchemaField" | "componentFieldValue" | "avatarImage" | "heroImage" | "coverImage" | "articleImage" | "reportFile" | "notificationPreference" | "promotionalPreference" | "insightsPreference" | "teamMember" | "teamRole" | "client" | "author" | "organization" | "articleAuthor" | "reportAuthor" | "project" | "projectServiceActivity" | "projectTeamMember" | "projectImage" | "projectNote" | "report" | "reportIndustry" | "reportTopic" | "reportServiceActivity"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1125,80 +1126,6 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    Industry: {
-      payload: Prisma.$IndustryPayload<ExtArgs>
-      fields: Prisma.IndustryFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.IndustryFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$IndustryPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.IndustryFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$IndustryPayload>
-        }
-        findFirst: {
-          args: Prisma.IndustryFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$IndustryPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.IndustryFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$IndustryPayload>
-        }
-        findMany: {
-          args: Prisma.IndustryFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$IndustryPayload>[]
-        }
-        create: {
-          args: Prisma.IndustryCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$IndustryPayload>
-        }
-        createMany: {
-          args: Prisma.IndustryCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.IndustryCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$IndustryPayload>[]
-        }
-        delete: {
-          args: Prisma.IndustryDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$IndustryPayload>
-        }
-        update: {
-          args: Prisma.IndustryUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$IndustryPayload>
-        }
-        deleteMany: {
-          args: Prisma.IndustryDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.IndustryUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.IndustryUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$IndustryPayload>[]
-        }
-        upsert: {
-          args: Prisma.IndustryUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$IndustryPayload>
-        }
-        aggregate: {
-          args: Prisma.IndustryAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateIndustry>
-        }
-        groupBy: {
-          args: Prisma.IndustryGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.IndustryGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.IndustryCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.IndustryCountAggregateOutputType> | number
-        }
-      }
-    }
     ServiceActivity: {
       payload: Prisma.$ServiceActivityPayload<ExtArgs>
       fields: Prisma.ServiceActivityFieldRefs
@@ -1418,6 +1345,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.TopicCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.TopicCountAggregateOutputType> | number
+        }
+      }
+    }
+    Tag: {
+      payload: Prisma.$TagPayload<ExtArgs>
+      fields: Prisma.TagFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.TagFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TagPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.TagFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TagPayload>
+        }
+        findFirst: {
+          args: Prisma.TagFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TagPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.TagFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TagPayload>
+        }
+        findMany: {
+          args: Prisma.TagFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TagPayload>[]
+        }
+        create: {
+          args: Prisma.TagCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TagPayload>
+        }
+        createMany: {
+          args: Prisma.TagCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.TagCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TagPayload>[]
+        }
+        delete: {
+          args: Prisma.TagDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TagPayload>
+        }
+        update: {
+          args: Prisma.TagUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TagPayload>
+        }
+        deleteMany: {
+          args: Prisma.TagDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.TagUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.TagUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TagPayload>[]
+        }
+        upsert: {
+          args: Prisma.TagUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TagPayload>
+        }
+        aggregate: {
+          args: Prisma.TagAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateTag>
+        }
+        groupBy: {
+          args: Prisma.TagGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TagGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.TagCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TagCountAggregateOutputType> | number
+        }
+      }
+    }
+    Industry: {
+      payload: Prisma.$IndustryPayload<ExtArgs>
+      fields: Prisma.IndustryFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.IndustryFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$IndustryPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.IndustryFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$IndustryPayload>
+        }
+        findFirst: {
+          args: Prisma.IndustryFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$IndustryPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.IndustryFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$IndustryPayload>
+        }
+        findMany: {
+          args: Prisma.IndustryFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$IndustryPayload>[]
+        }
+        create: {
+          args: Prisma.IndustryCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$IndustryPayload>
+        }
+        createMany: {
+          args: Prisma.IndustryCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.IndustryCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$IndustryPayload>[]
+        }
+        delete: {
+          args: Prisma.IndustryDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$IndustryPayload>
+        }
+        update: {
+          args: Prisma.IndustryUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$IndustryPayload>
+        }
+        deleteMany: {
+          args: Prisma.IndustryDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.IndustryUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.IndustryUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$IndustryPayload>[]
+        }
+        upsert: {
+          args: Prisma.IndustryUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$IndustryPayload>
+        }
+        aggregate: {
+          args: Prisma.IndustryAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateIndustry>
+        }
+        groupBy: {
+          args: Prisma.IndustryGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.IndustryGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.IndustryCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.IndustryCountAggregateOutputType> | number
         }
       }
     }
@@ -4773,18 +4848,6 @@ export const LocationScalarFieldEnum = {
 export type LocationScalarFieldEnum = (typeof LocationScalarFieldEnum)[keyof typeof LocationScalarFieldEnum]
 
 
-export const IndustryScalarFieldEnum = {
-  industryId: 'industryId',
-  industryCode: 'industryCode',
-  industryName: 'industryName',
-  description: 'description',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type IndustryScalarFieldEnum = (typeof IndustryScalarFieldEnum)[keyof typeof IndustryScalarFieldEnum]
-
-
 export const ServiceActivityScalarFieldEnum = {
   activityId: 'activityId',
   activityCode: 'activityCode',
@@ -4817,6 +4880,31 @@ export const TopicScalarFieldEnum = {
 } as const
 
 export type TopicScalarFieldEnum = (typeof TopicScalarFieldEnum)[keyof typeof TopicScalarFieldEnum]
+
+
+export const TagScalarFieldEnum = {
+  tagId: 'tagId',
+  name: 'name',
+  description: 'description',
+  updatedBy: 'updatedBy',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TagScalarFieldEnum = (typeof TagScalarFieldEnum)[keyof typeof TagScalarFieldEnum]
+
+
+export const IndustryScalarFieldEnum = {
+  industryId: 'industryId',
+  code: 'code',
+  name: 'name',
+  description: 'description',
+  updatedBy: 'updatedBy',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type IndustryScalarFieldEnum = (typeof IndustryScalarFieldEnum)[keyof typeof IndustryScalarFieldEnum]
 
 
 export const ArticleScalarFieldEnum = {
@@ -5786,10 +5874,11 @@ export type GlobalOmitConfig = {
   authEvent?: Prisma.AuthEventOmit
   privacySettings?: Prisma.PrivacySettingsOmit
   location?: Prisma.LocationOmit
-  industry?: Prisma.IndustryOmit
   serviceActivity?: Prisma.ServiceActivityOmit
   identityProvider?: Prisma.IdentityProviderOmit
   topic?: Prisma.TopicOmit
+  tag?: Prisma.TagOmit
+  industry?: Prisma.IndustryOmit
   article?: Prisma.ArticleOmit
   articleIndustry?: Prisma.ArticleIndustryOmit
   articleTopic?: Prisma.ArticleTopicOmit

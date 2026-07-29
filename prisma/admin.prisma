@@ -13,18 +13,6 @@ model Location {
     projects    Project[]
 }
 
-model Industry {
-    industryId          String   @id @default(dbgenerated("gen_random_uuid()"))
-    industryCode        String
-    industryName        String
-    description         String
-    createdAt           DateTime @default(now())
-    updatedAt           DateTime @updatedAt
-
-    projects            Project[]
-    articles            ArticleIndustry[]
-    reports             ReportIndustry[]
-}
 
 model ServiceActivity {
     activityId        String   @id @default(dbgenerated("gen_random_uuid()"))
@@ -59,4 +47,31 @@ model Topic {
 
     articles    ArticleTopic[]
     reports     ReportTopic[]
+}
+
+model Tag {
+    tagId               String   @id @default(dbgenerated("gen_random_uuid()"))
+    name                String   @unique
+    description         String?
+
+    updatedBy           String
+    createdAt           DateTime @default(now())
+    updatedAt           DateTime @updatedAt
+         
+    articleTags         ArticleTag[]
+}
+
+model Industry {
+    industryId          String   @id @default(dbgenerated("gen_random_uuid()"))
+    code                String
+    name                String   @unique
+    description         String?
+
+    updatedBy           String
+    createdAt           DateTime @default(now())
+    updatedAt           DateTime @updatedAt
+
+    projects            Project[]
+    articles            ArticleIndustry[]
+    reports             ReportIndustry[]
 }
