@@ -63,7 +63,7 @@ model Tag {
 
 model Industry {
     industryId          String   @id @default(dbgenerated("gen_random_uuid()"))
-    code                String
+    code                String   @unique
     name                String   @unique
     description         String?
 
@@ -72,6 +72,6 @@ model Industry {
     updatedAt           DateTime @updatedAt
 
     projects            Project[]
-    articles            ArticleIndustry[]
     reports             ReportIndustry[]
+    articles            Article[]
 }

@@ -67,6 +67,19 @@ export const IdentityProviderCode = {
 export type IdentityProviderCode = (typeof IdentityProviderCode)[keyof typeof IdentityProviderCode]
 
 
+export const ContentStatus = {
+  DRAFT: 'DRAFT',
+  PENDING_REVIEW: 'PENDING_REVIEW',
+  CHANGES_REQUESTED: 'CHANGES_REQUESTED',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED',
+  PUBLISHED: 'PUBLISHED',
+  ARCHIVED: 'ARCHIVED'
+} as const
+
+export type ContentStatus = (typeof ContentStatus)[keyof typeof ContentStatus]
+
+
 export const ProjectStatus = {
   ACTIVE: 'ACTIVE',
   INACTIVE: 'INACTIVE',
@@ -164,3 +177,15 @@ export const ReferenceType = {
 } as const
 
 export type ReferenceType = (typeof ReferenceType)[keyof typeof ReferenceType]
+
+
+export const MediaType = {
+  IMAGE: 'IMAGE',
+  VIDEO: 'VIDEO',
+  AUDIO: 'AUDIO',
+  DOCUMENT: 'DOCUMENT',
+  ARCHIVE: 'ARCHIVE',
+  OTHER: 'OTHER'
+} as const
+
+export type MediaType = (typeof MediaType)[keyof typeof MediaType]

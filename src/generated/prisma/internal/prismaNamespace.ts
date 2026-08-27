@@ -399,7 +399,6 @@ export const ModelName = {
   Tag: 'Tag',
   Industry: 'Industry',
   Article: 'Article',
-  ArticleIndustry: 'ArticleIndustry',
   ArticleTopic: 'ArticleTopic',
   ArticleServiceActivity: 'ArticleServiceActivity',
   ArticleTag: 'ArticleTag',
@@ -418,6 +417,7 @@ export const ModelName = {
   ObjectSchemaField: 'ObjectSchemaField',
   ComponentFieldValue: 'ComponentFieldValue',
   AvatarImage: 'AvatarImage',
+  Media: 'Media',
   HeroImage: 'HeroImage',
   CoverImage: 'CoverImage',
   ArticleImage: 'ArticleImage',
@@ -456,7 +456,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "userCredentialWebAuthn" | "userMFA" | "oAuthToken" | "emailVerification" | "passwordReset" | "authEvent" | "privacySettings" | "location" | "serviceActivity" | "identityProvider" | "topic" | "tag" | "industry" | "article" | "articleIndustry" | "articleTopic" | "articleServiceActivity" | "articleTag" | "articleReference" | "articleVersion" | "articleComment" | "session" | "userIdentity" | "userCredential" | "website" | "webpage" | "pageComponent" | "component" | "componentField" | "objectSchema" | "objectSchemaField" | "componentFieldValue" | "avatarImage" | "heroImage" | "coverImage" | "articleImage" | "reportFile" | "notificationPreference" | "promotionalPreference" | "insightsPreference" | "teamMember" | "teamRole" | "client" | "author" | "organization" | "articleAuthor" | "reportAuthor" | "project" | "projectServiceActivity" | "projectTeamMember" | "projectImage" | "projectNote" | "report" | "reportIndustry" | "reportTopic" | "reportServiceActivity"
+    modelProps: "user" | "userCredentialWebAuthn" | "userMFA" | "oAuthToken" | "emailVerification" | "passwordReset" | "authEvent" | "privacySettings" | "location" | "serviceActivity" | "identityProvider" | "topic" | "tag" | "industry" | "article" | "articleTopic" | "articleServiceActivity" | "articleTag" | "articleReference" | "articleVersion" | "articleComment" | "session" | "userIdentity" | "userCredential" | "website" | "webpage" | "pageComponent" | "component" | "componentField" | "objectSchema" | "objectSchemaField" | "componentFieldValue" | "avatarImage" | "media" | "heroImage" | "coverImage" | "articleImage" | "reportFile" | "notificationPreference" | "promotionalPreference" | "insightsPreference" | "teamMember" | "teamRole" | "client" | "author" | "organization" | "articleAuthor" | "reportAuthor" | "project" | "projectServiceActivity" | "projectTeamMember" | "projectImage" | "projectNote" | "report" | "reportIndustry" | "reportTopic" | "reportServiceActivity"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1567,80 +1567,6 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.ArticleCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.ArticleCountAggregateOutputType> | number
-        }
-      }
-    }
-    ArticleIndustry: {
-      payload: Prisma.$ArticleIndustryPayload<ExtArgs>
-      fields: Prisma.ArticleIndustryFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.ArticleIndustryFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ArticleIndustryPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.ArticleIndustryFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ArticleIndustryPayload>
-        }
-        findFirst: {
-          args: Prisma.ArticleIndustryFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ArticleIndustryPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.ArticleIndustryFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ArticleIndustryPayload>
-        }
-        findMany: {
-          args: Prisma.ArticleIndustryFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ArticleIndustryPayload>[]
-        }
-        create: {
-          args: Prisma.ArticleIndustryCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ArticleIndustryPayload>
-        }
-        createMany: {
-          args: Prisma.ArticleIndustryCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.ArticleIndustryCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ArticleIndustryPayload>[]
-        }
-        delete: {
-          args: Prisma.ArticleIndustryDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ArticleIndustryPayload>
-        }
-        update: {
-          args: Prisma.ArticleIndustryUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ArticleIndustryPayload>
-        }
-        deleteMany: {
-          args: Prisma.ArticleIndustryDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.ArticleIndustryUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.ArticleIndustryUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ArticleIndustryPayload>[]
-        }
-        upsert: {
-          args: Prisma.ArticleIndustryUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ArticleIndustryPayload>
-        }
-        aggregate: {
-          args: Prisma.ArticleIndustryAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateArticleIndustry>
-        }
-        groupBy: {
-          args: Prisma.ArticleIndustryGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.ArticleIndustryGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.ArticleIndustryCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.ArticleIndustryCountAggregateOutputType> | number
         }
       }
     }
@@ -2973,6 +2899,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.AvatarImageCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.AvatarImageCountAggregateOutputType> | number
+        }
+      }
+    }
+    Media: {
+      payload: Prisma.$MediaPayload<ExtArgs>
+      fields: Prisma.MediaFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.MediaFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MediaPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.MediaFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MediaPayload>
+        }
+        findFirst: {
+          args: Prisma.MediaFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MediaPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.MediaFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MediaPayload>
+        }
+        findMany: {
+          args: Prisma.MediaFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MediaPayload>[]
+        }
+        create: {
+          args: Prisma.MediaCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MediaPayload>
+        }
+        createMany: {
+          args: Prisma.MediaCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.MediaCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MediaPayload>[]
+        }
+        delete: {
+          args: Prisma.MediaDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MediaPayload>
+        }
+        update: {
+          args: Prisma.MediaUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MediaPayload>
+        }
+        deleteMany: {
+          args: Prisma.MediaDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.MediaUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.MediaUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MediaPayload>[]
+        }
+        upsert: {
+          args: Prisma.MediaUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MediaPayload>
+        }
+        aggregate: {
+          args: Prisma.MediaAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateMedia>
+        }
+        groupBy: {
+          args: Prisma.MediaGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MediaGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.MediaCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MediaCountAggregateOutputType> | number
         }
       }
     }
@@ -4913,29 +4913,22 @@ export const ArticleScalarFieldEnum = {
   title: 'title',
   subtitle: 'subtitle',
   summary: 'summary',
-  body: 'body',
+  content: 'content',
   status: 'status',
   scheduledPublish: 'scheduledPublish',
   publishedAt: 'publishedAt',
   unpublishedAt: 'unpublishedAt',
   readingTime: 'readingTime',
   wordCount: 'wordCount',
-  heroImageId: 'heroImageId',
+  featuredImageId: 'featuredImageId',
   projectId: 'projectId',
+  industryId: 'industryId',
+  createdById: 'createdById',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 
 export type ArticleScalarFieldEnum = (typeof ArticleScalarFieldEnum)[keyof typeof ArticleScalarFieldEnum]
-
-
-export const ArticleIndustryScalarFieldEnum = {
-  id: 'id',
-  articleId: 'articleId',
-  industryId: 'industryId'
-} as const
-
-export type ArticleIndustryScalarFieldEnum = (typeof ArticleIndustryScalarFieldEnum)[keyof typeof ArticleIndustryScalarFieldEnum]
 
 
 export const ArticleTopicScalarFieldEnum = {
@@ -5180,6 +5173,30 @@ export const AvatarImageScalarFieldEnum = {
 } as const
 
 export type AvatarImageScalarFieldEnum = (typeof AvatarImageScalarFieldEnum)[keyof typeof AvatarImageScalarFieldEnum]
+
+
+export const MediaScalarFieldEnum = {
+  id: 'id',
+  filename: 'filename',
+  originalName: 'originalName',
+  path: 'path',
+  bucket: 'bucket',
+  mimeType: 'mimeType',
+  extension: 'extension',
+  size: 'size',
+  type: 'type',
+  width: 'width',
+  height: 'height',
+  duration: 'duration',
+  altText: 'altText',
+  caption: 'caption',
+  checksum: 'checksum',
+  createById: 'createById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type MediaScalarFieldEnum = (typeof MediaScalarFieldEnum)[keyof typeof MediaScalarFieldEnum]
 
 
 export const HeroImageScalarFieldEnum = {
@@ -5674,16 +5691,16 @@ export type ListEnumIdentityProviderCodeFieldRefInput<$PrismaModel> = FieldRefIn
 
 
 /**
- * Reference to a field of type 'ArticleStatus'
+ * Reference to a field of type 'ContentStatus'
  */
-export type EnumArticleStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ArticleStatus'>
+export type EnumContentStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ContentStatus'>
     
 
 
 /**
- * Reference to a field of type 'ArticleStatus[]'
+ * Reference to a field of type 'ContentStatus[]'
  */
-export type ListEnumArticleStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ArticleStatus[]'>
+export type ListEnumContentStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ContentStatus[]'>
     
 
 
@@ -5712,6 +5729,20 @@ export type EnumFieldTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$Prisma
  * Reference to a field of type 'FieldType[]'
  */
 export type ListEnumFieldTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'FieldType[]'>
+    
+
+
+/**
+ * Reference to a field of type 'MediaType'
+ */
+export type EnumMediaTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MediaType'>
+    
+
+
+/**
+ * Reference to a field of type 'MediaType[]'
+ */
+export type ListEnumMediaTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MediaType[]'>
     
 
 
@@ -5880,7 +5911,6 @@ export type GlobalOmitConfig = {
   tag?: Prisma.TagOmit
   industry?: Prisma.IndustryOmit
   article?: Prisma.ArticleOmit
-  articleIndustry?: Prisma.ArticleIndustryOmit
   articleTopic?: Prisma.ArticleTopicOmit
   articleServiceActivity?: Prisma.ArticleServiceActivityOmit
   articleTag?: Prisma.ArticleTagOmit
@@ -5899,6 +5929,7 @@ export type GlobalOmitConfig = {
   objectSchemaField?: Prisma.ObjectSchemaFieldOmit
   componentFieldValue?: Prisma.ComponentFieldValueOmit
   avatarImage?: Prisma.AvatarImageOmit
+  media?: Prisma.MediaOmit
   heroImage?: Prisma.HeroImageOmit
   coverImage?: Prisma.CoverImageOmit
   articleImage?: Prisma.ArticleImageOmit

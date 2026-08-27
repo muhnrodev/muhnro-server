@@ -2,24 +2,28 @@ model Article {
     articleId           String   @id @default(dbgenerated("gen_random_uuid()"))
     slug                String   @unique
     title               String
-    subtitle            String
-    summary             String
-    body                String   @db.Text
-    status              ArticleStatus
+    subtitle            String?
+    summary             String?  @db.Text
+    content             Json
+    status              ContentStatus @default(DRAFT)
     scheduledPublish    DateTime?
     publishedAt         DateTime?
     unpublishedAt       DateTime?
     readingTime         Int
     wordCount           Int
-    heroImageId         String?  @unique
+    featuredImageId     String
     projectId           String?
+    industryId          String?
+
+    createdById         String
     createdAt           DateTime @default(now())
     updatedAt           DateTime @updatedAt
 
-    project             Project? @relation(fields: [projectId], references: [id])
-    heroImage           HeroImage? @relation(fields: [heroImageId], references: [imageId])
+    project             Project?    @relation(fields: [projectId], references: [id])
+    featuredImage       Media       @relation(fields: [featuredImageId], references: [id])
+    createdBy           User        @relation(fields: [createdById], references: [id])
+    industry            Industry?   @relation(fields: [industryId], references: [industryId])
 
-    industries          ArticleIndustry[]
     topics              ArticleTopic[]
     serviceActivities   ArticleServiceActivity[]
     tags                ArticleTag[]
@@ -30,14 +34,6 @@ model Article {
     comments            ArticleComment[]
 }
 
-model ArticleIndustry {
-    id         String   @id @default(dbgenerated("gen_random_uuid()"))
-    articleId  String
-    industryId String
-
-    article    Article  @relation(fields: [articleId], references: [articleId])
-    industry   Industry @relation(fields: [industryId], references: [industryId])
-}
 
 model ArticleTopic {
     id        String   @id @default(dbgenerated("gen_random_uuid()"))

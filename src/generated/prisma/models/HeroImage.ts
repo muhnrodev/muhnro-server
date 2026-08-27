@@ -248,7 +248,6 @@ export type HeroImageWhereInput = {
   altText?: Prisma.StringNullableFilter<"HeroImage"> | string | null
   createdAt?: Prisma.DateTimeFilter<"HeroImage"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"HeroImage"> | Date | string
-  articles?: Prisma.ArticleListRelationFilter
 }
 
 export type HeroImageOrderByWithRelationInput = {
@@ -261,7 +260,6 @@ export type HeroImageOrderByWithRelationInput = {
   altText?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  articles?: Prisma.ArticleOrderByRelationAggregateInput
 }
 
 export type HeroImageWhereUniqueInput = Prisma.AtLeast<{
@@ -277,7 +275,6 @@ export type HeroImageWhereUniqueInput = Prisma.AtLeast<{
   altText?: Prisma.StringNullableFilter<"HeroImage"> | string | null
   createdAt?: Prisma.DateTimeFilter<"HeroImage"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"HeroImage"> | Date | string
-  articles?: Prisma.ArticleListRelationFilter
 }, "imageId">
 
 export type HeroImageOrderByWithAggregationInput = {
@@ -322,7 +319,6 @@ export type HeroImageCreateInput = {
   altText?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  articles?: Prisma.ArticleCreateNestedManyWithoutHeroImageInput
 }
 
 export type HeroImageUncheckedCreateInput = {
@@ -335,7 +331,6 @@ export type HeroImageUncheckedCreateInput = {
   altText?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  articles?: Prisma.ArticleUncheckedCreateNestedManyWithoutHeroImageInput
 }
 
 export type HeroImageUpdateInput = {
@@ -348,7 +343,6 @@ export type HeroImageUpdateInput = {
   altText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  articles?: Prisma.ArticleUpdateManyWithoutHeroImageNestedInput
 }
 
 export type HeroImageUncheckedUpdateInput = {
@@ -361,7 +355,6 @@ export type HeroImageUncheckedUpdateInput = {
   altText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  articles?: Prisma.ArticleUncheckedUpdateManyWithoutHeroImageNestedInput
 }
 
 export type HeroImageCreateManyInput = {
@@ -398,11 +391,6 @@ export type HeroImageUncheckedUpdateManyInput = {
   altText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-}
-
-export type HeroImageNullableScalarRelationFilter = {
-  is?: Prisma.HeroImageWhereInput | null
-  isNot?: Prisma.HeroImageWhereInput | null
 }
 
 export type HeroImageCountOrderByAggregateInput = {
@@ -449,115 +437,6 @@ export type HeroImageSumOrderByAggregateInput = {
   size?: Prisma.SortOrder
 }
 
-export type HeroImageCreateNestedOneWithoutArticlesInput = {
-  create?: Prisma.XOR<Prisma.HeroImageCreateWithoutArticlesInput, Prisma.HeroImageUncheckedCreateWithoutArticlesInput>
-  connectOrCreate?: Prisma.HeroImageCreateOrConnectWithoutArticlesInput
-  connect?: Prisma.HeroImageWhereUniqueInput
-}
-
-export type HeroImageUpdateOneWithoutArticlesNestedInput = {
-  create?: Prisma.XOR<Prisma.HeroImageCreateWithoutArticlesInput, Prisma.HeroImageUncheckedCreateWithoutArticlesInput>
-  connectOrCreate?: Prisma.HeroImageCreateOrConnectWithoutArticlesInput
-  upsert?: Prisma.HeroImageUpsertWithoutArticlesInput
-  disconnect?: Prisma.HeroImageWhereInput | boolean
-  delete?: Prisma.HeroImageWhereInput | boolean
-  connect?: Prisma.HeroImageWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.HeroImageUpdateToOneWithWhereWithoutArticlesInput, Prisma.HeroImageUpdateWithoutArticlesInput>, Prisma.HeroImageUncheckedUpdateWithoutArticlesInput>
-}
-
-export type HeroImageCreateWithoutArticlesInput = {
-  imageId?: string
-  url: string
-  path: string
-  size: number
-  mimeType: string
-  caption?: string | null
-  altText?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-}
-
-export type HeroImageUncheckedCreateWithoutArticlesInput = {
-  imageId?: string
-  url: string
-  path: string
-  size: number
-  mimeType: string
-  caption?: string | null
-  altText?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-}
-
-export type HeroImageCreateOrConnectWithoutArticlesInput = {
-  where: Prisma.HeroImageWhereUniqueInput
-  create: Prisma.XOR<Prisma.HeroImageCreateWithoutArticlesInput, Prisma.HeroImageUncheckedCreateWithoutArticlesInput>
-}
-
-export type HeroImageUpsertWithoutArticlesInput = {
-  update: Prisma.XOR<Prisma.HeroImageUpdateWithoutArticlesInput, Prisma.HeroImageUncheckedUpdateWithoutArticlesInput>
-  create: Prisma.XOR<Prisma.HeroImageCreateWithoutArticlesInput, Prisma.HeroImageUncheckedCreateWithoutArticlesInput>
-  where?: Prisma.HeroImageWhereInput
-}
-
-export type HeroImageUpdateToOneWithWhereWithoutArticlesInput = {
-  where?: Prisma.HeroImageWhereInput
-  data: Prisma.XOR<Prisma.HeroImageUpdateWithoutArticlesInput, Prisma.HeroImageUncheckedUpdateWithoutArticlesInput>
-}
-
-export type HeroImageUpdateWithoutArticlesInput = {
-  imageId?: Prisma.StringFieldUpdateOperationsInput | string
-  url?: Prisma.StringFieldUpdateOperationsInput | string
-  path?: Prisma.StringFieldUpdateOperationsInput | string
-  size?: Prisma.IntFieldUpdateOperationsInput | number
-  mimeType?: Prisma.StringFieldUpdateOperationsInput | string
-  caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  altText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-}
-
-export type HeroImageUncheckedUpdateWithoutArticlesInput = {
-  imageId?: Prisma.StringFieldUpdateOperationsInput | string
-  url?: Prisma.StringFieldUpdateOperationsInput | string
-  path?: Prisma.StringFieldUpdateOperationsInput | string
-  size?: Prisma.IntFieldUpdateOperationsInput | number
-  mimeType?: Prisma.StringFieldUpdateOperationsInput | string
-  caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  altText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-}
-
-
-/**
- * Count Type HeroImageCountOutputType
- */
-
-export type HeroImageCountOutputType = {
-  articles: number
-}
-
-export type HeroImageCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  articles?: boolean | HeroImageCountOutputTypeCountArticlesArgs
-}
-
-/**
- * HeroImageCountOutputType without action
- */
-export type HeroImageCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the HeroImageCountOutputType
-   */
-  select?: Prisma.HeroImageCountOutputTypeSelect<ExtArgs> | null
-}
-
-/**
- * HeroImageCountOutputType without action
- */
-export type HeroImageCountOutputTypeCountArticlesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.ArticleWhereInput
-}
 
 
 export type HeroImageSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -570,8 +449,6 @@ export type HeroImageSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   altText?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  articles?: boolean | Prisma.HeroImage$articlesArgs<ExtArgs>
-  _count?: boolean | Prisma.HeroImageCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["heroImage"]>
 
 export type HeroImageSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -611,18 +488,10 @@ export type HeroImageSelectScalar = {
 }
 
 export type HeroImageOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"imageId" | "url" | "path" | "size" | "mimeType" | "caption" | "altText" | "createdAt" | "updatedAt", ExtArgs["result"]["heroImage"]>
-export type HeroImageInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  articles?: boolean | Prisma.HeroImage$articlesArgs<ExtArgs>
-  _count?: boolean | Prisma.HeroImageCountOutputTypeDefaultArgs<ExtArgs>
-}
-export type HeroImageIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
-export type HeroImageIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
 
 export type $HeroImagePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "HeroImage"
-  objects: {
-    articles: Prisma.$ArticlePayload<ExtArgs>[]
-  }
+  objects: {}
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     imageId: string
     url: string
@@ -1027,7 +896,6 @@ readonly fields: HeroImageFieldRefs;
  */
 export interface Prisma__HeroImageClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  articles<T extends Prisma.HeroImage$articlesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.HeroImage$articlesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ArticlePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1083,10 +951,6 @@ export type HeroImageFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.Int
    */
   omit?: Prisma.HeroImageOmit<ExtArgs> | null
   /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.HeroImageInclude<ExtArgs> | null
-  /**
    * Filter, which HeroImage to fetch.
    */
   where: Prisma.HeroImageWhereUniqueInput
@@ -1105,10 +969,6 @@ export type HeroImageFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensi
    */
   omit?: Prisma.HeroImageOmit<ExtArgs> | null
   /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.HeroImageInclude<ExtArgs> | null
-  /**
    * Filter, which HeroImage to fetch.
    */
   where: Prisma.HeroImageWhereUniqueInput
@@ -1126,10 +986,6 @@ export type HeroImageFindFirstArgs<ExtArgs extends runtime.Types.Extensions.Inte
    * Omit specific fields from the HeroImage
    */
   omit?: Prisma.HeroImageOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.HeroImageInclude<ExtArgs> | null
   /**
    * Filter, which HeroImage to fetch.
    */
@@ -1179,10 +1035,6 @@ export type HeroImageFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensio
    */
   omit?: Prisma.HeroImageOmit<ExtArgs> | null
   /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.HeroImageInclude<ExtArgs> | null
-  /**
    * Filter, which HeroImage to fetch.
    */
   where?: Prisma.HeroImageWhereInput
@@ -1231,10 +1083,6 @@ export type HeroImageFindManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
    */
   omit?: Prisma.HeroImageOmit<ExtArgs> | null
   /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.HeroImageInclude<ExtArgs> | null
-  /**
    * Filter, which HeroImages to fetch.
    */
   where?: Prisma.HeroImageWhereInput
@@ -1277,10 +1125,6 @@ export type HeroImageCreateArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * Omit specific fields from the HeroImage
    */
   omit?: Prisma.HeroImageOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.HeroImageInclude<ExtArgs> | null
   /**
    * The data needed to create a HeroImage.
    */
@@ -1329,10 +1173,6 @@ export type HeroImageUpdateArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * Omit specific fields from the HeroImage
    */
   omit?: Prisma.HeroImageOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.HeroImageInclude<ExtArgs> | null
   /**
    * The data needed to update a HeroImage.
    */
@@ -1400,10 +1240,6 @@ export type HeroImageUpsertArgs<ExtArgs extends runtime.Types.Extensions.Interna
    */
   omit?: Prisma.HeroImageOmit<ExtArgs> | null
   /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.HeroImageInclude<ExtArgs> | null
-  /**
    * The filter to search for the HeroImage to update in case it exists.
    */
   where: Prisma.HeroImageWhereUniqueInput
@@ -1430,10 +1266,6 @@ export type HeroImageDeleteArgs<ExtArgs extends runtime.Types.Extensions.Interna
    */
   omit?: Prisma.HeroImageOmit<ExtArgs> | null
   /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.HeroImageInclude<ExtArgs> | null
-  /**
    * Filter which HeroImage to delete.
    */
   where: Prisma.HeroImageWhereUniqueInput
@@ -1454,30 +1286,6 @@ export type HeroImageDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Int
 }
 
 /**
- * HeroImage.articles
- */
-export type HeroImage$articlesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Article
-   */
-  select?: Prisma.ArticleSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Article
-   */
-  omit?: Prisma.ArticleOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.ArticleInclude<ExtArgs> | null
-  where?: Prisma.ArticleWhereInput
-  orderBy?: Prisma.ArticleOrderByWithRelationInput | Prisma.ArticleOrderByWithRelationInput[]
-  cursor?: Prisma.ArticleWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.ArticleScalarFieldEnum | Prisma.ArticleScalarFieldEnum[]
-}
-
-/**
  * HeroImage without action
  */
 export type HeroImageDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1489,8 +1297,4 @@ export type HeroImageDefaultArgs<ExtArgs extends runtime.Types.Extensions.Intern
    * Omit specific fields from the HeroImage
    */
   omit?: Prisma.HeroImageOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.HeroImageInclude<ExtArgs> | null
 }

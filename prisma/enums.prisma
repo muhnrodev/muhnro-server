@@ -50,6 +50,16 @@ enum IdentityProviderCode {
     TWITTER
 }
 
+enum ContentStatus {
+    DRAFT
+    PENDING_REVIEW
+    CHANGES_REQUESTED
+    APPROVED
+    REJECTED
+    PUBLISHED
+    ARCHIVED
+}
+
 enum ProjectStatus {
     ACTIVE
     INACTIVE
@@ -123,4 +133,13 @@ enum ReferenceType {
     PRODUCT
     PARTNER
     PERSON
+}
+
+enum MediaType {
+  IMAGE
+  VIDEO
+  AUDIO
+  DOCUMENT
+  ARCHIVE
+  OTHER
 }

@@ -66,7 +66,6 @@ export const ModelName = {
   Tag: 'Tag',
   Industry: 'Industry',
   Article: 'Article',
-  ArticleIndustry: 'ArticleIndustry',
   ArticleTopic: 'ArticleTopic',
   ArticleServiceActivity: 'ArticleServiceActivity',
   ArticleTag: 'ArticleTag',
@@ -85,6 +84,7 @@ export const ModelName = {
   ObjectSchemaField: 'ObjectSchemaField',
   ComponentFieldValue: 'ComponentFieldValue',
   AvatarImage: 'AvatarImage',
+  Media: 'Media',
   HeroImage: 'HeroImage',
   CoverImage: 'CoverImage',
   ArticleImage: 'ArticleImage',
@@ -322,29 +322,22 @@ export const ArticleScalarFieldEnum = {
   title: 'title',
   subtitle: 'subtitle',
   summary: 'summary',
-  body: 'body',
+  content: 'content',
   status: 'status',
   scheduledPublish: 'scheduledPublish',
   publishedAt: 'publishedAt',
   unpublishedAt: 'unpublishedAt',
   readingTime: 'readingTime',
   wordCount: 'wordCount',
-  heroImageId: 'heroImageId',
+  featuredImageId: 'featuredImageId',
   projectId: 'projectId',
+  industryId: 'industryId',
+  createdById: 'createdById',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 
 export type ArticleScalarFieldEnum = (typeof ArticleScalarFieldEnum)[keyof typeof ArticleScalarFieldEnum]
-
-
-export const ArticleIndustryScalarFieldEnum = {
-  id: 'id',
-  articleId: 'articleId',
-  industryId: 'industryId'
-} as const
-
-export type ArticleIndustryScalarFieldEnum = (typeof ArticleIndustryScalarFieldEnum)[keyof typeof ArticleIndustryScalarFieldEnum]
 
 
 export const ArticleTopicScalarFieldEnum = {
@@ -589,6 +582,30 @@ export const AvatarImageScalarFieldEnum = {
 } as const
 
 export type AvatarImageScalarFieldEnum = (typeof AvatarImageScalarFieldEnum)[keyof typeof AvatarImageScalarFieldEnum]
+
+
+export const MediaScalarFieldEnum = {
+  id: 'id',
+  filename: 'filename',
+  originalName: 'originalName',
+  path: 'path',
+  bucket: 'bucket',
+  mimeType: 'mimeType',
+  extension: 'extension',
+  size: 'size',
+  type: 'type',
+  width: 'width',
+  height: 'height',
+  duration: 'duration',
+  altText: 'altText',
+  caption: 'caption',
+  checksum: 'checksum',
+  createById: 'createById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type MediaScalarFieldEnum = (typeof MediaScalarFieldEnum)[keyof typeof MediaScalarFieldEnum]
 
 
 export const HeroImageScalarFieldEnum = {

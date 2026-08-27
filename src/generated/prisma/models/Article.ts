@@ -42,15 +42,16 @@ export type ArticleMinAggregateOutputType = {
   title: string | null
   subtitle: string | null
   summary: string | null
-  body: string | null
-  status: $Enums.ArticleStatus | null
+  status: $Enums.ContentStatus | null
   scheduledPublish: Date | null
   publishedAt: Date | null
   unpublishedAt: Date | null
   readingTime: number | null
   wordCount: number | null
-  heroImageId: string | null
+  featuredImageId: string | null
   projectId: string | null
+  industryId: string | null
+  createdById: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -61,15 +62,16 @@ export type ArticleMaxAggregateOutputType = {
   title: string | null
   subtitle: string | null
   summary: string | null
-  body: string | null
-  status: $Enums.ArticleStatus | null
+  status: $Enums.ContentStatus | null
   scheduledPublish: Date | null
   publishedAt: Date | null
   unpublishedAt: Date | null
   readingTime: number | null
   wordCount: number | null
-  heroImageId: string | null
+  featuredImageId: string | null
   projectId: string | null
+  industryId: string | null
+  createdById: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -80,15 +82,17 @@ export type ArticleCountAggregateOutputType = {
   title: number
   subtitle: number
   summary: number
-  body: number
+  content: number
   status: number
   scheduledPublish: number
   publishedAt: number
   unpublishedAt: number
   readingTime: number
   wordCount: number
-  heroImageId: number
+  featuredImageId: number
   projectId: number
+  industryId: number
+  createdById: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -111,15 +115,16 @@ export type ArticleMinAggregateInputType = {
   title?: true
   subtitle?: true
   summary?: true
-  body?: true
   status?: true
   scheduledPublish?: true
   publishedAt?: true
   unpublishedAt?: true
   readingTime?: true
   wordCount?: true
-  heroImageId?: true
+  featuredImageId?: true
   projectId?: true
+  industryId?: true
+  createdById?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -130,15 +135,16 @@ export type ArticleMaxAggregateInputType = {
   title?: true
   subtitle?: true
   summary?: true
-  body?: true
   status?: true
   scheduledPublish?: true
   publishedAt?: true
   unpublishedAt?: true
   readingTime?: true
   wordCount?: true
-  heroImageId?: true
+  featuredImageId?: true
   projectId?: true
+  industryId?: true
+  createdById?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -149,15 +155,17 @@ export type ArticleCountAggregateInputType = {
   title?: true
   subtitle?: true
   summary?: true
-  body?: true
+  content?: true
   status?: true
   scheduledPublish?: true
   publishedAt?: true
   unpublishedAt?: true
   readingTime?: true
   wordCount?: true
-  heroImageId?: true
+  featuredImageId?: true
   projectId?: true
+  industryId?: true
+  createdById?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -253,17 +261,19 @@ export type ArticleGroupByOutputType = {
   articleId: string
   slug: string
   title: string
-  subtitle: string
-  summary: string
-  body: string
-  status: $Enums.ArticleStatus
+  subtitle: string | null
+  summary: string | null
+  content: runtime.JsonValue
+  status: $Enums.ContentStatus
   scheduledPublish: Date | null
   publishedAt: Date | null
   unpublishedAt: Date | null
   readingTime: number
   wordCount: number
-  heroImageId: string | null
+  featuredImageId: string
   projectId: string | null
+  industryId: string | null
+  createdById: string
   createdAt: Date
   updatedAt: Date
   _count: ArticleCountAggregateOutputType | null
@@ -295,22 +305,25 @@ export type ArticleWhereInput = {
   articleId?: Prisma.StringFilter<"Article"> | string
   slug?: Prisma.StringFilter<"Article"> | string
   title?: Prisma.StringFilter<"Article"> | string
-  subtitle?: Prisma.StringFilter<"Article"> | string
-  summary?: Prisma.StringFilter<"Article"> | string
-  body?: Prisma.StringFilter<"Article"> | string
-  status?: Prisma.EnumArticleStatusFilter<"Article"> | $Enums.ArticleStatus
+  subtitle?: Prisma.StringNullableFilter<"Article"> | string | null
+  summary?: Prisma.StringNullableFilter<"Article"> | string | null
+  content?: Prisma.JsonFilter<"Article">
+  status?: Prisma.EnumContentStatusFilter<"Article"> | $Enums.ContentStatus
   scheduledPublish?: Prisma.DateTimeNullableFilter<"Article"> | Date | string | null
   publishedAt?: Prisma.DateTimeNullableFilter<"Article"> | Date | string | null
   unpublishedAt?: Prisma.DateTimeNullableFilter<"Article"> | Date | string | null
   readingTime?: Prisma.IntFilter<"Article"> | number
   wordCount?: Prisma.IntFilter<"Article"> | number
-  heroImageId?: Prisma.StringNullableFilter<"Article"> | string | null
+  featuredImageId?: Prisma.StringFilter<"Article"> | string
   projectId?: Prisma.StringNullableFilter<"Article"> | string | null
+  industryId?: Prisma.StringNullableFilter<"Article"> | string | null
+  createdById?: Prisma.StringFilter<"Article"> | string
   createdAt?: Prisma.DateTimeFilter<"Article"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Article"> | Date | string
   project?: Prisma.XOR<Prisma.ProjectNullableScalarRelationFilter, Prisma.ProjectWhereInput> | null
-  heroImage?: Prisma.XOR<Prisma.HeroImageNullableScalarRelationFilter, Prisma.HeroImageWhereInput> | null
-  industries?: Prisma.ArticleIndustryListRelationFilter
+  featuredImage?: Prisma.XOR<Prisma.MediaScalarRelationFilter, Prisma.MediaWhereInput>
+  createdBy?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  industry?: Prisma.XOR<Prisma.IndustryNullableScalarRelationFilter, Prisma.IndustryWhereInput> | null
   topics?: Prisma.ArticleTopicListRelationFilter
   serviceActivities?: Prisma.ArticleServiceActivityListRelationFilter
   tags?: Prisma.ArticleTagListRelationFilter
@@ -325,22 +338,25 @@ export type ArticleOrderByWithRelationInput = {
   articleId?: Prisma.SortOrder
   slug?: Prisma.SortOrder
   title?: Prisma.SortOrder
-  subtitle?: Prisma.SortOrder
-  summary?: Prisma.SortOrder
-  body?: Prisma.SortOrder
+  subtitle?: Prisma.SortOrderInput | Prisma.SortOrder
+  summary?: Prisma.SortOrderInput | Prisma.SortOrder
+  content?: Prisma.SortOrder
   status?: Prisma.SortOrder
   scheduledPublish?: Prisma.SortOrderInput | Prisma.SortOrder
   publishedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   unpublishedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   readingTime?: Prisma.SortOrder
   wordCount?: Prisma.SortOrder
-  heroImageId?: Prisma.SortOrderInput | Prisma.SortOrder
+  featuredImageId?: Prisma.SortOrder
   projectId?: Prisma.SortOrderInput | Prisma.SortOrder
+  industryId?: Prisma.SortOrderInput | Prisma.SortOrder
+  createdById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   project?: Prisma.ProjectOrderByWithRelationInput
-  heroImage?: Prisma.HeroImageOrderByWithRelationInput
-  industries?: Prisma.ArticleIndustryOrderByRelationAggregateInput
+  featuredImage?: Prisma.MediaOrderByWithRelationInput
+  createdBy?: Prisma.UserOrderByWithRelationInput
+  industry?: Prisma.IndustryOrderByWithRelationInput
   topics?: Prisma.ArticleTopicOrderByRelationAggregateInput
   serviceActivities?: Prisma.ArticleServiceActivityOrderByRelationAggregateInput
   tags?: Prisma.ArticleTagOrderByRelationAggregateInput
@@ -354,26 +370,29 @@ export type ArticleOrderByWithRelationInput = {
 export type ArticleWhereUniqueInput = Prisma.AtLeast<{
   articleId?: string
   slug?: string
-  heroImageId?: string
   AND?: Prisma.ArticleWhereInput | Prisma.ArticleWhereInput[]
   OR?: Prisma.ArticleWhereInput[]
   NOT?: Prisma.ArticleWhereInput | Prisma.ArticleWhereInput[]
   title?: Prisma.StringFilter<"Article"> | string
-  subtitle?: Prisma.StringFilter<"Article"> | string
-  summary?: Prisma.StringFilter<"Article"> | string
-  body?: Prisma.StringFilter<"Article"> | string
-  status?: Prisma.EnumArticleStatusFilter<"Article"> | $Enums.ArticleStatus
+  subtitle?: Prisma.StringNullableFilter<"Article"> | string | null
+  summary?: Prisma.StringNullableFilter<"Article"> | string | null
+  content?: Prisma.JsonFilter<"Article">
+  status?: Prisma.EnumContentStatusFilter<"Article"> | $Enums.ContentStatus
   scheduledPublish?: Prisma.DateTimeNullableFilter<"Article"> | Date | string | null
   publishedAt?: Prisma.DateTimeNullableFilter<"Article"> | Date | string | null
   unpublishedAt?: Prisma.DateTimeNullableFilter<"Article"> | Date | string | null
   readingTime?: Prisma.IntFilter<"Article"> | number
   wordCount?: Prisma.IntFilter<"Article"> | number
+  featuredImageId?: Prisma.StringFilter<"Article"> | string
   projectId?: Prisma.StringNullableFilter<"Article"> | string | null
+  industryId?: Prisma.StringNullableFilter<"Article"> | string | null
+  createdById?: Prisma.StringFilter<"Article"> | string
   createdAt?: Prisma.DateTimeFilter<"Article"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Article"> | Date | string
   project?: Prisma.XOR<Prisma.ProjectNullableScalarRelationFilter, Prisma.ProjectWhereInput> | null
-  heroImage?: Prisma.XOR<Prisma.HeroImageNullableScalarRelationFilter, Prisma.HeroImageWhereInput> | null
-  industries?: Prisma.ArticleIndustryListRelationFilter
+  featuredImage?: Prisma.XOR<Prisma.MediaScalarRelationFilter, Prisma.MediaWhereInput>
+  createdBy?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  industry?: Prisma.XOR<Prisma.IndustryNullableScalarRelationFilter, Prisma.IndustryWhereInput> | null
   topics?: Prisma.ArticleTopicListRelationFilter
   serviceActivities?: Prisma.ArticleServiceActivityListRelationFilter
   tags?: Prisma.ArticleTagListRelationFilter
@@ -382,23 +401,25 @@ export type ArticleWhereUniqueInput = Prisma.AtLeast<{
   references?: Prisma.ArticleReferenceListRelationFilter
   versions?: Prisma.ArticleVersionListRelationFilter
   comments?: Prisma.ArticleCommentListRelationFilter
-}, "articleId" | "slug" | "heroImageId">
+}, "articleId" | "slug">
 
 export type ArticleOrderByWithAggregationInput = {
   articleId?: Prisma.SortOrder
   slug?: Prisma.SortOrder
   title?: Prisma.SortOrder
-  subtitle?: Prisma.SortOrder
-  summary?: Prisma.SortOrder
-  body?: Prisma.SortOrder
+  subtitle?: Prisma.SortOrderInput | Prisma.SortOrder
+  summary?: Prisma.SortOrderInput | Prisma.SortOrder
+  content?: Prisma.SortOrder
   status?: Prisma.SortOrder
   scheduledPublish?: Prisma.SortOrderInput | Prisma.SortOrder
   publishedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   unpublishedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   readingTime?: Prisma.SortOrder
   wordCount?: Prisma.SortOrder
-  heroImageId?: Prisma.SortOrderInput | Prisma.SortOrder
+  featuredImageId?: Prisma.SortOrder
   projectId?: Prisma.SortOrderInput | Prisma.SortOrder
+  industryId?: Prisma.SortOrderInput | Prisma.SortOrder
+  createdById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.ArticleCountOrderByAggregateInput
@@ -415,17 +436,19 @@ export type ArticleScalarWhereWithAggregatesInput = {
   articleId?: Prisma.StringWithAggregatesFilter<"Article"> | string
   slug?: Prisma.StringWithAggregatesFilter<"Article"> | string
   title?: Prisma.StringWithAggregatesFilter<"Article"> | string
-  subtitle?: Prisma.StringWithAggregatesFilter<"Article"> | string
-  summary?: Prisma.StringWithAggregatesFilter<"Article"> | string
-  body?: Prisma.StringWithAggregatesFilter<"Article"> | string
-  status?: Prisma.EnumArticleStatusWithAggregatesFilter<"Article"> | $Enums.ArticleStatus
+  subtitle?: Prisma.StringNullableWithAggregatesFilter<"Article"> | string | null
+  summary?: Prisma.StringNullableWithAggregatesFilter<"Article"> | string | null
+  content?: Prisma.JsonWithAggregatesFilter<"Article">
+  status?: Prisma.EnumContentStatusWithAggregatesFilter<"Article"> | $Enums.ContentStatus
   scheduledPublish?: Prisma.DateTimeNullableWithAggregatesFilter<"Article"> | Date | string | null
   publishedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Article"> | Date | string | null
   unpublishedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Article"> | Date | string | null
   readingTime?: Prisma.IntWithAggregatesFilter<"Article"> | number
   wordCount?: Prisma.IntWithAggregatesFilter<"Article"> | number
-  heroImageId?: Prisma.StringNullableWithAggregatesFilter<"Article"> | string | null
+  featuredImageId?: Prisma.StringWithAggregatesFilter<"Article"> | string
   projectId?: Prisma.StringNullableWithAggregatesFilter<"Article"> | string | null
+  industryId?: Prisma.StringNullableWithAggregatesFilter<"Article"> | string | null
+  createdById?: Prisma.StringWithAggregatesFilter<"Article"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Article"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Article"> | Date | string
 }
@@ -434,10 +457,10 @@ export type ArticleCreateInput = {
   articleId?: string
   slug: string
   title: string
-  subtitle: string
-  summary: string
-  body: string
-  status: $Enums.ArticleStatus
+  subtitle?: string | null
+  summary?: string | null
+  content: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.ContentStatus
   scheduledPublish?: Date | string | null
   publishedAt?: Date | string | null
   unpublishedAt?: Date | string | null
@@ -446,8 +469,9 @@ export type ArticleCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   project?: Prisma.ProjectCreateNestedOneWithoutArticlesInput
-  heroImage?: Prisma.HeroImageCreateNestedOneWithoutArticlesInput
-  industries?: Prisma.ArticleIndustryCreateNestedManyWithoutArticleInput
+  featuredImage: Prisma.MediaCreateNestedOneWithoutArticlesInput
+  createdBy: Prisma.UserCreateNestedOneWithoutArticlesInput
+  industry?: Prisma.IndustryCreateNestedOneWithoutArticlesInput
   topics?: Prisma.ArticleTopicCreateNestedManyWithoutArticleInput
   serviceActivities?: Prisma.ArticleServiceActivityCreateNestedManyWithoutArticleInput
   tags?: Prisma.ArticleTagCreateNestedManyWithoutArticleInput
@@ -462,20 +486,21 @@ export type ArticleUncheckedCreateInput = {
   articleId?: string
   slug: string
   title: string
-  subtitle: string
-  summary: string
-  body: string
-  status: $Enums.ArticleStatus
+  subtitle?: string | null
+  summary?: string | null
+  content: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.ContentStatus
   scheduledPublish?: Date | string | null
   publishedAt?: Date | string | null
   unpublishedAt?: Date | string | null
   readingTime: number
   wordCount: number
-  heroImageId?: string | null
+  featuredImageId: string
   projectId?: string | null
+  industryId?: string | null
+  createdById: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  industries?: Prisma.ArticleIndustryUncheckedCreateNestedManyWithoutArticleInput
   topics?: Prisma.ArticleTopicUncheckedCreateNestedManyWithoutArticleInput
   serviceActivities?: Prisma.ArticleServiceActivityUncheckedCreateNestedManyWithoutArticleInput
   tags?: Prisma.ArticleTagUncheckedCreateNestedManyWithoutArticleInput
@@ -490,10 +515,10 @@ export type ArticleUpdateInput = {
   articleId?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  subtitle?: Prisma.StringFieldUpdateOperationsInput | string
-  summary?: Prisma.StringFieldUpdateOperationsInput | string
-  body?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumArticleStatusFieldUpdateOperationsInput | $Enums.ArticleStatus
+  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
   scheduledPublish?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -502,8 +527,9 @@ export type ArticleUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   project?: Prisma.ProjectUpdateOneWithoutArticlesNestedInput
-  heroImage?: Prisma.HeroImageUpdateOneWithoutArticlesNestedInput
-  industries?: Prisma.ArticleIndustryUpdateManyWithoutArticleNestedInput
+  featuredImage?: Prisma.MediaUpdateOneRequiredWithoutArticlesNestedInput
+  createdBy?: Prisma.UserUpdateOneRequiredWithoutArticlesNestedInput
+  industry?: Prisma.IndustryUpdateOneWithoutArticlesNestedInput
   topics?: Prisma.ArticleTopicUpdateManyWithoutArticleNestedInput
   serviceActivities?: Prisma.ArticleServiceActivityUpdateManyWithoutArticleNestedInput
   tags?: Prisma.ArticleTagUpdateManyWithoutArticleNestedInput
@@ -518,20 +544,21 @@ export type ArticleUncheckedUpdateInput = {
   articleId?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  subtitle?: Prisma.StringFieldUpdateOperationsInput | string
-  summary?: Prisma.StringFieldUpdateOperationsInput | string
-  body?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumArticleStatusFieldUpdateOperationsInput | $Enums.ArticleStatus
+  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
   scheduledPublish?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   readingTime?: Prisma.IntFieldUpdateOperationsInput | number
   wordCount?: Prisma.IntFieldUpdateOperationsInput | number
-  heroImageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featuredImageId?: Prisma.StringFieldUpdateOperationsInput | string
   projectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  industries?: Prisma.ArticleIndustryUncheckedUpdateManyWithoutArticleNestedInput
   topics?: Prisma.ArticleTopicUncheckedUpdateManyWithoutArticleNestedInput
   serviceActivities?: Prisma.ArticleServiceActivityUncheckedUpdateManyWithoutArticleNestedInput
   tags?: Prisma.ArticleTagUncheckedUpdateManyWithoutArticleNestedInput
@@ -546,17 +573,19 @@ export type ArticleCreateManyInput = {
   articleId?: string
   slug: string
   title: string
-  subtitle: string
-  summary: string
-  body: string
-  status: $Enums.ArticleStatus
+  subtitle?: string | null
+  summary?: string | null
+  content: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.ContentStatus
   scheduledPublish?: Date | string | null
   publishedAt?: Date | string | null
   unpublishedAt?: Date | string | null
   readingTime: number
   wordCount: number
-  heroImageId?: string | null
+  featuredImageId: string
   projectId?: string | null
+  industryId?: string | null
+  createdById: string
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -565,10 +594,10 @@ export type ArticleUpdateManyMutationInput = {
   articleId?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  subtitle?: Prisma.StringFieldUpdateOperationsInput | string
-  summary?: Prisma.StringFieldUpdateOperationsInput | string
-  body?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumArticleStatusFieldUpdateOperationsInput | $Enums.ArticleStatus
+  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
   scheduledPublish?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -582,19 +611,31 @@ export type ArticleUncheckedUpdateManyInput = {
   articleId?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  subtitle?: Prisma.StringFieldUpdateOperationsInput | string
-  summary?: Prisma.StringFieldUpdateOperationsInput | string
-  body?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumArticleStatusFieldUpdateOperationsInput | $Enums.ArticleStatus
+  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
   scheduledPublish?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   readingTime?: Prisma.IntFieldUpdateOperationsInput | number
   wordCount?: Prisma.IntFieldUpdateOperationsInput | number
-  heroImageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featuredImageId?: Prisma.StringFieldUpdateOperationsInput | string
   projectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type ArticleListRelationFilter = {
+  every?: Prisma.ArticleWhereInput
+  some?: Prisma.ArticleWhereInput
+  none?: Prisma.ArticleWhereInput
+}
+
+export type ArticleOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
 export type ArticleCountOrderByAggregateInput = {
@@ -603,15 +644,17 @@ export type ArticleCountOrderByAggregateInput = {
   title?: Prisma.SortOrder
   subtitle?: Prisma.SortOrder
   summary?: Prisma.SortOrder
-  body?: Prisma.SortOrder
+  content?: Prisma.SortOrder
   status?: Prisma.SortOrder
   scheduledPublish?: Prisma.SortOrder
   publishedAt?: Prisma.SortOrder
   unpublishedAt?: Prisma.SortOrder
   readingTime?: Prisma.SortOrder
   wordCount?: Prisma.SortOrder
-  heroImageId?: Prisma.SortOrder
+  featuredImageId?: Prisma.SortOrder
   projectId?: Prisma.SortOrder
+  industryId?: Prisma.SortOrder
+  createdById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -627,15 +670,16 @@ export type ArticleMaxOrderByAggregateInput = {
   title?: Prisma.SortOrder
   subtitle?: Prisma.SortOrder
   summary?: Prisma.SortOrder
-  body?: Prisma.SortOrder
   status?: Prisma.SortOrder
   scheduledPublish?: Prisma.SortOrder
   publishedAt?: Prisma.SortOrder
   unpublishedAt?: Prisma.SortOrder
   readingTime?: Prisma.SortOrder
   wordCount?: Prisma.SortOrder
-  heroImageId?: Prisma.SortOrder
+  featuredImageId?: Prisma.SortOrder
   projectId?: Prisma.SortOrder
+  industryId?: Prisma.SortOrder
+  createdById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -646,15 +690,16 @@ export type ArticleMinOrderByAggregateInput = {
   title?: Prisma.SortOrder
   subtitle?: Prisma.SortOrder
   summary?: Prisma.SortOrder
-  body?: Prisma.SortOrder
   status?: Prisma.SortOrder
   scheduledPublish?: Prisma.SortOrder
   publishedAt?: Prisma.SortOrder
   unpublishedAt?: Prisma.SortOrder
   readingTime?: Prisma.SortOrder
   wordCount?: Prisma.SortOrder
-  heroImageId?: Prisma.SortOrder
+  featuredImageId?: Prisma.SortOrder
   projectId?: Prisma.SortOrder
+  industryId?: Prisma.SortOrder
+  createdById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -669,32 +714,92 @@ export type ArticleScalarRelationFilter = {
   isNot?: Prisma.ArticleWhereInput
 }
 
-export type ArticleListRelationFilter = {
-  every?: Prisma.ArticleWhereInput
-  some?: Prisma.ArticleWhereInput
-  none?: Prisma.ArticleWhereInput
+export type ArticleCreateNestedManyWithoutCreatedByInput = {
+  create?: Prisma.XOR<Prisma.ArticleCreateWithoutCreatedByInput, Prisma.ArticleUncheckedCreateWithoutCreatedByInput> | Prisma.ArticleCreateWithoutCreatedByInput[] | Prisma.ArticleUncheckedCreateWithoutCreatedByInput[]
+  connectOrCreate?: Prisma.ArticleCreateOrConnectWithoutCreatedByInput | Prisma.ArticleCreateOrConnectWithoutCreatedByInput[]
+  createMany?: Prisma.ArticleCreateManyCreatedByInputEnvelope
+  connect?: Prisma.ArticleWhereUniqueInput | Prisma.ArticleWhereUniqueInput[]
 }
 
-export type ArticleOrderByRelationAggregateInput = {
-  _count?: Prisma.SortOrder
+export type ArticleUncheckedCreateNestedManyWithoutCreatedByInput = {
+  create?: Prisma.XOR<Prisma.ArticleCreateWithoutCreatedByInput, Prisma.ArticleUncheckedCreateWithoutCreatedByInput> | Prisma.ArticleCreateWithoutCreatedByInput[] | Prisma.ArticleUncheckedCreateWithoutCreatedByInput[]
+  connectOrCreate?: Prisma.ArticleCreateOrConnectWithoutCreatedByInput | Prisma.ArticleCreateOrConnectWithoutCreatedByInput[]
+  createMany?: Prisma.ArticleCreateManyCreatedByInputEnvelope
+  connect?: Prisma.ArticleWhereUniqueInput | Prisma.ArticleWhereUniqueInput[]
 }
 
-export type EnumArticleStatusFieldUpdateOperationsInput = {
-  set?: $Enums.ArticleStatus
+export type ArticleUpdateManyWithoutCreatedByNestedInput = {
+  create?: Prisma.XOR<Prisma.ArticleCreateWithoutCreatedByInput, Prisma.ArticleUncheckedCreateWithoutCreatedByInput> | Prisma.ArticleCreateWithoutCreatedByInput[] | Prisma.ArticleUncheckedCreateWithoutCreatedByInput[]
+  connectOrCreate?: Prisma.ArticleCreateOrConnectWithoutCreatedByInput | Prisma.ArticleCreateOrConnectWithoutCreatedByInput[]
+  upsert?: Prisma.ArticleUpsertWithWhereUniqueWithoutCreatedByInput | Prisma.ArticleUpsertWithWhereUniqueWithoutCreatedByInput[]
+  createMany?: Prisma.ArticleCreateManyCreatedByInputEnvelope
+  set?: Prisma.ArticleWhereUniqueInput | Prisma.ArticleWhereUniqueInput[]
+  disconnect?: Prisma.ArticleWhereUniqueInput | Prisma.ArticleWhereUniqueInput[]
+  delete?: Prisma.ArticleWhereUniqueInput | Prisma.ArticleWhereUniqueInput[]
+  connect?: Prisma.ArticleWhereUniqueInput | Prisma.ArticleWhereUniqueInput[]
+  update?: Prisma.ArticleUpdateWithWhereUniqueWithoutCreatedByInput | Prisma.ArticleUpdateWithWhereUniqueWithoutCreatedByInput[]
+  updateMany?: Prisma.ArticleUpdateManyWithWhereWithoutCreatedByInput | Prisma.ArticleUpdateManyWithWhereWithoutCreatedByInput[]
+  deleteMany?: Prisma.ArticleScalarWhereInput | Prisma.ArticleScalarWhereInput[]
 }
 
-export type ArticleCreateNestedOneWithoutIndustriesInput = {
-  create?: Prisma.XOR<Prisma.ArticleCreateWithoutIndustriesInput, Prisma.ArticleUncheckedCreateWithoutIndustriesInput>
-  connectOrCreate?: Prisma.ArticleCreateOrConnectWithoutIndustriesInput
-  connect?: Prisma.ArticleWhereUniqueInput
+export type ArticleUncheckedUpdateManyWithoutCreatedByNestedInput = {
+  create?: Prisma.XOR<Prisma.ArticleCreateWithoutCreatedByInput, Prisma.ArticleUncheckedCreateWithoutCreatedByInput> | Prisma.ArticleCreateWithoutCreatedByInput[] | Prisma.ArticleUncheckedCreateWithoutCreatedByInput[]
+  connectOrCreate?: Prisma.ArticleCreateOrConnectWithoutCreatedByInput | Prisma.ArticleCreateOrConnectWithoutCreatedByInput[]
+  upsert?: Prisma.ArticleUpsertWithWhereUniqueWithoutCreatedByInput | Prisma.ArticleUpsertWithWhereUniqueWithoutCreatedByInput[]
+  createMany?: Prisma.ArticleCreateManyCreatedByInputEnvelope
+  set?: Prisma.ArticleWhereUniqueInput | Prisma.ArticleWhereUniqueInput[]
+  disconnect?: Prisma.ArticleWhereUniqueInput | Prisma.ArticleWhereUniqueInput[]
+  delete?: Prisma.ArticleWhereUniqueInput | Prisma.ArticleWhereUniqueInput[]
+  connect?: Prisma.ArticleWhereUniqueInput | Prisma.ArticleWhereUniqueInput[]
+  update?: Prisma.ArticleUpdateWithWhereUniqueWithoutCreatedByInput | Prisma.ArticleUpdateWithWhereUniqueWithoutCreatedByInput[]
+  updateMany?: Prisma.ArticleUpdateManyWithWhereWithoutCreatedByInput | Prisma.ArticleUpdateManyWithWhereWithoutCreatedByInput[]
+  deleteMany?: Prisma.ArticleScalarWhereInput | Prisma.ArticleScalarWhereInput[]
 }
 
-export type ArticleUpdateOneRequiredWithoutIndustriesNestedInput = {
-  create?: Prisma.XOR<Prisma.ArticleCreateWithoutIndustriesInput, Prisma.ArticleUncheckedCreateWithoutIndustriesInput>
-  connectOrCreate?: Prisma.ArticleCreateOrConnectWithoutIndustriesInput
-  upsert?: Prisma.ArticleUpsertWithoutIndustriesInput
-  connect?: Prisma.ArticleWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.ArticleUpdateToOneWithWhereWithoutIndustriesInput, Prisma.ArticleUpdateWithoutIndustriesInput>, Prisma.ArticleUncheckedUpdateWithoutIndustriesInput>
+export type ArticleCreateNestedManyWithoutIndustryInput = {
+  create?: Prisma.XOR<Prisma.ArticleCreateWithoutIndustryInput, Prisma.ArticleUncheckedCreateWithoutIndustryInput> | Prisma.ArticleCreateWithoutIndustryInput[] | Prisma.ArticleUncheckedCreateWithoutIndustryInput[]
+  connectOrCreate?: Prisma.ArticleCreateOrConnectWithoutIndustryInput | Prisma.ArticleCreateOrConnectWithoutIndustryInput[]
+  createMany?: Prisma.ArticleCreateManyIndustryInputEnvelope
+  connect?: Prisma.ArticleWhereUniqueInput | Prisma.ArticleWhereUniqueInput[]
+}
+
+export type ArticleUncheckedCreateNestedManyWithoutIndustryInput = {
+  create?: Prisma.XOR<Prisma.ArticleCreateWithoutIndustryInput, Prisma.ArticleUncheckedCreateWithoutIndustryInput> | Prisma.ArticleCreateWithoutIndustryInput[] | Prisma.ArticleUncheckedCreateWithoutIndustryInput[]
+  connectOrCreate?: Prisma.ArticleCreateOrConnectWithoutIndustryInput | Prisma.ArticleCreateOrConnectWithoutIndustryInput[]
+  createMany?: Prisma.ArticleCreateManyIndustryInputEnvelope
+  connect?: Prisma.ArticleWhereUniqueInput | Prisma.ArticleWhereUniqueInput[]
+}
+
+export type ArticleUpdateManyWithoutIndustryNestedInput = {
+  create?: Prisma.XOR<Prisma.ArticleCreateWithoutIndustryInput, Prisma.ArticleUncheckedCreateWithoutIndustryInput> | Prisma.ArticleCreateWithoutIndustryInput[] | Prisma.ArticleUncheckedCreateWithoutIndustryInput[]
+  connectOrCreate?: Prisma.ArticleCreateOrConnectWithoutIndustryInput | Prisma.ArticleCreateOrConnectWithoutIndustryInput[]
+  upsert?: Prisma.ArticleUpsertWithWhereUniqueWithoutIndustryInput | Prisma.ArticleUpsertWithWhereUniqueWithoutIndustryInput[]
+  createMany?: Prisma.ArticleCreateManyIndustryInputEnvelope
+  set?: Prisma.ArticleWhereUniqueInput | Prisma.ArticleWhereUniqueInput[]
+  disconnect?: Prisma.ArticleWhereUniqueInput | Prisma.ArticleWhereUniqueInput[]
+  delete?: Prisma.ArticleWhereUniqueInput | Prisma.ArticleWhereUniqueInput[]
+  connect?: Prisma.ArticleWhereUniqueInput | Prisma.ArticleWhereUniqueInput[]
+  update?: Prisma.ArticleUpdateWithWhereUniqueWithoutIndustryInput | Prisma.ArticleUpdateWithWhereUniqueWithoutIndustryInput[]
+  updateMany?: Prisma.ArticleUpdateManyWithWhereWithoutIndustryInput | Prisma.ArticleUpdateManyWithWhereWithoutIndustryInput[]
+  deleteMany?: Prisma.ArticleScalarWhereInput | Prisma.ArticleScalarWhereInput[]
+}
+
+export type ArticleUncheckedUpdateManyWithoutIndustryNestedInput = {
+  create?: Prisma.XOR<Prisma.ArticleCreateWithoutIndustryInput, Prisma.ArticleUncheckedCreateWithoutIndustryInput> | Prisma.ArticleCreateWithoutIndustryInput[] | Prisma.ArticleUncheckedCreateWithoutIndustryInput[]
+  connectOrCreate?: Prisma.ArticleCreateOrConnectWithoutIndustryInput | Prisma.ArticleCreateOrConnectWithoutIndustryInput[]
+  upsert?: Prisma.ArticleUpsertWithWhereUniqueWithoutIndustryInput | Prisma.ArticleUpsertWithWhereUniqueWithoutIndustryInput[]
+  createMany?: Prisma.ArticleCreateManyIndustryInputEnvelope
+  set?: Prisma.ArticleWhereUniqueInput | Prisma.ArticleWhereUniqueInput[]
+  disconnect?: Prisma.ArticleWhereUniqueInput | Prisma.ArticleWhereUniqueInput[]
+  delete?: Prisma.ArticleWhereUniqueInput | Prisma.ArticleWhereUniqueInput[]
+  connect?: Prisma.ArticleWhereUniqueInput | Prisma.ArticleWhereUniqueInput[]
+  update?: Prisma.ArticleUpdateWithWhereUniqueWithoutIndustryInput | Prisma.ArticleUpdateWithWhereUniqueWithoutIndustryInput[]
+  updateMany?: Prisma.ArticleUpdateManyWithWhereWithoutIndustryInput | Prisma.ArticleUpdateManyWithWhereWithoutIndustryInput[]
+  deleteMany?: Prisma.ArticleScalarWhereInput | Prisma.ArticleScalarWhereInput[]
+}
+
+export type EnumContentStatusFieldUpdateOperationsInput = {
+  set?: $Enums.ContentStatus
 }
 
 export type ArticleCreateNestedOneWithoutTopicsInput = {
@@ -781,45 +886,45 @@ export type ArticleUpdateOneRequiredWithoutCommentsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ArticleUpdateToOneWithWhereWithoutCommentsInput, Prisma.ArticleUpdateWithoutCommentsInput>, Prisma.ArticleUncheckedUpdateWithoutCommentsInput>
 }
 
-export type ArticleCreateNestedManyWithoutHeroImageInput = {
-  create?: Prisma.XOR<Prisma.ArticleCreateWithoutHeroImageInput, Prisma.ArticleUncheckedCreateWithoutHeroImageInput> | Prisma.ArticleCreateWithoutHeroImageInput[] | Prisma.ArticleUncheckedCreateWithoutHeroImageInput[]
-  connectOrCreate?: Prisma.ArticleCreateOrConnectWithoutHeroImageInput | Prisma.ArticleCreateOrConnectWithoutHeroImageInput[]
-  createMany?: Prisma.ArticleCreateManyHeroImageInputEnvelope
+export type ArticleCreateNestedManyWithoutFeaturedImageInput = {
+  create?: Prisma.XOR<Prisma.ArticleCreateWithoutFeaturedImageInput, Prisma.ArticleUncheckedCreateWithoutFeaturedImageInput> | Prisma.ArticleCreateWithoutFeaturedImageInput[] | Prisma.ArticleUncheckedCreateWithoutFeaturedImageInput[]
+  connectOrCreate?: Prisma.ArticleCreateOrConnectWithoutFeaturedImageInput | Prisma.ArticleCreateOrConnectWithoutFeaturedImageInput[]
+  createMany?: Prisma.ArticleCreateManyFeaturedImageInputEnvelope
   connect?: Prisma.ArticleWhereUniqueInput | Prisma.ArticleWhereUniqueInput[]
 }
 
-export type ArticleUncheckedCreateNestedManyWithoutHeroImageInput = {
-  create?: Prisma.XOR<Prisma.ArticleCreateWithoutHeroImageInput, Prisma.ArticleUncheckedCreateWithoutHeroImageInput> | Prisma.ArticleCreateWithoutHeroImageInput[] | Prisma.ArticleUncheckedCreateWithoutHeroImageInput[]
-  connectOrCreate?: Prisma.ArticleCreateOrConnectWithoutHeroImageInput | Prisma.ArticleCreateOrConnectWithoutHeroImageInput[]
-  createMany?: Prisma.ArticleCreateManyHeroImageInputEnvelope
+export type ArticleUncheckedCreateNestedManyWithoutFeaturedImageInput = {
+  create?: Prisma.XOR<Prisma.ArticleCreateWithoutFeaturedImageInput, Prisma.ArticleUncheckedCreateWithoutFeaturedImageInput> | Prisma.ArticleCreateWithoutFeaturedImageInput[] | Prisma.ArticleUncheckedCreateWithoutFeaturedImageInput[]
+  connectOrCreate?: Prisma.ArticleCreateOrConnectWithoutFeaturedImageInput | Prisma.ArticleCreateOrConnectWithoutFeaturedImageInput[]
+  createMany?: Prisma.ArticleCreateManyFeaturedImageInputEnvelope
   connect?: Prisma.ArticleWhereUniqueInput | Prisma.ArticleWhereUniqueInput[]
 }
 
-export type ArticleUpdateManyWithoutHeroImageNestedInput = {
-  create?: Prisma.XOR<Prisma.ArticleCreateWithoutHeroImageInput, Prisma.ArticleUncheckedCreateWithoutHeroImageInput> | Prisma.ArticleCreateWithoutHeroImageInput[] | Prisma.ArticleUncheckedCreateWithoutHeroImageInput[]
-  connectOrCreate?: Prisma.ArticleCreateOrConnectWithoutHeroImageInput | Prisma.ArticleCreateOrConnectWithoutHeroImageInput[]
-  upsert?: Prisma.ArticleUpsertWithWhereUniqueWithoutHeroImageInput | Prisma.ArticleUpsertWithWhereUniqueWithoutHeroImageInput[]
-  createMany?: Prisma.ArticleCreateManyHeroImageInputEnvelope
+export type ArticleUpdateManyWithoutFeaturedImageNestedInput = {
+  create?: Prisma.XOR<Prisma.ArticleCreateWithoutFeaturedImageInput, Prisma.ArticleUncheckedCreateWithoutFeaturedImageInput> | Prisma.ArticleCreateWithoutFeaturedImageInput[] | Prisma.ArticleUncheckedCreateWithoutFeaturedImageInput[]
+  connectOrCreate?: Prisma.ArticleCreateOrConnectWithoutFeaturedImageInput | Prisma.ArticleCreateOrConnectWithoutFeaturedImageInput[]
+  upsert?: Prisma.ArticleUpsertWithWhereUniqueWithoutFeaturedImageInput | Prisma.ArticleUpsertWithWhereUniqueWithoutFeaturedImageInput[]
+  createMany?: Prisma.ArticleCreateManyFeaturedImageInputEnvelope
   set?: Prisma.ArticleWhereUniqueInput | Prisma.ArticleWhereUniqueInput[]
   disconnect?: Prisma.ArticleWhereUniqueInput | Prisma.ArticleWhereUniqueInput[]
   delete?: Prisma.ArticleWhereUniqueInput | Prisma.ArticleWhereUniqueInput[]
   connect?: Prisma.ArticleWhereUniqueInput | Prisma.ArticleWhereUniqueInput[]
-  update?: Prisma.ArticleUpdateWithWhereUniqueWithoutHeroImageInput | Prisma.ArticleUpdateWithWhereUniqueWithoutHeroImageInput[]
-  updateMany?: Prisma.ArticleUpdateManyWithWhereWithoutHeroImageInput | Prisma.ArticleUpdateManyWithWhereWithoutHeroImageInput[]
+  update?: Prisma.ArticleUpdateWithWhereUniqueWithoutFeaturedImageInput | Prisma.ArticleUpdateWithWhereUniqueWithoutFeaturedImageInput[]
+  updateMany?: Prisma.ArticleUpdateManyWithWhereWithoutFeaturedImageInput | Prisma.ArticleUpdateManyWithWhereWithoutFeaturedImageInput[]
   deleteMany?: Prisma.ArticleScalarWhereInput | Prisma.ArticleScalarWhereInput[]
 }
 
-export type ArticleUncheckedUpdateManyWithoutHeroImageNestedInput = {
-  create?: Prisma.XOR<Prisma.ArticleCreateWithoutHeroImageInput, Prisma.ArticleUncheckedCreateWithoutHeroImageInput> | Prisma.ArticleCreateWithoutHeroImageInput[] | Prisma.ArticleUncheckedCreateWithoutHeroImageInput[]
-  connectOrCreate?: Prisma.ArticleCreateOrConnectWithoutHeroImageInput | Prisma.ArticleCreateOrConnectWithoutHeroImageInput[]
-  upsert?: Prisma.ArticleUpsertWithWhereUniqueWithoutHeroImageInput | Prisma.ArticleUpsertWithWhereUniqueWithoutHeroImageInput[]
-  createMany?: Prisma.ArticleCreateManyHeroImageInputEnvelope
+export type ArticleUncheckedUpdateManyWithoutFeaturedImageNestedInput = {
+  create?: Prisma.XOR<Prisma.ArticleCreateWithoutFeaturedImageInput, Prisma.ArticleUncheckedCreateWithoutFeaturedImageInput> | Prisma.ArticleCreateWithoutFeaturedImageInput[] | Prisma.ArticleUncheckedCreateWithoutFeaturedImageInput[]
+  connectOrCreate?: Prisma.ArticleCreateOrConnectWithoutFeaturedImageInput | Prisma.ArticleCreateOrConnectWithoutFeaturedImageInput[]
+  upsert?: Prisma.ArticleUpsertWithWhereUniqueWithoutFeaturedImageInput | Prisma.ArticleUpsertWithWhereUniqueWithoutFeaturedImageInput[]
+  createMany?: Prisma.ArticleCreateManyFeaturedImageInputEnvelope
   set?: Prisma.ArticleWhereUniqueInput | Prisma.ArticleWhereUniqueInput[]
   disconnect?: Prisma.ArticleWhereUniqueInput | Prisma.ArticleWhereUniqueInput[]
   delete?: Prisma.ArticleWhereUniqueInput | Prisma.ArticleWhereUniqueInput[]
   connect?: Prisma.ArticleWhereUniqueInput | Prisma.ArticleWhereUniqueInput[]
-  update?: Prisma.ArticleUpdateWithWhereUniqueWithoutHeroImageInput | Prisma.ArticleUpdateWithWhereUniqueWithoutHeroImageInput[]
-  updateMany?: Prisma.ArticleUpdateManyWithWhereWithoutHeroImageInput | Prisma.ArticleUpdateManyWithWhereWithoutHeroImageInput[]
+  update?: Prisma.ArticleUpdateWithWhereUniqueWithoutFeaturedImageInput | Prisma.ArticleUpdateWithWhereUniqueWithoutFeaturedImageInput[]
+  updateMany?: Prisma.ArticleUpdateManyWithWhereWithoutFeaturedImageInput | Prisma.ArticleUpdateManyWithWhereWithoutFeaturedImageInput[]
   deleteMany?: Prisma.ArticleScalarWhereInput | Prisma.ArticleScalarWhereInput[]
 }
 
@@ -893,14 +998,14 @@ export type ArticleUncheckedUpdateManyWithoutProjectNestedInput = {
   deleteMany?: Prisma.ArticleScalarWhereInput | Prisma.ArticleScalarWhereInput[]
 }
 
-export type ArticleCreateWithoutIndustriesInput = {
+export type ArticleCreateWithoutCreatedByInput = {
   articleId?: string
   slug: string
   title: string
-  subtitle: string
-  summary: string
-  body: string
-  status: $Enums.ArticleStatus
+  subtitle?: string | null
+  summary?: string | null
+  content: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.ContentStatus
   scheduledPublish?: Date | string | null
   publishedAt?: Date | string | null
   unpublishedAt?: Date | string | null
@@ -909,7 +1014,8 @@ export type ArticleCreateWithoutIndustriesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   project?: Prisma.ProjectCreateNestedOneWithoutArticlesInput
-  heroImage?: Prisma.HeroImageCreateNestedOneWithoutArticlesInput
+  featuredImage: Prisma.MediaCreateNestedOneWithoutArticlesInput
+  industry?: Prisma.IndustryCreateNestedOneWithoutArticlesInput
   topics?: Prisma.ArticleTopicCreateNestedManyWithoutArticleInput
   serviceActivities?: Prisma.ArticleServiceActivityCreateNestedManyWithoutArticleInput
   tags?: Prisma.ArticleTagCreateNestedManyWithoutArticleInput
@@ -920,21 +1026,22 @@ export type ArticleCreateWithoutIndustriesInput = {
   comments?: Prisma.ArticleCommentCreateNestedManyWithoutArticleInput
 }
 
-export type ArticleUncheckedCreateWithoutIndustriesInput = {
+export type ArticleUncheckedCreateWithoutCreatedByInput = {
   articleId?: string
   slug: string
   title: string
-  subtitle: string
-  summary: string
-  body: string
-  status: $Enums.ArticleStatus
+  subtitle?: string | null
+  summary?: string | null
+  content: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.ContentStatus
   scheduledPublish?: Date | string | null
   publishedAt?: Date | string | null
   unpublishedAt?: Date | string | null
   readingTime: number
   wordCount: number
-  heroImageId?: string | null
+  featuredImageId: string
   projectId?: string | null
+  industryId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   topics?: Prisma.ArticleTopicUncheckedCreateNestedManyWithoutArticleInput
@@ -947,84 +1054,64 @@ export type ArticleUncheckedCreateWithoutIndustriesInput = {
   comments?: Prisma.ArticleCommentUncheckedCreateNestedManyWithoutArticleInput
 }
 
-export type ArticleCreateOrConnectWithoutIndustriesInput = {
+export type ArticleCreateOrConnectWithoutCreatedByInput = {
   where: Prisma.ArticleWhereUniqueInput
-  create: Prisma.XOR<Prisma.ArticleCreateWithoutIndustriesInput, Prisma.ArticleUncheckedCreateWithoutIndustriesInput>
+  create: Prisma.XOR<Prisma.ArticleCreateWithoutCreatedByInput, Prisma.ArticleUncheckedCreateWithoutCreatedByInput>
 }
 
-export type ArticleUpsertWithoutIndustriesInput = {
-  update: Prisma.XOR<Prisma.ArticleUpdateWithoutIndustriesInput, Prisma.ArticleUncheckedUpdateWithoutIndustriesInput>
-  create: Prisma.XOR<Prisma.ArticleCreateWithoutIndustriesInput, Prisma.ArticleUncheckedCreateWithoutIndustriesInput>
-  where?: Prisma.ArticleWhereInput
+export type ArticleCreateManyCreatedByInputEnvelope = {
+  data: Prisma.ArticleCreateManyCreatedByInput | Prisma.ArticleCreateManyCreatedByInput[]
+  skipDuplicates?: boolean
 }
 
-export type ArticleUpdateToOneWithWhereWithoutIndustriesInput = {
-  where?: Prisma.ArticleWhereInput
-  data: Prisma.XOR<Prisma.ArticleUpdateWithoutIndustriesInput, Prisma.ArticleUncheckedUpdateWithoutIndustriesInput>
+export type ArticleUpsertWithWhereUniqueWithoutCreatedByInput = {
+  where: Prisma.ArticleWhereUniqueInput
+  update: Prisma.XOR<Prisma.ArticleUpdateWithoutCreatedByInput, Prisma.ArticleUncheckedUpdateWithoutCreatedByInput>
+  create: Prisma.XOR<Prisma.ArticleCreateWithoutCreatedByInput, Prisma.ArticleUncheckedCreateWithoutCreatedByInput>
 }
 
-export type ArticleUpdateWithoutIndustriesInput = {
-  articleId?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  subtitle?: Prisma.StringFieldUpdateOperationsInput | string
-  summary?: Prisma.StringFieldUpdateOperationsInput | string
-  body?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumArticleStatusFieldUpdateOperationsInput | $Enums.ArticleStatus
-  scheduledPublish?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  readingTime?: Prisma.IntFieldUpdateOperationsInput | number
-  wordCount?: Prisma.IntFieldUpdateOperationsInput | number
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  project?: Prisma.ProjectUpdateOneWithoutArticlesNestedInput
-  heroImage?: Prisma.HeroImageUpdateOneWithoutArticlesNestedInput
-  topics?: Prisma.ArticleTopicUpdateManyWithoutArticleNestedInput
-  serviceActivities?: Prisma.ArticleServiceActivityUpdateManyWithoutArticleNestedInput
-  tags?: Prisma.ArticleTagUpdateManyWithoutArticleNestedInput
-  authors?: Prisma.ArticleAuthorUpdateManyWithoutArticleNestedInput
-  images?: Prisma.ArticleImageUpdateManyWithoutArticleNestedInput
-  references?: Prisma.ArticleReferenceUpdateManyWithoutArticleNestedInput
-  versions?: Prisma.ArticleVersionUpdateManyWithoutArticleNestedInput
-  comments?: Prisma.ArticleCommentUpdateManyWithoutArticleNestedInput
+export type ArticleUpdateWithWhereUniqueWithoutCreatedByInput = {
+  where: Prisma.ArticleWhereUniqueInput
+  data: Prisma.XOR<Prisma.ArticleUpdateWithoutCreatedByInput, Prisma.ArticleUncheckedUpdateWithoutCreatedByInput>
 }
 
-export type ArticleUncheckedUpdateWithoutIndustriesInput = {
-  articleId?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  subtitle?: Prisma.StringFieldUpdateOperationsInput | string
-  summary?: Prisma.StringFieldUpdateOperationsInput | string
-  body?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumArticleStatusFieldUpdateOperationsInput | $Enums.ArticleStatus
-  scheduledPublish?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  readingTime?: Prisma.IntFieldUpdateOperationsInput | number
-  wordCount?: Prisma.IntFieldUpdateOperationsInput | number
-  heroImageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  projectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  topics?: Prisma.ArticleTopicUncheckedUpdateManyWithoutArticleNestedInput
-  serviceActivities?: Prisma.ArticleServiceActivityUncheckedUpdateManyWithoutArticleNestedInput
-  tags?: Prisma.ArticleTagUncheckedUpdateManyWithoutArticleNestedInput
-  authors?: Prisma.ArticleAuthorUncheckedUpdateManyWithoutArticleNestedInput
-  images?: Prisma.ArticleImageUncheckedUpdateManyWithoutArticleNestedInput
-  references?: Prisma.ArticleReferenceUncheckedUpdateManyWithoutArticleNestedInput
-  versions?: Prisma.ArticleVersionUncheckedUpdateManyWithoutArticleNestedInput
-  comments?: Prisma.ArticleCommentUncheckedUpdateManyWithoutArticleNestedInput
+export type ArticleUpdateManyWithWhereWithoutCreatedByInput = {
+  where: Prisma.ArticleScalarWhereInput
+  data: Prisma.XOR<Prisma.ArticleUpdateManyMutationInput, Prisma.ArticleUncheckedUpdateManyWithoutCreatedByInput>
 }
 
-export type ArticleCreateWithoutTopicsInput = {
+export type ArticleScalarWhereInput = {
+  AND?: Prisma.ArticleScalarWhereInput | Prisma.ArticleScalarWhereInput[]
+  OR?: Prisma.ArticleScalarWhereInput[]
+  NOT?: Prisma.ArticleScalarWhereInput | Prisma.ArticleScalarWhereInput[]
+  articleId?: Prisma.StringFilter<"Article"> | string
+  slug?: Prisma.StringFilter<"Article"> | string
+  title?: Prisma.StringFilter<"Article"> | string
+  subtitle?: Prisma.StringNullableFilter<"Article"> | string | null
+  summary?: Prisma.StringNullableFilter<"Article"> | string | null
+  content?: Prisma.JsonFilter<"Article">
+  status?: Prisma.EnumContentStatusFilter<"Article"> | $Enums.ContentStatus
+  scheduledPublish?: Prisma.DateTimeNullableFilter<"Article"> | Date | string | null
+  publishedAt?: Prisma.DateTimeNullableFilter<"Article"> | Date | string | null
+  unpublishedAt?: Prisma.DateTimeNullableFilter<"Article"> | Date | string | null
+  readingTime?: Prisma.IntFilter<"Article"> | number
+  wordCount?: Prisma.IntFilter<"Article"> | number
+  featuredImageId?: Prisma.StringFilter<"Article"> | string
+  projectId?: Prisma.StringNullableFilter<"Article"> | string | null
+  industryId?: Prisma.StringNullableFilter<"Article"> | string | null
+  createdById?: Prisma.StringFilter<"Article"> | string
+  createdAt?: Prisma.DateTimeFilter<"Article"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Article"> | Date | string
+}
+
+export type ArticleCreateWithoutIndustryInput = {
   articleId?: string
   slug: string
   title: string
-  subtitle: string
-  summary: string
-  body: string
-  status: $Enums.ArticleStatus
+  subtitle?: string | null
+  summary?: string | null
+  content: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.ContentStatus
   scheduledPublish?: Date | string | null
   publishedAt?: Date | string | null
   unpublishedAt?: Date | string | null
@@ -1033,8 +1120,91 @@ export type ArticleCreateWithoutTopicsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   project?: Prisma.ProjectCreateNestedOneWithoutArticlesInput
-  heroImage?: Prisma.HeroImageCreateNestedOneWithoutArticlesInput
-  industries?: Prisma.ArticleIndustryCreateNestedManyWithoutArticleInput
+  featuredImage: Prisma.MediaCreateNestedOneWithoutArticlesInput
+  createdBy: Prisma.UserCreateNestedOneWithoutArticlesInput
+  topics?: Prisma.ArticleTopicCreateNestedManyWithoutArticleInput
+  serviceActivities?: Prisma.ArticleServiceActivityCreateNestedManyWithoutArticleInput
+  tags?: Prisma.ArticleTagCreateNestedManyWithoutArticleInput
+  authors?: Prisma.ArticleAuthorCreateNestedManyWithoutArticleInput
+  images?: Prisma.ArticleImageCreateNestedManyWithoutArticleInput
+  references?: Prisma.ArticleReferenceCreateNestedManyWithoutArticleInput
+  versions?: Prisma.ArticleVersionCreateNestedManyWithoutArticleInput
+  comments?: Prisma.ArticleCommentCreateNestedManyWithoutArticleInput
+}
+
+export type ArticleUncheckedCreateWithoutIndustryInput = {
+  articleId?: string
+  slug: string
+  title: string
+  subtitle?: string | null
+  summary?: string | null
+  content: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.ContentStatus
+  scheduledPublish?: Date | string | null
+  publishedAt?: Date | string | null
+  unpublishedAt?: Date | string | null
+  readingTime: number
+  wordCount: number
+  featuredImageId: string
+  projectId?: string | null
+  createdById: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  topics?: Prisma.ArticleTopicUncheckedCreateNestedManyWithoutArticleInput
+  serviceActivities?: Prisma.ArticleServiceActivityUncheckedCreateNestedManyWithoutArticleInput
+  tags?: Prisma.ArticleTagUncheckedCreateNestedManyWithoutArticleInput
+  authors?: Prisma.ArticleAuthorUncheckedCreateNestedManyWithoutArticleInput
+  images?: Prisma.ArticleImageUncheckedCreateNestedManyWithoutArticleInput
+  references?: Prisma.ArticleReferenceUncheckedCreateNestedManyWithoutArticleInput
+  versions?: Prisma.ArticleVersionUncheckedCreateNestedManyWithoutArticleInput
+  comments?: Prisma.ArticleCommentUncheckedCreateNestedManyWithoutArticleInput
+}
+
+export type ArticleCreateOrConnectWithoutIndustryInput = {
+  where: Prisma.ArticleWhereUniqueInput
+  create: Prisma.XOR<Prisma.ArticleCreateWithoutIndustryInput, Prisma.ArticleUncheckedCreateWithoutIndustryInput>
+}
+
+export type ArticleCreateManyIndustryInputEnvelope = {
+  data: Prisma.ArticleCreateManyIndustryInput | Prisma.ArticleCreateManyIndustryInput[]
+  skipDuplicates?: boolean
+}
+
+export type ArticleUpsertWithWhereUniqueWithoutIndustryInput = {
+  where: Prisma.ArticleWhereUniqueInput
+  update: Prisma.XOR<Prisma.ArticleUpdateWithoutIndustryInput, Prisma.ArticleUncheckedUpdateWithoutIndustryInput>
+  create: Prisma.XOR<Prisma.ArticleCreateWithoutIndustryInput, Prisma.ArticleUncheckedCreateWithoutIndustryInput>
+}
+
+export type ArticleUpdateWithWhereUniqueWithoutIndustryInput = {
+  where: Prisma.ArticleWhereUniqueInput
+  data: Prisma.XOR<Prisma.ArticleUpdateWithoutIndustryInput, Prisma.ArticleUncheckedUpdateWithoutIndustryInput>
+}
+
+export type ArticleUpdateManyWithWhereWithoutIndustryInput = {
+  where: Prisma.ArticleScalarWhereInput
+  data: Prisma.XOR<Prisma.ArticleUpdateManyMutationInput, Prisma.ArticleUncheckedUpdateManyWithoutIndustryInput>
+}
+
+export type ArticleCreateWithoutTopicsInput = {
+  articleId?: string
+  slug: string
+  title: string
+  subtitle?: string | null
+  summary?: string | null
+  content: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.ContentStatus
+  scheduledPublish?: Date | string | null
+  publishedAt?: Date | string | null
+  unpublishedAt?: Date | string | null
+  readingTime: number
+  wordCount: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  project?: Prisma.ProjectCreateNestedOneWithoutArticlesInput
+  featuredImage: Prisma.MediaCreateNestedOneWithoutArticlesInput
+  createdBy: Prisma.UserCreateNestedOneWithoutArticlesInput
+  industry?: Prisma.IndustryCreateNestedOneWithoutArticlesInput
   serviceActivities?: Prisma.ArticleServiceActivityCreateNestedManyWithoutArticleInput
   tags?: Prisma.ArticleTagCreateNestedManyWithoutArticleInput
   authors?: Prisma.ArticleAuthorCreateNestedManyWithoutArticleInput
@@ -1048,20 +1218,21 @@ export type ArticleUncheckedCreateWithoutTopicsInput = {
   articleId?: string
   slug: string
   title: string
-  subtitle: string
-  summary: string
-  body: string
-  status: $Enums.ArticleStatus
+  subtitle?: string | null
+  summary?: string | null
+  content: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.ContentStatus
   scheduledPublish?: Date | string | null
   publishedAt?: Date | string | null
   unpublishedAt?: Date | string | null
   readingTime: number
   wordCount: number
-  heroImageId?: string | null
+  featuredImageId: string
   projectId?: string | null
+  industryId?: string | null
+  createdById: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  industries?: Prisma.ArticleIndustryUncheckedCreateNestedManyWithoutArticleInput
   serviceActivities?: Prisma.ArticleServiceActivityUncheckedCreateNestedManyWithoutArticleInput
   tags?: Prisma.ArticleTagUncheckedCreateNestedManyWithoutArticleInput
   authors?: Prisma.ArticleAuthorUncheckedCreateNestedManyWithoutArticleInput
@@ -1091,10 +1262,10 @@ export type ArticleUpdateWithoutTopicsInput = {
   articleId?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  subtitle?: Prisma.StringFieldUpdateOperationsInput | string
-  summary?: Prisma.StringFieldUpdateOperationsInput | string
-  body?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumArticleStatusFieldUpdateOperationsInput | $Enums.ArticleStatus
+  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
   scheduledPublish?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1103,8 +1274,9 @@ export type ArticleUpdateWithoutTopicsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   project?: Prisma.ProjectUpdateOneWithoutArticlesNestedInput
-  heroImage?: Prisma.HeroImageUpdateOneWithoutArticlesNestedInput
-  industries?: Prisma.ArticleIndustryUpdateManyWithoutArticleNestedInput
+  featuredImage?: Prisma.MediaUpdateOneRequiredWithoutArticlesNestedInput
+  createdBy?: Prisma.UserUpdateOneRequiredWithoutArticlesNestedInput
+  industry?: Prisma.IndustryUpdateOneWithoutArticlesNestedInput
   serviceActivities?: Prisma.ArticleServiceActivityUpdateManyWithoutArticleNestedInput
   tags?: Prisma.ArticleTagUpdateManyWithoutArticleNestedInput
   authors?: Prisma.ArticleAuthorUpdateManyWithoutArticleNestedInput
@@ -1118,20 +1290,21 @@ export type ArticleUncheckedUpdateWithoutTopicsInput = {
   articleId?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  subtitle?: Prisma.StringFieldUpdateOperationsInput | string
-  summary?: Prisma.StringFieldUpdateOperationsInput | string
-  body?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumArticleStatusFieldUpdateOperationsInput | $Enums.ArticleStatus
+  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
   scheduledPublish?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   readingTime?: Prisma.IntFieldUpdateOperationsInput | number
   wordCount?: Prisma.IntFieldUpdateOperationsInput | number
-  heroImageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featuredImageId?: Prisma.StringFieldUpdateOperationsInput | string
   projectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  industries?: Prisma.ArticleIndustryUncheckedUpdateManyWithoutArticleNestedInput
   serviceActivities?: Prisma.ArticleServiceActivityUncheckedUpdateManyWithoutArticleNestedInput
   tags?: Prisma.ArticleTagUncheckedUpdateManyWithoutArticleNestedInput
   authors?: Prisma.ArticleAuthorUncheckedUpdateManyWithoutArticleNestedInput
@@ -1145,10 +1318,10 @@ export type ArticleCreateWithoutServiceActivitiesInput = {
   articleId?: string
   slug: string
   title: string
-  subtitle: string
-  summary: string
-  body: string
-  status: $Enums.ArticleStatus
+  subtitle?: string | null
+  summary?: string | null
+  content: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.ContentStatus
   scheduledPublish?: Date | string | null
   publishedAt?: Date | string | null
   unpublishedAt?: Date | string | null
@@ -1157,8 +1330,9 @@ export type ArticleCreateWithoutServiceActivitiesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   project?: Prisma.ProjectCreateNestedOneWithoutArticlesInput
-  heroImage?: Prisma.HeroImageCreateNestedOneWithoutArticlesInput
-  industries?: Prisma.ArticleIndustryCreateNestedManyWithoutArticleInput
+  featuredImage: Prisma.MediaCreateNestedOneWithoutArticlesInput
+  createdBy: Prisma.UserCreateNestedOneWithoutArticlesInput
+  industry?: Prisma.IndustryCreateNestedOneWithoutArticlesInput
   topics?: Prisma.ArticleTopicCreateNestedManyWithoutArticleInput
   tags?: Prisma.ArticleTagCreateNestedManyWithoutArticleInput
   authors?: Prisma.ArticleAuthorCreateNestedManyWithoutArticleInput
@@ -1172,20 +1346,21 @@ export type ArticleUncheckedCreateWithoutServiceActivitiesInput = {
   articleId?: string
   slug: string
   title: string
-  subtitle: string
-  summary: string
-  body: string
-  status: $Enums.ArticleStatus
+  subtitle?: string | null
+  summary?: string | null
+  content: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.ContentStatus
   scheduledPublish?: Date | string | null
   publishedAt?: Date | string | null
   unpublishedAt?: Date | string | null
   readingTime: number
   wordCount: number
-  heroImageId?: string | null
+  featuredImageId: string
   projectId?: string | null
+  industryId?: string | null
+  createdById: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  industries?: Prisma.ArticleIndustryUncheckedCreateNestedManyWithoutArticleInput
   topics?: Prisma.ArticleTopicUncheckedCreateNestedManyWithoutArticleInput
   tags?: Prisma.ArticleTagUncheckedCreateNestedManyWithoutArticleInput
   authors?: Prisma.ArticleAuthorUncheckedCreateNestedManyWithoutArticleInput
@@ -1215,10 +1390,10 @@ export type ArticleUpdateWithoutServiceActivitiesInput = {
   articleId?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  subtitle?: Prisma.StringFieldUpdateOperationsInput | string
-  summary?: Prisma.StringFieldUpdateOperationsInput | string
-  body?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumArticleStatusFieldUpdateOperationsInput | $Enums.ArticleStatus
+  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
   scheduledPublish?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1227,8 +1402,9 @@ export type ArticleUpdateWithoutServiceActivitiesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   project?: Prisma.ProjectUpdateOneWithoutArticlesNestedInput
-  heroImage?: Prisma.HeroImageUpdateOneWithoutArticlesNestedInput
-  industries?: Prisma.ArticleIndustryUpdateManyWithoutArticleNestedInput
+  featuredImage?: Prisma.MediaUpdateOneRequiredWithoutArticlesNestedInput
+  createdBy?: Prisma.UserUpdateOneRequiredWithoutArticlesNestedInput
+  industry?: Prisma.IndustryUpdateOneWithoutArticlesNestedInput
   topics?: Prisma.ArticleTopicUpdateManyWithoutArticleNestedInput
   tags?: Prisma.ArticleTagUpdateManyWithoutArticleNestedInput
   authors?: Prisma.ArticleAuthorUpdateManyWithoutArticleNestedInput
@@ -1242,20 +1418,21 @@ export type ArticleUncheckedUpdateWithoutServiceActivitiesInput = {
   articleId?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  subtitle?: Prisma.StringFieldUpdateOperationsInput | string
-  summary?: Prisma.StringFieldUpdateOperationsInput | string
-  body?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumArticleStatusFieldUpdateOperationsInput | $Enums.ArticleStatus
+  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
   scheduledPublish?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   readingTime?: Prisma.IntFieldUpdateOperationsInput | number
   wordCount?: Prisma.IntFieldUpdateOperationsInput | number
-  heroImageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featuredImageId?: Prisma.StringFieldUpdateOperationsInput | string
   projectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  industries?: Prisma.ArticleIndustryUncheckedUpdateManyWithoutArticleNestedInput
   topics?: Prisma.ArticleTopicUncheckedUpdateManyWithoutArticleNestedInput
   tags?: Prisma.ArticleTagUncheckedUpdateManyWithoutArticleNestedInput
   authors?: Prisma.ArticleAuthorUncheckedUpdateManyWithoutArticleNestedInput
@@ -1269,10 +1446,10 @@ export type ArticleCreateWithoutTagsInput = {
   articleId?: string
   slug: string
   title: string
-  subtitle: string
-  summary: string
-  body: string
-  status: $Enums.ArticleStatus
+  subtitle?: string | null
+  summary?: string | null
+  content: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.ContentStatus
   scheduledPublish?: Date | string | null
   publishedAt?: Date | string | null
   unpublishedAt?: Date | string | null
@@ -1281,8 +1458,9 @@ export type ArticleCreateWithoutTagsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   project?: Prisma.ProjectCreateNestedOneWithoutArticlesInput
-  heroImage?: Prisma.HeroImageCreateNestedOneWithoutArticlesInput
-  industries?: Prisma.ArticleIndustryCreateNestedManyWithoutArticleInput
+  featuredImage: Prisma.MediaCreateNestedOneWithoutArticlesInput
+  createdBy: Prisma.UserCreateNestedOneWithoutArticlesInput
+  industry?: Prisma.IndustryCreateNestedOneWithoutArticlesInput
   topics?: Prisma.ArticleTopicCreateNestedManyWithoutArticleInput
   serviceActivities?: Prisma.ArticleServiceActivityCreateNestedManyWithoutArticleInput
   authors?: Prisma.ArticleAuthorCreateNestedManyWithoutArticleInput
@@ -1296,20 +1474,21 @@ export type ArticleUncheckedCreateWithoutTagsInput = {
   articleId?: string
   slug: string
   title: string
-  subtitle: string
-  summary: string
-  body: string
-  status: $Enums.ArticleStatus
+  subtitle?: string | null
+  summary?: string | null
+  content: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.ContentStatus
   scheduledPublish?: Date | string | null
   publishedAt?: Date | string | null
   unpublishedAt?: Date | string | null
   readingTime: number
   wordCount: number
-  heroImageId?: string | null
+  featuredImageId: string
   projectId?: string | null
+  industryId?: string | null
+  createdById: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  industries?: Prisma.ArticleIndustryUncheckedCreateNestedManyWithoutArticleInput
   topics?: Prisma.ArticleTopicUncheckedCreateNestedManyWithoutArticleInput
   serviceActivities?: Prisma.ArticleServiceActivityUncheckedCreateNestedManyWithoutArticleInput
   authors?: Prisma.ArticleAuthorUncheckedCreateNestedManyWithoutArticleInput
@@ -1339,10 +1518,10 @@ export type ArticleUpdateWithoutTagsInput = {
   articleId?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  subtitle?: Prisma.StringFieldUpdateOperationsInput | string
-  summary?: Prisma.StringFieldUpdateOperationsInput | string
-  body?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumArticleStatusFieldUpdateOperationsInput | $Enums.ArticleStatus
+  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
   scheduledPublish?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1351,8 +1530,9 @@ export type ArticleUpdateWithoutTagsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   project?: Prisma.ProjectUpdateOneWithoutArticlesNestedInput
-  heroImage?: Prisma.HeroImageUpdateOneWithoutArticlesNestedInput
-  industries?: Prisma.ArticleIndustryUpdateManyWithoutArticleNestedInput
+  featuredImage?: Prisma.MediaUpdateOneRequiredWithoutArticlesNestedInput
+  createdBy?: Prisma.UserUpdateOneRequiredWithoutArticlesNestedInput
+  industry?: Prisma.IndustryUpdateOneWithoutArticlesNestedInput
   topics?: Prisma.ArticleTopicUpdateManyWithoutArticleNestedInput
   serviceActivities?: Prisma.ArticleServiceActivityUpdateManyWithoutArticleNestedInput
   authors?: Prisma.ArticleAuthorUpdateManyWithoutArticleNestedInput
@@ -1366,20 +1546,21 @@ export type ArticleUncheckedUpdateWithoutTagsInput = {
   articleId?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  subtitle?: Prisma.StringFieldUpdateOperationsInput | string
-  summary?: Prisma.StringFieldUpdateOperationsInput | string
-  body?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumArticleStatusFieldUpdateOperationsInput | $Enums.ArticleStatus
+  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
   scheduledPublish?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   readingTime?: Prisma.IntFieldUpdateOperationsInput | number
   wordCount?: Prisma.IntFieldUpdateOperationsInput | number
-  heroImageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featuredImageId?: Prisma.StringFieldUpdateOperationsInput | string
   projectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  industries?: Prisma.ArticleIndustryUncheckedUpdateManyWithoutArticleNestedInput
   topics?: Prisma.ArticleTopicUncheckedUpdateManyWithoutArticleNestedInput
   serviceActivities?: Prisma.ArticleServiceActivityUncheckedUpdateManyWithoutArticleNestedInput
   authors?: Prisma.ArticleAuthorUncheckedUpdateManyWithoutArticleNestedInput
@@ -1393,10 +1574,10 @@ export type ArticleCreateWithoutReferencesInput = {
   articleId?: string
   slug: string
   title: string
-  subtitle: string
-  summary: string
-  body: string
-  status: $Enums.ArticleStatus
+  subtitle?: string | null
+  summary?: string | null
+  content: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.ContentStatus
   scheduledPublish?: Date | string | null
   publishedAt?: Date | string | null
   unpublishedAt?: Date | string | null
@@ -1405,8 +1586,9 @@ export type ArticleCreateWithoutReferencesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   project?: Prisma.ProjectCreateNestedOneWithoutArticlesInput
-  heroImage?: Prisma.HeroImageCreateNestedOneWithoutArticlesInput
-  industries?: Prisma.ArticleIndustryCreateNestedManyWithoutArticleInput
+  featuredImage: Prisma.MediaCreateNestedOneWithoutArticlesInput
+  createdBy: Prisma.UserCreateNestedOneWithoutArticlesInput
+  industry?: Prisma.IndustryCreateNestedOneWithoutArticlesInput
   topics?: Prisma.ArticleTopicCreateNestedManyWithoutArticleInput
   serviceActivities?: Prisma.ArticleServiceActivityCreateNestedManyWithoutArticleInput
   tags?: Prisma.ArticleTagCreateNestedManyWithoutArticleInput
@@ -1420,20 +1602,21 @@ export type ArticleUncheckedCreateWithoutReferencesInput = {
   articleId?: string
   slug: string
   title: string
-  subtitle: string
-  summary: string
-  body: string
-  status: $Enums.ArticleStatus
+  subtitle?: string | null
+  summary?: string | null
+  content: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.ContentStatus
   scheduledPublish?: Date | string | null
   publishedAt?: Date | string | null
   unpublishedAt?: Date | string | null
   readingTime: number
   wordCount: number
-  heroImageId?: string | null
+  featuredImageId: string
   projectId?: string | null
+  industryId?: string | null
+  createdById: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  industries?: Prisma.ArticleIndustryUncheckedCreateNestedManyWithoutArticleInput
   topics?: Prisma.ArticleTopicUncheckedCreateNestedManyWithoutArticleInput
   serviceActivities?: Prisma.ArticleServiceActivityUncheckedCreateNestedManyWithoutArticleInput
   tags?: Prisma.ArticleTagUncheckedCreateNestedManyWithoutArticleInput
@@ -1463,10 +1646,10 @@ export type ArticleUpdateWithoutReferencesInput = {
   articleId?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  subtitle?: Prisma.StringFieldUpdateOperationsInput | string
-  summary?: Prisma.StringFieldUpdateOperationsInput | string
-  body?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumArticleStatusFieldUpdateOperationsInput | $Enums.ArticleStatus
+  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
   scheduledPublish?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1475,8 +1658,9 @@ export type ArticleUpdateWithoutReferencesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   project?: Prisma.ProjectUpdateOneWithoutArticlesNestedInput
-  heroImage?: Prisma.HeroImageUpdateOneWithoutArticlesNestedInput
-  industries?: Prisma.ArticleIndustryUpdateManyWithoutArticleNestedInput
+  featuredImage?: Prisma.MediaUpdateOneRequiredWithoutArticlesNestedInput
+  createdBy?: Prisma.UserUpdateOneRequiredWithoutArticlesNestedInput
+  industry?: Prisma.IndustryUpdateOneWithoutArticlesNestedInput
   topics?: Prisma.ArticleTopicUpdateManyWithoutArticleNestedInput
   serviceActivities?: Prisma.ArticleServiceActivityUpdateManyWithoutArticleNestedInput
   tags?: Prisma.ArticleTagUpdateManyWithoutArticleNestedInput
@@ -1490,20 +1674,21 @@ export type ArticleUncheckedUpdateWithoutReferencesInput = {
   articleId?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  subtitle?: Prisma.StringFieldUpdateOperationsInput | string
-  summary?: Prisma.StringFieldUpdateOperationsInput | string
-  body?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumArticleStatusFieldUpdateOperationsInput | $Enums.ArticleStatus
+  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
   scheduledPublish?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   readingTime?: Prisma.IntFieldUpdateOperationsInput | number
   wordCount?: Prisma.IntFieldUpdateOperationsInput | number
-  heroImageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featuredImageId?: Prisma.StringFieldUpdateOperationsInput | string
   projectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  industries?: Prisma.ArticleIndustryUncheckedUpdateManyWithoutArticleNestedInput
   topics?: Prisma.ArticleTopicUncheckedUpdateManyWithoutArticleNestedInput
   serviceActivities?: Prisma.ArticleServiceActivityUncheckedUpdateManyWithoutArticleNestedInput
   tags?: Prisma.ArticleTagUncheckedUpdateManyWithoutArticleNestedInput
@@ -1517,10 +1702,10 @@ export type ArticleCreateWithoutVersionsInput = {
   articleId?: string
   slug: string
   title: string
-  subtitle: string
-  summary: string
-  body: string
-  status: $Enums.ArticleStatus
+  subtitle?: string | null
+  summary?: string | null
+  content: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.ContentStatus
   scheduledPublish?: Date | string | null
   publishedAt?: Date | string | null
   unpublishedAt?: Date | string | null
@@ -1529,8 +1714,9 @@ export type ArticleCreateWithoutVersionsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   project?: Prisma.ProjectCreateNestedOneWithoutArticlesInput
-  heroImage?: Prisma.HeroImageCreateNestedOneWithoutArticlesInput
-  industries?: Prisma.ArticleIndustryCreateNestedManyWithoutArticleInput
+  featuredImage: Prisma.MediaCreateNestedOneWithoutArticlesInput
+  createdBy: Prisma.UserCreateNestedOneWithoutArticlesInput
+  industry?: Prisma.IndustryCreateNestedOneWithoutArticlesInput
   topics?: Prisma.ArticleTopicCreateNestedManyWithoutArticleInput
   serviceActivities?: Prisma.ArticleServiceActivityCreateNestedManyWithoutArticleInput
   tags?: Prisma.ArticleTagCreateNestedManyWithoutArticleInput
@@ -1544,20 +1730,21 @@ export type ArticleUncheckedCreateWithoutVersionsInput = {
   articleId?: string
   slug: string
   title: string
-  subtitle: string
-  summary: string
-  body: string
-  status: $Enums.ArticleStatus
+  subtitle?: string | null
+  summary?: string | null
+  content: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.ContentStatus
   scheduledPublish?: Date | string | null
   publishedAt?: Date | string | null
   unpublishedAt?: Date | string | null
   readingTime: number
   wordCount: number
-  heroImageId?: string | null
+  featuredImageId: string
   projectId?: string | null
+  industryId?: string | null
+  createdById: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  industries?: Prisma.ArticleIndustryUncheckedCreateNestedManyWithoutArticleInput
   topics?: Prisma.ArticleTopicUncheckedCreateNestedManyWithoutArticleInput
   serviceActivities?: Prisma.ArticleServiceActivityUncheckedCreateNestedManyWithoutArticleInput
   tags?: Prisma.ArticleTagUncheckedCreateNestedManyWithoutArticleInput
@@ -1587,10 +1774,10 @@ export type ArticleUpdateWithoutVersionsInput = {
   articleId?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  subtitle?: Prisma.StringFieldUpdateOperationsInput | string
-  summary?: Prisma.StringFieldUpdateOperationsInput | string
-  body?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumArticleStatusFieldUpdateOperationsInput | $Enums.ArticleStatus
+  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
   scheduledPublish?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1599,8 +1786,9 @@ export type ArticleUpdateWithoutVersionsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   project?: Prisma.ProjectUpdateOneWithoutArticlesNestedInput
-  heroImage?: Prisma.HeroImageUpdateOneWithoutArticlesNestedInput
-  industries?: Prisma.ArticleIndustryUpdateManyWithoutArticleNestedInput
+  featuredImage?: Prisma.MediaUpdateOneRequiredWithoutArticlesNestedInput
+  createdBy?: Prisma.UserUpdateOneRequiredWithoutArticlesNestedInput
+  industry?: Prisma.IndustryUpdateOneWithoutArticlesNestedInput
   topics?: Prisma.ArticleTopicUpdateManyWithoutArticleNestedInput
   serviceActivities?: Prisma.ArticleServiceActivityUpdateManyWithoutArticleNestedInput
   tags?: Prisma.ArticleTagUpdateManyWithoutArticleNestedInput
@@ -1614,20 +1802,21 @@ export type ArticleUncheckedUpdateWithoutVersionsInput = {
   articleId?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  subtitle?: Prisma.StringFieldUpdateOperationsInput | string
-  summary?: Prisma.StringFieldUpdateOperationsInput | string
-  body?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumArticleStatusFieldUpdateOperationsInput | $Enums.ArticleStatus
+  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
   scheduledPublish?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   readingTime?: Prisma.IntFieldUpdateOperationsInput | number
   wordCount?: Prisma.IntFieldUpdateOperationsInput | number
-  heroImageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featuredImageId?: Prisma.StringFieldUpdateOperationsInput | string
   projectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  industries?: Prisma.ArticleIndustryUncheckedUpdateManyWithoutArticleNestedInput
   topics?: Prisma.ArticleTopicUncheckedUpdateManyWithoutArticleNestedInput
   serviceActivities?: Prisma.ArticleServiceActivityUncheckedUpdateManyWithoutArticleNestedInput
   tags?: Prisma.ArticleTagUncheckedUpdateManyWithoutArticleNestedInput
@@ -1641,10 +1830,10 @@ export type ArticleCreateWithoutCommentsInput = {
   articleId?: string
   slug: string
   title: string
-  subtitle: string
-  summary: string
-  body: string
-  status: $Enums.ArticleStatus
+  subtitle?: string | null
+  summary?: string | null
+  content: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.ContentStatus
   scheduledPublish?: Date | string | null
   publishedAt?: Date | string | null
   unpublishedAt?: Date | string | null
@@ -1653,8 +1842,9 @@ export type ArticleCreateWithoutCommentsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   project?: Prisma.ProjectCreateNestedOneWithoutArticlesInput
-  heroImage?: Prisma.HeroImageCreateNestedOneWithoutArticlesInput
-  industries?: Prisma.ArticleIndustryCreateNestedManyWithoutArticleInput
+  featuredImage: Prisma.MediaCreateNestedOneWithoutArticlesInput
+  createdBy: Prisma.UserCreateNestedOneWithoutArticlesInput
+  industry?: Prisma.IndustryCreateNestedOneWithoutArticlesInput
   topics?: Prisma.ArticleTopicCreateNestedManyWithoutArticleInput
   serviceActivities?: Prisma.ArticleServiceActivityCreateNestedManyWithoutArticleInput
   tags?: Prisma.ArticleTagCreateNestedManyWithoutArticleInput
@@ -1668,20 +1858,21 @@ export type ArticleUncheckedCreateWithoutCommentsInput = {
   articleId?: string
   slug: string
   title: string
-  subtitle: string
-  summary: string
-  body: string
-  status: $Enums.ArticleStatus
+  subtitle?: string | null
+  summary?: string | null
+  content: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.ContentStatus
   scheduledPublish?: Date | string | null
   publishedAt?: Date | string | null
   unpublishedAt?: Date | string | null
   readingTime: number
   wordCount: number
-  heroImageId?: string | null
+  featuredImageId: string
   projectId?: string | null
+  industryId?: string | null
+  createdById: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  industries?: Prisma.ArticleIndustryUncheckedCreateNestedManyWithoutArticleInput
   topics?: Prisma.ArticleTopicUncheckedCreateNestedManyWithoutArticleInput
   serviceActivities?: Prisma.ArticleServiceActivityUncheckedCreateNestedManyWithoutArticleInput
   tags?: Prisma.ArticleTagUncheckedCreateNestedManyWithoutArticleInput
@@ -1711,10 +1902,10 @@ export type ArticleUpdateWithoutCommentsInput = {
   articleId?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  subtitle?: Prisma.StringFieldUpdateOperationsInput | string
-  summary?: Prisma.StringFieldUpdateOperationsInput | string
-  body?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumArticleStatusFieldUpdateOperationsInput | $Enums.ArticleStatus
+  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
   scheduledPublish?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1723,8 +1914,9 @@ export type ArticleUpdateWithoutCommentsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   project?: Prisma.ProjectUpdateOneWithoutArticlesNestedInput
-  heroImage?: Prisma.HeroImageUpdateOneWithoutArticlesNestedInput
-  industries?: Prisma.ArticleIndustryUpdateManyWithoutArticleNestedInput
+  featuredImage?: Prisma.MediaUpdateOneRequiredWithoutArticlesNestedInput
+  createdBy?: Prisma.UserUpdateOneRequiredWithoutArticlesNestedInput
+  industry?: Prisma.IndustryUpdateOneWithoutArticlesNestedInput
   topics?: Prisma.ArticleTopicUpdateManyWithoutArticleNestedInput
   serviceActivities?: Prisma.ArticleServiceActivityUpdateManyWithoutArticleNestedInput
   tags?: Prisma.ArticleTagUpdateManyWithoutArticleNestedInput
@@ -1738,20 +1930,21 @@ export type ArticleUncheckedUpdateWithoutCommentsInput = {
   articleId?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  subtitle?: Prisma.StringFieldUpdateOperationsInput | string
-  summary?: Prisma.StringFieldUpdateOperationsInput | string
-  body?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumArticleStatusFieldUpdateOperationsInput | $Enums.ArticleStatus
+  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
   scheduledPublish?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   readingTime?: Prisma.IntFieldUpdateOperationsInput | number
   wordCount?: Prisma.IntFieldUpdateOperationsInput | number
-  heroImageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featuredImageId?: Prisma.StringFieldUpdateOperationsInput | string
   projectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  industries?: Prisma.ArticleIndustryUncheckedUpdateManyWithoutArticleNestedInput
   topics?: Prisma.ArticleTopicUncheckedUpdateManyWithoutArticleNestedInput
   serviceActivities?: Prisma.ArticleServiceActivityUncheckedUpdateManyWithoutArticleNestedInput
   tags?: Prisma.ArticleTagUncheckedUpdateManyWithoutArticleNestedInput
@@ -1761,14 +1954,14 @@ export type ArticleUncheckedUpdateWithoutCommentsInput = {
   versions?: Prisma.ArticleVersionUncheckedUpdateManyWithoutArticleNestedInput
 }
 
-export type ArticleCreateWithoutHeroImageInput = {
+export type ArticleCreateWithoutFeaturedImageInput = {
   articleId?: string
   slug: string
   title: string
-  subtitle: string
-  summary: string
-  body: string
-  status: $Enums.ArticleStatus
+  subtitle?: string | null
+  summary?: string | null
+  content: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.ContentStatus
   scheduledPublish?: Date | string | null
   publishedAt?: Date | string | null
   unpublishedAt?: Date | string | null
@@ -1777,7 +1970,8 @@ export type ArticleCreateWithoutHeroImageInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   project?: Prisma.ProjectCreateNestedOneWithoutArticlesInput
-  industries?: Prisma.ArticleIndustryCreateNestedManyWithoutArticleInput
+  createdBy: Prisma.UserCreateNestedOneWithoutArticlesInput
+  industry?: Prisma.IndustryCreateNestedOneWithoutArticlesInput
   topics?: Prisma.ArticleTopicCreateNestedManyWithoutArticleInput
   serviceActivities?: Prisma.ArticleServiceActivityCreateNestedManyWithoutArticleInput
   tags?: Prisma.ArticleTagCreateNestedManyWithoutArticleInput
@@ -1788,23 +1982,24 @@ export type ArticleCreateWithoutHeroImageInput = {
   comments?: Prisma.ArticleCommentCreateNestedManyWithoutArticleInput
 }
 
-export type ArticleUncheckedCreateWithoutHeroImageInput = {
+export type ArticleUncheckedCreateWithoutFeaturedImageInput = {
   articleId?: string
   slug: string
   title: string
-  subtitle: string
-  summary: string
-  body: string
-  status: $Enums.ArticleStatus
+  subtitle?: string | null
+  summary?: string | null
+  content: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.ContentStatus
   scheduledPublish?: Date | string | null
   publishedAt?: Date | string | null
   unpublishedAt?: Date | string | null
   readingTime: number
   wordCount: number
   projectId?: string | null
+  industryId?: string | null
+  createdById: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  industries?: Prisma.ArticleIndustryUncheckedCreateNestedManyWithoutArticleInput
   topics?: Prisma.ArticleTopicUncheckedCreateNestedManyWithoutArticleInput
   serviceActivities?: Prisma.ArticleServiceActivityUncheckedCreateNestedManyWithoutArticleInput
   tags?: Prisma.ArticleTagUncheckedCreateNestedManyWithoutArticleInput
@@ -1815,62 +2010,40 @@ export type ArticleUncheckedCreateWithoutHeroImageInput = {
   comments?: Prisma.ArticleCommentUncheckedCreateNestedManyWithoutArticleInput
 }
 
-export type ArticleCreateOrConnectWithoutHeroImageInput = {
+export type ArticleCreateOrConnectWithoutFeaturedImageInput = {
   where: Prisma.ArticleWhereUniqueInput
-  create: Prisma.XOR<Prisma.ArticleCreateWithoutHeroImageInput, Prisma.ArticleUncheckedCreateWithoutHeroImageInput>
+  create: Prisma.XOR<Prisma.ArticleCreateWithoutFeaturedImageInput, Prisma.ArticleUncheckedCreateWithoutFeaturedImageInput>
 }
 
-export type ArticleCreateManyHeroImageInputEnvelope = {
-  data: Prisma.ArticleCreateManyHeroImageInput | Prisma.ArticleCreateManyHeroImageInput[]
+export type ArticleCreateManyFeaturedImageInputEnvelope = {
+  data: Prisma.ArticleCreateManyFeaturedImageInput | Prisma.ArticleCreateManyFeaturedImageInput[]
   skipDuplicates?: boolean
 }
 
-export type ArticleUpsertWithWhereUniqueWithoutHeroImageInput = {
+export type ArticleUpsertWithWhereUniqueWithoutFeaturedImageInput = {
   where: Prisma.ArticleWhereUniqueInput
-  update: Prisma.XOR<Prisma.ArticleUpdateWithoutHeroImageInput, Prisma.ArticleUncheckedUpdateWithoutHeroImageInput>
-  create: Prisma.XOR<Prisma.ArticleCreateWithoutHeroImageInput, Prisma.ArticleUncheckedCreateWithoutHeroImageInput>
+  update: Prisma.XOR<Prisma.ArticleUpdateWithoutFeaturedImageInput, Prisma.ArticleUncheckedUpdateWithoutFeaturedImageInput>
+  create: Prisma.XOR<Prisma.ArticleCreateWithoutFeaturedImageInput, Prisma.ArticleUncheckedCreateWithoutFeaturedImageInput>
 }
 
-export type ArticleUpdateWithWhereUniqueWithoutHeroImageInput = {
+export type ArticleUpdateWithWhereUniqueWithoutFeaturedImageInput = {
   where: Prisma.ArticleWhereUniqueInput
-  data: Prisma.XOR<Prisma.ArticleUpdateWithoutHeroImageInput, Prisma.ArticleUncheckedUpdateWithoutHeroImageInput>
+  data: Prisma.XOR<Prisma.ArticleUpdateWithoutFeaturedImageInput, Prisma.ArticleUncheckedUpdateWithoutFeaturedImageInput>
 }
 
-export type ArticleUpdateManyWithWhereWithoutHeroImageInput = {
+export type ArticleUpdateManyWithWhereWithoutFeaturedImageInput = {
   where: Prisma.ArticleScalarWhereInput
-  data: Prisma.XOR<Prisma.ArticleUpdateManyMutationInput, Prisma.ArticleUncheckedUpdateManyWithoutHeroImageInput>
-}
-
-export type ArticleScalarWhereInput = {
-  AND?: Prisma.ArticleScalarWhereInput | Prisma.ArticleScalarWhereInput[]
-  OR?: Prisma.ArticleScalarWhereInput[]
-  NOT?: Prisma.ArticleScalarWhereInput | Prisma.ArticleScalarWhereInput[]
-  articleId?: Prisma.StringFilter<"Article"> | string
-  slug?: Prisma.StringFilter<"Article"> | string
-  title?: Prisma.StringFilter<"Article"> | string
-  subtitle?: Prisma.StringFilter<"Article"> | string
-  summary?: Prisma.StringFilter<"Article"> | string
-  body?: Prisma.StringFilter<"Article"> | string
-  status?: Prisma.EnumArticleStatusFilter<"Article"> | $Enums.ArticleStatus
-  scheduledPublish?: Prisma.DateTimeNullableFilter<"Article"> | Date | string | null
-  publishedAt?: Prisma.DateTimeNullableFilter<"Article"> | Date | string | null
-  unpublishedAt?: Prisma.DateTimeNullableFilter<"Article"> | Date | string | null
-  readingTime?: Prisma.IntFilter<"Article"> | number
-  wordCount?: Prisma.IntFilter<"Article"> | number
-  heroImageId?: Prisma.StringNullableFilter<"Article"> | string | null
-  projectId?: Prisma.StringNullableFilter<"Article"> | string | null
-  createdAt?: Prisma.DateTimeFilter<"Article"> | Date | string
-  updatedAt?: Prisma.DateTimeFilter<"Article"> | Date | string
+  data: Prisma.XOR<Prisma.ArticleUpdateManyMutationInput, Prisma.ArticleUncheckedUpdateManyWithoutFeaturedImageInput>
 }
 
 export type ArticleCreateWithoutImagesInput = {
   articleId?: string
   slug: string
   title: string
-  subtitle: string
-  summary: string
-  body: string
-  status: $Enums.ArticleStatus
+  subtitle?: string | null
+  summary?: string | null
+  content: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.ContentStatus
   scheduledPublish?: Date | string | null
   publishedAt?: Date | string | null
   unpublishedAt?: Date | string | null
@@ -1879,8 +2052,9 @@ export type ArticleCreateWithoutImagesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   project?: Prisma.ProjectCreateNestedOneWithoutArticlesInput
-  heroImage?: Prisma.HeroImageCreateNestedOneWithoutArticlesInput
-  industries?: Prisma.ArticleIndustryCreateNestedManyWithoutArticleInput
+  featuredImage: Prisma.MediaCreateNestedOneWithoutArticlesInput
+  createdBy: Prisma.UserCreateNestedOneWithoutArticlesInput
+  industry?: Prisma.IndustryCreateNestedOneWithoutArticlesInput
   topics?: Prisma.ArticleTopicCreateNestedManyWithoutArticleInput
   serviceActivities?: Prisma.ArticleServiceActivityCreateNestedManyWithoutArticleInput
   tags?: Prisma.ArticleTagCreateNestedManyWithoutArticleInput
@@ -1894,20 +2068,21 @@ export type ArticleUncheckedCreateWithoutImagesInput = {
   articleId?: string
   slug: string
   title: string
-  subtitle: string
-  summary: string
-  body: string
-  status: $Enums.ArticleStatus
+  subtitle?: string | null
+  summary?: string | null
+  content: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.ContentStatus
   scheduledPublish?: Date | string | null
   publishedAt?: Date | string | null
   unpublishedAt?: Date | string | null
   readingTime: number
   wordCount: number
-  heroImageId?: string | null
+  featuredImageId: string
   projectId?: string | null
+  industryId?: string | null
+  createdById: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  industries?: Prisma.ArticleIndustryUncheckedCreateNestedManyWithoutArticleInput
   topics?: Prisma.ArticleTopicUncheckedCreateNestedManyWithoutArticleInput
   serviceActivities?: Prisma.ArticleServiceActivityUncheckedCreateNestedManyWithoutArticleInput
   tags?: Prisma.ArticleTagUncheckedCreateNestedManyWithoutArticleInput
@@ -1937,10 +2112,10 @@ export type ArticleUpdateWithoutImagesInput = {
   articleId?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  subtitle?: Prisma.StringFieldUpdateOperationsInput | string
-  summary?: Prisma.StringFieldUpdateOperationsInput | string
-  body?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumArticleStatusFieldUpdateOperationsInput | $Enums.ArticleStatus
+  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
   scheduledPublish?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1949,8 +2124,9 @@ export type ArticleUpdateWithoutImagesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   project?: Prisma.ProjectUpdateOneWithoutArticlesNestedInput
-  heroImage?: Prisma.HeroImageUpdateOneWithoutArticlesNestedInput
-  industries?: Prisma.ArticleIndustryUpdateManyWithoutArticleNestedInput
+  featuredImage?: Prisma.MediaUpdateOneRequiredWithoutArticlesNestedInput
+  createdBy?: Prisma.UserUpdateOneRequiredWithoutArticlesNestedInput
+  industry?: Prisma.IndustryUpdateOneWithoutArticlesNestedInput
   topics?: Prisma.ArticleTopicUpdateManyWithoutArticleNestedInput
   serviceActivities?: Prisma.ArticleServiceActivityUpdateManyWithoutArticleNestedInput
   tags?: Prisma.ArticleTagUpdateManyWithoutArticleNestedInput
@@ -1964,20 +2140,21 @@ export type ArticleUncheckedUpdateWithoutImagesInput = {
   articleId?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  subtitle?: Prisma.StringFieldUpdateOperationsInput | string
-  summary?: Prisma.StringFieldUpdateOperationsInput | string
-  body?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumArticleStatusFieldUpdateOperationsInput | $Enums.ArticleStatus
+  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
   scheduledPublish?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   readingTime?: Prisma.IntFieldUpdateOperationsInput | number
   wordCount?: Prisma.IntFieldUpdateOperationsInput | number
-  heroImageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featuredImageId?: Prisma.StringFieldUpdateOperationsInput | string
   projectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  industries?: Prisma.ArticleIndustryUncheckedUpdateManyWithoutArticleNestedInput
   topics?: Prisma.ArticleTopicUncheckedUpdateManyWithoutArticleNestedInput
   serviceActivities?: Prisma.ArticleServiceActivityUncheckedUpdateManyWithoutArticleNestedInput
   tags?: Prisma.ArticleTagUncheckedUpdateManyWithoutArticleNestedInput
@@ -1991,10 +2168,10 @@ export type ArticleCreateWithoutAuthorsInput = {
   articleId?: string
   slug: string
   title: string
-  subtitle: string
-  summary: string
-  body: string
-  status: $Enums.ArticleStatus
+  subtitle?: string | null
+  summary?: string | null
+  content: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.ContentStatus
   scheduledPublish?: Date | string | null
   publishedAt?: Date | string | null
   unpublishedAt?: Date | string | null
@@ -2003,8 +2180,9 @@ export type ArticleCreateWithoutAuthorsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   project?: Prisma.ProjectCreateNestedOneWithoutArticlesInput
-  heroImage?: Prisma.HeroImageCreateNestedOneWithoutArticlesInput
-  industries?: Prisma.ArticleIndustryCreateNestedManyWithoutArticleInput
+  featuredImage: Prisma.MediaCreateNestedOneWithoutArticlesInput
+  createdBy: Prisma.UserCreateNestedOneWithoutArticlesInput
+  industry?: Prisma.IndustryCreateNestedOneWithoutArticlesInput
   topics?: Prisma.ArticleTopicCreateNestedManyWithoutArticleInput
   serviceActivities?: Prisma.ArticleServiceActivityCreateNestedManyWithoutArticleInput
   tags?: Prisma.ArticleTagCreateNestedManyWithoutArticleInput
@@ -2018,20 +2196,21 @@ export type ArticleUncheckedCreateWithoutAuthorsInput = {
   articleId?: string
   slug: string
   title: string
-  subtitle: string
-  summary: string
-  body: string
-  status: $Enums.ArticleStatus
+  subtitle?: string | null
+  summary?: string | null
+  content: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.ContentStatus
   scheduledPublish?: Date | string | null
   publishedAt?: Date | string | null
   unpublishedAt?: Date | string | null
   readingTime: number
   wordCount: number
-  heroImageId?: string | null
+  featuredImageId: string
   projectId?: string | null
+  industryId?: string | null
+  createdById: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  industries?: Prisma.ArticleIndustryUncheckedCreateNestedManyWithoutArticleInput
   topics?: Prisma.ArticleTopicUncheckedCreateNestedManyWithoutArticleInput
   serviceActivities?: Prisma.ArticleServiceActivityUncheckedCreateNestedManyWithoutArticleInput
   tags?: Prisma.ArticleTagUncheckedCreateNestedManyWithoutArticleInput
@@ -2061,10 +2240,10 @@ export type ArticleUpdateWithoutAuthorsInput = {
   articleId?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  subtitle?: Prisma.StringFieldUpdateOperationsInput | string
-  summary?: Prisma.StringFieldUpdateOperationsInput | string
-  body?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumArticleStatusFieldUpdateOperationsInput | $Enums.ArticleStatus
+  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
   scheduledPublish?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2073,8 +2252,9 @@ export type ArticleUpdateWithoutAuthorsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   project?: Prisma.ProjectUpdateOneWithoutArticlesNestedInput
-  heroImage?: Prisma.HeroImageUpdateOneWithoutArticlesNestedInput
-  industries?: Prisma.ArticleIndustryUpdateManyWithoutArticleNestedInput
+  featuredImage?: Prisma.MediaUpdateOneRequiredWithoutArticlesNestedInput
+  createdBy?: Prisma.UserUpdateOneRequiredWithoutArticlesNestedInput
+  industry?: Prisma.IndustryUpdateOneWithoutArticlesNestedInput
   topics?: Prisma.ArticleTopicUpdateManyWithoutArticleNestedInput
   serviceActivities?: Prisma.ArticleServiceActivityUpdateManyWithoutArticleNestedInput
   tags?: Prisma.ArticleTagUpdateManyWithoutArticleNestedInput
@@ -2088,20 +2268,21 @@ export type ArticleUncheckedUpdateWithoutAuthorsInput = {
   articleId?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  subtitle?: Prisma.StringFieldUpdateOperationsInput | string
-  summary?: Prisma.StringFieldUpdateOperationsInput | string
-  body?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumArticleStatusFieldUpdateOperationsInput | $Enums.ArticleStatus
+  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
   scheduledPublish?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   readingTime?: Prisma.IntFieldUpdateOperationsInput | number
   wordCount?: Prisma.IntFieldUpdateOperationsInput | number
-  heroImageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featuredImageId?: Prisma.StringFieldUpdateOperationsInput | string
   projectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  industries?: Prisma.ArticleIndustryUncheckedUpdateManyWithoutArticleNestedInput
   topics?: Prisma.ArticleTopicUncheckedUpdateManyWithoutArticleNestedInput
   serviceActivities?: Prisma.ArticleServiceActivityUncheckedUpdateManyWithoutArticleNestedInput
   tags?: Prisma.ArticleTagUncheckedUpdateManyWithoutArticleNestedInput
@@ -2115,10 +2296,10 @@ export type ArticleCreateWithoutProjectInput = {
   articleId?: string
   slug: string
   title: string
-  subtitle: string
-  summary: string
-  body: string
-  status: $Enums.ArticleStatus
+  subtitle?: string | null
+  summary?: string | null
+  content: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.ContentStatus
   scheduledPublish?: Date | string | null
   publishedAt?: Date | string | null
   unpublishedAt?: Date | string | null
@@ -2126,8 +2307,9 @@ export type ArticleCreateWithoutProjectInput = {
   wordCount: number
   createdAt?: Date | string
   updatedAt?: Date | string
-  heroImage?: Prisma.HeroImageCreateNestedOneWithoutArticlesInput
-  industries?: Prisma.ArticleIndustryCreateNestedManyWithoutArticleInput
+  featuredImage: Prisma.MediaCreateNestedOneWithoutArticlesInput
+  createdBy: Prisma.UserCreateNestedOneWithoutArticlesInput
+  industry?: Prisma.IndustryCreateNestedOneWithoutArticlesInput
   topics?: Prisma.ArticleTopicCreateNestedManyWithoutArticleInput
   serviceActivities?: Prisma.ArticleServiceActivityCreateNestedManyWithoutArticleInput
   tags?: Prisma.ArticleTagCreateNestedManyWithoutArticleInput
@@ -2142,19 +2324,20 @@ export type ArticleUncheckedCreateWithoutProjectInput = {
   articleId?: string
   slug: string
   title: string
-  subtitle: string
-  summary: string
-  body: string
-  status: $Enums.ArticleStatus
+  subtitle?: string | null
+  summary?: string | null
+  content: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.ContentStatus
   scheduledPublish?: Date | string | null
   publishedAt?: Date | string | null
   unpublishedAt?: Date | string | null
   readingTime: number
   wordCount: number
-  heroImageId?: string | null
+  featuredImageId: string
+  industryId?: string | null
+  createdById: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  industries?: Prisma.ArticleIndustryUncheckedCreateNestedManyWithoutArticleInput
   topics?: Prisma.ArticleTopicUncheckedCreateNestedManyWithoutArticleInput
   serviceActivities?: Prisma.ArticleServiceActivityUncheckedCreateNestedManyWithoutArticleInput
   tags?: Prisma.ArticleTagUncheckedCreateNestedManyWithoutArticleInput
@@ -2191,32 +2374,34 @@ export type ArticleUpdateManyWithWhereWithoutProjectInput = {
   data: Prisma.XOR<Prisma.ArticleUpdateManyMutationInput, Prisma.ArticleUncheckedUpdateManyWithoutProjectInput>
 }
 
-export type ArticleCreateManyHeroImageInput = {
+export type ArticleCreateManyCreatedByInput = {
   articleId?: string
   slug: string
   title: string
-  subtitle: string
-  summary: string
-  body: string
-  status: $Enums.ArticleStatus
+  subtitle?: string | null
+  summary?: string | null
+  content: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.ContentStatus
   scheduledPublish?: Date | string | null
   publishedAt?: Date | string | null
   unpublishedAt?: Date | string | null
   readingTime: number
   wordCount: number
+  featuredImageId: string
   projectId?: string | null
+  industryId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
-export type ArticleUpdateWithoutHeroImageInput = {
+export type ArticleUpdateWithoutCreatedByInput = {
   articleId?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  subtitle?: Prisma.StringFieldUpdateOperationsInput | string
-  summary?: Prisma.StringFieldUpdateOperationsInput | string
-  body?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumArticleStatusFieldUpdateOperationsInput | $Enums.ArticleStatus
+  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
   scheduledPublish?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2225,7 +2410,8 @@ export type ArticleUpdateWithoutHeroImageInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   project?: Prisma.ProjectUpdateOneWithoutArticlesNestedInput
-  industries?: Prisma.ArticleIndustryUpdateManyWithoutArticleNestedInput
+  featuredImage?: Prisma.MediaUpdateOneRequiredWithoutArticlesNestedInput
+  industry?: Prisma.IndustryUpdateOneWithoutArticlesNestedInput
   topics?: Prisma.ArticleTopicUpdateManyWithoutArticleNestedInput
   serviceActivities?: Prisma.ArticleServiceActivityUpdateManyWithoutArticleNestedInput
   tags?: Prisma.ArticleTagUpdateManyWithoutArticleNestedInput
@@ -2236,23 +2422,24 @@ export type ArticleUpdateWithoutHeroImageInput = {
   comments?: Prisma.ArticleCommentUpdateManyWithoutArticleNestedInput
 }
 
-export type ArticleUncheckedUpdateWithoutHeroImageInput = {
+export type ArticleUncheckedUpdateWithoutCreatedByInput = {
   articleId?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  subtitle?: Prisma.StringFieldUpdateOperationsInput | string
-  summary?: Prisma.StringFieldUpdateOperationsInput | string
-  body?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumArticleStatusFieldUpdateOperationsInput | $Enums.ArticleStatus
+  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
   scheduledPublish?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   readingTime?: Prisma.IntFieldUpdateOperationsInput | number
   wordCount?: Prisma.IntFieldUpdateOperationsInput | number
+  featuredImageId?: Prisma.StringFieldUpdateOperationsInput | string
   projectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  industries?: Prisma.ArticleIndustryUncheckedUpdateManyWithoutArticleNestedInput
   topics?: Prisma.ArticleTopicUncheckedUpdateManyWithoutArticleNestedInput
   serviceActivities?: Prisma.ArticleServiceActivityUncheckedUpdateManyWithoutArticleNestedInput
   tags?: Prisma.ArticleTagUncheckedUpdateManyWithoutArticleNestedInput
@@ -2263,20 +2450,214 @@ export type ArticleUncheckedUpdateWithoutHeroImageInput = {
   comments?: Prisma.ArticleCommentUncheckedUpdateManyWithoutArticleNestedInput
 }
 
-export type ArticleUncheckedUpdateManyWithoutHeroImageInput = {
+export type ArticleUncheckedUpdateManyWithoutCreatedByInput = {
   articleId?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  subtitle?: Prisma.StringFieldUpdateOperationsInput | string
-  summary?: Prisma.StringFieldUpdateOperationsInput | string
-  body?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumArticleStatusFieldUpdateOperationsInput | $Enums.ArticleStatus
+  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
+  scheduledPublish?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  readingTime?: Prisma.IntFieldUpdateOperationsInput | number
+  wordCount?: Prisma.IntFieldUpdateOperationsInput | number
+  featuredImageId?: Prisma.StringFieldUpdateOperationsInput | string
+  projectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type ArticleCreateManyIndustryInput = {
+  articleId?: string
+  slug: string
+  title: string
+  subtitle?: string | null
+  summary?: string | null
+  content: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.ContentStatus
+  scheduledPublish?: Date | string | null
+  publishedAt?: Date | string | null
+  unpublishedAt?: Date | string | null
+  readingTime: number
+  wordCount: number
+  featuredImageId: string
+  projectId?: string | null
+  createdById: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type ArticleUpdateWithoutIndustryInput = {
+  articleId?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
+  scheduledPublish?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  readingTime?: Prisma.IntFieldUpdateOperationsInput | number
+  wordCount?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  project?: Prisma.ProjectUpdateOneWithoutArticlesNestedInput
+  featuredImage?: Prisma.MediaUpdateOneRequiredWithoutArticlesNestedInput
+  createdBy?: Prisma.UserUpdateOneRequiredWithoutArticlesNestedInput
+  topics?: Prisma.ArticleTopicUpdateManyWithoutArticleNestedInput
+  serviceActivities?: Prisma.ArticleServiceActivityUpdateManyWithoutArticleNestedInput
+  tags?: Prisma.ArticleTagUpdateManyWithoutArticleNestedInput
+  authors?: Prisma.ArticleAuthorUpdateManyWithoutArticleNestedInput
+  images?: Prisma.ArticleImageUpdateManyWithoutArticleNestedInput
+  references?: Prisma.ArticleReferenceUpdateManyWithoutArticleNestedInput
+  versions?: Prisma.ArticleVersionUpdateManyWithoutArticleNestedInput
+  comments?: Prisma.ArticleCommentUpdateManyWithoutArticleNestedInput
+}
+
+export type ArticleUncheckedUpdateWithoutIndustryInput = {
+  articleId?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
+  scheduledPublish?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  readingTime?: Prisma.IntFieldUpdateOperationsInput | number
+  wordCount?: Prisma.IntFieldUpdateOperationsInput | number
+  featuredImageId?: Prisma.StringFieldUpdateOperationsInput | string
+  projectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  topics?: Prisma.ArticleTopicUncheckedUpdateManyWithoutArticleNestedInput
+  serviceActivities?: Prisma.ArticleServiceActivityUncheckedUpdateManyWithoutArticleNestedInput
+  tags?: Prisma.ArticleTagUncheckedUpdateManyWithoutArticleNestedInput
+  authors?: Prisma.ArticleAuthorUncheckedUpdateManyWithoutArticleNestedInput
+  images?: Prisma.ArticleImageUncheckedUpdateManyWithoutArticleNestedInput
+  references?: Prisma.ArticleReferenceUncheckedUpdateManyWithoutArticleNestedInput
+  versions?: Prisma.ArticleVersionUncheckedUpdateManyWithoutArticleNestedInput
+  comments?: Prisma.ArticleCommentUncheckedUpdateManyWithoutArticleNestedInput
+}
+
+export type ArticleUncheckedUpdateManyWithoutIndustryInput = {
+  articleId?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
+  scheduledPublish?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  readingTime?: Prisma.IntFieldUpdateOperationsInput | number
+  wordCount?: Prisma.IntFieldUpdateOperationsInput | number
+  featuredImageId?: Prisma.StringFieldUpdateOperationsInput | string
+  projectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type ArticleCreateManyFeaturedImageInput = {
+  articleId?: string
+  slug: string
+  title: string
+  subtitle?: string | null
+  summary?: string | null
+  content: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.ContentStatus
+  scheduledPublish?: Date | string | null
+  publishedAt?: Date | string | null
+  unpublishedAt?: Date | string | null
+  readingTime: number
+  wordCount: number
+  projectId?: string | null
+  industryId?: string | null
+  createdById: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type ArticleUpdateWithoutFeaturedImageInput = {
+  articleId?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
+  scheduledPublish?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  readingTime?: Prisma.IntFieldUpdateOperationsInput | number
+  wordCount?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  project?: Prisma.ProjectUpdateOneWithoutArticlesNestedInput
+  createdBy?: Prisma.UserUpdateOneRequiredWithoutArticlesNestedInput
+  industry?: Prisma.IndustryUpdateOneWithoutArticlesNestedInput
+  topics?: Prisma.ArticleTopicUpdateManyWithoutArticleNestedInput
+  serviceActivities?: Prisma.ArticleServiceActivityUpdateManyWithoutArticleNestedInput
+  tags?: Prisma.ArticleTagUpdateManyWithoutArticleNestedInput
+  authors?: Prisma.ArticleAuthorUpdateManyWithoutArticleNestedInput
+  images?: Prisma.ArticleImageUpdateManyWithoutArticleNestedInput
+  references?: Prisma.ArticleReferenceUpdateManyWithoutArticleNestedInput
+  versions?: Prisma.ArticleVersionUpdateManyWithoutArticleNestedInput
+  comments?: Prisma.ArticleCommentUpdateManyWithoutArticleNestedInput
+}
+
+export type ArticleUncheckedUpdateWithoutFeaturedImageInput = {
+  articleId?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
   scheduledPublish?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   readingTime?: Prisma.IntFieldUpdateOperationsInput | number
   wordCount?: Prisma.IntFieldUpdateOperationsInput | number
   projectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  topics?: Prisma.ArticleTopicUncheckedUpdateManyWithoutArticleNestedInput
+  serviceActivities?: Prisma.ArticleServiceActivityUncheckedUpdateManyWithoutArticleNestedInput
+  tags?: Prisma.ArticleTagUncheckedUpdateManyWithoutArticleNestedInput
+  authors?: Prisma.ArticleAuthorUncheckedUpdateManyWithoutArticleNestedInput
+  images?: Prisma.ArticleImageUncheckedUpdateManyWithoutArticleNestedInput
+  references?: Prisma.ArticleReferenceUncheckedUpdateManyWithoutArticleNestedInput
+  versions?: Prisma.ArticleVersionUncheckedUpdateManyWithoutArticleNestedInput
+  comments?: Prisma.ArticleCommentUncheckedUpdateManyWithoutArticleNestedInput
+}
+
+export type ArticleUncheckedUpdateManyWithoutFeaturedImageInput = {
+  articleId?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
+  scheduledPublish?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  readingTime?: Prisma.IntFieldUpdateOperationsInput | number
+  wordCount?: Prisma.IntFieldUpdateOperationsInput | number
+  projectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -2285,16 +2666,18 @@ export type ArticleCreateManyProjectInput = {
   articleId?: string
   slug: string
   title: string
-  subtitle: string
-  summary: string
-  body: string
-  status: $Enums.ArticleStatus
+  subtitle?: string | null
+  summary?: string | null
+  content: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.ContentStatus
   scheduledPublish?: Date | string | null
   publishedAt?: Date | string | null
   unpublishedAt?: Date | string | null
   readingTime: number
   wordCount: number
-  heroImageId?: string | null
+  featuredImageId: string
+  industryId?: string | null
+  createdById: string
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -2303,10 +2686,10 @@ export type ArticleUpdateWithoutProjectInput = {
   articleId?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  subtitle?: Prisma.StringFieldUpdateOperationsInput | string
-  summary?: Prisma.StringFieldUpdateOperationsInput | string
-  body?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumArticleStatusFieldUpdateOperationsInput | $Enums.ArticleStatus
+  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
   scheduledPublish?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2314,8 +2697,9 @@ export type ArticleUpdateWithoutProjectInput = {
   wordCount?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  heroImage?: Prisma.HeroImageUpdateOneWithoutArticlesNestedInput
-  industries?: Prisma.ArticleIndustryUpdateManyWithoutArticleNestedInput
+  featuredImage?: Prisma.MediaUpdateOneRequiredWithoutArticlesNestedInput
+  createdBy?: Prisma.UserUpdateOneRequiredWithoutArticlesNestedInput
+  industry?: Prisma.IndustryUpdateOneWithoutArticlesNestedInput
   topics?: Prisma.ArticleTopicUpdateManyWithoutArticleNestedInput
   serviceActivities?: Prisma.ArticleServiceActivityUpdateManyWithoutArticleNestedInput
   tags?: Prisma.ArticleTagUpdateManyWithoutArticleNestedInput
@@ -2330,19 +2714,20 @@ export type ArticleUncheckedUpdateWithoutProjectInput = {
   articleId?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  subtitle?: Prisma.StringFieldUpdateOperationsInput | string
-  summary?: Prisma.StringFieldUpdateOperationsInput | string
-  body?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumArticleStatusFieldUpdateOperationsInput | $Enums.ArticleStatus
+  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
   scheduledPublish?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   readingTime?: Prisma.IntFieldUpdateOperationsInput | number
   wordCount?: Prisma.IntFieldUpdateOperationsInput | number
-  heroImageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featuredImageId?: Prisma.StringFieldUpdateOperationsInput | string
+  industryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  industries?: Prisma.ArticleIndustryUncheckedUpdateManyWithoutArticleNestedInput
   topics?: Prisma.ArticleTopicUncheckedUpdateManyWithoutArticleNestedInput
   serviceActivities?: Prisma.ArticleServiceActivityUncheckedUpdateManyWithoutArticleNestedInput
   tags?: Prisma.ArticleTagUncheckedUpdateManyWithoutArticleNestedInput
@@ -2357,16 +2742,18 @@ export type ArticleUncheckedUpdateManyWithoutProjectInput = {
   articleId?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  subtitle?: Prisma.StringFieldUpdateOperationsInput | string
-  summary?: Prisma.StringFieldUpdateOperationsInput | string
-  body?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumArticleStatusFieldUpdateOperationsInput | $Enums.ArticleStatus
+  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
   scheduledPublish?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   readingTime?: Prisma.IntFieldUpdateOperationsInput | number
   wordCount?: Prisma.IntFieldUpdateOperationsInput | number
-  heroImageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featuredImageId?: Prisma.StringFieldUpdateOperationsInput | string
+  industryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -2377,7 +2764,6 @@ export type ArticleUncheckedUpdateManyWithoutProjectInput = {
  */
 
 export type ArticleCountOutputType = {
-  industries: number
   topics: number
   serviceActivities: number
   tags: number
@@ -2389,7 +2775,6 @@ export type ArticleCountOutputType = {
 }
 
 export type ArticleCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  industries?: boolean | ArticleCountOutputTypeCountIndustriesArgs
   topics?: boolean | ArticleCountOutputTypeCountTopicsArgs
   serviceActivities?: boolean | ArticleCountOutputTypeCountServiceActivitiesArgs
   tags?: boolean | ArticleCountOutputTypeCountTagsArgs
@@ -2408,13 +2793,6 @@ export type ArticleCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Exte
    * Select specific fields to fetch from the ArticleCountOutputType
    */
   select?: Prisma.ArticleCountOutputTypeSelect<ExtArgs> | null
-}
-
-/**
- * ArticleCountOutputType without action
- */
-export type ArticleCountOutputTypeCountIndustriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.ArticleIndustryWhereInput
 }
 
 /**
@@ -2480,20 +2858,23 @@ export type ArticleSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   title?: boolean
   subtitle?: boolean
   summary?: boolean
-  body?: boolean
+  content?: boolean
   status?: boolean
   scheduledPublish?: boolean
   publishedAt?: boolean
   unpublishedAt?: boolean
   readingTime?: boolean
   wordCount?: boolean
-  heroImageId?: boolean
+  featuredImageId?: boolean
   projectId?: boolean
+  industryId?: boolean
+  createdById?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   project?: boolean | Prisma.Article$projectArgs<ExtArgs>
-  heroImage?: boolean | Prisma.Article$heroImageArgs<ExtArgs>
-  industries?: boolean | Prisma.Article$industriesArgs<ExtArgs>
+  featuredImage?: boolean | Prisma.MediaDefaultArgs<ExtArgs>
+  createdBy?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  industry?: boolean | Prisma.Article$industryArgs<ExtArgs>
   topics?: boolean | Prisma.Article$topicsArgs<ExtArgs>
   serviceActivities?: boolean | Prisma.Article$serviceActivitiesArgs<ExtArgs>
   tags?: boolean | Prisma.Article$tagsArgs<ExtArgs>
@@ -2511,19 +2892,23 @@ export type ArticleSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   title?: boolean
   subtitle?: boolean
   summary?: boolean
-  body?: boolean
+  content?: boolean
   status?: boolean
   scheduledPublish?: boolean
   publishedAt?: boolean
   unpublishedAt?: boolean
   readingTime?: boolean
   wordCount?: boolean
-  heroImageId?: boolean
+  featuredImageId?: boolean
   projectId?: boolean
+  industryId?: boolean
+  createdById?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   project?: boolean | Prisma.Article$projectArgs<ExtArgs>
-  heroImage?: boolean | Prisma.Article$heroImageArgs<ExtArgs>
+  featuredImage?: boolean | Prisma.MediaDefaultArgs<ExtArgs>
+  createdBy?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  industry?: boolean | Prisma.Article$industryArgs<ExtArgs>
 }, ExtArgs["result"]["article"]>
 
 export type ArticleSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -2532,19 +2917,23 @@ export type ArticleSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   title?: boolean
   subtitle?: boolean
   summary?: boolean
-  body?: boolean
+  content?: boolean
   status?: boolean
   scheduledPublish?: boolean
   publishedAt?: boolean
   unpublishedAt?: boolean
   readingTime?: boolean
   wordCount?: boolean
-  heroImageId?: boolean
+  featuredImageId?: boolean
   projectId?: boolean
+  industryId?: boolean
+  createdById?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   project?: boolean | Prisma.Article$projectArgs<ExtArgs>
-  heroImage?: boolean | Prisma.Article$heroImageArgs<ExtArgs>
+  featuredImage?: boolean | Prisma.MediaDefaultArgs<ExtArgs>
+  createdBy?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  industry?: boolean | Prisma.Article$industryArgs<ExtArgs>
 }, ExtArgs["result"]["article"]>
 
 export type ArticleSelectScalar = {
@@ -2553,24 +2942,27 @@ export type ArticleSelectScalar = {
   title?: boolean
   subtitle?: boolean
   summary?: boolean
-  body?: boolean
+  content?: boolean
   status?: boolean
   scheduledPublish?: boolean
   publishedAt?: boolean
   unpublishedAt?: boolean
   readingTime?: boolean
   wordCount?: boolean
-  heroImageId?: boolean
+  featuredImageId?: boolean
   projectId?: boolean
+  industryId?: boolean
+  createdById?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type ArticleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"articleId" | "slug" | "title" | "subtitle" | "summary" | "body" | "status" | "scheduledPublish" | "publishedAt" | "unpublishedAt" | "readingTime" | "wordCount" | "heroImageId" | "projectId" | "createdAt" | "updatedAt", ExtArgs["result"]["article"]>
+export type ArticleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"articleId" | "slug" | "title" | "subtitle" | "summary" | "content" | "status" | "scheduledPublish" | "publishedAt" | "unpublishedAt" | "readingTime" | "wordCount" | "featuredImageId" | "projectId" | "industryId" | "createdById" | "createdAt" | "updatedAt", ExtArgs["result"]["article"]>
 export type ArticleInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   project?: boolean | Prisma.Article$projectArgs<ExtArgs>
-  heroImage?: boolean | Prisma.Article$heroImageArgs<ExtArgs>
-  industries?: boolean | Prisma.Article$industriesArgs<ExtArgs>
+  featuredImage?: boolean | Prisma.MediaDefaultArgs<ExtArgs>
+  createdBy?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  industry?: boolean | Prisma.Article$industryArgs<ExtArgs>
   topics?: boolean | Prisma.Article$topicsArgs<ExtArgs>
   serviceActivities?: boolean | Prisma.Article$serviceActivitiesArgs<ExtArgs>
   tags?: boolean | Prisma.Article$tagsArgs<ExtArgs>
@@ -2583,19 +2975,24 @@ export type ArticleInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs
 }
 export type ArticleIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   project?: boolean | Prisma.Article$projectArgs<ExtArgs>
-  heroImage?: boolean | Prisma.Article$heroImageArgs<ExtArgs>
+  featuredImage?: boolean | Prisma.MediaDefaultArgs<ExtArgs>
+  createdBy?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  industry?: boolean | Prisma.Article$industryArgs<ExtArgs>
 }
 export type ArticleIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   project?: boolean | Prisma.Article$projectArgs<ExtArgs>
-  heroImage?: boolean | Prisma.Article$heroImageArgs<ExtArgs>
+  featuredImage?: boolean | Prisma.MediaDefaultArgs<ExtArgs>
+  createdBy?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  industry?: boolean | Prisma.Article$industryArgs<ExtArgs>
 }
 
 export type $ArticlePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Article"
   objects: {
     project: Prisma.$ProjectPayload<ExtArgs> | null
-    heroImage: Prisma.$HeroImagePayload<ExtArgs> | null
-    industries: Prisma.$ArticleIndustryPayload<ExtArgs>[]
+    featuredImage: Prisma.$MediaPayload<ExtArgs>
+    createdBy: Prisma.$UserPayload<ExtArgs>
+    industry: Prisma.$IndustryPayload<ExtArgs> | null
     topics: Prisma.$ArticleTopicPayload<ExtArgs>[]
     serviceActivities: Prisma.$ArticleServiceActivityPayload<ExtArgs>[]
     tags: Prisma.$ArticleTagPayload<ExtArgs>[]
@@ -2609,17 +3006,19 @@ export type $ArticlePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     articleId: string
     slug: string
     title: string
-    subtitle: string
-    summary: string
-    body: string
-    status: $Enums.ArticleStatus
+    subtitle: string | null
+    summary: string | null
+    content: runtime.JsonValue
+    status: $Enums.ContentStatus
     scheduledPublish: Date | null
     publishedAt: Date | null
     unpublishedAt: Date | null
     readingTime: number
     wordCount: number
-    heroImageId: string | null
+    featuredImageId: string
     projectId: string | null
+    industryId: string | null
+    createdById: string
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["article"]>
@@ -3017,8 +3416,9 @@ readonly fields: ArticleFieldRefs;
 export interface Prisma__ArticleClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   project<T extends Prisma.Article$projectArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Article$projectArgs<ExtArgs>>): Prisma.Prisma__ProjectClient<runtime.Types.Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  heroImage<T extends Prisma.Article$heroImageArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Article$heroImageArgs<ExtArgs>>): Prisma.Prisma__HeroImageClient<runtime.Types.Result.GetResult<Prisma.$HeroImagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  industries<T extends Prisma.Article$industriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Article$industriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ArticleIndustryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  featuredImage<T extends Prisma.MediaDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MediaDefaultArgs<ExtArgs>>): Prisma.Prisma__MediaClient<runtime.Types.Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  createdBy<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  industry<T extends Prisma.Article$industryArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Article$industryArgs<ExtArgs>>): Prisma.Prisma__IndustryClient<runtime.Types.Result.GetResult<Prisma.$IndustryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   topics<T extends Prisma.Article$topicsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Article$topicsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ArticleTopicPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   serviceActivities<T extends Prisma.Article$serviceActivitiesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Article$serviceActivitiesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ArticleServiceActivityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   tags<T extends Prisma.Article$tagsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Article$tagsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ArticleTagPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -3061,15 +3461,17 @@ export interface ArticleFieldRefs {
   readonly title: Prisma.FieldRef<"Article", 'String'>
   readonly subtitle: Prisma.FieldRef<"Article", 'String'>
   readonly summary: Prisma.FieldRef<"Article", 'String'>
-  readonly body: Prisma.FieldRef<"Article", 'String'>
-  readonly status: Prisma.FieldRef<"Article", 'ArticleStatus'>
+  readonly content: Prisma.FieldRef<"Article", 'Json'>
+  readonly status: Prisma.FieldRef<"Article", 'ContentStatus'>
   readonly scheduledPublish: Prisma.FieldRef<"Article", 'DateTime'>
   readonly publishedAt: Prisma.FieldRef<"Article", 'DateTime'>
   readonly unpublishedAt: Prisma.FieldRef<"Article", 'DateTime'>
   readonly readingTime: Prisma.FieldRef<"Article", 'Int'>
   readonly wordCount: Prisma.FieldRef<"Article", 'Int'>
-  readonly heroImageId: Prisma.FieldRef<"Article", 'String'>
+  readonly featuredImageId: Prisma.FieldRef<"Article", 'String'>
   readonly projectId: Prisma.FieldRef<"Article", 'String'>
+  readonly industryId: Prisma.FieldRef<"Article", 'String'>
+  readonly createdById: Prisma.FieldRef<"Article", 'String'>
   readonly createdAt: Prisma.FieldRef<"Article", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Article", 'DateTime'>
 }
@@ -3487,46 +3889,22 @@ export type Article$projectArgs<ExtArgs extends runtime.Types.Extensions.Interna
 }
 
 /**
- * Article.heroImage
+ * Article.industry
  */
-export type Article$heroImageArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Article$industryArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the HeroImage
+   * Select specific fields to fetch from the Industry
    */
-  select?: Prisma.HeroImageSelect<ExtArgs> | null
+  select?: Prisma.IndustrySelect<ExtArgs> | null
   /**
-   * Omit specific fields from the HeroImage
+   * Omit specific fields from the Industry
    */
-  omit?: Prisma.HeroImageOmit<ExtArgs> | null
+  omit?: Prisma.IndustryOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.HeroImageInclude<ExtArgs> | null
-  where?: Prisma.HeroImageWhereInput
-}
-
-/**
- * Article.industries
- */
-export type Article$industriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the ArticleIndustry
-   */
-  select?: Prisma.ArticleIndustrySelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the ArticleIndustry
-   */
-  omit?: Prisma.ArticleIndustryOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.ArticleIndustryInclude<ExtArgs> | null
-  where?: Prisma.ArticleIndustryWhereInput
-  orderBy?: Prisma.ArticleIndustryOrderByWithRelationInput | Prisma.ArticleIndustryOrderByWithRelationInput[]
-  cursor?: Prisma.ArticleIndustryWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.ArticleIndustryScalarFieldEnum | Prisma.ArticleIndustryScalarFieldEnum[]
+  include?: Prisma.IndustryInclude<ExtArgs> | null
+  where?: Prisma.IndustryWhereInput
 }
 
 /**

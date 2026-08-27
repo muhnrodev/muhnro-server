@@ -12,6 +12,32 @@ model AvatarImage {
     authors     Author[]
 }
 
+model Media {
+    id              String   @id @default(dbgenerated("gen_random_uuid()"))
+    filename         String
+    originalName    String
+    path            String
+    bucket          String
+    mimeType        String
+    extension       String
+    size            Int
+    type            MediaType
+    width           Int?
+    height          Int?
+    duration        Int?
+    altText         String?
+    caption         String?
+    checksum        String?
+    createById      String
+    createdAt       DateTime @default(now())
+    updatedAt       DateTime @updatedAt
+
+    createBy        User     @relation(fields: [createById], references: [id])
+
+    articles        Article[]
+}
+
+
 model HeroImage {
     imageId     String   @id @default(dbgenerated("gen_random_uuid()"))
     url         String
@@ -24,7 +50,6 @@ model HeroImage {
     updatedAt   DateTime @updatedAt
 
 
-    articles Article[]
 }
 
 model CoverImage {

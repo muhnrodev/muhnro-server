@@ -21,6 +21,8 @@ model User {
     promotionalNotification PromotionalPreference?
     insightsNotification    InsightsPreference?
     sessions               Session[]
+    articles               Article[]
+    media                  Media[]
 }
 
 

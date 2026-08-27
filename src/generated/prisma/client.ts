@@ -115,11 +115,6 @@ export type Industry = Prisma.IndustryModel
  */
 export type Article = Prisma.ArticleModel
 /**
- * Model ArticleIndustry
- * 
- */
-export type ArticleIndustry = Prisma.ArticleIndustryModel
-/**
  * Model ArticleTopic
  * 
  */
@@ -209,6 +204,11 @@ export type ComponentFieldValue = Prisma.ComponentFieldValueModel
  * 
  */
 export type AvatarImage = Prisma.AvatarImageModel
+/**
+ * Model Media
+ * 
+ */
+export type Media = Prisma.MediaModel
 /**
  * Model HeroImage
  * 

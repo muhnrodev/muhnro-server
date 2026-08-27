@@ -51,8 +51,7 @@ model Author {
     avatarImage         AvatarImage?  @relation(fields: [avatarImageId], references: [imageId])
 
     articles            ArticleAuthor[]
-
-    reportAuthors ReportAuthor[]
+    reportAuthors       ReportAuthor[]
 }
 
 model Organization {
