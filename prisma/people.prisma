@@ -30,19 +30,30 @@ model Client {
     industryId              String
     addressId               String?
     notes                   String?
+    logoId                  String?
+    stakeholderId           String?
+    email                   String?
+    phone                   String?
+
     isDeleted               Boolean         @default(false)
     createdAt               DateTime        @default(now())
     updatedAt               DateTime        @updatedAt
     deletedAt               DateTime?
-    logoId                  String?
 
     logo                    Media?          @relation(fields: [logoId], references: [id])
+    stakeholder             Stakeholder?    @relation(fields: [stakeholderId], references: [stakeholderId])
     address                 ClientAddress?  @relation(fields: [addressId], references: [id], onDelete: Cascade)
     industry                Industry        @relation(fields: [industryId], references: [industryId])
 
     projects                Project[]
     contacts                ClientContact[]
 
+    @@unique([name, stakeholderId])
+    @@index([industryId])
+    @@index([stakeholderId])
+    @@index([isDeleted, createdAt])
+    @@index([email])
+    @@index([phone])
 }
 
 model ClientContact {
@@ -51,12 +62,15 @@ model ClientContact {
     fullName                String
     email                   String
     phone                   String?
-    createdAt               DateTime @default(now())
-    updatedAt               DateTime @updatedAt
-    isPrimary                Boolean  @default(false)
-    isDeleted                Boolean  @default(false)
+    stakeholderId           String?
 
-    client                  Client   @relation(fields: [clientId], references: [id])
+    createdAt               DateTime        @default(now())
+    updatedAt               DateTime        @updatedAt
+    isPrimary               Boolean         @default(false)
+    isDeleted               Boolean         @default(false)
+
+    client                  Client          @relation(fields: [clientId], references: [id])
+    stakeholder             Stakeholder?    @relation(fields: [stakeholderId], references: [stakeholderId])
 }
 
 model ClientAddress {
@@ -122,13 +136,26 @@ model ReportAuthor {
 }
 
 model Stakeholder {
-    stakeholderId           String   @id @default(dbgenerated("gen_random_uuid()"))
-    name                    String
-    organization            String
-    email                   String?
-    phone                   String?
-    createdAt               DateTime @default(now())
-    updatedAt               DateTime @updatedAt
+    stakeholderId                   String   @id @default(dbgenerated("gen_random_uuid()"))
+    name                            String
+    organization                    String
+    email                           String?
+    phone                           String?
+    type                            StakeholderType
 
-    projectStakeholders ProjectStakeholder[]
+    createdAt                       DateTime @default(now())
+    updatedAt                       DateTime @updatedAt
+    isDeleted                       Boolean  @default(false)
+    deletedAt                       DateTime?
+
+    projectStakeholders             ProjectStakeholder[]
+    clients                         Client[]
+    clientContacts                  ClientContact[]
+
+    @@index([name])
+    @@index([organization])
+    @@index([email])
+    @@index([phone])
+    @@index([type])
+    @@index([isDeleted, createdAt])
 }

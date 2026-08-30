@@ -30,8 +30,11 @@ export type StakeholderMinAggregateOutputType = {
   organization: string | null
   email: string | null
   phone: string | null
+  type: $Enums.StakeholderType | null
   createdAt: Date | null
   updatedAt: Date | null
+  isDeleted: boolean | null
+  deletedAt: Date | null
 }
 
 export type StakeholderMaxAggregateOutputType = {
@@ -40,8 +43,11 @@ export type StakeholderMaxAggregateOutputType = {
   organization: string | null
   email: string | null
   phone: string | null
+  type: $Enums.StakeholderType | null
   createdAt: Date | null
   updatedAt: Date | null
+  isDeleted: boolean | null
+  deletedAt: Date | null
 }
 
 export type StakeholderCountAggregateOutputType = {
@@ -50,8 +56,11 @@ export type StakeholderCountAggregateOutputType = {
   organization: number
   email: number
   phone: number
+  type: number
   createdAt: number
   updatedAt: number
+  isDeleted: number
+  deletedAt: number
   _all: number
 }
 
@@ -62,8 +71,11 @@ export type StakeholderMinAggregateInputType = {
   organization?: true
   email?: true
   phone?: true
+  type?: true
   createdAt?: true
   updatedAt?: true
+  isDeleted?: true
+  deletedAt?: true
 }
 
 export type StakeholderMaxAggregateInputType = {
@@ -72,8 +84,11 @@ export type StakeholderMaxAggregateInputType = {
   organization?: true
   email?: true
   phone?: true
+  type?: true
   createdAt?: true
   updatedAt?: true
+  isDeleted?: true
+  deletedAt?: true
 }
 
 export type StakeholderCountAggregateInputType = {
@@ -82,8 +97,11 @@ export type StakeholderCountAggregateInputType = {
   organization?: true
   email?: true
   phone?: true
+  type?: true
   createdAt?: true
   updatedAt?: true
+  isDeleted?: true
+  deletedAt?: true
   _all?: true
 }
 
@@ -165,8 +183,11 @@ export type StakeholderGroupByOutputType = {
   organization: string
   email: string | null
   phone: string | null
+  type: $Enums.StakeholderType
   createdAt: Date
   updatedAt: Date
+  isDeleted: boolean
+  deletedAt: Date | null
   _count: StakeholderCountAggregateOutputType | null
   _min: StakeholderMinAggregateOutputType | null
   _max: StakeholderMaxAggregateOutputType | null
@@ -196,9 +217,14 @@ export type StakeholderWhereInput = {
   organization?: Prisma.StringFilter<"Stakeholder"> | string
   email?: Prisma.StringNullableFilter<"Stakeholder"> | string | null
   phone?: Prisma.StringNullableFilter<"Stakeholder"> | string | null
+  type?: Prisma.EnumStakeholderTypeFilter<"Stakeholder"> | $Enums.StakeholderType
   createdAt?: Prisma.DateTimeFilter<"Stakeholder"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Stakeholder"> | Date | string
+  isDeleted?: Prisma.BoolFilter<"Stakeholder"> | boolean
+  deletedAt?: Prisma.DateTimeNullableFilter<"Stakeholder"> | Date | string | null
   projectStakeholders?: Prisma.ProjectStakeholderListRelationFilter
+  clients?: Prisma.ClientListRelationFilter
+  clientContacts?: Prisma.ClientContactListRelationFilter
 }
 
 export type StakeholderOrderByWithRelationInput = {
@@ -207,9 +233,14 @@ export type StakeholderOrderByWithRelationInput = {
   organization?: Prisma.SortOrder
   email?: Prisma.SortOrderInput | Prisma.SortOrder
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
+  type?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isDeleted?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   projectStakeholders?: Prisma.ProjectStakeholderOrderByRelationAggregateInput
+  clients?: Prisma.ClientOrderByRelationAggregateInput
+  clientContacts?: Prisma.ClientContactOrderByRelationAggregateInput
 }
 
 export type StakeholderWhereUniqueInput = Prisma.AtLeast<{
@@ -221,9 +252,14 @@ export type StakeholderWhereUniqueInput = Prisma.AtLeast<{
   organization?: Prisma.StringFilter<"Stakeholder"> | string
   email?: Prisma.StringNullableFilter<"Stakeholder"> | string | null
   phone?: Prisma.StringNullableFilter<"Stakeholder"> | string | null
+  type?: Prisma.EnumStakeholderTypeFilter<"Stakeholder"> | $Enums.StakeholderType
   createdAt?: Prisma.DateTimeFilter<"Stakeholder"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Stakeholder"> | Date | string
+  isDeleted?: Prisma.BoolFilter<"Stakeholder"> | boolean
+  deletedAt?: Prisma.DateTimeNullableFilter<"Stakeholder"> | Date | string | null
   projectStakeholders?: Prisma.ProjectStakeholderListRelationFilter
+  clients?: Prisma.ClientListRelationFilter
+  clientContacts?: Prisma.ClientContactListRelationFilter
 }, "stakeholderId">
 
 export type StakeholderOrderByWithAggregationInput = {
@@ -232,8 +268,11 @@ export type StakeholderOrderByWithAggregationInput = {
   organization?: Prisma.SortOrder
   email?: Prisma.SortOrderInput | Prisma.SortOrder
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
+  type?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isDeleted?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.StakeholderCountOrderByAggregateInput
   _max?: Prisma.StakeholderMaxOrderByAggregateInput
   _min?: Prisma.StakeholderMinOrderByAggregateInput
@@ -248,8 +287,11 @@ export type StakeholderScalarWhereWithAggregatesInput = {
   organization?: Prisma.StringWithAggregatesFilter<"Stakeholder"> | string
   email?: Prisma.StringNullableWithAggregatesFilter<"Stakeholder"> | string | null
   phone?: Prisma.StringNullableWithAggregatesFilter<"Stakeholder"> | string | null
+  type?: Prisma.EnumStakeholderTypeWithAggregatesFilter<"Stakeholder"> | $Enums.StakeholderType
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Stakeholder"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Stakeholder"> | Date | string
+  isDeleted?: Prisma.BoolWithAggregatesFilter<"Stakeholder"> | boolean
+  deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Stakeholder"> | Date | string | null
 }
 
 export type StakeholderCreateInput = {
@@ -258,9 +300,14 @@ export type StakeholderCreateInput = {
   organization: string
   email?: string | null
   phone?: string | null
+  type: $Enums.StakeholderType
   createdAt?: Date | string
   updatedAt?: Date | string
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
   projectStakeholders?: Prisma.ProjectStakeholderCreateNestedManyWithoutStakeholderInput
+  clients?: Prisma.ClientCreateNestedManyWithoutStakeholderInput
+  clientContacts?: Prisma.ClientContactCreateNestedManyWithoutStakeholderInput
 }
 
 export type StakeholderUncheckedCreateInput = {
@@ -269,9 +316,14 @@ export type StakeholderUncheckedCreateInput = {
   organization: string
   email?: string | null
   phone?: string | null
+  type: $Enums.StakeholderType
   createdAt?: Date | string
   updatedAt?: Date | string
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
   projectStakeholders?: Prisma.ProjectStakeholderUncheckedCreateNestedManyWithoutStakeholderInput
+  clients?: Prisma.ClientUncheckedCreateNestedManyWithoutStakeholderInput
+  clientContacts?: Prisma.ClientContactUncheckedCreateNestedManyWithoutStakeholderInput
 }
 
 export type StakeholderUpdateInput = {
@@ -280,9 +332,14 @@ export type StakeholderUpdateInput = {
   organization?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.EnumStakeholderTypeFieldUpdateOperationsInput | $Enums.StakeholderType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   projectStakeholders?: Prisma.ProjectStakeholderUpdateManyWithoutStakeholderNestedInput
+  clients?: Prisma.ClientUpdateManyWithoutStakeholderNestedInput
+  clientContacts?: Prisma.ClientContactUpdateManyWithoutStakeholderNestedInput
 }
 
 export type StakeholderUncheckedUpdateInput = {
@@ -291,9 +348,14 @@ export type StakeholderUncheckedUpdateInput = {
   organization?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.EnumStakeholderTypeFieldUpdateOperationsInput | $Enums.StakeholderType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   projectStakeholders?: Prisma.ProjectStakeholderUncheckedUpdateManyWithoutStakeholderNestedInput
+  clients?: Prisma.ClientUncheckedUpdateManyWithoutStakeholderNestedInput
+  clientContacts?: Prisma.ClientContactUncheckedUpdateManyWithoutStakeholderNestedInput
 }
 
 export type StakeholderCreateManyInput = {
@@ -302,8 +364,11 @@ export type StakeholderCreateManyInput = {
   organization: string
   email?: string | null
   phone?: string | null
+  type: $Enums.StakeholderType
   createdAt?: Date | string
   updatedAt?: Date | string
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
 }
 
 export type StakeholderUpdateManyMutationInput = {
@@ -312,8 +377,11 @@ export type StakeholderUpdateManyMutationInput = {
   organization?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.EnumStakeholderTypeFieldUpdateOperationsInput | $Enums.StakeholderType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type StakeholderUncheckedUpdateManyInput = {
@@ -322,8 +390,16 @@ export type StakeholderUncheckedUpdateManyInput = {
   organization?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.EnumStakeholderTypeFieldUpdateOperationsInput | $Enums.StakeholderType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+}
+
+export type StakeholderNullableScalarRelationFilter = {
+  is?: Prisma.StakeholderWhereInput | null
+  isNot?: Prisma.StakeholderWhereInput | null
 }
 
 export type StakeholderCountOrderByAggregateInput = {
@@ -332,8 +408,11 @@ export type StakeholderCountOrderByAggregateInput = {
   organization?: Prisma.SortOrder
   email?: Prisma.SortOrder
   phone?: Prisma.SortOrder
+  type?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isDeleted?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
 export type StakeholderMaxOrderByAggregateInput = {
@@ -342,8 +421,11 @@ export type StakeholderMaxOrderByAggregateInput = {
   organization?: Prisma.SortOrder
   email?: Prisma.SortOrder
   phone?: Prisma.SortOrder
+  type?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isDeleted?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
 export type StakeholderMinOrderByAggregateInput = {
@@ -352,13 +434,52 @@ export type StakeholderMinOrderByAggregateInput = {
   organization?: Prisma.SortOrder
   email?: Prisma.SortOrder
   phone?: Prisma.SortOrder
+  type?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isDeleted?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
 export type StakeholderScalarRelationFilter = {
   is?: Prisma.StakeholderWhereInput
   isNot?: Prisma.StakeholderWhereInput
+}
+
+export type StakeholderCreateNestedOneWithoutClientsInput = {
+  create?: Prisma.XOR<Prisma.StakeholderCreateWithoutClientsInput, Prisma.StakeholderUncheckedCreateWithoutClientsInput>
+  connectOrCreate?: Prisma.StakeholderCreateOrConnectWithoutClientsInput
+  connect?: Prisma.StakeholderWhereUniqueInput
+}
+
+export type StakeholderUpdateOneWithoutClientsNestedInput = {
+  create?: Prisma.XOR<Prisma.StakeholderCreateWithoutClientsInput, Prisma.StakeholderUncheckedCreateWithoutClientsInput>
+  connectOrCreate?: Prisma.StakeholderCreateOrConnectWithoutClientsInput
+  upsert?: Prisma.StakeholderUpsertWithoutClientsInput
+  disconnect?: Prisma.StakeholderWhereInput | boolean
+  delete?: Prisma.StakeholderWhereInput | boolean
+  connect?: Prisma.StakeholderWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.StakeholderUpdateToOneWithWhereWithoutClientsInput, Prisma.StakeholderUpdateWithoutClientsInput>, Prisma.StakeholderUncheckedUpdateWithoutClientsInput>
+}
+
+export type StakeholderCreateNestedOneWithoutClientContactsInput = {
+  create?: Prisma.XOR<Prisma.StakeholderCreateWithoutClientContactsInput, Prisma.StakeholderUncheckedCreateWithoutClientContactsInput>
+  connectOrCreate?: Prisma.StakeholderCreateOrConnectWithoutClientContactsInput
+  connect?: Prisma.StakeholderWhereUniqueInput
+}
+
+export type StakeholderUpdateOneWithoutClientContactsNestedInput = {
+  create?: Prisma.XOR<Prisma.StakeholderCreateWithoutClientContactsInput, Prisma.StakeholderUncheckedCreateWithoutClientContactsInput>
+  connectOrCreate?: Prisma.StakeholderCreateOrConnectWithoutClientContactsInput
+  upsert?: Prisma.StakeholderUpsertWithoutClientContactsInput
+  disconnect?: Prisma.StakeholderWhereInput | boolean
+  delete?: Prisma.StakeholderWhereInput | boolean
+  connect?: Prisma.StakeholderWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.StakeholderUpdateToOneWithWhereWithoutClientContactsInput, Prisma.StakeholderUpdateWithoutClientContactsInput>, Prisma.StakeholderUncheckedUpdateWithoutClientContactsInput>
+}
+
+export type EnumStakeholderTypeFieldUpdateOperationsInput = {
+  set?: $Enums.StakeholderType
 }
 
 export type StakeholderCreateNestedOneWithoutProjectStakeholdersInput = {
@@ -375,14 +496,171 @@ export type StakeholderUpdateOneRequiredWithoutProjectStakeholdersNestedInput = 
   update?: Prisma.XOR<Prisma.XOR<Prisma.StakeholderUpdateToOneWithWhereWithoutProjectStakeholdersInput, Prisma.StakeholderUpdateWithoutProjectStakeholdersInput>, Prisma.StakeholderUncheckedUpdateWithoutProjectStakeholdersInput>
 }
 
+export type StakeholderCreateWithoutClientsInput = {
+  stakeholderId?: string
+  name: string
+  organization: string
+  email?: string | null
+  phone?: string | null
+  type: $Enums.StakeholderType
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
+  projectStakeholders?: Prisma.ProjectStakeholderCreateNestedManyWithoutStakeholderInput
+  clientContacts?: Prisma.ClientContactCreateNestedManyWithoutStakeholderInput
+}
+
+export type StakeholderUncheckedCreateWithoutClientsInput = {
+  stakeholderId?: string
+  name: string
+  organization: string
+  email?: string | null
+  phone?: string | null
+  type: $Enums.StakeholderType
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
+  projectStakeholders?: Prisma.ProjectStakeholderUncheckedCreateNestedManyWithoutStakeholderInput
+  clientContacts?: Prisma.ClientContactUncheckedCreateNestedManyWithoutStakeholderInput
+}
+
+export type StakeholderCreateOrConnectWithoutClientsInput = {
+  where: Prisma.StakeholderWhereUniqueInput
+  create: Prisma.XOR<Prisma.StakeholderCreateWithoutClientsInput, Prisma.StakeholderUncheckedCreateWithoutClientsInput>
+}
+
+export type StakeholderUpsertWithoutClientsInput = {
+  update: Prisma.XOR<Prisma.StakeholderUpdateWithoutClientsInput, Prisma.StakeholderUncheckedUpdateWithoutClientsInput>
+  create: Prisma.XOR<Prisma.StakeholderCreateWithoutClientsInput, Prisma.StakeholderUncheckedCreateWithoutClientsInput>
+  where?: Prisma.StakeholderWhereInput
+}
+
+export type StakeholderUpdateToOneWithWhereWithoutClientsInput = {
+  where?: Prisma.StakeholderWhereInput
+  data: Prisma.XOR<Prisma.StakeholderUpdateWithoutClientsInput, Prisma.StakeholderUncheckedUpdateWithoutClientsInput>
+}
+
+export type StakeholderUpdateWithoutClientsInput = {
+  stakeholderId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  organization?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.EnumStakeholderTypeFieldUpdateOperationsInput | $Enums.StakeholderType
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  projectStakeholders?: Prisma.ProjectStakeholderUpdateManyWithoutStakeholderNestedInput
+  clientContacts?: Prisma.ClientContactUpdateManyWithoutStakeholderNestedInput
+}
+
+export type StakeholderUncheckedUpdateWithoutClientsInput = {
+  stakeholderId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  organization?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.EnumStakeholderTypeFieldUpdateOperationsInput | $Enums.StakeholderType
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  projectStakeholders?: Prisma.ProjectStakeholderUncheckedUpdateManyWithoutStakeholderNestedInput
+  clientContacts?: Prisma.ClientContactUncheckedUpdateManyWithoutStakeholderNestedInput
+}
+
+export type StakeholderCreateWithoutClientContactsInput = {
+  stakeholderId?: string
+  name: string
+  organization: string
+  email?: string | null
+  phone?: string | null
+  type: $Enums.StakeholderType
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
+  projectStakeholders?: Prisma.ProjectStakeholderCreateNestedManyWithoutStakeholderInput
+  clients?: Prisma.ClientCreateNestedManyWithoutStakeholderInput
+}
+
+export type StakeholderUncheckedCreateWithoutClientContactsInput = {
+  stakeholderId?: string
+  name: string
+  organization: string
+  email?: string | null
+  phone?: string | null
+  type: $Enums.StakeholderType
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
+  projectStakeholders?: Prisma.ProjectStakeholderUncheckedCreateNestedManyWithoutStakeholderInput
+  clients?: Prisma.ClientUncheckedCreateNestedManyWithoutStakeholderInput
+}
+
+export type StakeholderCreateOrConnectWithoutClientContactsInput = {
+  where: Prisma.StakeholderWhereUniqueInput
+  create: Prisma.XOR<Prisma.StakeholderCreateWithoutClientContactsInput, Prisma.StakeholderUncheckedCreateWithoutClientContactsInput>
+}
+
+export type StakeholderUpsertWithoutClientContactsInput = {
+  update: Prisma.XOR<Prisma.StakeholderUpdateWithoutClientContactsInput, Prisma.StakeholderUncheckedUpdateWithoutClientContactsInput>
+  create: Prisma.XOR<Prisma.StakeholderCreateWithoutClientContactsInput, Prisma.StakeholderUncheckedCreateWithoutClientContactsInput>
+  where?: Prisma.StakeholderWhereInput
+}
+
+export type StakeholderUpdateToOneWithWhereWithoutClientContactsInput = {
+  where?: Prisma.StakeholderWhereInput
+  data: Prisma.XOR<Prisma.StakeholderUpdateWithoutClientContactsInput, Prisma.StakeholderUncheckedUpdateWithoutClientContactsInput>
+}
+
+export type StakeholderUpdateWithoutClientContactsInput = {
+  stakeholderId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  organization?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.EnumStakeholderTypeFieldUpdateOperationsInput | $Enums.StakeholderType
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  projectStakeholders?: Prisma.ProjectStakeholderUpdateManyWithoutStakeholderNestedInput
+  clients?: Prisma.ClientUpdateManyWithoutStakeholderNestedInput
+}
+
+export type StakeholderUncheckedUpdateWithoutClientContactsInput = {
+  stakeholderId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  organization?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.EnumStakeholderTypeFieldUpdateOperationsInput | $Enums.StakeholderType
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  projectStakeholders?: Prisma.ProjectStakeholderUncheckedUpdateManyWithoutStakeholderNestedInput
+  clients?: Prisma.ClientUncheckedUpdateManyWithoutStakeholderNestedInput
+}
+
 export type StakeholderCreateWithoutProjectStakeholdersInput = {
   stakeholderId?: string
   name: string
   organization: string
   email?: string | null
   phone?: string | null
+  type: $Enums.StakeholderType
   createdAt?: Date | string
   updatedAt?: Date | string
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
+  clients?: Prisma.ClientCreateNestedManyWithoutStakeholderInput
+  clientContacts?: Prisma.ClientContactCreateNestedManyWithoutStakeholderInput
 }
 
 export type StakeholderUncheckedCreateWithoutProjectStakeholdersInput = {
@@ -391,8 +669,13 @@ export type StakeholderUncheckedCreateWithoutProjectStakeholdersInput = {
   organization: string
   email?: string | null
   phone?: string | null
+  type: $Enums.StakeholderType
   createdAt?: Date | string
   updatedAt?: Date | string
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
+  clients?: Prisma.ClientUncheckedCreateNestedManyWithoutStakeholderInput
+  clientContacts?: Prisma.ClientContactUncheckedCreateNestedManyWithoutStakeholderInput
 }
 
 export type StakeholderCreateOrConnectWithoutProjectStakeholdersInput = {
@@ -417,8 +700,13 @@ export type StakeholderUpdateWithoutProjectStakeholdersInput = {
   organization?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.EnumStakeholderTypeFieldUpdateOperationsInput | $Enums.StakeholderType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  clients?: Prisma.ClientUpdateManyWithoutStakeholderNestedInput
+  clientContacts?: Prisma.ClientContactUpdateManyWithoutStakeholderNestedInput
 }
 
 export type StakeholderUncheckedUpdateWithoutProjectStakeholdersInput = {
@@ -427,8 +715,13 @@ export type StakeholderUncheckedUpdateWithoutProjectStakeholdersInput = {
   organization?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.EnumStakeholderTypeFieldUpdateOperationsInput | $Enums.StakeholderType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  clients?: Prisma.ClientUncheckedUpdateManyWithoutStakeholderNestedInput
+  clientContacts?: Prisma.ClientContactUncheckedUpdateManyWithoutStakeholderNestedInput
 }
 
 
@@ -438,10 +731,14 @@ export type StakeholderUncheckedUpdateWithoutProjectStakeholdersInput = {
 
 export type StakeholderCountOutputType = {
   projectStakeholders: number
+  clients: number
+  clientContacts: number
 }
 
 export type StakeholderCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   projectStakeholders?: boolean | StakeholderCountOutputTypeCountProjectStakeholdersArgs
+  clients?: boolean | StakeholderCountOutputTypeCountClientsArgs
+  clientContacts?: boolean | StakeholderCountOutputTypeCountClientContactsArgs
 }
 
 /**
@@ -461,6 +758,20 @@ export type StakeholderCountOutputTypeCountProjectStakeholdersArgs<ExtArgs exten
   where?: Prisma.ProjectStakeholderWhereInput
 }
 
+/**
+ * StakeholderCountOutputType without action
+ */
+export type StakeholderCountOutputTypeCountClientsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ClientWhereInput
+}
+
+/**
+ * StakeholderCountOutputType without action
+ */
+export type StakeholderCountOutputTypeCountClientContactsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ClientContactWhereInput
+}
+
 
 export type StakeholderSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   stakeholderId?: boolean
@@ -468,9 +779,14 @@ export type StakeholderSelect<ExtArgs extends runtime.Types.Extensions.InternalA
   organization?: boolean
   email?: boolean
   phone?: boolean
+  type?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  isDeleted?: boolean
+  deletedAt?: boolean
   projectStakeholders?: boolean | Prisma.Stakeholder$projectStakeholdersArgs<ExtArgs>
+  clients?: boolean | Prisma.Stakeholder$clientsArgs<ExtArgs>
+  clientContacts?: boolean | Prisma.Stakeholder$clientContactsArgs<ExtArgs>
   _count?: boolean | Prisma.StakeholderCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["stakeholder"]>
 
@@ -480,8 +796,11 @@ export type StakeholderSelectCreateManyAndReturn<ExtArgs extends runtime.Types.E
   organization?: boolean
   email?: boolean
   phone?: boolean
+  type?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  isDeleted?: boolean
+  deletedAt?: boolean
 }, ExtArgs["result"]["stakeholder"]>
 
 export type StakeholderSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -490,8 +809,11 @@ export type StakeholderSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.E
   organization?: boolean
   email?: boolean
   phone?: boolean
+  type?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  isDeleted?: boolean
+  deletedAt?: boolean
 }, ExtArgs["result"]["stakeholder"]>
 
 export type StakeholderSelectScalar = {
@@ -500,13 +822,18 @@ export type StakeholderSelectScalar = {
   organization?: boolean
   email?: boolean
   phone?: boolean
+  type?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  isDeleted?: boolean
+  deletedAt?: boolean
 }
 
-export type StakeholderOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"stakeholderId" | "name" | "organization" | "email" | "phone" | "createdAt" | "updatedAt", ExtArgs["result"]["stakeholder"]>
+export type StakeholderOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"stakeholderId" | "name" | "organization" | "email" | "phone" | "type" | "createdAt" | "updatedAt" | "isDeleted" | "deletedAt", ExtArgs["result"]["stakeholder"]>
 export type StakeholderInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   projectStakeholders?: boolean | Prisma.Stakeholder$projectStakeholdersArgs<ExtArgs>
+  clients?: boolean | Prisma.Stakeholder$clientsArgs<ExtArgs>
+  clientContacts?: boolean | Prisma.Stakeholder$clientContactsArgs<ExtArgs>
   _count?: boolean | Prisma.StakeholderCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type StakeholderIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -516,6 +843,8 @@ export type $StakeholderPayload<ExtArgs extends runtime.Types.Extensions.Interna
   name: "Stakeholder"
   objects: {
     projectStakeholders: Prisma.$ProjectStakeholderPayload<ExtArgs>[]
+    clients: Prisma.$ClientPayload<ExtArgs>[]
+    clientContacts: Prisma.$ClientContactPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     stakeholderId: string
@@ -523,8 +852,11 @@ export type $StakeholderPayload<ExtArgs extends runtime.Types.Extensions.Interna
     organization: string
     email: string | null
     phone: string | null
+    type: $Enums.StakeholderType
     createdAt: Date
     updatedAt: Date
+    isDeleted: boolean
+    deletedAt: Date | null
   }, ExtArgs["result"]["stakeholder"]>
   composites: {}
 }
@@ -920,6 +1252,8 @@ readonly fields: StakeholderFieldRefs;
 export interface Prisma__StakeholderClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   projectStakeholders<T extends Prisma.Stakeholder$projectStakeholdersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Stakeholder$projectStakeholdersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjectStakeholderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  clients<T extends Prisma.Stakeholder$clientsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Stakeholder$clientsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ClientPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  clientContacts<T extends Prisma.Stakeholder$clientContactsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Stakeholder$clientContactsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ClientContactPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -954,8 +1288,11 @@ export interface StakeholderFieldRefs {
   readonly organization: Prisma.FieldRef<"Stakeholder", 'String'>
   readonly email: Prisma.FieldRef<"Stakeholder", 'String'>
   readonly phone: Prisma.FieldRef<"Stakeholder", 'String'>
+  readonly type: Prisma.FieldRef<"Stakeholder", 'StakeholderType'>
   readonly createdAt: Prisma.FieldRef<"Stakeholder", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Stakeholder", 'DateTime'>
+  readonly isDeleted: Prisma.FieldRef<"Stakeholder", 'Boolean'>
+  readonly deletedAt: Prisma.FieldRef<"Stakeholder", 'DateTime'>
 }
     
 
@@ -1370,6 +1707,54 @@ export type Stakeholder$projectStakeholdersArgs<ExtArgs extends runtime.Types.Ex
   take?: number
   skip?: number
   distinct?: Prisma.ProjectStakeholderScalarFieldEnum | Prisma.ProjectStakeholderScalarFieldEnum[]
+}
+
+/**
+ * Stakeholder.clients
+ */
+export type Stakeholder$clientsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Client
+   */
+  select?: Prisma.ClientSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Client
+   */
+  omit?: Prisma.ClientOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ClientInclude<ExtArgs> | null
+  where?: Prisma.ClientWhereInput
+  orderBy?: Prisma.ClientOrderByWithRelationInput | Prisma.ClientOrderByWithRelationInput[]
+  cursor?: Prisma.ClientWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ClientScalarFieldEnum | Prisma.ClientScalarFieldEnum[]
+}
+
+/**
+ * Stakeholder.clientContacts
+ */
+export type Stakeholder$clientContactsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ClientContact
+   */
+  select?: Prisma.ClientContactSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ClientContact
+   */
+  omit?: Prisma.ClientContactOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ClientContactInclude<ExtArgs> | null
+  where?: Prisma.ClientContactWhereInput
+  orderBy?: Prisma.ClientContactOrderByWithRelationInput | Prisma.ClientContactOrderByWithRelationInput[]
+  cursor?: Prisma.ClientContactWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ClientContactScalarFieldEnum | Prisma.ClientContactScalarFieldEnum[]
 }
 
 /**

@@ -528,6 +528,23 @@ export type EnumEmploymentTypeWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumEmploymentTypeFilter<$PrismaModel>
 }
 
+export type EnumStakeholderTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.StakeholderType | Prisma.EnumStakeholderTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.StakeholderType[] | Prisma.ListEnumStakeholderTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.StakeholderType[] | Prisma.ListEnumStakeholderTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumStakeholderTypeFilter<$PrismaModel> | $Enums.StakeholderType
+}
+
+export type EnumStakeholderTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.StakeholderType | Prisma.EnumStakeholderTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.StakeholderType[] | Prisma.ListEnumStakeholderTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.StakeholderType[] | Prisma.ListEnumStakeholderTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumStakeholderTypeWithAggregatesFilter<$PrismaModel> | $Enums.StakeholderType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumStakeholderTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumStakeholderTypeFilter<$PrismaModel>
+}
+
 export type EnumProjectStatusFilter<$PrismaModel = never> = {
   equals?: $Enums.ProjectStatus | Prisma.EnumProjectStatusFieldRefInput<$PrismaModel>
   in?: $Enums.ProjectStatus[] | Prisma.ListEnumProjectStatusFieldRefInput<$PrismaModel>
@@ -1028,6 +1045,23 @@ export type NestedEnumEmploymentTypeWithAggregatesFilter<$PrismaModel = never> =
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumEmploymentTypeFilter<$PrismaModel>
   _max?: Prisma.NestedEnumEmploymentTypeFilter<$PrismaModel>
+}
+
+export type NestedEnumStakeholderTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.StakeholderType | Prisma.EnumStakeholderTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.StakeholderType[] | Prisma.ListEnumStakeholderTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.StakeholderType[] | Prisma.ListEnumStakeholderTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumStakeholderTypeFilter<$PrismaModel> | $Enums.StakeholderType
+}
+
+export type NestedEnumStakeholderTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.StakeholderType | Prisma.EnumStakeholderTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.StakeholderType[] | Prisma.ListEnumStakeholderTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.StakeholderType[] | Prisma.ListEnumStakeholderTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumStakeholderTypeWithAggregatesFilter<$PrismaModel> | $Enums.StakeholderType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumStakeholderTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumStakeholderTypeFilter<$PrismaModel>
 }
 
 export type NestedEnumProjectStatusFilter<$PrismaModel = never> = {

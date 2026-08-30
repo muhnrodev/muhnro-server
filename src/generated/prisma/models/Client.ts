@@ -31,11 +31,14 @@ export type ClientMinAggregateOutputType = {
   industryId: string | null
   addressId: string | null
   notes: string | null
+  logoId: string | null
+  stakeholderId: string | null
+  email: string | null
+  phone: string | null
   isDeleted: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
   deletedAt: Date | null
-  logoId: string | null
 }
 
 export type ClientMaxAggregateOutputType = {
@@ -45,11 +48,14 @@ export type ClientMaxAggregateOutputType = {
   industryId: string | null
   addressId: string | null
   notes: string | null
+  logoId: string | null
+  stakeholderId: string | null
+  email: string | null
+  phone: string | null
   isDeleted: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
   deletedAt: Date | null
-  logoId: string | null
 }
 
 export type ClientCountAggregateOutputType = {
@@ -59,11 +65,14 @@ export type ClientCountAggregateOutputType = {
   industryId: number
   addressId: number
   notes: number
+  logoId: number
+  stakeholderId: number
+  email: number
+  phone: number
   isDeleted: number
   createdAt: number
   updatedAt: number
   deletedAt: number
-  logoId: number
   _all: number
 }
 
@@ -75,11 +84,14 @@ export type ClientMinAggregateInputType = {
   industryId?: true
   addressId?: true
   notes?: true
+  logoId?: true
+  stakeholderId?: true
+  email?: true
+  phone?: true
   isDeleted?: true
   createdAt?: true
   updatedAt?: true
   deletedAt?: true
-  logoId?: true
 }
 
 export type ClientMaxAggregateInputType = {
@@ -89,11 +101,14 @@ export type ClientMaxAggregateInputType = {
   industryId?: true
   addressId?: true
   notes?: true
+  logoId?: true
+  stakeholderId?: true
+  email?: true
+  phone?: true
   isDeleted?: true
   createdAt?: true
   updatedAt?: true
   deletedAt?: true
-  logoId?: true
 }
 
 export type ClientCountAggregateInputType = {
@@ -103,11 +118,14 @@ export type ClientCountAggregateInputType = {
   industryId?: true
   addressId?: true
   notes?: true
+  logoId?: true
+  stakeholderId?: true
+  email?: true
+  phone?: true
   isDeleted?: true
   createdAt?: true
   updatedAt?: true
   deletedAt?: true
-  logoId?: true
   _all?: true
 }
 
@@ -190,11 +208,14 @@ export type ClientGroupByOutputType = {
   industryId: string
   addressId: string | null
   notes: string | null
+  logoId: string | null
+  stakeholderId: string | null
+  email: string | null
+  phone: string | null
   isDeleted: boolean
   createdAt: Date
   updatedAt: Date
   deletedAt: Date | null
-  logoId: string | null
   _count: ClientCountAggregateOutputType | null
   _min: ClientMinAggregateOutputType | null
   _max: ClientMaxAggregateOutputType | null
@@ -225,12 +246,16 @@ export type ClientWhereInput = {
   industryId?: Prisma.StringFilter<"Client"> | string
   addressId?: Prisma.StringNullableFilter<"Client"> | string | null
   notes?: Prisma.StringNullableFilter<"Client"> | string | null
+  logoId?: Prisma.StringNullableFilter<"Client"> | string | null
+  stakeholderId?: Prisma.StringNullableFilter<"Client"> | string | null
+  email?: Prisma.StringNullableFilter<"Client"> | string | null
+  phone?: Prisma.StringNullableFilter<"Client"> | string | null
   isDeleted?: Prisma.BoolFilter<"Client"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Client"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Client"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"Client"> | Date | string | null
-  logoId?: Prisma.StringNullableFilter<"Client"> | string | null
   logo?: Prisma.XOR<Prisma.MediaNullableScalarRelationFilter, Prisma.MediaWhereInput> | null
+  stakeholder?: Prisma.XOR<Prisma.StakeholderNullableScalarRelationFilter, Prisma.StakeholderWhereInput> | null
   address?: Prisma.XOR<Prisma.ClientAddressNullableScalarRelationFilter, Prisma.ClientAddressWhereInput> | null
   industry?: Prisma.XOR<Prisma.IndustryScalarRelationFilter, Prisma.IndustryWhereInput>
   projects?: Prisma.ProjectListRelationFilter
@@ -244,12 +269,16 @@ export type ClientOrderByWithRelationInput = {
   industryId?: Prisma.SortOrder
   addressId?: Prisma.SortOrderInput | Prisma.SortOrder
   notes?: Prisma.SortOrderInput | Prisma.SortOrder
+  logoId?: Prisma.SortOrderInput | Prisma.SortOrder
+  stakeholderId?: Prisma.SortOrderInput | Prisma.SortOrder
+  email?: Prisma.SortOrderInput | Prisma.SortOrder
+  phone?: Prisma.SortOrderInput | Prisma.SortOrder
   isDeleted?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
-  logoId?: Prisma.SortOrderInput | Prisma.SortOrder
   logo?: Prisma.MediaOrderByWithRelationInput
+  stakeholder?: Prisma.StakeholderOrderByWithRelationInput
   address?: Prisma.ClientAddressOrderByWithRelationInput
   industry?: Prisma.IndustryOrderByWithRelationInput
   projects?: Prisma.ProjectOrderByRelationAggregateInput
@@ -258,6 +287,7 @@ export type ClientOrderByWithRelationInput = {
 
 export type ClientWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  name_stakeholderId?: Prisma.ClientNameStakeholderIdCompoundUniqueInput
   AND?: Prisma.ClientWhereInput | Prisma.ClientWhereInput[]
   OR?: Prisma.ClientWhereInput[]
   NOT?: Prisma.ClientWhereInput | Prisma.ClientWhereInput[]
@@ -266,17 +296,21 @@ export type ClientWhereUniqueInput = Prisma.AtLeast<{
   industryId?: Prisma.StringFilter<"Client"> | string
   addressId?: Prisma.StringNullableFilter<"Client"> | string | null
   notes?: Prisma.StringNullableFilter<"Client"> | string | null
+  logoId?: Prisma.StringNullableFilter<"Client"> | string | null
+  stakeholderId?: Prisma.StringNullableFilter<"Client"> | string | null
+  email?: Prisma.StringNullableFilter<"Client"> | string | null
+  phone?: Prisma.StringNullableFilter<"Client"> | string | null
   isDeleted?: Prisma.BoolFilter<"Client"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Client"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Client"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"Client"> | Date | string | null
-  logoId?: Prisma.StringNullableFilter<"Client"> | string | null
   logo?: Prisma.XOR<Prisma.MediaNullableScalarRelationFilter, Prisma.MediaWhereInput> | null
+  stakeholder?: Prisma.XOR<Prisma.StakeholderNullableScalarRelationFilter, Prisma.StakeholderWhereInput> | null
   address?: Prisma.XOR<Prisma.ClientAddressNullableScalarRelationFilter, Prisma.ClientAddressWhereInput> | null
   industry?: Prisma.XOR<Prisma.IndustryScalarRelationFilter, Prisma.IndustryWhereInput>
   projects?: Prisma.ProjectListRelationFilter
   contacts?: Prisma.ClientContactListRelationFilter
-}, "id">
+}, "id" | "name_stakeholderId">
 
 export type ClientOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -285,11 +319,14 @@ export type ClientOrderByWithAggregationInput = {
   industryId?: Prisma.SortOrder
   addressId?: Prisma.SortOrderInput | Prisma.SortOrder
   notes?: Prisma.SortOrderInput | Prisma.SortOrder
+  logoId?: Prisma.SortOrderInput | Prisma.SortOrder
+  stakeholderId?: Prisma.SortOrderInput | Prisma.SortOrder
+  email?: Prisma.SortOrderInput | Prisma.SortOrder
+  phone?: Prisma.SortOrderInput | Prisma.SortOrder
   isDeleted?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
-  logoId?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.ClientCountOrderByAggregateInput
   _max?: Prisma.ClientMaxOrderByAggregateInput
   _min?: Prisma.ClientMinOrderByAggregateInput
@@ -305,11 +342,14 @@ export type ClientScalarWhereWithAggregatesInput = {
   industryId?: Prisma.StringWithAggregatesFilter<"Client"> | string
   addressId?: Prisma.StringNullableWithAggregatesFilter<"Client"> | string | null
   notes?: Prisma.StringNullableWithAggregatesFilter<"Client"> | string | null
+  logoId?: Prisma.StringNullableWithAggregatesFilter<"Client"> | string | null
+  stakeholderId?: Prisma.StringNullableWithAggregatesFilter<"Client"> | string | null
+  email?: Prisma.StringNullableWithAggregatesFilter<"Client"> | string | null
+  phone?: Prisma.StringNullableWithAggregatesFilter<"Client"> | string | null
   isDeleted?: Prisma.BoolWithAggregatesFilter<"Client"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Client"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Client"> | Date | string
   deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Client"> | Date | string | null
-  logoId?: Prisma.StringNullableWithAggregatesFilter<"Client"> | string | null
 }
 
 export type ClientCreateInput = {
@@ -317,11 +357,14 @@ export type ClientCreateInput = {
   name: string
   description?: string | null
   notes?: string | null
+  email?: string | null
+  phone?: string | null
   isDeleted?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
   logo?: Prisma.MediaCreateNestedOneWithoutLogosInput
+  stakeholder?: Prisma.StakeholderCreateNestedOneWithoutClientsInput
   address?: Prisma.ClientAddressCreateNestedOneWithoutClientsInput
   industry: Prisma.IndustryCreateNestedOneWithoutClientsInput
   projects?: Prisma.ProjectCreateNestedManyWithoutClientInput
@@ -335,11 +378,14 @@ export type ClientUncheckedCreateInput = {
   industryId: string
   addressId?: string | null
   notes?: string | null
+  logoId?: string | null
+  stakeholderId?: string | null
+  email?: string | null
+  phone?: string | null
   isDeleted?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
-  logoId?: string | null
   projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutClientInput
   contacts?: Prisma.ClientContactUncheckedCreateNestedManyWithoutClientInput
 }
@@ -349,11 +395,14 @@ export type ClientUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.MediaUpdateOneWithoutLogosNestedInput
+  stakeholder?: Prisma.StakeholderUpdateOneWithoutClientsNestedInput
   address?: Prisma.ClientAddressUpdateOneWithoutClientsNestedInput
   industry?: Prisma.IndustryUpdateOneRequiredWithoutClientsNestedInput
   projects?: Prisma.ProjectUpdateManyWithoutClientNestedInput
@@ -367,11 +416,14 @@ export type ClientUncheckedUpdateInput = {
   industryId?: Prisma.StringFieldUpdateOperationsInput | string
   addressId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stakeholderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  logoId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   projects?: Prisma.ProjectUncheckedUpdateManyWithoutClientNestedInput
   contacts?: Prisma.ClientContactUncheckedUpdateManyWithoutClientNestedInput
 }
@@ -383,11 +435,14 @@ export type ClientCreateManyInput = {
   industryId: string
   addressId?: string | null
   notes?: string | null
+  logoId?: string | null
+  stakeholderId?: string | null
+  email?: string | null
+  phone?: string | null
   isDeleted?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
-  logoId?: string | null
 }
 
 export type ClientUpdateManyMutationInput = {
@@ -395,6 +450,8 @@ export type ClientUpdateManyMutationInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -408,11 +465,14 @@ export type ClientUncheckedUpdateManyInput = {
   industryId?: Prisma.StringFieldUpdateOperationsInput | string
   addressId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stakeholderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  logoId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type ClientListRelationFilter = {
@@ -425,6 +485,11 @@ export type ClientOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
+export type ClientNameStakeholderIdCompoundUniqueInput = {
+  name: string
+  stakeholderId: string
+}
+
 export type ClientCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
@@ -432,11 +497,14 @@ export type ClientCountOrderByAggregateInput = {
   industryId?: Prisma.SortOrder
   addressId?: Prisma.SortOrder
   notes?: Prisma.SortOrder
+  logoId?: Prisma.SortOrder
+  stakeholderId?: Prisma.SortOrder
+  email?: Prisma.SortOrder
+  phone?: Prisma.SortOrder
   isDeleted?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
-  logoId?: Prisma.SortOrder
 }
 
 export type ClientMaxOrderByAggregateInput = {
@@ -446,11 +514,14 @@ export type ClientMaxOrderByAggregateInput = {
   industryId?: Prisma.SortOrder
   addressId?: Prisma.SortOrder
   notes?: Prisma.SortOrder
+  logoId?: Prisma.SortOrder
+  stakeholderId?: Prisma.SortOrder
+  email?: Prisma.SortOrder
+  phone?: Prisma.SortOrder
   isDeleted?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
-  logoId?: Prisma.SortOrder
 }
 
 export type ClientMinOrderByAggregateInput = {
@@ -460,11 +531,14 @@ export type ClientMinOrderByAggregateInput = {
   industryId?: Prisma.SortOrder
   addressId?: Prisma.SortOrder
   notes?: Prisma.SortOrder
+  logoId?: Prisma.SortOrder
+  stakeholderId?: Prisma.SortOrder
+  email?: Prisma.SortOrder
+  phone?: Prisma.SortOrder
   isDeleted?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
-  logoId?: Prisma.SortOrder
 }
 
 export type ClientScalarRelationFilter = {
@@ -612,6 +686,48 @@ export type ClientUncheckedUpdateManyWithoutAddressNestedInput = {
   deleteMany?: Prisma.ClientScalarWhereInput | Prisma.ClientScalarWhereInput[]
 }
 
+export type ClientCreateNestedManyWithoutStakeholderInput = {
+  create?: Prisma.XOR<Prisma.ClientCreateWithoutStakeholderInput, Prisma.ClientUncheckedCreateWithoutStakeholderInput> | Prisma.ClientCreateWithoutStakeholderInput[] | Prisma.ClientUncheckedCreateWithoutStakeholderInput[]
+  connectOrCreate?: Prisma.ClientCreateOrConnectWithoutStakeholderInput | Prisma.ClientCreateOrConnectWithoutStakeholderInput[]
+  createMany?: Prisma.ClientCreateManyStakeholderInputEnvelope
+  connect?: Prisma.ClientWhereUniqueInput | Prisma.ClientWhereUniqueInput[]
+}
+
+export type ClientUncheckedCreateNestedManyWithoutStakeholderInput = {
+  create?: Prisma.XOR<Prisma.ClientCreateWithoutStakeholderInput, Prisma.ClientUncheckedCreateWithoutStakeholderInput> | Prisma.ClientCreateWithoutStakeholderInput[] | Prisma.ClientUncheckedCreateWithoutStakeholderInput[]
+  connectOrCreate?: Prisma.ClientCreateOrConnectWithoutStakeholderInput | Prisma.ClientCreateOrConnectWithoutStakeholderInput[]
+  createMany?: Prisma.ClientCreateManyStakeholderInputEnvelope
+  connect?: Prisma.ClientWhereUniqueInput | Prisma.ClientWhereUniqueInput[]
+}
+
+export type ClientUpdateManyWithoutStakeholderNestedInput = {
+  create?: Prisma.XOR<Prisma.ClientCreateWithoutStakeholderInput, Prisma.ClientUncheckedCreateWithoutStakeholderInput> | Prisma.ClientCreateWithoutStakeholderInput[] | Prisma.ClientUncheckedCreateWithoutStakeholderInput[]
+  connectOrCreate?: Prisma.ClientCreateOrConnectWithoutStakeholderInput | Prisma.ClientCreateOrConnectWithoutStakeholderInput[]
+  upsert?: Prisma.ClientUpsertWithWhereUniqueWithoutStakeholderInput | Prisma.ClientUpsertWithWhereUniqueWithoutStakeholderInput[]
+  createMany?: Prisma.ClientCreateManyStakeholderInputEnvelope
+  set?: Prisma.ClientWhereUniqueInput | Prisma.ClientWhereUniqueInput[]
+  disconnect?: Prisma.ClientWhereUniqueInput | Prisma.ClientWhereUniqueInput[]
+  delete?: Prisma.ClientWhereUniqueInput | Prisma.ClientWhereUniqueInput[]
+  connect?: Prisma.ClientWhereUniqueInput | Prisma.ClientWhereUniqueInput[]
+  update?: Prisma.ClientUpdateWithWhereUniqueWithoutStakeholderInput | Prisma.ClientUpdateWithWhereUniqueWithoutStakeholderInput[]
+  updateMany?: Prisma.ClientUpdateManyWithWhereWithoutStakeholderInput | Prisma.ClientUpdateManyWithWhereWithoutStakeholderInput[]
+  deleteMany?: Prisma.ClientScalarWhereInput | Prisma.ClientScalarWhereInput[]
+}
+
+export type ClientUncheckedUpdateManyWithoutStakeholderNestedInput = {
+  create?: Prisma.XOR<Prisma.ClientCreateWithoutStakeholderInput, Prisma.ClientUncheckedCreateWithoutStakeholderInput> | Prisma.ClientCreateWithoutStakeholderInput[] | Prisma.ClientUncheckedCreateWithoutStakeholderInput[]
+  connectOrCreate?: Prisma.ClientCreateOrConnectWithoutStakeholderInput | Prisma.ClientCreateOrConnectWithoutStakeholderInput[]
+  upsert?: Prisma.ClientUpsertWithWhereUniqueWithoutStakeholderInput | Prisma.ClientUpsertWithWhereUniqueWithoutStakeholderInput[]
+  createMany?: Prisma.ClientCreateManyStakeholderInputEnvelope
+  set?: Prisma.ClientWhereUniqueInput | Prisma.ClientWhereUniqueInput[]
+  disconnect?: Prisma.ClientWhereUniqueInput | Prisma.ClientWhereUniqueInput[]
+  delete?: Prisma.ClientWhereUniqueInput | Prisma.ClientWhereUniqueInput[]
+  connect?: Prisma.ClientWhereUniqueInput | Prisma.ClientWhereUniqueInput[]
+  update?: Prisma.ClientUpdateWithWhereUniqueWithoutStakeholderInput | Prisma.ClientUpdateWithWhereUniqueWithoutStakeholderInput[]
+  updateMany?: Prisma.ClientUpdateManyWithWhereWithoutStakeholderInput | Prisma.ClientUpdateManyWithWhereWithoutStakeholderInput[]
+  deleteMany?: Prisma.ClientScalarWhereInput | Prisma.ClientScalarWhereInput[]
+}
+
 export type ClientCreateNestedOneWithoutProjectsInput = {
   create?: Prisma.XOR<Prisma.ClientCreateWithoutProjectsInput, Prisma.ClientUncheckedCreateWithoutProjectsInput>
   connectOrCreate?: Prisma.ClientCreateOrConnectWithoutProjectsInput
@@ -631,11 +747,14 @@ export type ClientCreateWithoutIndustryInput = {
   name: string
   description?: string | null
   notes?: string | null
+  email?: string | null
+  phone?: string | null
   isDeleted?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
   logo?: Prisma.MediaCreateNestedOneWithoutLogosInput
+  stakeholder?: Prisma.StakeholderCreateNestedOneWithoutClientsInput
   address?: Prisma.ClientAddressCreateNestedOneWithoutClientsInput
   projects?: Prisma.ProjectCreateNestedManyWithoutClientInput
   contacts?: Prisma.ClientContactCreateNestedManyWithoutClientInput
@@ -647,11 +766,14 @@ export type ClientUncheckedCreateWithoutIndustryInput = {
   description?: string | null
   addressId?: string | null
   notes?: string | null
+  logoId?: string | null
+  stakeholderId?: string | null
+  email?: string | null
+  phone?: string | null
   isDeleted?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
-  logoId?: string | null
   projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutClientInput
   contacts?: Prisma.ClientContactUncheckedCreateNestedManyWithoutClientInput
 }
@@ -692,11 +814,14 @@ export type ClientScalarWhereInput = {
   industryId?: Prisma.StringFilter<"Client"> | string
   addressId?: Prisma.StringNullableFilter<"Client"> | string | null
   notes?: Prisma.StringNullableFilter<"Client"> | string | null
+  logoId?: Prisma.StringNullableFilter<"Client"> | string | null
+  stakeholderId?: Prisma.StringNullableFilter<"Client"> | string | null
+  email?: Prisma.StringNullableFilter<"Client"> | string | null
+  phone?: Prisma.StringNullableFilter<"Client"> | string | null
   isDeleted?: Prisma.BoolFilter<"Client"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Client"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Client"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"Client"> | Date | string | null
-  logoId?: Prisma.StringNullableFilter<"Client"> | string | null
 }
 
 export type ClientCreateWithoutLogoInput = {
@@ -704,10 +829,13 @@ export type ClientCreateWithoutLogoInput = {
   name: string
   description?: string | null
   notes?: string | null
+  email?: string | null
+  phone?: string | null
   isDeleted?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  stakeholder?: Prisma.StakeholderCreateNestedOneWithoutClientsInput
   address?: Prisma.ClientAddressCreateNestedOneWithoutClientsInput
   industry: Prisma.IndustryCreateNestedOneWithoutClientsInput
   projects?: Prisma.ProjectCreateNestedManyWithoutClientInput
@@ -721,6 +849,9 @@ export type ClientUncheckedCreateWithoutLogoInput = {
   industryId: string
   addressId?: string | null
   notes?: string | null
+  stakeholderId?: string | null
+  email?: string | null
+  phone?: string | null
   isDeleted?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -760,11 +891,14 @@ export type ClientCreateWithoutContactsInput = {
   name: string
   description?: string | null
   notes?: string | null
+  email?: string | null
+  phone?: string | null
   isDeleted?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
   logo?: Prisma.MediaCreateNestedOneWithoutLogosInput
+  stakeholder?: Prisma.StakeholderCreateNestedOneWithoutClientsInput
   address?: Prisma.ClientAddressCreateNestedOneWithoutClientsInput
   industry: Prisma.IndustryCreateNestedOneWithoutClientsInput
   projects?: Prisma.ProjectCreateNestedManyWithoutClientInput
@@ -777,11 +911,14 @@ export type ClientUncheckedCreateWithoutContactsInput = {
   industryId: string
   addressId?: string | null
   notes?: string | null
+  logoId?: string | null
+  stakeholderId?: string | null
+  email?: string | null
+  phone?: string | null
   isDeleted?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
-  logoId?: string | null
   projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutClientInput
 }
 
@@ -806,11 +943,14 @@ export type ClientUpdateWithoutContactsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.MediaUpdateOneWithoutLogosNestedInput
+  stakeholder?: Prisma.StakeholderUpdateOneWithoutClientsNestedInput
   address?: Prisma.ClientAddressUpdateOneWithoutClientsNestedInput
   industry?: Prisma.IndustryUpdateOneRequiredWithoutClientsNestedInput
   projects?: Prisma.ProjectUpdateManyWithoutClientNestedInput
@@ -823,11 +963,14 @@ export type ClientUncheckedUpdateWithoutContactsInput = {
   industryId?: Prisma.StringFieldUpdateOperationsInput | string
   addressId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stakeholderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  logoId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   projects?: Prisma.ProjectUncheckedUpdateManyWithoutClientNestedInput
 }
 
@@ -836,11 +979,14 @@ export type ClientCreateWithoutAddressInput = {
   name: string
   description?: string | null
   notes?: string | null
+  email?: string | null
+  phone?: string | null
   isDeleted?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
   logo?: Prisma.MediaCreateNestedOneWithoutLogosInput
+  stakeholder?: Prisma.StakeholderCreateNestedOneWithoutClientsInput
   industry: Prisma.IndustryCreateNestedOneWithoutClientsInput
   projects?: Prisma.ProjectCreateNestedManyWithoutClientInput
   contacts?: Prisma.ClientContactCreateNestedManyWithoutClientInput
@@ -852,11 +998,14 @@ export type ClientUncheckedCreateWithoutAddressInput = {
   description?: string | null
   industryId: string
   notes?: string | null
+  logoId?: string | null
+  stakeholderId?: string | null
+  email?: string | null
+  phone?: string | null
   isDeleted?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
-  logoId?: string | null
   projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutClientInput
   contacts?: Prisma.ClientContactUncheckedCreateNestedManyWithoutClientInput
 }
@@ -887,16 +1036,81 @@ export type ClientUpdateManyWithWhereWithoutAddressInput = {
   data: Prisma.XOR<Prisma.ClientUpdateManyMutationInput, Prisma.ClientUncheckedUpdateManyWithoutAddressInput>
 }
 
-export type ClientCreateWithoutProjectsInput = {
+export type ClientCreateWithoutStakeholderInput = {
   id?: string
   name: string
   description?: string | null
   notes?: string | null
+  email?: string | null
+  phone?: string | null
   isDeleted?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
   logo?: Prisma.MediaCreateNestedOneWithoutLogosInput
+  address?: Prisma.ClientAddressCreateNestedOneWithoutClientsInput
+  industry: Prisma.IndustryCreateNestedOneWithoutClientsInput
+  projects?: Prisma.ProjectCreateNestedManyWithoutClientInput
+  contacts?: Prisma.ClientContactCreateNestedManyWithoutClientInput
+}
+
+export type ClientUncheckedCreateWithoutStakeholderInput = {
+  id?: string
+  name: string
+  description?: string | null
+  industryId: string
+  addressId?: string | null
+  notes?: string | null
+  logoId?: string | null
+  email?: string | null
+  phone?: string | null
+  isDeleted?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutClientInput
+  contacts?: Prisma.ClientContactUncheckedCreateNestedManyWithoutClientInput
+}
+
+export type ClientCreateOrConnectWithoutStakeholderInput = {
+  where: Prisma.ClientWhereUniqueInput
+  create: Prisma.XOR<Prisma.ClientCreateWithoutStakeholderInput, Prisma.ClientUncheckedCreateWithoutStakeholderInput>
+}
+
+export type ClientCreateManyStakeholderInputEnvelope = {
+  data: Prisma.ClientCreateManyStakeholderInput | Prisma.ClientCreateManyStakeholderInput[]
+  skipDuplicates?: boolean
+}
+
+export type ClientUpsertWithWhereUniqueWithoutStakeholderInput = {
+  where: Prisma.ClientWhereUniqueInput
+  update: Prisma.XOR<Prisma.ClientUpdateWithoutStakeholderInput, Prisma.ClientUncheckedUpdateWithoutStakeholderInput>
+  create: Prisma.XOR<Prisma.ClientCreateWithoutStakeholderInput, Prisma.ClientUncheckedCreateWithoutStakeholderInput>
+}
+
+export type ClientUpdateWithWhereUniqueWithoutStakeholderInput = {
+  where: Prisma.ClientWhereUniqueInput
+  data: Prisma.XOR<Prisma.ClientUpdateWithoutStakeholderInput, Prisma.ClientUncheckedUpdateWithoutStakeholderInput>
+}
+
+export type ClientUpdateManyWithWhereWithoutStakeholderInput = {
+  where: Prisma.ClientScalarWhereInput
+  data: Prisma.XOR<Prisma.ClientUpdateManyMutationInput, Prisma.ClientUncheckedUpdateManyWithoutStakeholderInput>
+}
+
+export type ClientCreateWithoutProjectsInput = {
+  id?: string
+  name: string
+  description?: string | null
+  notes?: string | null
+  email?: string | null
+  phone?: string | null
+  isDeleted?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  logo?: Prisma.MediaCreateNestedOneWithoutLogosInput
+  stakeholder?: Prisma.StakeholderCreateNestedOneWithoutClientsInput
   address?: Prisma.ClientAddressCreateNestedOneWithoutClientsInput
   industry: Prisma.IndustryCreateNestedOneWithoutClientsInput
   contacts?: Prisma.ClientContactCreateNestedManyWithoutClientInput
@@ -909,11 +1123,14 @@ export type ClientUncheckedCreateWithoutProjectsInput = {
   industryId: string
   addressId?: string | null
   notes?: string | null
+  logoId?: string | null
+  stakeholderId?: string | null
+  email?: string | null
+  phone?: string | null
   isDeleted?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
-  logoId?: string | null
   contacts?: Prisma.ClientContactUncheckedCreateNestedManyWithoutClientInput
 }
 
@@ -938,11 +1155,14 @@ export type ClientUpdateWithoutProjectsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.MediaUpdateOneWithoutLogosNestedInput
+  stakeholder?: Prisma.StakeholderUpdateOneWithoutClientsNestedInput
   address?: Prisma.ClientAddressUpdateOneWithoutClientsNestedInput
   industry?: Prisma.IndustryUpdateOneRequiredWithoutClientsNestedInput
   contacts?: Prisma.ClientContactUpdateManyWithoutClientNestedInput
@@ -955,11 +1175,14 @@ export type ClientUncheckedUpdateWithoutProjectsInput = {
   industryId?: Prisma.StringFieldUpdateOperationsInput | string
   addressId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stakeholderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  logoId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contacts?: Prisma.ClientContactUncheckedUpdateManyWithoutClientNestedInput
 }
 
@@ -969,11 +1192,14 @@ export type ClientCreateManyIndustryInput = {
   description?: string | null
   addressId?: string | null
   notes?: string | null
+  logoId?: string | null
+  stakeholderId?: string | null
+  email?: string | null
+  phone?: string | null
   isDeleted?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
-  logoId?: string | null
 }
 
 export type ClientUpdateWithoutIndustryInput = {
@@ -981,11 +1207,14 @@ export type ClientUpdateWithoutIndustryInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.MediaUpdateOneWithoutLogosNestedInput
+  stakeholder?: Prisma.StakeholderUpdateOneWithoutClientsNestedInput
   address?: Prisma.ClientAddressUpdateOneWithoutClientsNestedInput
   projects?: Prisma.ProjectUpdateManyWithoutClientNestedInput
   contacts?: Prisma.ClientContactUpdateManyWithoutClientNestedInput
@@ -997,11 +1226,14 @@ export type ClientUncheckedUpdateWithoutIndustryInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addressId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stakeholderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  logoId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   projects?: Prisma.ProjectUncheckedUpdateManyWithoutClientNestedInput
   contacts?: Prisma.ClientContactUncheckedUpdateManyWithoutClientNestedInput
 }
@@ -1012,11 +1244,14 @@ export type ClientUncheckedUpdateManyWithoutIndustryInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addressId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stakeholderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  logoId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type ClientCreateManyLogoInput = {
@@ -1026,6 +1261,9 @@ export type ClientCreateManyLogoInput = {
   industryId: string
   addressId?: string | null
   notes?: string | null
+  stakeholderId?: string | null
+  email?: string | null
+  phone?: string | null
   isDeleted?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1037,10 +1275,13 @@ export type ClientUpdateWithoutLogoInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  stakeholder?: Prisma.StakeholderUpdateOneWithoutClientsNestedInput
   address?: Prisma.ClientAddressUpdateOneWithoutClientsNestedInput
   industry?: Prisma.IndustryUpdateOneRequiredWithoutClientsNestedInput
   projects?: Prisma.ProjectUpdateManyWithoutClientNestedInput
@@ -1054,6 +1295,9 @@ export type ClientUncheckedUpdateWithoutLogoInput = {
   industryId?: Prisma.StringFieldUpdateOperationsInput | string
   addressId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stakeholderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1069,6 +1313,9 @@ export type ClientUncheckedUpdateManyWithoutLogoInput = {
   industryId?: Prisma.StringFieldUpdateOperationsInput | string
   addressId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stakeholderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1081,11 +1328,14 @@ export type ClientCreateManyAddressInput = {
   description?: string | null
   industryId: string
   notes?: string | null
+  logoId?: string | null
+  stakeholderId?: string | null
+  email?: string | null
+  phone?: string | null
   isDeleted?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
-  logoId?: string | null
 }
 
 export type ClientUpdateWithoutAddressInput = {
@@ -1093,11 +1343,14 @@ export type ClientUpdateWithoutAddressInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.MediaUpdateOneWithoutLogosNestedInput
+  stakeholder?: Prisma.StakeholderUpdateOneWithoutClientsNestedInput
   industry?: Prisma.IndustryUpdateOneRequiredWithoutClientsNestedInput
   projects?: Prisma.ProjectUpdateManyWithoutClientNestedInput
   contacts?: Prisma.ClientContactUpdateManyWithoutClientNestedInput
@@ -1109,11 +1362,14 @@ export type ClientUncheckedUpdateWithoutAddressInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   industryId?: Prisma.StringFieldUpdateOperationsInput | string
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stakeholderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  logoId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   projects?: Prisma.ProjectUncheckedUpdateManyWithoutClientNestedInput
   contacts?: Prisma.ClientContactUncheckedUpdateManyWithoutClientNestedInput
 }
@@ -1124,11 +1380,82 @@ export type ClientUncheckedUpdateManyWithoutAddressInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   industryId?: Prisma.StringFieldUpdateOperationsInput | string
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stakeholderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+}
+
+export type ClientCreateManyStakeholderInput = {
+  id?: string
+  name: string
+  description?: string | null
+  industryId: string
+  addressId?: string | null
+  notes?: string | null
+  logoId?: string | null
+  email?: string | null
+  phone?: string | null
+  isDeleted?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+}
+
+export type ClientUpdateWithoutStakeholderInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  logo?: Prisma.MediaUpdateOneWithoutLogosNestedInput
+  address?: Prisma.ClientAddressUpdateOneWithoutClientsNestedInput
+  industry?: Prisma.IndustryUpdateOneRequiredWithoutClientsNestedInput
+  projects?: Prisma.ProjectUpdateManyWithoutClientNestedInput
+  contacts?: Prisma.ClientContactUpdateManyWithoutClientNestedInput
+}
+
+export type ClientUncheckedUpdateWithoutStakeholderInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industryId?: Prisma.StringFieldUpdateOperationsInput | string
+  addressId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  projects?: Prisma.ProjectUncheckedUpdateManyWithoutClientNestedInput
+  contacts?: Prisma.ClientContactUncheckedUpdateManyWithoutClientNestedInput
+}
+
+export type ClientUncheckedUpdateManyWithoutStakeholderInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industryId?: Prisma.StringFieldUpdateOperationsInput | string
+  addressId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 
@@ -1178,12 +1505,16 @@ export type ClientSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   industryId?: boolean
   addressId?: boolean
   notes?: boolean
+  logoId?: boolean
+  stakeholderId?: boolean
+  email?: boolean
+  phone?: boolean
   isDeleted?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
-  logoId?: boolean
   logo?: boolean | Prisma.Client$logoArgs<ExtArgs>
+  stakeholder?: boolean | Prisma.Client$stakeholderArgs<ExtArgs>
   address?: boolean | Prisma.Client$addressArgs<ExtArgs>
   industry?: boolean | Prisma.IndustryDefaultArgs<ExtArgs>
   projects?: boolean | Prisma.Client$projectsArgs<ExtArgs>
@@ -1198,12 +1529,16 @@ export type ClientSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   industryId?: boolean
   addressId?: boolean
   notes?: boolean
+  logoId?: boolean
+  stakeholderId?: boolean
+  email?: boolean
+  phone?: boolean
   isDeleted?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
-  logoId?: boolean
   logo?: boolean | Prisma.Client$logoArgs<ExtArgs>
+  stakeholder?: boolean | Prisma.Client$stakeholderArgs<ExtArgs>
   address?: boolean | Prisma.Client$addressArgs<ExtArgs>
   industry?: boolean | Prisma.IndustryDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["client"]>
@@ -1215,12 +1550,16 @@ export type ClientSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   industryId?: boolean
   addressId?: boolean
   notes?: boolean
+  logoId?: boolean
+  stakeholderId?: boolean
+  email?: boolean
+  phone?: boolean
   isDeleted?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
-  logoId?: boolean
   logo?: boolean | Prisma.Client$logoArgs<ExtArgs>
+  stakeholder?: boolean | Prisma.Client$stakeholderArgs<ExtArgs>
   address?: boolean | Prisma.Client$addressArgs<ExtArgs>
   industry?: boolean | Prisma.IndustryDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["client"]>
@@ -1232,16 +1571,20 @@ export type ClientSelectScalar = {
   industryId?: boolean
   addressId?: boolean
   notes?: boolean
+  logoId?: boolean
+  stakeholderId?: boolean
+  email?: boolean
+  phone?: boolean
   isDeleted?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
-  logoId?: boolean
 }
 
-export type ClientOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "description" | "industryId" | "addressId" | "notes" | "isDeleted" | "createdAt" | "updatedAt" | "deletedAt" | "logoId", ExtArgs["result"]["client"]>
+export type ClientOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "description" | "industryId" | "addressId" | "notes" | "logoId" | "stakeholderId" | "email" | "phone" | "isDeleted" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["client"]>
 export type ClientInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   logo?: boolean | Prisma.Client$logoArgs<ExtArgs>
+  stakeholder?: boolean | Prisma.Client$stakeholderArgs<ExtArgs>
   address?: boolean | Prisma.Client$addressArgs<ExtArgs>
   industry?: boolean | Prisma.IndustryDefaultArgs<ExtArgs>
   projects?: boolean | Prisma.Client$projectsArgs<ExtArgs>
@@ -1250,11 +1593,13 @@ export type ClientInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs 
 }
 export type ClientIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   logo?: boolean | Prisma.Client$logoArgs<ExtArgs>
+  stakeholder?: boolean | Prisma.Client$stakeholderArgs<ExtArgs>
   address?: boolean | Prisma.Client$addressArgs<ExtArgs>
   industry?: boolean | Prisma.IndustryDefaultArgs<ExtArgs>
 }
 export type ClientIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   logo?: boolean | Prisma.Client$logoArgs<ExtArgs>
+  stakeholder?: boolean | Prisma.Client$stakeholderArgs<ExtArgs>
   address?: boolean | Prisma.Client$addressArgs<ExtArgs>
   industry?: boolean | Prisma.IndustryDefaultArgs<ExtArgs>
 }
@@ -1263,6 +1608,7 @@ export type $ClientPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
   name: "Client"
   objects: {
     logo: Prisma.$MediaPayload<ExtArgs> | null
+    stakeholder: Prisma.$StakeholderPayload<ExtArgs> | null
     address: Prisma.$ClientAddressPayload<ExtArgs> | null
     industry: Prisma.$IndustryPayload<ExtArgs>
     projects: Prisma.$ProjectPayload<ExtArgs>[]
@@ -1275,11 +1621,14 @@ export type $ClientPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     industryId: string
     addressId: string | null
     notes: string | null
+    logoId: string | null
+    stakeholderId: string | null
+    email: string | null
+    phone: string | null
     isDeleted: boolean
     createdAt: Date
     updatedAt: Date
     deletedAt: Date | null
-    logoId: string | null
   }, ExtArgs["result"]["client"]>
   composites: {}
 }
@@ -1675,6 +2024,7 @@ readonly fields: ClientFieldRefs;
 export interface Prisma__ClientClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   logo<T extends Prisma.Client$logoArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Client$logoArgs<ExtArgs>>): Prisma.Prisma__MediaClient<runtime.Types.Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  stakeholder<T extends Prisma.Client$stakeholderArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Client$stakeholderArgs<ExtArgs>>): Prisma.Prisma__StakeholderClient<runtime.Types.Result.GetResult<Prisma.$StakeholderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   address<T extends Prisma.Client$addressArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Client$addressArgs<ExtArgs>>): Prisma.Prisma__ClientAddressClient<runtime.Types.Result.GetResult<Prisma.$ClientAddressPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   industry<T extends Prisma.IndustryDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.IndustryDefaultArgs<ExtArgs>>): Prisma.Prisma__IndustryClient<runtime.Types.Result.GetResult<Prisma.$IndustryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   projects<T extends Prisma.Client$projectsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Client$projectsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -1714,11 +2064,14 @@ export interface ClientFieldRefs {
   readonly industryId: Prisma.FieldRef<"Client", 'String'>
   readonly addressId: Prisma.FieldRef<"Client", 'String'>
   readonly notes: Prisma.FieldRef<"Client", 'String'>
+  readonly logoId: Prisma.FieldRef<"Client", 'String'>
+  readonly stakeholderId: Prisma.FieldRef<"Client", 'String'>
+  readonly email: Prisma.FieldRef<"Client", 'String'>
+  readonly phone: Prisma.FieldRef<"Client", 'String'>
   readonly isDeleted: Prisma.FieldRef<"Client", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"Client", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Client", 'DateTime'>
   readonly deletedAt: Prisma.FieldRef<"Client", 'DateTime'>
-  readonly logoId: Prisma.FieldRef<"Client", 'String'>
 }
     
 
@@ -2136,6 +2489,25 @@ export type Client$logoArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    */
   include?: Prisma.MediaInclude<ExtArgs> | null
   where?: Prisma.MediaWhereInput
+}
+
+/**
+ * Client.stakeholder
+ */
+export type Client$stakeholderArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Stakeholder
+   */
+  select?: Prisma.StakeholderSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Stakeholder
+   */
+  omit?: Prisma.StakeholderOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.StakeholderInclude<ExtArgs> | null
+  where?: Prisma.StakeholderWhereInput
 }
 
 /**

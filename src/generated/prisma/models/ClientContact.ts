@@ -30,6 +30,7 @@ export type ClientContactMinAggregateOutputType = {
   fullName: string | null
   email: string | null
   phone: string | null
+  stakeholderId: string | null
   createdAt: Date | null
   updatedAt: Date | null
   isPrimary: boolean | null
@@ -42,6 +43,7 @@ export type ClientContactMaxAggregateOutputType = {
   fullName: string | null
   email: string | null
   phone: string | null
+  stakeholderId: string | null
   createdAt: Date | null
   updatedAt: Date | null
   isPrimary: boolean | null
@@ -54,6 +56,7 @@ export type ClientContactCountAggregateOutputType = {
   fullName: number
   email: number
   phone: number
+  stakeholderId: number
   createdAt: number
   updatedAt: number
   isPrimary: number
@@ -68,6 +71,7 @@ export type ClientContactMinAggregateInputType = {
   fullName?: true
   email?: true
   phone?: true
+  stakeholderId?: true
   createdAt?: true
   updatedAt?: true
   isPrimary?: true
@@ -80,6 +84,7 @@ export type ClientContactMaxAggregateInputType = {
   fullName?: true
   email?: true
   phone?: true
+  stakeholderId?: true
   createdAt?: true
   updatedAt?: true
   isPrimary?: true
@@ -92,6 +97,7 @@ export type ClientContactCountAggregateInputType = {
   fullName?: true
   email?: true
   phone?: true
+  stakeholderId?: true
   createdAt?: true
   updatedAt?: true
   isPrimary?: true
@@ -177,6 +183,7 @@ export type ClientContactGroupByOutputType = {
   fullName: string
   email: string
   phone: string | null
+  stakeholderId: string | null
   createdAt: Date
   updatedAt: Date
   isPrimary: boolean
@@ -210,11 +217,13 @@ export type ClientContactWhereInput = {
   fullName?: Prisma.StringFilter<"ClientContact"> | string
   email?: Prisma.StringFilter<"ClientContact"> | string
   phone?: Prisma.StringNullableFilter<"ClientContact"> | string | null
+  stakeholderId?: Prisma.StringNullableFilter<"ClientContact"> | string | null
   createdAt?: Prisma.DateTimeFilter<"ClientContact"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ClientContact"> | Date | string
   isPrimary?: Prisma.BoolFilter<"ClientContact"> | boolean
   isDeleted?: Prisma.BoolFilter<"ClientContact"> | boolean
   client?: Prisma.XOR<Prisma.ClientScalarRelationFilter, Prisma.ClientWhereInput>
+  stakeholder?: Prisma.XOR<Prisma.StakeholderNullableScalarRelationFilter, Prisma.StakeholderWhereInput> | null
 }
 
 export type ClientContactOrderByWithRelationInput = {
@@ -223,11 +232,13 @@ export type ClientContactOrderByWithRelationInput = {
   fullName?: Prisma.SortOrder
   email?: Prisma.SortOrder
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
+  stakeholderId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   isPrimary?: Prisma.SortOrder
   isDeleted?: Prisma.SortOrder
   client?: Prisma.ClientOrderByWithRelationInput
+  stakeholder?: Prisma.StakeholderOrderByWithRelationInput
 }
 
 export type ClientContactWhereUniqueInput = Prisma.AtLeast<{
@@ -239,11 +250,13 @@ export type ClientContactWhereUniqueInput = Prisma.AtLeast<{
   fullName?: Prisma.StringFilter<"ClientContact"> | string
   email?: Prisma.StringFilter<"ClientContact"> | string
   phone?: Prisma.StringNullableFilter<"ClientContact"> | string | null
+  stakeholderId?: Prisma.StringNullableFilter<"ClientContact"> | string | null
   createdAt?: Prisma.DateTimeFilter<"ClientContact"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ClientContact"> | Date | string
   isPrimary?: Prisma.BoolFilter<"ClientContact"> | boolean
   isDeleted?: Prisma.BoolFilter<"ClientContact"> | boolean
   client?: Prisma.XOR<Prisma.ClientScalarRelationFilter, Prisma.ClientWhereInput>
+  stakeholder?: Prisma.XOR<Prisma.StakeholderNullableScalarRelationFilter, Prisma.StakeholderWhereInput> | null
 }, "id">
 
 export type ClientContactOrderByWithAggregationInput = {
@@ -252,6 +265,7 @@ export type ClientContactOrderByWithAggregationInput = {
   fullName?: Prisma.SortOrder
   email?: Prisma.SortOrder
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
+  stakeholderId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   isPrimary?: Prisma.SortOrder
@@ -270,6 +284,7 @@ export type ClientContactScalarWhereWithAggregatesInput = {
   fullName?: Prisma.StringWithAggregatesFilter<"ClientContact"> | string
   email?: Prisma.StringWithAggregatesFilter<"ClientContact"> | string
   phone?: Prisma.StringNullableWithAggregatesFilter<"ClientContact"> | string | null
+  stakeholderId?: Prisma.StringNullableWithAggregatesFilter<"ClientContact"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"ClientContact"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"ClientContact"> | Date | string
   isPrimary?: Prisma.BoolWithAggregatesFilter<"ClientContact"> | boolean
@@ -286,6 +301,7 @@ export type ClientContactCreateInput = {
   isPrimary?: boolean
   isDeleted?: boolean
   client: Prisma.ClientCreateNestedOneWithoutContactsInput
+  stakeholder?: Prisma.StakeholderCreateNestedOneWithoutClientContactsInput
 }
 
 export type ClientContactUncheckedCreateInput = {
@@ -294,6 +310,7 @@ export type ClientContactUncheckedCreateInput = {
   fullName: string
   email: string
   phone?: string | null
+  stakeholderId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   isPrimary?: boolean
@@ -310,6 +327,7 @@ export type ClientContactUpdateInput = {
   isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   client?: Prisma.ClientUpdateOneRequiredWithoutContactsNestedInput
+  stakeholder?: Prisma.StakeholderUpdateOneWithoutClientContactsNestedInput
 }
 
 export type ClientContactUncheckedUpdateInput = {
@@ -318,6 +336,7 @@ export type ClientContactUncheckedUpdateInput = {
   fullName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stakeholderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -330,6 +349,7 @@ export type ClientContactCreateManyInput = {
   fullName: string
   email: string
   phone?: string | null
+  stakeholderId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   isPrimary?: boolean
@@ -353,6 +373,7 @@ export type ClientContactUncheckedUpdateManyInput = {
   fullName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stakeholderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -375,6 +396,7 @@ export type ClientContactCountOrderByAggregateInput = {
   fullName?: Prisma.SortOrder
   email?: Prisma.SortOrder
   phone?: Prisma.SortOrder
+  stakeholderId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   isPrimary?: Prisma.SortOrder
@@ -387,6 +409,7 @@ export type ClientContactMaxOrderByAggregateInput = {
   fullName?: Prisma.SortOrder
   email?: Prisma.SortOrder
   phone?: Prisma.SortOrder
+  stakeholderId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   isPrimary?: Prisma.SortOrder
@@ -399,6 +422,7 @@ export type ClientContactMinOrderByAggregateInput = {
   fullName?: Prisma.SortOrder
   email?: Prisma.SortOrder
   phone?: Prisma.SortOrder
+  stakeholderId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   isPrimary?: Prisma.SortOrder
@@ -447,6 +471,48 @@ export type ClientContactUncheckedUpdateManyWithoutClientNestedInput = {
   deleteMany?: Prisma.ClientContactScalarWhereInput | Prisma.ClientContactScalarWhereInput[]
 }
 
+export type ClientContactCreateNestedManyWithoutStakeholderInput = {
+  create?: Prisma.XOR<Prisma.ClientContactCreateWithoutStakeholderInput, Prisma.ClientContactUncheckedCreateWithoutStakeholderInput> | Prisma.ClientContactCreateWithoutStakeholderInput[] | Prisma.ClientContactUncheckedCreateWithoutStakeholderInput[]
+  connectOrCreate?: Prisma.ClientContactCreateOrConnectWithoutStakeholderInput | Prisma.ClientContactCreateOrConnectWithoutStakeholderInput[]
+  createMany?: Prisma.ClientContactCreateManyStakeholderInputEnvelope
+  connect?: Prisma.ClientContactWhereUniqueInput | Prisma.ClientContactWhereUniqueInput[]
+}
+
+export type ClientContactUncheckedCreateNestedManyWithoutStakeholderInput = {
+  create?: Prisma.XOR<Prisma.ClientContactCreateWithoutStakeholderInput, Prisma.ClientContactUncheckedCreateWithoutStakeholderInput> | Prisma.ClientContactCreateWithoutStakeholderInput[] | Prisma.ClientContactUncheckedCreateWithoutStakeholderInput[]
+  connectOrCreate?: Prisma.ClientContactCreateOrConnectWithoutStakeholderInput | Prisma.ClientContactCreateOrConnectWithoutStakeholderInput[]
+  createMany?: Prisma.ClientContactCreateManyStakeholderInputEnvelope
+  connect?: Prisma.ClientContactWhereUniqueInput | Prisma.ClientContactWhereUniqueInput[]
+}
+
+export type ClientContactUpdateManyWithoutStakeholderNestedInput = {
+  create?: Prisma.XOR<Prisma.ClientContactCreateWithoutStakeholderInput, Prisma.ClientContactUncheckedCreateWithoutStakeholderInput> | Prisma.ClientContactCreateWithoutStakeholderInput[] | Prisma.ClientContactUncheckedCreateWithoutStakeholderInput[]
+  connectOrCreate?: Prisma.ClientContactCreateOrConnectWithoutStakeholderInput | Prisma.ClientContactCreateOrConnectWithoutStakeholderInput[]
+  upsert?: Prisma.ClientContactUpsertWithWhereUniqueWithoutStakeholderInput | Prisma.ClientContactUpsertWithWhereUniqueWithoutStakeholderInput[]
+  createMany?: Prisma.ClientContactCreateManyStakeholderInputEnvelope
+  set?: Prisma.ClientContactWhereUniqueInput | Prisma.ClientContactWhereUniqueInput[]
+  disconnect?: Prisma.ClientContactWhereUniqueInput | Prisma.ClientContactWhereUniqueInput[]
+  delete?: Prisma.ClientContactWhereUniqueInput | Prisma.ClientContactWhereUniqueInput[]
+  connect?: Prisma.ClientContactWhereUniqueInput | Prisma.ClientContactWhereUniqueInput[]
+  update?: Prisma.ClientContactUpdateWithWhereUniqueWithoutStakeholderInput | Prisma.ClientContactUpdateWithWhereUniqueWithoutStakeholderInput[]
+  updateMany?: Prisma.ClientContactUpdateManyWithWhereWithoutStakeholderInput | Prisma.ClientContactUpdateManyWithWhereWithoutStakeholderInput[]
+  deleteMany?: Prisma.ClientContactScalarWhereInput | Prisma.ClientContactScalarWhereInput[]
+}
+
+export type ClientContactUncheckedUpdateManyWithoutStakeholderNestedInput = {
+  create?: Prisma.XOR<Prisma.ClientContactCreateWithoutStakeholderInput, Prisma.ClientContactUncheckedCreateWithoutStakeholderInput> | Prisma.ClientContactCreateWithoutStakeholderInput[] | Prisma.ClientContactUncheckedCreateWithoutStakeholderInput[]
+  connectOrCreate?: Prisma.ClientContactCreateOrConnectWithoutStakeholderInput | Prisma.ClientContactCreateOrConnectWithoutStakeholderInput[]
+  upsert?: Prisma.ClientContactUpsertWithWhereUniqueWithoutStakeholderInput | Prisma.ClientContactUpsertWithWhereUniqueWithoutStakeholderInput[]
+  createMany?: Prisma.ClientContactCreateManyStakeholderInputEnvelope
+  set?: Prisma.ClientContactWhereUniqueInput | Prisma.ClientContactWhereUniqueInput[]
+  disconnect?: Prisma.ClientContactWhereUniqueInput | Prisma.ClientContactWhereUniqueInput[]
+  delete?: Prisma.ClientContactWhereUniqueInput | Prisma.ClientContactWhereUniqueInput[]
+  connect?: Prisma.ClientContactWhereUniqueInput | Prisma.ClientContactWhereUniqueInput[]
+  update?: Prisma.ClientContactUpdateWithWhereUniqueWithoutStakeholderInput | Prisma.ClientContactUpdateWithWhereUniqueWithoutStakeholderInput[]
+  updateMany?: Prisma.ClientContactUpdateManyWithWhereWithoutStakeholderInput | Prisma.ClientContactUpdateManyWithWhereWithoutStakeholderInput[]
+  deleteMany?: Prisma.ClientContactScalarWhereInput | Prisma.ClientContactScalarWhereInput[]
+}
+
 export type ClientContactCreateWithoutClientInput = {
   id?: string
   fullName: string
@@ -456,6 +522,7 @@ export type ClientContactCreateWithoutClientInput = {
   updatedAt?: Date | string
   isPrimary?: boolean
   isDeleted?: boolean
+  stakeholder?: Prisma.StakeholderCreateNestedOneWithoutClientContactsInput
 }
 
 export type ClientContactUncheckedCreateWithoutClientInput = {
@@ -463,6 +530,7 @@ export type ClientContactUncheckedCreateWithoutClientInput = {
   fullName: string
   email: string
   phone?: string | null
+  stakeholderId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   isPrimary?: boolean
@@ -504,10 +572,61 @@ export type ClientContactScalarWhereInput = {
   fullName?: Prisma.StringFilter<"ClientContact"> | string
   email?: Prisma.StringFilter<"ClientContact"> | string
   phone?: Prisma.StringNullableFilter<"ClientContact"> | string | null
+  stakeholderId?: Prisma.StringNullableFilter<"ClientContact"> | string | null
   createdAt?: Prisma.DateTimeFilter<"ClientContact"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ClientContact"> | Date | string
   isPrimary?: Prisma.BoolFilter<"ClientContact"> | boolean
   isDeleted?: Prisma.BoolFilter<"ClientContact"> | boolean
+}
+
+export type ClientContactCreateWithoutStakeholderInput = {
+  id?: string
+  fullName: string
+  email: string
+  phone?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  isPrimary?: boolean
+  isDeleted?: boolean
+  client: Prisma.ClientCreateNestedOneWithoutContactsInput
+}
+
+export type ClientContactUncheckedCreateWithoutStakeholderInput = {
+  id?: string
+  clientId: string
+  fullName: string
+  email: string
+  phone?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  isPrimary?: boolean
+  isDeleted?: boolean
+}
+
+export type ClientContactCreateOrConnectWithoutStakeholderInput = {
+  where: Prisma.ClientContactWhereUniqueInput
+  create: Prisma.XOR<Prisma.ClientContactCreateWithoutStakeholderInput, Prisma.ClientContactUncheckedCreateWithoutStakeholderInput>
+}
+
+export type ClientContactCreateManyStakeholderInputEnvelope = {
+  data: Prisma.ClientContactCreateManyStakeholderInput | Prisma.ClientContactCreateManyStakeholderInput[]
+  skipDuplicates?: boolean
+}
+
+export type ClientContactUpsertWithWhereUniqueWithoutStakeholderInput = {
+  where: Prisma.ClientContactWhereUniqueInput
+  update: Prisma.XOR<Prisma.ClientContactUpdateWithoutStakeholderInput, Prisma.ClientContactUncheckedUpdateWithoutStakeholderInput>
+  create: Prisma.XOR<Prisma.ClientContactCreateWithoutStakeholderInput, Prisma.ClientContactUncheckedCreateWithoutStakeholderInput>
+}
+
+export type ClientContactUpdateWithWhereUniqueWithoutStakeholderInput = {
+  where: Prisma.ClientContactWhereUniqueInput
+  data: Prisma.XOR<Prisma.ClientContactUpdateWithoutStakeholderInput, Prisma.ClientContactUncheckedUpdateWithoutStakeholderInput>
+}
+
+export type ClientContactUpdateManyWithWhereWithoutStakeholderInput = {
+  where: Prisma.ClientContactScalarWhereInput
+  data: Prisma.XOR<Prisma.ClientContactUpdateManyMutationInput, Prisma.ClientContactUncheckedUpdateManyWithoutStakeholderInput>
 }
 
 export type ClientContactCreateManyClientInput = {
@@ -515,6 +634,7 @@ export type ClientContactCreateManyClientInput = {
   fullName: string
   email: string
   phone?: string | null
+  stakeholderId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   isPrimary?: boolean
@@ -530,10 +650,60 @@ export type ClientContactUpdateWithoutClientInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  stakeholder?: Prisma.StakeholderUpdateOneWithoutClientContactsNestedInput
 }
 
 export type ClientContactUncheckedUpdateWithoutClientInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stakeholderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+}
+
+export type ClientContactUncheckedUpdateManyWithoutClientInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stakeholderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+}
+
+export type ClientContactCreateManyStakeholderInput = {
+  id?: string
+  clientId: string
+  fullName: string
+  email: string
+  phone?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  isPrimary?: boolean
+  isDeleted?: boolean
+}
+
+export type ClientContactUpdateWithoutStakeholderInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  client?: Prisma.ClientUpdateOneRequiredWithoutContactsNestedInput
+}
+
+export type ClientContactUncheckedUpdateWithoutStakeholderInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  clientId?: Prisma.StringFieldUpdateOperationsInput | string
   fullName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -543,8 +713,9 @@ export type ClientContactUncheckedUpdateWithoutClientInput = {
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
-export type ClientContactUncheckedUpdateManyWithoutClientInput = {
+export type ClientContactUncheckedUpdateManyWithoutStakeholderInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  clientId?: Prisma.StringFieldUpdateOperationsInput | string
   fullName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -562,11 +733,13 @@ export type ClientContactSelect<ExtArgs extends runtime.Types.Extensions.Interna
   fullName?: boolean
   email?: boolean
   phone?: boolean
+  stakeholderId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   isPrimary?: boolean
   isDeleted?: boolean
   client?: boolean | Prisma.ClientDefaultArgs<ExtArgs>
+  stakeholder?: boolean | Prisma.ClientContact$stakeholderArgs<ExtArgs>
 }, ExtArgs["result"]["clientContact"]>
 
 export type ClientContactSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -575,11 +748,13 @@ export type ClientContactSelectCreateManyAndReturn<ExtArgs extends runtime.Types
   fullName?: boolean
   email?: boolean
   phone?: boolean
+  stakeholderId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   isPrimary?: boolean
   isDeleted?: boolean
   client?: boolean | Prisma.ClientDefaultArgs<ExtArgs>
+  stakeholder?: boolean | Prisma.ClientContact$stakeholderArgs<ExtArgs>
 }, ExtArgs["result"]["clientContact"]>
 
 export type ClientContactSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -588,11 +763,13 @@ export type ClientContactSelectUpdateManyAndReturn<ExtArgs extends runtime.Types
   fullName?: boolean
   email?: boolean
   phone?: boolean
+  stakeholderId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   isPrimary?: boolean
   isDeleted?: boolean
   client?: boolean | Prisma.ClientDefaultArgs<ExtArgs>
+  stakeholder?: boolean | Prisma.ClientContact$stakeholderArgs<ExtArgs>
 }, ExtArgs["result"]["clientContact"]>
 
 export type ClientContactSelectScalar = {
@@ -601,27 +778,32 @@ export type ClientContactSelectScalar = {
   fullName?: boolean
   email?: boolean
   phone?: boolean
+  stakeholderId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   isPrimary?: boolean
   isDeleted?: boolean
 }
 
-export type ClientContactOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "clientId" | "fullName" | "email" | "phone" | "createdAt" | "updatedAt" | "isPrimary" | "isDeleted", ExtArgs["result"]["clientContact"]>
+export type ClientContactOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "clientId" | "fullName" | "email" | "phone" | "stakeholderId" | "createdAt" | "updatedAt" | "isPrimary" | "isDeleted", ExtArgs["result"]["clientContact"]>
 export type ClientContactInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   client?: boolean | Prisma.ClientDefaultArgs<ExtArgs>
+  stakeholder?: boolean | Prisma.ClientContact$stakeholderArgs<ExtArgs>
 }
 export type ClientContactIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   client?: boolean | Prisma.ClientDefaultArgs<ExtArgs>
+  stakeholder?: boolean | Prisma.ClientContact$stakeholderArgs<ExtArgs>
 }
 export type ClientContactIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   client?: boolean | Prisma.ClientDefaultArgs<ExtArgs>
+  stakeholder?: boolean | Prisma.ClientContact$stakeholderArgs<ExtArgs>
 }
 
 export type $ClientContactPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "ClientContact"
   objects: {
     client: Prisma.$ClientPayload<ExtArgs>
+    stakeholder: Prisma.$StakeholderPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -629,6 +811,7 @@ export type $ClientContactPayload<ExtArgs extends runtime.Types.Extensions.Inter
     fullName: string
     email: string
     phone: string | null
+    stakeholderId: string | null
     createdAt: Date
     updatedAt: Date
     isPrimary: boolean
@@ -1028,6 +1211,7 @@ readonly fields: ClientContactFieldRefs;
 export interface Prisma__ClientContactClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   client<T extends Prisma.ClientDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ClientDefaultArgs<ExtArgs>>): Prisma.Prisma__ClientClient<runtime.Types.Result.GetResult<Prisma.$ClientPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  stakeholder<T extends Prisma.ClientContact$stakeholderArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ClientContact$stakeholderArgs<ExtArgs>>): Prisma.Prisma__StakeholderClient<runtime.Types.Result.GetResult<Prisma.$StakeholderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1062,6 +1246,7 @@ export interface ClientContactFieldRefs {
   readonly fullName: Prisma.FieldRef<"ClientContact", 'String'>
   readonly email: Prisma.FieldRef<"ClientContact", 'String'>
   readonly phone: Prisma.FieldRef<"ClientContact", 'String'>
+  readonly stakeholderId: Prisma.FieldRef<"ClientContact", 'String'>
   readonly createdAt: Prisma.FieldRef<"ClientContact", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"ClientContact", 'DateTime'>
   readonly isPrimary: Prisma.FieldRef<"ClientContact", 'Boolean'>
@@ -1464,6 +1649,25 @@ export type ClientContactDeleteManyArgs<ExtArgs extends runtime.Types.Extensions
    * Limit how many ClientContacts to delete.
    */
   limit?: number
+}
+
+/**
+ * ClientContact.stakeholder
+ */
+export type ClientContact$stakeholderArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Stakeholder
+   */
+  select?: Prisma.StakeholderSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Stakeholder
+   */
+  omit?: Prisma.StakeholderOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.StakeholderInclude<ExtArgs> | null
+  where?: Prisma.StakeholderWhereInput
 }
 
 /**

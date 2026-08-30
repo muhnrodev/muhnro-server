@@ -189,3 +189,16 @@ export const MediaType = {
 } as const
 
 export type MediaType = (typeof MediaType)[keyof typeof MediaType]
+
+
+export const StakeholderType = {
+  CLIENT: 'CLIENT',
+  CLIENT_CONTACT: 'CLIENT_CONTACT',
+  PARTNER: 'PARTNER',
+  VENDOR: 'VENDOR',
+  EMPLOYEE: 'EMPLOYEE',
+  INVESTOR: 'INVESTOR',
+  OTHER: 'OTHER'
+} as const
+
+export type StakeholderType = (typeof StakeholderType)[keyof typeof StakeholderType]

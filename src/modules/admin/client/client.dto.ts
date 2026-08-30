@@ -31,6 +31,14 @@ export class CreateClientDto {
   description?: string;
 
   @IsString()
+  @IsOptional()
+  email?: string;
+
+  @IsString()
+  @IsOptional()
+  phone?: string;
+
+  @IsString()
   industryId: string;
 
   @IsString()

@@ -143,3 +143,13 @@ enum MediaType {
   ARCHIVE
   OTHER
 }
+
+enum StakeholderType {
+    CLIENT
+    CLIENT_CONTACT
+    PARTNER
+    VENDOR
+    EMPLOYEE
+    INVESTOR
+    OTHER
+}

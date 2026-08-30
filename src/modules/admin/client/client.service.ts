@@ -5,12 +5,16 @@ import {
   CreateClientDto,
   UpdateClientDto,
 } from './client.dto';
+import { StakeholdersService } from '../stakeholder/stakeholder.service';
 
 @Injectable()
 export class ClientService {
   private readonly logger = new Logger(ClientService.name);
 
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly stakeholdersService: StakeholdersService,
+  ) {}
 
   async getAllClients() {
     try {
@@ -90,16 +94,27 @@ export class ClientService {
           name: data.name,
           description: data.description,
           industryId: data.industryId,
+          email: data.email,
+          phone: data.phone,
           logoId: data.logoId,
         },
       });
 
       const address = await this.updateClientAddress(client.id, data);
 
+      const stakeholder = await this.stakeholdersService.createStakeholder({
+        name: data.name,
+        organization: data.name,
+        email: '',
+        phone: '',
+        type: 'CLIENT',
+      });
+
       await this.prisma.client.update({
         where: { id: client.id },
         data: {
           addressId: address.id,
+          stakeholderId: stakeholder.stakeholderId,
         },
       });
 
@@ -130,15 +145,26 @@ export class ClientService {
           description: data.description,
           industryId: data.industryId,
           logoId: data.logoId,
+          email: data.email,
+          phone: data.phone,
         },
       });
 
       const updatedAddress = await this.updateClientAddress(data.id, data);
 
+      const stakeholder = await this.stakeholdersService.createStakeholder({
+        name: data.name,
+        organization: data.name,
+        email: '',
+        phone: '',
+        type: 'CLIENT',
+      });
+
       await this.prisma.client.update({
         where: { id: data.id },
         data: {
           addressId: updatedAddress.id,
+          stakeholderId: stakeholder.stakeholderId,
         },
       });
 

@@ -5746,11 +5746,14 @@ export const ClientScalarFieldEnum = {
   industryId: 'industryId',
   addressId: 'addressId',
   notes: 'notes',
+  logoId: 'logoId',
+  stakeholderId: 'stakeholderId',
+  email: 'email',
+  phone: 'phone',
   isDeleted: 'isDeleted',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  deletedAt: 'deletedAt',
-  logoId: 'logoId'
+  deletedAt: 'deletedAt'
 } as const
 
 export type ClientScalarFieldEnum = (typeof ClientScalarFieldEnum)[keyof typeof ClientScalarFieldEnum]
@@ -5762,6 +5765,7 @@ export const ClientContactScalarFieldEnum = {
   fullName: 'fullName',
   email: 'email',
   phone: 'phone',
+  stakeholderId: 'stakeholderId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   isPrimary: 'isPrimary',
@@ -5838,8 +5842,11 @@ export const StakeholderScalarFieldEnum = {
   organization: 'organization',
   email: 'email',
   phone: 'phone',
+  type: 'type',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  isDeleted: 'isDeleted',
+  deletedAt: 'deletedAt'
 } as const
 
 export type StakeholderScalarFieldEnum = (typeof StakeholderScalarFieldEnum)[keyof typeof StakeholderScalarFieldEnum]
@@ -6221,6 +6228,20 @@ export type EnumEmploymentTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$P
  * Reference to a field of type 'EmploymentType[]'
  */
 export type ListEnumEmploymentTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'EmploymentType[]'>
+    
+
+
+/**
+ * Reference to a field of type 'StakeholderType'
+ */
+export type EnumStakeholderTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'StakeholderType'>
+    
+
+
+/**
+ * Reference to a field of type 'StakeholderType[]'
+ */
+export type ListEnumStakeholderTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'StakeholderType[]'>
     
 
 
