@@ -1,86 +1,103 @@
-# Git Commit Message Guidelines
+# Git Commit Messages
 
-Use Conventional Commits for all commit messages.
+When generating a Git commit message, follow these rules exactly.
 
-Format:
+## Format
+
+Always use Conventional Commits:
 
 `<type>(<scope>): <description>`
 
+The scope is optional when there is no meaningful scope.
+
+## First inspect the diff
+
+Before generating a commit message:
+
+1. Inspect the staged/changed files and their diff.
+2. Determine what the changes actually do.
+3. Classify the change based on its purpose and behavior.
+4. Generate one concise commit message.
+
+Do not classify a change based merely on the fact that code or files were added.
+
 ## Commit types
 
-- `feat`: Adds a new user-facing feature or capability.
+- `feat`: Adds genuinely new user-facing functionality or an API capability consumed by users/clients.
 - `fix`: Fixes incorrect or broken behavior.
 - `refactor`: Changes code structure without changing behavior.
 - `perf`: Improves application performance without changing behavior.
 - `docs`: Documentation-only changes.
 - `test`: Adds or modifies tests.
-- `chore`: Developer tooling, configuration, dependencies, scripts, build configuration, CI/CD, or maintenance changes.
-- `style`: Formatting or whitespace changes that do not affect behavior.
-- `build`: Changes to the build system or build dependencies.
+- `chore`: Maintenance, dependencies, npm scripts, development tooling, configuration, or miscellaneous maintenance.
+- `style`: Formatting or whitespace changes with no behavioral impact.
+- `build`: Changes to build systems or build dependencies.
 - `ci`: Changes to CI/CD configuration.
 - `revert`: Reverts a previous commit.
 
-## Classification rules
-
-Before generating a commit message, determine what the change actually does.
+## Important classification rules
 
 Do NOT use `feat` simply because something was added.
 
-Use `feat` only when the change introduces functionality that users or consumers of the application can use.
+Use `feat` ONLY when the change introduces functionality that users or consumers of the application can actually use.
 
 Examples:
 
-- Adding a new API endpoint → `feat`
-- Adding a new booking capability → `feat`
-- Adding a new payment feature → `feat`
-- Fixing incorrect booking behavior → `fix`
-- Refactoring a service without behavior changes → `refactor`
+- New API endpoint → `feat`
+- New booking capability → `feat`
+- New payment capability → `feat`
+- New user-facing UI functionality → `feat`
+
+Examples that are NOT `feat`:
+
 - Adding npm scripts → `chore`
-- Updating package.json scripts → `chore`
 - Updating dependencies → `chore`
+- Updating package.json configuration → `chore`
 - Updating ESLint configuration → `chore`
 - Updating TypeScript configuration → `chore`
+- Adding developer tooling → `chore`
 - Updating build configuration → `build`
 - Updating GitHub Actions → `ci`
-- Adding or changing tests → `test`
-- Improving application performance → `perf`
+- Internal code cleanup → `refactor`
+- Fixing broken behavior → `fix`
+- Adding tests → `test`
 - Updating documentation → `docs`
 
-## package.json rules
+## package.json
 
-Changes to package.json should normally use `chore(package.json)` when they involve:
+Changes to `package.json` should normally use:
 
-- npm scripts
-- dependency updates
-- development tooling
-- configuration
-- maintenance
+`chore(package.json): <description>`
 
-Use another type only when the package.json change directly supports a change that genuinely belongs to that type.
-
-For example:
+Examples:
 
 `chore(package.json): add versioning scripts`
 
-NOT:
+`chore(package.json): update development dependencies`
+
+Do NOT use:
 
 `feat(package.json): add versioning scripts`
 
-## Description rules
+unless the package.json change itself directly introduces genuine user-facing functionality.
 
-- Use imperative, concise wording.
-- Do not capitalize the first word of the description.
-- Do not end the description with a period.
-- Describe what changed, not why it was changed.
-- Do not exaggerate a change as a feature.
-- Prefer a specific description over a vague one.
-- Keep the subject line concise.
+## Description
 
-## Examples
+The description must:
 
-Good:
+- Be imperative.
+- Be concise.
+- Start with lowercase.
+- Not end with a period.
+- Describe what changed rather than why.
+- Be specific rather than vague.
+- Avoid exaggerated wording.
 
-`chore(package.json): add versioning scripts`
+## Scope
+
+Use a meaningful scope when one is obvious.
+
+Examples:
 
 `feat(bookings): add vehicle swap capability`
 
@@ -90,20 +107,28 @@ Good:
 
 `perf(media): optimize image processing`
 
-`docs(api): document payment endpoints`
+`chore(package.json): add versioning scripts`
 
-`test(bookings): add vehicle availability tests`
+If there is no meaningful scope, use:
 
-`ci(github): add automated release workflow`
+`fix: prevent duplicate booking submission`
 
-Bad:
+Do not invent scopes merely to satisfy the format.
 
-`feat(package.json): add versioning scripts`
+## Decision rule
 
-`feat: update stuff`
+When deciding between `feat` and `chore`, prefer `chore` unless the change clearly introduces user-facing or consumer-facing functionality.
 
-`fix: changes`
+When deciding between multiple types, classify based on the PRIMARY purpose of the change.
 
-`feat: improve code`
+## Output
 
-When unsure between `feat` and `chore`, prefer `chore` unless the change clearly introduces user-facing functionality.
+When asked to generate a commit message:
+
+- Output ONE commit message.
+- Do not provide multiple alternatives.
+- Do not explain the classification.
+- Do not include quotes around the commit message.
+- Do not include Markdown code fences.
+- Do not include a bullet point.
+- Return only the commit message.
