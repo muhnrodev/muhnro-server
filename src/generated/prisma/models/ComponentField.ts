@@ -288,7 +288,7 @@ export type ComponentFieldGroupByOutputType = {
   _max: ComponentFieldMaxAggregateOutputType | null
 }
 
-type GetComponentFieldGroupByPayload<T extends ComponentFieldGroupByArgs> = Prisma.PrismaPromise<
+export type GetComponentFieldGroupByPayload<T extends ComponentFieldGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<ComponentFieldGroupByOutputType, T['by']> &
       {
@@ -1991,6 +1991,11 @@ export type ComponentFieldFindManyArgs<ExtArgs extends runtime.Types.Extensions.
    * Skip the first `n` ComponentFields.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of ComponentFields.
+   */
   distinct?: Prisma.ComponentFieldScalarFieldEnum | Prisma.ComponentFieldScalarFieldEnum[]
 }
 

@@ -220,7 +220,7 @@ export type HeroImageGroupByOutputType = {
   _max: HeroImageMaxAggregateOutputType | null
 }
 
-type GetHeroImageGroupByPayload<T extends HeroImageGroupByArgs> = Prisma.PrismaPromise<
+export type GetHeroImageGroupByPayload<T extends HeroImageGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<HeroImageGroupByOutputType, T['by']> &
       {
@@ -1110,6 +1110,11 @@ export type HeroImageFindManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * Skip the first `n` HeroImages.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of HeroImages.
+   */
   distinct?: Prisma.HeroImageScalarFieldEnum | Prisma.HeroImageScalarFieldEnum[]
 }
 

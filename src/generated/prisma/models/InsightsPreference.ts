@@ -213,7 +213,7 @@ export type InsightsPreferenceGroupByOutputType = {
   _max: InsightsPreferenceMaxAggregateOutputType | null
 }
 
-type GetInsightsPreferenceGroupByPayload<T extends InsightsPreferenceGroupByArgs> = Prisma.PrismaPromise<
+export type GetInsightsPreferenceGroupByPayload<T extends InsightsPreferenceGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<InsightsPreferenceGroupByOutputType, T['by']> &
       {
@@ -1207,6 +1207,11 @@ export type InsightsPreferenceFindManyArgs<ExtArgs extends runtime.Types.Extensi
    * Skip the first `n` InsightsPreferences.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of InsightsPreferences.
+   */
   distinct?: Prisma.InsightsPreferenceScalarFieldEnum | Prisma.InsightsPreferenceScalarFieldEnum[]
 }
 

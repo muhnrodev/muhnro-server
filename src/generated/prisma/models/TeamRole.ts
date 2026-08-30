@@ -158,7 +158,7 @@ export type TeamRoleGroupByOutputType = {
   _max: TeamRoleMaxAggregateOutputType | null
 }
 
-type GetTeamRoleGroupByPayload<T extends TeamRoleGroupByArgs> = Prisma.PrismaPromise<
+export type GetTeamRoleGroupByPayload<T extends TeamRoleGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<TeamRoleGroupByOutputType, T['by']> &
       {
@@ -1088,6 +1088,11 @@ export type TeamRoleFindManyArgs<ExtArgs extends runtime.Types.Extensions.Intern
    * Skip the first `n` TeamRoles.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of TeamRoles.
+   */
   distinct?: Prisma.TeamRoleScalarFieldEnum | Prisma.TeamRoleScalarFieldEnum[]
 }
 

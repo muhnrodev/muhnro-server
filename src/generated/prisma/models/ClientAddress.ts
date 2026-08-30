@@ -193,7 +193,7 @@ export type ClientAddressGroupByOutputType = {
   _max: ClientAddressMaxAggregateOutputType | null
 }
 
-type GetClientAddressGroupByPayload<T extends ClientAddressGroupByArgs> = Prisma.PrismaPromise<
+export type GetClientAddressGroupByPayload<T extends ClientAddressGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<ClientAddressGroupByOutputType, T['by']> &
       {
@@ -1250,6 +1250,11 @@ export type ClientAddressFindManyArgs<ExtArgs extends runtime.Types.Extensions.I
    * Skip the first `n` ClientAddresses.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of ClientAddresses.
+   */
   distinct?: Prisma.ClientAddressScalarFieldEnum | Prisma.ClientAddressScalarFieldEnum[]
 }
 

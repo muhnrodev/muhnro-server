@@ -144,7 +144,7 @@ export type ArticleTagGroupByOutputType = {
   _max: ArticleTagMaxAggregateOutputType | null
 }
 
-type GetArticleTagGroupByPayload<T extends ArticleTagGroupByArgs> = Prisma.PrismaPromise<
+export type GetArticleTagGroupByPayload<T extends ArticleTagGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<ArticleTagGroupByOutputType, T['by']> &
       {
@@ -1160,6 +1160,11 @@ export type ArticleTagFindManyArgs<ExtArgs extends runtime.Types.Extensions.Inte
    * Skip the first `n` ArticleTags.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of ArticleTags.
+   */
   distinct?: Prisma.ArticleTagScalarFieldEnum | Prisma.ArticleTagScalarFieldEnum[]
 }
 

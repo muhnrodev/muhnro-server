@@ -179,7 +179,7 @@ export type WebpageGroupByOutputType = {
   _max: WebpageMaxAggregateOutputType | null
 }
 
-type GetWebpageGroupByPayload<T extends WebpageGroupByArgs> = Prisma.PrismaPromise<
+export type GetWebpageGroupByPayload<T extends WebpageGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<WebpageGroupByOutputType, T['by']> &
       {
@@ -1358,6 +1358,11 @@ export type WebpageFindManyArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * Skip the first `n` Webpages.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of Webpages.
+   */
   distinct?: Prisma.WebpageScalarFieldEnum | Prisma.WebpageScalarFieldEnum[]
 }
 

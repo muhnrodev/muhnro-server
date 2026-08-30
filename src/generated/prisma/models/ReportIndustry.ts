@@ -144,7 +144,7 @@ export type ReportIndustryGroupByOutputType = {
   _max: ReportIndustryMaxAggregateOutputType | null
 }
 
-type GetReportIndustryGroupByPayload<T extends ReportIndustryGroupByArgs> = Prisma.PrismaPromise<
+export type GetReportIndustryGroupByPayload<T extends ReportIndustryGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<ReportIndustryGroupByOutputType, T['by']> &
       {
@@ -1160,6 +1160,11 @@ export type ReportIndustryFindManyArgs<ExtArgs extends runtime.Types.Extensions.
    * Skip the first `n` ReportIndustries.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of ReportIndustries.
+   */
   distinct?: Prisma.ReportIndustryScalarFieldEnum | Prisma.ReportIndustryScalarFieldEnum[]
 }
 

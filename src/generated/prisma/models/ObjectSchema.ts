@@ -179,7 +179,7 @@ export type ObjectSchemaGroupByOutputType = {
   _max: ObjectSchemaMaxAggregateOutputType | null
 }
 
-type GetObjectSchemaGroupByPayload<T extends ObjectSchemaGroupByArgs> = Prisma.PrismaPromise<
+export type GetObjectSchemaGroupByPayload<T extends ObjectSchemaGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<ObjectSchemaGroupByOutputType, T['by']> &
       {
@@ -1405,6 +1405,11 @@ export type ObjectSchemaFindManyArgs<ExtArgs extends runtime.Types.Extensions.In
    * Skip the first `n` ObjectSchemas.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of ObjectSchemas.
+   */
   distinct?: Prisma.ObjectSchemaScalarFieldEnum | Prisma.ObjectSchemaScalarFieldEnum[]
 }
 

@@ -202,7 +202,7 @@ export type AuthEventGroupByOutputType = {
   _max: AuthEventMaxAggregateOutputType | null
 }
 
-type GetAuthEventGroupByPayload<T extends AuthEventGroupByArgs> = Prisma.PrismaPromise<
+export type GetAuthEventGroupByPayload<T extends AuthEventGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<AuthEventGroupByOutputType, T['by']> &
       {
@@ -1049,6 +1049,11 @@ export type AuthEventFindManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * Skip the first `n` AuthEvents.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of AuthEvents.
+   */
   distinct?: Prisma.AuthEventScalarFieldEnum | Prisma.AuthEventScalarFieldEnum[]
 }
 

@@ -192,7 +192,7 @@ export type IdentityProviderGroupByOutputType = {
   _max: IdentityProviderMaxAggregateOutputType | null
 }
 
-type GetIdentityProviderGroupByPayload<T extends IdentityProviderGroupByArgs> = Prisma.PrismaPromise<
+export type GetIdentityProviderGroupByPayload<T extends IdentityProviderGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<IdentityProviderGroupByOutputType, T['by']> &
       {
@@ -1131,6 +1131,11 @@ export type IdentityProviderFindManyArgs<ExtArgs extends runtime.Types.Extension
    * Skip the first `n` IdentityProviders.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of IdentityProviders.
+   */
   distinct?: Prisma.IdentityProviderScalarFieldEnum | Prisma.IdentityProviderScalarFieldEnum[]
 }
 

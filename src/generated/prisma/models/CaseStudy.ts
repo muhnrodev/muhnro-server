@@ -283,7 +283,7 @@ export type CaseStudyGroupByOutputType = {
   _max: CaseStudyMaxAggregateOutputType | null
 }
 
-type GetCaseStudyGroupByPayload<T extends CaseStudyGroupByArgs> = Prisma.PrismaPromise<
+export type GetCaseStudyGroupByPayload<T extends CaseStudyGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<CaseStudyGroupByOutputType, T['by']> &
       {
@@ -2017,6 +2017,11 @@ export type CaseStudyFindManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * Skip the first `n` CaseStudies.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of CaseStudies.
+   */
   distinct?: Prisma.CaseStudyScalarFieldEnum | Prisma.CaseStudyScalarFieldEnum[]
 }
 

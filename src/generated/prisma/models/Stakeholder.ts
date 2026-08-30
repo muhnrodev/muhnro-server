@@ -172,7 +172,7 @@ export type StakeholderGroupByOutputType = {
   _max: StakeholderMaxAggregateOutputType | null
 }
 
-type GetStakeholderGroupByPayload<T extends StakeholderGroupByArgs> = Prisma.PrismaPromise<
+export type GetStakeholderGroupByPayload<T extends StakeholderGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<StakeholderGroupByOutputType, T['by']> &
       {
@@ -1152,6 +1152,11 @@ export type StakeholderFindManyArgs<ExtArgs extends runtime.Types.Extensions.Int
    * Skip the first `n` Stakeholders.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of Stakeholders.
+   */
   distinct?: Prisma.StakeholderScalarFieldEnum | Prisma.StakeholderScalarFieldEnum[]
 }
 

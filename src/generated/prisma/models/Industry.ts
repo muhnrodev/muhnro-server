@@ -172,7 +172,7 @@ export type IndustryGroupByOutputType = {
   _max: IndustryMaxAggregateOutputType | null
 }
 
-type GetIndustryGroupByPayload<T extends IndustryGroupByArgs> = Prisma.PrismaPromise<
+export type GetIndustryGroupByPayload<T extends IndustryGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<IndustryGroupByOutputType, T['by']> &
       {
@@ -1601,6 +1601,11 @@ export type IndustryFindManyArgs<ExtArgs extends runtime.Types.Extensions.Intern
    * Skip the first `n` Industries.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of Industries.
+   */
   distinct?: Prisma.IndustryScalarFieldEnum | Prisma.IndustryScalarFieldEnum[]
 }
 

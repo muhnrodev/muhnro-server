@@ -220,7 +220,7 @@ export type PromotionalPreferenceGroupByOutputType = {
   _max: PromotionalPreferenceMaxAggregateOutputType | null
 }
 
-type GetPromotionalPreferenceGroupByPayload<T extends PromotionalPreferenceGroupByArgs> = Prisma.PrismaPromise<
+export type GetPromotionalPreferenceGroupByPayload<T extends PromotionalPreferenceGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<PromotionalPreferenceGroupByOutputType, T['by']> &
       {
@@ -1239,6 +1239,11 @@ export type PromotionalPreferenceFindManyArgs<ExtArgs extends runtime.Types.Exte
    * Skip the first `n` PromotionalPreferences.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of PromotionalPreferences.
+   */
   distinct?: Prisma.PromotionalPreferenceScalarFieldEnum | Prisma.PromotionalPreferenceScalarFieldEnum[]
 }
 

@@ -199,7 +199,7 @@ export type UserCredentialGroupByOutputType = {
   _max: UserCredentialMaxAggregateOutputType | null
 }
 
-type GetUserCredentialGroupByPayload<T extends UserCredentialGroupByArgs> = Prisma.PrismaPromise<
+export type GetUserCredentialGroupByPayload<T extends UserCredentialGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<UserCredentialGroupByOutputType, T['by']> &
       {
@@ -1148,6 +1148,11 @@ export type UserCredentialFindManyArgs<ExtArgs extends runtime.Types.Extensions.
    * Skip the first `n` UserCredentials.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of UserCredentials.
+   */
   distinct?: Prisma.UserCredentialScalarFieldEnum | Prisma.UserCredentialScalarFieldEnum[]
 }
 

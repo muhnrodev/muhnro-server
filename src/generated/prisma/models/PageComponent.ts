@@ -186,7 +186,7 @@ export type PageComponentGroupByOutputType = {
   _max: PageComponentMaxAggregateOutputType | null
 }
 
-type GetPageComponentGroupByPayload<T extends PageComponentGroupByArgs> = Prisma.PrismaPromise<
+export type GetPageComponentGroupByPayload<T extends PageComponentGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<PageComponentGroupByOutputType, T['by']> &
       {
@@ -1539,6 +1539,11 @@ export type PageComponentFindManyArgs<ExtArgs extends runtime.Types.Extensions.I
    * Skip the first `n` PageComponents.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of PageComponents.
+   */
   distinct?: Prisma.PageComponentScalarFieldEnum | Prisma.PageComponentScalarFieldEnum[]
 }
 

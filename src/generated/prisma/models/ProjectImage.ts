@@ -144,7 +144,7 @@ export type ProjectImageGroupByOutputType = {
   _max: ProjectImageMaxAggregateOutputType | null
 }
 
-type GetProjectImageGroupByPayload<T extends ProjectImageGroupByArgs> = Prisma.PrismaPromise<
+export type GetProjectImageGroupByPayload<T extends ProjectImageGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<ProjectImageGroupByOutputType, T['by']> &
       {
@@ -1160,6 +1160,11 @@ export type ProjectImageFindManyArgs<ExtArgs extends runtime.Types.Extensions.In
    * Skip the first `n` ProjectImages.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of ProjectImages.
+   */
   distinct?: Prisma.ProjectImageScalarFieldEnum | Prisma.ProjectImageScalarFieldEnum[]
 }
 

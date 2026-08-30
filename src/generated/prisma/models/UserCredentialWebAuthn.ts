@@ -224,7 +224,7 @@ export type UserCredentialWebAuthnGroupByOutputType = {
   _max: UserCredentialWebAuthnMaxAggregateOutputType | null
 }
 
-type GetUserCredentialWebAuthnGroupByPayload<T extends UserCredentialWebAuthnGroupByArgs> = Prisma.PrismaPromise<
+export type GetUserCredentialWebAuthnGroupByPayload<T extends UserCredentialWebAuthnGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<UserCredentialWebAuthnGroupByOutputType, T['by']> &
       {
@@ -1121,6 +1121,11 @@ export type UserCredentialWebAuthnFindManyArgs<ExtArgs extends runtime.Types.Ext
    * Skip the first `n` UserCredentialWebAuthns.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of UserCredentialWebAuthns.
+   */
   distinct?: Prisma.UserCredentialWebAuthnScalarFieldEnum | Prisma.UserCredentialWebAuthnScalarFieldEnum[]
 }
 

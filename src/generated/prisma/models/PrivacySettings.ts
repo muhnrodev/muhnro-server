@@ -193,7 +193,7 @@ export type PrivacySettingsGroupByOutputType = {
   _max: PrivacySettingsMaxAggregateOutputType | null
 }
 
-type GetPrivacySettingsGroupByPayload<T extends PrivacySettingsGroupByArgs> = Prisma.PrismaPromise<
+export type GetPrivacySettingsGroupByPayload<T extends PrivacySettingsGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<PrivacySettingsGroupByOutputType, T['by']> &
       {
@@ -1232,6 +1232,11 @@ export type PrivacySettingsFindManyArgs<ExtArgs extends runtime.Types.Extensions
    * Skip the first `n` PrivacySettings.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of PrivacySettings.
+   */
   distinct?: Prisma.PrivacySettingsScalarFieldEnum | Prisma.PrivacySettingsScalarFieldEnum[]
 }
 

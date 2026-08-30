@@ -206,7 +206,7 @@ export type UserMFAGroupByOutputType = {
   _max: UserMFAMaxAggregateOutputType | null
 }
 
-type GetUserMFAGroupByPayload<T extends UserMFAGroupByArgs> = Prisma.PrismaPromise<
+export type GetUserMFAGroupByPayload<T extends UserMFAGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<UserMFAGroupByOutputType, T['by']> &
       {
@@ -1235,6 +1235,11 @@ export type UserMFAFindManyArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * Skip the first `n` UserMFAS.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of UserMFAS.
+   */
   distinct?: Prisma.UserMFAScalarFieldEnum | Prisma.UserMFAScalarFieldEnum[]
 }
 

@@ -220,7 +220,7 @@ export type CoverImageGroupByOutputType = {
   _max: CoverImageMaxAggregateOutputType | null
 }
 
-type GetCoverImageGroupByPayload<T extends CoverImageGroupByArgs> = Prisma.PrismaPromise<
+export type GetCoverImageGroupByPayload<T extends CoverImageGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<CoverImageGroupByOutputType, T['by']> &
       {
@@ -1110,6 +1110,11 @@ export type CoverImageFindManyArgs<ExtArgs extends runtime.Types.Extensions.Inte
    * Skip the first `n` CoverImages.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of CoverImages.
+   */
   distinct?: Prisma.CoverImageScalarFieldEnum | Prisma.CoverImageScalarFieldEnum[]
 }
 

@@ -206,7 +206,7 @@ export type ArticleVersionGroupByOutputType = {
   _max: ArticleVersionMaxAggregateOutputType | null
 }
 
-type GetArticleVersionGroupByPayload<T extends ArticleVersionGroupByArgs> = Prisma.PrismaPromise<
+export type GetArticleVersionGroupByPayload<T extends ArticleVersionGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<ArticleVersionGroupByOutputType, T['by']> &
       {
@@ -1236,6 +1236,11 @@ export type ArticleVersionFindManyArgs<ExtArgs extends runtime.Types.Extensions.
    * Skip the first `n` ArticleVersions.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of ArticleVersions.
+   */
   distinct?: Prisma.ArticleVersionScalarFieldEnum | Prisma.ArticleVersionScalarFieldEnum[]
 }
 
