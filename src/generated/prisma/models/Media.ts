@@ -60,6 +60,8 @@ export type MediaMinAggregateOutputType = {
   createById: string | null
   createdAt: Date | null
   updatedAt: Date | null
+  isDeleted: boolean | null
+  deletedAt: Date | null
 }
 
 export type MediaMaxAggregateOutputType = {
@@ -82,6 +84,8 @@ export type MediaMaxAggregateOutputType = {
   createById: string | null
   createdAt: Date | null
   updatedAt: Date | null
+  isDeleted: boolean | null
+  deletedAt: Date | null
 }
 
 export type MediaCountAggregateOutputType = {
@@ -104,6 +108,8 @@ export type MediaCountAggregateOutputType = {
   createById: number
   createdAt: number
   updatedAt: number
+  isDeleted: number
+  deletedAt: number
   _all: number
 }
 
@@ -142,6 +148,8 @@ export type MediaMinAggregateInputType = {
   createById?: true
   createdAt?: true
   updatedAt?: true
+  isDeleted?: true
+  deletedAt?: true
 }
 
 export type MediaMaxAggregateInputType = {
@@ -164,6 +172,8 @@ export type MediaMaxAggregateInputType = {
   createById?: true
   createdAt?: true
   updatedAt?: true
+  isDeleted?: true
+  deletedAt?: true
 }
 
 export type MediaCountAggregateInputType = {
@@ -186,6 +196,8 @@ export type MediaCountAggregateInputType = {
   createById?: true
   createdAt?: true
   updatedAt?: true
+  isDeleted?: true
+  deletedAt?: true
   _all?: true
 }
 
@@ -295,6 +307,8 @@ export type MediaGroupByOutputType = {
   createById: string
   createdAt: Date
   updatedAt: Date
+  isDeleted: boolean
+  deletedAt: Date | null
   _count: MediaCountAggregateOutputType | null
   _avg: MediaAvgAggregateOutputType | null
   _sum: MediaSumAggregateOutputType | null
@@ -340,7 +354,9 @@ export type MediaWhereInput = {
   createById?: Prisma.StringFilter<"Media"> | string
   createdAt?: Prisma.DateTimeFilter<"Media"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Media"> | Date | string
-  createBy?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  isDeleted?: Prisma.BoolFilter<"Media"> | boolean
+  deletedAt?: Prisma.DateTimeNullableFilter<"Media"> | Date | string | null
+  createdBy?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
   articles?: Prisma.ArticleListRelationFilter
   caseStudies?: Prisma.CaseStudyListRelationFilter
   projectImages?: Prisma.ProjectImageListRelationFilter
@@ -367,7 +383,9 @@ export type MediaOrderByWithRelationInput = {
   createById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  createBy?: Prisma.UserOrderByWithRelationInput
+  isDeleted?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  createdBy?: Prisma.UserOrderByWithRelationInput
   articles?: Prisma.ArticleOrderByRelationAggregateInput
   caseStudies?: Prisma.CaseStudyOrderByRelationAggregateInput
   projectImages?: Prisma.ProjectImageOrderByRelationAggregateInput
@@ -397,7 +415,9 @@ export type MediaWhereUniqueInput = Prisma.AtLeast<{
   createById?: Prisma.StringFilter<"Media"> | string
   createdAt?: Prisma.DateTimeFilter<"Media"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Media"> | Date | string
-  createBy?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  isDeleted?: Prisma.BoolFilter<"Media"> | boolean
+  deletedAt?: Prisma.DateTimeNullableFilter<"Media"> | Date | string | null
+  createdBy?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
   articles?: Prisma.ArticleListRelationFilter
   caseStudies?: Prisma.CaseStudyListRelationFilter
   projectImages?: Prisma.ProjectImageListRelationFilter
@@ -424,6 +444,8 @@ export type MediaOrderByWithAggregationInput = {
   createById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isDeleted?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.MediaCountOrderByAggregateInput
   _avg?: Prisma.MediaAvgOrderByAggregateInput
   _max?: Prisma.MediaMaxOrderByAggregateInput
@@ -454,6 +476,8 @@ export type MediaScalarWhereWithAggregatesInput = {
   createById?: Prisma.StringWithAggregatesFilter<"Media"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Media"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Media"> | Date | string
+  isDeleted?: Prisma.BoolWithAggregatesFilter<"Media"> | boolean
+  deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Media"> | Date | string | null
 }
 
 export type MediaCreateInput = {
@@ -475,7 +499,9 @@ export type MediaCreateInput = {
   checksum?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  createBy: Prisma.UserCreateNestedOneWithoutMediaInput
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
+  createdBy?: Prisma.UserCreateNestedOneWithoutMediaInput
   articles?: Prisma.ArticleCreateNestedManyWithoutFeaturedImageInput
   caseStudies?: Prisma.CaseStudyCreateNestedManyWithoutFeaturedImageInput
   projectImages?: Prisma.ProjectImageCreateNestedManyWithoutMediaInput
@@ -502,6 +528,8 @@ export type MediaUncheckedCreateInput = {
   createById: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
   articles?: Prisma.ArticleUncheckedCreateNestedManyWithoutFeaturedImageInput
   caseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutFeaturedImageInput
   projectImages?: Prisma.ProjectImageUncheckedCreateNestedManyWithoutMediaInput
@@ -527,7 +555,9 @@ export type MediaUpdateInput = {
   checksum?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createBy?: Prisma.UserUpdateOneRequiredWithoutMediaNestedInput
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdBy?: Prisma.UserUpdateOneWithoutMediaNestedInput
   articles?: Prisma.ArticleUpdateManyWithoutFeaturedImageNestedInput
   caseStudies?: Prisma.CaseStudyUpdateManyWithoutFeaturedImageNestedInput
   projectImages?: Prisma.ProjectImageUpdateManyWithoutMediaNestedInput
@@ -554,6 +584,8 @@ export type MediaUncheckedUpdateInput = {
   createById?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   articles?: Prisma.ArticleUncheckedUpdateManyWithoutFeaturedImageNestedInput
   caseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutFeaturedImageNestedInput
   projectImages?: Prisma.ProjectImageUncheckedUpdateManyWithoutMediaNestedInput
@@ -580,6 +612,8 @@ export type MediaCreateManyInput = {
   createById: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
 }
 
 export type MediaUpdateManyMutationInput = {
@@ -601,6 +635,8 @@ export type MediaUpdateManyMutationInput = {
   checksum?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type MediaUncheckedUpdateManyInput = {
@@ -623,6 +659,8 @@ export type MediaUncheckedUpdateManyInput = {
   createById?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type MediaListRelationFilter = {
@@ -660,6 +698,8 @@ export type MediaCountOrderByAggregateInput = {
   createById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isDeleted?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
 export type MediaAvgOrderByAggregateInput = {
@@ -689,6 +729,8 @@ export type MediaMaxOrderByAggregateInput = {
   createById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isDeleted?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
 export type MediaMinOrderByAggregateInput = {
@@ -711,6 +753,8 @@ export type MediaMinOrderByAggregateInput = {
   createById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isDeleted?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
 export type MediaSumOrderByAggregateInput = {
@@ -725,45 +769,45 @@ export type MediaNullableScalarRelationFilter = {
   isNot?: Prisma.MediaWhereInput | null
 }
 
-export type MediaCreateNestedManyWithoutCreateByInput = {
-  create?: Prisma.XOR<Prisma.MediaCreateWithoutCreateByInput, Prisma.MediaUncheckedCreateWithoutCreateByInput> | Prisma.MediaCreateWithoutCreateByInput[] | Prisma.MediaUncheckedCreateWithoutCreateByInput[]
-  connectOrCreate?: Prisma.MediaCreateOrConnectWithoutCreateByInput | Prisma.MediaCreateOrConnectWithoutCreateByInput[]
-  createMany?: Prisma.MediaCreateManyCreateByInputEnvelope
+export type MediaCreateNestedManyWithoutCreatedByInput = {
+  create?: Prisma.XOR<Prisma.MediaCreateWithoutCreatedByInput, Prisma.MediaUncheckedCreateWithoutCreatedByInput> | Prisma.MediaCreateWithoutCreatedByInput[] | Prisma.MediaUncheckedCreateWithoutCreatedByInput[]
+  connectOrCreate?: Prisma.MediaCreateOrConnectWithoutCreatedByInput | Prisma.MediaCreateOrConnectWithoutCreatedByInput[]
+  createMany?: Prisma.MediaCreateManyCreatedByInputEnvelope
   connect?: Prisma.MediaWhereUniqueInput | Prisma.MediaWhereUniqueInput[]
 }
 
-export type MediaUncheckedCreateNestedManyWithoutCreateByInput = {
-  create?: Prisma.XOR<Prisma.MediaCreateWithoutCreateByInput, Prisma.MediaUncheckedCreateWithoutCreateByInput> | Prisma.MediaCreateWithoutCreateByInput[] | Prisma.MediaUncheckedCreateWithoutCreateByInput[]
-  connectOrCreate?: Prisma.MediaCreateOrConnectWithoutCreateByInput | Prisma.MediaCreateOrConnectWithoutCreateByInput[]
-  createMany?: Prisma.MediaCreateManyCreateByInputEnvelope
+export type MediaUncheckedCreateNestedManyWithoutCreatedByInput = {
+  create?: Prisma.XOR<Prisma.MediaCreateWithoutCreatedByInput, Prisma.MediaUncheckedCreateWithoutCreatedByInput> | Prisma.MediaCreateWithoutCreatedByInput[] | Prisma.MediaUncheckedCreateWithoutCreatedByInput[]
+  connectOrCreate?: Prisma.MediaCreateOrConnectWithoutCreatedByInput | Prisma.MediaCreateOrConnectWithoutCreatedByInput[]
+  createMany?: Prisma.MediaCreateManyCreatedByInputEnvelope
   connect?: Prisma.MediaWhereUniqueInput | Prisma.MediaWhereUniqueInput[]
 }
 
-export type MediaUpdateManyWithoutCreateByNestedInput = {
-  create?: Prisma.XOR<Prisma.MediaCreateWithoutCreateByInput, Prisma.MediaUncheckedCreateWithoutCreateByInput> | Prisma.MediaCreateWithoutCreateByInput[] | Prisma.MediaUncheckedCreateWithoutCreateByInput[]
-  connectOrCreate?: Prisma.MediaCreateOrConnectWithoutCreateByInput | Prisma.MediaCreateOrConnectWithoutCreateByInput[]
-  upsert?: Prisma.MediaUpsertWithWhereUniqueWithoutCreateByInput | Prisma.MediaUpsertWithWhereUniqueWithoutCreateByInput[]
-  createMany?: Prisma.MediaCreateManyCreateByInputEnvelope
+export type MediaUpdateManyWithoutCreatedByNestedInput = {
+  create?: Prisma.XOR<Prisma.MediaCreateWithoutCreatedByInput, Prisma.MediaUncheckedCreateWithoutCreatedByInput> | Prisma.MediaCreateWithoutCreatedByInput[] | Prisma.MediaUncheckedCreateWithoutCreatedByInput[]
+  connectOrCreate?: Prisma.MediaCreateOrConnectWithoutCreatedByInput | Prisma.MediaCreateOrConnectWithoutCreatedByInput[]
+  upsert?: Prisma.MediaUpsertWithWhereUniqueWithoutCreatedByInput | Prisma.MediaUpsertWithWhereUniqueWithoutCreatedByInput[]
+  createMany?: Prisma.MediaCreateManyCreatedByInputEnvelope
   set?: Prisma.MediaWhereUniqueInput | Prisma.MediaWhereUniqueInput[]
   disconnect?: Prisma.MediaWhereUniqueInput | Prisma.MediaWhereUniqueInput[]
   delete?: Prisma.MediaWhereUniqueInput | Prisma.MediaWhereUniqueInput[]
   connect?: Prisma.MediaWhereUniqueInput | Prisma.MediaWhereUniqueInput[]
-  update?: Prisma.MediaUpdateWithWhereUniqueWithoutCreateByInput | Prisma.MediaUpdateWithWhereUniqueWithoutCreateByInput[]
-  updateMany?: Prisma.MediaUpdateManyWithWhereWithoutCreateByInput | Prisma.MediaUpdateManyWithWhereWithoutCreateByInput[]
+  update?: Prisma.MediaUpdateWithWhereUniqueWithoutCreatedByInput | Prisma.MediaUpdateWithWhereUniqueWithoutCreatedByInput[]
+  updateMany?: Prisma.MediaUpdateManyWithWhereWithoutCreatedByInput | Prisma.MediaUpdateManyWithWhereWithoutCreatedByInput[]
   deleteMany?: Prisma.MediaScalarWhereInput | Prisma.MediaScalarWhereInput[]
 }
 
-export type MediaUncheckedUpdateManyWithoutCreateByNestedInput = {
-  create?: Prisma.XOR<Prisma.MediaCreateWithoutCreateByInput, Prisma.MediaUncheckedCreateWithoutCreateByInput> | Prisma.MediaCreateWithoutCreateByInput[] | Prisma.MediaUncheckedCreateWithoutCreateByInput[]
-  connectOrCreate?: Prisma.MediaCreateOrConnectWithoutCreateByInput | Prisma.MediaCreateOrConnectWithoutCreateByInput[]
-  upsert?: Prisma.MediaUpsertWithWhereUniqueWithoutCreateByInput | Prisma.MediaUpsertWithWhereUniqueWithoutCreateByInput[]
-  createMany?: Prisma.MediaCreateManyCreateByInputEnvelope
+export type MediaUncheckedUpdateManyWithoutCreatedByNestedInput = {
+  create?: Prisma.XOR<Prisma.MediaCreateWithoutCreatedByInput, Prisma.MediaUncheckedCreateWithoutCreatedByInput> | Prisma.MediaCreateWithoutCreatedByInput[] | Prisma.MediaUncheckedCreateWithoutCreatedByInput[]
+  connectOrCreate?: Prisma.MediaCreateOrConnectWithoutCreatedByInput | Prisma.MediaCreateOrConnectWithoutCreatedByInput[]
+  upsert?: Prisma.MediaUpsertWithWhereUniqueWithoutCreatedByInput | Prisma.MediaUpsertWithWhereUniqueWithoutCreatedByInput[]
+  createMany?: Prisma.MediaCreateManyCreatedByInputEnvelope
   set?: Prisma.MediaWhereUniqueInput | Prisma.MediaWhereUniqueInput[]
   disconnect?: Prisma.MediaWhereUniqueInput | Prisma.MediaWhereUniqueInput[]
   delete?: Prisma.MediaWhereUniqueInput | Prisma.MediaWhereUniqueInput[]
   connect?: Prisma.MediaWhereUniqueInput | Prisma.MediaWhereUniqueInput[]
-  update?: Prisma.MediaUpdateWithWhereUniqueWithoutCreateByInput | Prisma.MediaUpdateWithWhereUniqueWithoutCreateByInput[]
-  updateMany?: Prisma.MediaUpdateManyWithWhereWithoutCreateByInput | Prisma.MediaUpdateManyWithWhereWithoutCreateByInput[]
+  update?: Prisma.MediaUpdateWithWhereUniqueWithoutCreatedByInput | Prisma.MediaUpdateWithWhereUniqueWithoutCreatedByInput[]
+  updateMany?: Prisma.MediaUpdateManyWithWhereWithoutCreatedByInput | Prisma.MediaUpdateManyWithWhereWithoutCreatedByInput[]
   deleteMany?: Prisma.MediaScalarWhereInput | Prisma.MediaScalarWhereInput[]
 }
 
@@ -829,7 +873,7 @@ export type MediaUpdateOneRequiredWithoutProjectImagesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.MediaUpdateToOneWithWhereWithoutProjectImagesInput, Prisma.MediaUpdateWithoutProjectImagesInput>, Prisma.MediaUncheckedUpdateWithoutProjectImagesInput>
 }
 
-export type MediaCreateWithoutCreateByInput = {
+export type MediaCreateWithoutCreatedByInput = {
   id?: string
   filename: string
   originalName: string
@@ -848,13 +892,15 @@ export type MediaCreateWithoutCreateByInput = {
   checksum?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
   articles?: Prisma.ArticleCreateNestedManyWithoutFeaturedImageInput
   caseStudies?: Prisma.CaseStudyCreateNestedManyWithoutFeaturedImageInput
   projectImages?: Prisma.ProjectImageCreateNestedManyWithoutMediaInput
   logos?: Prisma.ClientCreateNestedManyWithoutLogoInput
 }
 
-export type MediaUncheckedCreateWithoutCreateByInput = {
+export type MediaUncheckedCreateWithoutCreatedByInput = {
   id?: string
   filename: string
   originalName: string
@@ -873,36 +919,38 @@ export type MediaUncheckedCreateWithoutCreateByInput = {
   checksum?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
   articles?: Prisma.ArticleUncheckedCreateNestedManyWithoutFeaturedImageInput
   caseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutFeaturedImageInput
   projectImages?: Prisma.ProjectImageUncheckedCreateNestedManyWithoutMediaInput
   logos?: Prisma.ClientUncheckedCreateNestedManyWithoutLogoInput
 }
 
-export type MediaCreateOrConnectWithoutCreateByInput = {
+export type MediaCreateOrConnectWithoutCreatedByInput = {
   where: Prisma.MediaWhereUniqueInput
-  create: Prisma.XOR<Prisma.MediaCreateWithoutCreateByInput, Prisma.MediaUncheckedCreateWithoutCreateByInput>
+  create: Prisma.XOR<Prisma.MediaCreateWithoutCreatedByInput, Prisma.MediaUncheckedCreateWithoutCreatedByInput>
 }
 
-export type MediaCreateManyCreateByInputEnvelope = {
-  data: Prisma.MediaCreateManyCreateByInput | Prisma.MediaCreateManyCreateByInput[]
+export type MediaCreateManyCreatedByInputEnvelope = {
+  data: Prisma.MediaCreateManyCreatedByInput | Prisma.MediaCreateManyCreatedByInput[]
   skipDuplicates?: boolean
 }
 
-export type MediaUpsertWithWhereUniqueWithoutCreateByInput = {
+export type MediaUpsertWithWhereUniqueWithoutCreatedByInput = {
   where: Prisma.MediaWhereUniqueInput
-  update: Prisma.XOR<Prisma.MediaUpdateWithoutCreateByInput, Prisma.MediaUncheckedUpdateWithoutCreateByInput>
-  create: Prisma.XOR<Prisma.MediaCreateWithoutCreateByInput, Prisma.MediaUncheckedCreateWithoutCreateByInput>
+  update: Prisma.XOR<Prisma.MediaUpdateWithoutCreatedByInput, Prisma.MediaUncheckedUpdateWithoutCreatedByInput>
+  create: Prisma.XOR<Prisma.MediaCreateWithoutCreatedByInput, Prisma.MediaUncheckedCreateWithoutCreatedByInput>
 }
 
-export type MediaUpdateWithWhereUniqueWithoutCreateByInput = {
+export type MediaUpdateWithWhereUniqueWithoutCreatedByInput = {
   where: Prisma.MediaWhereUniqueInput
-  data: Prisma.XOR<Prisma.MediaUpdateWithoutCreateByInput, Prisma.MediaUncheckedUpdateWithoutCreateByInput>
+  data: Prisma.XOR<Prisma.MediaUpdateWithoutCreatedByInput, Prisma.MediaUncheckedUpdateWithoutCreatedByInput>
 }
 
-export type MediaUpdateManyWithWhereWithoutCreateByInput = {
+export type MediaUpdateManyWithWhereWithoutCreatedByInput = {
   where: Prisma.MediaScalarWhereInput
-  data: Prisma.XOR<Prisma.MediaUpdateManyMutationInput, Prisma.MediaUncheckedUpdateManyWithoutCreateByInput>
+  data: Prisma.XOR<Prisma.MediaUpdateManyMutationInput, Prisma.MediaUncheckedUpdateManyWithoutCreatedByInput>
 }
 
 export type MediaScalarWhereInput = {
@@ -928,6 +976,8 @@ export type MediaScalarWhereInput = {
   createById?: Prisma.StringFilter<"Media"> | string
   createdAt?: Prisma.DateTimeFilter<"Media"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Media"> | Date | string
+  isDeleted?: Prisma.BoolFilter<"Media"> | boolean
+  deletedAt?: Prisma.DateTimeNullableFilter<"Media"> | Date | string | null
 }
 
 export type MediaCreateWithoutArticlesInput = {
@@ -949,7 +999,9 @@ export type MediaCreateWithoutArticlesInput = {
   checksum?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  createBy: Prisma.UserCreateNestedOneWithoutMediaInput
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
+  createdBy?: Prisma.UserCreateNestedOneWithoutMediaInput
   caseStudies?: Prisma.CaseStudyCreateNestedManyWithoutFeaturedImageInput
   projectImages?: Prisma.ProjectImageCreateNestedManyWithoutMediaInput
   logos?: Prisma.ClientCreateNestedManyWithoutLogoInput
@@ -975,6 +1027,8 @@ export type MediaUncheckedCreateWithoutArticlesInput = {
   createById: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
   caseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutFeaturedImageInput
   projectImages?: Prisma.ProjectImageUncheckedCreateNestedManyWithoutMediaInput
   logos?: Prisma.ClientUncheckedCreateNestedManyWithoutLogoInput
@@ -1015,7 +1069,9 @@ export type MediaUpdateWithoutArticlesInput = {
   checksum?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createBy?: Prisma.UserUpdateOneRequiredWithoutMediaNestedInput
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdBy?: Prisma.UserUpdateOneWithoutMediaNestedInput
   caseStudies?: Prisma.CaseStudyUpdateManyWithoutFeaturedImageNestedInput
   projectImages?: Prisma.ProjectImageUpdateManyWithoutMediaNestedInput
   logos?: Prisma.ClientUpdateManyWithoutLogoNestedInput
@@ -1041,6 +1097,8 @@ export type MediaUncheckedUpdateWithoutArticlesInput = {
   createById?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   caseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutFeaturedImageNestedInput
   projectImages?: Prisma.ProjectImageUncheckedUpdateManyWithoutMediaNestedInput
   logos?: Prisma.ClientUncheckedUpdateManyWithoutLogoNestedInput
@@ -1065,7 +1123,9 @@ export type MediaCreateWithoutCaseStudiesInput = {
   checksum?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  createBy: Prisma.UserCreateNestedOneWithoutMediaInput
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
+  createdBy?: Prisma.UserCreateNestedOneWithoutMediaInput
   articles?: Prisma.ArticleCreateNestedManyWithoutFeaturedImageInput
   projectImages?: Prisma.ProjectImageCreateNestedManyWithoutMediaInput
   logos?: Prisma.ClientCreateNestedManyWithoutLogoInput
@@ -1091,6 +1151,8 @@ export type MediaUncheckedCreateWithoutCaseStudiesInput = {
   createById: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
   articles?: Prisma.ArticleUncheckedCreateNestedManyWithoutFeaturedImageInput
   projectImages?: Prisma.ProjectImageUncheckedCreateNestedManyWithoutMediaInput
   logos?: Prisma.ClientUncheckedCreateNestedManyWithoutLogoInput
@@ -1131,7 +1193,9 @@ export type MediaUpdateWithoutCaseStudiesInput = {
   checksum?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createBy?: Prisma.UserUpdateOneRequiredWithoutMediaNestedInput
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdBy?: Prisma.UserUpdateOneWithoutMediaNestedInput
   articles?: Prisma.ArticleUpdateManyWithoutFeaturedImageNestedInput
   projectImages?: Prisma.ProjectImageUpdateManyWithoutMediaNestedInput
   logos?: Prisma.ClientUpdateManyWithoutLogoNestedInput
@@ -1157,6 +1221,8 @@ export type MediaUncheckedUpdateWithoutCaseStudiesInput = {
   createById?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   articles?: Prisma.ArticleUncheckedUpdateManyWithoutFeaturedImageNestedInput
   projectImages?: Prisma.ProjectImageUncheckedUpdateManyWithoutMediaNestedInput
   logos?: Prisma.ClientUncheckedUpdateManyWithoutLogoNestedInput
@@ -1181,7 +1247,9 @@ export type MediaCreateWithoutLogosInput = {
   checksum?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  createBy: Prisma.UserCreateNestedOneWithoutMediaInput
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
+  createdBy?: Prisma.UserCreateNestedOneWithoutMediaInput
   articles?: Prisma.ArticleCreateNestedManyWithoutFeaturedImageInput
   caseStudies?: Prisma.CaseStudyCreateNestedManyWithoutFeaturedImageInput
   projectImages?: Prisma.ProjectImageCreateNestedManyWithoutMediaInput
@@ -1207,6 +1275,8 @@ export type MediaUncheckedCreateWithoutLogosInput = {
   createById: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
   articles?: Prisma.ArticleUncheckedCreateNestedManyWithoutFeaturedImageInput
   caseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutFeaturedImageInput
   projectImages?: Prisma.ProjectImageUncheckedCreateNestedManyWithoutMediaInput
@@ -1247,7 +1317,9 @@ export type MediaUpdateWithoutLogosInput = {
   checksum?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createBy?: Prisma.UserUpdateOneRequiredWithoutMediaNestedInput
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdBy?: Prisma.UserUpdateOneWithoutMediaNestedInput
   articles?: Prisma.ArticleUpdateManyWithoutFeaturedImageNestedInput
   caseStudies?: Prisma.CaseStudyUpdateManyWithoutFeaturedImageNestedInput
   projectImages?: Prisma.ProjectImageUpdateManyWithoutMediaNestedInput
@@ -1273,6 +1345,8 @@ export type MediaUncheckedUpdateWithoutLogosInput = {
   createById?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   articles?: Prisma.ArticleUncheckedUpdateManyWithoutFeaturedImageNestedInput
   caseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutFeaturedImageNestedInput
   projectImages?: Prisma.ProjectImageUncheckedUpdateManyWithoutMediaNestedInput
@@ -1297,7 +1371,9 @@ export type MediaCreateWithoutProjectImagesInput = {
   checksum?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  createBy: Prisma.UserCreateNestedOneWithoutMediaInput
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
+  createdBy?: Prisma.UserCreateNestedOneWithoutMediaInput
   articles?: Prisma.ArticleCreateNestedManyWithoutFeaturedImageInput
   caseStudies?: Prisma.CaseStudyCreateNestedManyWithoutFeaturedImageInput
   logos?: Prisma.ClientCreateNestedManyWithoutLogoInput
@@ -1323,6 +1399,8 @@ export type MediaUncheckedCreateWithoutProjectImagesInput = {
   createById: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
   articles?: Prisma.ArticleUncheckedCreateNestedManyWithoutFeaturedImageInput
   caseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutFeaturedImageInput
   logos?: Prisma.ClientUncheckedCreateNestedManyWithoutLogoInput
@@ -1363,7 +1441,9 @@ export type MediaUpdateWithoutProjectImagesInput = {
   checksum?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createBy?: Prisma.UserUpdateOneRequiredWithoutMediaNestedInput
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdBy?: Prisma.UserUpdateOneWithoutMediaNestedInput
   articles?: Prisma.ArticleUpdateManyWithoutFeaturedImageNestedInput
   caseStudies?: Prisma.CaseStudyUpdateManyWithoutFeaturedImageNestedInput
   logos?: Prisma.ClientUpdateManyWithoutLogoNestedInput
@@ -1389,12 +1469,14 @@ export type MediaUncheckedUpdateWithoutProjectImagesInput = {
   createById?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   articles?: Prisma.ArticleUncheckedUpdateManyWithoutFeaturedImageNestedInput
   caseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutFeaturedImageNestedInput
   logos?: Prisma.ClientUncheckedUpdateManyWithoutLogoNestedInput
 }
 
-export type MediaCreateManyCreateByInput = {
+export type MediaCreateManyCreatedByInput = {
   id?: string
   filename: string
   originalName: string
@@ -1413,9 +1495,11 @@ export type MediaCreateManyCreateByInput = {
   checksum?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
 }
 
-export type MediaUpdateWithoutCreateByInput = {
+export type MediaUpdateWithoutCreatedByInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   filename?: Prisma.StringFieldUpdateOperationsInput | string
   originalName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1434,13 +1518,15 @@ export type MediaUpdateWithoutCreateByInput = {
   checksum?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   articles?: Prisma.ArticleUpdateManyWithoutFeaturedImageNestedInput
   caseStudies?: Prisma.CaseStudyUpdateManyWithoutFeaturedImageNestedInput
   projectImages?: Prisma.ProjectImageUpdateManyWithoutMediaNestedInput
   logos?: Prisma.ClientUpdateManyWithoutLogoNestedInput
 }
 
-export type MediaUncheckedUpdateWithoutCreateByInput = {
+export type MediaUncheckedUpdateWithoutCreatedByInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   filename?: Prisma.StringFieldUpdateOperationsInput | string
   originalName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1459,13 +1545,15 @@ export type MediaUncheckedUpdateWithoutCreateByInput = {
   checksum?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   articles?: Prisma.ArticleUncheckedUpdateManyWithoutFeaturedImageNestedInput
   caseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutFeaturedImageNestedInput
   projectImages?: Prisma.ProjectImageUncheckedUpdateManyWithoutMediaNestedInput
   logos?: Prisma.ClientUncheckedUpdateManyWithoutLogoNestedInput
 }
 
-export type MediaUncheckedUpdateManyWithoutCreateByInput = {
+export type MediaUncheckedUpdateManyWithoutCreatedByInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   filename?: Prisma.StringFieldUpdateOperationsInput | string
   originalName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1484,6 +1572,8 @@ export type MediaUncheckedUpdateManyWithoutCreateByInput = {
   checksum?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 
@@ -1564,7 +1654,9 @@ export type MediaSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   createById?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  createBy?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  isDeleted?: boolean
+  deletedAt?: boolean
+  createdBy?: boolean | Prisma.Media$createdByArgs<ExtArgs>
   articles?: boolean | Prisma.Media$articlesArgs<ExtArgs>
   caseStudies?: boolean | Prisma.Media$caseStudiesArgs<ExtArgs>
   projectImages?: boolean | Prisma.Media$projectImagesArgs<ExtArgs>
@@ -1592,7 +1684,9 @@ export type MediaSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   createById?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  createBy?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  isDeleted?: boolean
+  deletedAt?: boolean
+  createdBy?: boolean | Prisma.Media$createdByArgs<ExtArgs>
 }, ExtArgs["result"]["media"]>
 
 export type MediaSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1615,7 +1709,9 @@ export type MediaSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   createById?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  createBy?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  isDeleted?: boolean
+  deletedAt?: boolean
+  createdBy?: boolean | Prisma.Media$createdByArgs<ExtArgs>
 }, ExtArgs["result"]["media"]>
 
 export type MediaSelectScalar = {
@@ -1638,11 +1734,13 @@ export type MediaSelectScalar = {
   createById?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  isDeleted?: boolean
+  deletedAt?: boolean
 }
 
-export type MediaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "filename" | "originalName" | "path" | "bucket" | "mimeType" | "extension" | "size" | "type" | "url" | "width" | "height" | "duration" | "altText" | "caption" | "checksum" | "createById" | "createdAt" | "updatedAt", ExtArgs["result"]["media"]>
+export type MediaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "filename" | "originalName" | "path" | "bucket" | "mimeType" | "extension" | "size" | "type" | "url" | "width" | "height" | "duration" | "altText" | "caption" | "checksum" | "createById" | "createdAt" | "updatedAt" | "isDeleted" | "deletedAt", ExtArgs["result"]["media"]>
 export type MediaInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  createBy?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  createdBy?: boolean | Prisma.Media$createdByArgs<ExtArgs>
   articles?: boolean | Prisma.Media$articlesArgs<ExtArgs>
   caseStudies?: boolean | Prisma.Media$caseStudiesArgs<ExtArgs>
   projectImages?: boolean | Prisma.Media$projectImagesArgs<ExtArgs>
@@ -1650,16 +1748,16 @@ export type MediaInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   _count?: boolean | Prisma.MediaCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type MediaIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  createBy?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  createdBy?: boolean | Prisma.Media$createdByArgs<ExtArgs>
 }
 export type MediaIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  createBy?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  createdBy?: boolean | Prisma.Media$createdByArgs<ExtArgs>
 }
 
 export type $MediaPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Media"
   objects: {
-    createBy: Prisma.$UserPayload<ExtArgs>
+    createdBy: Prisma.$UserPayload<ExtArgs> | null
     articles: Prisma.$ArticlePayload<ExtArgs>[]
     caseStudies: Prisma.$CaseStudyPayload<ExtArgs>[]
     projectImages: Prisma.$ProjectImagePayload<ExtArgs>[]
@@ -1685,6 +1783,8 @@ export type $MediaPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     createById: string
     createdAt: Date
     updatedAt: Date
+    isDeleted: boolean
+    deletedAt: Date | null
   }, ExtArgs["result"]["media"]>
   composites: {}
 }
@@ -2079,7 +2179,7 @@ readonly fields: MediaFieldRefs;
  */
 export interface Prisma__MediaClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  createBy<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  createdBy<T extends Prisma.Media$createdByArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Media$createdByArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   articles<T extends Prisma.Media$articlesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Media$articlesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ArticlePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   caseStudies<T extends Prisma.Media$caseStudiesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Media$caseStudiesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CaseStudyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   projectImages<T extends Prisma.Media$projectImagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Media$projectImagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjectImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -2132,6 +2232,8 @@ export interface MediaFieldRefs {
   readonly createById: Prisma.FieldRef<"Media", 'String'>
   readonly createdAt: Prisma.FieldRef<"Media", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Media", 'DateTime'>
+  readonly isDeleted: Prisma.FieldRef<"Media", 'Boolean'>
+  readonly deletedAt: Prisma.FieldRef<"Media", 'DateTime'>
 }
     
 
@@ -2530,6 +2632,25 @@ export type MediaDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * Limit how many Media to delete.
    */
   limit?: number
+}
+
+/**
+ * Media.createdBy
+ */
+export type Media$createdByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the User
+   */
+  select?: Prisma.UserSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the User
+   */
+  omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  where?: Prisma.UserWhereInput
 }
 
 /**

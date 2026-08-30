@@ -1,4 +1,9 @@
-import { BadRequestException, Injectable, Logger } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  Logger,
+  NotFoundException,
+} from '@nestjs/common';
 import { AwsService } from 'src/infrastructure/aws.service';
 import { UploadFileDto } from './media.dto';
 import { createHash, randomUUID } from 'crypto';
@@ -6,7 +11,6 @@ import path from 'path';
 import { PutObjectCommand } from '@aws-sdk/client-s3';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { ConfigService } from '@nestjs/config';
-import { User } from 'src/generated/prisma/client';
 import sharp from 'sharp';
 
 @Injectable()
@@ -15,6 +19,8 @@ export class MediaService {
 
   private readonly bucketName: string;
   private readonly region: string;
+  private readonly backendUrl: string;
+
   constructor(
     private readonly aws: AwsService,
     private readonly prisma: PrismaService,
@@ -22,12 +28,50 @@ export class MediaService {
   ) {
     this.bucketName = this.configService.get<string>('AWS_BUCKET_NAME') || '';
     this.region = this.configService.get<string>('AWS_REGION') || 'us-east-1';
+    this.backendUrl = this.configService.get<string>('BACKEND_URL') || '';
+  }
+
+  async getMediaById(mediaId: string) {
+    try {
+      const media = await this.prisma.media.findUnique({
+        where: {
+          id: mediaId,
+        },
+      });
+
+      if (!media) {
+        this.logger.warn(`Media with ID "${mediaId}" not found`);
+        throw new NotFoundException('Media not found');
+      }
+
+      const object = await this.aws.getObject(media.path);
+
+      return {
+        media,
+        object,
+      };
+    } catch (error) {
+      this.logger.error('Error fetching media by ID', error);
+      throw error;
+    }
+  }
+
+  async getMediaUrl(mediaId: string) {
+    const media = await this.prisma.media.findUnique({
+      where: { id: mediaId },
+    });
+
+    if (!media) {
+      throw new NotFoundException('Media not found');
+    }
+
+    return this.aws.getSignedUrl(media.path);
   }
 
   async createMedia(
     data: UploadFileDto,
     file: Express.Multer.File,
-    user: User,
+    user: string,
   ) {
     try {
       if (!file) {
@@ -36,6 +80,8 @@ export class MediaService {
 
       const upload = await this.uploadFile(data, file);
       const metadata = await this.getMediaMetadata(file);
+
+      const url = `${this.backendUrl}/media/${upload.id}`;
 
       const media = await this.prisma.media.create({
         data: {
@@ -48,8 +94,8 @@ export class MediaService {
           extension: upload.extension,
           size: upload.size,
           type: data.type,
-          createById: user.id,
-          url: upload.url,
+          createById: user,
+          url: url,
           width: metadata.width,
           height: metadata.height,
           duration: metadata.duration,
@@ -59,7 +105,15 @@ export class MediaService {
         },
       });
 
-      return media;
+      return {
+        message: 'Media uploaded successfully',
+        media: {
+          id: media.id,
+          filename: media.filename,
+          originalName: media.originalName,
+          url: media.url,
+        },
+      };
     } catch (error) {
       this.logger.error('Error creating media', error);
       throw error;
@@ -87,16 +141,11 @@ export class MediaService {
 
       await this.aws.s3Client.send(command);
 
-      const bucket = this.bucketName;
-      const region = this.region;
-      const fileUrl = `https://${bucket}.s3.${region}.amazonaws.com/${s3Key}`;
-
       return {
         id: fileId,
         fileName: fileName,
         originalName: file.originalname,
         key: s3Key,
-        url: fileUrl,
         size: file.size,
         type: file.mimetype,
         extension: fileExtension,

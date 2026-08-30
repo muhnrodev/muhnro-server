@@ -18,6 +18,23 @@ export class ClientService {
         include: {
           contacts: true,
           address: true,
+          industry: true,
+          logo: {
+            select: {
+              id: true,
+              filename: true,
+              originalName: true,
+              url: true,
+              mimeType: true,
+              extension: true,
+              size: true,
+              duration: true,
+              width: true,
+              height: true,
+              altText: true,
+              caption: true,
+            },
+          },
         },
       });
       return clients;
@@ -34,6 +51,23 @@ export class ClientService {
         include: {
           contacts: true,
           address: true,
+          industry: true,
+          logo: {
+            select: {
+              id: true,
+              filename: true,
+              originalName: true,
+              url: true,
+              mimeType: true,
+              extension: true,
+              size: true,
+              duration: true,
+              width: true,
+              height: true,
+              altText: true,
+              caption: true,
+            },
+          },
         },
       });
 
@@ -56,10 +90,18 @@ export class ClientService {
           name: data.name,
           description: data.description,
           industryId: data.industryId,
+          logoId: data.logoId,
         },
       });
 
-      await this.updateClientAddress(client.id, data);
+      const address = await this.updateClientAddress(client.id, data);
+
+      await this.prisma.client.update({
+        where: { id: client.id },
+        data: {
+          addressId: address.id,
+        },
+      });
 
       return {
         message: 'Client created successfully',
@@ -87,10 +129,18 @@ export class ClientService {
           name: data.name,
           description: data.description,
           industryId: data.industryId,
+          logoId: data.logoId,
         },
       });
 
-      await this.updateClientAddress(data.id, data);
+      const updatedAddress = await this.updateClientAddress(data.id, data);
+
+      await this.prisma.client.update({
+        where: { id: data.id },
+        data: {
+          addressId: updatedAddress.id,
+        },
+      });
 
       return {
         message: 'Client updated successfully',
@@ -137,7 +187,7 @@ export class ClientService {
         },
       });
 
-      await this.prisma.clientAddress.upsert({
+      const address = await this.prisma.clientAddress.upsert({
         where: { id: client?.address?.id || '' },
         create: {
           clientId: clientId,
@@ -158,7 +208,7 @@ export class ClientService {
         },
       });
 
-      return { message: 'Client address updated successfully' };
+      return address;
     } catch (error) {
       this.logger.error('Error updating client address', error);
       throw error;

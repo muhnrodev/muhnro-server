@@ -13,7 +13,13 @@ async function bootstrap() {
     logger: WinstonModule.createLogger(winstonConfig),
   });
   app.setGlobalPrefix('api/v1');
-  app.use(helmet());
+  app.use(
+    helmet({
+      crossOriginResourcePolicy: {
+        policy: 'cross-origin',
+      },
+    }),
+  );
   app.use(cookieParser());
 
   app.useGlobalPipes(

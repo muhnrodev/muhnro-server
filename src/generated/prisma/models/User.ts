@@ -377,7 +377,7 @@ export type UserCreateInput = {
   insightsNotification?: Prisma.InsightsPreferenceCreateNestedOneWithoutUserInput
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   articles?: Prisma.ArticleCreateNestedManyWithoutCreatedByInput
-  media?: Prisma.MediaCreateNestedManyWithoutCreateByInput
+  media?: Prisma.MediaCreateNestedManyWithoutCreatedByInput
   caseStudies?: Prisma.CaseStudyCreateNestedManyWithoutCreatedByInput
 }
 
@@ -404,7 +404,7 @@ export type UserUncheckedCreateInput = {
   insightsNotification?: Prisma.InsightsPreferenceUncheckedCreateNestedOneWithoutUserInput
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   articles?: Prisma.ArticleUncheckedCreateNestedManyWithoutCreatedByInput
-  media?: Prisma.MediaUncheckedCreateNestedManyWithoutCreateByInput
+  media?: Prisma.MediaUncheckedCreateNestedManyWithoutCreatedByInput
   caseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutCreatedByInput
 }
 
@@ -431,7 +431,7 @@ export type UserUpdateInput = {
   insightsNotification?: Prisma.InsightsPreferenceUpdateOneWithoutUserNestedInput
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   articles?: Prisma.ArticleUpdateManyWithoutCreatedByNestedInput
-  media?: Prisma.MediaUpdateManyWithoutCreateByNestedInput
+  media?: Prisma.MediaUpdateManyWithoutCreatedByNestedInput
   caseStudies?: Prisma.CaseStudyUpdateManyWithoutCreatedByNestedInput
 }
 
@@ -458,7 +458,7 @@ export type UserUncheckedUpdateInput = {
   insightsNotification?: Prisma.InsightsPreferenceUncheckedUpdateOneWithoutUserNestedInput
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   articles?: Prisma.ArticleUncheckedUpdateManyWithoutCreatedByNestedInput
-  media?: Prisma.MediaUncheckedUpdateManyWithoutCreateByNestedInput
+  media?: Prisma.MediaUncheckedUpdateManyWithoutCreatedByNestedInput
   caseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutCreatedByNestedInput
 }
 
@@ -561,6 +561,11 @@ export type UserMinOrderByAggregateInput = {
 export type UserScalarRelationFilter = {
   is?: Prisma.UserWhereInput
   isNot?: Prisma.UserWhereInput
+}
+
+export type UserNullableScalarRelationFilter = {
+  is?: Prisma.UserWhereInput | null
+  isNot?: Prisma.UserWhereInput | null
 }
 
 export type StringFieldUpdateOperationsInput = {
@@ -687,10 +692,12 @@ export type UserCreateNestedOneWithoutMediaInput = {
   connect?: Prisma.UserWhereUniqueInput
 }
 
-export type UserUpdateOneRequiredWithoutMediaNestedInput = {
+export type UserUpdateOneWithoutMediaNestedInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutMediaInput, Prisma.UserUncheckedCreateWithoutMediaInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutMediaInput
   upsert?: Prisma.UserUpsertWithoutMediaInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
   connect?: Prisma.UserWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutMediaInput, Prisma.UserUpdateWithoutMediaInput>, Prisma.UserUncheckedUpdateWithoutMediaInput>
 }
@@ -759,7 +766,7 @@ export type UserCreateWithoutUserMFAsInput = {
   insightsNotification?: Prisma.InsightsPreferenceCreateNestedOneWithoutUserInput
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   articles?: Prisma.ArticleCreateNestedManyWithoutCreatedByInput
-  media?: Prisma.MediaCreateNestedManyWithoutCreateByInput
+  media?: Prisma.MediaCreateNestedManyWithoutCreatedByInput
   caseStudies?: Prisma.CaseStudyCreateNestedManyWithoutCreatedByInput
 }
 
@@ -785,7 +792,7 @@ export type UserUncheckedCreateWithoutUserMFAsInput = {
   insightsNotification?: Prisma.InsightsPreferenceUncheckedCreateNestedOneWithoutUserInput
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   articles?: Prisma.ArticleUncheckedCreateNestedManyWithoutCreatedByInput
-  media?: Prisma.MediaUncheckedCreateNestedManyWithoutCreateByInput
+  media?: Prisma.MediaUncheckedCreateNestedManyWithoutCreatedByInput
   caseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutCreatedByInput
 }
 
@@ -827,7 +834,7 @@ export type UserUpdateWithoutUserMFAsInput = {
   insightsNotification?: Prisma.InsightsPreferenceUpdateOneWithoutUserNestedInput
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   articles?: Prisma.ArticleUpdateManyWithoutCreatedByNestedInput
-  media?: Prisma.MediaUpdateManyWithoutCreateByNestedInput
+  media?: Prisma.MediaUpdateManyWithoutCreatedByNestedInput
   caseStudies?: Prisma.CaseStudyUpdateManyWithoutCreatedByNestedInput
 }
 
@@ -853,7 +860,7 @@ export type UserUncheckedUpdateWithoutUserMFAsInput = {
   insightsNotification?: Prisma.InsightsPreferenceUncheckedUpdateOneWithoutUserNestedInput
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   articles?: Prisma.ArticleUncheckedUpdateManyWithoutCreatedByNestedInput
-  media?: Prisma.MediaUncheckedUpdateManyWithoutCreateByNestedInput
+  media?: Prisma.MediaUncheckedUpdateManyWithoutCreatedByNestedInput
   caseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutCreatedByNestedInput
 }
 
@@ -879,7 +886,7 @@ export type UserCreateWithoutPrivacyInput = {
   insightsNotification?: Prisma.InsightsPreferenceCreateNestedOneWithoutUserInput
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   articles?: Prisma.ArticleCreateNestedManyWithoutCreatedByInput
-  media?: Prisma.MediaCreateNestedManyWithoutCreateByInput
+  media?: Prisma.MediaCreateNestedManyWithoutCreatedByInput
   caseStudies?: Prisma.CaseStudyCreateNestedManyWithoutCreatedByInput
 }
 
@@ -905,7 +912,7 @@ export type UserUncheckedCreateWithoutPrivacyInput = {
   insightsNotification?: Prisma.InsightsPreferenceUncheckedCreateNestedOneWithoutUserInput
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   articles?: Prisma.ArticleUncheckedCreateNestedManyWithoutCreatedByInput
-  media?: Prisma.MediaUncheckedCreateNestedManyWithoutCreateByInput
+  media?: Prisma.MediaUncheckedCreateNestedManyWithoutCreatedByInput
   caseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutCreatedByInput
 }
 
@@ -947,7 +954,7 @@ export type UserUpdateWithoutPrivacyInput = {
   insightsNotification?: Prisma.InsightsPreferenceUpdateOneWithoutUserNestedInput
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   articles?: Prisma.ArticleUpdateManyWithoutCreatedByNestedInput
-  media?: Prisma.MediaUpdateManyWithoutCreateByNestedInput
+  media?: Prisma.MediaUpdateManyWithoutCreatedByNestedInput
   caseStudies?: Prisma.CaseStudyUpdateManyWithoutCreatedByNestedInput
 }
 
@@ -973,7 +980,7 @@ export type UserUncheckedUpdateWithoutPrivacyInput = {
   insightsNotification?: Prisma.InsightsPreferenceUncheckedUpdateOneWithoutUserNestedInput
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   articles?: Prisma.ArticleUncheckedUpdateManyWithoutCreatedByNestedInput
-  media?: Prisma.MediaUncheckedUpdateManyWithoutCreateByNestedInput
+  media?: Prisma.MediaUncheckedUpdateManyWithoutCreatedByNestedInput
   caseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutCreatedByNestedInput
 }
 
@@ -999,7 +1006,7 @@ export type UserCreateWithoutArticlesInput = {
   promotionalNotification?: Prisma.PromotionalPreferenceCreateNestedOneWithoutUserInput
   insightsNotification?: Prisma.InsightsPreferenceCreateNestedOneWithoutUserInput
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
-  media?: Prisma.MediaCreateNestedManyWithoutCreateByInput
+  media?: Prisma.MediaCreateNestedManyWithoutCreatedByInput
   caseStudies?: Prisma.CaseStudyCreateNestedManyWithoutCreatedByInput
 }
 
@@ -1025,7 +1032,7 @@ export type UserUncheckedCreateWithoutArticlesInput = {
   promotionalNotification?: Prisma.PromotionalPreferenceUncheckedCreateNestedOneWithoutUserInput
   insightsNotification?: Prisma.InsightsPreferenceUncheckedCreateNestedOneWithoutUserInput
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
-  media?: Prisma.MediaUncheckedCreateNestedManyWithoutCreateByInput
+  media?: Prisma.MediaUncheckedCreateNestedManyWithoutCreatedByInput
   caseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutCreatedByInput
 }
 
@@ -1067,7 +1074,7 @@ export type UserUpdateWithoutArticlesInput = {
   promotionalNotification?: Prisma.PromotionalPreferenceUpdateOneWithoutUserNestedInput
   insightsNotification?: Prisma.InsightsPreferenceUpdateOneWithoutUserNestedInput
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
-  media?: Prisma.MediaUpdateManyWithoutCreateByNestedInput
+  media?: Prisma.MediaUpdateManyWithoutCreatedByNestedInput
   caseStudies?: Prisma.CaseStudyUpdateManyWithoutCreatedByNestedInput
 }
 
@@ -1093,7 +1100,7 @@ export type UserUncheckedUpdateWithoutArticlesInput = {
   promotionalNotification?: Prisma.PromotionalPreferenceUncheckedUpdateOneWithoutUserNestedInput
   insightsNotification?: Prisma.InsightsPreferenceUncheckedUpdateOneWithoutUserNestedInput
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
-  media?: Prisma.MediaUncheckedUpdateManyWithoutCreateByNestedInput
+  media?: Prisma.MediaUncheckedUpdateManyWithoutCreatedByNestedInput
   caseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutCreatedByNestedInput
 }
 
@@ -1119,7 +1126,7 @@ export type UserCreateWithoutSessionsInput = {
   promotionalNotification?: Prisma.PromotionalPreferenceCreateNestedOneWithoutUserInput
   insightsNotification?: Prisma.InsightsPreferenceCreateNestedOneWithoutUserInput
   articles?: Prisma.ArticleCreateNestedManyWithoutCreatedByInput
-  media?: Prisma.MediaCreateNestedManyWithoutCreateByInput
+  media?: Prisma.MediaCreateNestedManyWithoutCreatedByInput
   caseStudies?: Prisma.CaseStudyCreateNestedManyWithoutCreatedByInput
 }
 
@@ -1145,7 +1152,7 @@ export type UserUncheckedCreateWithoutSessionsInput = {
   promotionalNotification?: Prisma.PromotionalPreferenceUncheckedCreateNestedOneWithoutUserInput
   insightsNotification?: Prisma.InsightsPreferenceUncheckedCreateNestedOneWithoutUserInput
   articles?: Prisma.ArticleUncheckedCreateNestedManyWithoutCreatedByInput
-  media?: Prisma.MediaUncheckedCreateNestedManyWithoutCreateByInput
+  media?: Prisma.MediaUncheckedCreateNestedManyWithoutCreatedByInput
   caseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutCreatedByInput
 }
 
@@ -1187,7 +1194,7 @@ export type UserUpdateWithoutSessionsInput = {
   promotionalNotification?: Prisma.PromotionalPreferenceUpdateOneWithoutUserNestedInput
   insightsNotification?: Prisma.InsightsPreferenceUpdateOneWithoutUserNestedInput
   articles?: Prisma.ArticleUpdateManyWithoutCreatedByNestedInput
-  media?: Prisma.MediaUpdateManyWithoutCreateByNestedInput
+  media?: Prisma.MediaUpdateManyWithoutCreatedByNestedInput
   caseStudies?: Prisma.CaseStudyUpdateManyWithoutCreatedByNestedInput
 }
 
@@ -1213,7 +1220,7 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   promotionalNotification?: Prisma.PromotionalPreferenceUncheckedUpdateOneWithoutUserNestedInput
   insightsNotification?: Prisma.InsightsPreferenceUncheckedUpdateOneWithoutUserNestedInput
   articles?: Prisma.ArticleUncheckedUpdateManyWithoutCreatedByNestedInput
-  media?: Prisma.MediaUncheckedUpdateManyWithoutCreateByNestedInput
+  media?: Prisma.MediaUncheckedUpdateManyWithoutCreatedByNestedInput
   caseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutCreatedByNestedInput
 }
 
@@ -1239,7 +1246,7 @@ export type UserCreateWithoutIdentitiesInput = {
   insightsNotification?: Prisma.InsightsPreferenceCreateNestedOneWithoutUserInput
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   articles?: Prisma.ArticleCreateNestedManyWithoutCreatedByInput
-  media?: Prisma.MediaCreateNestedManyWithoutCreateByInput
+  media?: Prisma.MediaCreateNestedManyWithoutCreatedByInput
   caseStudies?: Prisma.CaseStudyCreateNestedManyWithoutCreatedByInput
 }
 
@@ -1265,7 +1272,7 @@ export type UserUncheckedCreateWithoutIdentitiesInput = {
   insightsNotification?: Prisma.InsightsPreferenceUncheckedCreateNestedOneWithoutUserInput
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   articles?: Prisma.ArticleUncheckedCreateNestedManyWithoutCreatedByInput
-  media?: Prisma.MediaUncheckedCreateNestedManyWithoutCreateByInput
+  media?: Prisma.MediaUncheckedCreateNestedManyWithoutCreatedByInput
   caseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutCreatedByInput
 }
 
@@ -1307,7 +1314,7 @@ export type UserUpdateWithoutIdentitiesInput = {
   insightsNotification?: Prisma.InsightsPreferenceUpdateOneWithoutUserNestedInput
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   articles?: Prisma.ArticleUpdateManyWithoutCreatedByNestedInput
-  media?: Prisma.MediaUpdateManyWithoutCreateByNestedInput
+  media?: Prisma.MediaUpdateManyWithoutCreatedByNestedInput
   caseStudies?: Prisma.CaseStudyUpdateManyWithoutCreatedByNestedInput
 }
 
@@ -1333,7 +1340,7 @@ export type UserUncheckedUpdateWithoutIdentitiesInput = {
   insightsNotification?: Prisma.InsightsPreferenceUncheckedUpdateOneWithoutUserNestedInput
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   articles?: Prisma.ArticleUncheckedUpdateManyWithoutCreatedByNestedInput
-  media?: Prisma.MediaUncheckedUpdateManyWithoutCreateByNestedInput
+  media?: Prisma.MediaUncheckedUpdateManyWithoutCreatedByNestedInput
   caseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutCreatedByNestedInput
 }
 
@@ -1359,7 +1366,7 @@ export type UserCreateWithoutCredentialInput = {
   insightsNotification?: Prisma.InsightsPreferenceCreateNestedOneWithoutUserInput
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   articles?: Prisma.ArticleCreateNestedManyWithoutCreatedByInput
-  media?: Prisma.MediaCreateNestedManyWithoutCreateByInput
+  media?: Prisma.MediaCreateNestedManyWithoutCreatedByInput
   caseStudies?: Prisma.CaseStudyCreateNestedManyWithoutCreatedByInput
 }
 
@@ -1385,7 +1392,7 @@ export type UserUncheckedCreateWithoutCredentialInput = {
   insightsNotification?: Prisma.InsightsPreferenceUncheckedCreateNestedOneWithoutUserInput
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   articles?: Prisma.ArticleUncheckedCreateNestedManyWithoutCreatedByInput
-  media?: Prisma.MediaUncheckedCreateNestedManyWithoutCreateByInput
+  media?: Prisma.MediaUncheckedCreateNestedManyWithoutCreatedByInput
   caseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutCreatedByInput
 }
 
@@ -1427,7 +1434,7 @@ export type UserUpdateWithoutCredentialInput = {
   insightsNotification?: Prisma.InsightsPreferenceUpdateOneWithoutUserNestedInput
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   articles?: Prisma.ArticleUpdateManyWithoutCreatedByNestedInput
-  media?: Prisma.MediaUpdateManyWithoutCreateByNestedInput
+  media?: Prisma.MediaUpdateManyWithoutCreatedByNestedInput
   caseStudies?: Prisma.CaseStudyUpdateManyWithoutCreatedByNestedInput
 }
 
@@ -1453,7 +1460,7 @@ export type UserUncheckedUpdateWithoutCredentialInput = {
   insightsNotification?: Prisma.InsightsPreferenceUncheckedUpdateOneWithoutUserNestedInput
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   articles?: Prisma.ArticleUncheckedUpdateManyWithoutCreatedByNestedInput
-  media?: Prisma.MediaUncheckedUpdateManyWithoutCreateByNestedInput
+  media?: Prisma.MediaUncheckedUpdateManyWithoutCreatedByNestedInput
   caseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutCreatedByNestedInput
 }
 
@@ -1480,7 +1487,7 @@ export type UserCreateWithoutCaseStudiesInput = {
   insightsNotification?: Prisma.InsightsPreferenceCreateNestedOneWithoutUserInput
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   articles?: Prisma.ArticleCreateNestedManyWithoutCreatedByInput
-  media?: Prisma.MediaCreateNestedManyWithoutCreateByInput
+  media?: Prisma.MediaCreateNestedManyWithoutCreatedByInput
 }
 
 export type UserUncheckedCreateWithoutCaseStudiesInput = {
@@ -1506,7 +1513,7 @@ export type UserUncheckedCreateWithoutCaseStudiesInput = {
   insightsNotification?: Prisma.InsightsPreferenceUncheckedCreateNestedOneWithoutUserInput
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   articles?: Prisma.ArticleUncheckedCreateNestedManyWithoutCreatedByInput
-  media?: Prisma.MediaUncheckedCreateNestedManyWithoutCreateByInput
+  media?: Prisma.MediaUncheckedCreateNestedManyWithoutCreatedByInput
 }
 
 export type UserCreateOrConnectWithoutCaseStudiesInput = {
@@ -1548,7 +1555,7 @@ export type UserUpdateWithoutCaseStudiesInput = {
   insightsNotification?: Prisma.InsightsPreferenceUpdateOneWithoutUserNestedInput
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   articles?: Prisma.ArticleUpdateManyWithoutCreatedByNestedInput
-  media?: Prisma.MediaUpdateManyWithoutCreateByNestedInput
+  media?: Prisma.MediaUpdateManyWithoutCreatedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCaseStudiesInput = {
@@ -1574,7 +1581,7 @@ export type UserUncheckedUpdateWithoutCaseStudiesInput = {
   insightsNotification?: Prisma.InsightsPreferenceUncheckedUpdateOneWithoutUserNestedInput
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   articles?: Prisma.ArticleUncheckedUpdateManyWithoutCreatedByNestedInput
-  media?: Prisma.MediaUncheckedUpdateManyWithoutCreateByNestedInput
+  media?: Prisma.MediaUncheckedUpdateManyWithoutCreatedByNestedInput
 }
 
 export type UserCreateWithoutMediaInput = {
@@ -1719,7 +1726,7 @@ export type UserCreateWithoutNotificationInput = {
   insightsNotification?: Prisma.InsightsPreferenceCreateNestedOneWithoutUserInput
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   articles?: Prisma.ArticleCreateNestedManyWithoutCreatedByInput
-  media?: Prisma.MediaCreateNestedManyWithoutCreateByInput
+  media?: Prisma.MediaCreateNestedManyWithoutCreatedByInput
   caseStudies?: Prisma.CaseStudyCreateNestedManyWithoutCreatedByInput
 }
 
@@ -1745,7 +1752,7 @@ export type UserUncheckedCreateWithoutNotificationInput = {
   insightsNotification?: Prisma.InsightsPreferenceUncheckedCreateNestedOneWithoutUserInput
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   articles?: Prisma.ArticleUncheckedCreateNestedManyWithoutCreatedByInput
-  media?: Prisma.MediaUncheckedCreateNestedManyWithoutCreateByInput
+  media?: Prisma.MediaUncheckedCreateNestedManyWithoutCreatedByInput
   caseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutCreatedByInput
 }
 
@@ -1787,7 +1794,7 @@ export type UserUpdateWithoutNotificationInput = {
   insightsNotification?: Prisma.InsightsPreferenceUpdateOneWithoutUserNestedInput
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   articles?: Prisma.ArticleUpdateManyWithoutCreatedByNestedInput
-  media?: Prisma.MediaUpdateManyWithoutCreateByNestedInput
+  media?: Prisma.MediaUpdateManyWithoutCreatedByNestedInput
   caseStudies?: Prisma.CaseStudyUpdateManyWithoutCreatedByNestedInput
 }
 
@@ -1813,7 +1820,7 @@ export type UserUncheckedUpdateWithoutNotificationInput = {
   insightsNotification?: Prisma.InsightsPreferenceUncheckedUpdateOneWithoutUserNestedInput
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   articles?: Prisma.ArticleUncheckedUpdateManyWithoutCreatedByNestedInput
-  media?: Prisma.MediaUncheckedUpdateManyWithoutCreateByNestedInput
+  media?: Prisma.MediaUncheckedUpdateManyWithoutCreatedByNestedInput
   caseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutCreatedByNestedInput
 }
 
@@ -1839,7 +1846,7 @@ export type UserCreateWithoutPromotionalNotificationInput = {
   insightsNotification?: Prisma.InsightsPreferenceCreateNestedOneWithoutUserInput
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   articles?: Prisma.ArticleCreateNestedManyWithoutCreatedByInput
-  media?: Prisma.MediaCreateNestedManyWithoutCreateByInput
+  media?: Prisma.MediaCreateNestedManyWithoutCreatedByInput
   caseStudies?: Prisma.CaseStudyCreateNestedManyWithoutCreatedByInput
 }
 
@@ -1865,7 +1872,7 @@ export type UserUncheckedCreateWithoutPromotionalNotificationInput = {
   insightsNotification?: Prisma.InsightsPreferenceUncheckedCreateNestedOneWithoutUserInput
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   articles?: Prisma.ArticleUncheckedCreateNestedManyWithoutCreatedByInput
-  media?: Prisma.MediaUncheckedCreateNestedManyWithoutCreateByInput
+  media?: Prisma.MediaUncheckedCreateNestedManyWithoutCreatedByInput
   caseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutCreatedByInput
 }
 
@@ -1907,7 +1914,7 @@ export type UserUpdateWithoutPromotionalNotificationInput = {
   insightsNotification?: Prisma.InsightsPreferenceUpdateOneWithoutUserNestedInput
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   articles?: Prisma.ArticleUpdateManyWithoutCreatedByNestedInput
-  media?: Prisma.MediaUpdateManyWithoutCreateByNestedInput
+  media?: Prisma.MediaUpdateManyWithoutCreatedByNestedInput
   caseStudies?: Prisma.CaseStudyUpdateManyWithoutCreatedByNestedInput
 }
 
@@ -1933,7 +1940,7 @@ export type UserUncheckedUpdateWithoutPromotionalNotificationInput = {
   insightsNotification?: Prisma.InsightsPreferenceUncheckedUpdateOneWithoutUserNestedInput
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   articles?: Prisma.ArticleUncheckedUpdateManyWithoutCreatedByNestedInput
-  media?: Prisma.MediaUncheckedUpdateManyWithoutCreateByNestedInput
+  media?: Prisma.MediaUncheckedUpdateManyWithoutCreatedByNestedInput
   caseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutCreatedByNestedInput
 }
 
@@ -1959,7 +1966,7 @@ export type UserCreateWithoutInsightsNotificationInput = {
   promotionalNotification?: Prisma.PromotionalPreferenceCreateNestedOneWithoutUserInput
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   articles?: Prisma.ArticleCreateNestedManyWithoutCreatedByInput
-  media?: Prisma.MediaCreateNestedManyWithoutCreateByInput
+  media?: Prisma.MediaCreateNestedManyWithoutCreatedByInput
   caseStudies?: Prisma.CaseStudyCreateNestedManyWithoutCreatedByInput
 }
 
@@ -1985,7 +1992,7 @@ export type UserUncheckedCreateWithoutInsightsNotificationInput = {
   promotionalNotification?: Prisma.PromotionalPreferenceUncheckedCreateNestedOneWithoutUserInput
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   articles?: Prisma.ArticleUncheckedCreateNestedManyWithoutCreatedByInput
-  media?: Prisma.MediaUncheckedCreateNestedManyWithoutCreateByInput
+  media?: Prisma.MediaUncheckedCreateNestedManyWithoutCreatedByInput
   caseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutCreatedByInput
 }
 
@@ -2027,7 +2034,7 @@ export type UserUpdateWithoutInsightsNotificationInput = {
   promotionalNotification?: Prisma.PromotionalPreferenceUpdateOneWithoutUserNestedInput
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   articles?: Prisma.ArticleUpdateManyWithoutCreatedByNestedInput
-  media?: Prisma.MediaUpdateManyWithoutCreateByNestedInput
+  media?: Prisma.MediaUpdateManyWithoutCreatedByNestedInput
   caseStudies?: Prisma.CaseStudyUpdateManyWithoutCreatedByNestedInput
 }
 
@@ -2053,7 +2060,7 @@ export type UserUncheckedUpdateWithoutInsightsNotificationInput = {
   promotionalNotification?: Prisma.PromotionalPreferenceUncheckedUpdateOneWithoutUserNestedInput
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   articles?: Prisma.ArticleUncheckedUpdateManyWithoutCreatedByNestedInput
-  media?: Prisma.MediaUncheckedUpdateManyWithoutCreateByNestedInput
+  media?: Prisma.MediaUncheckedUpdateManyWithoutCreatedByNestedInput
   caseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutCreatedByNestedInput
 }
 

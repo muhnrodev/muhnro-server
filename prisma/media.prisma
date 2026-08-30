@@ -13,33 +13,44 @@ model AvatarImage {
 }
 
 model Media {
-    id              String   @id @default(dbgenerated("gen_random_uuid()"))
-    filename         String
-    originalName    String
-    path            String
-    bucket          String
-    mimeType        String
-    extension       String
-    size            Int
-    type            MediaType
-    url             String
-    width           Int?
-    height          Int?
-    duration        Int?
-    altText         String?
-    caption         String?
-    checksum        String?
-    createById      String
-    createdAt       DateTime @default(now())
-    updatedAt       DateTime @updatedAt
+    id                              String   @id @default(dbgenerated("gen_random_uuid()"))
 
-    createBy        User     @relation(fields: [createById], references: [id])
+    filename                         String
+    originalName                    String
+    path                            String
+    bucket                          String
+    mimeType                        String
+    extension                       String
+    size                            Int
+    type                            MediaType
+    url                             String
 
-    articles        Article[]
-    caseStudies     CaseStudy[]
+    width                           Int?
+    height                          Int?
+    duration                        Int?
 
-    projectImages   ProjectImage[]
-    logos           Client[]
+    altText                         String?
+    caption                         String?
+    checksum                        String?
+
+    createById                      String
+    createdAt                       DateTime        @default(now())
+    updatedAt                       DateTime        @updatedAt
+
+    isDeleted                       Boolean         @default(false)
+    deletedAt                       DateTime?
+
+    createdBy                       User?           @relation(fields: [createById], references: [id])
+
+    articles                        Article[]
+    caseStudies                     CaseStudy[]
+    projectImages                   ProjectImage[]
+    logos                           Client[]
+
+    @@index([createdAt])
+    @@index([type])
+    @@index([createById])
+    @@index([checksum])
 }
 
 

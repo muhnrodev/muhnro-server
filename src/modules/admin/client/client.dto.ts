@@ -34,6 +34,14 @@ export class CreateClientDto {
   industryId: string;
 
   @IsString()
+  @IsOptional()
+  addressId?: string;
+
+  @IsString()
+  @IsOptional()
+  logoId?: string;
+
+  @IsString()
   addressLine1: string;
 
   @IsString()
