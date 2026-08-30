@@ -25,7 +25,7 @@ export type AggregateProjectNote = {
 }
 
 export type ProjectNoteMinAggregateOutputType = {
-  noteId: string | null
+  id: string | null
   projectId: string | null
   authorId: string | null
   noteType: $Enums.NoteType | null
@@ -34,7 +34,7 @@ export type ProjectNoteMinAggregateOutputType = {
 }
 
 export type ProjectNoteMaxAggregateOutputType = {
-  noteId: string | null
+  id: string | null
   projectId: string | null
   authorId: string | null
   noteType: $Enums.NoteType | null
@@ -43,7 +43,7 @@ export type ProjectNoteMaxAggregateOutputType = {
 }
 
 export type ProjectNoteCountAggregateOutputType = {
-  noteId: number
+  id: number
   projectId: number
   authorId: number
   noteType: number
@@ -54,7 +54,7 @@ export type ProjectNoteCountAggregateOutputType = {
 
 
 export type ProjectNoteMinAggregateInputType = {
-  noteId?: true
+  id?: true
   projectId?: true
   authorId?: true
   noteType?: true
@@ -63,7 +63,7 @@ export type ProjectNoteMinAggregateInputType = {
 }
 
 export type ProjectNoteMaxAggregateInputType = {
-  noteId?: true
+  id?: true
   projectId?: true
   authorId?: true
   noteType?: true
@@ -72,7 +72,7 @@ export type ProjectNoteMaxAggregateInputType = {
 }
 
 export type ProjectNoteCountAggregateInputType = {
-  noteId?: true
+  id?: true
   projectId?: true
   authorId?: true
   noteType?: true
@@ -154,7 +154,7 @@ export type ProjectNoteGroupByArgs<ExtArgs extends runtime.Types.Extensions.Inte
 }
 
 export type ProjectNoteGroupByOutputType = {
-  noteId: string
+  id: string
   projectId: string
   authorId: string
   noteType: $Enums.NoteType
@@ -184,7 +184,7 @@ export type ProjectNoteWhereInput = {
   AND?: Prisma.ProjectNoteWhereInput | Prisma.ProjectNoteWhereInput[]
   OR?: Prisma.ProjectNoteWhereInput[]
   NOT?: Prisma.ProjectNoteWhereInput | Prisma.ProjectNoteWhereInput[]
-  noteId?: Prisma.StringFilter<"ProjectNote"> | string
+  id?: Prisma.StringFilter<"ProjectNote"> | string
   projectId?: Prisma.StringFilter<"ProjectNote"> | string
   authorId?: Prisma.StringFilter<"ProjectNote"> | string
   noteType?: Prisma.EnumNoteTypeFilter<"ProjectNote"> | $Enums.NoteType
@@ -195,7 +195,7 @@ export type ProjectNoteWhereInput = {
 }
 
 export type ProjectNoteOrderByWithRelationInput = {
-  noteId?: Prisma.SortOrder
+  id?: Prisma.SortOrder
   projectId?: Prisma.SortOrder
   authorId?: Prisma.SortOrder
   noteType?: Prisma.SortOrder
@@ -206,7 +206,7 @@ export type ProjectNoteOrderByWithRelationInput = {
 }
 
 export type ProjectNoteWhereUniqueInput = Prisma.AtLeast<{
-  noteId?: string
+  id?: string
   AND?: Prisma.ProjectNoteWhereInput | Prisma.ProjectNoteWhereInput[]
   OR?: Prisma.ProjectNoteWhereInput[]
   NOT?: Prisma.ProjectNoteWhereInput | Prisma.ProjectNoteWhereInput[]
@@ -217,10 +217,10 @@ export type ProjectNoteWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"ProjectNote"> | Date | string
   project?: Prisma.XOR<Prisma.ProjectScalarRelationFilter, Prisma.ProjectWhereInput>
   author?: Prisma.XOR<Prisma.TeamMemberScalarRelationFilter, Prisma.TeamMemberWhereInput>
-}, "noteId">
+}, "id">
 
 export type ProjectNoteOrderByWithAggregationInput = {
-  noteId?: Prisma.SortOrder
+  id?: Prisma.SortOrder
   projectId?: Prisma.SortOrder
   authorId?: Prisma.SortOrder
   noteType?: Prisma.SortOrder
@@ -235,7 +235,7 @@ export type ProjectNoteScalarWhereWithAggregatesInput = {
   AND?: Prisma.ProjectNoteScalarWhereWithAggregatesInput | Prisma.ProjectNoteScalarWhereWithAggregatesInput[]
   OR?: Prisma.ProjectNoteScalarWhereWithAggregatesInput[]
   NOT?: Prisma.ProjectNoteScalarWhereWithAggregatesInput | Prisma.ProjectNoteScalarWhereWithAggregatesInput[]
-  noteId?: Prisma.StringWithAggregatesFilter<"ProjectNote"> | string
+  id?: Prisma.StringWithAggregatesFilter<"ProjectNote"> | string
   projectId?: Prisma.StringWithAggregatesFilter<"ProjectNote"> | string
   authorId?: Prisma.StringWithAggregatesFilter<"ProjectNote"> | string
   noteType?: Prisma.EnumNoteTypeWithAggregatesFilter<"ProjectNote"> | $Enums.NoteType
@@ -244,7 +244,7 @@ export type ProjectNoteScalarWhereWithAggregatesInput = {
 }
 
 export type ProjectNoteCreateInput = {
-  noteId?: string
+  id?: string
   noteType: $Enums.NoteType
   body: string
   createdAt?: Date | string
@@ -253,7 +253,7 @@ export type ProjectNoteCreateInput = {
 }
 
 export type ProjectNoteUncheckedCreateInput = {
-  noteId?: string
+  id?: string
   projectId: string
   authorId: string
   noteType: $Enums.NoteType
@@ -262,7 +262,7 @@ export type ProjectNoteUncheckedCreateInput = {
 }
 
 export type ProjectNoteUpdateInput = {
-  noteId?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   noteType?: Prisma.EnumNoteTypeFieldUpdateOperationsInput | $Enums.NoteType
   body?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -271,7 +271,7 @@ export type ProjectNoteUpdateInput = {
 }
 
 export type ProjectNoteUncheckedUpdateInput = {
-  noteId?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   projectId?: Prisma.StringFieldUpdateOperationsInput | string
   authorId?: Prisma.StringFieldUpdateOperationsInput | string
   noteType?: Prisma.EnumNoteTypeFieldUpdateOperationsInput | $Enums.NoteType
@@ -280,7 +280,7 @@ export type ProjectNoteUncheckedUpdateInput = {
 }
 
 export type ProjectNoteCreateManyInput = {
-  noteId?: string
+  id?: string
   projectId: string
   authorId: string
   noteType: $Enums.NoteType
@@ -289,14 +289,14 @@ export type ProjectNoteCreateManyInput = {
 }
 
 export type ProjectNoteUpdateManyMutationInput = {
-  noteId?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   noteType?: Prisma.EnumNoteTypeFieldUpdateOperationsInput | $Enums.NoteType
   body?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ProjectNoteUncheckedUpdateManyInput = {
-  noteId?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   projectId?: Prisma.StringFieldUpdateOperationsInput | string
   authorId?: Prisma.StringFieldUpdateOperationsInput | string
   noteType?: Prisma.EnumNoteTypeFieldUpdateOperationsInput | $Enums.NoteType
@@ -315,7 +315,7 @@ export type ProjectNoteOrderByRelationAggregateInput = {
 }
 
 export type ProjectNoteCountOrderByAggregateInput = {
-  noteId?: Prisma.SortOrder
+  id?: Prisma.SortOrder
   projectId?: Prisma.SortOrder
   authorId?: Prisma.SortOrder
   noteType?: Prisma.SortOrder
@@ -324,7 +324,7 @@ export type ProjectNoteCountOrderByAggregateInput = {
 }
 
 export type ProjectNoteMaxOrderByAggregateInput = {
-  noteId?: Prisma.SortOrder
+  id?: Prisma.SortOrder
   projectId?: Prisma.SortOrder
   authorId?: Prisma.SortOrder
   noteType?: Prisma.SortOrder
@@ -333,7 +333,7 @@ export type ProjectNoteMaxOrderByAggregateInput = {
 }
 
 export type ProjectNoteMinOrderByAggregateInput = {
-  noteId?: Prisma.SortOrder
+  id?: Prisma.SortOrder
   projectId?: Prisma.SortOrder
   authorId?: Prisma.SortOrder
   noteType?: Prisma.SortOrder
@@ -430,7 +430,7 @@ export type EnumNoteTypeFieldUpdateOperationsInput = {
 }
 
 export type ProjectNoteCreateWithoutAuthorInput = {
-  noteId?: string
+  id?: string
   noteType: $Enums.NoteType
   body: string
   createdAt?: Date | string
@@ -438,7 +438,7 @@ export type ProjectNoteCreateWithoutAuthorInput = {
 }
 
 export type ProjectNoteUncheckedCreateWithoutAuthorInput = {
-  noteId?: string
+  id?: string
   projectId: string
   noteType: $Enums.NoteType
   body: string
@@ -475,7 +475,7 @@ export type ProjectNoteScalarWhereInput = {
   AND?: Prisma.ProjectNoteScalarWhereInput | Prisma.ProjectNoteScalarWhereInput[]
   OR?: Prisma.ProjectNoteScalarWhereInput[]
   NOT?: Prisma.ProjectNoteScalarWhereInput | Prisma.ProjectNoteScalarWhereInput[]
-  noteId?: Prisma.StringFilter<"ProjectNote"> | string
+  id?: Prisma.StringFilter<"ProjectNote"> | string
   projectId?: Prisma.StringFilter<"ProjectNote"> | string
   authorId?: Prisma.StringFilter<"ProjectNote"> | string
   noteType?: Prisma.EnumNoteTypeFilter<"ProjectNote"> | $Enums.NoteType
@@ -484,7 +484,7 @@ export type ProjectNoteScalarWhereInput = {
 }
 
 export type ProjectNoteCreateWithoutProjectInput = {
-  noteId?: string
+  id?: string
   noteType: $Enums.NoteType
   body: string
   createdAt?: Date | string
@@ -492,7 +492,7 @@ export type ProjectNoteCreateWithoutProjectInput = {
 }
 
 export type ProjectNoteUncheckedCreateWithoutProjectInput = {
-  noteId?: string
+  id?: string
   authorId: string
   noteType: $Enums.NoteType
   body: string
@@ -526,7 +526,7 @@ export type ProjectNoteUpdateManyWithWhereWithoutProjectInput = {
 }
 
 export type ProjectNoteCreateManyAuthorInput = {
-  noteId?: string
+  id?: string
   projectId: string
   noteType: $Enums.NoteType
   body: string
@@ -534,7 +534,7 @@ export type ProjectNoteCreateManyAuthorInput = {
 }
 
 export type ProjectNoteUpdateWithoutAuthorInput = {
-  noteId?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   noteType?: Prisma.EnumNoteTypeFieldUpdateOperationsInput | $Enums.NoteType
   body?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -542,7 +542,7 @@ export type ProjectNoteUpdateWithoutAuthorInput = {
 }
 
 export type ProjectNoteUncheckedUpdateWithoutAuthorInput = {
-  noteId?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   projectId?: Prisma.StringFieldUpdateOperationsInput | string
   noteType?: Prisma.EnumNoteTypeFieldUpdateOperationsInput | $Enums.NoteType
   body?: Prisma.StringFieldUpdateOperationsInput | string
@@ -550,7 +550,7 @@ export type ProjectNoteUncheckedUpdateWithoutAuthorInput = {
 }
 
 export type ProjectNoteUncheckedUpdateManyWithoutAuthorInput = {
-  noteId?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   projectId?: Prisma.StringFieldUpdateOperationsInput | string
   noteType?: Prisma.EnumNoteTypeFieldUpdateOperationsInput | $Enums.NoteType
   body?: Prisma.StringFieldUpdateOperationsInput | string
@@ -558,7 +558,7 @@ export type ProjectNoteUncheckedUpdateManyWithoutAuthorInput = {
 }
 
 export type ProjectNoteCreateManyProjectInput = {
-  noteId?: string
+  id?: string
   authorId: string
   noteType: $Enums.NoteType
   body: string
@@ -566,7 +566,7 @@ export type ProjectNoteCreateManyProjectInput = {
 }
 
 export type ProjectNoteUpdateWithoutProjectInput = {
-  noteId?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   noteType?: Prisma.EnumNoteTypeFieldUpdateOperationsInput | $Enums.NoteType
   body?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -574,7 +574,7 @@ export type ProjectNoteUpdateWithoutProjectInput = {
 }
 
 export type ProjectNoteUncheckedUpdateWithoutProjectInput = {
-  noteId?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   authorId?: Prisma.StringFieldUpdateOperationsInput | string
   noteType?: Prisma.EnumNoteTypeFieldUpdateOperationsInput | $Enums.NoteType
   body?: Prisma.StringFieldUpdateOperationsInput | string
@@ -582,7 +582,7 @@ export type ProjectNoteUncheckedUpdateWithoutProjectInput = {
 }
 
 export type ProjectNoteUncheckedUpdateManyWithoutProjectInput = {
-  noteId?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   authorId?: Prisma.StringFieldUpdateOperationsInput | string
   noteType?: Prisma.EnumNoteTypeFieldUpdateOperationsInput | $Enums.NoteType
   body?: Prisma.StringFieldUpdateOperationsInput | string
@@ -592,7 +592,7 @@ export type ProjectNoteUncheckedUpdateManyWithoutProjectInput = {
 
 
 export type ProjectNoteSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  noteId?: boolean
+  id?: boolean
   projectId?: boolean
   authorId?: boolean
   noteType?: boolean
@@ -603,7 +603,7 @@ export type ProjectNoteSelect<ExtArgs extends runtime.Types.Extensions.InternalA
 }, ExtArgs["result"]["projectNote"]>
 
 export type ProjectNoteSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  noteId?: boolean
+  id?: boolean
   projectId?: boolean
   authorId?: boolean
   noteType?: boolean
@@ -614,7 +614,7 @@ export type ProjectNoteSelectCreateManyAndReturn<ExtArgs extends runtime.Types.E
 }, ExtArgs["result"]["projectNote"]>
 
 export type ProjectNoteSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  noteId?: boolean
+  id?: boolean
   projectId?: boolean
   authorId?: boolean
   noteType?: boolean
@@ -625,7 +625,7 @@ export type ProjectNoteSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.E
 }, ExtArgs["result"]["projectNote"]>
 
 export type ProjectNoteSelectScalar = {
-  noteId?: boolean
+  id?: boolean
   projectId?: boolean
   authorId?: boolean
   noteType?: boolean
@@ -633,7 +633,7 @@ export type ProjectNoteSelectScalar = {
   createdAt?: boolean
 }
 
-export type ProjectNoteOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"noteId" | "projectId" | "authorId" | "noteType" | "body" | "createdAt", ExtArgs["result"]["projectNote"]>
+export type ProjectNoteOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "projectId" | "authorId" | "noteType" | "body" | "createdAt", ExtArgs["result"]["projectNote"]>
 export type ProjectNoteInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
   author?: boolean | Prisma.TeamMemberDefaultArgs<ExtArgs>
@@ -654,7 +654,7 @@ export type $ProjectNotePayload<ExtArgs extends runtime.Types.Extensions.Interna
     author: Prisma.$TeamMemberPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    noteId: string
+    id: string
     projectId: string
     authorId: string
     noteType: $Enums.NoteType
@@ -743,8 +743,8 @@ export interface ProjectNoteDelegate<ExtArgs extends runtime.Types.Extensions.In
    * // Get first 10 ProjectNotes
    * const projectNotes = await prisma.projectNote.findMany({ take: 10 })
    * 
-   * // Only select the `noteId`
-   * const projectNoteWithNoteIdOnly = await prisma.projectNote.findMany({ select: { noteId: true } })
+   * // Only select the `id`
+   * const projectNoteWithIdOnly = await prisma.projectNote.findMany({ select: { id: true } })
    * 
    */
   findMany<T extends ProjectNoteFindManyArgs>(args?: Prisma.SelectSubset<T, ProjectNoteFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjectNotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -788,9 +788,9 @@ export interface ProjectNoteDelegate<ExtArgs extends runtime.Types.Extensions.In
    *   ]
    * })
    * 
-   * // Create many ProjectNotes and only return the `noteId`
-   * const projectNoteWithNoteIdOnly = await prisma.projectNote.createManyAndReturn({
-   *   select: { noteId: true },
+   * // Create many ProjectNotes and only return the `id`
+   * const projectNoteWithIdOnly = await prisma.projectNote.createManyAndReturn({
+   *   select: { id: true },
    *   data: [
    *     // ... provide data here
    *   ]
@@ -879,9 +879,9 @@ export interface ProjectNoteDelegate<ExtArgs extends runtime.Types.Extensions.In
    *   ]
    * })
    * 
-   * // Update zero or more ProjectNotes and only return the `noteId`
-   * const projectNoteWithNoteIdOnly = await prisma.projectNote.updateManyAndReturn({
-   *   select: { noteId: true },
+   * // Update zero or more ProjectNotes and only return the `id`
+   * const projectNoteWithIdOnly = await prisma.projectNote.updateManyAndReturn({
+   *   select: { id: true },
    *   where: {
    *     // ... provide filter here
    *   },
@@ -1085,7 +1085,7 @@ export interface Prisma__ProjectNoteClient<T, Null = never, ExtArgs extends runt
  * Fields of the ProjectNote model
  */
 export interface ProjectNoteFieldRefs {
-  readonly noteId: Prisma.FieldRef<"ProjectNote", 'String'>
+  readonly id: Prisma.FieldRef<"ProjectNote", 'String'>
   readonly projectId: Prisma.FieldRef<"ProjectNote", 'String'>
   readonly authorId: Prisma.FieldRef<"ProjectNote", 'String'>
   readonly noteType: Prisma.FieldRef<"ProjectNote", 'NoteType'>

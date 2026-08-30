@@ -25,7 +25,7 @@ export type AggregateTeamMember = {
 }
 
 export type TeamMemberMinAggregateOutputType = {
-  memberId: string | null
+  id: string | null
   fullName: string | null
   email: string | null
   phone: string | null
@@ -36,7 +36,7 @@ export type TeamMemberMinAggregateOutputType = {
 }
 
 export type TeamMemberMaxAggregateOutputType = {
-  memberId: string | null
+  id: string | null
   fullName: string | null
   email: string | null
   phone: string | null
@@ -47,7 +47,7 @@ export type TeamMemberMaxAggregateOutputType = {
 }
 
 export type TeamMemberCountAggregateOutputType = {
-  memberId: number
+  id: number
   fullName: number
   email: number
   phone: number
@@ -60,7 +60,7 @@ export type TeamMemberCountAggregateOutputType = {
 
 
 export type TeamMemberMinAggregateInputType = {
-  memberId?: true
+  id?: true
   fullName?: true
   email?: true
   phone?: true
@@ -71,7 +71,7 @@ export type TeamMemberMinAggregateInputType = {
 }
 
 export type TeamMemberMaxAggregateInputType = {
-  memberId?: true
+  id?: true
   fullName?: true
   email?: true
   phone?: true
@@ -82,7 +82,7 @@ export type TeamMemberMaxAggregateInputType = {
 }
 
 export type TeamMemberCountAggregateInputType = {
-  memberId?: true
+  id?: true
   fullName?: true
   email?: true
   phone?: true
@@ -166,7 +166,7 @@ export type TeamMemberGroupByArgs<ExtArgs extends runtime.Types.Extensions.Inter
 }
 
 export type TeamMemberGroupByOutputType = {
-  memberId: string
+  id: string
   fullName: string
   email: string
   phone: string | null
@@ -198,7 +198,7 @@ export type TeamMemberWhereInput = {
   AND?: Prisma.TeamMemberWhereInput | Prisma.TeamMemberWhereInput[]
   OR?: Prisma.TeamMemberWhereInput[]
   NOT?: Prisma.TeamMemberWhereInput | Prisma.TeamMemberWhereInput[]
-  memberId?: Prisma.StringFilter<"TeamMember"> | string
+  id?: Prisma.StringFilter<"TeamMember"> | string
   fullName?: Prisma.StringFilter<"TeamMember"> | string
   email?: Prisma.StringFilter<"TeamMember"> | string
   phone?: Prisma.StringNullableFilter<"TeamMember"> | string | null
@@ -206,13 +206,13 @@ export type TeamMemberWhereInput = {
   employmentType?: Prisma.EnumEmploymentTypeFilter<"TeamMember"> | $Enums.EmploymentType
   createdAt?: Prisma.DateTimeFilter<"TeamMember"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"TeamMember"> | Date | string
+  projects?: Prisma.ProjectListRelationFilter
   projectMembers?: Prisma.ProjectTeamMemberListRelationFilter
   projectNotes?: Prisma.ProjectNoteListRelationFilter
-  projects?: Prisma.ProjectListRelationFilter
 }
 
 export type TeamMemberOrderByWithRelationInput = {
-  memberId?: Prisma.SortOrder
+  id?: Prisma.SortOrder
   fullName?: Prisma.SortOrder
   email?: Prisma.SortOrder
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -220,13 +220,13 @@ export type TeamMemberOrderByWithRelationInput = {
   employmentType?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  projects?: Prisma.ProjectOrderByRelationAggregateInput
   projectMembers?: Prisma.ProjectTeamMemberOrderByRelationAggregateInput
   projectNotes?: Prisma.ProjectNoteOrderByRelationAggregateInput
-  projects?: Prisma.ProjectOrderByRelationAggregateInput
 }
 
 export type TeamMemberWhereUniqueInput = Prisma.AtLeast<{
-  memberId?: string
+  id?: string
   email?: string
   AND?: Prisma.TeamMemberWhereInput | Prisma.TeamMemberWhereInput[]
   OR?: Prisma.TeamMemberWhereInput[]
@@ -237,13 +237,13 @@ export type TeamMemberWhereUniqueInput = Prisma.AtLeast<{
   employmentType?: Prisma.EnumEmploymentTypeFilter<"TeamMember"> | $Enums.EmploymentType
   createdAt?: Prisma.DateTimeFilter<"TeamMember"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"TeamMember"> | Date | string
+  projects?: Prisma.ProjectListRelationFilter
   projectMembers?: Prisma.ProjectTeamMemberListRelationFilter
   projectNotes?: Prisma.ProjectNoteListRelationFilter
-  projects?: Prisma.ProjectListRelationFilter
-}, "memberId" | "email">
+}, "id" | "email">
 
 export type TeamMemberOrderByWithAggregationInput = {
-  memberId?: Prisma.SortOrder
+  id?: Prisma.SortOrder
   fullName?: Prisma.SortOrder
   email?: Prisma.SortOrder
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -260,7 +260,7 @@ export type TeamMemberScalarWhereWithAggregatesInput = {
   AND?: Prisma.TeamMemberScalarWhereWithAggregatesInput | Prisma.TeamMemberScalarWhereWithAggregatesInput[]
   OR?: Prisma.TeamMemberScalarWhereWithAggregatesInput[]
   NOT?: Prisma.TeamMemberScalarWhereWithAggregatesInput | Prisma.TeamMemberScalarWhereWithAggregatesInput[]
-  memberId?: Prisma.StringWithAggregatesFilter<"TeamMember"> | string
+  id?: Prisma.StringWithAggregatesFilter<"TeamMember"> | string
   fullName?: Prisma.StringWithAggregatesFilter<"TeamMember"> | string
   email?: Prisma.StringWithAggregatesFilter<"TeamMember"> | string
   phone?: Prisma.StringNullableWithAggregatesFilter<"TeamMember"> | string | null
@@ -271,7 +271,7 @@ export type TeamMemberScalarWhereWithAggregatesInput = {
 }
 
 export type TeamMemberCreateInput = {
-  memberId?: string
+  id?: string
   fullName: string
   email: string
   phone?: string | null
@@ -279,13 +279,13 @@ export type TeamMemberCreateInput = {
   employmentType: $Enums.EmploymentType
   createdAt?: Date | string
   updatedAt?: Date | string
+  projects?: Prisma.ProjectCreateNestedManyWithoutProjectLeadInput
   projectMembers?: Prisma.ProjectTeamMemberCreateNestedManyWithoutTeamMemberInput
   projectNotes?: Prisma.ProjectNoteCreateNestedManyWithoutAuthorInput
-  projects?: Prisma.ProjectCreateNestedManyWithoutProjectLeadInput
 }
 
 export type TeamMemberUncheckedCreateInput = {
-  memberId?: string
+  id?: string
   fullName: string
   email: string
   phone?: string | null
@@ -293,13 +293,13 @@ export type TeamMemberUncheckedCreateInput = {
   employmentType: $Enums.EmploymentType
   createdAt?: Date | string
   updatedAt?: Date | string
+  projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutProjectLeadInput
   projectMembers?: Prisma.ProjectTeamMemberUncheckedCreateNestedManyWithoutTeamMemberInput
   projectNotes?: Prisma.ProjectNoteUncheckedCreateNestedManyWithoutAuthorInput
-  projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutProjectLeadInput
 }
 
 export type TeamMemberUpdateInput = {
-  memberId?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   fullName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -307,13 +307,13 @@ export type TeamMemberUpdateInput = {
   employmentType?: Prisma.EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  projects?: Prisma.ProjectUpdateManyWithoutProjectLeadNestedInput
   projectMembers?: Prisma.ProjectTeamMemberUpdateManyWithoutTeamMemberNestedInput
   projectNotes?: Prisma.ProjectNoteUpdateManyWithoutAuthorNestedInput
-  projects?: Prisma.ProjectUpdateManyWithoutProjectLeadNestedInput
 }
 
 export type TeamMemberUncheckedUpdateInput = {
-  memberId?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   fullName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -321,13 +321,13 @@ export type TeamMemberUncheckedUpdateInput = {
   employmentType?: Prisma.EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  projects?: Prisma.ProjectUncheckedUpdateManyWithoutProjectLeadNestedInput
   projectMembers?: Prisma.ProjectTeamMemberUncheckedUpdateManyWithoutTeamMemberNestedInput
   projectNotes?: Prisma.ProjectNoteUncheckedUpdateManyWithoutAuthorNestedInput
-  projects?: Prisma.ProjectUncheckedUpdateManyWithoutProjectLeadNestedInput
 }
 
 export type TeamMemberCreateManyInput = {
-  memberId?: string
+  id?: string
   fullName: string
   email: string
   phone?: string | null
@@ -338,7 +338,7 @@ export type TeamMemberCreateManyInput = {
 }
 
 export type TeamMemberUpdateManyMutationInput = {
-  memberId?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   fullName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -349,7 +349,7 @@ export type TeamMemberUpdateManyMutationInput = {
 }
 
 export type TeamMemberUncheckedUpdateManyInput = {
-  memberId?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   fullName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -360,7 +360,7 @@ export type TeamMemberUncheckedUpdateManyInput = {
 }
 
 export type TeamMemberCountOrderByAggregateInput = {
-  memberId?: Prisma.SortOrder
+  id?: Prisma.SortOrder
   fullName?: Prisma.SortOrder
   email?: Prisma.SortOrder
   phone?: Prisma.SortOrder
@@ -371,7 +371,7 @@ export type TeamMemberCountOrderByAggregateInput = {
 }
 
 export type TeamMemberMaxOrderByAggregateInput = {
-  memberId?: Prisma.SortOrder
+  id?: Prisma.SortOrder
   fullName?: Prisma.SortOrder
   email?: Prisma.SortOrder
   phone?: Prisma.SortOrder
@@ -382,7 +382,7 @@ export type TeamMemberMaxOrderByAggregateInput = {
 }
 
 export type TeamMemberMinOrderByAggregateInput = {
-  memberId?: Prisma.SortOrder
+  id?: Prisma.SortOrder
   fullName?: Prisma.SortOrder
   email?: Prisma.SortOrder
   phone?: Prisma.SortOrder
@@ -444,7 +444,7 @@ export type TeamMemberUpdateOneRequiredWithoutProjectNotesNestedInput = {
 }
 
 export type TeamMemberCreateWithoutProjectsInput = {
-  memberId?: string
+  id?: string
   fullName: string
   email: string
   phone?: string | null
@@ -457,7 +457,7 @@ export type TeamMemberCreateWithoutProjectsInput = {
 }
 
 export type TeamMemberUncheckedCreateWithoutProjectsInput = {
-  memberId?: string
+  id?: string
   fullName: string
   email: string
   phone?: string | null
@@ -486,7 +486,7 @@ export type TeamMemberUpdateToOneWithWhereWithoutProjectsInput = {
 }
 
 export type TeamMemberUpdateWithoutProjectsInput = {
-  memberId?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   fullName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -499,7 +499,7 @@ export type TeamMemberUpdateWithoutProjectsInput = {
 }
 
 export type TeamMemberUncheckedUpdateWithoutProjectsInput = {
-  memberId?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   fullName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -512,7 +512,7 @@ export type TeamMemberUncheckedUpdateWithoutProjectsInput = {
 }
 
 export type TeamMemberCreateWithoutProjectMembersInput = {
-  memberId?: string
+  id?: string
   fullName: string
   email: string
   phone?: string | null
@@ -520,12 +520,12 @@ export type TeamMemberCreateWithoutProjectMembersInput = {
   employmentType: $Enums.EmploymentType
   createdAt?: Date | string
   updatedAt?: Date | string
-  projectNotes?: Prisma.ProjectNoteCreateNestedManyWithoutAuthorInput
   projects?: Prisma.ProjectCreateNestedManyWithoutProjectLeadInput
+  projectNotes?: Prisma.ProjectNoteCreateNestedManyWithoutAuthorInput
 }
 
 export type TeamMemberUncheckedCreateWithoutProjectMembersInput = {
-  memberId?: string
+  id?: string
   fullName: string
   email: string
   phone?: string | null
@@ -533,8 +533,8 @@ export type TeamMemberUncheckedCreateWithoutProjectMembersInput = {
   employmentType: $Enums.EmploymentType
   createdAt?: Date | string
   updatedAt?: Date | string
-  projectNotes?: Prisma.ProjectNoteUncheckedCreateNestedManyWithoutAuthorInput
   projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutProjectLeadInput
+  projectNotes?: Prisma.ProjectNoteUncheckedCreateNestedManyWithoutAuthorInput
 }
 
 export type TeamMemberCreateOrConnectWithoutProjectMembersInput = {
@@ -554,7 +554,7 @@ export type TeamMemberUpdateToOneWithWhereWithoutProjectMembersInput = {
 }
 
 export type TeamMemberUpdateWithoutProjectMembersInput = {
-  memberId?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   fullName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -562,12 +562,12 @@ export type TeamMemberUpdateWithoutProjectMembersInput = {
   employmentType?: Prisma.EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  projectNotes?: Prisma.ProjectNoteUpdateManyWithoutAuthorNestedInput
   projects?: Prisma.ProjectUpdateManyWithoutProjectLeadNestedInput
+  projectNotes?: Prisma.ProjectNoteUpdateManyWithoutAuthorNestedInput
 }
 
 export type TeamMemberUncheckedUpdateWithoutProjectMembersInput = {
-  memberId?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   fullName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -575,12 +575,12 @@ export type TeamMemberUncheckedUpdateWithoutProjectMembersInput = {
   employmentType?: Prisma.EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  projectNotes?: Prisma.ProjectNoteUncheckedUpdateManyWithoutAuthorNestedInput
   projects?: Prisma.ProjectUncheckedUpdateManyWithoutProjectLeadNestedInput
+  projectNotes?: Prisma.ProjectNoteUncheckedUpdateManyWithoutAuthorNestedInput
 }
 
 export type TeamMemberCreateWithoutProjectNotesInput = {
-  memberId?: string
+  id?: string
   fullName: string
   email: string
   phone?: string | null
@@ -588,12 +588,12 @@ export type TeamMemberCreateWithoutProjectNotesInput = {
   employmentType: $Enums.EmploymentType
   createdAt?: Date | string
   updatedAt?: Date | string
-  projectMembers?: Prisma.ProjectTeamMemberCreateNestedManyWithoutTeamMemberInput
   projects?: Prisma.ProjectCreateNestedManyWithoutProjectLeadInput
+  projectMembers?: Prisma.ProjectTeamMemberCreateNestedManyWithoutTeamMemberInput
 }
 
 export type TeamMemberUncheckedCreateWithoutProjectNotesInput = {
-  memberId?: string
+  id?: string
   fullName: string
   email: string
   phone?: string | null
@@ -601,8 +601,8 @@ export type TeamMemberUncheckedCreateWithoutProjectNotesInput = {
   employmentType: $Enums.EmploymentType
   createdAt?: Date | string
   updatedAt?: Date | string
-  projectMembers?: Prisma.ProjectTeamMemberUncheckedCreateNestedManyWithoutTeamMemberInput
   projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutProjectLeadInput
+  projectMembers?: Prisma.ProjectTeamMemberUncheckedCreateNestedManyWithoutTeamMemberInput
 }
 
 export type TeamMemberCreateOrConnectWithoutProjectNotesInput = {
@@ -622,7 +622,7 @@ export type TeamMemberUpdateToOneWithWhereWithoutProjectNotesInput = {
 }
 
 export type TeamMemberUpdateWithoutProjectNotesInput = {
-  memberId?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   fullName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -630,12 +630,12 @@ export type TeamMemberUpdateWithoutProjectNotesInput = {
   employmentType?: Prisma.EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  projectMembers?: Prisma.ProjectTeamMemberUpdateManyWithoutTeamMemberNestedInput
   projects?: Prisma.ProjectUpdateManyWithoutProjectLeadNestedInput
+  projectMembers?: Prisma.ProjectTeamMemberUpdateManyWithoutTeamMemberNestedInput
 }
 
 export type TeamMemberUncheckedUpdateWithoutProjectNotesInput = {
-  memberId?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   fullName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -643,8 +643,8 @@ export type TeamMemberUncheckedUpdateWithoutProjectNotesInput = {
   employmentType?: Prisma.EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  projectMembers?: Prisma.ProjectTeamMemberUncheckedUpdateManyWithoutTeamMemberNestedInput
   projects?: Prisma.ProjectUncheckedUpdateManyWithoutProjectLeadNestedInput
+  projectMembers?: Prisma.ProjectTeamMemberUncheckedUpdateManyWithoutTeamMemberNestedInput
 }
 
 
@@ -653,15 +653,15 @@ export type TeamMemberUncheckedUpdateWithoutProjectNotesInput = {
  */
 
 export type TeamMemberCountOutputType = {
+  projects: number
   projectMembers: number
   projectNotes: number
-  projects: number
 }
 
 export type TeamMemberCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  projects?: boolean | TeamMemberCountOutputTypeCountProjectsArgs
   projectMembers?: boolean | TeamMemberCountOutputTypeCountProjectMembersArgs
   projectNotes?: boolean | TeamMemberCountOutputTypeCountProjectNotesArgs
-  projects?: boolean | TeamMemberCountOutputTypeCountProjectsArgs
 }
 
 /**
@@ -672,6 +672,13 @@ export type TeamMemberCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.E
    * Select specific fields to fetch from the TeamMemberCountOutputType
    */
   select?: Prisma.TeamMemberCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * TeamMemberCountOutputType without action
+ */
+export type TeamMemberCountOutputTypeCountProjectsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ProjectWhereInput
 }
 
 /**
@@ -688,16 +695,9 @@ export type TeamMemberCountOutputTypeCountProjectNotesArgs<ExtArgs extends runti
   where?: Prisma.ProjectNoteWhereInput
 }
 
-/**
- * TeamMemberCountOutputType without action
- */
-export type TeamMemberCountOutputTypeCountProjectsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.ProjectWhereInput
-}
-
 
 export type TeamMemberSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  memberId?: boolean
+  id?: boolean
   fullName?: boolean
   email?: boolean
   phone?: boolean
@@ -705,14 +705,14 @@ export type TeamMemberSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   employmentType?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  projects?: boolean | Prisma.TeamMember$projectsArgs<ExtArgs>
   projectMembers?: boolean | Prisma.TeamMember$projectMembersArgs<ExtArgs>
   projectNotes?: boolean | Prisma.TeamMember$projectNotesArgs<ExtArgs>
-  projects?: boolean | Prisma.TeamMember$projectsArgs<ExtArgs>
   _count?: boolean | Prisma.TeamMemberCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["teamMember"]>
 
 export type TeamMemberSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  memberId?: boolean
+  id?: boolean
   fullName?: boolean
   email?: boolean
   phone?: boolean
@@ -723,7 +723,7 @@ export type TeamMemberSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ex
 }, ExtArgs["result"]["teamMember"]>
 
 export type TeamMemberSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  memberId?: boolean
+  id?: boolean
   fullName?: boolean
   email?: boolean
   phone?: boolean
@@ -734,7 +734,7 @@ export type TeamMemberSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ex
 }, ExtArgs["result"]["teamMember"]>
 
 export type TeamMemberSelectScalar = {
-  memberId?: boolean
+  id?: boolean
   fullName?: boolean
   email?: boolean
   phone?: boolean
@@ -744,11 +744,11 @@ export type TeamMemberSelectScalar = {
   updatedAt?: boolean
 }
 
-export type TeamMemberOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"memberId" | "fullName" | "email" | "phone" | "department" | "employmentType" | "createdAt" | "updatedAt", ExtArgs["result"]["teamMember"]>
+export type TeamMemberOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "fullName" | "email" | "phone" | "department" | "employmentType" | "createdAt" | "updatedAt", ExtArgs["result"]["teamMember"]>
 export type TeamMemberInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  projects?: boolean | Prisma.TeamMember$projectsArgs<ExtArgs>
   projectMembers?: boolean | Prisma.TeamMember$projectMembersArgs<ExtArgs>
   projectNotes?: boolean | Prisma.TeamMember$projectNotesArgs<ExtArgs>
-  projects?: boolean | Prisma.TeamMember$projectsArgs<ExtArgs>
   _count?: boolean | Prisma.TeamMemberCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type TeamMemberIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -757,12 +757,12 @@ export type TeamMemberIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.E
 export type $TeamMemberPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "TeamMember"
   objects: {
+    projects: Prisma.$ProjectPayload<ExtArgs>[]
     projectMembers: Prisma.$ProjectTeamMemberPayload<ExtArgs>[]
     projectNotes: Prisma.$ProjectNotePayload<ExtArgs>[]
-    projects: Prisma.$ProjectPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    memberId: string
+    id: string
     fullName: string
     email: string
     phone: string | null
@@ -853,8 +853,8 @@ export interface TeamMemberDelegate<ExtArgs extends runtime.Types.Extensions.Int
    * // Get first 10 TeamMembers
    * const teamMembers = await prisma.teamMember.findMany({ take: 10 })
    * 
-   * // Only select the `memberId`
-   * const teamMemberWithMemberIdOnly = await prisma.teamMember.findMany({ select: { memberId: true } })
+   * // Only select the `id`
+   * const teamMemberWithIdOnly = await prisma.teamMember.findMany({ select: { id: true } })
    * 
    */
   findMany<T extends TeamMemberFindManyArgs>(args?: Prisma.SelectSubset<T, TeamMemberFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TeamMemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -898,9 +898,9 @@ export interface TeamMemberDelegate<ExtArgs extends runtime.Types.Extensions.Int
    *   ]
    * })
    * 
-   * // Create many TeamMembers and only return the `memberId`
-   * const teamMemberWithMemberIdOnly = await prisma.teamMember.createManyAndReturn({
-   *   select: { memberId: true },
+   * // Create many TeamMembers and only return the `id`
+   * const teamMemberWithIdOnly = await prisma.teamMember.createManyAndReturn({
+   *   select: { id: true },
    *   data: [
    *     // ... provide data here
    *   ]
@@ -989,9 +989,9 @@ export interface TeamMemberDelegate<ExtArgs extends runtime.Types.Extensions.Int
    *   ]
    * })
    * 
-   * // Update zero or more TeamMembers and only return the `memberId`
-   * const teamMemberWithMemberIdOnly = await prisma.teamMember.updateManyAndReturn({
-   *   select: { memberId: true },
+   * // Update zero or more TeamMembers and only return the `id`
+   * const teamMemberWithIdOnly = await prisma.teamMember.updateManyAndReturn({
+   *   select: { id: true },
    *   where: {
    *     // ... provide filter here
    *   },
@@ -1164,9 +1164,9 @@ readonly fields: TeamMemberFieldRefs;
  */
 export interface Prisma__TeamMemberClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  projects<T extends Prisma.TeamMember$projectsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TeamMember$projectsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   projectMembers<T extends Prisma.TeamMember$projectMembersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TeamMember$projectMembersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjectTeamMemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   projectNotes<T extends Prisma.TeamMember$projectNotesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TeamMember$projectNotesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjectNotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  projects<T extends Prisma.TeamMember$projectsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TeamMember$projectsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1196,7 +1196,7 @@ export interface Prisma__TeamMemberClient<T, Null = never, ExtArgs extends runti
  * Fields of the TeamMember model
  */
 export interface TeamMemberFieldRefs {
-  readonly memberId: Prisma.FieldRef<"TeamMember", 'String'>
+  readonly id: Prisma.FieldRef<"TeamMember", 'String'>
   readonly fullName: Prisma.FieldRef<"TeamMember", 'String'>
   readonly email: Prisma.FieldRef<"TeamMember", 'String'>
   readonly phone: Prisma.FieldRef<"TeamMember", 'String'>
@@ -1592,6 +1592,30 @@ export type TeamMemberDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.In
 }
 
 /**
+ * TeamMember.projects
+ */
+export type TeamMember$projectsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Project
+   */
+  select?: Prisma.ProjectSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Project
+   */
+  omit?: Prisma.ProjectOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ProjectInclude<ExtArgs> | null
+  where?: Prisma.ProjectWhereInput
+  orderBy?: Prisma.ProjectOrderByWithRelationInput | Prisma.ProjectOrderByWithRelationInput[]
+  cursor?: Prisma.ProjectWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ProjectScalarFieldEnum | Prisma.ProjectScalarFieldEnum[]
+}
+
+/**
  * TeamMember.projectMembers
  */
 export type TeamMember$projectMembersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1637,30 +1661,6 @@ export type TeamMember$projectNotesArgs<ExtArgs extends runtime.Types.Extensions
   take?: number
   skip?: number
   distinct?: Prisma.ProjectNoteScalarFieldEnum | Prisma.ProjectNoteScalarFieldEnum[]
-}
-
-/**
- * TeamMember.projects
- */
-export type TeamMember$projectsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Project
-   */
-  select?: Prisma.ProjectSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Project
-   */
-  omit?: Prisma.ProjectOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.ProjectInclude<ExtArgs> | null
-  where?: Prisma.ProjectWhereInput
-  orderBy?: Prisma.ProjectOrderByWithRelationInput | Prisma.ProjectOrderByWithRelationInput[]
-  cursor?: Prisma.ProjectWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.ProjectScalarFieldEnum | Prisma.ProjectScalarFieldEnum[]
 }
 
 /**

@@ -20,132 +20,46 @@ export type ProjectImageModel = runtime.Types.Result.DefaultSelection<Prisma.$Pr
 
 export type AggregateProjectImage = {
   _count: ProjectImageCountAggregateOutputType | null
-  _avg: ProjectImageAvgAggregateOutputType | null
-  _sum: ProjectImageSumAggregateOutputType | null
   _min: ProjectImageMinAggregateOutputType | null
   _max: ProjectImageMaxAggregateOutputType | null
 }
 
-export type ProjectImageAvgAggregateOutputType = {
-  size: number | null
-  gpsLat: number | null
-  gpsLong: number | null
-}
-
-export type ProjectImageSumAggregateOutputType = {
-  size: number | null
-  gpsLat: number | null
-  gpsLong: number | null
-}
-
 export type ProjectImageMinAggregateOutputType = {
-  imageId: string | null
+  id: string | null
   projectId: string | null
-  fileName: string | null
-  url: string | null
-  binaryHash: string | null
-  mimeType: string | null
-  size: number | null
-  takenAt: Date | null
-  photographer: string | null
-  gpsLat: number | null
-  gpsLong: number | null
-  caption: string | null
-  tags: string | null
+  mediaId: string | null
 }
 
 export type ProjectImageMaxAggregateOutputType = {
-  imageId: string | null
+  id: string | null
   projectId: string | null
-  fileName: string | null
-  url: string | null
-  binaryHash: string | null
-  mimeType: string | null
-  size: number | null
-  takenAt: Date | null
-  photographer: string | null
-  gpsLat: number | null
-  gpsLong: number | null
-  caption: string | null
-  tags: string | null
+  mediaId: string | null
 }
 
 export type ProjectImageCountAggregateOutputType = {
-  imageId: number
+  id: number
   projectId: number
-  fileName: number
-  url: number
-  binaryHash: number
-  mimeType: number
-  size: number
-  takenAt: number
-  photographer: number
-  gpsLat: number
-  gpsLong: number
-  caption: number
-  tags: number
+  mediaId: number
   _all: number
 }
 
 
-export type ProjectImageAvgAggregateInputType = {
-  size?: true
-  gpsLat?: true
-  gpsLong?: true
-}
-
-export type ProjectImageSumAggregateInputType = {
-  size?: true
-  gpsLat?: true
-  gpsLong?: true
-}
-
 export type ProjectImageMinAggregateInputType = {
-  imageId?: true
+  id?: true
   projectId?: true
-  fileName?: true
-  url?: true
-  binaryHash?: true
-  mimeType?: true
-  size?: true
-  takenAt?: true
-  photographer?: true
-  gpsLat?: true
-  gpsLong?: true
-  caption?: true
-  tags?: true
+  mediaId?: true
 }
 
 export type ProjectImageMaxAggregateInputType = {
-  imageId?: true
+  id?: true
   projectId?: true
-  fileName?: true
-  url?: true
-  binaryHash?: true
-  mimeType?: true
-  size?: true
-  takenAt?: true
-  photographer?: true
-  gpsLat?: true
-  gpsLong?: true
-  caption?: true
-  tags?: true
+  mediaId?: true
 }
 
 export type ProjectImageCountAggregateInputType = {
-  imageId?: true
+  id?: true
   projectId?: true
-  fileName?: true
-  url?: true
-  binaryHash?: true
-  mimeType?: true
-  size?: true
-  takenAt?: true
-  photographer?: true
-  gpsLat?: true
-  gpsLong?: true
-  caption?: true
-  tags?: true
+  mediaId?: true
   _all?: true
 }
 
@@ -187,18 +101,6 @@ export type ProjectImageAggregateArgs<ExtArgs extends runtime.Types.Extensions.I
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
-   * Select which fields to average
-  **/
-  _avg?: ProjectImageAvgAggregateInputType
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   * 
-   * Select which fields to sum
-  **/
-  _sum?: ProjectImageSumAggregateInputType
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   * 
    * Select which fields to find the minimum value
   **/
   _min?: ProjectImageMinAggregateInputType
@@ -229,29 +131,15 @@ export type ProjectImageGroupByArgs<ExtArgs extends runtime.Types.Extensions.Int
   take?: number
   skip?: number
   _count?: ProjectImageCountAggregateInputType | true
-  _avg?: ProjectImageAvgAggregateInputType
-  _sum?: ProjectImageSumAggregateInputType
   _min?: ProjectImageMinAggregateInputType
   _max?: ProjectImageMaxAggregateInputType
 }
 
 export type ProjectImageGroupByOutputType = {
-  imageId: string
+  id: string
   projectId: string
-  fileName: string
-  url: string
-  binaryHash: string
-  mimeType: string
-  size: number
-  takenAt: Date | null
-  photographer: string | null
-  gpsLat: number | null
-  gpsLong: number | null
-  caption: string | null
-  tags: string
+  mediaId: string
   _count: ProjectImageCountAggregateOutputType | null
-  _avg: ProjectImageAvgAggregateOutputType | null
-  _sum: ProjectImageSumAggregateOutputType | null
   _min: ProjectImageMinAggregateOutputType | null
   _max: ProjectImageMaxAggregateOutputType | null
 }
@@ -275,208 +163,88 @@ export type ProjectImageWhereInput = {
   AND?: Prisma.ProjectImageWhereInput | Prisma.ProjectImageWhereInput[]
   OR?: Prisma.ProjectImageWhereInput[]
   NOT?: Prisma.ProjectImageWhereInput | Prisma.ProjectImageWhereInput[]
-  imageId?: Prisma.StringFilter<"ProjectImage"> | string
+  id?: Prisma.StringFilter<"ProjectImage"> | string
   projectId?: Prisma.StringFilter<"ProjectImage"> | string
-  fileName?: Prisma.StringFilter<"ProjectImage"> | string
-  url?: Prisma.StringFilter<"ProjectImage"> | string
-  binaryHash?: Prisma.StringFilter<"ProjectImage"> | string
-  mimeType?: Prisma.StringFilter<"ProjectImage"> | string
-  size?: Prisma.IntFilter<"ProjectImage"> | number
-  takenAt?: Prisma.DateTimeNullableFilter<"ProjectImage"> | Date | string | null
-  photographer?: Prisma.StringNullableFilter<"ProjectImage"> | string | null
-  gpsLat?: Prisma.FloatNullableFilter<"ProjectImage"> | number | null
-  gpsLong?: Prisma.FloatNullableFilter<"ProjectImage"> | number | null
-  caption?: Prisma.StringNullableFilter<"ProjectImage"> | string | null
-  tags?: Prisma.StringFilter<"ProjectImage"> | string
+  mediaId?: Prisma.StringFilter<"ProjectImage"> | string
   project?: Prisma.XOR<Prisma.ProjectScalarRelationFilter, Prisma.ProjectWhereInput>
+  media?: Prisma.XOR<Prisma.MediaScalarRelationFilter, Prisma.MediaWhereInput>
 }
 
 export type ProjectImageOrderByWithRelationInput = {
-  imageId?: Prisma.SortOrder
+  id?: Prisma.SortOrder
   projectId?: Prisma.SortOrder
-  fileName?: Prisma.SortOrder
-  url?: Prisma.SortOrder
-  binaryHash?: Prisma.SortOrder
-  mimeType?: Prisma.SortOrder
-  size?: Prisma.SortOrder
-  takenAt?: Prisma.SortOrderInput | Prisma.SortOrder
-  photographer?: Prisma.SortOrderInput | Prisma.SortOrder
-  gpsLat?: Prisma.SortOrderInput | Prisma.SortOrder
-  gpsLong?: Prisma.SortOrderInput | Prisma.SortOrder
-  caption?: Prisma.SortOrderInput | Prisma.SortOrder
-  tags?: Prisma.SortOrder
+  mediaId?: Prisma.SortOrder
   project?: Prisma.ProjectOrderByWithRelationInput
+  media?: Prisma.MediaOrderByWithRelationInput
 }
 
 export type ProjectImageWhereUniqueInput = Prisma.AtLeast<{
-  imageId?: string
+  id?: string
   AND?: Prisma.ProjectImageWhereInput | Prisma.ProjectImageWhereInput[]
   OR?: Prisma.ProjectImageWhereInput[]
   NOT?: Prisma.ProjectImageWhereInput | Prisma.ProjectImageWhereInput[]
   projectId?: Prisma.StringFilter<"ProjectImage"> | string
-  fileName?: Prisma.StringFilter<"ProjectImage"> | string
-  url?: Prisma.StringFilter<"ProjectImage"> | string
-  binaryHash?: Prisma.StringFilter<"ProjectImage"> | string
-  mimeType?: Prisma.StringFilter<"ProjectImage"> | string
-  size?: Prisma.IntFilter<"ProjectImage"> | number
-  takenAt?: Prisma.DateTimeNullableFilter<"ProjectImage"> | Date | string | null
-  photographer?: Prisma.StringNullableFilter<"ProjectImage"> | string | null
-  gpsLat?: Prisma.FloatNullableFilter<"ProjectImage"> | number | null
-  gpsLong?: Prisma.FloatNullableFilter<"ProjectImage"> | number | null
-  caption?: Prisma.StringNullableFilter<"ProjectImage"> | string | null
-  tags?: Prisma.StringFilter<"ProjectImage"> | string
+  mediaId?: Prisma.StringFilter<"ProjectImage"> | string
   project?: Prisma.XOR<Prisma.ProjectScalarRelationFilter, Prisma.ProjectWhereInput>
-}, "imageId">
+  media?: Prisma.XOR<Prisma.MediaScalarRelationFilter, Prisma.MediaWhereInput>
+}, "id">
 
 export type ProjectImageOrderByWithAggregationInput = {
-  imageId?: Prisma.SortOrder
+  id?: Prisma.SortOrder
   projectId?: Prisma.SortOrder
-  fileName?: Prisma.SortOrder
-  url?: Prisma.SortOrder
-  binaryHash?: Prisma.SortOrder
-  mimeType?: Prisma.SortOrder
-  size?: Prisma.SortOrder
-  takenAt?: Prisma.SortOrderInput | Prisma.SortOrder
-  photographer?: Prisma.SortOrderInput | Prisma.SortOrder
-  gpsLat?: Prisma.SortOrderInput | Prisma.SortOrder
-  gpsLong?: Prisma.SortOrderInput | Prisma.SortOrder
-  caption?: Prisma.SortOrderInput | Prisma.SortOrder
-  tags?: Prisma.SortOrder
+  mediaId?: Prisma.SortOrder
   _count?: Prisma.ProjectImageCountOrderByAggregateInput
-  _avg?: Prisma.ProjectImageAvgOrderByAggregateInput
   _max?: Prisma.ProjectImageMaxOrderByAggregateInput
   _min?: Prisma.ProjectImageMinOrderByAggregateInput
-  _sum?: Prisma.ProjectImageSumOrderByAggregateInput
 }
 
 export type ProjectImageScalarWhereWithAggregatesInput = {
   AND?: Prisma.ProjectImageScalarWhereWithAggregatesInput | Prisma.ProjectImageScalarWhereWithAggregatesInput[]
   OR?: Prisma.ProjectImageScalarWhereWithAggregatesInput[]
   NOT?: Prisma.ProjectImageScalarWhereWithAggregatesInput | Prisma.ProjectImageScalarWhereWithAggregatesInput[]
-  imageId?: Prisma.StringWithAggregatesFilter<"ProjectImage"> | string
+  id?: Prisma.StringWithAggregatesFilter<"ProjectImage"> | string
   projectId?: Prisma.StringWithAggregatesFilter<"ProjectImage"> | string
-  fileName?: Prisma.StringWithAggregatesFilter<"ProjectImage"> | string
-  url?: Prisma.StringWithAggregatesFilter<"ProjectImage"> | string
-  binaryHash?: Prisma.StringWithAggregatesFilter<"ProjectImage"> | string
-  mimeType?: Prisma.StringWithAggregatesFilter<"ProjectImage"> | string
-  size?: Prisma.IntWithAggregatesFilter<"ProjectImage"> | number
-  takenAt?: Prisma.DateTimeNullableWithAggregatesFilter<"ProjectImage"> | Date | string | null
-  photographer?: Prisma.StringNullableWithAggregatesFilter<"ProjectImage"> | string | null
-  gpsLat?: Prisma.FloatNullableWithAggregatesFilter<"ProjectImage"> | number | null
-  gpsLong?: Prisma.FloatNullableWithAggregatesFilter<"ProjectImage"> | number | null
-  caption?: Prisma.StringNullableWithAggregatesFilter<"ProjectImage"> | string | null
-  tags?: Prisma.StringWithAggregatesFilter<"ProjectImage"> | string
+  mediaId?: Prisma.StringWithAggregatesFilter<"ProjectImage"> | string
 }
 
 export type ProjectImageCreateInput = {
-  imageId?: string
-  fileName: string
-  url: string
-  binaryHash: string
-  mimeType: string
-  size: number
-  takenAt?: Date | string | null
-  photographer?: string | null
-  gpsLat?: number | null
-  gpsLong?: number | null
-  caption?: string | null
-  tags: string
+  id?: string
   project: Prisma.ProjectCreateNestedOneWithoutImagesInput
+  media: Prisma.MediaCreateNestedOneWithoutProjectImagesInput
 }
 
 export type ProjectImageUncheckedCreateInput = {
-  imageId?: string
+  id?: string
   projectId: string
-  fileName: string
-  url: string
-  binaryHash: string
-  mimeType: string
-  size: number
-  takenAt?: Date | string | null
-  photographer?: string | null
-  gpsLat?: number | null
-  gpsLong?: number | null
-  caption?: string | null
-  tags: string
+  mediaId: string
 }
 
 export type ProjectImageUpdateInput = {
-  imageId?: Prisma.StringFieldUpdateOperationsInput | string
-  fileName?: Prisma.StringFieldUpdateOperationsInput | string
-  url?: Prisma.StringFieldUpdateOperationsInput | string
-  binaryHash?: Prisma.StringFieldUpdateOperationsInput | string
-  mimeType?: Prisma.StringFieldUpdateOperationsInput | string
-  size?: Prisma.IntFieldUpdateOperationsInput | number
-  takenAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  photographer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  gpsLat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  gpsLong?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  tags?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   project?: Prisma.ProjectUpdateOneRequiredWithoutImagesNestedInput
+  media?: Prisma.MediaUpdateOneRequiredWithoutProjectImagesNestedInput
 }
 
 export type ProjectImageUncheckedUpdateInput = {
-  imageId?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   projectId?: Prisma.StringFieldUpdateOperationsInput | string
-  fileName?: Prisma.StringFieldUpdateOperationsInput | string
-  url?: Prisma.StringFieldUpdateOperationsInput | string
-  binaryHash?: Prisma.StringFieldUpdateOperationsInput | string
-  mimeType?: Prisma.StringFieldUpdateOperationsInput | string
-  size?: Prisma.IntFieldUpdateOperationsInput | number
-  takenAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  photographer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  gpsLat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  gpsLong?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  tags?: Prisma.StringFieldUpdateOperationsInput | string
+  mediaId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type ProjectImageCreateManyInput = {
-  imageId?: string
+  id?: string
   projectId: string
-  fileName: string
-  url: string
-  binaryHash: string
-  mimeType: string
-  size: number
-  takenAt?: Date | string | null
-  photographer?: string | null
-  gpsLat?: number | null
-  gpsLong?: number | null
-  caption?: string | null
-  tags: string
+  mediaId: string
 }
 
 export type ProjectImageUpdateManyMutationInput = {
-  imageId?: Prisma.StringFieldUpdateOperationsInput | string
-  fileName?: Prisma.StringFieldUpdateOperationsInput | string
-  url?: Prisma.StringFieldUpdateOperationsInput | string
-  binaryHash?: Prisma.StringFieldUpdateOperationsInput | string
-  mimeType?: Prisma.StringFieldUpdateOperationsInput | string
-  size?: Prisma.IntFieldUpdateOperationsInput | number
-  takenAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  photographer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  gpsLat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  gpsLong?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  tags?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type ProjectImageUncheckedUpdateManyInput = {
-  imageId?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   projectId?: Prisma.StringFieldUpdateOperationsInput | string
-  fileName?: Prisma.StringFieldUpdateOperationsInput | string
-  url?: Prisma.StringFieldUpdateOperationsInput | string
-  binaryHash?: Prisma.StringFieldUpdateOperationsInput | string
-  mimeType?: Prisma.StringFieldUpdateOperationsInput | string
-  size?: Prisma.IntFieldUpdateOperationsInput | number
-  takenAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  photographer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  gpsLat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  gpsLong?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  tags?: Prisma.StringFieldUpdateOperationsInput | string
+  mediaId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type ProjectImageListRelationFilter = {
@@ -490,63 +258,63 @@ export type ProjectImageOrderByRelationAggregateInput = {
 }
 
 export type ProjectImageCountOrderByAggregateInput = {
-  imageId?: Prisma.SortOrder
+  id?: Prisma.SortOrder
   projectId?: Prisma.SortOrder
-  fileName?: Prisma.SortOrder
-  url?: Prisma.SortOrder
-  binaryHash?: Prisma.SortOrder
-  mimeType?: Prisma.SortOrder
-  size?: Prisma.SortOrder
-  takenAt?: Prisma.SortOrder
-  photographer?: Prisma.SortOrder
-  gpsLat?: Prisma.SortOrder
-  gpsLong?: Prisma.SortOrder
-  caption?: Prisma.SortOrder
-  tags?: Prisma.SortOrder
-}
-
-export type ProjectImageAvgOrderByAggregateInput = {
-  size?: Prisma.SortOrder
-  gpsLat?: Prisma.SortOrder
-  gpsLong?: Prisma.SortOrder
+  mediaId?: Prisma.SortOrder
 }
 
 export type ProjectImageMaxOrderByAggregateInput = {
-  imageId?: Prisma.SortOrder
+  id?: Prisma.SortOrder
   projectId?: Prisma.SortOrder
-  fileName?: Prisma.SortOrder
-  url?: Prisma.SortOrder
-  binaryHash?: Prisma.SortOrder
-  mimeType?: Prisma.SortOrder
-  size?: Prisma.SortOrder
-  takenAt?: Prisma.SortOrder
-  photographer?: Prisma.SortOrder
-  gpsLat?: Prisma.SortOrder
-  gpsLong?: Prisma.SortOrder
-  caption?: Prisma.SortOrder
-  tags?: Prisma.SortOrder
+  mediaId?: Prisma.SortOrder
 }
 
 export type ProjectImageMinOrderByAggregateInput = {
-  imageId?: Prisma.SortOrder
+  id?: Prisma.SortOrder
   projectId?: Prisma.SortOrder
-  fileName?: Prisma.SortOrder
-  url?: Prisma.SortOrder
-  binaryHash?: Prisma.SortOrder
-  mimeType?: Prisma.SortOrder
-  size?: Prisma.SortOrder
-  takenAt?: Prisma.SortOrder
-  photographer?: Prisma.SortOrder
-  gpsLat?: Prisma.SortOrder
-  gpsLong?: Prisma.SortOrder
-  caption?: Prisma.SortOrder
-  tags?: Prisma.SortOrder
+  mediaId?: Prisma.SortOrder
 }
 
-export type ProjectImageSumOrderByAggregateInput = {
-  size?: Prisma.SortOrder
-  gpsLat?: Prisma.SortOrder
-  gpsLong?: Prisma.SortOrder
+export type ProjectImageCreateNestedManyWithoutMediaInput = {
+  create?: Prisma.XOR<Prisma.ProjectImageCreateWithoutMediaInput, Prisma.ProjectImageUncheckedCreateWithoutMediaInput> | Prisma.ProjectImageCreateWithoutMediaInput[] | Prisma.ProjectImageUncheckedCreateWithoutMediaInput[]
+  connectOrCreate?: Prisma.ProjectImageCreateOrConnectWithoutMediaInput | Prisma.ProjectImageCreateOrConnectWithoutMediaInput[]
+  createMany?: Prisma.ProjectImageCreateManyMediaInputEnvelope
+  connect?: Prisma.ProjectImageWhereUniqueInput | Prisma.ProjectImageWhereUniqueInput[]
+}
+
+export type ProjectImageUncheckedCreateNestedManyWithoutMediaInput = {
+  create?: Prisma.XOR<Prisma.ProjectImageCreateWithoutMediaInput, Prisma.ProjectImageUncheckedCreateWithoutMediaInput> | Prisma.ProjectImageCreateWithoutMediaInput[] | Prisma.ProjectImageUncheckedCreateWithoutMediaInput[]
+  connectOrCreate?: Prisma.ProjectImageCreateOrConnectWithoutMediaInput | Prisma.ProjectImageCreateOrConnectWithoutMediaInput[]
+  createMany?: Prisma.ProjectImageCreateManyMediaInputEnvelope
+  connect?: Prisma.ProjectImageWhereUniqueInput | Prisma.ProjectImageWhereUniqueInput[]
+}
+
+export type ProjectImageUpdateManyWithoutMediaNestedInput = {
+  create?: Prisma.XOR<Prisma.ProjectImageCreateWithoutMediaInput, Prisma.ProjectImageUncheckedCreateWithoutMediaInput> | Prisma.ProjectImageCreateWithoutMediaInput[] | Prisma.ProjectImageUncheckedCreateWithoutMediaInput[]
+  connectOrCreate?: Prisma.ProjectImageCreateOrConnectWithoutMediaInput | Prisma.ProjectImageCreateOrConnectWithoutMediaInput[]
+  upsert?: Prisma.ProjectImageUpsertWithWhereUniqueWithoutMediaInput | Prisma.ProjectImageUpsertWithWhereUniqueWithoutMediaInput[]
+  createMany?: Prisma.ProjectImageCreateManyMediaInputEnvelope
+  set?: Prisma.ProjectImageWhereUniqueInput | Prisma.ProjectImageWhereUniqueInput[]
+  disconnect?: Prisma.ProjectImageWhereUniqueInput | Prisma.ProjectImageWhereUniqueInput[]
+  delete?: Prisma.ProjectImageWhereUniqueInput | Prisma.ProjectImageWhereUniqueInput[]
+  connect?: Prisma.ProjectImageWhereUniqueInput | Prisma.ProjectImageWhereUniqueInput[]
+  update?: Prisma.ProjectImageUpdateWithWhereUniqueWithoutMediaInput | Prisma.ProjectImageUpdateWithWhereUniqueWithoutMediaInput[]
+  updateMany?: Prisma.ProjectImageUpdateManyWithWhereWithoutMediaInput | Prisma.ProjectImageUpdateManyWithWhereWithoutMediaInput[]
+  deleteMany?: Prisma.ProjectImageScalarWhereInput | Prisma.ProjectImageScalarWhereInput[]
+}
+
+export type ProjectImageUncheckedUpdateManyWithoutMediaNestedInput = {
+  create?: Prisma.XOR<Prisma.ProjectImageCreateWithoutMediaInput, Prisma.ProjectImageUncheckedCreateWithoutMediaInput> | Prisma.ProjectImageCreateWithoutMediaInput[] | Prisma.ProjectImageUncheckedCreateWithoutMediaInput[]
+  connectOrCreate?: Prisma.ProjectImageCreateOrConnectWithoutMediaInput | Prisma.ProjectImageCreateOrConnectWithoutMediaInput[]
+  upsert?: Prisma.ProjectImageUpsertWithWhereUniqueWithoutMediaInput | Prisma.ProjectImageUpsertWithWhereUniqueWithoutMediaInput[]
+  createMany?: Prisma.ProjectImageCreateManyMediaInputEnvelope
+  set?: Prisma.ProjectImageWhereUniqueInput | Prisma.ProjectImageWhereUniqueInput[]
+  disconnect?: Prisma.ProjectImageWhereUniqueInput | Prisma.ProjectImageWhereUniqueInput[]
+  delete?: Prisma.ProjectImageWhereUniqueInput | Prisma.ProjectImageWhereUniqueInput[]
+  connect?: Prisma.ProjectImageWhereUniqueInput | Prisma.ProjectImageWhereUniqueInput[]
+  update?: Prisma.ProjectImageUpdateWithWhereUniqueWithoutMediaInput | Prisma.ProjectImageUpdateWithWhereUniqueWithoutMediaInput[]
+  updateMany?: Prisma.ProjectImageUpdateManyWithWhereWithoutMediaInput | Prisma.ProjectImageUpdateManyWithWhereWithoutMediaInput[]
+  deleteMany?: Prisma.ProjectImageScalarWhereInput | Prisma.ProjectImageScalarWhereInput[]
 }
 
 export type ProjectImageCreateNestedManyWithoutProjectInput = {
@@ -591,34 +359,59 @@ export type ProjectImageUncheckedUpdateManyWithoutProjectNestedInput = {
   deleteMany?: Prisma.ProjectImageScalarWhereInput | Prisma.ProjectImageScalarWhereInput[]
 }
 
+export type ProjectImageCreateWithoutMediaInput = {
+  id?: string
+  project: Prisma.ProjectCreateNestedOneWithoutImagesInput
+}
+
+export type ProjectImageUncheckedCreateWithoutMediaInput = {
+  id?: string
+  projectId: string
+}
+
+export type ProjectImageCreateOrConnectWithoutMediaInput = {
+  where: Prisma.ProjectImageWhereUniqueInput
+  create: Prisma.XOR<Prisma.ProjectImageCreateWithoutMediaInput, Prisma.ProjectImageUncheckedCreateWithoutMediaInput>
+}
+
+export type ProjectImageCreateManyMediaInputEnvelope = {
+  data: Prisma.ProjectImageCreateManyMediaInput | Prisma.ProjectImageCreateManyMediaInput[]
+  skipDuplicates?: boolean
+}
+
+export type ProjectImageUpsertWithWhereUniqueWithoutMediaInput = {
+  where: Prisma.ProjectImageWhereUniqueInput
+  update: Prisma.XOR<Prisma.ProjectImageUpdateWithoutMediaInput, Prisma.ProjectImageUncheckedUpdateWithoutMediaInput>
+  create: Prisma.XOR<Prisma.ProjectImageCreateWithoutMediaInput, Prisma.ProjectImageUncheckedCreateWithoutMediaInput>
+}
+
+export type ProjectImageUpdateWithWhereUniqueWithoutMediaInput = {
+  where: Prisma.ProjectImageWhereUniqueInput
+  data: Prisma.XOR<Prisma.ProjectImageUpdateWithoutMediaInput, Prisma.ProjectImageUncheckedUpdateWithoutMediaInput>
+}
+
+export type ProjectImageUpdateManyWithWhereWithoutMediaInput = {
+  where: Prisma.ProjectImageScalarWhereInput
+  data: Prisma.XOR<Prisma.ProjectImageUpdateManyMutationInput, Prisma.ProjectImageUncheckedUpdateManyWithoutMediaInput>
+}
+
+export type ProjectImageScalarWhereInput = {
+  AND?: Prisma.ProjectImageScalarWhereInput | Prisma.ProjectImageScalarWhereInput[]
+  OR?: Prisma.ProjectImageScalarWhereInput[]
+  NOT?: Prisma.ProjectImageScalarWhereInput | Prisma.ProjectImageScalarWhereInput[]
+  id?: Prisma.StringFilter<"ProjectImage"> | string
+  projectId?: Prisma.StringFilter<"ProjectImage"> | string
+  mediaId?: Prisma.StringFilter<"ProjectImage"> | string
+}
+
 export type ProjectImageCreateWithoutProjectInput = {
-  imageId?: string
-  fileName: string
-  url: string
-  binaryHash: string
-  mimeType: string
-  size: number
-  takenAt?: Date | string | null
-  photographer?: string | null
-  gpsLat?: number | null
-  gpsLong?: number | null
-  caption?: string | null
-  tags: string
+  id?: string
+  media: Prisma.MediaCreateNestedOneWithoutProjectImagesInput
 }
 
 export type ProjectImageUncheckedCreateWithoutProjectInput = {
-  imageId?: string
-  fileName: string
-  url: string
-  binaryHash: string
-  mimeType: string
-  size: number
-  takenAt?: Date | string | null
-  photographer?: string | null
-  gpsLat?: number | null
-  gpsLong?: number | null
-  caption?: string | null
-  tags: string
+  id?: string
+  mediaId: string
 }
 
 export type ProjectImageCreateOrConnectWithoutProjectInput = {
@@ -647,184 +440,102 @@ export type ProjectImageUpdateManyWithWhereWithoutProjectInput = {
   data: Prisma.XOR<Prisma.ProjectImageUpdateManyMutationInput, Prisma.ProjectImageUncheckedUpdateManyWithoutProjectInput>
 }
 
-export type ProjectImageScalarWhereInput = {
-  AND?: Prisma.ProjectImageScalarWhereInput | Prisma.ProjectImageScalarWhereInput[]
-  OR?: Prisma.ProjectImageScalarWhereInput[]
-  NOT?: Prisma.ProjectImageScalarWhereInput | Prisma.ProjectImageScalarWhereInput[]
-  imageId?: Prisma.StringFilter<"ProjectImage"> | string
-  projectId?: Prisma.StringFilter<"ProjectImage"> | string
-  fileName?: Prisma.StringFilter<"ProjectImage"> | string
-  url?: Prisma.StringFilter<"ProjectImage"> | string
-  binaryHash?: Prisma.StringFilter<"ProjectImage"> | string
-  mimeType?: Prisma.StringFilter<"ProjectImage"> | string
-  size?: Prisma.IntFilter<"ProjectImage"> | number
-  takenAt?: Prisma.DateTimeNullableFilter<"ProjectImage"> | Date | string | null
-  photographer?: Prisma.StringNullableFilter<"ProjectImage"> | string | null
-  gpsLat?: Prisma.FloatNullableFilter<"ProjectImage"> | number | null
-  gpsLong?: Prisma.FloatNullableFilter<"ProjectImage"> | number | null
-  caption?: Prisma.StringNullableFilter<"ProjectImage"> | string | null
-  tags?: Prisma.StringFilter<"ProjectImage"> | string
+export type ProjectImageCreateManyMediaInput = {
+  id?: string
+  projectId: string
+}
+
+export type ProjectImageUpdateWithoutMediaInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  project?: Prisma.ProjectUpdateOneRequiredWithoutImagesNestedInput
+}
+
+export type ProjectImageUncheckedUpdateWithoutMediaInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  projectId?: Prisma.StringFieldUpdateOperationsInput | string
+}
+
+export type ProjectImageUncheckedUpdateManyWithoutMediaInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  projectId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type ProjectImageCreateManyProjectInput = {
-  imageId?: string
-  fileName: string
-  url: string
-  binaryHash: string
-  mimeType: string
-  size: number
-  takenAt?: Date | string | null
-  photographer?: string | null
-  gpsLat?: number | null
-  gpsLong?: number | null
-  caption?: string | null
-  tags: string
+  id?: string
+  mediaId: string
 }
 
 export type ProjectImageUpdateWithoutProjectInput = {
-  imageId?: Prisma.StringFieldUpdateOperationsInput | string
-  fileName?: Prisma.StringFieldUpdateOperationsInput | string
-  url?: Prisma.StringFieldUpdateOperationsInput | string
-  binaryHash?: Prisma.StringFieldUpdateOperationsInput | string
-  mimeType?: Prisma.StringFieldUpdateOperationsInput | string
-  size?: Prisma.IntFieldUpdateOperationsInput | number
-  takenAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  photographer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  gpsLat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  gpsLong?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  tags?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  media?: Prisma.MediaUpdateOneRequiredWithoutProjectImagesNestedInput
 }
 
 export type ProjectImageUncheckedUpdateWithoutProjectInput = {
-  imageId?: Prisma.StringFieldUpdateOperationsInput | string
-  fileName?: Prisma.StringFieldUpdateOperationsInput | string
-  url?: Prisma.StringFieldUpdateOperationsInput | string
-  binaryHash?: Prisma.StringFieldUpdateOperationsInput | string
-  mimeType?: Prisma.StringFieldUpdateOperationsInput | string
-  size?: Prisma.IntFieldUpdateOperationsInput | number
-  takenAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  photographer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  gpsLat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  gpsLong?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  tags?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  mediaId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type ProjectImageUncheckedUpdateManyWithoutProjectInput = {
-  imageId?: Prisma.StringFieldUpdateOperationsInput | string
-  fileName?: Prisma.StringFieldUpdateOperationsInput | string
-  url?: Prisma.StringFieldUpdateOperationsInput | string
-  binaryHash?: Prisma.StringFieldUpdateOperationsInput | string
-  mimeType?: Prisma.StringFieldUpdateOperationsInput | string
-  size?: Prisma.IntFieldUpdateOperationsInput | number
-  takenAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  photographer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  gpsLat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  gpsLong?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  tags?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  mediaId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 
 
 export type ProjectImageSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  imageId?: boolean
+  id?: boolean
   projectId?: boolean
-  fileName?: boolean
-  url?: boolean
-  binaryHash?: boolean
-  mimeType?: boolean
-  size?: boolean
-  takenAt?: boolean
-  photographer?: boolean
-  gpsLat?: boolean
-  gpsLong?: boolean
-  caption?: boolean
-  tags?: boolean
+  mediaId?: boolean
   project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
+  media?: boolean | Prisma.MediaDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["projectImage"]>
 
 export type ProjectImageSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  imageId?: boolean
+  id?: boolean
   projectId?: boolean
-  fileName?: boolean
-  url?: boolean
-  binaryHash?: boolean
-  mimeType?: boolean
-  size?: boolean
-  takenAt?: boolean
-  photographer?: boolean
-  gpsLat?: boolean
-  gpsLong?: boolean
-  caption?: boolean
-  tags?: boolean
+  mediaId?: boolean
   project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
+  media?: boolean | Prisma.MediaDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["projectImage"]>
 
 export type ProjectImageSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  imageId?: boolean
+  id?: boolean
   projectId?: boolean
-  fileName?: boolean
-  url?: boolean
-  binaryHash?: boolean
-  mimeType?: boolean
-  size?: boolean
-  takenAt?: boolean
-  photographer?: boolean
-  gpsLat?: boolean
-  gpsLong?: boolean
-  caption?: boolean
-  tags?: boolean
+  mediaId?: boolean
   project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
+  media?: boolean | Prisma.MediaDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["projectImage"]>
 
 export type ProjectImageSelectScalar = {
-  imageId?: boolean
+  id?: boolean
   projectId?: boolean
-  fileName?: boolean
-  url?: boolean
-  binaryHash?: boolean
-  mimeType?: boolean
-  size?: boolean
-  takenAt?: boolean
-  photographer?: boolean
-  gpsLat?: boolean
-  gpsLong?: boolean
-  caption?: boolean
-  tags?: boolean
+  mediaId?: boolean
 }
 
-export type ProjectImageOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"imageId" | "projectId" | "fileName" | "url" | "binaryHash" | "mimeType" | "size" | "takenAt" | "photographer" | "gpsLat" | "gpsLong" | "caption" | "tags", ExtArgs["result"]["projectImage"]>
+export type ProjectImageOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "projectId" | "mediaId", ExtArgs["result"]["projectImage"]>
 export type ProjectImageInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
+  media?: boolean | Prisma.MediaDefaultArgs<ExtArgs>
 }
 export type ProjectImageIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
+  media?: boolean | Prisma.MediaDefaultArgs<ExtArgs>
 }
 export type ProjectImageIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
+  media?: boolean | Prisma.MediaDefaultArgs<ExtArgs>
 }
 
 export type $ProjectImagePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "ProjectImage"
   objects: {
     project: Prisma.$ProjectPayload<ExtArgs>
+    media: Prisma.$MediaPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    imageId: string
+    id: string
     projectId: string
-    fileName: string
-    url: string
-    binaryHash: string
-    mimeType: string
-    size: number
-    takenAt: Date | null
-    photographer: string | null
-    gpsLat: number | null
-    gpsLong: number | null
-    caption: string | null
-    tags: string
+    mediaId: string
   }, ExtArgs["result"]["projectImage"]>
   composites: {}
 }
@@ -908,8 +619,8 @@ export interface ProjectImageDelegate<ExtArgs extends runtime.Types.Extensions.I
    * // Get first 10 ProjectImages
    * const projectImages = await prisma.projectImage.findMany({ take: 10 })
    * 
-   * // Only select the `imageId`
-   * const projectImageWithImageIdOnly = await prisma.projectImage.findMany({ select: { imageId: true } })
+   * // Only select the `id`
+   * const projectImageWithIdOnly = await prisma.projectImage.findMany({ select: { id: true } })
    * 
    */
   findMany<T extends ProjectImageFindManyArgs>(args?: Prisma.SelectSubset<T, ProjectImageFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjectImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -953,9 +664,9 @@ export interface ProjectImageDelegate<ExtArgs extends runtime.Types.Extensions.I
    *   ]
    * })
    * 
-   * // Create many ProjectImages and only return the `imageId`
-   * const projectImageWithImageIdOnly = await prisma.projectImage.createManyAndReturn({
-   *   select: { imageId: true },
+   * // Create many ProjectImages and only return the `id`
+   * const projectImageWithIdOnly = await prisma.projectImage.createManyAndReturn({
+   *   select: { id: true },
    *   data: [
    *     // ... provide data here
    *   ]
@@ -1044,9 +755,9 @@ export interface ProjectImageDelegate<ExtArgs extends runtime.Types.Extensions.I
    *   ]
    * })
    * 
-   * // Update zero or more ProjectImages and only return the `imageId`
-   * const projectImageWithImageIdOnly = await prisma.projectImage.updateManyAndReturn({
-   *   select: { imageId: true },
+   * // Update zero or more ProjectImages and only return the `id`
+   * const projectImageWithIdOnly = await prisma.projectImage.updateManyAndReturn({
+   *   select: { id: true },
    *   where: {
    *     // ... provide filter here
    *   },
@@ -1220,6 +931,7 @@ readonly fields: ProjectImageFieldRefs;
 export interface Prisma__ProjectImageClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   project<T extends Prisma.ProjectDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProjectDefaultArgs<ExtArgs>>): Prisma.Prisma__ProjectClient<runtime.Types.Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  media<T extends Prisma.MediaDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MediaDefaultArgs<ExtArgs>>): Prisma.Prisma__MediaClient<runtime.Types.Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1249,19 +961,9 @@ export interface Prisma__ProjectImageClient<T, Null = never, ExtArgs extends run
  * Fields of the ProjectImage model
  */
 export interface ProjectImageFieldRefs {
-  readonly imageId: Prisma.FieldRef<"ProjectImage", 'String'>
+  readonly id: Prisma.FieldRef<"ProjectImage", 'String'>
   readonly projectId: Prisma.FieldRef<"ProjectImage", 'String'>
-  readonly fileName: Prisma.FieldRef<"ProjectImage", 'String'>
-  readonly url: Prisma.FieldRef<"ProjectImage", 'String'>
-  readonly binaryHash: Prisma.FieldRef<"ProjectImage", 'String'>
-  readonly mimeType: Prisma.FieldRef<"ProjectImage", 'String'>
-  readonly size: Prisma.FieldRef<"ProjectImage", 'Int'>
-  readonly takenAt: Prisma.FieldRef<"ProjectImage", 'DateTime'>
-  readonly photographer: Prisma.FieldRef<"ProjectImage", 'String'>
-  readonly gpsLat: Prisma.FieldRef<"ProjectImage", 'Float'>
-  readonly gpsLong: Prisma.FieldRef<"ProjectImage", 'Float'>
-  readonly caption: Prisma.FieldRef<"ProjectImage", 'String'>
-  readonly tags: Prisma.FieldRef<"ProjectImage", 'String'>
+  readonly mediaId: Prisma.FieldRef<"ProjectImage", 'String'>
 }
     
 

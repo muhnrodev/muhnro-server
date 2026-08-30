@@ -408,6 +408,7 @@ export const ModelName = {
   Session: 'Session',
   UserIdentity: 'UserIdentity',
   UserCredential: 'UserCredential',
+  CaseStudy: 'CaseStudy',
   Website: 'Website',
   Webpage: 'Webpage',
   PageComponent: 'PageComponent',
@@ -428,13 +429,17 @@ export const ModelName = {
   TeamMember: 'TeamMember',
   TeamRole: 'TeamRole',
   Client: 'Client',
+  ClientContact: 'ClientContact',
+  ClientAddress: 'ClientAddress',
   Author: 'Author',
   Organization: 'Organization',
   ArticleAuthor: 'ArticleAuthor',
   ReportAuthor: 'ReportAuthor',
+  Stakeholder: 'Stakeholder',
   Project: 'Project',
-  ProjectServiceActivity: 'ProjectServiceActivity',
+  ProjectStakeholder: 'ProjectStakeholder',
   ProjectTeamMember: 'ProjectTeamMember',
+  ProjectTag: 'ProjectTag',
   ProjectImage: 'ProjectImage',
   ProjectNote: 'ProjectNote',
   Report: 'Report',
@@ -456,7 +461,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "userCredentialWebAuthn" | "userMFA" | "oAuthToken" | "emailVerification" | "passwordReset" | "authEvent" | "privacySettings" | "location" | "serviceActivity" | "identityProvider" | "topic" | "tag" | "industry" | "article" | "articleTopic" | "articleServiceActivity" | "articleTag" | "articleReference" | "articleVersion" | "articleComment" | "session" | "userIdentity" | "userCredential" | "website" | "webpage" | "pageComponent" | "component" | "componentField" | "objectSchema" | "objectSchemaField" | "componentFieldValue" | "avatarImage" | "media" | "heroImage" | "coverImage" | "articleImage" | "reportFile" | "notificationPreference" | "promotionalPreference" | "insightsPreference" | "teamMember" | "teamRole" | "client" | "author" | "organization" | "articleAuthor" | "reportAuthor" | "project" | "projectServiceActivity" | "projectTeamMember" | "projectImage" | "projectNote" | "report" | "reportIndustry" | "reportTopic" | "reportServiceActivity"
+    modelProps: "user" | "userCredentialWebAuthn" | "userMFA" | "oAuthToken" | "emailVerification" | "passwordReset" | "authEvent" | "privacySettings" | "location" | "serviceActivity" | "identityProvider" | "topic" | "tag" | "industry" | "article" | "articleTopic" | "articleServiceActivity" | "articleTag" | "articleReference" | "articleVersion" | "articleComment" | "session" | "userIdentity" | "userCredential" | "caseStudy" | "website" | "webpage" | "pageComponent" | "component" | "componentField" | "objectSchema" | "objectSchemaField" | "componentFieldValue" | "avatarImage" | "media" | "heroImage" | "coverImage" | "articleImage" | "reportFile" | "notificationPreference" | "promotionalPreference" | "insightsPreference" | "teamMember" | "teamRole" | "client" | "clientContact" | "clientAddress" | "author" | "organization" | "articleAuthor" | "reportAuthor" | "stakeholder" | "project" | "projectStakeholder" | "projectTeamMember" | "projectTag" | "projectImage" | "projectNote" | "report" | "reportIndustry" | "reportTopic" | "reportServiceActivity"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -2236,6 +2241,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    CaseStudy: {
+      payload: Prisma.$CaseStudyPayload<ExtArgs>
+      fields: Prisma.CaseStudyFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CaseStudyFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CaseStudyPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CaseStudyFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CaseStudyPayload>
+        }
+        findFirst: {
+          args: Prisma.CaseStudyFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CaseStudyPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CaseStudyFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CaseStudyPayload>
+        }
+        findMany: {
+          args: Prisma.CaseStudyFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CaseStudyPayload>[]
+        }
+        create: {
+          args: Prisma.CaseStudyCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CaseStudyPayload>
+        }
+        createMany: {
+          args: Prisma.CaseStudyCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CaseStudyCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CaseStudyPayload>[]
+        }
+        delete: {
+          args: Prisma.CaseStudyDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CaseStudyPayload>
+        }
+        update: {
+          args: Prisma.CaseStudyUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CaseStudyPayload>
+        }
+        deleteMany: {
+          args: Prisma.CaseStudyDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CaseStudyUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CaseStudyUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CaseStudyPayload>[]
+        }
+        upsert: {
+          args: Prisma.CaseStudyUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CaseStudyPayload>
+        }
+        aggregate: {
+          args: Prisma.CaseStudyAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCaseStudy>
+        }
+        groupBy: {
+          args: Prisma.CaseStudyGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CaseStudyGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CaseStudyCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CaseStudyCountAggregateOutputType> | number
+        }
+      }
+    }
     Website: {
       payload: Prisma.$WebsitePayload<ExtArgs>
       fields: Prisma.WebsiteFieldRefs
@@ -3716,6 +3795,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    ClientContact: {
+      payload: Prisma.$ClientContactPayload<ExtArgs>
+      fields: Prisma.ClientContactFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ClientContactFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ClientContactPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ClientContactFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ClientContactPayload>
+        }
+        findFirst: {
+          args: Prisma.ClientContactFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ClientContactPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ClientContactFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ClientContactPayload>
+        }
+        findMany: {
+          args: Prisma.ClientContactFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ClientContactPayload>[]
+        }
+        create: {
+          args: Prisma.ClientContactCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ClientContactPayload>
+        }
+        createMany: {
+          args: Prisma.ClientContactCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ClientContactCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ClientContactPayload>[]
+        }
+        delete: {
+          args: Prisma.ClientContactDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ClientContactPayload>
+        }
+        update: {
+          args: Prisma.ClientContactUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ClientContactPayload>
+        }
+        deleteMany: {
+          args: Prisma.ClientContactDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ClientContactUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ClientContactUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ClientContactPayload>[]
+        }
+        upsert: {
+          args: Prisma.ClientContactUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ClientContactPayload>
+        }
+        aggregate: {
+          args: Prisma.ClientContactAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateClientContact>
+        }
+        groupBy: {
+          args: Prisma.ClientContactGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ClientContactGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ClientContactCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ClientContactCountAggregateOutputType> | number
+        }
+      }
+    }
+    ClientAddress: {
+      payload: Prisma.$ClientAddressPayload<ExtArgs>
+      fields: Prisma.ClientAddressFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ClientAddressFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ClientAddressPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ClientAddressFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ClientAddressPayload>
+        }
+        findFirst: {
+          args: Prisma.ClientAddressFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ClientAddressPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ClientAddressFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ClientAddressPayload>
+        }
+        findMany: {
+          args: Prisma.ClientAddressFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ClientAddressPayload>[]
+        }
+        create: {
+          args: Prisma.ClientAddressCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ClientAddressPayload>
+        }
+        createMany: {
+          args: Prisma.ClientAddressCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ClientAddressCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ClientAddressPayload>[]
+        }
+        delete: {
+          args: Prisma.ClientAddressDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ClientAddressPayload>
+        }
+        update: {
+          args: Prisma.ClientAddressUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ClientAddressPayload>
+        }
+        deleteMany: {
+          args: Prisma.ClientAddressDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ClientAddressUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ClientAddressUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ClientAddressPayload>[]
+        }
+        upsert: {
+          args: Prisma.ClientAddressUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ClientAddressPayload>
+        }
+        aggregate: {
+          args: Prisma.ClientAddressAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateClientAddress>
+        }
+        groupBy: {
+          args: Prisma.ClientAddressGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ClientAddressGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ClientAddressCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ClientAddressCountAggregateOutputType> | number
+        }
+      }
+    }
     Author: {
       payload: Prisma.$AuthorPayload<ExtArgs>
       fields: Prisma.AuthorFieldRefs
@@ -4012,6 +4239,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Stakeholder: {
+      payload: Prisma.$StakeholderPayload<ExtArgs>
+      fields: Prisma.StakeholderFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.StakeholderFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StakeholderPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.StakeholderFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StakeholderPayload>
+        }
+        findFirst: {
+          args: Prisma.StakeholderFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StakeholderPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.StakeholderFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StakeholderPayload>
+        }
+        findMany: {
+          args: Prisma.StakeholderFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StakeholderPayload>[]
+        }
+        create: {
+          args: Prisma.StakeholderCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StakeholderPayload>
+        }
+        createMany: {
+          args: Prisma.StakeholderCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.StakeholderCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StakeholderPayload>[]
+        }
+        delete: {
+          args: Prisma.StakeholderDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StakeholderPayload>
+        }
+        update: {
+          args: Prisma.StakeholderUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StakeholderPayload>
+        }
+        deleteMany: {
+          args: Prisma.StakeholderDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.StakeholderUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.StakeholderUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StakeholderPayload>[]
+        }
+        upsert: {
+          args: Prisma.StakeholderUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StakeholderPayload>
+        }
+        aggregate: {
+          args: Prisma.StakeholderAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateStakeholder>
+        }
+        groupBy: {
+          args: Prisma.StakeholderGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.StakeholderGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.StakeholderCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.StakeholderCountAggregateOutputType> | number
+        }
+      }
+    }
     Project: {
       payload: Prisma.$ProjectPayload<ExtArgs>
       fields: Prisma.ProjectFieldRefs
@@ -4086,77 +4387,77 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    ProjectServiceActivity: {
-      payload: Prisma.$ProjectServiceActivityPayload<ExtArgs>
-      fields: Prisma.ProjectServiceActivityFieldRefs
+    ProjectStakeholder: {
+      payload: Prisma.$ProjectStakeholderPayload<ExtArgs>
+      fields: Prisma.ProjectStakeholderFieldRefs
       operations: {
         findUnique: {
-          args: Prisma.ProjectServiceActivityFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectServiceActivityPayload> | null
+          args: Prisma.ProjectStakeholderFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectStakeholderPayload> | null
         }
         findUniqueOrThrow: {
-          args: Prisma.ProjectServiceActivityFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectServiceActivityPayload>
+          args: Prisma.ProjectStakeholderFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectStakeholderPayload>
         }
         findFirst: {
-          args: Prisma.ProjectServiceActivityFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectServiceActivityPayload> | null
+          args: Prisma.ProjectStakeholderFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectStakeholderPayload> | null
         }
         findFirstOrThrow: {
-          args: Prisma.ProjectServiceActivityFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectServiceActivityPayload>
+          args: Prisma.ProjectStakeholderFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectStakeholderPayload>
         }
         findMany: {
-          args: Prisma.ProjectServiceActivityFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectServiceActivityPayload>[]
+          args: Prisma.ProjectStakeholderFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectStakeholderPayload>[]
         }
         create: {
-          args: Prisma.ProjectServiceActivityCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectServiceActivityPayload>
+          args: Prisma.ProjectStakeholderCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectStakeholderPayload>
         }
         createMany: {
-          args: Prisma.ProjectServiceActivityCreateManyArgs<ExtArgs>
+          args: Prisma.ProjectStakeholderCreateManyArgs<ExtArgs>
           result: BatchPayload
         }
         createManyAndReturn: {
-          args: Prisma.ProjectServiceActivityCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectServiceActivityPayload>[]
+          args: Prisma.ProjectStakeholderCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectStakeholderPayload>[]
         }
         delete: {
-          args: Prisma.ProjectServiceActivityDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectServiceActivityPayload>
+          args: Prisma.ProjectStakeholderDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectStakeholderPayload>
         }
         update: {
-          args: Prisma.ProjectServiceActivityUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectServiceActivityPayload>
+          args: Prisma.ProjectStakeholderUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectStakeholderPayload>
         }
         deleteMany: {
-          args: Prisma.ProjectServiceActivityDeleteManyArgs<ExtArgs>
+          args: Prisma.ProjectStakeholderDeleteManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateMany: {
-          args: Prisma.ProjectServiceActivityUpdateManyArgs<ExtArgs>
+          args: Prisma.ProjectStakeholderUpdateManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateManyAndReturn: {
-          args: Prisma.ProjectServiceActivityUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectServiceActivityPayload>[]
+          args: Prisma.ProjectStakeholderUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectStakeholderPayload>[]
         }
         upsert: {
-          args: Prisma.ProjectServiceActivityUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectServiceActivityPayload>
+          args: Prisma.ProjectStakeholderUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectStakeholderPayload>
         }
         aggregate: {
-          args: Prisma.ProjectServiceActivityAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateProjectServiceActivity>
+          args: Prisma.ProjectStakeholderAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateProjectStakeholder>
         }
         groupBy: {
-          args: Prisma.ProjectServiceActivityGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.ProjectServiceActivityGroupByOutputType>[]
+          args: Prisma.ProjectStakeholderGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ProjectStakeholderGroupByOutputType>[]
         }
         count: {
-          args: Prisma.ProjectServiceActivityCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.ProjectServiceActivityCountAggregateOutputType> | number
+          args: Prisma.ProjectStakeholderCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ProjectStakeholderCountAggregateOutputType> | number
         }
       }
     }
@@ -4231,6 +4532,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.ProjectTeamMemberCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.ProjectTeamMemberCountAggregateOutputType> | number
+        }
+      }
+    }
+    ProjectTag: {
+      payload: Prisma.$ProjectTagPayload<ExtArgs>
+      fields: Prisma.ProjectTagFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ProjectTagFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectTagPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ProjectTagFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectTagPayload>
+        }
+        findFirst: {
+          args: Prisma.ProjectTagFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectTagPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ProjectTagFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectTagPayload>
+        }
+        findMany: {
+          args: Prisma.ProjectTagFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectTagPayload>[]
+        }
+        create: {
+          args: Prisma.ProjectTagCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectTagPayload>
+        }
+        createMany: {
+          args: Prisma.ProjectTagCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ProjectTagCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectTagPayload>[]
+        }
+        delete: {
+          args: Prisma.ProjectTagDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectTagPayload>
+        }
+        update: {
+          args: Prisma.ProjectTagUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectTagPayload>
+        }
+        deleteMany: {
+          args: Prisma.ProjectTagDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ProjectTagUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ProjectTagUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectTagPayload>[]
+        }
+        upsert: {
+          args: Prisma.ProjectTagUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectTagPayload>
+        }
+        aggregate: {
+          args: Prisma.ProjectTagAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateProjectTag>
+        }
+        groupBy: {
+          args: Prisma.ProjectTagGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ProjectTagGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ProjectTagCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ProjectTagCountAggregateOutputType> | number
         }
       }
     }
@@ -5032,6 +5407,30 @@ export const UserCredentialScalarFieldEnum = {
 export type UserCredentialScalarFieldEnum = (typeof UserCredentialScalarFieldEnum)[keyof typeof UserCredentialScalarFieldEnum]
 
 
+export const CaseStudyScalarFieldEnum = {
+  caseStudyId: 'caseStudyId',
+  slug: 'slug',
+  title: 'title',
+  subtitle: 'subtitle',
+  summary: 'summary',
+  content: 'content',
+  status: 'status',
+  scheduledPublish: 'scheduledPublish',
+  publishedAt: 'publishedAt',
+  unpublishedAt: 'unpublishedAt',
+  readingTime: 'readingTime',
+  wordCount: 'wordCount',
+  featuredImageId: 'featuredImageId',
+  projectId: 'projectId',
+  industryId: 'industryId',
+  createdById: 'createdById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CaseStudyScalarFieldEnum = (typeof CaseStudyScalarFieldEnum)[keyof typeof CaseStudyScalarFieldEnum]
+
+
 export const WebsiteScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -5185,6 +5584,7 @@ export const MediaScalarFieldEnum = {
   extension: 'extension',
   size: 'size',
   type: 'type',
+  url: 'url',
   width: 'width',
   height: 'height',
   duration: 'duration',
@@ -5300,7 +5700,7 @@ export type InsightsPreferenceScalarFieldEnum = (typeof InsightsPreferenceScalar
 
 
 export const TeamMemberScalarFieldEnum = {
-  memberId: 'memberId',
+  id: 'id',
   fullName: 'fullName',
   email: 'email',
   phone: 'phone',
@@ -5314,10 +5714,11 @@ export type TeamMemberScalarFieldEnum = (typeof TeamMemberScalarFieldEnum)[keyof
 
 
 export const TeamRoleScalarFieldEnum = {
-  roleId: 'roleId',
+  id: 'id',
   roleName: 'roleName',
   description: 'description',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type TeamRoleScalarFieldEnum = (typeof TeamRoleScalarFieldEnum)[keyof typeof TeamRoleScalarFieldEnum]
@@ -5326,16 +5727,49 @@ export type TeamRoleScalarFieldEnum = (typeof TeamRoleScalarFieldEnum)[keyof typ
 export const ClientScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  contactName: 'contactName',
-  contactEmail: 'contactEmail',
-  contactPhone: 'contactPhone',
-  billingAddress: 'billingAddress',
+  description: 'description',
+  industryId: 'industryId',
+  addressId: 'addressId',
   notes: 'notes',
+  isDeleted: 'isDeleted',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt',
+  logoId: 'logoId'
+} as const
+
+export type ClientScalarFieldEnum = (typeof ClientScalarFieldEnum)[keyof typeof ClientScalarFieldEnum]
+
+
+export const ClientContactScalarFieldEnum = {
+  id: 'id',
+  clientId: 'clientId',
+  fullName: 'fullName',
+  email: 'email',
+  phone: 'phone',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  isPrimary: 'isPrimary',
+  isDeleted: 'isDeleted'
+} as const
+
+export type ClientContactScalarFieldEnum = (typeof ClientContactScalarFieldEnum)[keyof typeof ClientContactScalarFieldEnum]
+
+
+export const ClientAddressScalarFieldEnum = {
+  id: 'id',
+  clientId: 'clientId',
+  addressLine1: 'addressLine1',
+  addressLine2: 'addressLine2',
+  city: 'city',
+  state: 'state',
+  postalCode: 'postalCode',
+  country: 'country',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 
-export type ClientScalarFieldEnum = (typeof ClientScalarFieldEnum)[keyof typeof ClientScalarFieldEnum]
+export type ClientAddressScalarFieldEnum = (typeof ClientAddressScalarFieldEnum)[keyof typeof ClientAddressScalarFieldEnum]
 
 
 export const AuthorScalarFieldEnum = {
@@ -5383,20 +5817,36 @@ export const ReportAuthorScalarFieldEnum = {
 export type ReportAuthorScalarFieldEnum = (typeof ReportAuthorScalarFieldEnum)[keyof typeof ReportAuthorScalarFieldEnum]
 
 
+export const StakeholderScalarFieldEnum = {
+  stakeholderId: 'stakeholderId',
+  name: 'name',
+  organization: 'organization',
+  email: 'email',
+  phone: 'phone',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type StakeholderScalarFieldEnum = (typeof StakeholderScalarFieldEnum)[keyof typeof StakeholderScalarFieldEnum]
+
+
 export const ProjectScalarFieldEnum = {
   id: 'id',
   code: 'code',
+  slug: 'slug',
   title: 'title',
+  subtitle: 'subtitle',
   description: 'description',
   clientId: 'clientId',
   industryId: 'industryId',
-  locationId: 'locationId',
-  projectLeadId: 'projectLeadId',
   startDate: 'startDate',
   endDate: 'endDate',
+  story: 'story',
+  locationId: 'locationId',
+  projectLeadId: 'projectLeadId',
+  budget: 'budget',
   status: 'status',
   serviceSummary: 'serviceSummary',
-  budget: 'budget',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -5404,19 +5854,19 @@ export const ProjectScalarFieldEnum = {
 export type ProjectScalarFieldEnum = (typeof ProjectScalarFieldEnum)[keyof typeof ProjectScalarFieldEnum]
 
 
-export const ProjectServiceActivityScalarFieldEnum = {
-  projectActivityId: 'projectActivityId',
+export const ProjectStakeholderScalarFieldEnum = {
+  id: 'id',
   projectId: 'projectId',
-  activityId: 'activityId',
-  notes: 'notes',
-  createdAt: 'createdAt'
+  stakeholderId: 'stakeholderId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
-export type ProjectServiceActivityScalarFieldEnum = (typeof ProjectServiceActivityScalarFieldEnum)[keyof typeof ProjectServiceActivityScalarFieldEnum]
+export type ProjectStakeholderScalarFieldEnum = (typeof ProjectStakeholderScalarFieldEnum)[keyof typeof ProjectStakeholderScalarFieldEnum]
 
 
 export const ProjectTeamMemberScalarFieldEnum = {
-  projectMemberId: 'projectMemberId',
+  id: 'id',
   projectId: 'projectId',
   memberId: 'memberId',
   roleId: 'roleId',
@@ -5430,27 +5880,26 @@ export const ProjectTeamMemberScalarFieldEnum = {
 export type ProjectTeamMemberScalarFieldEnum = (typeof ProjectTeamMemberScalarFieldEnum)[keyof typeof ProjectTeamMemberScalarFieldEnum]
 
 
-export const ProjectImageScalarFieldEnum = {
-  imageId: 'imageId',
+export const ProjectTagScalarFieldEnum = {
+  id: 'id',
   projectId: 'projectId',
-  fileName: 'fileName',
-  url: 'url',
-  binaryHash: 'binaryHash',
-  mimeType: 'mimeType',
-  size: 'size',
-  takenAt: 'takenAt',
-  photographer: 'photographer',
-  gpsLat: 'gpsLat',
-  gpsLong: 'gpsLong',
-  caption: 'caption',
-  tags: 'tags'
+  tagId: 'tagId'
+} as const
+
+export type ProjectTagScalarFieldEnum = (typeof ProjectTagScalarFieldEnum)[keyof typeof ProjectTagScalarFieldEnum]
+
+
+export const ProjectImageScalarFieldEnum = {
+  id: 'id',
+  projectId: 'projectId',
+  mediaId: 'mediaId'
 } as const
 
 export type ProjectImageScalarFieldEnum = (typeof ProjectImageScalarFieldEnum)[keyof typeof ProjectImageScalarFieldEnum]
 
 
 export const ProjectNoteScalarFieldEnum = {
-  noteId: 'noteId',
+  id: 'id',
   projectId: 'projectId',
   authorId: 'authorId',
   noteType: 'noteType',
@@ -5920,6 +6369,7 @@ export type GlobalOmitConfig = {
   session?: Prisma.SessionOmit
   userIdentity?: Prisma.UserIdentityOmit
   userCredential?: Prisma.UserCredentialOmit
+  caseStudy?: Prisma.CaseStudyOmit
   website?: Prisma.WebsiteOmit
   webpage?: Prisma.WebpageOmit
   pageComponent?: Prisma.PageComponentOmit
@@ -5940,13 +6390,17 @@ export type GlobalOmitConfig = {
   teamMember?: Prisma.TeamMemberOmit
   teamRole?: Prisma.TeamRoleOmit
   client?: Prisma.ClientOmit
+  clientContact?: Prisma.ClientContactOmit
+  clientAddress?: Prisma.ClientAddressOmit
   author?: Prisma.AuthorOmit
   organization?: Prisma.OrganizationOmit
   articleAuthor?: Prisma.ArticleAuthorOmit
   reportAuthor?: Prisma.ReportAuthorOmit
+  stakeholder?: Prisma.StakeholderOmit
   project?: Prisma.ProjectOmit
-  projectServiceActivity?: Prisma.ProjectServiceActivityOmit
+  projectStakeholder?: Prisma.ProjectStakeholderOmit
   projectTeamMember?: Prisma.ProjectTeamMemberOmit
+  projectTag?: Prisma.ProjectTagOmit
   projectImage?: Prisma.ProjectImageOmit
   projectNote?: Prisma.ProjectNoteOmit
   report?: Prisma.ReportOmit

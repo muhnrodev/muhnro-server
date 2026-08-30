@@ -22,6 +22,7 @@ model Media {
     extension       String
     size            Int
     type            MediaType
+    url             String
     width           Int?
     height          Int?
     duration        Int?
@@ -35,6 +36,10 @@ model Media {
     createBy        User     @relation(fields: [createById], references: [id])
 
     articles        Article[]
+    caseStudies     CaseStudy[]
+
+    projectImages   ProjectImage[]
+    logos           Client[]
 }
 
 

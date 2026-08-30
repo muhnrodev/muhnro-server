@@ -1,0 +1,26 @@
+model CaseStudy {
+    caseStudyId         String        @id @default(dbgenerated("gen_random_uuid()"))
+    slug                String        @unique
+    title               String
+    subtitle            String?
+    summary             String?       @db.Text
+    content             Json
+    status              ContentStatus @default(DRAFT)
+    scheduledPublish    DateTime?
+    publishedAt         DateTime?
+    unpublishedAt       DateTime?
+    readingTime         Int
+    wordCount           Int
+    featuredImageId     String
+    projectId           String?
+    industryId          String?
+
+    createdById         String
+    createdAt           DateTime    @default(now())
+    updatedAt           DateTime    @updatedAt
+
+    featuredImage       Media       @relation(fields: [featuredImageId], references: [id])
+    createdBy           User        @relation(fields: [createdById], references: [id])
+    industry            Industry?   @relation(fields: [industryId], references: [industryId])
+
+}

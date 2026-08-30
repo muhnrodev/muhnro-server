@@ -75,6 +75,7 @@ export const ModelName = {
   Session: 'Session',
   UserIdentity: 'UserIdentity',
   UserCredential: 'UserCredential',
+  CaseStudy: 'CaseStudy',
   Website: 'Website',
   Webpage: 'Webpage',
   PageComponent: 'PageComponent',
@@ -95,13 +96,17 @@ export const ModelName = {
   TeamMember: 'TeamMember',
   TeamRole: 'TeamRole',
   Client: 'Client',
+  ClientContact: 'ClientContact',
+  ClientAddress: 'ClientAddress',
   Author: 'Author',
   Organization: 'Organization',
   ArticleAuthor: 'ArticleAuthor',
   ReportAuthor: 'ReportAuthor',
+  Stakeholder: 'Stakeholder',
   Project: 'Project',
-  ProjectServiceActivity: 'ProjectServiceActivity',
+  ProjectStakeholder: 'ProjectStakeholder',
   ProjectTeamMember: 'ProjectTeamMember',
+  ProjectTag: 'ProjectTag',
   ProjectImage: 'ProjectImage',
   ProjectNote: 'ProjectNote',
   Report: 'Report',
@@ -441,6 +446,30 @@ export const UserCredentialScalarFieldEnum = {
 export type UserCredentialScalarFieldEnum = (typeof UserCredentialScalarFieldEnum)[keyof typeof UserCredentialScalarFieldEnum]
 
 
+export const CaseStudyScalarFieldEnum = {
+  caseStudyId: 'caseStudyId',
+  slug: 'slug',
+  title: 'title',
+  subtitle: 'subtitle',
+  summary: 'summary',
+  content: 'content',
+  status: 'status',
+  scheduledPublish: 'scheduledPublish',
+  publishedAt: 'publishedAt',
+  unpublishedAt: 'unpublishedAt',
+  readingTime: 'readingTime',
+  wordCount: 'wordCount',
+  featuredImageId: 'featuredImageId',
+  projectId: 'projectId',
+  industryId: 'industryId',
+  createdById: 'createdById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CaseStudyScalarFieldEnum = (typeof CaseStudyScalarFieldEnum)[keyof typeof CaseStudyScalarFieldEnum]
+
+
 export const WebsiteScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -594,6 +623,7 @@ export const MediaScalarFieldEnum = {
   extension: 'extension',
   size: 'size',
   type: 'type',
+  url: 'url',
   width: 'width',
   height: 'height',
   duration: 'duration',
@@ -709,7 +739,7 @@ export type InsightsPreferenceScalarFieldEnum = (typeof InsightsPreferenceScalar
 
 
 export const TeamMemberScalarFieldEnum = {
-  memberId: 'memberId',
+  id: 'id',
   fullName: 'fullName',
   email: 'email',
   phone: 'phone',
@@ -723,10 +753,11 @@ export type TeamMemberScalarFieldEnum = (typeof TeamMemberScalarFieldEnum)[keyof
 
 
 export const TeamRoleScalarFieldEnum = {
-  roleId: 'roleId',
+  id: 'id',
   roleName: 'roleName',
   description: 'description',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type TeamRoleScalarFieldEnum = (typeof TeamRoleScalarFieldEnum)[keyof typeof TeamRoleScalarFieldEnum]
@@ -735,16 +766,49 @@ export type TeamRoleScalarFieldEnum = (typeof TeamRoleScalarFieldEnum)[keyof typ
 export const ClientScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  contactName: 'contactName',
-  contactEmail: 'contactEmail',
-  contactPhone: 'contactPhone',
-  billingAddress: 'billingAddress',
+  description: 'description',
+  industryId: 'industryId',
+  addressId: 'addressId',
   notes: 'notes',
+  isDeleted: 'isDeleted',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt',
+  logoId: 'logoId'
+} as const
+
+export type ClientScalarFieldEnum = (typeof ClientScalarFieldEnum)[keyof typeof ClientScalarFieldEnum]
+
+
+export const ClientContactScalarFieldEnum = {
+  id: 'id',
+  clientId: 'clientId',
+  fullName: 'fullName',
+  email: 'email',
+  phone: 'phone',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  isPrimary: 'isPrimary',
+  isDeleted: 'isDeleted'
+} as const
+
+export type ClientContactScalarFieldEnum = (typeof ClientContactScalarFieldEnum)[keyof typeof ClientContactScalarFieldEnum]
+
+
+export const ClientAddressScalarFieldEnum = {
+  id: 'id',
+  clientId: 'clientId',
+  addressLine1: 'addressLine1',
+  addressLine2: 'addressLine2',
+  city: 'city',
+  state: 'state',
+  postalCode: 'postalCode',
+  country: 'country',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 
-export type ClientScalarFieldEnum = (typeof ClientScalarFieldEnum)[keyof typeof ClientScalarFieldEnum]
+export type ClientAddressScalarFieldEnum = (typeof ClientAddressScalarFieldEnum)[keyof typeof ClientAddressScalarFieldEnum]
 
 
 export const AuthorScalarFieldEnum = {
@@ -792,20 +856,36 @@ export const ReportAuthorScalarFieldEnum = {
 export type ReportAuthorScalarFieldEnum = (typeof ReportAuthorScalarFieldEnum)[keyof typeof ReportAuthorScalarFieldEnum]
 
 
+export const StakeholderScalarFieldEnum = {
+  stakeholderId: 'stakeholderId',
+  name: 'name',
+  organization: 'organization',
+  email: 'email',
+  phone: 'phone',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type StakeholderScalarFieldEnum = (typeof StakeholderScalarFieldEnum)[keyof typeof StakeholderScalarFieldEnum]
+
+
 export const ProjectScalarFieldEnum = {
   id: 'id',
   code: 'code',
+  slug: 'slug',
   title: 'title',
+  subtitle: 'subtitle',
   description: 'description',
   clientId: 'clientId',
   industryId: 'industryId',
-  locationId: 'locationId',
-  projectLeadId: 'projectLeadId',
   startDate: 'startDate',
   endDate: 'endDate',
+  story: 'story',
+  locationId: 'locationId',
+  projectLeadId: 'projectLeadId',
+  budget: 'budget',
   status: 'status',
   serviceSummary: 'serviceSummary',
-  budget: 'budget',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -813,19 +893,19 @@ export const ProjectScalarFieldEnum = {
 export type ProjectScalarFieldEnum = (typeof ProjectScalarFieldEnum)[keyof typeof ProjectScalarFieldEnum]
 
 
-export const ProjectServiceActivityScalarFieldEnum = {
-  projectActivityId: 'projectActivityId',
+export const ProjectStakeholderScalarFieldEnum = {
+  id: 'id',
   projectId: 'projectId',
-  activityId: 'activityId',
-  notes: 'notes',
-  createdAt: 'createdAt'
+  stakeholderId: 'stakeholderId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
-export type ProjectServiceActivityScalarFieldEnum = (typeof ProjectServiceActivityScalarFieldEnum)[keyof typeof ProjectServiceActivityScalarFieldEnum]
+export type ProjectStakeholderScalarFieldEnum = (typeof ProjectStakeholderScalarFieldEnum)[keyof typeof ProjectStakeholderScalarFieldEnum]
 
 
 export const ProjectTeamMemberScalarFieldEnum = {
-  projectMemberId: 'projectMemberId',
+  id: 'id',
   projectId: 'projectId',
   memberId: 'memberId',
   roleId: 'roleId',
@@ -839,27 +919,26 @@ export const ProjectTeamMemberScalarFieldEnum = {
 export type ProjectTeamMemberScalarFieldEnum = (typeof ProjectTeamMemberScalarFieldEnum)[keyof typeof ProjectTeamMemberScalarFieldEnum]
 
 
-export const ProjectImageScalarFieldEnum = {
-  imageId: 'imageId',
+export const ProjectTagScalarFieldEnum = {
+  id: 'id',
   projectId: 'projectId',
-  fileName: 'fileName',
-  url: 'url',
-  binaryHash: 'binaryHash',
-  mimeType: 'mimeType',
-  size: 'size',
-  takenAt: 'takenAt',
-  photographer: 'photographer',
-  gpsLat: 'gpsLat',
-  gpsLong: 'gpsLong',
-  caption: 'caption',
-  tags: 'tags'
+  tagId: 'tagId'
+} as const
+
+export type ProjectTagScalarFieldEnum = (typeof ProjectTagScalarFieldEnum)[keyof typeof ProjectTagScalarFieldEnum]
+
+
+export const ProjectImageScalarFieldEnum = {
+  id: 'id',
+  projectId: 'projectId',
+  mediaId: 'mediaId'
 } as const
 
 export type ProjectImageScalarFieldEnum = (typeof ProjectImageScalarFieldEnum)[keyof typeof ProjectImageScalarFieldEnum]
 
 
 export const ProjectNoteScalarFieldEnum = {
-  noteId: 'noteId',
+  id: 'id',
   projectId: 'projectId',
   authorId: 'authorId',
   noteType: 'noteType',

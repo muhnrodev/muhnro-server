@@ -256,6 +256,7 @@ export type UserWhereInput = {
   sessions?: Prisma.SessionListRelationFilter
   articles?: Prisma.ArticleListRelationFilter
   media?: Prisma.MediaListRelationFilter
+  caseStudies?: Prisma.CaseStudyListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -282,6 +283,7 @@ export type UserOrderByWithRelationInput = {
   sessions?: Prisma.SessionOrderByRelationAggregateInput
   articles?: Prisma.ArticleOrderByRelationAggregateInput
   media?: Prisma.MediaOrderByRelationAggregateInput
+  caseStudies?: Prisma.CaseStudyOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -311,6 +313,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   sessions?: Prisma.SessionListRelationFilter
   articles?: Prisma.ArticleListRelationFilter
   media?: Prisma.MediaListRelationFilter
+  caseStudies?: Prisma.CaseStudyListRelationFilter
 }, "id" | "email" | "username">
 
 export type UserOrderByWithAggregationInput = {
@@ -375,6 +378,7 @@ export type UserCreateInput = {
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   articles?: Prisma.ArticleCreateNestedManyWithoutCreatedByInput
   media?: Prisma.MediaCreateNestedManyWithoutCreateByInput
+  caseStudies?: Prisma.CaseStudyCreateNestedManyWithoutCreatedByInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -401,6 +405,7 @@ export type UserUncheckedCreateInput = {
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   articles?: Prisma.ArticleUncheckedCreateNestedManyWithoutCreatedByInput
   media?: Prisma.MediaUncheckedCreateNestedManyWithoutCreateByInput
+  caseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutCreatedByInput
 }
 
 export type UserUpdateInput = {
@@ -427,6 +432,7 @@ export type UserUpdateInput = {
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   articles?: Prisma.ArticleUpdateManyWithoutCreatedByNestedInput
   media?: Prisma.MediaUpdateManyWithoutCreateByNestedInput
+  caseStudies?: Prisma.CaseStudyUpdateManyWithoutCreatedByNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -453,6 +459,7 @@ export type UserUncheckedUpdateInput = {
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   articles?: Prisma.ArticleUncheckedUpdateManyWithoutCreatedByNestedInput
   media?: Prisma.MediaUncheckedUpdateManyWithoutCreateByNestedInput
+  caseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutCreatedByNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -660,6 +667,20 @@ export type UserUpdateOneRequiredWithoutCredentialNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCredentialInput, Prisma.UserUpdateWithoutCredentialInput>, Prisma.UserUncheckedUpdateWithoutCredentialInput>
 }
 
+export type UserCreateNestedOneWithoutCaseStudiesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCaseStudiesInput, Prisma.UserUncheckedCreateWithoutCaseStudiesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCaseStudiesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutCaseStudiesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCaseStudiesInput, Prisma.UserUncheckedCreateWithoutCaseStudiesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCaseStudiesInput
+  upsert?: Prisma.UserUpsertWithoutCaseStudiesInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCaseStudiesInput, Prisma.UserUpdateWithoutCaseStudiesInput>, Prisma.UserUncheckedUpdateWithoutCaseStudiesInput>
+}
+
 export type UserCreateNestedOneWithoutMediaInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutMediaInput, Prisma.UserUncheckedCreateWithoutMediaInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutMediaInput
@@ -739,6 +760,7 @@ export type UserCreateWithoutUserMFAsInput = {
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   articles?: Prisma.ArticleCreateNestedManyWithoutCreatedByInput
   media?: Prisma.MediaCreateNestedManyWithoutCreateByInput
+  caseStudies?: Prisma.CaseStudyCreateNestedManyWithoutCreatedByInput
 }
 
 export type UserUncheckedCreateWithoutUserMFAsInput = {
@@ -764,6 +786,7 @@ export type UserUncheckedCreateWithoutUserMFAsInput = {
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   articles?: Prisma.ArticleUncheckedCreateNestedManyWithoutCreatedByInput
   media?: Prisma.MediaUncheckedCreateNestedManyWithoutCreateByInput
+  caseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutCreatedByInput
 }
 
 export type UserCreateOrConnectWithoutUserMFAsInput = {
@@ -805,6 +828,7 @@ export type UserUpdateWithoutUserMFAsInput = {
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   articles?: Prisma.ArticleUpdateManyWithoutCreatedByNestedInput
   media?: Prisma.MediaUpdateManyWithoutCreateByNestedInput
+  caseStudies?: Prisma.CaseStudyUpdateManyWithoutCreatedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUserMFAsInput = {
@@ -830,6 +854,7 @@ export type UserUncheckedUpdateWithoutUserMFAsInput = {
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   articles?: Prisma.ArticleUncheckedUpdateManyWithoutCreatedByNestedInput
   media?: Prisma.MediaUncheckedUpdateManyWithoutCreateByNestedInput
+  caseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutCreatedByNestedInput
 }
 
 export type UserCreateWithoutPrivacyInput = {
@@ -855,6 +880,7 @@ export type UserCreateWithoutPrivacyInput = {
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   articles?: Prisma.ArticleCreateNestedManyWithoutCreatedByInput
   media?: Prisma.MediaCreateNestedManyWithoutCreateByInput
+  caseStudies?: Prisma.CaseStudyCreateNestedManyWithoutCreatedByInput
 }
 
 export type UserUncheckedCreateWithoutPrivacyInput = {
@@ -880,6 +906,7 @@ export type UserUncheckedCreateWithoutPrivacyInput = {
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   articles?: Prisma.ArticleUncheckedCreateNestedManyWithoutCreatedByInput
   media?: Prisma.MediaUncheckedCreateNestedManyWithoutCreateByInput
+  caseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutCreatedByInput
 }
 
 export type UserCreateOrConnectWithoutPrivacyInput = {
@@ -921,6 +948,7 @@ export type UserUpdateWithoutPrivacyInput = {
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   articles?: Prisma.ArticleUpdateManyWithoutCreatedByNestedInput
   media?: Prisma.MediaUpdateManyWithoutCreateByNestedInput
+  caseStudies?: Prisma.CaseStudyUpdateManyWithoutCreatedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPrivacyInput = {
@@ -946,6 +974,7 @@ export type UserUncheckedUpdateWithoutPrivacyInput = {
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   articles?: Prisma.ArticleUncheckedUpdateManyWithoutCreatedByNestedInput
   media?: Prisma.MediaUncheckedUpdateManyWithoutCreateByNestedInput
+  caseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutCreatedByNestedInput
 }
 
 export type UserCreateWithoutArticlesInput = {
@@ -971,6 +1000,7 @@ export type UserCreateWithoutArticlesInput = {
   insightsNotification?: Prisma.InsightsPreferenceCreateNestedOneWithoutUserInput
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   media?: Prisma.MediaCreateNestedManyWithoutCreateByInput
+  caseStudies?: Prisma.CaseStudyCreateNestedManyWithoutCreatedByInput
 }
 
 export type UserUncheckedCreateWithoutArticlesInput = {
@@ -996,6 +1026,7 @@ export type UserUncheckedCreateWithoutArticlesInput = {
   insightsNotification?: Prisma.InsightsPreferenceUncheckedCreateNestedOneWithoutUserInput
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   media?: Prisma.MediaUncheckedCreateNestedManyWithoutCreateByInput
+  caseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutCreatedByInput
 }
 
 export type UserCreateOrConnectWithoutArticlesInput = {
@@ -1037,6 +1068,7 @@ export type UserUpdateWithoutArticlesInput = {
   insightsNotification?: Prisma.InsightsPreferenceUpdateOneWithoutUserNestedInput
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   media?: Prisma.MediaUpdateManyWithoutCreateByNestedInput
+  caseStudies?: Prisma.CaseStudyUpdateManyWithoutCreatedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutArticlesInput = {
@@ -1062,6 +1094,7 @@ export type UserUncheckedUpdateWithoutArticlesInput = {
   insightsNotification?: Prisma.InsightsPreferenceUncheckedUpdateOneWithoutUserNestedInput
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   media?: Prisma.MediaUncheckedUpdateManyWithoutCreateByNestedInput
+  caseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutCreatedByNestedInput
 }
 
 export type UserCreateWithoutSessionsInput = {
@@ -1087,6 +1120,7 @@ export type UserCreateWithoutSessionsInput = {
   insightsNotification?: Prisma.InsightsPreferenceCreateNestedOneWithoutUserInput
   articles?: Prisma.ArticleCreateNestedManyWithoutCreatedByInput
   media?: Prisma.MediaCreateNestedManyWithoutCreateByInput
+  caseStudies?: Prisma.CaseStudyCreateNestedManyWithoutCreatedByInput
 }
 
 export type UserUncheckedCreateWithoutSessionsInput = {
@@ -1112,6 +1146,7 @@ export type UserUncheckedCreateWithoutSessionsInput = {
   insightsNotification?: Prisma.InsightsPreferenceUncheckedCreateNestedOneWithoutUserInput
   articles?: Prisma.ArticleUncheckedCreateNestedManyWithoutCreatedByInput
   media?: Prisma.MediaUncheckedCreateNestedManyWithoutCreateByInput
+  caseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutCreatedByInput
 }
 
 export type UserCreateOrConnectWithoutSessionsInput = {
@@ -1153,6 +1188,7 @@ export type UserUpdateWithoutSessionsInput = {
   insightsNotification?: Prisma.InsightsPreferenceUpdateOneWithoutUserNestedInput
   articles?: Prisma.ArticleUpdateManyWithoutCreatedByNestedInput
   media?: Prisma.MediaUpdateManyWithoutCreateByNestedInput
+  caseStudies?: Prisma.CaseStudyUpdateManyWithoutCreatedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -1178,6 +1214,7 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   insightsNotification?: Prisma.InsightsPreferenceUncheckedUpdateOneWithoutUserNestedInput
   articles?: Prisma.ArticleUncheckedUpdateManyWithoutCreatedByNestedInput
   media?: Prisma.MediaUncheckedUpdateManyWithoutCreateByNestedInput
+  caseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutCreatedByNestedInput
 }
 
 export type UserCreateWithoutIdentitiesInput = {
@@ -1203,6 +1240,7 @@ export type UserCreateWithoutIdentitiesInput = {
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   articles?: Prisma.ArticleCreateNestedManyWithoutCreatedByInput
   media?: Prisma.MediaCreateNestedManyWithoutCreateByInput
+  caseStudies?: Prisma.CaseStudyCreateNestedManyWithoutCreatedByInput
 }
 
 export type UserUncheckedCreateWithoutIdentitiesInput = {
@@ -1228,6 +1266,7 @@ export type UserUncheckedCreateWithoutIdentitiesInput = {
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   articles?: Prisma.ArticleUncheckedCreateNestedManyWithoutCreatedByInput
   media?: Prisma.MediaUncheckedCreateNestedManyWithoutCreateByInput
+  caseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutCreatedByInput
 }
 
 export type UserCreateOrConnectWithoutIdentitiesInput = {
@@ -1269,6 +1308,7 @@ export type UserUpdateWithoutIdentitiesInput = {
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   articles?: Prisma.ArticleUpdateManyWithoutCreatedByNestedInput
   media?: Prisma.MediaUpdateManyWithoutCreateByNestedInput
+  caseStudies?: Prisma.CaseStudyUpdateManyWithoutCreatedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutIdentitiesInput = {
@@ -1294,6 +1334,7 @@ export type UserUncheckedUpdateWithoutIdentitiesInput = {
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   articles?: Prisma.ArticleUncheckedUpdateManyWithoutCreatedByNestedInput
   media?: Prisma.MediaUncheckedUpdateManyWithoutCreateByNestedInput
+  caseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutCreatedByNestedInput
 }
 
 export type UserCreateWithoutCredentialInput = {
@@ -1319,6 +1360,7 @@ export type UserCreateWithoutCredentialInput = {
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   articles?: Prisma.ArticleCreateNestedManyWithoutCreatedByInput
   media?: Prisma.MediaCreateNestedManyWithoutCreateByInput
+  caseStudies?: Prisma.CaseStudyCreateNestedManyWithoutCreatedByInput
 }
 
 export type UserUncheckedCreateWithoutCredentialInput = {
@@ -1344,6 +1386,7 @@ export type UserUncheckedCreateWithoutCredentialInput = {
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   articles?: Prisma.ArticleUncheckedCreateNestedManyWithoutCreatedByInput
   media?: Prisma.MediaUncheckedCreateNestedManyWithoutCreateByInput
+  caseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutCreatedByInput
 }
 
 export type UserCreateOrConnectWithoutCredentialInput = {
@@ -1385,6 +1428,7 @@ export type UserUpdateWithoutCredentialInput = {
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   articles?: Prisma.ArticleUpdateManyWithoutCreatedByNestedInput
   media?: Prisma.MediaUpdateManyWithoutCreateByNestedInput
+  caseStudies?: Prisma.CaseStudyUpdateManyWithoutCreatedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCredentialInput = {
@@ -1402,6 +1446,127 @@ export type UserUncheckedUpdateWithoutCredentialInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   identities?: Prisma.UserIdentityUncheckedUpdateManyWithoutUserNestedInput
+  userMFAs?: Prisma.UserMFAUncheckedUpdateManyWithoutUserNestedInput
+  privacy?: Prisma.PrivacySettingsUncheckedUpdateOneWithoutUserNestedInput
+  notification?: Prisma.NotificationPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  promotionalNotification?: Prisma.PromotionalPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  insightsNotification?: Prisma.InsightsPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  articles?: Prisma.ArticleUncheckedUpdateManyWithoutCreatedByNestedInput
+  media?: Prisma.MediaUncheckedUpdateManyWithoutCreateByNestedInput
+  caseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutCreatedByNestedInput
+}
+
+export type UserCreateWithoutCaseStudiesInput = {
+  id?: string
+  email: string
+  username: string
+  displayName: string
+  isActive?: boolean
+  isLocked?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  lastLoginAt?: Date | string | null
+  locale?: string
+  timezone?: string
+  deletedAt?: Date | string | null
+  role?: $Enums.UserRole
+  identities?: Prisma.UserIdentityCreateNestedManyWithoutUserInput
+  credential?: Prisma.UserCredentialCreateNestedOneWithoutUserInput
+  userMFAs?: Prisma.UserMFACreateNestedManyWithoutUserInput
+  privacy?: Prisma.PrivacySettingsCreateNestedOneWithoutUserInput
+  notification?: Prisma.NotificationPreferenceCreateNestedOneWithoutUserInput
+  promotionalNotification?: Prisma.PromotionalPreferenceCreateNestedOneWithoutUserInput
+  insightsNotification?: Prisma.InsightsPreferenceCreateNestedOneWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  articles?: Prisma.ArticleCreateNestedManyWithoutCreatedByInput
+  media?: Prisma.MediaCreateNestedManyWithoutCreateByInput
+}
+
+export type UserUncheckedCreateWithoutCaseStudiesInput = {
+  id?: string
+  email: string
+  username: string
+  displayName: string
+  isActive?: boolean
+  isLocked?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  lastLoginAt?: Date | string | null
+  locale?: string
+  timezone?: string
+  deletedAt?: Date | string | null
+  role?: $Enums.UserRole
+  identities?: Prisma.UserIdentityUncheckedCreateNestedManyWithoutUserInput
+  credential?: Prisma.UserCredentialUncheckedCreateNestedOneWithoutUserInput
+  userMFAs?: Prisma.UserMFAUncheckedCreateNestedManyWithoutUserInput
+  privacy?: Prisma.PrivacySettingsUncheckedCreateNestedOneWithoutUserInput
+  notification?: Prisma.NotificationPreferenceUncheckedCreateNestedOneWithoutUserInput
+  promotionalNotification?: Prisma.PromotionalPreferenceUncheckedCreateNestedOneWithoutUserInput
+  insightsNotification?: Prisma.InsightsPreferenceUncheckedCreateNestedOneWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  articles?: Prisma.ArticleUncheckedCreateNestedManyWithoutCreatedByInput
+  media?: Prisma.MediaUncheckedCreateNestedManyWithoutCreateByInput
+}
+
+export type UserCreateOrConnectWithoutCaseStudiesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutCaseStudiesInput, Prisma.UserUncheckedCreateWithoutCaseStudiesInput>
+}
+
+export type UserUpsertWithoutCaseStudiesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutCaseStudiesInput, Prisma.UserUncheckedUpdateWithoutCaseStudiesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutCaseStudiesInput, Prisma.UserUncheckedCreateWithoutCaseStudiesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutCaseStudiesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutCaseStudiesInput, Prisma.UserUncheckedUpdateWithoutCaseStudiesInput>
+}
+
+export type UserUpdateWithoutCaseStudiesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  displayName?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isLocked?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  identities?: Prisma.UserIdentityUpdateManyWithoutUserNestedInput
+  credential?: Prisma.UserCredentialUpdateOneWithoutUserNestedInput
+  userMFAs?: Prisma.UserMFAUpdateManyWithoutUserNestedInput
+  privacy?: Prisma.PrivacySettingsUpdateOneWithoutUserNestedInput
+  notification?: Prisma.NotificationPreferenceUpdateOneWithoutUserNestedInput
+  promotionalNotification?: Prisma.PromotionalPreferenceUpdateOneWithoutUserNestedInput
+  insightsNotification?: Prisma.InsightsPreferenceUpdateOneWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  articles?: Prisma.ArticleUpdateManyWithoutCreatedByNestedInput
+  media?: Prisma.MediaUpdateManyWithoutCreateByNestedInput
+}
+
+export type UserUncheckedUpdateWithoutCaseStudiesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  displayName?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isLocked?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  identities?: Prisma.UserIdentityUncheckedUpdateManyWithoutUserNestedInput
+  credential?: Prisma.UserCredentialUncheckedUpdateOneWithoutUserNestedInput
   userMFAs?: Prisma.UserMFAUncheckedUpdateManyWithoutUserNestedInput
   privacy?: Prisma.PrivacySettingsUncheckedUpdateOneWithoutUserNestedInput
   notification?: Prisma.NotificationPreferenceUncheckedUpdateOneWithoutUserNestedInput
@@ -1435,6 +1600,7 @@ export type UserCreateWithoutMediaInput = {
   insightsNotification?: Prisma.InsightsPreferenceCreateNestedOneWithoutUserInput
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   articles?: Prisma.ArticleCreateNestedManyWithoutCreatedByInput
+  caseStudies?: Prisma.CaseStudyCreateNestedManyWithoutCreatedByInput
 }
 
 export type UserUncheckedCreateWithoutMediaInput = {
@@ -1460,6 +1626,7 @@ export type UserUncheckedCreateWithoutMediaInput = {
   insightsNotification?: Prisma.InsightsPreferenceUncheckedCreateNestedOneWithoutUserInput
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   articles?: Prisma.ArticleUncheckedCreateNestedManyWithoutCreatedByInput
+  caseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutCreatedByInput
 }
 
 export type UserCreateOrConnectWithoutMediaInput = {
@@ -1501,6 +1668,7 @@ export type UserUpdateWithoutMediaInput = {
   insightsNotification?: Prisma.InsightsPreferenceUpdateOneWithoutUserNestedInput
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   articles?: Prisma.ArticleUpdateManyWithoutCreatedByNestedInput
+  caseStudies?: Prisma.CaseStudyUpdateManyWithoutCreatedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMediaInput = {
@@ -1526,6 +1694,7 @@ export type UserUncheckedUpdateWithoutMediaInput = {
   insightsNotification?: Prisma.InsightsPreferenceUncheckedUpdateOneWithoutUserNestedInput
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   articles?: Prisma.ArticleUncheckedUpdateManyWithoutCreatedByNestedInput
+  caseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutCreatedByNestedInput
 }
 
 export type UserCreateWithoutNotificationInput = {
@@ -1551,6 +1720,7 @@ export type UserCreateWithoutNotificationInput = {
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   articles?: Prisma.ArticleCreateNestedManyWithoutCreatedByInput
   media?: Prisma.MediaCreateNestedManyWithoutCreateByInput
+  caseStudies?: Prisma.CaseStudyCreateNestedManyWithoutCreatedByInput
 }
 
 export type UserUncheckedCreateWithoutNotificationInput = {
@@ -1576,6 +1746,7 @@ export type UserUncheckedCreateWithoutNotificationInput = {
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   articles?: Prisma.ArticleUncheckedCreateNestedManyWithoutCreatedByInput
   media?: Prisma.MediaUncheckedCreateNestedManyWithoutCreateByInput
+  caseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutCreatedByInput
 }
 
 export type UserCreateOrConnectWithoutNotificationInput = {
@@ -1617,6 +1788,7 @@ export type UserUpdateWithoutNotificationInput = {
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   articles?: Prisma.ArticleUpdateManyWithoutCreatedByNestedInput
   media?: Prisma.MediaUpdateManyWithoutCreateByNestedInput
+  caseStudies?: Prisma.CaseStudyUpdateManyWithoutCreatedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNotificationInput = {
@@ -1642,6 +1814,7 @@ export type UserUncheckedUpdateWithoutNotificationInput = {
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   articles?: Prisma.ArticleUncheckedUpdateManyWithoutCreatedByNestedInput
   media?: Prisma.MediaUncheckedUpdateManyWithoutCreateByNestedInput
+  caseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutCreatedByNestedInput
 }
 
 export type UserCreateWithoutPromotionalNotificationInput = {
@@ -1667,6 +1840,7 @@ export type UserCreateWithoutPromotionalNotificationInput = {
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   articles?: Prisma.ArticleCreateNestedManyWithoutCreatedByInput
   media?: Prisma.MediaCreateNestedManyWithoutCreateByInput
+  caseStudies?: Prisma.CaseStudyCreateNestedManyWithoutCreatedByInput
 }
 
 export type UserUncheckedCreateWithoutPromotionalNotificationInput = {
@@ -1692,6 +1866,7 @@ export type UserUncheckedCreateWithoutPromotionalNotificationInput = {
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   articles?: Prisma.ArticleUncheckedCreateNestedManyWithoutCreatedByInput
   media?: Prisma.MediaUncheckedCreateNestedManyWithoutCreateByInput
+  caseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutCreatedByInput
 }
 
 export type UserCreateOrConnectWithoutPromotionalNotificationInput = {
@@ -1733,6 +1908,7 @@ export type UserUpdateWithoutPromotionalNotificationInput = {
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   articles?: Prisma.ArticleUpdateManyWithoutCreatedByNestedInput
   media?: Prisma.MediaUpdateManyWithoutCreateByNestedInput
+  caseStudies?: Prisma.CaseStudyUpdateManyWithoutCreatedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPromotionalNotificationInput = {
@@ -1758,6 +1934,7 @@ export type UserUncheckedUpdateWithoutPromotionalNotificationInput = {
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   articles?: Prisma.ArticleUncheckedUpdateManyWithoutCreatedByNestedInput
   media?: Prisma.MediaUncheckedUpdateManyWithoutCreateByNestedInput
+  caseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutCreatedByNestedInput
 }
 
 export type UserCreateWithoutInsightsNotificationInput = {
@@ -1783,6 +1960,7 @@ export type UserCreateWithoutInsightsNotificationInput = {
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   articles?: Prisma.ArticleCreateNestedManyWithoutCreatedByInput
   media?: Prisma.MediaCreateNestedManyWithoutCreateByInput
+  caseStudies?: Prisma.CaseStudyCreateNestedManyWithoutCreatedByInput
 }
 
 export type UserUncheckedCreateWithoutInsightsNotificationInput = {
@@ -1808,6 +1986,7 @@ export type UserUncheckedCreateWithoutInsightsNotificationInput = {
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   articles?: Prisma.ArticleUncheckedCreateNestedManyWithoutCreatedByInput
   media?: Prisma.MediaUncheckedCreateNestedManyWithoutCreateByInput
+  caseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutCreatedByInput
 }
 
 export type UserCreateOrConnectWithoutInsightsNotificationInput = {
@@ -1849,6 +2028,7 @@ export type UserUpdateWithoutInsightsNotificationInput = {
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   articles?: Prisma.ArticleUpdateManyWithoutCreatedByNestedInput
   media?: Prisma.MediaUpdateManyWithoutCreateByNestedInput
+  caseStudies?: Prisma.CaseStudyUpdateManyWithoutCreatedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutInsightsNotificationInput = {
@@ -1874,6 +2054,7 @@ export type UserUncheckedUpdateWithoutInsightsNotificationInput = {
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   articles?: Prisma.ArticleUncheckedUpdateManyWithoutCreatedByNestedInput
   media?: Prisma.MediaUncheckedUpdateManyWithoutCreateByNestedInput
+  caseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutCreatedByNestedInput
 }
 
 
@@ -1887,6 +2068,7 @@ export type UserCountOutputType = {
   sessions: number
   articles: number
   media: number
+  caseStudies: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1895,6 +2077,7 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   sessions?: boolean | UserCountOutputTypeCountSessionsArgs
   articles?: boolean | UserCountOutputTypeCountArticlesArgs
   media?: boolean | UserCountOutputTypeCountMediaArgs
+  caseStudies?: boolean | UserCountOutputTypeCountCaseStudiesArgs
 }
 
 /**
@@ -1942,6 +2125,13 @@ export type UserCountOutputTypeCountMediaArgs<ExtArgs extends runtime.Types.Exte
   where?: Prisma.MediaWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountCaseStudiesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CaseStudyWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1967,6 +2157,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   sessions?: boolean | Prisma.User$sessionsArgs<ExtArgs>
   articles?: boolean | Prisma.User$articlesArgs<ExtArgs>
   media?: boolean | Prisma.User$mediaArgs<ExtArgs>
+  caseStudies?: boolean | Prisma.User$caseStudiesArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -2030,6 +2221,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   sessions?: boolean | Prisma.User$sessionsArgs<ExtArgs>
   articles?: boolean | Prisma.User$articlesArgs<ExtArgs>
   media?: boolean | Prisma.User$mediaArgs<ExtArgs>
+  caseStudies?: boolean | Prisma.User$caseStudiesArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -2048,6 +2240,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     sessions: Prisma.$SessionPayload<ExtArgs>[]
     articles: Prisma.$ArticlePayload<ExtArgs>[]
     media: Prisma.$MediaPayload<ExtArgs>[]
+    caseStudies: Prisma.$CaseStudyPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2467,6 +2660,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   sessions<T extends Prisma.User$sessionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   articles<T extends Prisma.User$articlesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$articlesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ArticlePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   media<T extends Prisma.User$mediaArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$mediaArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  caseStudies<T extends Prisma.User$caseStudiesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$caseStudiesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CaseStudyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3109,6 +3303,30 @@ export type User$mediaArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
   take?: number
   skip?: number
   distinct?: Prisma.MediaScalarFieldEnum | Prisma.MediaScalarFieldEnum[]
+}
+
+/**
+ * User.caseStudies
+ */
+export type User$caseStudiesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CaseStudy
+   */
+  select?: Prisma.CaseStudySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CaseStudy
+   */
+  omit?: Prisma.CaseStudyOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CaseStudyInclude<ExtArgs> | null
+  where?: Prisma.CaseStudyWhereInput
+  orderBy?: Prisma.CaseStudyOrderByWithRelationInput | Prisma.CaseStudyOrderByWithRelationInput[]
+  cursor?: Prisma.CaseStudyWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CaseStudyScalarFieldEnum | Prisma.CaseStudyScalarFieldEnum[]
 }
 
 /**

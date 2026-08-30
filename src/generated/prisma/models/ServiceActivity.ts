@@ -190,7 +190,6 @@ export type ServiceActivityWhereInput = {
   description?: Prisma.StringFilter<"ServiceActivity"> | string
   createdAt?: Prisma.DateTimeFilter<"ServiceActivity"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ServiceActivity"> | Date | string
-  projectActivities?: Prisma.ProjectServiceActivityListRelationFilter
   articleActivities?: Prisma.ArticleServiceActivityListRelationFilter
   reportActivities?: Prisma.ReportServiceActivityListRelationFilter
 }
@@ -202,7 +201,6 @@ export type ServiceActivityOrderByWithRelationInput = {
   description?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  projectActivities?: Prisma.ProjectServiceActivityOrderByRelationAggregateInput
   articleActivities?: Prisma.ArticleServiceActivityOrderByRelationAggregateInput
   reportActivities?: Prisma.ReportServiceActivityOrderByRelationAggregateInput
 }
@@ -217,7 +215,6 @@ export type ServiceActivityWhereUniqueInput = Prisma.AtLeast<{
   description?: Prisma.StringFilter<"ServiceActivity"> | string
   createdAt?: Prisma.DateTimeFilter<"ServiceActivity"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ServiceActivity"> | Date | string
-  projectActivities?: Prisma.ProjectServiceActivityListRelationFilter
   articleActivities?: Prisma.ArticleServiceActivityListRelationFilter
   reportActivities?: Prisma.ReportServiceActivityListRelationFilter
 }, "activityId">
@@ -253,7 +250,6 @@ export type ServiceActivityCreateInput = {
   description: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  projectActivities?: Prisma.ProjectServiceActivityCreateNestedManyWithoutServiceActivityInput
   articleActivities?: Prisma.ArticleServiceActivityCreateNestedManyWithoutServiceActivityInput
   reportActivities?: Prisma.ReportServiceActivityCreateNestedManyWithoutServiceActivityInput
 }
@@ -265,7 +261,6 @@ export type ServiceActivityUncheckedCreateInput = {
   description: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  projectActivities?: Prisma.ProjectServiceActivityUncheckedCreateNestedManyWithoutServiceActivityInput
   articleActivities?: Prisma.ArticleServiceActivityUncheckedCreateNestedManyWithoutServiceActivityInput
   reportActivities?: Prisma.ReportServiceActivityUncheckedCreateNestedManyWithoutServiceActivityInput
 }
@@ -277,7 +272,6 @@ export type ServiceActivityUpdateInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  projectActivities?: Prisma.ProjectServiceActivityUpdateManyWithoutServiceActivityNestedInput
   articleActivities?: Prisma.ArticleServiceActivityUpdateManyWithoutServiceActivityNestedInput
   reportActivities?: Prisma.ReportServiceActivityUpdateManyWithoutServiceActivityNestedInput
 }
@@ -289,7 +283,6 @@ export type ServiceActivityUncheckedUpdateInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  projectActivities?: Prisma.ProjectServiceActivityUncheckedUpdateManyWithoutServiceActivityNestedInput
   articleActivities?: Prisma.ArticleServiceActivityUncheckedUpdateManyWithoutServiceActivityNestedInput
   reportActivities?: Prisma.ReportServiceActivityUncheckedUpdateManyWithoutServiceActivityNestedInput
 }
@@ -367,20 +360,6 @@ export type ServiceActivityUpdateOneRequiredWithoutArticleActivitiesNestedInput 
   update?: Prisma.XOR<Prisma.XOR<Prisma.ServiceActivityUpdateToOneWithWhereWithoutArticleActivitiesInput, Prisma.ServiceActivityUpdateWithoutArticleActivitiesInput>, Prisma.ServiceActivityUncheckedUpdateWithoutArticleActivitiesInput>
 }
 
-export type ServiceActivityCreateNestedOneWithoutProjectActivitiesInput = {
-  create?: Prisma.XOR<Prisma.ServiceActivityCreateWithoutProjectActivitiesInput, Prisma.ServiceActivityUncheckedCreateWithoutProjectActivitiesInput>
-  connectOrCreate?: Prisma.ServiceActivityCreateOrConnectWithoutProjectActivitiesInput
-  connect?: Prisma.ServiceActivityWhereUniqueInput
-}
-
-export type ServiceActivityUpdateOneRequiredWithoutProjectActivitiesNestedInput = {
-  create?: Prisma.XOR<Prisma.ServiceActivityCreateWithoutProjectActivitiesInput, Prisma.ServiceActivityUncheckedCreateWithoutProjectActivitiesInput>
-  connectOrCreate?: Prisma.ServiceActivityCreateOrConnectWithoutProjectActivitiesInput
-  upsert?: Prisma.ServiceActivityUpsertWithoutProjectActivitiesInput
-  connect?: Prisma.ServiceActivityWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.ServiceActivityUpdateToOneWithWhereWithoutProjectActivitiesInput, Prisma.ServiceActivityUpdateWithoutProjectActivitiesInput>, Prisma.ServiceActivityUncheckedUpdateWithoutProjectActivitiesInput>
-}
-
 export type ServiceActivityCreateNestedOneWithoutReportActivitiesInput = {
   create?: Prisma.XOR<Prisma.ServiceActivityCreateWithoutReportActivitiesInput, Prisma.ServiceActivityUncheckedCreateWithoutReportActivitiesInput>
   connectOrCreate?: Prisma.ServiceActivityCreateOrConnectWithoutReportActivitiesInput
@@ -402,7 +381,6 @@ export type ServiceActivityCreateWithoutArticleActivitiesInput = {
   description: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  projectActivities?: Prisma.ProjectServiceActivityCreateNestedManyWithoutServiceActivityInput
   reportActivities?: Prisma.ReportServiceActivityCreateNestedManyWithoutServiceActivityInput
 }
 
@@ -413,7 +391,6 @@ export type ServiceActivityUncheckedCreateWithoutArticleActivitiesInput = {
   description: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  projectActivities?: Prisma.ProjectServiceActivityUncheckedCreateNestedManyWithoutServiceActivityInput
   reportActivities?: Prisma.ReportServiceActivityUncheckedCreateNestedManyWithoutServiceActivityInput
 }
 
@@ -440,7 +417,6 @@ export type ServiceActivityUpdateWithoutArticleActivitiesInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  projectActivities?: Prisma.ProjectServiceActivityUpdateManyWithoutServiceActivityNestedInput
   reportActivities?: Prisma.ReportServiceActivityUpdateManyWithoutServiceActivityNestedInput
 }
 
@@ -451,67 +427,6 @@ export type ServiceActivityUncheckedUpdateWithoutArticleActivitiesInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  projectActivities?: Prisma.ProjectServiceActivityUncheckedUpdateManyWithoutServiceActivityNestedInput
-  reportActivities?: Prisma.ReportServiceActivityUncheckedUpdateManyWithoutServiceActivityNestedInput
-}
-
-export type ServiceActivityCreateWithoutProjectActivitiesInput = {
-  activityId?: string
-  activityCode: string
-  activityName: string
-  description: string
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  articleActivities?: Prisma.ArticleServiceActivityCreateNestedManyWithoutServiceActivityInput
-  reportActivities?: Prisma.ReportServiceActivityCreateNestedManyWithoutServiceActivityInput
-}
-
-export type ServiceActivityUncheckedCreateWithoutProjectActivitiesInput = {
-  activityId?: string
-  activityCode: string
-  activityName: string
-  description: string
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  articleActivities?: Prisma.ArticleServiceActivityUncheckedCreateNestedManyWithoutServiceActivityInput
-  reportActivities?: Prisma.ReportServiceActivityUncheckedCreateNestedManyWithoutServiceActivityInput
-}
-
-export type ServiceActivityCreateOrConnectWithoutProjectActivitiesInput = {
-  where: Prisma.ServiceActivityWhereUniqueInput
-  create: Prisma.XOR<Prisma.ServiceActivityCreateWithoutProjectActivitiesInput, Prisma.ServiceActivityUncheckedCreateWithoutProjectActivitiesInput>
-}
-
-export type ServiceActivityUpsertWithoutProjectActivitiesInput = {
-  update: Prisma.XOR<Prisma.ServiceActivityUpdateWithoutProjectActivitiesInput, Prisma.ServiceActivityUncheckedUpdateWithoutProjectActivitiesInput>
-  create: Prisma.XOR<Prisma.ServiceActivityCreateWithoutProjectActivitiesInput, Prisma.ServiceActivityUncheckedCreateWithoutProjectActivitiesInput>
-  where?: Prisma.ServiceActivityWhereInput
-}
-
-export type ServiceActivityUpdateToOneWithWhereWithoutProjectActivitiesInput = {
-  where?: Prisma.ServiceActivityWhereInput
-  data: Prisma.XOR<Prisma.ServiceActivityUpdateWithoutProjectActivitiesInput, Prisma.ServiceActivityUncheckedUpdateWithoutProjectActivitiesInput>
-}
-
-export type ServiceActivityUpdateWithoutProjectActivitiesInput = {
-  activityId?: Prisma.StringFieldUpdateOperationsInput | string
-  activityCode?: Prisma.StringFieldUpdateOperationsInput | string
-  activityName?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  articleActivities?: Prisma.ArticleServiceActivityUpdateManyWithoutServiceActivityNestedInput
-  reportActivities?: Prisma.ReportServiceActivityUpdateManyWithoutServiceActivityNestedInput
-}
-
-export type ServiceActivityUncheckedUpdateWithoutProjectActivitiesInput = {
-  activityId?: Prisma.StringFieldUpdateOperationsInput | string
-  activityCode?: Prisma.StringFieldUpdateOperationsInput | string
-  activityName?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  articleActivities?: Prisma.ArticleServiceActivityUncheckedUpdateManyWithoutServiceActivityNestedInput
   reportActivities?: Prisma.ReportServiceActivityUncheckedUpdateManyWithoutServiceActivityNestedInput
 }
 
@@ -522,7 +437,6 @@ export type ServiceActivityCreateWithoutReportActivitiesInput = {
   description: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  projectActivities?: Prisma.ProjectServiceActivityCreateNestedManyWithoutServiceActivityInput
   articleActivities?: Prisma.ArticleServiceActivityCreateNestedManyWithoutServiceActivityInput
 }
 
@@ -533,7 +447,6 @@ export type ServiceActivityUncheckedCreateWithoutReportActivitiesInput = {
   description: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  projectActivities?: Prisma.ProjectServiceActivityUncheckedCreateNestedManyWithoutServiceActivityInput
   articleActivities?: Prisma.ArticleServiceActivityUncheckedCreateNestedManyWithoutServiceActivityInput
 }
 
@@ -560,7 +473,6 @@ export type ServiceActivityUpdateWithoutReportActivitiesInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  projectActivities?: Prisma.ProjectServiceActivityUpdateManyWithoutServiceActivityNestedInput
   articleActivities?: Prisma.ArticleServiceActivityUpdateManyWithoutServiceActivityNestedInput
 }
 
@@ -571,7 +483,6 @@ export type ServiceActivityUncheckedUpdateWithoutReportActivitiesInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  projectActivities?: Prisma.ProjectServiceActivityUncheckedUpdateManyWithoutServiceActivityNestedInput
   articleActivities?: Prisma.ArticleServiceActivityUncheckedUpdateManyWithoutServiceActivityNestedInput
 }
 
@@ -581,13 +492,11 @@ export type ServiceActivityUncheckedUpdateWithoutReportActivitiesInput = {
  */
 
 export type ServiceActivityCountOutputType = {
-  projectActivities: number
   articleActivities: number
   reportActivities: number
 }
 
 export type ServiceActivityCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  projectActivities?: boolean | ServiceActivityCountOutputTypeCountProjectActivitiesArgs
   articleActivities?: boolean | ServiceActivityCountOutputTypeCountArticleActivitiesArgs
   reportActivities?: boolean | ServiceActivityCountOutputTypeCountReportActivitiesArgs
 }
@@ -600,13 +509,6 @@ export type ServiceActivityCountOutputTypeDefaultArgs<ExtArgs extends runtime.Ty
    * Select specific fields to fetch from the ServiceActivityCountOutputType
    */
   select?: Prisma.ServiceActivityCountOutputTypeSelect<ExtArgs> | null
-}
-
-/**
- * ServiceActivityCountOutputType without action
- */
-export type ServiceActivityCountOutputTypeCountProjectActivitiesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.ProjectServiceActivityWhereInput
 }
 
 /**
@@ -631,7 +533,6 @@ export type ServiceActivitySelect<ExtArgs extends runtime.Types.Extensions.Inter
   description?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  projectActivities?: boolean | Prisma.ServiceActivity$projectActivitiesArgs<ExtArgs>
   articleActivities?: boolean | Prisma.ServiceActivity$articleActivitiesArgs<ExtArgs>
   reportActivities?: boolean | Prisma.ServiceActivity$reportActivitiesArgs<ExtArgs>
   _count?: boolean | Prisma.ServiceActivityCountOutputTypeDefaultArgs<ExtArgs>
@@ -666,7 +567,6 @@ export type ServiceActivitySelectScalar = {
 
 export type ServiceActivityOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"activityId" | "activityCode" | "activityName" | "description" | "createdAt" | "updatedAt", ExtArgs["result"]["serviceActivity"]>
 export type ServiceActivityInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  projectActivities?: boolean | Prisma.ServiceActivity$projectActivitiesArgs<ExtArgs>
   articleActivities?: boolean | Prisma.ServiceActivity$articleActivitiesArgs<ExtArgs>
   reportActivities?: boolean | Prisma.ServiceActivity$reportActivitiesArgs<ExtArgs>
   _count?: boolean | Prisma.ServiceActivityCountOutputTypeDefaultArgs<ExtArgs>
@@ -677,7 +577,6 @@ export type ServiceActivityIncludeUpdateManyAndReturn<ExtArgs extends runtime.Ty
 export type $ServiceActivityPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "ServiceActivity"
   objects: {
-    projectActivities: Prisma.$ProjectServiceActivityPayload<ExtArgs>[]
     articleActivities: Prisma.$ArticleServiceActivityPayload<ExtArgs>[]
     reportActivities: Prisma.$ReportServiceActivityPayload<ExtArgs>[]
   }
@@ -1082,7 +981,6 @@ readonly fields: ServiceActivityFieldRefs;
  */
 export interface Prisma__ServiceActivityClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  projectActivities<T extends Prisma.ServiceActivity$projectActivitiesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ServiceActivity$projectActivitiesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjectServiceActivityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   articleActivities<T extends Prisma.ServiceActivity$articleActivitiesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ServiceActivity$articleActivitiesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ArticleServiceActivityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   reportActivities<T extends Prisma.ServiceActivity$reportActivitiesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ServiceActivity$reportActivitiesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReportServiceActivityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
@@ -1505,30 +1403,6 @@ export type ServiceActivityDeleteManyArgs<ExtArgs extends runtime.Types.Extensio
    * Limit how many ServiceActivities to delete.
    */
   limit?: number
-}
-
-/**
- * ServiceActivity.projectActivities
- */
-export type ServiceActivity$projectActivitiesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the ProjectServiceActivity
-   */
-  select?: Prisma.ProjectServiceActivitySelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the ProjectServiceActivity
-   */
-  omit?: Prisma.ProjectServiceActivityOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.ProjectServiceActivityInclude<ExtArgs> | null
-  where?: Prisma.ProjectServiceActivityWhereInput
-  orderBy?: Prisma.ProjectServiceActivityOrderByWithRelationInput | Prisma.ProjectServiceActivityOrderByWithRelationInput[]
-  cursor?: Prisma.ProjectServiceActivityWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.ProjectServiceActivityScalarFieldEnum | Prisma.ProjectServiceActivityScalarFieldEnum[]
 }
 
 /**

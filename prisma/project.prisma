@@ -1,45 +1,65 @@
 model Project {
-    id            String   @id @default(dbgenerated("gen_random_uuid()"))
-    code          String
-    title         String
-    description   String
-    clientId      String
-    industryId    String
-    locationId    String
-    projectLeadId String
-    startDate     DateTime
-    endDate       DateTime?
-    status        ProjectStatus  @default(ACTIVE)
-    serviceSummary    String
-    budget            Float
-    createdAt         DateTime @default(now())
-    updatedAt         DateTime @updatedAt
+    id                   String         @id @default(dbgenerated("gen_random_uuid()"))
+    code                 String
+    slug                 String         @unique
+    title                String
+    subtitle             String?
+    description          String?        @db.Text
+    clientId             String
+    industryId           String
+    startDate            DateTime
+    endDate              DateTime?
+    story                String
+    locationId           String
+    projectLeadId        String
+    budget               Float
+    status               ProjectStatus  @default(ACTIVE)
+    serviceSummary       String
 
-    client          Client           @relation(fields: [clientId], references: [id])
-    industry        Industry         @relation(fields: [industryId], references: [industryId])
-    location        Location         @relation(fields: [locationId], references: [locationId])
-    projectLead     TeamMember       @relation(fields: [projectLeadId], references: [memberId])
+    createdAt            DateTime @default(now())
+    updatedAt            DateTime @updatedAt
 
-    serviceActivities   ProjectServiceActivity[]
-    teamMembers         ProjectTeamMember[]
-    images              ProjectImage[]
-    notes               ProjectNote[]
-    articles            Article[]
+    client               Client         @relation(fields: [clientId], references: [id])
+    industry             Industry       @relation(fields: [industryId], references: [industryId])
+    location             Location       @relation(fields: [locationId], references: [locationId])
+    projectLead          TeamMember     @relation(fields: [projectLeadId], references: [id])
+
+    teamMembers          ProjectTeamMember[]
+    stakeholders         ProjectStakeholder[]
+    tags                 ProjectTag[]
+    images               ProjectImage[]
+    notes                ProjectNote[]
+
+
+    // serviceActivities   ProjectServiceActivity[]
+    // articles            Article[]
 }
 
-model ProjectServiceActivity {
-    projectActivityId String   @id @default(dbgenerated("gen_random_uuid()"))
-    projectId         String
-    activityId        String
-    notes             String?
-    createdAt         DateTime @default(now())
+model ProjectStakeholder {
+    id                     String   @id @default(dbgenerated("gen_random_uuid()"))
+    projectId              String
+    stakeholderId          String
 
-    project           Project        @relation(fields: [projectId], references: [id])
-    serviceActivity   ServiceActivity @relation(fields: [activityId], references: [activityId])
+    createdAt              DateTime @default(now())
+    updatedAt              DateTime @updatedAt
+
+    project                Project     @relation(fields: [projectId], references: [id])
+    stakeholder            Stakeholder @relation(fields: [stakeholderId], references: [stakeholderId])
 }
+
+// model ProjectServiceActivity {
+//     projectActivityId String   @id @default(dbgenerated("gen_random_uuid()"))
+//     projectId         String
+//     activityId        String
+//     notes             String?
+//     createdAt         DateTime @default(now())
+
+//     project           Project        @relation(fields: [projectId], references: [id])
+//     serviceActivity   ServiceActivity @relation(fields: [activityId], references: [activityId])
+// }
 
 model ProjectTeamMember {
-    projectMemberId   String   @id @default(dbgenerated("gen_random_uuid()"))
+    id                String   @id @default(dbgenerated("gen_random_uuid()"))
     projectId         String
     memberId          String
     roleId            String
@@ -50,36 +70,36 @@ model ProjectTeamMember {
     createdAt         DateTime @default(now())
 
     project           Project      @relation(fields: [projectId], references: [id])
-    teamMember        TeamMember   @relation(fields: [memberId], references: [memberId])
-    teamRole          TeamRole     @relation(fields: [roleId], references: [roleId])
+    teamMember        TeamMember   @relation(fields: [memberId], references: [id])
+    teamRole          TeamRole     @relation(fields: [roleId], references: [id])
+}
+
+model ProjectTag {
+    id        String   @id @default(dbgenerated("gen_random_uuid()"))
+    projectId String
+    tagId     String
+
+    project   Project @relation(fields: [projectId], references: [id])
+    tag       Tag     @relation(fields: [tagId], references: [tagId])
 }
 
 model ProjectImage {
-    imageId      String   @id @default(dbgenerated("gen_random_uuid()"))
-    projectId    String
-    fileName      String
-    url          String
-    binaryHash   String
-    mimeType     String
-    size         Int
-    takenAt      DateTime?
-    photographer String?
-    gpsLat       Float?
-    gpsLong      Float?
-    caption      String?
-    tags         String
+    id                      String   @id @default(dbgenerated("gen_random_uuid()"))
+    projectId               String
+    mediaId                 String
 
-    project      Project   @relation(fields: [projectId], references: [id])
+    project                 Project   @relation(fields: [projectId], references: [id])
+    media                   Media @relation(fields: [mediaId], references: [id])
 }
 
 model ProjectNote {
-    noteId      String   @id @default(dbgenerated("gen_random_uuid()"))
-    projectId   String
-    authorId    String
-    noteType    NoteType
-    body        String
-    createdAt   DateTime @default(now())
+    id                      String   @id @default(dbgenerated("gen_random_uuid()"))
+    projectId               String
+    authorId                String
+    noteType                NoteType
+    body                    String
+    createdAt               DateTime @default(now())
 
-    project     Project  @relation(fields: [projectId], references: [id])
-    author      TeamMember @relation(fields: [authorId], references: [memberId])
+    project                 Project  @relation(fields: [projectId], references: [id])
+    author                  TeamMember @relation(fields: [authorId], references: [id])
 }

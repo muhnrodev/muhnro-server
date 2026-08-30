@@ -18,6 +18,8 @@ import { WebpageModule } from './modules/webpage/webpage.module.js';
 import { DataModule } from './modules/data/data.module.js';
 import { AdminModule } from './modules/admin/admin.module.js';
 import { ContentModule } from './modules/content/content.module.js';
+import { MediaModule } from './modules/media/media.module';
+import { AwsModule } from './infrastructure/aws.module.js';
 
 @Module({
   imports: [
@@ -33,6 +35,7 @@ import { ContentModule } from './modules/content/content.module.js';
       ],
     }),
 
+    AwsModule,
     PrismaModule,
     GeneratorModule,
     HealthModule,
@@ -48,6 +51,7 @@ import { ContentModule } from './modules/content/content.module.js';
     DataModule,
     AdminModule,
     ContentModule,
+    MediaModule,
   ],
   controllers: [AppController],
   providers: [

@@ -23,6 +23,7 @@ model User {
     sessions               Session[]
     articles               Article[]
     media                  Media[]
+    caseStudies            CaseStudy[]
 }
 
 

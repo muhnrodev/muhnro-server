@@ -1,40 +1,77 @@
 model TeamMember {
-    memberId    String   @id @default(dbgenerated("gen_random_uuid()"))
-    fullName    String
-    email       String   @unique
-    phone       String?
-    department  String?
-    employmentType EmploymentType
-    createdAt   DateTime @default(now())
-    updatedAt   DateTime @updatedAt
+    id                      String   @id @default(dbgenerated("gen_random_uuid()"))
+    fullName                String
+    email                   String   @unique
+    phone                   String?
+    department              String?
+    employmentType          EmploymentType
+    createdAt               DateTime @default(now())
+    updatedAt               DateTime @updatedAt
 
-    projectMembers ProjectTeamMember[]
-    projectNotes   ProjectNote[]
-    projects       Project[]
+    projects                Project[]
+    projectMembers          ProjectTeamMember[]
+    projectNotes            ProjectNote[]
 }
 
-
 model TeamRole {
-    roleId         String   @id @default(dbgenerated("gen_random_uuid()"))
-    roleName       String   @unique
-    description    String
-    createdAt      DateTime @default(now())
-    
-    projectMembers ProjectTeamMember[]
+    id                      String   @id @default(dbgenerated("gen_random_uuid()"))
+    roleName                String   @unique
+    description             String
+    createdAt               DateTime @default(now())
+    updatedAt               DateTime @updatedAt
+
+    projectMembers          ProjectTeamMember[]
 }
 
 model Client {
-    id             String   @id @default(dbgenerated("gen_random_uuid()"))
-    name           String
-    contactName    String
-    contactEmail   String
-    contactPhone   String
-    billingAddress String
-    notes          String?
-    createdAt      DateTime @default(now())
-    updatedAt      DateTime @updatedAt
+    id                      String   @id @default(dbgenerated("gen_random_uuid()"))
+    name                    String
+    description             String?
+    industryId              String
+    addressId               String?
+    notes                   String?
+    isDeleted               Boolean         @default(false)
+    createdAt               DateTime        @default(now())
+    updatedAt               DateTime        @updatedAt
+    deletedAt               DateTime?
+    logoId                  String?
 
-    projects       Project[]
+    logo                    Media?          @relation(fields: [logoId], references: [id])
+    address                 ClientAddress?  @relation(fields: [addressId], references: [id], onDelete: Cascade)
+    industry                Industry        @relation(fields: [industryId], references: [industryId])
+
+    projects                Project[]
+    contacts                ClientContact[]
+
+}
+
+model ClientContact {
+    id                      String   @id @default(dbgenerated("gen_random_uuid()"))
+    clientId                String
+    fullName                String
+    email                   String
+    phone                   String?
+    createdAt               DateTime @default(now())
+    updatedAt               DateTime @updatedAt
+    isPrimary                Boolean  @default(false)
+    isDeleted                Boolean  @default(false)
+
+    client                  Client   @relation(fields: [clientId], references: [id])
+}
+
+model ClientAddress {
+    id                      String   @id @default(dbgenerated("gen_random_uuid()"))
+    clientId                String
+    addressLine1            String
+    addressLine2            String?
+    city                    String
+    state                   String
+    postalCode              String?
+    country                 String
+    createdAt               DateTime @default(now())
+    updatedAt               DateTime @updatedAt
+
+    clients                 Client[]
 }
 
 model Author {
@@ -82,4 +119,16 @@ model ReportAuthor {
 
     report    Report @relation(fields: [reportId], references: [reportId])
     author    Author @relation(fields: [authorId], references: [authorId])
+}
+
+model Stakeholder {
+    stakeholderId           String   @id @default(dbgenerated("gen_random_uuid()"))
+    name                    String
+    organization            String
+    email                   String?
+    phone                   String?
+    createdAt               DateTime @default(now())
+    updatedAt               DateTime @updatedAt
+
+    projectStakeholders ProjectStakeholder[]
 }

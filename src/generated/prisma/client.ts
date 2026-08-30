@@ -160,6 +160,11 @@ export type UserIdentity = Prisma.UserIdentityModel
  */
 export type UserCredential = Prisma.UserCredentialModel
 /**
+ * Model CaseStudy
+ * 
+ */
+export type CaseStudy = Prisma.CaseStudyModel
+/**
  * Model Website
  * 
  */
@@ -260,6 +265,16 @@ export type TeamRole = Prisma.TeamRoleModel
  */
 export type Client = Prisma.ClientModel
 /**
+ * Model ClientContact
+ * 
+ */
+export type ClientContact = Prisma.ClientContactModel
+/**
+ * Model ClientAddress
+ * 
+ */
+export type ClientAddress = Prisma.ClientAddressModel
+/**
  * Model Author
  * 
  */
@@ -280,20 +295,30 @@ export type ArticleAuthor = Prisma.ArticleAuthorModel
  */
 export type ReportAuthor = Prisma.ReportAuthorModel
 /**
+ * Model Stakeholder
+ * 
+ */
+export type Stakeholder = Prisma.StakeholderModel
+/**
  * Model Project
  * 
  */
 export type Project = Prisma.ProjectModel
 /**
- * Model ProjectServiceActivity
+ * Model ProjectStakeholder
  * 
  */
-export type ProjectServiceActivity = Prisma.ProjectServiceActivityModel
+export type ProjectStakeholder = Prisma.ProjectStakeholderModel
 /**
  * Model ProjectTeamMember
  * 
  */
 export type ProjectTeamMember = Prisma.ProjectTeamMemberModel
+/**
+ * Model ProjectTag
+ * 
+ */
+export type ProjectTag = Prisma.ProjectTagModel
 /**
  * Model ProjectImage
  * 

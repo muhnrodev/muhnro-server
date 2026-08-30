@@ -22,7 +22,6 @@ model ServiceActivity {
     createdAt         DateTime @default(now())
     updatedAt         DateTime @updatedAt
 
-    projectActivities   ProjectServiceActivity[]
     articleActivities   ArticleServiceActivity[]
     reportActivities    ReportServiceActivity[]
 }
@@ -59,6 +58,7 @@ model Tag {
     updatedAt           DateTime @updatedAt
          
     articleTags         ArticleTag[]
+    projectTags         ProjectTag[]
 }
 
 model Industry {
@@ -74,4 +74,7 @@ model Industry {
     projects            Project[]
     reports             ReportIndustry[]
     articles            Article[]
+    caseStudies         CaseStudy[]
+
+    clients Client[]
 }
