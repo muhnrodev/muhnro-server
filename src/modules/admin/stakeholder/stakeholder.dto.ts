@@ -20,5 +20,5 @@ export class CreateStakeholderDto {
 
 export class UpdateStakeholderDto extends CreateStakeholderDto {
   @IsString()
-  id: string;
+  stakeholderId: string;
 }

@@ -102,11 +102,11 @@ export class ClientService {
 
       const address = await this.updateClientAddress(client.id, data);
 
-      const stakeholder = await this.stakeholdersService.createStakeholder({
+      const res = await this.stakeholdersService.createStakeholder({
         name: data.name,
         organization: data.name,
-        email: '',
-        phone: '',
+        email: data.email || '',
+        phone: data.phone || '',
         type: 'CLIENT',
       });
 
@@ -114,7 +114,7 @@ export class ClientService {
         where: { id: client.id },
         data: {
           addressId: address.id,
-          stakeholderId: stakeholder.stakeholderId,
+          stakeholderId: res.stakeholder.stakeholderId,
         },
       });
 
@@ -150,22 +150,15 @@ export class ClientService {
         },
       });
 
-      const updatedAddress = await this.updateClientAddress(data.id, data);
+      await this.updateClientAddress(data.id, data);
 
-      const stakeholder = await this.stakeholdersService.createStakeholder({
+      await this.stakeholdersService.updateStakeholder({
+        stakeholderId: existingClient.stakeholderId || '',
         name: data.name,
         organization: data.name,
-        email: '',
-        phone: '',
+        email: data.email || '',
+        phone: data.phone || '',
         type: 'CLIENT',
-      });
-
-      await this.prisma.client.update({
-        where: { id: data.id },
-        data: {
-          addressId: updatedAddress.id,
-          stakeholderId: stakeholder.stakeholderId,
-        },
       });
 
       return {
