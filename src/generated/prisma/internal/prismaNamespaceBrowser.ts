@@ -248,15 +248,22 @@ export type PrivacySettingsScalarFieldEnum = (typeof PrivacySettingsScalarFieldE
 
 export const LocationScalarFieldEnum = {
   locationId: 'locationId',
+  name: 'name',
+  description: 'description',
   country: 'country',
   region: 'region',
   city: 'city',
-  addressLine: 'addressLine',
+  addressLine1: 'addressLine1',
+  addressLine2: 'addressLine2',
   postalCode: 'postalCode',
   gpsLat: 'gpsLat',
   gpsLong: 'gpsLong',
+  isVirtual: 'isVirtual',
+  provider: 'provider',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  isDeleted: 'isDeleted',
+  deletedAt: 'deletedAt'
 } as const
 
 export type LocationScalarFieldEnum = (typeof LocationScalarFieldEnum)[keyof typeof LocationScalarFieldEnum]
@@ -741,14 +748,17 @@ export type InsightsPreferenceScalarFieldEnum = (typeof InsightsPreferenceScalar
 
 
 export const TeamMemberScalarFieldEnum = {
-  id: 'id',
-  fullName: 'fullName',
+  teamMemberId: 'teamMemberId',
+  firstName: 'firstName',
+  lastName: 'lastName',
   email: 'email',
   phone: 'phone',
   department: 'department',
   employmentType: 'employmentType',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  isDeleted: 'isDeleted',
+  deletedAt: 'deletedAt'
 } as const
 
 export type TeamMemberScalarFieldEnum = (typeof TeamMemberScalarFieldEnum)[keyof typeof TeamMemberScalarFieldEnum]
@@ -756,7 +766,7 @@ export type TeamMemberScalarFieldEnum = (typeof TeamMemberScalarFieldEnum)[keyof
 
 export const TeamRoleScalarFieldEnum = {
   id: 'id',
-  roleName: 'roleName',
+  role: 'role',
   description: 'description',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -922,7 +932,8 @@ export const ProjectTeamMemberScalarFieldEnum = {
   unassignedDate: 'unassignedDate',
   allocationPercent: 'allocationPercent',
   notes: 'notes',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type ProjectTeamMemberScalarFieldEnum = (typeof ProjectTeamMemberScalarFieldEnum)[keyof typeof ProjectTeamMemberScalarFieldEnum]

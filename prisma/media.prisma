@@ -46,6 +46,7 @@ model Media {
     caseStudies                     CaseStudy[]
     projectImages                   ProjectImage[]
     logos                           Client[]
+    projects                        Project[]
 
     @@index([createdAt])
     @@index([type])

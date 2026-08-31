@@ -14,6 +14,7 @@ model Project {
     projectLeadId        String
     budget               Float
     status               ProjectStatus  @default(ACTIVE)
+    featuredImageId      String
     serviceSummary       String
 
     createdAt            DateTime @default(now())
@@ -22,7 +23,8 @@ model Project {
     client               Client         @relation(fields: [clientId], references: [id])
     industry             Industry       @relation(fields: [industryId], references: [industryId])
     location             Location       @relation(fields: [locationId], references: [locationId])
-    projectLead          TeamMember     @relation(fields: [projectLeadId], references: [id])
+    projectLead          TeamMember     @relation(fields: [projectLeadId], references: [teamMemberId])
+    featuredImage        Media          @relation(fields: [featuredImageId], references: [id])
 
     teamMembers          ProjectTeamMember[]
     stakeholders         ProjectStakeholder[]
@@ -59,19 +61,20 @@ model ProjectStakeholder {
 // }
 
 model ProjectTeamMember {
-    id                String   @id @default(dbgenerated("gen_random_uuid()"))
-    projectId         String
-    memberId          String
-    roleId            String
-    assignedDate      DateTime @default(now())
-    unassignedDate    DateTime?
-    allocationPercent Float
-    notes             String?
-    createdAt         DateTime @default(now())
+    id                      String   @id @default(dbgenerated("gen_random_uuid()"))
+    projectId               String
+    memberId                String
+    roleId                  String
+    assignedDate            DateTime @default(now())
+    unassignedDate          DateTime?
+    allocationPercent       Float
+    notes                   String?
+    createdAt               DateTime @default(now())
+    updatedAt               DateTime @updatedAt
 
-    project           Project      @relation(fields: [projectId], references: [id])
-    teamMember        TeamMember   @relation(fields: [memberId], references: [id])
-    teamRole          TeamRole     @relation(fields: [roleId], references: [id])
+    project                 Project      @relation(fields: [projectId], references: [id])
+    teamMember              TeamMember   @relation(fields: [memberId], references: [teamMemberId])
+    teamRole                TeamRole     @relation(fields: [roleId], references: [id])
 }
 
 model ProjectTag {
@@ -101,5 +104,5 @@ model ProjectNote {
     createdAt               DateTime @default(now())
 
     project                 Project  @relation(fields: [projectId], references: [id])
-    author                  TeamMember @relation(fields: [authorId], references: [id])
+    author                  TeamMember @relation(fields: [authorId], references: [teamMemberId])
 }

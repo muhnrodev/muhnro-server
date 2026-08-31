@@ -26,7 +26,7 @@ export type AggregateTeamRole = {
 
 export type TeamRoleMinAggregateOutputType = {
   id: string | null
-  roleName: string | null
+  role: string | null
   description: string | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -34,7 +34,7 @@ export type TeamRoleMinAggregateOutputType = {
 
 export type TeamRoleMaxAggregateOutputType = {
   id: string | null
-  roleName: string | null
+  role: string | null
   description: string | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -42,7 +42,7 @@ export type TeamRoleMaxAggregateOutputType = {
 
 export type TeamRoleCountAggregateOutputType = {
   id: number
-  roleName: number
+  role: number
   description: number
   createdAt: number
   updatedAt: number
@@ -52,7 +52,7 @@ export type TeamRoleCountAggregateOutputType = {
 
 export type TeamRoleMinAggregateInputType = {
   id?: true
-  roleName?: true
+  role?: true
   description?: true
   createdAt?: true
   updatedAt?: true
@@ -60,7 +60,7 @@ export type TeamRoleMinAggregateInputType = {
 
 export type TeamRoleMaxAggregateInputType = {
   id?: true
-  roleName?: true
+  role?: true
   description?: true
   createdAt?: true
   updatedAt?: true
@@ -68,7 +68,7 @@ export type TeamRoleMaxAggregateInputType = {
 
 export type TeamRoleCountAggregateInputType = {
   id?: true
-  roleName?: true
+  role?: true
   description?: true
   createdAt?: true
   updatedAt?: true
@@ -149,7 +149,7 @@ export type TeamRoleGroupByArgs<ExtArgs extends runtime.Types.Extensions.Interna
 
 export type TeamRoleGroupByOutputType = {
   id: string
-  roleName: string
+  role: string
   description: string
   createdAt: Date
   updatedAt: Date
@@ -178,7 +178,7 @@ export type TeamRoleWhereInput = {
   OR?: Prisma.TeamRoleWhereInput[]
   NOT?: Prisma.TeamRoleWhereInput | Prisma.TeamRoleWhereInput[]
   id?: Prisma.StringFilter<"TeamRole"> | string
-  roleName?: Prisma.StringFilter<"TeamRole"> | string
+  role?: Prisma.StringFilter<"TeamRole"> | string
   description?: Prisma.StringFilter<"TeamRole"> | string
   createdAt?: Prisma.DateTimeFilter<"TeamRole"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"TeamRole"> | Date | string
@@ -187,7 +187,7 @@ export type TeamRoleWhereInput = {
 
 export type TeamRoleOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  roleName?: Prisma.SortOrder
+  role?: Prisma.SortOrder
   description?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -196,7 +196,7 @@ export type TeamRoleOrderByWithRelationInput = {
 
 export type TeamRoleWhereUniqueInput = Prisma.AtLeast<{
   id?: string
-  roleName?: string
+  role?: string
   AND?: Prisma.TeamRoleWhereInput | Prisma.TeamRoleWhereInput[]
   OR?: Prisma.TeamRoleWhereInput[]
   NOT?: Prisma.TeamRoleWhereInput | Prisma.TeamRoleWhereInput[]
@@ -204,11 +204,11 @@ export type TeamRoleWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"TeamRole"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"TeamRole"> | Date | string
   projectMembers?: Prisma.ProjectTeamMemberListRelationFilter
-}, "id" | "roleName">
+}, "id" | "role">
 
 export type TeamRoleOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  roleName?: Prisma.SortOrder
+  role?: Prisma.SortOrder
   description?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -222,7 +222,7 @@ export type TeamRoleScalarWhereWithAggregatesInput = {
   OR?: Prisma.TeamRoleScalarWhereWithAggregatesInput[]
   NOT?: Prisma.TeamRoleScalarWhereWithAggregatesInput | Prisma.TeamRoleScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"TeamRole"> | string
-  roleName?: Prisma.StringWithAggregatesFilter<"TeamRole"> | string
+  role?: Prisma.StringWithAggregatesFilter<"TeamRole"> | string
   description?: Prisma.StringWithAggregatesFilter<"TeamRole"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"TeamRole"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"TeamRole"> | Date | string
@@ -230,7 +230,7 @@ export type TeamRoleScalarWhereWithAggregatesInput = {
 
 export type TeamRoleCreateInput = {
   id?: string
-  roleName: string
+  role: string
   description: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -239,7 +239,7 @@ export type TeamRoleCreateInput = {
 
 export type TeamRoleUncheckedCreateInput = {
   id?: string
-  roleName: string
+  role: string
   description: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -248,7 +248,7 @@ export type TeamRoleUncheckedCreateInput = {
 
 export type TeamRoleUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  roleName?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -257,7 +257,7 @@ export type TeamRoleUpdateInput = {
 
 export type TeamRoleUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  roleName?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -266,7 +266,7 @@ export type TeamRoleUncheckedUpdateInput = {
 
 export type TeamRoleCreateManyInput = {
   id?: string
-  roleName: string
+  role: string
   description: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -274,7 +274,7 @@ export type TeamRoleCreateManyInput = {
 
 export type TeamRoleUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  roleName?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -282,7 +282,7 @@ export type TeamRoleUpdateManyMutationInput = {
 
 export type TeamRoleUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  roleName?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -290,7 +290,7 @@ export type TeamRoleUncheckedUpdateManyInput = {
 
 export type TeamRoleCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  roleName?: Prisma.SortOrder
+  role?: Prisma.SortOrder
   description?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -298,7 +298,7 @@ export type TeamRoleCountOrderByAggregateInput = {
 
 export type TeamRoleMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  roleName?: Prisma.SortOrder
+  role?: Prisma.SortOrder
   description?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -306,7 +306,7 @@ export type TeamRoleMaxOrderByAggregateInput = {
 
 export type TeamRoleMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  roleName?: Prisma.SortOrder
+  role?: Prisma.SortOrder
   description?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -333,7 +333,7 @@ export type TeamRoleUpdateOneRequiredWithoutProjectMembersNestedInput = {
 
 export type TeamRoleCreateWithoutProjectMembersInput = {
   id?: string
-  roleName: string
+  role: string
   description: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -341,7 +341,7 @@ export type TeamRoleCreateWithoutProjectMembersInput = {
 
 export type TeamRoleUncheckedCreateWithoutProjectMembersInput = {
   id?: string
-  roleName: string
+  role: string
   description: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -365,7 +365,7 @@ export type TeamRoleUpdateToOneWithWhereWithoutProjectMembersInput = {
 
 export type TeamRoleUpdateWithoutProjectMembersInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  roleName?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -373,7 +373,7 @@ export type TeamRoleUpdateWithoutProjectMembersInput = {
 
 export type TeamRoleUncheckedUpdateWithoutProjectMembersInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  roleName?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -412,7 +412,7 @@ export type TeamRoleCountOutputTypeCountProjectMembersArgs<ExtArgs extends runti
 
 export type TeamRoleSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  roleName?: boolean
+  role?: boolean
   description?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -422,7 +422,7 @@ export type TeamRoleSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
 
 export type TeamRoleSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  roleName?: boolean
+  role?: boolean
   description?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -430,7 +430,7 @@ export type TeamRoleSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
 
 export type TeamRoleSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  roleName?: boolean
+  role?: boolean
   description?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -438,13 +438,13 @@ export type TeamRoleSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
 
 export type TeamRoleSelectScalar = {
   id?: boolean
-  roleName?: boolean
+  role?: boolean
   description?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type TeamRoleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "roleName" | "description" | "createdAt" | "updatedAt", ExtArgs["result"]["teamRole"]>
+export type TeamRoleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "role" | "description" | "createdAt" | "updatedAt", ExtArgs["result"]["teamRole"]>
 export type TeamRoleInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   projectMembers?: boolean | Prisma.TeamRole$projectMembersArgs<ExtArgs>
   _count?: boolean | Prisma.TeamRoleCountOutputTypeDefaultArgs<ExtArgs>
@@ -459,7 +459,7 @@ export type $TeamRolePayload<ExtArgs extends runtime.Types.Extensions.InternalAr
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    roleName: string
+    role: string
     description: string
     createdAt: Date
     updatedAt: Date
@@ -888,7 +888,7 @@ export interface Prisma__TeamRoleClient<T, Null = never, ExtArgs extends runtime
  */
 export interface TeamRoleFieldRefs {
   readonly id: Prisma.FieldRef<"TeamRole", 'String'>
-  readonly roleName: Prisma.FieldRef<"TeamRole", 'String'>
+  readonly role: Prisma.FieldRef<"TeamRole", 'String'>
   readonly description: Prisma.FieldRef<"TeamRole", 'String'>
   readonly createdAt: Prisma.FieldRef<"TeamRole", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"TeamRole", 'DateTime'>

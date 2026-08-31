@@ -25,71 +25,89 @@ export type AggregateTeamMember = {
 }
 
 export type TeamMemberMinAggregateOutputType = {
-  id: string | null
-  fullName: string | null
+  teamMemberId: string | null
+  firstName: string | null
+  lastName: string | null
   email: string | null
   phone: string | null
   department: string | null
   employmentType: $Enums.EmploymentType | null
   createdAt: Date | null
   updatedAt: Date | null
+  isDeleted: boolean | null
+  deletedAt: Date | null
 }
 
 export type TeamMemberMaxAggregateOutputType = {
-  id: string | null
-  fullName: string | null
+  teamMemberId: string | null
+  firstName: string | null
+  lastName: string | null
   email: string | null
   phone: string | null
   department: string | null
   employmentType: $Enums.EmploymentType | null
   createdAt: Date | null
   updatedAt: Date | null
+  isDeleted: boolean | null
+  deletedAt: Date | null
 }
 
 export type TeamMemberCountAggregateOutputType = {
-  id: number
-  fullName: number
+  teamMemberId: number
+  firstName: number
+  lastName: number
   email: number
   phone: number
   department: number
   employmentType: number
   createdAt: number
   updatedAt: number
+  isDeleted: number
+  deletedAt: number
   _all: number
 }
 
 
 export type TeamMemberMinAggregateInputType = {
-  id?: true
-  fullName?: true
+  teamMemberId?: true
+  firstName?: true
+  lastName?: true
   email?: true
   phone?: true
   department?: true
   employmentType?: true
   createdAt?: true
   updatedAt?: true
+  isDeleted?: true
+  deletedAt?: true
 }
 
 export type TeamMemberMaxAggregateInputType = {
-  id?: true
-  fullName?: true
+  teamMemberId?: true
+  firstName?: true
+  lastName?: true
   email?: true
   phone?: true
   department?: true
   employmentType?: true
   createdAt?: true
   updatedAt?: true
+  isDeleted?: true
+  deletedAt?: true
 }
 
 export type TeamMemberCountAggregateInputType = {
-  id?: true
-  fullName?: true
+  teamMemberId?: true
+  firstName?: true
+  lastName?: true
   email?: true
   phone?: true
   department?: true
   employmentType?: true
   createdAt?: true
   updatedAt?: true
+  isDeleted?: true
+  deletedAt?: true
   _all?: true
 }
 
@@ -166,14 +184,17 @@ export type TeamMemberGroupByArgs<ExtArgs extends runtime.Types.Extensions.Inter
 }
 
 export type TeamMemberGroupByOutputType = {
-  id: string
-  fullName: string
+  teamMemberId: string
+  firstName: string
+  lastName: string
   email: string
   phone: string | null
   department: string | null
   employmentType: $Enums.EmploymentType
   createdAt: Date
   updatedAt: Date
+  isDeleted: boolean
+  deletedAt: Date | null
   _count: TeamMemberCountAggregateOutputType | null
   _min: TeamMemberMinAggregateOutputType | null
   _max: TeamMemberMaxAggregateOutputType | null
@@ -198,59 +219,71 @@ export type TeamMemberWhereInput = {
   AND?: Prisma.TeamMemberWhereInput | Prisma.TeamMemberWhereInput[]
   OR?: Prisma.TeamMemberWhereInput[]
   NOT?: Prisma.TeamMemberWhereInput | Prisma.TeamMemberWhereInput[]
-  id?: Prisma.StringFilter<"TeamMember"> | string
-  fullName?: Prisma.StringFilter<"TeamMember"> | string
+  teamMemberId?: Prisma.StringFilter<"TeamMember"> | string
+  firstName?: Prisma.StringFilter<"TeamMember"> | string
+  lastName?: Prisma.StringFilter<"TeamMember"> | string
   email?: Prisma.StringFilter<"TeamMember"> | string
   phone?: Prisma.StringNullableFilter<"TeamMember"> | string | null
   department?: Prisma.StringNullableFilter<"TeamMember"> | string | null
   employmentType?: Prisma.EnumEmploymentTypeFilter<"TeamMember"> | $Enums.EmploymentType
   createdAt?: Prisma.DateTimeFilter<"TeamMember"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"TeamMember"> | Date | string
+  isDeleted?: Prisma.BoolFilter<"TeamMember"> | boolean
+  deletedAt?: Prisma.DateTimeNullableFilter<"TeamMember"> | Date | string | null
   projects?: Prisma.ProjectListRelationFilter
   projectMembers?: Prisma.ProjectTeamMemberListRelationFilter
   projectNotes?: Prisma.ProjectNoteListRelationFilter
 }
 
 export type TeamMemberOrderByWithRelationInput = {
-  id?: Prisma.SortOrder
-  fullName?: Prisma.SortOrder
+  teamMemberId?: Prisma.SortOrder
+  firstName?: Prisma.SortOrder
+  lastName?: Prisma.SortOrder
   email?: Prisma.SortOrder
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
   department?: Prisma.SortOrderInput | Prisma.SortOrder
   employmentType?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isDeleted?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   projects?: Prisma.ProjectOrderByRelationAggregateInput
   projectMembers?: Prisma.ProjectTeamMemberOrderByRelationAggregateInput
   projectNotes?: Prisma.ProjectNoteOrderByRelationAggregateInput
 }
 
 export type TeamMemberWhereUniqueInput = Prisma.AtLeast<{
-  id?: string
+  teamMemberId?: string
   email?: string
   AND?: Prisma.TeamMemberWhereInput | Prisma.TeamMemberWhereInput[]
   OR?: Prisma.TeamMemberWhereInput[]
   NOT?: Prisma.TeamMemberWhereInput | Prisma.TeamMemberWhereInput[]
-  fullName?: Prisma.StringFilter<"TeamMember"> | string
+  firstName?: Prisma.StringFilter<"TeamMember"> | string
+  lastName?: Prisma.StringFilter<"TeamMember"> | string
   phone?: Prisma.StringNullableFilter<"TeamMember"> | string | null
   department?: Prisma.StringNullableFilter<"TeamMember"> | string | null
   employmentType?: Prisma.EnumEmploymentTypeFilter<"TeamMember"> | $Enums.EmploymentType
   createdAt?: Prisma.DateTimeFilter<"TeamMember"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"TeamMember"> | Date | string
+  isDeleted?: Prisma.BoolFilter<"TeamMember"> | boolean
+  deletedAt?: Prisma.DateTimeNullableFilter<"TeamMember"> | Date | string | null
   projects?: Prisma.ProjectListRelationFilter
   projectMembers?: Prisma.ProjectTeamMemberListRelationFilter
   projectNotes?: Prisma.ProjectNoteListRelationFilter
-}, "id" | "email">
+}, "teamMemberId" | "email">
 
 export type TeamMemberOrderByWithAggregationInput = {
-  id?: Prisma.SortOrder
-  fullName?: Prisma.SortOrder
+  teamMemberId?: Prisma.SortOrder
+  firstName?: Prisma.SortOrder
+  lastName?: Prisma.SortOrder
   email?: Prisma.SortOrder
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
   department?: Prisma.SortOrderInput | Prisma.SortOrder
   employmentType?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isDeleted?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.TeamMemberCountOrderByAggregateInput
   _max?: Prisma.TeamMemberMaxOrderByAggregateInput
   _min?: Prisma.TeamMemberMinOrderByAggregateInput
@@ -260,136 +293,169 @@ export type TeamMemberScalarWhereWithAggregatesInput = {
   AND?: Prisma.TeamMemberScalarWhereWithAggregatesInput | Prisma.TeamMemberScalarWhereWithAggregatesInput[]
   OR?: Prisma.TeamMemberScalarWhereWithAggregatesInput[]
   NOT?: Prisma.TeamMemberScalarWhereWithAggregatesInput | Prisma.TeamMemberScalarWhereWithAggregatesInput[]
-  id?: Prisma.StringWithAggregatesFilter<"TeamMember"> | string
-  fullName?: Prisma.StringWithAggregatesFilter<"TeamMember"> | string
+  teamMemberId?: Prisma.StringWithAggregatesFilter<"TeamMember"> | string
+  firstName?: Prisma.StringWithAggregatesFilter<"TeamMember"> | string
+  lastName?: Prisma.StringWithAggregatesFilter<"TeamMember"> | string
   email?: Prisma.StringWithAggregatesFilter<"TeamMember"> | string
   phone?: Prisma.StringNullableWithAggregatesFilter<"TeamMember"> | string | null
   department?: Prisma.StringNullableWithAggregatesFilter<"TeamMember"> | string | null
   employmentType?: Prisma.EnumEmploymentTypeWithAggregatesFilter<"TeamMember"> | $Enums.EmploymentType
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"TeamMember"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"TeamMember"> | Date | string
+  isDeleted?: Prisma.BoolWithAggregatesFilter<"TeamMember"> | boolean
+  deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"TeamMember"> | Date | string | null
 }
 
 export type TeamMemberCreateInput = {
-  id?: string
-  fullName: string
+  teamMemberId?: string
+  firstName: string
+  lastName: string
   email: string
   phone?: string | null
   department?: string | null
   employmentType: $Enums.EmploymentType
   createdAt?: Date | string
   updatedAt?: Date | string
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
   projects?: Prisma.ProjectCreateNestedManyWithoutProjectLeadInput
   projectMembers?: Prisma.ProjectTeamMemberCreateNestedManyWithoutTeamMemberInput
   projectNotes?: Prisma.ProjectNoteCreateNestedManyWithoutAuthorInput
 }
 
 export type TeamMemberUncheckedCreateInput = {
-  id?: string
-  fullName: string
+  teamMemberId?: string
+  firstName: string
+  lastName: string
   email: string
   phone?: string | null
   department?: string | null
   employmentType: $Enums.EmploymentType
   createdAt?: Date | string
   updatedAt?: Date | string
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
   projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutProjectLeadInput
   projectMembers?: Prisma.ProjectTeamMemberUncheckedCreateNestedManyWithoutTeamMemberInput
   projectNotes?: Prisma.ProjectNoteUncheckedCreateNestedManyWithoutAuthorInput
 }
 
 export type TeamMemberUpdateInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  teamMemberId?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   department?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   employmentType?: Prisma.EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   projects?: Prisma.ProjectUpdateManyWithoutProjectLeadNestedInput
   projectMembers?: Prisma.ProjectTeamMemberUpdateManyWithoutTeamMemberNestedInput
   projectNotes?: Prisma.ProjectNoteUpdateManyWithoutAuthorNestedInput
 }
 
 export type TeamMemberUncheckedUpdateInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  teamMemberId?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   department?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   employmentType?: Prisma.EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   projects?: Prisma.ProjectUncheckedUpdateManyWithoutProjectLeadNestedInput
   projectMembers?: Prisma.ProjectTeamMemberUncheckedUpdateManyWithoutTeamMemberNestedInput
   projectNotes?: Prisma.ProjectNoteUncheckedUpdateManyWithoutAuthorNestedInput
 }
 
 export type TeamMemberCreateManyInput = {
-  id?: string
-  fullName: string
+  teamMemberId?: string
+  firstName: string
+  lastName: string
   email: string
   phone?: string | null
   department?: string | null
   employmentType: $Enums.EmploymentType
   createdAt?: Date | string
   updatedAt?: Date | string
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
 }
 
 export type TeamMemberUpdateManyMutationInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  teamMemberId?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   department?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   employmentType?: Prisma.EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type TeamMemberUncheckedUpdateManyInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  teamMemberId?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   department?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   employmentType?: Prisma.EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type TeamMemberCountOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  fullName?: Prisma.SortOrder
+  teamMemberId?: Prisma.SortOrder
+  firstName?: Prisma.SortOrder
+  lastName?: Prisma.SortOrder
   email?: Prisma.SortOrder
   phone?: Prisma.SortOrder
   department?: Prisma.SortOrder
   employmentType?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isDeleted?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
 export type TeamMemberMaxOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  fullName?: Prisma.SortOrder
+  teamMemberId?: Prisma.SortOrder
+  firstName?: Prisma.SortOrder
+  lastName?: Prisma.SortOrder
   email?: Prisma.SortOrder
   phone?: Prisma.SortOrder
   department?: Prisma.SortOrder
   employmentType?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isDeleted?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
 export type TeamMemberMinOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  fullName?: Prisma.SortOrder
+  teamMemberId?: Prisma.SortOrder
+  firstName?: Prisma.SortOrder
+  lastName?: Prisma.SortOrder
   email?: Prisma.SortOrder
   phone?: Prisma.SortOrder
   department?: Prisma.SortOrder
   employmentType?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isDeleted?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
 export type TeamMemberScalarRelationFilter = {
@@ -444,27 +510,33 @@ export type TeamMemberUpdateOneRequiredWithoutProjectNotesNestedInput = {
 }
 
 export type TeamMemberCreateWithoutProjectsInput = {
-  id?: string
-  fullName: string
+  teamMemberId?: string
+  firstName: string
+  lastName: string
   email: string
   phone?: string | null
   department?: string | null
   employmentType: $Enums.EmploymentType
   createdAt?: Date | string
   updatedAt?: Date | string
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
   projectMembers?: Prisma.ProjectTeamMemberCreateNestedManyWithoutTeamMemberInput
   projectNotes?: Prisma.ProjectNoteCreateNestedManyWithoutAuthorInput
 }
 
 export type TeamMemberUncheckedCreateWithoutProjectsInput = {
-  id?: string
-  fullName: string
+  teamMemberId?: string
+  firstName: string
+  lastName: string
   email: string
   phone?: string | null
   department?: string | null
   employmentType: $Enums.EmploymentType
   createdAt?: Date | string
   updatedAt?: Date | string
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
   projectMembers?: Prisma.ProjectTeamMemberUncheckedCreateNestedManyWithoutTeamMemberInput
   projectNotes?: Prisma.ProjectNoteUncheckedCreateNestedManyWithoutAuthorInput
 }
@@ -486,53 +558,65 @@ export type TeamMemberUpdateToOneWithWhereWithoutProjectsInput = {
 }
 
 export type TeamMemberUpdateWithoutProjectsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  teamMemberId?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   department?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   employmentType?: Prisma.EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   projectMembers?: Prisma.ProjectTeamMemberUpdateManyWithoutTeamMemberNestedInput
   projectNotes?: Prisma.ProjectNoteUpdateManyWithoutAuthorNestedInput
 }
 
 export type TeamMemberUncheckedUpdateWithoutProjectsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  teamMemberId?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   department?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   employmentType?: Prisma.EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   projectMembers?: Prisma.ProjectTeamMemberUncheckedUpdateManyWithoutTeamMemberNestedInput
   projectNotes?: Prisma.ProjectNoteUncheckedUpdateManyWithoutAuthorNestedInput
 }
 
 export type TeamMemberCreateWithoutProjectMembersInput = {
-  id?: string
-  fullName: string
+  teamMemberId?: string
+  firstName: string
+  lastName: string
   email: string
   phone?: string | null
   department?: string | null
   employmentType: $Enums.EmploymentType
   createdAt?: Date | string
   updatedAt?: Date | string
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
   projects?: Prisma.ProjectCreateNestedManyWithoutProjectLeadInput
   projectNotes?: Prisma.ProjectNoteCreateNestedManyWithoutAuthorInput
 }
 
 export type TeamMemberUncheckedCreateWithoutProjectMembersInput = {
-  id?: string
-  fullName: string
+  teamMemberId?: string
+  firstName: string
+  lastName: string
   email: string
   phone?: string | null
   department?: string | null
   employmentType: $Enums.EmploymentType
   createdAt?: Date | string
   updatedAt?: Date | string
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
   projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutProjectLeadInput
   projectNotes?: Prisma.ProjectNoteUncheckedCreateNestedManyWithoutAuthorInput
 }
@@ -554,53 +638,65 @@ export type TeamMemberUpdateToOneWithWhereWithoutProjectMembersInput = {
 }
 
 export type TeamMemberUpdateWithoutProjectMembersInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  teamMemberId?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   department?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   employmentType?: Prisma.EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   projects?: Prisma.ProjectUpdateManyWithoutProjectLeadNestedInput
   projectNotes?: Prisma.ProjectNoteUpdateManyWithoutAuthorNestedInput
 }
 
 export type TeamMemberUncheckedUpdateWithoutProjectMembersInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  teamMemberId?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   department?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   employmentType?: Prisma.EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   projects?: Prisma.ProjectUncheckedUpdateManyWithoutProjectLeadNestedInput
   projectNotes?: Prisma.ProjectNoteUncheckedUpdateManyWithoutAuthorNestedInput
 }
 
 export type TeamMemberCreateWithoutProjectNotesInput = {
-  id?: string
-  fullName: string
+  teamMemberId?: string
+  firstName: string
+  lastName: string
   email: string
   phone?: string | null
   department?: string | null
   employmentType: $Enums.EmploymentType
   createdAt?: Date | string
   updatedAt?: Date | string
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
   projects?: Prisma.ProjectCreateNestedManyWithoutProjectLeadInput
   projectMembers?: Prisma.ProjectTeamMemberCreateNestedManyWithoutTeamMemberInput
 }
 
 export type TeamMemberUncheckedCreateWithoutProjectNotesInput = {
-  id?: string
-  fullName: string
+  teamMemberId?: string
+  firstName: string
+  lastName: string
   email: string
   phone?: string | null
   department?: string | null
   employmentType: $Enums.EmploymentType
   createdAt?: Date | string
   updatedAt?: Date | string
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
   projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutProjectLeadInput
   projectMembers?: Prisma.ProjectTeamMemberUncheckedCreateNestedManyWithoutTeamMemberInput
 }
@@ -622,27 +718,33 @@ export type TeamMemberUpdateToOneWithWhereWithoutProjectNotesInput = {
 }
 
 export type TeamMemberUpdateWithoutProjectNotesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  teamMemberId?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   department?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   employmentType?: Prisma.EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   projects?: Prisma.ProjectUpdateManyWithoutProjectLeadNestedInput
   projectMembers?: Prisma.ProjectTeamMemberUpdateManyWithoutTeamMemberNestedInput
 }
 
 export type TeamMemberUncheckedUpdateWithoutProjectNotesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  teamMemberId?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   department?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   employmentType?: Prisma.EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   projects?: Prisma.ProjectUncheckedUpdateManyWithoutProjectLeadNestedInput
   projectMembers?: Prisma.ProjectTeamMemberUncheckedUpdateManyWithoutTeamMemberNestedInput
 }
@@ -697,14 +799,17 @@ export type TeamMemberCountOutputTypeCountProjectNotesArgs<ExtArgs extends runti
 
 
 export type TeamMemberSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  id?: boolean
-  fullName?: boolean
+  teamMemberId?: boolean
+  firstName?: boolean
+  lastName?: boolean
   email?: boolean
   phone?: boolean
   department?: boolean
   employmentType?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  isDeleted?: boolean
+  deletedAt?: boolean
   projects?: boolean | Prisma.TeamMember$projectsArgs<ExtArgs>
   projectMembers?: boolean | Prisma.TeamMember$projectMembersArgs<ExtArgs>
   projectNotes?: boolean | Prisma.TeamMember$projectNotesArgs<ExtArgs>
@@ -712,39 +817,48 @@ export type TeamMemberSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
 }, ExtArgs["result"]["teamMember"]>
 
 export type TeamMemberSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  id?: boolean
-  fullName?: boolean
+  teamMemberId?: boolean
+  firstName?: boolean
+  lastName?: boolean
   email?: boolean
   phone?: boolean
   department?: boolean
   employmentType?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  isDeleted?: boolean
+  deletedAt?: boolean
 }, ExtArgs["result"]["teamMember"]>
 
 export type TeamMemberSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  id?: boolean
-  fullName?: boolean
+  teamMemberId?: boolean
+  firstName?: boolean
+  lastName?: boolean
   email?: boolean
   phone?: boolean
   department?: boolean
   employmentType?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  isDeleted?: boolean
+  deletedAt?: boolean
 }, ExtArgs["result"]["teamMember"]>
 
 export type TeamMemberSelectScalar = {
-  id?: boolean
-  fullName?: boolean
+  teamMemberId?: boolean
+  firstName?: boolean
+  lastName?: boolean
   email?: boolean
   phone?: boolean
   department?: boolean
   employmentType?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  isDeleted?: boolean
+  deletedAt?: boolean
 }
 
-export type TeamMemberOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "fullName" | "email" | "phone" | "department" | "employmentType" | "createdAt" | "updatedAt", ExtArgs["result"]["teamMember"]>
+export type TeamMemberOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"teamMemberId" | "firstName" | "lastName" | "email" | "phone" | "department" | "employmentType" | "createdAt" | "updatedAt" | "isDeleted" | "deletedAt", ExtArgs["result"]["teamMember"]>
 export type TeamMemberInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   projects?: boolean | Prisma.TeamMember$projectsArgs<ExtArgs>
   projectMembers?: boolean | Prisma.TeamMember$projectMembersArgs<ExtArgs>
@@ -762,14 +876,17 @@ export type $TeamMemberPayload<ExtArgs extends runtime.Types.Extensions.Internal
     projectNotes: Prisma.$ProjectNotePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    id: string
-    fullName: string
+    teamMemberId: string
+    firstName: string
+    lastName: string
     email: string
     phone: string | null
     department: string | null
     employmentType: $Enums.EmploymentType
     createdAt: Date
     updatedAt: Date
+    isDeleted: boolean
+    deletedAt: Date | null
   }, ExtArgs["result"]["teamMember"]>
   composites: {}
 }
@@ -853,8 +970,8 @@ export interface TeamMemberDelegate<ExtArgs extends runtime.Types.Extensions.Int
    * // Get first 10 TeamMembers
    * const teamMembers = await prisma.teamMember.findMany({ take: 10 })
    * 
-   * // Only select the `id`
-   * const teamMemberWithIdOnly = await prisma.teamMember.findMany({ select: { id: true } })
+   * // Only select the `teamMemberId`
+   * const teamMemberWithTeamMemberIdOnly = await prisma.teamMember.findMany({ select: { teamMemberId: true } })
    * 
    */
   findMany<T extends TeamMemberFindManyArgs>(args?: Prisma.SelectSubset<T, TeamMemberFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TeamMemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -898,9 +1015,9 @@ export interface TeamMemberDelegate<ExtArgs extends runtime.Types.Extensions.Int
    *   ]
    * })
    * 
-   * // Create many TeamMembers and only return the `id`
-   * const teamMemberWithIdOnly = await prisma.teamMember.createManyAndReturn({
-   *   select: { id: true },
+   * // Create many TeamMembers and only return the `teamMemberId`
+   * const teamMemberWithTeamMemberIdOnly = await prisma.teamMember.createManyAndReturn({
+   *   select: { teamMemberId: true },
    *   data: [
    *     // ... provide data here
    *   ]
@@ -989,9 +1106,9 @@ export interface TeamMemberDelegate<ExtArgs extends runtime.Types.Extensions.Int
    *   ]
    * })
    * 
-   * // Update zero or more TeamMembers and only return the `id`
-   * const teamMemberWithIdOnly = await prisma.teamMember.updateManyAndReturn({
-   *   select: { id: true },
+   * // Update zero or more TeamMembers and only return the `teamMemberId`
+   * const teamMemberWithTeamMemberIdOnly = await prisma.teamMember.updateManyAndReturn({
+   *   select: { teamMemberId: true },
    *   where: {
    *     // ... provide filter here
    *   },
@@ -1196,14 +1313,17 @@ export interface Prisma__TeamMemberClient<T, Null = never, ExtArgs extends runti
  * Fields of the TeamMember model
  */
 export interface TeamMemberFieldRefs {
-  readonly id: Prisma.FieldRef<"TeamMember", 'String'>
-  readonly fullName: Prisma.FieldRef<"TeamMember", 'String'>
+  readonly teamMemberId: Prisma.FieldRef<"TeamMember", 'String'>
+  readonly firstName: Prisma.FieldRef<"TeamMember", 'String'>
+  readonly lastName: Prisma.FieldRef<"TeamMember", 'String'>
   readonly email: Prisma.FieldRef<"TeamMember", 'String'>
   readonly phone: Prisma.FieldRef<"TeamMember", 'String'>
   readonly department: Prisma.FieldRef<"TeamMember", 'String'>
   readonly employmentType: Prisma.FieldRef<"TeamMember", 'EmploymentType'>
   readonly createdAt: Prisma.FieldRef<"TeamMember", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"TeamMember", 'DateTime'>
+  readonly isDeleted: Prisma.FieldRef<"TeamMember", 'Boolean'>
+  readonly deletedAt: Prisma.FieldRef<"TeamMember", 'DateTime'>
 }
     
 

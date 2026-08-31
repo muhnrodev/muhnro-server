@@ -7,6 +7,8 @@ import { ObjectService } from '../object/object.service.js';
 import { ComponentService } from '../component/component.service.js';
 import { IndustryService } from '../admin/industry/industry.service.js';
 import { TagService } from '../admin/tag/tag.service.js';
+import { ClientService } from '../admin/client/client.service.js';
+import { StakeholdersService } from '../admin/stakeholder/stakeholder.service.js';
 
 @Module({
   controllers: [DataController],
@@ -18,6 +20,8 @@ import { TagService } from '../admin/tag/tag.service.js';
     ComponentService,
     IndustryService,
     TagService,
+    ClientService,
+    StakeholdersService,
   ],
 })
 export class DataModule {}

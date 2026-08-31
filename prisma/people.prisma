@@ -1,21 +1,31 @@
 model TeamMember {
-    id                      String   @id @default(dbgenerated("gen_random_uuid()"))
-    fullName                String
+    teamMemberId            String   @id @default(dbgenerated("gen_random_uuid()"))
+    firstName                String
+    lastName                String
     email                   String   @unique
     phone                   String?
     department              String?
     employmentType          EmploymentType
+
     createdAt               DateTime @default(now())
     updatedAt               DateTime @updatedAt
+
+    isDeleted               Boolean         @default(false)
+    deletedAt               DateTime?
 
     projects                Project[]
     projectMembers          ProjectTeamMember[]
     projectNotes            ProjectNote[]
+
+    @@index([lastName, firstName])
+    @@index([department])
+    @@index([employmentType])
+    @@index([isDeleted, createdAt])
 }
 
 model TeamRole {
     id                      String   @id @default(dbgenerated("gen_random_uuid()"))
-    roleName                String   @unique
+    role                    String   @unique
     description             String
     createdAt               DateTime @default(now())
     updatedAt               DateTime @updatedAt

@@ -324,10 +324,6 @@ export type TopicScalarRelationFilter = {
   isNot?: Prisma.TopicWhereInput
 }
 
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
-}
-
 export type TopicCreateNestedOneWithoutArticlesInput = {
   create?: Prisma.XOR<Prisma.TopicCreateWithoutArticlesInput, Prisma.TopicUncheckedCreateWithoutArticlesInput>
   connectOrCreate?: Prisma.TopicCreateOrConnectWithoutArticlesInput

@@ -44,6 +44,7 @@ export type ProjectTeamMemberMinAggregateOutputType = {
   allocationPercent: number | null
   notes: string | null
   createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type ProjectTeamMemberMaxAggregateOutputType = {
@@ -56,6 +57,7 @@ export type ProjectTeamMemberMaxAggregateOutputType = {
   allocationPercent: number | null
   notes: string | null
   createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type ProjectTeamMemberCountAggregateOutputType = {
@@ -68,6 +70,7 @@ export type ProjectTeamMemberCountAggregateOutputType = {
   allocationPercent: number
   notes: number
   createdAt: number
+  updatedAt: number
   _all: number
 }
 
@@ -90,6 +93,7 @@ export type ProjectTeamMemberMinAggregateInputType = {
   allocationPercent?: true
   notes?: true
   createdAt?: true
+  updatedAt?: true
 }
 
 export type ProjectTeamMemberMaxAggregateInputType = {
@@ -102,6 +106,7 @@ export type ProjectTeamMemberMaxAggregateInputType = {
   allocationPercent?: true
   notes?: true
   createdAt?: true
+  updatedAt?: true
 }
 
 export type ProjectTeamMemberCountAggregateInputType = {
@@ -114,6 +119,7 @@ export type ProjectTeamMemberCountAggregateInputType = {
   allocationPercent?: true
   notes?: true
   createdAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -213,6 +219,7 @@ export type ProjectTeamMemberGroupByOutputType = {
   allocationPercent: number
   notes: string | null
   createdAt: Date
+  updatedAt: Date
   _count: ProjectTeamMemberCountAggregateOutputType | null
   _avg: ProjectTeamMemberAvgAggregateOutputType | null
   _sum: ProjectTeamMemberSumAggregateOutputType | null
@@ -248,6 +255,7 @@ export type ProjectTeamMemberWhereInput = {
   allocationPercent?: Prisma.FloatFilter<"ProjectTeamMember"> | number
   notes?: Prisma.StringNullableFilter<"ProjectTeamMember"> | string | null
   createdAt?: Prisma.DateTimeFilter<"ProjectTeamMember"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"ProjectTeamMember"> | Date | string
   project?: Prisma.XOR<Prisma.ProjectScalarRelationFilter, Prisma.ProjectWhereInput>
   teamMember?: Prisma.XOR<Prisma.TeamMemberScalarRelationFilter, Prisma.TeamMemberWhereInput>
   teamRole?: Prisma.XOR<Prisma.TeamRoleScalarRelationFilter, Prisma.TeamRoleWhereInput>
@@ -263,6 +271,7 @@ export type ProjectTeamMemberOrderByWithRelationInput = {
   allocationPercent?: Prisma.SortOrder
   notes?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   project?: Prisma.ProjectOrderByWithRelationInput
   teamMember?: Prisma.TeamMemberOrderByWithRelationInput
   teamRole?: Prisma.TeamRoleOrderByWithRelationInput
@@ -281,6 +290,7 @@ export type ProjectTeamMemberWhereUniqueInput = Prisma.AtLeast<{
   allocationPercent?: Prisma.FloatFilter<"ProjectTeamMember"> | number
   notes?: Prisma.StringNullableFilter<"ProjectTeamMember"> | string | null
   createdAt?: Prisma.DateTimeFilter<"ProjectTeamMember"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"ProjectTeamMember"> | Date | string
   project?: Prisma.XOR<Prisma.ProjectScalarRelationFilter, Prisma.ProjectWhereInput>
   teamMember?: Prisma.XOR<Prisma.TeamMemberScalarRelationFilter, Prisma.TeamMemberWhereInput>
   teamRole?: Prisma.XOR<Prisma.TeamRoleScalarRelationFilter, Prisma.TeamRoleWhereInput>
@@ -296,6 +306,7 @@ export type ProjectTeamMemberOrderByWithAggregationInput = {
   allocationPercent?: Prisma.SortOrder
   notes?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   _count?: Prisma.ProjectTeamMemberCountOrderByAggregateInput
   _avg?: Prisma.ProjectTeamMemberAvgOrderByAggregateInput
   _max?: Prisma.ProjectTeamMemberMaxOrderByAggregateInput
@@ -316,6 +327,7 @@ export type ProjectTeamMemberScalarWhereWithAggregatesInput = {
   allocationPercent?: Prisma.FloatWithAggregatesFilter<"ProjectTeamMember"> | number
   notes?: Prisma.StringNullableWithAggregatesFilter<"ProjectTeamMember"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"ProjectTeamMember"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"ProjectTeamMember"> | Date | string
 }
 
 export type ProjectTeamMemberCreateInput = {
@@ -325,6 +337,7 @@ export type ProjectTeamMemberCreateInput = {
   allocationPercent: number
   notes?: string | null
   createdAt?: Date | string
+  updatedAt?: Date | string
   project: Prisma.ProjectCreateNestedOneWithoutTeamMembersInput
   teamMember: Prisma.TeamMemberCreateNestedOneWithoutProjectMembersInput
   teamRole: Prisma.TeamRoleCreateNestedOneWithoutProjectMembersInput
@@ -340,6 +353,7 @@ export type ProjectTeamMemberUncheckedCreateInput = {
   allocationPercent: number
   notes?: string | null
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ProjectTeamMemberUpdateInput = {
@@ -349,6 +363,7 @@ export type ProjectTeamMemberUpdateInput = {
   allocationPercent?: Prisma.FloatFieldUpdateOperationsInput | number
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   project?: Prisma.ProjectUpdateOneRequiredWithoutTeamMembersNestedInput
   teamMember?: Prisma.TeamMemberUpdateOneRequiredWithoutProjectMembersNestedInput
   teamRole?: Prisma.TeamRoleUpdateOneRequiredWithoutProjectMembersNestedInput
@@ -364,6 +379,7 @@ export type ProjectTeamMemberUncheckedUpdateInput = {
   allocationPercent?: Prisma.FloatFieldUpdateOperationsInput | number
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ProjectTeamMemberCreateManyInput = {
@@ -376,6 +392,7 @@ export type ProjectTeamMemberCreateManyInput = {
   allocationPercent: number
   notes?: string | null
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ProjectTeamMemberUpdateManyMutationInput = {
@@ -385,6 +402,7 @@ export type ProjectTeamMemberUpdateManyMutationInput = {
   allocationPercent?: Prisma.FloatFieldUpdateOperationsInput | number
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ProjectTeamMemberUncheckedUpdateManyInput = {
@@ -397,6 +415,7 @@ export type ProjectTeamMemberUncheckedUpdateManyInput = {
   allocationPercent?: Prisma.FloatFieldUpdateOperationsInput | number
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ProjectTeamMemberListRelationFilter = {
@@ -419,6 +438,7 @@ export type ProjectTeamMemberCountOrderByAggregateInput = {
   allocationPercent?: Prisma.SortOrder
   notes?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type ProjectTeamMemberAvgOrderByAggregateInput = {
@@ -435,6 +455,7 @@ export type ProjectTeamMemberMaxOrderByAggregateInput = {
   allocationPercent?: Prisma.SortOrder
   notes?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type ProjectTeamMemberMinOrderByAggregateInput = {
@@ -447,6 +468,7 @@ export type ProjectTeamMemberMinOrderByAggregateInput = {
   allocationPercent?: Prisma.SortOrder
   notes?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type ProjectTeamMemberSumOrderByAggregateInput = {
@@ -586,6 +608,7 @@ export type ProjectTeamMemberCreateWithoutTeamMemberInput = {
   allocationPercent: number
   notes?: string | null
   createdAt?: Date | string
+  updatedAt?: Date | string
   project: Prisma.ProjectCreateNestedOneWithoutTeamMembersInput
   teamRole: Prisma.TeamRoleCreateNestedOneWithoutProjectMembersInput
 }
@@ -599,6 +622,7 @@ export type ProjectTeamMemberUncheckedCreateWithoutTeamMemberInput = {
   allocationPercent: number
   notes?: string | null
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ProjectTeamMemberCreateOrConnectWithoutTeamMemberInput = {
@@ -640,6 +664,7 @@ export type ProjectTeamMemberScalarWhereInput = {
   allocationPercent?: Prisma.FloatFilter<"ProjectTeamMember"> | number
   notes?: Prisma.StringNullableFilter<"ProjectTeamMember"> | string | null
   createdAt?: Prisma.DateTimeFilter<"ProjectTeamMember"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"ProjectTeamMember"> | Date | string
 }
 
 export type ProjectTeamMemberCreateWithoutTeamRoleInput = {
@@ -649,6 +674,7 @@ export type ProjectTeamMemberCreateWithoutTeamRoleInput = {
   allocationPercent: number
   notes?: string | null
   createdAt?: Date | string
+  updatedAt?: Date | string
   project: Prisma.ProjectCreateNestedOneWithoutTeamMembersInput
   teamMember: Prisma.TeamMemberCreateNestedOneWithoutProjectMembersInput
 }
@@ -662,6 +688,7 @@ export type ProjectTeamMemberUncheckedCreateWithoutTeamRoleInput = {
   allocationPercent: number
   notes?: string | null
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ProjectTeamMemberCreateOrConnectWithoutTeamRoleInput = {
@@ -697,6 +724,7 @@ export type ProjectTeamMemberCreateWithoutProjectInput = {
   allocationPercent: number
   notes?: string | null
   createdAt?: Date | string
+  updatedAt?: Date | string
   teamMember: Prisma.TeamMemberCreateNestedOneWithoutProjectMembersInput
   teamRole: Prisma.TeamRoleCreateNestedOneWithoutProjectMembersInput
 }
@@ -710,6 +738,7 @@ export type ProjectTeamMemberUncheckedCreateWithoutProjectInput = {
   allocationPercent: number
   notes?: string | null
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ProjectTeamMemberCreateOrConnectWithoutProjectInput = {
@@ -747,6 +776,7 @@ export type ProjectTeamMemberCreateManyTeamMemberInput = {
   allocationPercent: number
   notes?: string | null
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ProjectTeamMemberUpdateWithoutTeamMemberInput = {
@@ -756,6 +786,7 @@ export type ProjectTeamMemberUpdateWithoutTeamMemberInput = {
   allocationPercent?: Prisma.FloatFieldUpdateOperationsInput | number
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   project?: Prisma.ProjectUpdateOneRequiredWithoutTeamMembersNestedInput
   teamRole?: Prisma.TeamRoleUpdateOneRequiredWithoutProjectMembersNestedInput
 }
@@ -769,6 +800,7 @@ export type ProjectTeamMemberUncheckedUpdateWithoutTeamMemberInput = {
   allocationPercent?: Prisma.FloatFieldUpdateOperationsInput | number
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ProjectTeamMemberUncheckedUpdateManyWithoutTeamMemberInput = {
@@ -780,6 +812,7 @@ export type ProjectTeamMemberUncheckedUpdateManyWithoutTeamMemberInput = {
   allocationPercent?: Prisma.FloatFieldUpdateOperationsInput | number
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ProjectTeamMemberCreateManyTeamRoleInput = {
@@ -791,6 +824,7 @@ export type ProjectTeamMemberCreateManyTeamRoleInput = {
   allocationPercent: number
   notes?: string | null
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ProjectTeamMemberUpdateWithoutTeamRoleInput = {
@@ -800,6 +834,7 @@ export type ProjectTeamMemberUpdateWithoutTeamRoleInput = {
   allocationPercent?: Prisma.FloatFieldUpdateOperationsInput | number
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   project?: Prisma.ProjectUpdateOneRequiredWithoutTeamMembersNestedInput
   teamMember?: Prisma.TeamMemberUpdateOneRequiredWithoutProjectMembersNestedInput
 }
@@ -813,6 +848,7 @@ export type ProjectTeamMemberUncheckedUpdateWithoutTeamRoleInput = {
   allocationPercent?: Prisma.FloatFieldUpdateOperationsInput | number
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ProjectTeamMemberUncheckedUpdateManyWithoutTeamRoleInput = {
@@ -824,6 +860,7 @@ export type ProjectTeamMemberUncheckedUpdateManyWithoutTeamRoleInput = {
   allocationPercent?: Prisma.FloatFieldUpdateOperationsInput | number
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ProjectTeamMemberCreateManyProjectInput = {
@@ -835,6 +872,7 @@ export type ProjectTeamMemberCreateManyProjectInput = {
   allocationPercent: number
   notes?: string | null
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ProjectTeamMemberUpdateWithoutProjectInput = {
@@ -844,6 +882,7 @@ export type ProjectTeamMemberUpdateWithoutProjectInput = {
   allocationPercent?: Prisma.FloatFieldUpdateOperationsInput | number
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   teamMember?: Prisma.TeamMemberUpdateOneRequiredWithoutProjectMembersNestedInput
   teamRole?: Prisma.TeamRoleUpdateOneRequiredWithoutProjectMembersNestedInput
 }
@@ -857,6 +896,7 @@ export type ProjectTeamMemberUncheckedUpdateWithoutProjectInput = {
   allocationPercent?: Prisma.FloatFieldUpdateOperationsInput | number
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ProjectTeamMemberUncheckedUpdateManyWithoutProjectInput = {
@@ -868,6 +908,7 @@ export type ProjectTeamMemberUncheckedUpdateManyWithoutProjectInput = {
   allocationPercent?: Prisma.FloatFieldUpdateOperationsInput | number
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -882,6 +923,7 @@ export type ProjectTeamMemberSelect<ExtArgs extends runtime.Types.Extensions.Int
   allocationPercent?: boolean
   notes?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
   project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
   teamMember?: boolean | Prisma.TeamMemberDefaultArgs<ExtArgs>
   teamRole?: boolean | Prisma.TeamRoleDefaultArgs<ExtArgs>
@@ -897,6 +939,7 @@ export type ProjectTeamMemberSelectCreateManyAndReturn<ExtArgs extends runtime.T
   allocationPercent?: boolean
   notes?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
   project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
   teamMember?: boolean | Prisma.TeamMemberDefaultArgs<ExtArgs>
   teamRole?: boolean | Prisma.TeamRoleDefaultArgs<ExtArgs>
@@ -912,6 +955,7 @@ export type ProjectTeamMemberSelectUpdateManyAndReturn<ExtArgs extends runtime.T
   allocationPercent?: boolean
   notes?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
   project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
   teamMember?: boolean | Prisma.TeamMemberDefaultArgs<ExtArgs>
   teamRole?: boolean | Prisma.TeamRoleDefaultArgs<ExtArgs>
@@ -927,9 +971,10 @@ export type ProjectTeamMemberSelectScalar = {
   allocationPercent?: boolean
   notes?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
 }
 
-export type ProjectTeamMemberOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "projectId" | "memberId" | "roleId" | "assignedDate" | "unassignedDate" | "allocationPercent" | "notes" | "createdAt", ExtArgs["result"]["projectTeamMember"]>
+export type ProjectTeamMemberOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "projectId" | "memberId" | "roleId" | "assignedDate" | "unassignedDate" | "allocationPercent" | "notes" | "createdAt" | "updatedAt", ExtArgs["result"]["projectTeamMember"]>
 export type ProjectTeamMemberInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
   teamMember?: boolean | Prisma.TeamMemberDefaultArgs<ExtArgs>
@@ -963,6 +1008,7 @@ export type $ProjectTeamMemberPayload<ExtArgs extends runtime.Types.Extensions.I
     allocationPercent: number
     notes: string | null
     createdAt: Date
+    updatedAt: Date
   }, ExtArgs["result"]["projectTeamMember"]>
   composites: {}
 }
@@ -1398,6 +1444,7 @@ export interface ProjectTeamMemberFieldRefs {
   readonly allocationPercent: Prisma.FieldRef<"ProjectTeamMember", 'Float'>
   readonly notes: Prisma.FieldRef<"ProjectTeamMember", 'String'>
   readonly createdAt: Prisma.FieldRef<"ProjectTeamMember", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"ProjectTeamMember", 'DateTime'>
 }
     
 

@@ -38,41 +38,62 @@ export type LocationSumAggregateOutputType = {
 
 export type LocationMinAggregateOutputType = {
   locationId: string | null
+  name: string | null
+  description: string | null
   country: string | null
   region: string | null
   city: string | null
-  addressLine: string | null
+  addressLine1: string | null
+  addressLine2: string | null
   postalCode: string | null
   gpsLat: number | null
   gpsLong: number | null
+  isVirtual: boolean | null
+  provider: string | null
   createdAt: Date | null
   updatedAt: Date | null
+  isDeleted: boolean | null
+  deletedAt: Date | null
 }
 
 export type LocationMaxAggregateOutputType = {
   locationId: string | null
+  name: string | null
+  description: string | null
   country: string | null
   region: string | null
   city: string | null
-  addressLine: string | null
+  addressLine1: string | null
+  addressLine2: string | null
   postalCode: string | null
   gpsLat: number | null
   gpsLong: number | null
+  isVirtual: boolean | null
+  provider: string | null
   createdAt: Date | null
   updatedAt: Date | null
+  isDeleted: boolean | null
+  deletedAt: Date | null
 }
 
 export type LocationCountAggregateOutputType = {
   locationId: number
+  name: number
+  description: number
   country: number
   region: number
   city: number
-  addressLine: number
+  addressLine1: number
+  addressLine2: number
   postalCode: number
   gpsLat: number
   gpsLong: number
+  isVirtual: number
+  provider: number
   createdAt: number
   updatedAt: number
+  isDeleted: number
+  deletedAt: number
   _all: number
 }
 
@@ -89,41 +110,62 @@ export type LocationSumAggregateInputType = {
 
 export type LocationMinAggregateInputType = {
   locationId?: true
+  name?: true
+  description?: true
   country?: true
   region?: true
   city?: true
-  addressLine?: true
+  addressLine1?: true
+  addressLine2?: true
   postalCode?: true
   gpsLat?: true
   gpsLong?: true
+  isVirtual?: true
+  provider?: true
   createdAt?: true
   updatedAt?: true
+  isDeleted?: true
+  deletedAt?: true
 }
 
 export type LocationMaxAggregateInputType = {
   locationId?: true
+  name?: true
+  description?: true
   country?: true
   region?: true
   city?: true
-  addressLine?: true
+  addressLine1?: true
+  addressLine2?: true
   postalCode?: true
   gpsLat?: true
   gpsLong?: true
+  isVirtual?: true
+  provider?: true
   createdAt?: true
   updatedAt?: true
+  isDeleted?: true
+  deletedAt?: true
 }
 
 export type LocationCountAggregateInputType = {
   locationId?: true
+  name?: true
+  description?: true
   country?: true
   region?: true
   city?: true
-  addressLine?: true
+  addressLine1?: true
+  addressLine2?: true
   postalCode?: true
   gpsLat?: true
   gpsLong?: true
+  isVirtual?: true
+  provider?: true
   createdAt?: true
   updatedAt?: true
+  isDeleted?: true
+  deletedAt?: true
   _all?: true
 }
 
@@ -215,15 +257,22 @@ export type LocationGroupByArgs<ExtArgs extends runtime.Types.Extensions.Interna
 
 export type LocationGroupByOutputType = {
   locationId: string
-  country: string
-  region: string
-  city: string
-  addressLine: string
-  postalCode: string
-  gpsLat: number
-  gpsLong: number
+  name: string
+  description: string | null
+  country: string | null
+  region: string | null
+  city: string | null
+  addressLine1: string | null
+  addressLine2: string | null
+  postalCode: string | null
+  gpsLat: number | null
+  gpsLong: number | null
+  isVirtual: boolean
+  provider: string | null
   createdAt: Date
   updatedAt: Date
+  isDeleted: boolean
+  deletedAt: Date | null
   _count: LocationCountAggregateOutputType | null
   _avg: LocationAvgAggregateOutputType | null
   _sum: LocationSumAggregateOutputType | null
@@ -251,29 +300,43 @@ export type LocationWhereInput = {
   OR?: Prisma.LocationWhereInput[]
   NOT?: Prisma.LocationWhereInput | Prisma.LocationWhereInput[]
   locationId?: Prisma.StringFilter<"Location"> | string
-  country?: Prisma.StringFilter<"Location"> | string
-  region?: Prisma.StringFilter<"Location"> | string
-  city?: Prisma.StringFilter<"Location"> | string
-  addressLine?: Prisma.StringFilter<"Location"> | string
-  postalCode?: Prisma.StringFilter<"Location"> | string
-  gpsLat?: Prisma.FloatFilter<"Location"> | number
-  gpsLong?: Prisma.FloatFilter<"Location"> | number
+  name?: Prisma.StringFilter<"Location"> | string
+  description?: Prisma.StringNullableFilter<"Location"> | string | null
+  country?: Prisma.StringNullableFilter<"Location"> | string | null
+  region?: Prisma.StringNullableFilter<"Location"> | string | null
+  city?: Prisma.StringNullableFilter<"Location"> | string | null
+  addressLine1?: Prisma.StringNullableFilter<"Location"> | string | null
+  addressLine2?: Prisma.StringNullableFilter<"Location"> | string | null
+  postalCode?: Prisma.StringNullableFilter<"Location"> | string | null
+  gpsLat?: Prisma.FloatNullableFilter<"Location"> | number | null
+  gpsLong?: Prisma.FloatNullableFilter<"Location"> | number | null
+  isVirtual?: Prisma.BoolFilter<"Location"> | boolean
+  provider?: Prisma.StringNullableFilter<"Location"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Location"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Location"> | Date | string
+  isDeleted?: Prisma.BoolFilter<"Location"> | boolean
+  deletedAt?: Prisma.DateTimeNullableFilter<"Location"> | Date | string | null
   projects?: Prisma.ProjectListRelationFilter
 }
 
 export type LocationOrderByWithRelationInput = {
   locationId?: Prisma.SortOrder
-  country?: Prisma.SortOrder
-  region?: Prisma.SortOrder
-  city?: Prisma.SortOrder
-  addressLine?: Prisma.SortOrder
-  postalCode?: Prisma.SortOrder
-  gpsLat?: Prisma.SortOrder
-  gpsLong?: Prisma.SortOrder
+  name?: Prisma.SortOrder
+  description?: Prisma.SortOrderInput | Prisma.SortOrder
+  country?: Prisma.SortOrderInput | Prisma.SortOrder
+  region?: Prisma.SortOrderInput | Prisma.SortOrder
+  city?: Prisma.SortOrderInput | Prisma.SortOrder
+  addressLine1?: Prisma.SortOrderInput | Prisma.SortOrder
+  addressLine2?: Prisma.SortOrderInput | Prisma.SortOrder
+  postalCode?: Prisma.SortOrderInput | Prisma.SortOrder
+  gpsLat?: Prisma.SortOrderInput | Prisma.SortOrder
+  gpsLong?: Prisma.SortOrderInput | Prisma.SortOrder
+  isVirtual?: Prisma.SortOrder
+  provider?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isDeleted?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   projects?: Prisma.ProjectOrderByRelationAggregateInput
 }
 
@@ -282,29 +345,43 @@ export type LocationWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.LocationWhereInput | Prisma.LocationWhereInput[]
   OR?: Prisma.LocationWhereInput[]
   NOT?: Prisma.LocationWhereInput | Prisma.LocationWhereInput[]
-  country?: Prisma.StringFilter<"Location"> | string
-  region?: Prisma.StringFilter<"Location"> | string
-  city?: Prisma.StringFilter<"Location"> | string
-  addressLine?: Prisma.StringFilter<"Location"> | string
-  postalCode?: Prisma.StringFilter<"Location"> | string
-  gpsLat?: Prisma.FloatFilter<"Location"> | number
-  gpsLong?: Prisma.FloatFilter<"Location"> | number
+  name?: Prisma.StringFilter<"Location"> | string
+  description?: Prisma.StringNullableFilter<"Location"> | string | null
+  country?: Prisma.StringNullableFilter<"Location"> | string | null
+  region?: Prisma.StringNullableFilter<"Location"> | string | null
+  city?: Prisma.StringNullableFilter<"Location"> | string | null
+  addressLine1?: Prisma.StringNullableFilter<"Location"> | string | null
+  addressLine2?: Prisma.StringNullableFilter<"Location"> | string | null
+  postalCode?: Prisma.StringNullableFilter<"Location"> | string | null
+  gpsLat?: Prisma.FloatNullableFilter<"Location"> | number | null
+  gpsLong?: Prisma.FloatNullableFilter<"Location"> | number | null
+  isVirtual?: Prisma.BoolFilter<"Location"> | boolean
+  provider?: Prisma.StringNullableFilter<"Location"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Location"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Location"> | Date | string
+  isDeleted?: Prisma.BoolFilter<"Location"> | boolean
+  deletedAt?: Prisma.DateTimeNullableFilter<"Location"> | Date | string | null
   projects?: Prisma.ProjectListRelationFilter
 }, "locationId">
 
 export type LocationOrderByWithAggregationInput = {
   locationId?: Prisma.SortOrder
-  country?: Prisma.SortOrder
-  region?: Prisma.SortOrder
-  city?: Prisma.SortOrder
-  addressLine?: Prisma.SortOrder
-  postalCode?: Prisma.SortOrder
-  gpsLat?: Prisma.SortOrder
-  gpsLong?: Prisma.SortOrder
+  name?: Prisma.SortOrder
+  description?: Prisma.SortOrderInput | Prisma.SortOrder
+  country?: Prisma.SortOrderInput | Prisma.SortOrder
+  region?: Prisma.SortOrderInput | Prisma.SortOrder
+  city?: Prisma.SortOrderInput | Prisma.SortOrder
+  addressLine1?: Prisma.SortOrderInput | Prisma.SortOrder
+  addressLine2?: Prisma.SortOrderInput | Prisma.SortOrder
+  postalCode?: Prisma.SortOrderInput | Prisma.SortOrder
+  gpsLat?: Prisma.SortOrderInput | Prisma.SortOrder
+  gpsLong?: Prisma.SortOrderInput | Prisma.SortOrder
+  isVirtual?: Prisma.SortOrder
+  provider?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isDeleted?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.LocationCountOrderByAggregateInput
   _avg?: Prisma.LocationAvgOrderByAggregateInput
   _max?: Prisma.LocationMaxOrderByAggregateInput
@@ -317,123 +394,186 @@ export type LocationScalarWhereWithAggregatesInput = {
   OR?: Prisma.LocationScalarWhereWithAggregatesInput[]
   NOT?: Prisma.LocationScalarWhereWithAggregatesInput | Prisma.LocationScalarWhereWithAggregatesInput[]
   locationId?: Prisma.StringWithAggregatesFilter<"Location"> | string
-  country?: Prisma.StringWithAggregatesFilter<"Location"> | string
-  region?: Prisma.StringWithAggregatesFilter<"Location"> | string
-  city?: Prisma.StringWithAggregatesFilter<"Location"> | string
-  addressLine?: Prisma.StringWithAggregatesFilter<"Location"> | string
-  postalCode?: Prisma.StringWithAggregatesFilter<"Location"> | string
-  gpsLat?: Prisma.FloatWithAggregatesFilter<"Location"> | number
-  gpsLong?: Prisma.FloatWithAggregatesFilter<"Location"> | number
+  name?: Prisma.StringWithAggregatesFilter<"Location"> | string
+  description?: Prisma.StringNullableWithAggregatesFilter<"Location"> | string | null
+  country?: Prisma.StringNullableWithAggregatesFilter<"Location"> | string | null
+  region?: Prisma.StringNullableWithAggregatesFilter<"Location"> | string | null
+  city?: Prisma.StringNullableWithAggregatesFilter<"Location"> | string | null
+  addressLine1?: Prisma.StringNullableWithAggregatesFilter<"Location"> | string | null
+  addressLine2?: Prisma.StringNullableWithAggregatesFilter<"Location"> | string | null
+  postalCode?: Prisma.StringNullableWithAggregatesFilter<"Location"> | string | null
+  gpsLat?: Prisma.FloatNullableWithAggregatesFilter<"Location"> | number | null
+  gpsLong?: Prisma.FloatNullableWithAggregatesFilter<"Location"> | number | null
+  isVirtual?: Prisma.BoolWithAggregatesFilter<"Location"> | boolean
+  provider?: Prisma.StringNullableWithAggregatesFilter<"Location"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Location"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Location"> | Date | string
+  isDeleted?: Prisma.BoolWithAggregatesFilter<"Location"> | boolean
+  deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Location"> | Date | string | null
 }
 
 export type LocationCreateInput = {
   locationId?: string
-  country: string
-  region: string
-  city: string
-  addressLine: string
-  postalCode: string
-  gpsLat: number
-  gpsLong: number
+  name: string
+  description?: string | null
+  country?: string | null
+  region?: string | null
+  city?: string | null
+  addressLine1?: string | null
+  addressLine2?: string | null
+  postalCode?: string | null
+  gpsLat?: number | null
+  gpsLong?: number | null
+  isVirtual?: boolean
+  provider?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
   projects?: Prisma.ProjectCreateNestedManyWithoutLocationInput
 }
 
 export type LocationUncheckedCreateInput = {
   locationId?: string
-  country: string
-  region: string
-  city: string
-  addressLine: string
-  postalCode: string
-  gpsLat: number
-  gpsLong: number
+  name: string
+  description?: string | null
+  country?: string | null
+  region?: string | null
+  city?: string | null
+  addressLine1?: string | null
+  addressLine2?: string | null
+  postalCode?: string | null
+  gpsLat?: number | null
+  gpsLong?: number | null
+  isVirtual?: boolean
+  provider?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
   projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutLocationInput
 }
 
 export type LocationUpdateInput = {
   locationId?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.StringFieldUpdateOperationsInput | string
-  region?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.StringFieldUpdateOperationsInput | string
-  addressLine?: Prisma.StringFieldUpdateOperationsInput | string
-  postalCode?: Prisma.StringFieldUpdateOperationsInput | string
-  gpsLat?: Prisma.FloatFieldUpdateOperationsInput | number
-  gpsLong?: Prisma.FloatFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressLine1?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressLine2?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gpsLat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  gpsLong?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  isVirtual?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   projects?: Prisma.ProjectUpdateManyWithoutLocationNestedInput
 }
 
 export type LocationUncheckedUpdateInput = {
   locationId?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.StringFieldUpdateOperationsInput | string
-  region?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.StringFieldUpdateOperationsInput | string
-  addressLine?: Prisma.StringFieldUpdateOperationsInput | string
-  postalCode?: Prisma.StringFieldUpdateOperationsInput | string
-  gpsLat?: Prisma.FloatFieldUpdateOperationsInput | number
-  gpsLong?: Prisma.FloatFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressLine1?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressLine2?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gpsLat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  gpsLong?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  isVirtual?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   projects?: Prisma.ProjectUncheckedUpdateManyWithoutLocationNestedInput
 }
 
 export type LocationCreateManyInput = {
   locationId?: string
-  country: string
-  region: string
-  city: string
-  addressLine: string
-  postalCode: string
-  gpsLat: number
-  gpsLong: number
+  name: string
+  description?: string | null
+  country?: string | null
+  region?: string | null
+  city?: string | null
+  addressLine1?: string | null
+  addressLine2?: string | null
+  postalCode?: string | null
+  gpsLat?: number | null
+  gpsLong?: number | null
+  isVirtual?: boolean
+  provider?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
 }
 
 export type LocationUpdateManyMutationInput = {
   locationId?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.StringFieldUpdateOperationsInput | string
-  region?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.StringFieldUpdateOperationsInput | string
-  addressLine?: Prisma.StringFieldUpdateOperationsInput | string
-  postalCode?: Prisma.StringFieldUpdateOperationsInput | string
-  gpsLat?: Prisma.FloatFieldUpdateOperationsInput | number
-  gpsLong?: Prisma.FloatFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressLine1?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressLine2?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gpsLat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  gpsLong?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  isVirtual?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type LocationUncheckedUpdateManyInput = {
   locationId?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.StringFieldUpdateOperationsInput | string
-  region?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.StringFieldUpdateOperationsInput | string
-  addressLine?: Prisma.StringFieldUpdateOperationsInput | string
-  postalCode?: Prisma.StringFieldUpdateOperationsInput | string
-  gpsLat?: Prisma.FloatFieldUpdateOperationsInput | number
-  gpsLong?: Prisma.FloatFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressLine1?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressLine2?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gpsLat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  gpsLong?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  isVirtual?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type LocationCountOrderByAggregateInput = {
   locationId?: Prisma.SortOrder
+  name?: Prisma.SortOrder
+  description?: Prisma.SortOrder
   country?: Prisma.SortOrder
   region?: Prisma.SortOrder
   city?: Prisma.SortOrder
-  addressLine?: Prisma.SortOrder
+  addressLine1?: Prisma.SortOrder
+  addressLine2?: Prisma.SortOrder
   postalCode?: Prisma.SortOrder
   gpsLat?: Prisma.SortOrder
   gpsLong?: Prisma.SortOrder
+  isVirtual?: Prisma.SortOrder
+  provider?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isDeleted?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
 export type LocationAvgOrderByAggregateInput = {
@@ -443,28 +583,42 @@ export type LocationAvgOrderByAggregateInput = {
 
 export type LocationMaxOrderByAggregateInput = {
   locationId?: Prisma.SortOrder
+  name?: Prisma.SortOrder
+  description?: Prisma.SortOrder
   country?: Prisma.SortOrder
   region?: Prisma.SortOrder
   city?: Prisma.SortOrder
-  addressLine?: Prisma.SortOrder
+  addressLine1?: Prisma.SortOrder
+  addressLine2?: Prisma.SortOrder
   postalCode?: Prisma.SortOrder
   gpsLat?: Prisma.SortOrder
   gpsLong?: Prisma.SortOrder
+  isVirtual?: Prisma.SortOrder
+  provider?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isDeleted?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
 export type LocationMinOrderByAggregateInput = {
   locationId?: Prisma.SortOrder
+  name?: Prisma.SortOrder
+  description?: Prisma.SortOrder
   country?: Prisma.SortOrder
   region?: Prisma.SortOrder
   city?: Prisma.SortOrder
-  addressLine?: Prisma.SortOrder
+  addressLine1?: Prisma.SortOrder
+  addressLine2?: Prisma.SortOrder
   postalCode?: Prisma.SortOrder
   gpsLat?: Prisma.SortOrder
   gpsLong?: Prisma.SortOrder
+  isVirtual?: Prisma.SortOrder
+  provider?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isDeleted?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
 export type LocationSumOrderByAggregateInput = {
@@ -477,8 +631,12 @@ export type LocationScalarRelationFilter = {
   isNot?: Prisma.LocationWhereInput
 }
 
-export type FloatFieldUpdateOperationsInput = {
-  set?: number
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
+}
+
+export type NullableFloatFieldUpdateOperationsInput = {
+  set?: number | null
   increment?: number
   decrement?: number
   multiply?: number
@@ -501,28 +659,42 @@ export type LocationUpdateOneRequiredWithoutProjectsNestedInput = {
 
 export type LocationCreateWithoutProjectsInput = {
   locationId?: string
-  country: string
-  region: string
-  city: string
-  addressLine: string
-  postalCode: string
-  gpsLat: number
-  gpsLong: number
+  name: string
+  description?: string | null
+  country?: string | null
+  region?: string | null
+  city?: string | null
+  addressLine1?: string | null
+  addressLine2?: string | null
+  postalCode?: string | null
+  gpsLat?: number | null
+  gpsLong?: number | null
+  isVirtual?: boolean
+  provider?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
 }
 
 export type LocationUncheckedCreateWithoutProjectsInput = {
   locationId?: string
-  country: string
-  region: string
-  city: string
-  addressLine: string
-  postalCode: string
-  gpsLat: number
-  gpsLong: number
+  name: string
+  description?: string | null
+  country?: string | null
+  region?: string | null
+  city?: string | null
+  addressLine1?: string | null
+  addressLine2?: string | null
+  postalCode?: string | null
+  gpsLat?: number | null
+  gpsLong?: number | null
+  isVirtual?: boolean
+  provider?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
 }
 
 export type LocationCreateOrConnectWithoutProjectsInput = {
@@ -543,28 +715,42 @@ export type LocationUpdateToOneWithWhereWithoutProjectsInput = {
 
 export type LocationUpdateWithoutProjectsInput = {
   locationId?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.StringFieldUpdateOperationsInput | string
-  region?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.StringFieldUpdateOperationsInput | string
-  addressLine?: Prisma.StringFieldUpdateOperationsInput | string
-  postalCode?: Prisma.StringFieldUpdateOperationsInput | string
-  gpsLat?: Prisma.FloatFieldUpdateOperationsInput | number
-  gpsLong?: Prisma.FloatFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressLine1?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressLine2?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gpsLat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  gpsLong?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  isVirtual?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type LocationUncheckedUpdateWithoutProjectsInput = {
   locationId?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.StringFieldUpdateOperationsInput | string
-  region?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.StringFieldUpdateOperationsInput | string
-  addressLine?: Prisma.StringFieldUpdateOperationsInput | string
-  postalCode?: Prisma.StringFieldUpdateOperationsInput | string
-  gpsLat?: Prisma.FloatFieldUpdateOperationsInput | number
-  gpsLong?: Prisma.FloatFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressLine1?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressLine2?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gpsLat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  gpsLong?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  isVirtual?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 
@@ -600,59 +786,87 @@ export type LocationCountOutputTypeCountProjectsArgs<ExtArgs extends runtime.Typ
 
 export type LocationSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   locationId?: boolean
+  name?: boolean
+  description?: boolean
   country?: boolean
   region?: boolean
   city?: boolean
-  addressLine?: boolean
+  addressLine1?: boolean
+  addressLine2?: boolean
   postalCode?: boolean
   gpsLat?: boolean
   gpsLong?: boolean
+  isVirtual?: boolean
+  provider?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  isDeleted?: boolean
+  deletedAt?: boolean
   projects?: boolean | Prisma.Location$projectsArgs<ExtArgs>
   _count?: boolean | Prisma.LocationCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["location"]>
 
 export type LocationSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   locationId?: boolean
+  name?: boolean
+  description?: boolean
   country?: boolean
   region?: boolean
   city?: boolean
-  addressLine?: boolean
+  addressLine1?: boolean
+  addressLine2?: boolean
   postalCode?: boolean
   gpsLat?: boolean
   gpsLong?: boolean
+  isVirtual?: boolean
+  provider?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  isDeleted?: boolean
+  deletedAt?: boolean
 }, ExtArgs["result"]["location"]>
 
 export type LocationSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   locationId?: boolean
+  name?: boolean
+  description?: boolean
   country?: boolean
   region?: boolean
   city?: boolean
-  addressLine?: boolean
+  addressLine1?: boolean
+  addressLine2?: boolean
   postalCode?: boolean
   gpsLat?: boolean
   gpsLong?: boolean
+  isVirtual?: boolean
+  provider?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  isDeleted?: boolean
+  deletedAt?: boolean
 }, ExtArgs["result"]["location"]>
 
 export type LocationSelectScalar = {
   locationId?: boolean
+  name?: boolean
+  description?: boolean
   country?: boolean
   region?: boolean
   city?: boolean
-  addressLine?: boolean
+  addressLine1?: boolean
+  addressLine2?: boolean
   postalCode?: boolean
   gpsLat?: boolean
   gpsLong?: boolean
+  isVirtual?: boolean
+  provider?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  isDeleted?: boolean
+  deletedAt?: boolean
 }
 
-export type LocationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"locationId" | "country" | "region" | "city" | "addressLine" | "postalCode" | "gpsLat" | "gpsLong" | "createdAt" | "updatedAt", ExtArgs["result"]["location"]>
+export type LocationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"locationId" | "name" | "description" | "country" | "region" | "city" | "addressLine1" | "addressLine2" | "postalCode" | "gpsLat" | "gpsLong" | "isVirtual" | "provider" | "createdAt" | "updatedAt" | "isDeleted" | "deletedAt", ExtArgs["result"]["location"]>
 export type LocationInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   projects?: boolean | Prisma.Location$projectsArgs<ExtArgs>
   _count?: boolean | Prisma.LocationCountOutputTypeDefaultArgs<ExtArgs>
@@ -667,15 +881,22 @@ export type $LocationPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     locationId: string
-    country: string
-    region: string
-    city: string
-    addressLine: string
-    postalCode: string
-    gpsLat: number
-    gpsLong: number
+    name: string
+    description: string | null
+    country: string | null
+    region: string | null
+    city: string | null
+    addressLine1: string | null
+    addressLine2: string | null
+    postalCode: string | null
+    gpsLat: number | null
+    gpsLong: number | null
+    isVirtual: boolean
+    provider: string | null
     createdAt: Date
     updatedAt: Date
+    isDeleted: boolean
+    deletedAt: Date | null
   }, ExtArgs["result"]["location"]>
   composites: {}
 }
@@ -1101,15 +1322,22 @@ export interface Prisma__LocationClient<T, Null = never, ExtArgs extends runtime
  */
 export interface LocationFieldRefs {
   readonly locationId: Prisma.FieldRef<"Location", 'String'>
+  readonly name: Prisma.FieldRef<"Location", 'String'>
+  readonly description: Prisma.FieldRef<"Location", 'String'>
   readonly country: Prisma.FieldRef<"Location", 'String'>
   readonly region: Prisma.FieldRef<"Location", 'String'>
   readonly city: Prisma.FieldRef<"Location", 'String'>
-  readonly addressLine: Prisma.FieldRef<"Location", 'String'>
+  readonly addressLine1: Prisma.FieldRef<"Location", 'String'>
+  readonly addressLine2: Prisma.FieldRef<"Location", 'String'>
   readonly postalCode: Prisma.FieldRef<"Location", 'String'>
   readonly gpsLat: Prisma.FieldRef<"Location", 'Float'>
   readonly gpsLong: Prisma.FieldRef<"Location", 'Float'>
+  readonly isVirtual: Prisma.FieldRef<"Location", 'Boolean'>
+  readonly provider: Prisma.FieldRef<"Location", 'String'>
   readonly createdAt: Prisma.FieldRef<"Location", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Location", 'DateTime'>
+  readonly isDeleted: Prisma.FieldRef<"Location", 'Boolean'>
+  readonly deletedAt: Prisma.FieldRef<"Location", 'DateTime'>
 }
     
 
