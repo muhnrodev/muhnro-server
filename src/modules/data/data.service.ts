@@ -8,6 +8,8 @@ import { IndustryService } from '../admin/industry/industry.service.js';
 import { TagService } from '../admin/tag/tag.service.js';
 import { ClientService } from '../admin/client/client.service.js';
 import { StakeholdersService } from '../admin/stakeholder/stakeholder.service.js';
+import { LocationService } from '../admin/location/location.service.js';
+import { TeamMemberService } from '../admin/team-member/team-member.service.js';
 
 @Injectable()
 export class DataService {
@@ -23,6 +25,8 @@ export class DataService {
     private readonly tagService: TagService,
     private readonly clientService: ClientService,
     private readonly stakeholderService: StakeholdersService,
+    private readonly locationService: LocationService,
+    private readonly teamMemberService: TeamMemberService,
   ) {}
 
   async getAllData() {
@@ -36,6 +40,8 @@ export class DataService {
         tags,
         clients,
         stakeholders,
+        locations,
+        teamMembers,
       ] = await Promise.all([
         this.webpageService.getAllWebpages(),
         this.websiteService.getAllWebsites(),
@@ -45,6 +51,8 @@ export class DataService {
         this.tagService.getAllTags(),
         this.clientService.getAllClients(),
         this.stakeholderService.getAllStakeholders(),
+        this.locationService.getLocations(),
+        this.teamMemberService.getTeamMembers(),
       ]);
       return {
         webpages,
@@ -55,6 +63,8 @@ export class DataService {
         tags,
         clients,
         stakeholders,
+        locations,
+        teamMembers,
       };
     } catch (error) {
       this.logger.error('Error fetching data', error);

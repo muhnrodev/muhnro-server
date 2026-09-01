@@ -9,6 +9,8 @@ import { IndustryService } from '../admin/industry/industry.service.js';
 import { TagService } from '../admin/tag/tag.service.js';
 import { ClientService } from '../admin/client/client.service.js';
 import { StakeholdersService } from '../admin/stakeholder/stakeholder.service.js';
+import { LocationService } from '../admin/location/location.service.js';
+import { TeamMemberService } from '../admin/team-member/team-member.service.js';
 
 @Module({
   controllers: [DataController],
@@ -22,6 +24,8 @@ import { StakeholdersService } from '../admin/stakeholder/stakeholder.service.js
     TagService,
     ClientService,
     StakeholdersService,
+    LocationService,
+    TeamMemberService,
   ],
 })
 export class DataModule {}

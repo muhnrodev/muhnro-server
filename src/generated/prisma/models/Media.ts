@@ -361,6 +361,7 @@ export type MediaWhereInput = {
   caseStudies?: Prisma.CaseStudyListRelationFilter
   projectImages?: Prisma.ProjectImageListRelationFilter
   logos?: Prisma.ClientListRelationFilter
+  projects?: Prisma.ProjectListRelationFilter
 }
 
 export type MediaOrderByWithRelationInput = {
@@ -390,6 +391,7 @@ export type MediaOrderByWithRelationInput = {
   caseStudies?: Prisma.CaseStudyOrderByRelationAggregateInput
   projectImages?: Prisma.ProjectImageOrderByRelationAggregateInput
   logos?: Prisma.ClientOrderByRelationAggregateInput
+  projects?: Prisma.ProjectOrderByRelationAggregateInput
 }
 
 export type MediaWhereUniqueInput = Prisma.AtLeast<{
@@ -422,6 +424,7 @@ export type MediaWhereUniqueInput = Prisma.AtLeast<{
   caseStudies?: Prisma.CaseStudyListRelationFilter
   projectImages?: Prisma.ProjectImageListRelationFilter
   logos?: Prisma.ClientListRelationFilter
+  projects?: Prisma.ProjectListRelationFilter
 }, "id">
 
 export type MediaOrderByWithAggregationInput = {
@@ -506,6 +509,7 @@ export type MediaCreateInput = {
   caseStudies?: Prisma.CaseStudyCreateNestedManyWithoutFeaturedImageInput
   projectImages?: Prisma.ProjectImageCreateNestedManyWithoutMediaInput
   logos?: Prisma.ClientCreateNestedManyWithoutLogoInput
+  projects?: Prisma.ProjectCreateNestedManyWithoutFeaturedImageInput
 }
 
 export type MediaUncheckedCreateInput = {
@@ -534,6 +538,7 @@ export type MediaUncheckedCreateInput = {
   caseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutFeaturedImageInput
   projectImages?: Prisma.ProjectImageUncheckedCreateNestedManyWithoutMediaInput
   logos?: Prisma.ClientUncheckedCreateNestedManyWithoutLogoInput
+  projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutFeaturedImageInput
 }
 
 export type MediaUpdateInput = {
@@ -562,6 +567,7 @@ export type MediaUpdateInput = {
   caseStudies?: Prisma.CaseStudyUpdateManyWithoutFeaturedImageNestedInput
   projectImages?: Prisma.ProjectImageUpdateManyWithoutMediaNestedInput
   logos?: Prisma.ClientUpdateManyWithoutLogoNestedInput
+  projects?: Prisma.ProjectUpdateManyWithoutFeaturedImageNestedInput
 }
 
 export type MediaUncheckedUpdateInput = {
@@ -590,6 +596,7 @@ export type MediaUncheckedUpdateInput = {
   caseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutFeaturedImageNestedInput
   projectImages?: Prisma.ProjectImageUncheckedUpdateManyWithoutMediaNestedInput
   logos?: Prisma.ClientUncheckedUpdateManyWithoutLogoNestedInput
+  projects?: Prisma.ProjectUncheckedUpdateManyWithoutFeaturedImageNestedInput
 }
 
 export type MediaCreateManyInput = {
@@ -859,6 +866,20 @@ export type MediaUpdateOneWithoutLogosNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.MediaUpdateToOneWithWhereWithoutLogosInput, Prisma.MediaUpdateWithoutLogosInput>, Prisma.MediaUncheckedUpdateWithoutLogosInput>
 }
 
+export type MediaCreateNestedOneWithoutProjectsInput = {
+  create?: Prisma.XOR<Prisma.MediaCreateWithoutProjectsInput, Prisma.MediaUncheckedCreateWithoutProjectsInput>
+  connectOrCreate?: Prisma.MediaCreateOrConnectWithoutProjectsInput
+  connect?: Prisma.MediaWhereUniqueInput
+}
+
+export type MediaUpdateOneRequiredWithoutProjectsNestedInput = {
+  create?: Prisma.XOR<Prisma.MediaCreateWithoutProjectsInput, Prisma.MediaUncheckedCreateWithoutProjectsInput>
+  connectOrCreate?: Prisma.MediaCreateOrConnectWithoutProjectsInput
+  upsert?: Prisma.MediaUpsertWithoutProjectsInput
+  connect?: Prisma.MediaWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.MediaUpdateToOneWithWhereWithoutProjectsInput, Prisma.MediaUpdateWithoutProjectsInput>, Prisma.MediaUncheckedUpdateWithoutProjectsInput>
+}
+
 export type MediaCreateNestedOneWithoutProjectImagesInput = {
   create?: Prisma.XOR<Prisma.MediaCreateWithoutProjectImagesInput, Prisma.MediaUncheckedCreateWithoutProjectImagesInput>
   connectOrCreate?: Prisma.MediaCreateOrConnectWithoutProjectImagesInput
@@ -898,6 +919,7 @@ export type MediaCreateWithoutCreatedByInput = {
   caseStudies?: Prisma.CaseStudyCreateNestedManyWithoutFeaturedImageInput
   projectImages?: Prisma.ProjectImageCreateNestedManyWithoutMediaInput
   logos?: Prisma.ClientCreateNestedManyWithoutLogoInput
+  projects?: Prisma.ProjectCreateNestedManyWithoutFeaturedImageInput
 }
 
 export type MediaUncheckedCreateWithoutCreatedByInput = {
@@ -925,6 +947,7 @@ export type MediaUncheckedCreateWithoutCreatedByInput = {
   caseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutFeaturedImageInput
   projectImages?: Prisma.ProjectImageUncheckedCreateNestedManyWithoutMediaInput
   logos?: Prisma.ClientUncheckedCreateNestedManyWithoutLogoInput
+  projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutFeaturedImageInput
 }
 
 export type MediaCreateOrConnectWithoutCreatedByInput = {
@@ -1005,6 +1028,7 @@ export type MediaCreateWithoutArticlesInput = {
   caseStudies?: Prisma.CaseStudyCreateNestedManyWithoutFeaturedImageInput
   projectImages?: Prisma.ProjectImageCreateNestedManyWithoutMediaInput
   logos?: Prisma.ClientCreateNestedManyWithoutLogoInput
+  projects?: Prisma.ProjectCreateNestedManyWithoutFeaturedImageInput
 }
 
 export type MediaUncheckedCreateWithoutArticlesInput = {
@@ -1032,6 +1056,7 @@ export type MediaUncheckedCreateWithoutArticlesInput = {
   caseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutFeaturedImageInput
   projectImages?: Prisma.ProjectImageUncheckedCreateNestedManyWithoutMediaInput
   logos?: Prisma.ClientUncheckedCreateNestedManyWithoutLogoInput
+  projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutFeaturedImageInput
 }
 
 export type MediaCreateOrConnectWithoutArticlesInput = {
@@ -1075,6 +1100,7 @@ export type MediaUpdateWithoutArticlesInput = {
   caseStudies?: Prisma.CaseStudyUpdateManyWithoutFeaturedImageNestedInput
   projectImages?: Prisma.ProjectImageUpdateManyWithoutMediaNestedInput
   logos?: Prisma.ClientUpdateManyWithoutLogoNestedInput
+  projects?: Prisma.ProjectUpdateManyWithoutFeaturedImageNestedInput
 }
 
 export type MediaUncheckedUpdateWithoutArticlesInput = {
@@ -1102,6 +1128,7 @@ export type MediaUncheckedUpdateWithoutArticlesInput = {
   caseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutFeaturedImageNestedInput
   projectImages?: Prisma.ProjectImageUncheckedUpdateManyWithoutMediaNestedInput
   logos?: Prisma.ClientUncheckedUpdateManyWithoutLogoNestedInput
+  projects?: Prisma.ProjectUncheckedUpdateManyWithoutFeaturedImageNestedInput
 }
 
 export type MediaCreateWithoutCaseStudiesInput = {
@@ -1129,6 +1156,7 @@ export type MediaCreateWithoutCaseStudiesInput = {
   articles?: Prisma.ArticleCreateNestedManyWithoutFeaturedImageInput
   projectImages?: Prisma.ProjectImageCreateNestedManyWithoutMediaInput
   logos?: Prisma.ClientCreateNestedManyWithoutLogoInput
+  projects?: Prisma.ProjectCreateNestedManyWithoutFeaturedImageInput
 }
 
 export type MediaUncheckedCreateWithoutCaseStudiesInput = {
@@ -1156,6 +1184,7 @@ export type MediaUncheckedCreateWithoutCaseStudiesInput = {
   articles?: Prisma.ArticleUncheckedCreateNestedManyWithoutFeaturedImageInput
   projectImages?: Prisma.ProjectImageUncheckedCreateNestedManyWithoutMediaInput
   logos?: Prisma.ClientUncheckedCreateNestedManyWithoutLogoInput
+  projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutFeaturedImageInput
 }
 
 export type MediaCreateOrConnectWithoutCaseStudiesInput = {
@@ -1199,6 +1228,7 @@ export type MediaUpdateWithoutCaseStudiesInput = {
   articles?: Prisma.ArticleUpdateManyWithoutFeaturedImageNestedInput
   projectImages?: Prisma.ProjectImageUpdateManyWithoutMediaNestedInput
   logos?: Prisma.ClientUpdateManyWithoutLogoNestedInput
+  projects?: Prisma.ProjectUpdateManyWithoutFeaturedImageNestedInput
 }
 
 export type MediaUncheckedUpdateWithoutCaseStudiesInput = {
@@ -1226,6 +1256,7 @@ export type MediaUncheckedUpdateWithoutCaseStudiesInput = {
   articles?: Prisma.ArticleUncheckedUpdateManyWithoutFeaturedImageNestedInput
   projectImages?: Prisma.ProjectImageUncheckedUpdateManyWithoutMediaNestedInput
   logos?: Prisma.ClientUncheckedUpdateManyWithoutLogoNestedInput
+  projects?: Prisma.ProjectUncheckedUpdateManyWithoutFeaturedImageNestedInput
 }
 
 export type MediaCreateWithoutLogosInput = {
@@ -1253,6 +1284,7 @@ export type MediaCreateWithoutLogosInput = {
   articles?: Prisma.ArticleCreateNestedManyWithoutFeaturedImageInput
   caseStudies?: Prisma.CaseStudyCreateNestedManyWithoutFeaturedImageInput
   projectImages?: Prisma.ProjectImageCreateNestedManyWithoutMediaInput
+  projects?: Prisma.ProjectCreateNestedManyWithoutFeaturedImageInput
 }
 
 export type MediaUncheckedCreateWithoutLogosInput = {
@@ -1280,6 +1312,7 @@ export type MediaUncheckedCreateWithoutLogosInput = {
   articles?: Prisma.ArticleUncheckedCreateNestedManyWithoutFeaturedImageInput
   caseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutFeaturedImageInput
   projectImages?: Prisma.ProjectImageUncheckedCreateNestedManyWithoutMediaInput
+  projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutFeaturedImageInput
 }
 
 export type MediaCreateOrConnectWithoutLogosInput = {
@@ -1323,6 +1356,7 @@ export type MediaUpdateWithoutLogosInput = {
   articles?: Prisma.ArticleUpdateManyWithoutFeaturedImageNestedInput
   caseStudies?: Prisma.CaseStudyUpdateManyWithoutFeaturedImageNestedInput
   projectImages?: Prisma.ProjectImageUpdateManyWithoutMediaNestedInput
+  projects?: Prisma.ProjectUpdateManyWithoutFeaturedImageNestedInput
 }
 
 export type MediaUncheckedUpdateWithoutLogosInput = {
@@ -1350,6 +1384,135 @@ export type MediaUncheckedUpdateWithoutLogosInput = {
   articles?: Prisma.ArticleUncheckedUpdateManyWithoutFeaturedImageNestedInput
   caseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutFeaturedImageNestedInput
   projectImages?: Prisma.ProjectImageUncheckedUpdateManyWithoutMediaNestedInput
+  projects?: Prisma.ProjectUncheckedUpdateManyWithoutFeaturedImageNestedInput
+}
+
+export type MediaCreateWithoutProjectsInput = {
+  id?: string
+  filename: string
+  originalName: string
+  path: string
+  bucket: string
+  mimeType: string
+  extension: string
+  size: number
+  type: $Enums.MediaType
+  url: string
+  width?: number | null
+  height?: number | null
+  duration?: number | null
+  altText?: string | null
+  caption?: string | null
+  checksum?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
+  createdBy?: Prisma.UserCreateNestedOneWithoutMediaInput
+  articles?: Prisma.ArticleCreateNestedManyWithoutFeaturedImageInput
+  caseStudies?: Prisma.CaseStudyCreateNestedManyWithoutFeaturedImageInput
+  projectImages?: Prisma.ProjectImageCreateNestedManyWithoutMediaInput
+  logos?: Prisma.ClientCreateNestedManyWithoutLogoInput
+}
+
+export type MediaUncheckedCreateWithoutProjectsInput = {
+  id?: string
+  filename: string
+  originalName: string
+  path: string
+  bucket: string
+  mimeType: string
+  extension: string
+  size: number
+  type: $Enums.MediaType
+  url: string
+  width?: number | null
+  height?: number | null
+  duration?: number | null
+  altText?: string | null
+  caption?: string | null
+  checksum?: string | null
+  createById: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
+  articles?: Prisma.ArticleUncheckedCreateNestedManyWithoutFeaturedImageInput
+  caseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutFeaturedImageInput
+  projectImages?: Prisma.ProjectImageUncheckedCreateNestedManyWithoutMediaInput
+  logos?: Prisma.ClientUncheckedCreateNestedManyWithoutLogoInput
+}
+
+export type MediaCreateOrConnectWithoutProjectsInput = {
+  where: Prisma.MediaWhereUniqueInput
+  create: Prisma.XOR<Prisma.MediaCreateWithoutProjectsInput, Prisma.MediaUncheckedCreateWithoutProjectsInput>
+}
+
+export type MediaUpsertWithoutProjectsInput = {
+  update: Prisma.XOR<Prisma.MediaUpdateWithoutProjectsInput, Prisma.MediaUncheckedUpdateWithoutProjectsInput>
+  create: Prisma.XOR<Prisma.MediaCreateWithoutProjectsInput, Prisma.MediaUncheckedCreateWithoutProjectsInput>
+  where?: Prisma.MediaWhereInput
+}
+
+export type MediaUpdateToOneWithWhereWithoutProjectsInput = {
+  where?: Prisma.MediaWhereInput
+  data: Prisma.XOR<Prisma.MediaUpdateWithoutProjectsInput, Prisma.MediaUncheckedUpdateWithoutProjectsInput>
+}
+
+export type MediaUpdateWithoutProjectsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  filename?: Prisma.StringFieldUpdateOperationsInput | string
+  originalName?: Prisma.StringFieldUpdateOperationsInput | string
+  path?: Prisma.StringFieldUpdateOperationsInput | string
+  bucket?: Prisma.StringFieldUpdateOperationsInput | string
+  mimeType?: Prisma.StringFieldUpdateOperationsInput | string
+  extension?: Prisma.StringFieldUpdateOperationsInput | string
+  size?: Prisma.IntFieldUpdateOperationsInput | number
+  type?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
+  url?: Prisma.StringFieldUpdateOperationsInput | string
+  width?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  height?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  altText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checksum?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdBy?: Prisma.UserUpdateOneWithoutMediaNestedInput
+  articles?: Prisma.ArticleUpdateManyWithoutFeaturedImageNestedInput
+  caseStudies?: Prisma.CaseStudyUpdateManyWithoutFeaturedImageNestedInput
+  projectImages?: Prisma.ProjectImageUpdateManyWithoutMediaNestedInput
+  logos?: Prisma.ClientUpdateManyWithoutLogoNestedInput
+}
+
+export type MediaUncheckedUpdateWithoutProjectsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  filename?: Prisma.StringFieldUpdateOperationsInput | string
+  originalName?: Prisma.StringFieldUpdateOperationsInput | string
+  path?: Prisma.StringFieldUpdateOperationsInput | string
+  bucket?: Prisma.StringFieldUpdateOperationsInput | string
+  mimeType?: Prisma.StringFieldUpdateOperationsInput | string
+  extension?: Prisma.StringFieldUpdateOperationsInput | string
+  size?: Prisma.IntFieldUpdateOperationsInput | number
+  type?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
+  url?: Prisma.StringFieldUpdateOperationsInput | string
+  width?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  height?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  altText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checksum?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createById?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  articles?: Prisma.ArticleUncheckedUpdateManyWithoutFeaturedImageNestedInput
+  caseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutFeaturedImageNestedInput
+  projectImages?: Prisma.ProjectImageUncheckedUpdateManyWithoutMediaNestedInput
+  logos?: Prisma.ClientUncheckedUpdateManyWithoutLogoNestedInput
 }
 
 export type MediaCreateWithoutProjectImagesInput = {
@@ -1377,6 +1540,7 @@ export type MediaCreateWithoutProjectImagesInput = {
   articles?: Prisma.ArticleCreateNestedManyWithoutFeaturedImageInput
   caseStudies?: Prisma.CaseStudyCreateNestedManyWithoutFeaturedImageInput
   logos?: Prisma.ClientCreateNestedManyWithoutLogoInput
+  projects?: Prisma.ProjectCreateNestedManyWithoutFeaturedImageInput
 }
 
 export type MediaUncheckedCreateWithoutProjectImagesInput = {
@@ -1404,6 +1568,7 @@ export type MediaUncheckedCreateWithoutProjectImagesInput = {
   articles?: Prisma.ArticleUncheckedCreateNestedManyWithoutFeaturedImageInput
   caseStudies?: Prisma.CaseStudyUncheckedCreateNestedManyWithoutFeaturedImageInput
   logos?: Prisma.ClientUncheckedCreateNestedManyWithoutLogoInput
+  projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutFeaturedImageInput
 }
 
 export type MediaCreateOrConnectWithoutProjectImagesInput = {
@@ -1447,6 +1612,7 @@ export type MediaUpdateWithoutProjectImagesInput = {
   articles?: Prisma.ArticleUpdateManyWithoutFeaturedImageNestedInput
   caseStudies?: Prisma.CaseStudyUpdateManyWithoutFeaturedImageNestedInput
   logos?: Prisma.ClientUpdateManyWithoutLogoNestedInput
+  projects?: Prisma.ProjectUpdateManyWithoutFeaturedImageNestedInput
 }
 
 export type MediaUncheckedUpdateWithoutProjectImagesInput = {
@@ -1474,6 +1640,7 @@ export type MediaUncheckedUpdateWithoutProjectImagesInput = {
   articles?: Prisma.ArticleUncheckedUpdateManyWithoutFeaturedImageNestedInput
   caseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutFeaturedImageNestedInput
   logos?: Prisma.ClientUncheckedUpdateManyWithoutLogoNestedInput
+  projects?: Prisma.ProjectUncheckedUpdateManyWithoutFeaturedImageNestedInput
 }
 
 export type MediaCreateManyCreatedByInput = {
@@ -1524,6 +1691,7 @@ export type MediaUpdateWithoutCreatedByInput = {
   caseStudies?: Prisma.CaseStudyUpdateManyWithoutFeaturedImageNestedInput
   projectImages?: Prisma.ProjectImageUpdateManyWithoutMediaNestedInput
   logos?: Prisma.ClientUpdateManyWithoutLogoNestedInput
+  projects?: Prisma.ProjectUpdateManyWithoutFeaturedImageNestedInput
 }
 
 export type MediaUncheckedUpdateWithoutCreatedByInput = {
@@ -1551,6 +1719,7 @@ export type MediaUncheckedUpdateWithoutCreatedByInput = {
   caseStudies?: Prisma.CaseStudyUncheckedUpdateManyWithoutFeaturedImageNestedInput
   projectImages?: Prisma.ProjectImageUncheckedUpdateManyWithoutMediaNestedInput
   logos?: Prisma.ClientUncheckedUpdateManyWithoutLogoNestedInput
+  projects?: Prisma.ProjectUncheckedUpdateManyWithoutFeaturedImageNestedInput
 }
 
 export type MediaUncheckedUpdateManyWithoutCreatedByInput = {
@@ -1586,6 +1755,7 @@ export type MediaCountOutputType = {
   caseStudies: number
   projectImages: number
   logos: number
+  projects: number
 }
 
 export type MediaCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1593,6 +1763,7 @@ export type MediaCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.
   caseStudies?: boolean | MediaCountOutputTypeCountCaseStudiesArgs
   projectImages?: boolean | MediaCountOutputTypeCountProjectImagesArgs
   logos?: boolean | MediaCountOutputTypeCountLogosArgs
+  projects?: boolean | MediaCountOutputTypeCountProjectsArgs
 }
 
 /**
@@ -1633,6 +1804,13 @@ export type MediaCountOutputTypeCountLogosArgs<ExtArgs extends runtime.Types.Ext
   where?: Prisma.ClientWhereInput
 }
 
+/**
+ * MediaCountOutputType without action
+ */
+export type MediaCountOutputTypeCountProjectsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ProjectWhereInput
+}
+
 
 export type MediaSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1661,6 +1839,7 @@ export type MediaSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   caseStudies?: boolean | Prisma.Media$caseStudiesArgs<ExtArgs>
   projectImages?: boolean | Prisma.Media$projectImagesArgs<ExtArgs>
   logos?: boolean | Prisma.Media$logosArgs<ExtArgs>
+  projects?: boolean | Prisma.Media$projectsArgs<ExtArgs>
   _count?: boolean | Prisma.MediaCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["media"]>
 
@@ -1745,6 +1924,7 @@ export type MediaInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   caseStudies?: boolean | Prisma.Media$caseStudiesArgs<ExtArgs>
   projectImages?: boolean | Prisma.Media$projectImagesArgs<ExtArgs>
   logos?: boolean | Prisma.Media$logosArgs<ExtArgs>
+  projects?: boolean | Prisma.Media$projectsArgs<ExtArgs>
   _count?: boolean | Prisma.MediaCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type MediaIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1762,6 +1942,7 @@ export type $MediaPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     caseStudies: Prisma.$CaseStudyPayload<ExtArgs>[]
     projectImages: Prisma.$ProjectImagePayload<ExtArgs>[]
     logos: Prisma.$ClientPayload<ExtArgs>[]
+    projects: Prisma.$ProjectPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2184,6 +2365,7 @@ export interface Prisma__MediaClient<T, Null = never, ExtArgs extends runtime.Ty
   caseStudies<T extends Prisma.Media$caseStudiesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Media$caseStudiesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CaseStudyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   projectImages<T extends Prisma.Media$projectImagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Media$projectImagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjectImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   logos<T extends Prisma.Media$logosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Media$logosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ClientPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  projects<T extends Prisma.Media$projectsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Media$projectsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2747,6 +2929,30 @@ export type Media$logosArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
   take?: number
   skip?: number
   distinct?: Prisma.ClientScalarFieldEnum | Prisma.ClientScalarFieldEnum[]
+}
+
+/**
+ * Media.projects
+ */
+export type Media$projectsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Project
+   */
+  select?: Prisma.ProjectSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Project
+   */
+  omit?: Prisma.ProjectOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ProjectInclude<ExtArgs> | null
+  where?: Prisma.ProjectWhereInput
+  orderBy?: Prisma.ProjectOrderByWithRelationInput | Prisma.ProjectOrderByWithRelationInput[]
+  cursor?: Prisma.ProjectWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ProjectScalarFieldEnum | Prisma.ProjectScalarFieldEnum[]
 }
 
 /**

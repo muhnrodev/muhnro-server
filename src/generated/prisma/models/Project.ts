@@ -50,6 +50,7 @@ export type ProjectMinAggregateOutputType = {
   projectLeadId: string | null
   budget: number | null
   status: $Enums.ProjectStatus | null
+  featuredImageId: string | null
   serviceSummary: string | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -71,6 +72,7 @@ export type ProjectMaxAggregateOutputType = {
   projectLeadId: string | null
   budget: number | null
   status: $Enums.ProjectStatus | null
+  featuredImageId: string | null
   serviceSummary: string | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -92,6 +94,7 @@ export type ProjectCountAggregateOutputType = {
   projectLeadId: number
   budget: number
   status: number
+  featuredImageId: number
   serviceSummary: number
   createdAt: number
   updatedAt: number
@@ -123,6 +126,7 @@ export type ProjectMinAggregateInputType = {
   projectLeadId?: true
   budget?: true
   status?: true
+  featuredImageId?: true
   serviceSummary?: true
   createdAt?: true
   updatedAt?: true
@@ -144,6 +148,7 @@ export type ProjectMaxAggregateInputType = {
   projectLeadId?: true
   budget?: true
   status?: true
+  featuredImageId?: true
   serviceSummary?: true
   createdAt?: true
   updatedAt?: true
@@ -165,6 +170,7 @@ export type ProjectCountAggregateInputType = {
   projectLeadId?: true
   budget?: true
   status?: true
+  featuredImageId?: true
   serviceSummary?: true
   createdAt?: true
   updatedAt?: true
@@ -273,6 +279,7 @@ export type ProjectGroupByOutputType = {
   projectLeadId: string
   budget: number
   status: $Enums.ProjectStatus
+  featuredImageId: string
   serviceSummary: string
   createdAt: Date
   updatedAt: Date
@@ -317,6 +324,7 @@ export type ProjectWhereInput = {
   projectLeadId?: Prisma.StringFilter<"Project"> | string
   budget?: Prisma.FloatFilter<"Project"> | number
   status?: Prisma.EnumProjectStatusFilter<"Project"> | $Enums.ProjectStatus
+  featuredImageId?: Prisma.StringFilter<"Project"> | string
   serviceSummary?: Prisma.StringFilter<"Project"> | string
   createdAt?: Prisma.DateTimeFilter<"Project"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Project"> | Date | string
@@ -324,6 +332,7 @@ export type ProjectWhereInput = {
   industry?: Prisma.XOR<Prisma.IndustryScalarRelationFilter, Prisma.IndustryWhereInput>
   location?: Prisma.XOR<Prisma.LocationScalarRelationFilter, Prisma.LocationWhereInput>
   projectLead?: Prisma.XOR<Prisma.TeamMemberScalarRelationFilter, Prisma.TeamMemberWhereInput>
+  featuredImage?: Prisma.XOR<Prisma.MediaScalarRelationFilter, Prisma.MediaWhereInput>
   teamMembers?: Prisma.ProjectTeamMemberListRelationFilter
   stakeholders?: Prisma.ProjectStakeholderListRelationFilter
   tags?: Prisma.ProjectTagListRelationFilter
@@ -347,6 +356,7 @@ export type ProjectOrderByWithRelationInput = {
   projectLeadId?: Prisma.SortOrder
   budget?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  featuredImageId?: Prisma.SortOrder
   serviceSummary?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -354,6 +364,7 @@ export type ProjectOrderByWithRelationInput = {
   industry?: Prisma.IndustryOrderByWithRelationInput
   location?: Prisma.LocationOrderByWithRelationInput
   projectLead?: Prisma.TeamMemberOrderByWithRelationInput
+  featuredImage?: Prisma.MediaOrderByWithRelationInput
   teamMembers?: Prisma.ProjectTeamMemberOrderByRelationAggregateInput
   stakeholders?: Prisma.ProjectStakeholderOrderByRelationAggregateInput
   tags?: Prisma.ProjectTagOrderByRelationAggregateInput
@@ -380,6 +391,7 @@ export type ProjectWhereUniqueInput = Prisma.AtLeast<{
   projectLeadId?: Prisma.StringFilter<"Project"> | string
   budget?: Prisma.FloatFilter<"Project"> | number
   status?: Prisma.EnumProjectStatusFilter<"Project"> | $Enums.ProjectStatus
+  featuredImageId?: Prisma.StringFilter<"Project"> | string
   serviceSummary?: Prisma.StringFilter<"Project"> | string
   createdAt?: Prisma.DateTimeFilter<"Project"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Project"> | Date | string
@@ -387,6 +399,7 @@ export type ProjectWhereUniqueInput = Prisma.AtLeast<{
   industry?: Prisma.XOR<Prisma.IndustryScalarRelationFilter, Prisma.IndustryWhereInput>
   location?: Prisma.XOR<Prisma.LocationScalarRelationFilter, Prisma.LocationWhereInput>
   projectLead?: Prisma.XOR<Prisma.TeamMemberScalarRelationFilter, Prisma.TeamMemberWhereInput>
+  featuredImage?: Prisma.XOR<Prisma.MediaScalarRelationFilter, Prisma.MediaWhereInput>
   teamMembers?: Prisma.ProjectTeamMemberListRelationFilter
   stakeholders?: Prisma.ProjectStakeholderListRelationFilter
   tags?: Prisma.ProjectTagListRelationFilter
@@ -410,6 +423,7 @@ export type ProjectOrderByWithAggregationInput = {
   projectLeadId?: Prisma.SortOrder
   budget?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  featuredImageId?: Prisma.SortOrder
   serviceSummary?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -439,6 +453,7 @@ export type ProjectScalarWhereWithAggregatesInput = {
   projectLeadId?: Prisma.StringWithAggregatesFilter<"Project"> | string
   budget?: Prisma.FloatWithAggregatesFilter<"Project"> | number
   status?: Prisma.EnumProjectStatusWithAggregatesFilter<"Project"> | $Enums.ProjectStatus
+  featuredImageId?: Prisma.StringWithAggregatesFilter<"Project"> | string
   serviceSummary?: Prisma.StringWithAggregatesFilter<"Project"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Project"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Project"> | Date | string
@@ -463,6 +478,7 @@ export type ProjectCreateInput = {
   industry: Prisma.IndustryCreateNestedOneWithoutProjectsInput
   location: Prisma.LocationCreateNestedOneWithoutProjectsInput
   projectLead: Prisma.TeamMemberCreateNestedOneWithoutProjectsInput
+  featuredImage: Prisma.MediaCreateNestedOneWithoutProjectsInput
   teamMembers?: Prisma.ProjectTeamMemberCreateNestedManyWithoutProjectInput
   stakeholders?: Prisma.ProjectStakeholderCreateNestedManyWithoutProjectInput
   tags?: Prisma.ProjectTagCreateNestedManyWithoutProjectInput
@@ -486,6 +502,7 @@ export type ProjectUncheckedCreateInput = {
   projectLeadId: string
   budget: number
   status?: $Enums.ProjectStatus
+  featuredImageId: string
   serviceSummary: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -515,6 +532,7 @@ export type ProjectUpdateInput = {
   industry?: Prisma.IndustryUpdateOneRequiredWithoutProjectsNestedInput
   location?: Prisma.LocationUpdateOneRequiredWithoutProjectsNestedInput
   projectLead?: Prisma.TeamMemberUpdateOneRequiredWithoutProjectsNestedInput
+  featuredImage?: Prisma.MediaUpdateOneRequiredWithoutProjectsNestedInput
   teamMembers?: Prisma.ProjectTeamMemberUpdateManyWithoutProjectNestedInput
   stakeholders?: Prisma.ProjectStakeholderUpdateManyWithoutProjectNestedInput
   tags?: Prisma.ProjectTagUpdateManyWithoutProjectNestedInput
@@ -538,6 +556,7 @@ export type ProjectUncheckedUpdateInput = {
   projectLeadId?: Prisma.StringFieldUpdateOperationsInput | string
   budget?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
+  featuredImageId?: Prisma.StringFieldUpdateOperationsInput | string
   serviceSummary?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -564,6 +583,7 @@ export type ProjectCreateManyInput = {
   projectLeadId: string
   budget: number
   status?: $Enums.ProjectStatus
+  featuredImageId: string
   serviceSummary: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -602,6 +622,7 @@ export type ProjectUncheckedUpdateManyInput = {
   projectLeadId?: Prisma.StringFieldUpdateOperationsInput | string
   budget?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
+  featuredImageId?: Prisma.StringFieldUpdateOperationsInput | string
   serviceSummary?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -633,6 +654,7 @@ export type ProjectCountOrderByAggregateInput = {
   projectLeadId?: Prisma.SortOrder
   budget?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  featuredImageId?: Prisma.SortOrder
   serviceSummary?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -658,6 +680,7 @@ export type ProjectMaxOrderByAggregateInput = {
   projectLeadId?: Prisma.SortOrder
   budget?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  featuredImageId?: Prisma.SortOrder
   serviceSummary?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -679,6 +702,7 @@ export type ProjectMinOrderByAggregateInput = {
   projectLeadId?: Prisma.SortOrder
   budget?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  featuredImageId?: Prisma.SortOrder
   serviceSummary?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -774,6 +798,48 @@ export type ProjectUncheckedUpdateManyWithoutIndustryNestedInput = {
   connect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
   update?: Prisma.ProjectUpdateWithWhereUniqueWithoutIndustryInput | Prisma.ProjectUpdateWithWhereUniqueWithoutIndustryInput[]
   updateMany?: Prisma.ProjectUpdateManyWithWhereWithoutIndustryInput | Prisma.ProjectUpdateManyWithWhereWithoutIndustryInput[]
+  deleteMany?: Prisma.ProjectScalarWhereInput | Prisma.ProjectScalarWhereInput[]
+}
+
+export type ProjectCreateNestedManyWithoutFeaturedImageInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutFeaturedImageInput, Prisma.ProjectUncheckedCreateWithoutFeaturedImageInput> | Prisma.ProjectCreateWithoutFeaturedImageInput[] | Prisma.ProjectUncheckedCreateWithoutFeaturedImageInput[]
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutFeaturedImageInput | Prisma.ProjectCreateOrConnectWithoutFeaturedImageInput[]
+  createMany?: Prisma.ProjectCreateManyFeaturedImageInputEnvelope
+  connect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
+}
+
+export type ProjectUncheckedCreateNestedManyWithoutFeaturedImageInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutFeaturedImageInput, Prisma.ProjectUncheckedCreateWithoutFeaturedImageInput> | Prisma.ProjectCreateWithoutFeaturedImageInput[] | Prisma.ProjectUncheckedCreateWithoutFeaturedImageInput[]
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutFeaturedImageInput | Prisma.ProjectCreateOrConnectWithoutFeaturedImageInput[]
+  createMany?: Prisma.ProjectCreateManyFeaturedImageInputEnvelope
+  connect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
+}
+
+export type ProjectUpdateManyWithoutFeaturedImageNestedInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutFeaturedImageInput, Prisma.ProjectUncheckedCreateWithoutFeaturedImageInput> | Prisma.ProjectCreateWithoutFeaturedImageInput[] | Prisma.ProjectUncheckedCreateWithoutFeaturedImageInput[]
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutFeaturedImageInput | Prisma.ProjectCreateOrConnectWithoutFeaturedImageInput[]
+  upsert?: Prisma.ProjectUpsertWithWhereUniqueWithoutFeaturedImageInput | Prisma.ProjectUpsertWithWhereUniqueWithoutFeaturedImageInput[]
+  createMany?: Prisma.ProjectCreateManyFeaturedImageInputEnvelope
+  set?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
+  disconnect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
+  delete?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
+  connect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
+  update?: Prisma.ProjectUpdateWithWhereUniqueWithoutFeaturedImageInput | Prisma.ProjectUpdateWithWhereUniqueWithoutFeaturedImageInput[]
+  updateMany?: Prisma.ProjectUpdateManyWithWhereWithoutFeaturedImageInput | Prisma.ProjectUpdateManyWithWhereWithoutFeaturedImageInput[]
+  deleteMany?: Prisma.ProjectScalarWhereInput | Prisma.ProjectScalarWhereInput[]
+}
+
+export type ProjectUncheckedUpdateManyWithoutFeaturedImageNestedInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutFeaturedImageInput, Prisma.ProjectUncheckedCreateWithoutFeaturedImageInput> | Prisma.ProjectCreateWithoutFeaturedImageInput[] | Prisma.ProjectUncheckedCreateWithoutFeaturedImageInput[]
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutFeaturedImageInput | Prisma.ProjectCreateOrConnectWithoutFeaturedImageInput[]
+  upsert?: Prisma.ProjectUpsertWithWhereUniqueWithoutFeaturedImageInput | Prisma.ProjectUpsertWithWhereUniqueWithoutFeaturedImageInput[]
+  createMany?: Prisma.ProjectCreateManyFeaturedImageInputEnvelope
+  set?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
+  disconnect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
+  delete?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
+  connect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
+  update?: Prisma.ProjectUpdateWithWhereUniqueWithoutFeaturedImageInput | Prisma.ProjectUpdateWithWhereUniqueWithoutFeaturedImageInput[]
+  updateMany?: Prisma.ProjectUpdateManyWithWhereWithoutFeaturedImageInput | Prisma.ProjectUpdateManyWithWhereWithoutFeaturedImageInput[]
   deleteMany?: Prisma.ProjectScalarWhereInput | Prisma.ProjectScalarWhereInput[]
 }
 
@@ -961,6 +1027,7 @@ export type ProjectCreateWithoutLocationInput = {
   client: Prisma.ClientCreateNestedOneWithoutProjectsInput
   industry: Prisma.IndustryCreateNestedOneWithoutProjectsInput
   projectLead: Prisma.TeamMemberCreateNestedOneWithoutProjectsInput
+  featuredImage: Prisma.MediaCreateNestedOneWithoutProjectsInput
   teamMembers?: Prisma.ProjectTeamMemberCreateNestedManyWithoutProjectInput
   stakeholders?: Prisma.ProjectStakeholderCreateNestedManyWithoutProjectInput
   tags?: Prisma.ProjectTagCreateNestedManyWithoutProjectInput
@@ -983,6 +1050,7 @@ export type ProjectUncheckedCreateWithoutLocationInput = {
   projectLeadId: string
   budget: number
   status?: $Enums.ProjectStatus
+  featuredImageId: string
   serviceSummary: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1038,6 +1106,7 @@ export type ProjectScalarWhereInput = {
   projectLeadId?: Prisma.StringFilter<"Project"> | string
   budget?: Prisma.FloatFilter<"Project"> | number
   status?: Prisma.EnumProjectStatusFilter<"Project"> | $Enums.ProjectStatus
+  featuredImageId?: Prisma.StringFilter<"Project"> | string
   serviceSummary?: Prisma.StringFilter<"Project"> | string
   createdAt?: Prisma.DateTimeFilter<"Project"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Project"> | Date | string
@@ -1061,6 +1130,7 @@ export type ProjectCreateWithoutIndustryInput = {
   client: Prisma.ClientCreateNestedOneWithoutProjectsInput
   location: Prisma.LocationCreateNestedOneWithoutProjectsInput
   projectLead: Prisma.TeamMemberCreateNestedOneWithoutProjectsInput
+  featuredImage: Prisma.MediaCreateNestedOneWithoutProjectsInput
   teamMembers?: Prisma.ProjectTeamMemberCreateNestedManyWithoutProjectInput
   stakeholders?: Prisma.ProjectStakeholderCreateNestedManyWithoutProjectInput
   tags?: Prisma.ProjectTagCreateNestedManyWithoutProjectInput
@@ -1083,6 +1153,7 @@ export type ProjectUncheckedCreateWithoutIndustryInput = {
   projectLeadId: string
   budget: number
   status?: $Enums.ProjectStatus
+  featuredImageId: string
   serviceSummary: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1119,6 +1190,84 @@ export type ProjectUpdateManyWithWhereWithoutIndustryInput = {
   data: Prisma.XOR<Prisma.ProjectUpdateManyMutationInput, Prisma.ProjectUncheckedUpdateManyWithoutIndustryInput>
 }
 
+export type ProjectCreateWithoutFeaturedImageInput = {
+  id?: string
+  code: string
+  slug: string
+  title: string
+  subtitle?: string | null
+  description?: string | null
+  startDate: Date | string
+  endDate?: Date | string | null
+  story: string
+  budget: number
+  status?: $Enums.ProjectStatus
+  serviceSummary: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  client: Prisma.ClientCreateNestedOneWithoutProjectsInput
+  industry: Prisma.IndustryCreateNestedOneWithoutProjectsInput
+  location: Prisma.LocationCreateNestedOneWithoutProjectsInput
+  projectLead: Prisma.TeamMemberCreateNestedOneWithoutProjectsInput
+  teamMembers?: Prisma.ProjectTeamMemberCreateNestedManyWithoutProjectInput
+  stakeholders?: Prisma.ProjectStakeholderCreateNestedManyWithoutProjectInput
+  tags?: Prisma.ProjectTagCreateNestedManyWithoutProjectInput
+  images?: Prisma.ProjectImageCreateNestedManyWithoutProjectInput
+  notes?: Prisma.ProjectNoteCreateNestedManyWithoutProjectInput
+}
+
+export type ProjectUncheckedCreateWithoutFeaturedImageInput = {
+  id?: string
+  code: string
+  slug: string
+  title: string
+  subtitle?: string | null
+  description?: string | null
+  clientId: string
+  industryId: string
+  startDate: Date | string
+  endDate?: Date | string | null
+  story: string
+  locationId: string
+  projectLeadId: string
+  budget: number
+  status?: $Enums.ProjectStatus
+  serviceSummary: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  teamMembers?: Prisma.ProjectTeamMemberUncheckedCreateNestedManyWithoutProjectInput
+  stakeholders?: Prisma.ProjectStakeholderUncheckedCreateNestedManyWithoutProjectInput
+  tags?: Prisma.ProjectTagUncheckedCreateNestedManyWithoutProjectInput
+  images?: Prisma.ProjectImageUncheckedCreateNestedManyWithoutProjectInput
+  notes?: Prisma.ProjectNoteUncheckedCreateNestedManyWithoutProjectInput
+}
+
+export type ProjectCreateOrConnectWithoutFeaturedImageInput = {
+  where: Prisma.ProjectWhereUniqueInput
+  create: Prisma.XOR<Prisma.ProjectCreateWithoutFeaturedImageInput, Prisma.ProjectUncheckedCreateWithoutFeaturedImageInput>
+}
+
+export type ProjectCreateManyFeaturedImageInputEnvelope = {
+  data: Prisma.ProjectCreateManyFeaturedImageInput | Prisma.ProjectCreateManyFeaturedImageInput[]
+  skipDuplicates?: boolean
+}
+
+export type ProjectUpsertWithWhereUniqueWithoutFeaturedImageInput = {
+  where: Prisma.ProjectWhereUniqueInput
+  update: Prisma.XOR<Prisma.ProjectUpdateWithoutFeaturedImageInput, Prisma.ProjectUncheckedUpdateWithoutFeaturedImageInput>
+  create: Prisma.XOR<Prisma.ProjectCreateWithoutFeaturedImageInput, Prisma.ProjectUncheckedCreateWithoutFeaturedImageInput>
+}
+
+export type ProjectUpdateWithWhereUniqueWithoutFeaturedImageInput = {
+  where: Prisma.ProjectWhereUniqueInput
+  data: Prisma.XOR<Prisma.ProjectUpdateWithoutFeaturedImageInput, Prisma.ProjectUncheckedUpdateWithoutFeaturedImageInput>
+}
+
+export type ProjectUpdateManyWithWhereWithoutFeaturedImageInput = {
+  where: Prisma.ProjectScalarWhereInput
+  data: Prisma.XOR<Prisma.ProjectUpdateManyMutationInput, Prisma.ProjectUncheckedUpdateManyWithoutFeaturedImageInput>
+}
+
 export type ProjectCreateWithoutProjectLeadInput = {
   id?: string
   code: string
@@ -1137,6 +1286,7 @@ export type ProjectCreateWithoutProjectLeadInput = {
   client: Prisma.ClientCreateNestedOneWithoutProjectsInput
   industry: Prisma.IndustryCreateNestedOneWithoutProjectsInput
   location: Prisma.LocationCreateNestedOneWithoutProjectsInput
+  featuredImage: Prisma.MediaCreateNestedOneWithoutProjectsInput
   teamMembers?: Prisma.ProjectTeamMemberCreateNestedManyWithoutProjectInput
   stakeholders?: Prisma.ProjectStakeholderCreateNestedManyWithoutProjectInput
   tags?: Prisma.ProjectTagCreateNestedManyWithoutProjectInput
@@ -1159,6 +1309,7 @@ export type ProjectUncheckedCreateWithoutProjectLeadInput = {
   locationId: string
   budget: number
   status?: $Enums.ProjectStatus
+  featuredImageId: string
   serviceSummary: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1213,6 +1364,7 @@ export type ProjectCreateWithoutClientInput = {
   industry: Prisma.IndustryCreateNestedOneWithoutProjectsInput
   location: Prisma.LocationCreateNestedOneWithoutProjectsInput
   projectLead: Prisma.TeamMemberCreateNestedOneWithoutProjectsInput
+  featuredImage: Prisma.MediaCreateNestedOneWithoutProjectsInput
   teamMembers?: Prisma.ProjectTeamMemberCreateNestedManyWithoutProjectInput
   stakeholders?: Prisma.ProjectStakeholderCreateNestedManyWithoutProjectInput
   tags?: Prisma.ProjectTagCreateNestedManyWithoutProjectInput
@@ -1235,6 +1387,7 @@ export type ProjectUncheckedCreateWithoutClientInput = {
   projectLeadId: string
   budget: number
   status?: $Enums.ProjectStatus
+  featuredImageId: string
   serviceSummary: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1290,6 +1443,7 @@ export type ProjectCreateWithoutStakeholdersInput = {
   industry: Prisma.IndustryCreateNestedOneWithoutProjectsInput
   location: Prisma.LocationCreateNestedOneWithoutProjectsInput
   projectLead: Prisma.TeamMemberCreateNestedOneWithoutProjectsInput
+  featuredImage: Prisma.MediaCreateNestedOneWithoutProjectsInput
   teamMembers?: Prisma.ProjectTeamMemberCreateNestedManyWithoutProjectInput
   tags?: Prisma.ProjectTagCreateNestedManyWithoutProjectInput
   images?: Prisma.ProjectImageCreateNestedManyWithoutProjectInput
@@ -1312,6 +1466,7 @@ export type ProjectUncheckedCreateWithoutStakeholdersInput = {
   projectLeadId: string
   budget: number
   status?: $Enums.ProjectStatus
+  featuredImageId: string
   serviceSummary: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1356,6 +1511,7 @@ export type ProjectUpdateWithoutStakeholdersInput = {
   industry?: Prisma.IndustryUpdateOneRequiredWithoutProjectsNestedInput
   location?: Prisma.LocationUpdateOneRequiredWithoutProjectsNestedInput
   projectLead?: Prisma.TeamMemberUpdateOneRequiredWithoutProjectsNestedInput
+  featuredImage?: Prisma.MediaUpdateOneRequiredWithoutProjectsNestedInput
   teamMembers?: Prisma.ProjectTeamMemberUpdateManyWithoutProjectNestedInput
   tags?: Prisma.ProjectTagUpdateManyWithoutProjectNestedInput
   images?: Prisma.ProjectImageUpdateManyWithoutProjectNestedInput
@@ -1378,6 +1534,7 @@ export type ProjectUncheckedUpdateWithoutStakeholdersInput = {
   projectLeadId?: Prisma.StringFieldUpdateOperationsInput | string
   budget?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
+  featuredImageId?: Prisma.StringFieldUpdateOperationsInput | string
   serviceSummary?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1406,6 +1563,7 @@ export type ProjectCreateWithoutTeamMembersInput = {
   industry: Prisma.IndustryCreateNestedOneWithoutProjectsInput
   location: Prisma.LocationCreateNestedOneWithoutProjectsInput
   projectLead: Prisma.TeamMemberCreateNestedOneWithoutProjectsInput
+  featuredImage: Prisma.MediaCreateNestedOneWithoutProjectsInput
   stakeholders?: Prisma.ProjectStakeholderCreateNestedManyWithoutProjectInput
   tags?: Prisma.ProjectTagCreateNestedManyWithoutProjectInput
   images?: Prisma.ProjectImageCreateNestedManyWithoutProjectInput
@@ -1428,6 +1586,7 @@ export type ProjectUncheckedCreateWithoutTeamMembersInput = {
   projectLeadId: string
   budget: number
   status?: $Enums.ProjectStatus
+  featuredImageId: string
   serviceSummary: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1472,6 +1631,7 @@ export type ProjectUpdateWithoutTeamMembersInput = {
   industry?: Prisma.IndustryUpdateOneRequiredWithoutProjectsNestedInput
   location?: Prisma.LocationUpdateOneRequiredWithoutProjectsNestedInput
   projectLead?: Prisma.TeamMemberUpdateOneRequiredWithoutProjectsNestedInput
+  featuredImage?: Prisma.MediaUpdateOneRequiredWithoutProjectsNestedInput
   stakeholders?: Prisma.ProjectStakeholderUpdateManyWithoutProjectNestedInput
   tags?: Prisma.ProjectTagUpdateManyWithoutProjectNestedInput
   images?: Prisma.ProjectImageUpdateManyWithoutProjectNestedInput
@@ -1494,6 +1654,7 @@ export type ProjectUncheckedUpdateWithoutTeamMembersInput = {
   projectLeadId?: Prisma.StringFieldUpdateOperationsInput | string
   budget?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
+  featuredImageId?: Prisma.StringFieldUpdateOperationsInput | string
   serviceSummary?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1522,6 +1683,7 @@ export type ProjectCreateWithoutTagsInput = {
   industry: Prisma.IndustryCreateNestedOneWithoutProjectsInput
   location: Prisma.LocationCreateNestedOneWithoutProjectsInput
   projectLead: Prisma.TeamMemberCreateNestedOneWithoutProjectsInput
+  featuredImage: Prisma.MediaCreateNestedOneWithoutProjectsInput
   teamMembers?: Prisma.ProjectTeamMemberCreateNestedManyWithoutProjectInput
   stakeholders?: Prisma.ProjectStakeholderCreateNestedManyWithoutProjectInput
   images?: Prisma.ProjectImageCreateNestedManyWithoutProjectInput
@@ -1544,6 +1706,7 @@ export type ProjectUncheckedCreateWithoutTagsInput = {
   projectLeadId: string
   budget: number
   status?: $Enums.ProjectStatus
+  featuredImageId: string
   serviceSummary: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1588,6 +1751,7 @@ export type ProjectUpdateWithoutTagsInput = {
   industry?: Prisma.IndustryUpdateOneRequiredWithoutProjectsNestedInput
   location?: Prisma.LocationUpdateOneRequiredWithoutProjectsNestedInput
   projectLead?: Prisma.TeamMemberUpdateOneRequiredWithoutProjectsNestedInput
+  featuredImage?: Prisma.MediaUpdateOneRequiredWithoutProjectsNestedInput
   teamMembers?: Prisma.ProjectTeamMemberUpdateManyWithoutProjectNestedInput
   stakeholders?: Prisma.ProjectStakeholderUpdateManyWithoutProjectNestedInput
   images?: Prisma.ProjectImageUpdateManyWithoutProjectNestedInput
@@ -1610,6 +1774,7 @@ export type ProjectUncheckedUpdateWithoutTagsInput = {
   projectLeadId?: Prisma.StringFieldUpdateOperationsInput | string
   budget?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
+  featuredImageId?: Prisma.StringFieldUpdateOperationsInput | string
   serviceSummary?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1638,6 +1803,7 @@ export type ProjectCreateWithoutImagesInput = {
   industry: Prisma.IndustryCreateNestedOneWithoutProjectsInput
   location: Prisma.LocationCreateNestedOneWithoutProjectsInput
   projectLead: Prisma.TeamMemberCreateNestedOneWithoutProjectsInput
+  featuredImage: Prisma.MediaCreateNestedOneWithoutProjectsInput
   teamMembers?: Prisma.ProjectTeamMemberCreateNestedManyWithoutProjectInput
   stakeholders?: Prisma.ProjectStakeholderCreateNestedManyWithoutProjectInput
   tags?: Prisma.ProjectTagCreateNestedManyWithoutProjectInput
@@ -1660,6 +1826,7 @@ export type ProjectUncheckedCreateWithoutImagesInput = {
   projectLeadId: string
   budget: number
   status?: $Enums.ProjectStatus
+  featuredImageId: string
   serviceSummary: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1704,6 +1871,7 @@ export type ProjectUpdateWithoutImagesInput = {
   industry?: Prisma.IndustryUpdateOneRequiredWithoutProjectsNestedInput
   location?: Prisma.LocationUpdateOneRequiredWithoutProjectsNestedInput
   projectLead?: Prisma.TeamMemberUpdateOneRequiredWithoutProjectsNestedInput
+  featuredImage?: Prisma.MediaUpdateOneRequiredWithoutProjectsNestedInput
   teamMembers?: Prisma.ProjectTeamMemberUpdateManyWithoutProjectNestedInput
   stakeholders?: Prisma.ProjectStakeholderUpdateManyWithoutProjectNestedInput
   tags?: Prisma.ProjectTagUpdateManyWithoutProjectNestedInput
@@ -1726,6 +1894,7 @@ export type ProjectUncheckedUpdateWithoutImagesInput = {
   projectLeadId?: Prisma.StringFieldUpdateOperationsInput | string
   budget?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
+  featuredImageId?: Prisma.StringFieldUpdateOperationsInput | string
   serviceSummary?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1754,6 +1923,7 @@ export type ProjectCreateWithoutNotesInput = {
   industry: Prisma.IndustryCreateNestedOneWithoutProjectsInput
   location: Prisma.LocationCreateNestedOneWithoutProjectsInput
   projectLead: Prisma.TeamMemberCreateNestedOneWithoutProjectsInput
+  featuredImage: Prisma.MediaCreateNestedOneWithoutProjectsInput
   teamMembers?: Prisma.ProjectTeamMemberCreateNestedManyWithoutProjectInput
   stakeholders?: Prisma.ProjectStakeholderCreateNestedManyWithoutProjectInput
   tags?: Prisma.ProjectTagCreateNestedManyWithoutProjectInput
@@ -1776,6 +1946,7 @@ export type ProjectUncheckedCreateWithoutNotesInput = {
   projectLeadId: string
   budget: number
   status?: $Enums.ProjectStatus
+  featuredImageId: string
   serviceSummary: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1820,6 +1991,7 @@ export type ProjectUpdateWithoutNotesInput = {
   industry?: Prisma.IndustryUpdateOneRequiredWithoutProjectsNestedInput
   location?: Prisma.LocationUpdateOneRequiredWithoutProjectsNestedInput
   projectLead?: Prisma.TeamMemberUpdateOneRequiredWithoutProjectsNestedInput
+  featuredImage?: Prisma.MediaUpdateOneRequiredWithoutProjectsNestedInput
   teamMembers?: Prisma.ProjectTeamMemberUpdateManyWithoutProjectNestedInput
   stakeholders?: Prisma.ProjectStakeholderUpdateManyWithoutProjectNestedInput
   tags?: Prisma.ProjectTagUpdateManyWithoutProjectNestedInput
@@ -1842,6 +2014,7 @@ export type ProjectUncheckedUpdateWithoutNotesInput = {
   projectLeadId?: Prisma.StringFieldUpdateOperationsInput | string
   budget?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
+  featuredImageId?: Prisma.StringFieldUpdateOperationsInput | string
   serviceSummary?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1866,6 +2039,7 @@ export type ProjectCreateManyLocationInput = {
   projectLeadId: string
   budget: number
   status?: $Enums.ProjectStatus
+  featuredImageId: string
   serviceSummary: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1889,6 +2063,7 @@ export type ProjectUpdateWithoutLocationInput = {
   client?: Prisma.ClientUpdateOneRequiredWithoutProjectsNestedInput
   industry?: Prisma.IndustryUpdateOneRequiredWithoutProjectsNestedInput
   projectLead?: Prisma.TeamMemberUpdateOneRequiredWithoutProjectsNestedInput
+  featuredImage?: Prisma.MediaUpdateOneRequiredWithoutProjectsNestedInput
   teamMembers?: Prisma.ProjectTeamMemberUpdateManyWithoutProjectNestedInput
   stakeholders?: Prisma.ProjectStakeholderUpdateManyWithoutProjectNestedInput
   tags?: Prisma.ProjectTagUpdateManyWithoutProjectNestedInput
@@ -1911,6 +2086,7 @@ export type ProjectUncheckedUpdateWithoutLocationInput = {
   projectLeadId?: Prisma.StringFieldUpdateOperationsInput | string
   budget?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
+  featuredImageId?: Prisma.StringFieldUpdateOperationsInput | string
   serviceSummary?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1936,6 +2112,7 @@ export type ProjectUncheckedUpdateManyWithoutLocationInput = {
   projectLeadId?: Prisma.StringFieldUpdateOperationsInput | string
   budget?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
+  featuredImageId?: Prisma.StringFieldUpdateOperationsInput | string
   serviceSummary?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1956,6 +2133,7 @@ export type ProjectCreateManyIndustryInput = {
   projectLeadId: string
   budget: number
   status?: $Enums.ProjectStatus
+  featuredImageId: string
   serviceSummary: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1979,6 +2157,7 @@ export type ProjectUpdateWithoutIndustryInput = {
   client?: Prisma.ClientUpdateOneRequiredWithoutProjectsNestedInput
   location?: Prisma.LocationUpdateOneRequiredWithoutProjectsNestedInput
   projectLead?: Prisma.TeamMemberUpdateOneRequiredWithoutProjectsNestedInput
+  featuredImage?: Prisma.MediaUpdateOneRequiredWithoutProjectsNestedInput
   teamMembers?: Prisma.ProjectTeamMemberUpdateManyWithoutProjectNestedInput
   stakeholders?: Prisma.ProjectStakeholderUpdateManyWithoutProjectNestedInput
   tags?: Prisma.ProjectTagUpdateManyWithoutProjectNestedInput
@@ -2001,6 +2180,7 @@ export type ProjectUncheckedUpdateWithoutIndustryInput = {
   projectLeadId?: Prisma.StringFieldUpdateOperationsInput | string
   budget?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
+  featuredImageId?: Prisma.StringFieldUpdateOperationsInput | string
   serviceSummary?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2019,6 +2199,101 @@ export type ProjectUncheckedUpdateManyWithoutIndustryInput = {
   subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   clientId?: Prisma.StringFieldUpdateOperationsInput | string
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  story?: Prisma.StringFieldUpdateOperationsInput | string
+  locationId?: Prisma.StringFieldUpdateOperationsInput | string
+  projectLeadId?: Prisma.StringFieldUpdateOperationsInput | string
+  budget?: Prisma.FloatFieldUpdateOperationsInput | number
+  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
+  featuredImageId?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceSummary?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type ProjectCreateManyFeaturedImageInput = {
+  id?: string
+  code: string
+  slug: string
+  title: string
+  subtitle?: string | null
+  description?: string | null
+  clientId: string
+  industryId: string
+  startDate: Date | string
+  endDate?: Date | string | null
+  story: string
+  locationId: string
+  projectLeadId: string
+  budget: number
+  status?: $Enums.ProjectStatus
+  serviceSummary: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type ProjectUpdateWithoutFeaturedImageInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  story?: Prisma.StringFieldUpdateOperationsInput | string
+  budget?: Prisma.FloatFieldUpdateOperationsInput | number
+  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
+  serviceSummary?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  client?: Prisma.ClientUpdateOneRequiredWithoutProjectsNestedInput
+  industry?: Prisma.IndustryUpdateOneRequiredWithoutProjectsNestedInput
+  location?: Prisma.LocationUpdateOneRequiredWithoutProjectsNestedInput
+  projectLead?: Prisma.TeamMemberUpdateOneRequiredWithoutProjectsNestedInput
+  teamMembers?: Prisma.ProjectTeamMemberUpdateManyWithoutProjectNestedInput
+  stakeholders?: Prisma.ProjectStakeholderUpdateManyWithoutProjectNestedInput
+  tags?: Prisma.ProjectTagUpdateManyWithoutProjectNestedInput
+  images?: Prisma.ProjectImageUpdateManyWithoutProjectNestedInput
+  notes?: Prisma.ProjectNoteUpdateManyWithoutProjectNestedInput
+}
+
+export type ProjectUncheckedUpdateWithoutFeaturedImageInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  clientId?: Prisma.StringFieldUpdateOperationsInput | string
+  industryId?: Prisma.StringFieldUpdateOperationsInput | string
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  story?: Prisma.StringFieldUpdateOperationsInput | string
+  locationId?: Prisma.StringFieldUpdateOperationsInput | string
+  projectLeadId?: Prisma.StringFieldUpdateOperationsInput | string
+  budget?: Prisma.FloatFieldUpdateOperationsInput | number
+  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
+  serviceSummary?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  teamMembers?: Prisma.ProjectTeamMemberUncheckedUpdateManyWithoutProjectNestedInput
+  stakeholders?: Prisma.ProjectStakeholderUncheckedUpdateManyWithoutProjectNestedInput
+  tags?: Prisma.ProjectTagUncheckedUpdateManyWithoutProjectNestedInput
+  images?: Prisma.ProjectImageUncheckedUpdateManyWithoutProjectNestedInput
+  notes?: Prisma.ProjectNoteUncheckedUpdateManyWithoutProjectNestedInput
+}
+
+export type ProjectUncheckedUpdateManyWithoutFeaturedImageInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  clientId?: Prisma.StringFieldUpdateOperationsInput | string
+  industryId?: Prisma.StringFieldUpdateOperationsInput | string
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   story?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2046,6 +2321,7 @@ export type ProjectCreateManyProjectLeadInput = {
   locationId: string
   budget: number
   status?: $Enums.ProjectStatus
+  featuredImageId: string
   serviceSummary: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -2069,6 +2345,7 @@ export type ProjectUpdateWithoutProjectLeadInput = {
   client?: Prisma.ClientUpdateOneRequiredWithoutProjectsNestedInput
   industry?: Prisma.IndustryUpdateOneRequiredWithoutProjectsNestedInput
   location?: Prisma.LocationUpdateOneRequiredWithoutProjectsNestedInput
+  featuredImage?: Prisma.MediaUpdateOneRequiredWithoutProjectsNestedInput
   teamMembers?: Prisma.ProjectTeamMemberUpdateManyWithoutProjectNestedInput
   stakeholders?: Prisma.ProjectStakeholderUpdateManyWithoutProjectNestedInput
   tags?: Prisma.ProjectTagUpdateManyWithoutProjectNestedInput
@@ -2091,6 +2368,7 @@ export type ProjectUncheckedUpdateWithoutProjectLeadInput = {
   locationId?: Prisma.StringFieldUpdateOperationsInput | string
   budget?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
+  featuredImageId?: Prisma.StringFieldUpdateOperationsInput | string
   serviceSummary?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2116,6 +2394,7 @@ export type ProjectUncheckedUpdateManyWithoutProjectLeadInput = {
   locationId?: Prisma.StringFieldUpdateOperationsInput | string
   budget?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
+  featuredImageId?: Prisma.StringFieldUpdateOperationsInput | string
   serviceSummary?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2136,6 +2415,7 @@ export type ProjectCreateManyClientInput = {
   projectLeadId: string
   budget: number
   status?: $Enums.ProjectStatus
+  featuredImageId: string
   serviceSummary: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -2159,6 +2439,7 @@ export type ProjectUpdateWithoutClientInput = {
   industry?: Prisma.IndustryUpdateOneRequiredWithoutProjectsNestedInput
   location?: Prisma.LocationUpdateOneRequiredWithoutProjectsNestedInput
   projectLead?: Prisma.TeamMemberUpdateOneRequiredWithoutProjectsNestedInput
+  featuredImage?: Prisma.MediaUpdateOneRequiredWithoutProjectsNestedInput
   teamMembers?: Prisma.ProjectTeamMemberUpdateManyWithoutProjectNestedInput
   stakeholders?: Prisma.ProjectStakeholderUpdateManyWithoutProjectNestedInput
   tags?: Prisma.ProjectTagUpdateManyWithoutProjectNestedInput
@@ -2181,6 +2462,7 @@ export type ProjectUncheckedUpdateWithoutClientInput = {
   projectLeadId?: Prisma.StringFieldUpdateOperationsInput | string
   budget?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
+  featuredImageId?: Prisma.StringFieldUpdateOperationsInput | string
   serviceSummary?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2206,6 +2488,7 @@ export type ProjectUncheckedUpdateManyWithoutClientInput = {
   projectLeadId?: Prisma.StringFieldUpdateOperationsInput | string
   budget?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
+  featuredImageId?: Prisma.StringFieldUpdateOperationsInput | string
   serviceSummary?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2294,6 +2577,7 @@ export type ProjectSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   projectLeadId?: boolean
   budget?: boolean
   status?: boolean
+  featuredImageId?: boolean
   serviceSummary?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -2301,6 +2585,7 @@ export type ProjectSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   industry?: boolean | Prisma.IndustryDefaultArgs<ExtArgs>
   location?: boolean | Prisma.LocationDefaultArgs<ExtArgs>
   projectLead?: boolean | Prisma.TeamMemberDefaultArgs<ExtArgs>
+  featuredImage?: boolean | Prisma.MediaDefaultArgs<ExtArgs>
   teamMembers?: boolean | Prisma.Project$teamMembersArgs<ExtArgs>
   stakeholders?: boolean | Prisma.Project$stakeholdersArgs<ExtArgs>
   tags?: boolean | Prisma.Project$tagsArgs<ExtArgs>
@@ -2325,6 +2610,7 @@ export type ProjectSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   projectLeadId?: boolean
   budget?: boolean
   status?: boolean
+  featuredImageId?: boolean
   serviceSummary?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -2332,6 +2618,7 @@ export type ProjectSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   industry?: boolean | Prisma.IndustryDefaultArgs<ExtArgs>
   location?: boolean | Prisma.LocationDefaultArgs<ExtArgs>
   projectLead?: boolean | Prisma.TeamMemberDefaultArgs<ExtArgs>
+  featuredImage?: boolean | Prisma.MediaDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["project"]>
 
 export type ProjectSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -2350,6 +2637,7 @@ export type ProjectSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   projectLeadId?: boolean
   budget?: boolean
   status?: boolean
+  featuredImageId?: boolean
   serviceSummary?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -2357,6 +2645,7 @@ export type ProjectSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   industry?: boolean | Prisma.IndustryDefaultArgs<ExtArgs>
   location?: boolean | Prisma.LocationDefaultArgs<ExtArgs>
   projectLead?: boolean | Prisma.TeamMemberDefaultArgs<ExtArgs>
+  featuredImage?: boolean | Prisma.MediaDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["project"]>
 
 export type ProjectSelectScalar = {
@@ -2375,17 +2664,19 @@ export type ProjectSelectScalar = {
   projectLeadId?: boolean
   budget?: boolean
   status?: boolean
+  featuredImageId?: boolean
   serviceSummary?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type ProjectOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "code" | "slug" | "title" | "subtitle" | "description" | "clientId" | "industryId" | "startDate" | "endDate" | "story" | "locationId" | "projectLeadId" | "budget" | "status" | "serviceSummary" | "createdAt" | "updatedAt", ExtArgs["result"]["project"]>
+export type ProjectOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "code" | "slug" | "title" | "subtitle" | "description" | "clientId" | "industryId" | "startDate" | "endDate" | "story" | "locationId" | "projectLeadId" | "budget" | "status" | "featuredImageId" | "serviceSummary" | "createdAt" | "updatedAt", ExtArgs["result"]["project"]>
 export type ProjectInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   client?: boolean | Prisma.ClientDefaultArgs<ExtArgs>
   industry?: boolean | Prisma.IndustryDefaultArgs<ExtArgs>
   location?: boolean | Prisma.LocationDefaultArgs<ExtArgs>
   projectLead?: boolean | Prisma.TeamMemberDefaultArgs<ExtArgs>
+  featuredImage?: boolean | Prisma.MediaDefaultArgs<ExtArgs>
   teamMembers?: boolean | Prisma.Project$teamMembersArgs<ExtArgs>
   stakeholders?: boolean | Prisma.Project$stakeholdersArgs<ExtArgs>
   tags?: boolean | Prisma.Project$tagsArgs<ExtArgs>
@@ -2398,12 +2689,14 @@ export type ProjectIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   industry?: boolean | Prisma.IndustryDefaultArgs<ExtArgs>
   location?: boolean | Prisma.LocationDefaultArgs<ExtArgs>
   projectLead?: boolean | Prisma.TeamMemberDefaultArgs<ExtArgs>
+  featuredImage?: boolean | Prisma.MediaDefaultArgs<ExtArgs>
 }
 export type ProjectIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   client?: boolean | Prisma.ClientDefaultArgs<ExtArgs>
   industry?: boolean | Prisma.IndustryDefaultArgs<ExtArgs>
   location?: boolean | Prisma.LocationDefaultArgs<ExtArgs>
   projectLead?: boolean | Prisma.TeamMemberDefaultArgs<ExtArgs>
+  featuredImage?: boolean | Prisma.MediaDefaultArgs<ExtArgs>
 }
 
 export type $ProjectPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2413,6 +2706,7 @@ export type $ProjectPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     industry: Prisma.$IndustryPayload<ExtArgs>
     location: Prisma.$LocationPayload<ExtArgs>
     projectLead: Prisma.$TeamMemberPayload<ExtArgs>
+    featuredImage: Prisma.$MediaPayload<ExtArgs>
     teamMembers: Prisma.$ProjectTeamMemberPayload<ExtArgs>[]
     stakeholders: Prisma.$ProjectStakeholderPayload<ExtArgs>[]
     tags: Prisma.$ProjectTagPayload<ExtArgs>[]
@@ -2435,6 +2729,7 @@ export type $ProjectPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     projectLeadId: string
     budget: number
     status: $Enums.ProjectStatus
+    featuredImageId: string
     serviceSummary: string
     createdAt: Date
     updatedAt: Date
@@ -2836,6 +3131,7 @@ export interface Prisma__ProjectClient<T, Null = never, ExtArgs extends runtime.
   industry<T extends Prisma.IndustryDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.IndustryDefaultArgs<ExtArgs>>): Prisma.Prisma__IndustryClient<runtime.Types.Result.GetResult<Prisma.$IndustryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   location<T extends Prisma.LocationDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.LocationDefaultArgs<ExtArgs>>): Prisma.Prisma__LocationClient<runtime.Types.Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   projectLead<T extends Prisma.TeamMemberDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TeamMemberDefaultArgs<ExtArgs>>): Prisma.Prisma__TeamMemberClient<runtime.Types.Result.GetResult<Prisma.$TeamMemberPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  featuredImage<T extends Prisma.MediaDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MediaDefaultArgs<ExtArgs>>): Prisma.Prisma__MediaClient<runtime.Types.Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   teamMembers<T extends Prisma.Project$teamMembersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Project$teamMembersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjectTeamMemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   stakeholders<T extends Prisma.Project$stakeholdersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Project$stakeholdersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjectStakeholderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   tags<T extends Prisma.Project$tagsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Project$tagsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjectTagPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -2885,6 +3181,7 @@ export interface ProjectFieldRefs {
   readonly projectLeadId: Prisma.FieldRef<"Project", 'String'>
   readonly budget: Prisma.FieldRef<"Project", 'Float'>
   readonly status: Prisma.FieldRef<"Project", 'ProjectStatus'>
+  readonly featuredImageId: Prisma.FieldRef<"Project", 'String'>
   readonly serviceSummary: Prisma.FieldRef<"Project", 'String'>
   readonly createdAt: Prisma.FieldRef<"Project", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Project", 'DateTime'>

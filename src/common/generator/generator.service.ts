@@ -170,4 +170,19 @@ export class GeneratorService {
 
     return slug;
   }
+
+  async generateProjectSlug(title: string): Promise<string> {
+    const slug = slugify(title, { lower: true, strict: true });
+
+    const exists = await this.prisma.project.findUnique({
+      where: { slug },
+    });
+
+    if (exists) {
+      const randomSuffix = Math.random().toString(36).substring(2, 8);
+      return `${slug}-${randomSuffix}`;
+    }
+
+    return slug;
+  }
 }

@@ -904,6 +904,7 @@ export const ProjectScalarFieldEnum = {
   projectLeadId: 'projectLeadId',
   budget: 'budget',
   status: 'status',
+  featuredImageId: 'featuredImageId',
   serviceSummary: 'serviceSummary',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
