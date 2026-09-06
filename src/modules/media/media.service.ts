@@ -56,6 +56,27 @@ export class MediaService {
     }
   }
 
+  async getMediaContentById(mediaId: string) {
+    const media = await this.prisma.media.findUnique({
+      where: { id: mediaId },
+    });
+
+    if (!media) {
+      this.logger.warn(`Media with ID "${mediaId}" not found`);
+      throw new NotFoundException('Media not found');
+    }
+
+    return {
+      id: media.id,
+      filename: media.filename,
+      originalName: media.originalName,
+      url: media.url,
+      mimeType: media.mimeType,
+      extension: media.extension,
+      size: media.size,
+    };
+  }
+
   async getMediaUrl(mediaId: string) {
     const media = await this.prisma.media.findUnique({
       where: { id: mediaId },

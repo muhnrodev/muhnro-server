@@ -44,6 +44,12 @@ export class MediaController {
     throw new NotFoundException('Media content not found');
   }
 
+  @Get('content/:id')
+  @UseGuards(JwtAuthGuard)
+  async getMediaContentById(@Param('id') mediaId: string) {
+    return this.mediaService.getMediaUrl(mediaId);
+  }
+
   @Post()
   @UseGuards(JwtAuthGuard)
   @UseInterceptors(FileInterceptor('file'))

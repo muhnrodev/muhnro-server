@@ -51,33 +51,13 @@ async function bootstrap() {
       callback: (err: Error | null, allow?: boolean) => void,
     ) => {
       if (!origin) return callback(null, true);
+      const isAllowed =
+        origin.endsWith('muhnro.com') ||
+        origin === 'http://localhost:5173' ||
+        origin === 'http://localhost:3000' ||
+        origin === 'http://localhost:3001';
 
-      const allowedOrigins = new Set([
-        'http://localhost:5173',
-        'http://localhost:3000',
-        'http://localhost:3001',
-        'https://dev.dashboard.muhnro.com',
-        'https://dashboard.muhnro.com',
-      ]);
-
-      try {
-        const { hostname, protocol, port } = new URL(origin);
-        const isLocalhost =
-          hostname === 'localhost' || hostname.endsWith('.localhost');
-        const isMuhnroSubdomain = hostname.endsWith('.muhnro.com');
-        const isAllowed =
-          allowedOrigins.has(origin) ||
-          ((protocol === 'http:' || protocol === 'https:') &&
-            (isLocalhost || isMuhnroSubdomain || hostname === 'muhnro.com'));
-
-        if (port && !['80', '443'].includes(port) && !isLocalhost) {
-          return callback(null, false);
-        }
-
-        return callback(null, isAllowed);
-      } catch {
-        return callback(null, false);
-      }
+      callback(null, isAllowed);
     },
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
     credentials: true,
