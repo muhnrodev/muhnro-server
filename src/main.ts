@@ -7,12 +7,18 @@ import { WinstonModule } from 'nest-winston';
 import { AppModule } from './app.module.js';
 import { winstonConfig } from './config/winston.config.js';
 import cookieParser from 'cookie-parser';
+import { json, urlencoded } from 'express';
+
+const requestBodyLimit = process.env.REQUEST_BODY_LIMIT ?? '50mb';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     logger: WinstonModule.createLogger(winstonConfig),
+    bodyParser: false,
   });
   app.setGlobalPrefix('api/v1');
+  app.use(json({ limit: requestBodyLimit }));
+  app.use(urlencoded({ extended: true, limit: requestBodyLimit }));
   app.use(
     helmet({
       crossOriginResourcePolicy: {

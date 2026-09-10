@@ -19,6 +19,8 @@ import type { Multer } from 'multer';
 import type { Response } from 'express';
 import { Readable } from 'stream';
 
+const maxMediaFileSize = Number(process.env.MEDIA_MAX_FILE_SIZE ?? 52_428_800);
+
 @Controller('media')
 export class MediaController {
   constructor(private readonly mediaService: MediaService) {}
@@ -52,7 +54,13 @@ export class MediaController {
 
   @Post()
   @UseGuards(JwtAuthGuard)
-  @UseInterceptors(FileInterceptor('file'))
+  @UseInterceptors(
+    FileInterceptor('file', {
+      limits: {
+        fileSize: maxMediaFileSize,
+      },
+    }),
+  )
   async uploadMedia(
     @Body() data: UploadFileDto,
     @UploadedFile() file: Express.Multer.File,
