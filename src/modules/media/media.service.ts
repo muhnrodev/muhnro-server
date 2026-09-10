@@ -123,6 +123,7 @@ export class MediaService {
           checksum: metadata.checksum,
           altText: data.altText,
           caption: data.caption,
+          permanentlyDeleteAt: null,
         },
       });
 
